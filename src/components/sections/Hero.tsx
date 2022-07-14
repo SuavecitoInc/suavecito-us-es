@@ -67,7 +67,7 @@ export function Hero({
                 sizes="(min-width: 80em) 700, (min-width: 48em) 450, 500"
                 widths={[450, 700]}
                 width={375}
-                data={spreadSecondary.reference}
+                data={spreadSecondary.reference as Media}
               />
             </div>
           )}
