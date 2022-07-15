@@ -11,12 +11,21 @@ import {
 
 import {MEDIA_FRAGMENT, PRODUCT_CARD_FRAGMENT} from '~/lib/fragments';
 import {getHeroPlaceholder} from '~/lib/placeholders';
-import {FeaturedCollections, Hero} from '~/components';
+import {
+  FeaturedCollections,
+  Hero,
+  ResponsiveBanner,
+  FeaturedRowImageWithText,
+} from '~/components';
 import {Layout, ProductSwimlane} from '~/components/index.server';
 import {
   CollectionConnection,
   ProductConnection,
 } from '@shopify/hydrogen/storefront-api-types';
+
+// hard coded data
+import {homePageBanner} from '../data/home-page-banner';
+import {featuredRowImageWithText} from '~/data/featured-row-image-with-text';
 
 export default function Homepage() {
   useServerAnalytics({
@@ -65,9 +74,13 @@ function HomepageContent() {
 
   return (
     <>
-      {primaryHero && (
+      {/* {primaryHero && (
         <Hero {...primaryHero} height="full" top loading="eager" />
-      )}
+      )} */}
+
+      <ResponsiveBanner {...homePageBanner} />
+      <FeaturedRowImageWithText {...featuredRowImageWithText} />
+
       <ProductSwimlane
         data={featuredProducts.nodes}
         title="Featured Products"

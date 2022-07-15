@@ -4,8 +4,8 @@ export default defineConfig({
   shopify: {
     defaultCountryCode: 'US',
     defaultLanguageCode: 'ES',
-    storeDomain: 'suavecito.myshopify.com',
-    storefrontToken: '6dcbf23c9d5f35cbd2fe186ebd51780c',
+    storeDomain: process.env.SHOPIFY_STORE_DOMAIN as string,
+    storefrontToken: process.env.SHOPIFY_STOREFRONT_API_PUBLIC_TOKEN as string,
     storefrontApiVersion: '2022-07',
   },
   session: CookieSessionStorage('__session', {

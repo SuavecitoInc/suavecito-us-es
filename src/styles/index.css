@@ -30,13 +30,13 @@
   }
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --color-primary: 250 250 250;
     --color-contrast: 32 33 36;
     --color-accent: 235 86 40;
   }
-}
+} */
 
 @keyframes fadeInAnimation {
   0% {
@@ -170,5 +170,20 @@ shop-pay-button {
     img {
       @apply object-cover w-full aspect-[inherit];
     }
+  }
+}
+
+/* custom helpers */
+.page-width {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 55px;
+  padding-right: 55px;
+}
+
+@media only screen and (max-width: 749px) {
+  .page-width {
+    padding-left: 22px;
+    padding-right: 22px;
   }
 }
