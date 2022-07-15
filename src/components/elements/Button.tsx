@@ -6,20 +6,13 @@ import {missingClass} from '~/lib/utils';
 export function Button({
   as = 'button',
   className = '',
-  variant = 'suavecito',
+  variant = 'primary',
   width = 'auto',
   ...props
 }: {
   as?: React.ElementType;
   className?: string;
-  variant?:
-    | 'primary'
-    | 'secondary'
-    | 'inline'
-    | 'suavecito'
-    | 'suavecita'
-    | 'yellow'
-    | 'grey';
+  variant?: 'primary' | 'secondary' | 'inline';
   width?: 'auto' | 'full';
   [key: string]: any;
 }) {
@@ -29,13 +22,9 @@ export function Button({
     'inline-block rounded font-medium text-center py-3 px-6';
 
   const variants = {
-    primary: `${baseButtonClasses} bg-primary hover:bg-primary text-contrast`,
+    primary: `${baseButtonClasses} bg-primary text-contrast`,
     secondary: `${baseButtonClasses} border border-primary/10 bg-contrast text-primary`,
     inline: 'border-b border-primary/10 leading-none pb-1',
-    suavecito: `${baseButtonClasses} bg-suave-red hover:bg-suave-red-focus text-contrast`,
-    suavecita: `${baseButtonClasses} bg-suave-pink hover:bg-suave-pink-focus text-contrast`,
-    yellow: `${baseButtonClasses} bg-suave-yellow hover:bg-suave-yellow-focus text-contrast`,
-    grey: `${baseButtonClasses} bg-suave-grey hover:bg-suave-grey-focus text-contrast`,
   };
 
   const widths = {
