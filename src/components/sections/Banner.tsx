@@ -12,7 +12,6 @@ export function Banner({
   byline,
   cta,
   ctaLink,
-  handle,
   heading,
   height,
   loading,
@@ -23,7 +22,6 @@ export function Banner({
   byline: Metafield;
   cta: Metafield;
   ctaLink: string;
-  handle: string;
   heading: Metafield;
   height?: 'full';
   loading?: 'eager' | 'lazy';
