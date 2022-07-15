@@ -19,7 +19,9 @@ export function Button({
     | 'suavecito'
     | 'suavecita'
     | 'yellow'
-    | 'grey';
+    | 'grey'
+    | 'primary-inverted';
+
   width?: 'auto' | 'full';
   [key: string]: any;
 }) {
@@ -36,6 +38,7 @@ export function Button({
     suavecita: `${baseButtonClasses} bg-suave-pink hover:bg-suave-pink-focus text-contrast`,
     yellow: `${baseButtonClasses} bg-suave-yellow hover:bg-suave-yellow-focus text-contrast`,
     grey: `${baseButtonClasses} bg-suave-grey hover:bg-suave-grey-focus text-contrast`,
+    'primary-inverted': `${baseButtonClasses} bg-suave-white hover:bg-suave-white-focus text-contrast text-suave-red`,
   };
 
   const widths = {

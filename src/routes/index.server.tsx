@@ -18,8 +18,9 @@ import {
   ResponsiveBanner,
   FeaturedRowImageWithText,
   Divider,
+  FeaturedRowColumns,
 } from '~/components';
-import {Layout, ProductSwimlane} from '~/components/index.server';
+import {Layout, ProductSwimlane, BestSellers} from '~/components/index.server';
 import {
   CollectionConnection,
   ProductConnection,
@@ -28,8 +29,12 @@ import {
 // hard coded data
 import {
   responsiveBannerSettings,
-  featuredRowImageSettings,
+  featuredRowImageOneSettings,
+  featuredRowImageTwoSettings,
   bannerOneSettings,
+  bannerTwoSettings,
+  featuredRowColumnsOneSettings,
+  featuredRowColumnsTwoSettings,
 } from '../data/home-page';
 
 export default function Homepage() {
@@ -84,9 +89,14 @@ function HomepageContent() {
       )} */}
 
       <ResponsiveBanner {...responsiveBannerSettings} />
-      <FeaturedRowImageWithText {...featuredRowImageSettings} />
+      <FeaturedRowImageWithText {...featuredRowImageOneSettings} />
       <Divider width="half" />
+      <BestSellers />
       <Banner {...bannerOneSettings} />
+      <FeaturedRowColumns {...featuredRowColumnsOneSettings} />
+      <FeaturedRowImageWithText {...featuredRowImageTwoSettings} />
+      <Banner {...bannerTwoSettings} />
+      <FeaturedRowColumns {...featuredRowColumnsTwoSettings} />
 
       <ProductSwimlane
         data={featuredProducts.nodes}
