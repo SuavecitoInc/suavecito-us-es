@@ -1,0 +1,19 @@
+/* custom helpers */
+.page-width {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 55px;
+  padding-right: 55px;
+}
+
+@media only screen and (max-width: 749px) {
+  .page-width {
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+}
+
+.divider {
+  border-bottom: 1px solid #000;
+  margin: 0 auto;
+}
