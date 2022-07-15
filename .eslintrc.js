@@ -4,6 +4,5 @@ module.exports = {
     'node/no-missing-import': 'off',
     '@typescript-eslint/ban-ts-comment': 'off',
     '@typescript-eslint/naming-convention': 'off',
-    'node/no-unpublished-require': 'off',
   },
 };

@@ -19,14 +19,6 @@ module.exports = {
         contrast: withOpacityValue('--color-contrast'),
         notice: withOpacityValue('--color-accent'),
         shopPay: 'var(--color-shop-pay)',
-        'suave-red': '#802A19',
-        'suave-red-focus': '#551C14',
-        'suave-pink': '#FB617A',
-        'suave-pink-focus': '#FA2F50',
-        'suave-yellow': '#F6A526',
-        'suave-yellow-focus': '#E08C09',
-        'suave-grey': '#808080',
-        'suave-grey-focus': '#676767',
       },
       screens: {
         sm: '32em',
@@ -75,6 +67,6 @@ module.exports = {
       },
     },
   },
-  // eslint-ignore-next-line
+  // eslint-disable-next-line node/no-unpublished-require
   plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')],
 };
