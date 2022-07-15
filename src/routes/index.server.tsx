@@ -14,8 +14,10 @@ import {getHeroPlaceholder} from '~/lib/placeholders';
 import {
   FeaturedCollections,
   Hero,
+  Banner,
   ResponsiveBanner,
   FeaturedRowImageWithText,
+  Divider,
 } from '~/components';
 import {Layout, ProductSwimlane} from '~/components/index.server';
 import {
@@ -24,8 +26,11 @@ import {
 } from '@shopify/hydrogen/storefront-api-types';
 
 // hard coded data
-import {homePageBanner} from '../data/home-page-banner';
-import {featuredRowImageWithText} from '~/data/featured-row-image-with-text';
+import {
+  responsiveBannerSettings,
+  featuredRowImageSettings,
+  bannerOneSettings,
+} from '../data/home-page';
 
 export default function Homepage() {
   useServerAnalytics({
@@ -78,8 +83,10 @@ function HomepageContent() {
         <Hero {...primaryHero} height="full" top loading="eager" />
       )} */}
 
-      <ResponsiveBanner {...homePageBanner} />
-      <FeaturedRowImageWithText {...featuredRowImageWithText} />
+      <ResponsiveBanner {...responsiveBannerSettings} />
+      <FeaturedRowImageWithText {...featuredRowImageSettings} />
+      <Divider width="half" />
+      <Banner {...bannerOneSettings} />
 
       <ProductSwimlane
         data={featuredProducts.nodes}

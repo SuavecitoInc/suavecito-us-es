@@ -75,6 +75,6 @@ module.exports = {
       },
     },
   },
-  // eslint-disable-next-line node/no-unpublished-require
+  // eslint-ignore-next-line
   plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')],
 };
