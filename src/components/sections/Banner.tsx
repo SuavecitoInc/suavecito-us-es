@@ -82,7 +82,6 @@ export function Banner({
   };
 
   return (
-    // <section className="relative justify-end flex flex-col w-full aspect-square md:aspect-auto">
     <section className="relative justify-end flex flex-col w-full">
       <div className="inset-0 grid flex-grow grid-flow-col auto-cols-fr -z-1">
         {spread?.reference && (
