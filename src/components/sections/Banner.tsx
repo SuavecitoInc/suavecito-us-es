@@ -21,6 +21,7 @@ export function Banner({
   buttonColor = 'suavecito',
   overlayOpacityStart = 50,
   overlayOpacityEnd = 70,
+  sectionHeight = 'small',
 }: {
   byline: Metafield;
   cta: Metafield;
@@ -31,10 +32,9 @@ export function Banner({
   displayContent?: boolean;
   contentAlignment?:
     | 'top-left'
-    | 'top-center'
     | 'top-right'
+    | 'center-center'
     | 'bottom-left'
-    | 'bottom-center'
     | 'bottom-right';
   textColor?: 'black' | 'white';
   buttonColor?:
@@ -48,39 +48,45 @@ export function Banner({
     | 'primary-inverted';
   overlayOpacityStart?: number;
   overlayOpacityEnd?: number;
+  sectionHeight?: 'x-small' | 'small' | 'medium' | 'large';
 }) {
   const alignment = {
     'top-left': 'top-0 left-0 text-left',
-    'top-center': 'top-0',
     'top-right': 'top-0 right-0 text-right',
+    'center-center': 'top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2',
     'bottom-left': 'bottom-0 left-0 text-left',
-    'bottom-center': 'bottom-0 mx-auto',
     'bottom-right': 'bottom-0 right-0 text-right',
   };
 
   const textAlignment = {
     'top-left': ' text-left',
-    'top-center': 'text-center',
     'top-right': 'text-right',
+    'center-center': 'text-center',
     'bottom-left': 'text-left',
-    'bottom-center': 'text-center',
     'bottom-right': 'text-right',
   };
 
   const buttonAlignment = {
     'top-left': 'mr-auto',
-    'top-center': 'mx-auto',
     'top-right': 'ml-auto',
+    'center-center': 'mx-auto',
     'bottom-left': 'mr-auto',
-    'bottom-center': 'mx-auto',
     'bottom-right': 'ml-auto',
   };
 
+  const height = {
+    'x-small': 'aspect-square md:aspect-[16/5] lg:aspect-[16/3]',
+    small: 'aspcect-square md:aspect-[16/5]',
+    medium: 'aspcect-square md:aspect-[16/7]',
+    large: 'aspcect-square md:aspect-[16/9]',
+  };
+
   return (
-    <section className="relative justify-end flex flex-col w-full aspect-square md:aspect-auto">
+    // <section className="relative justify-end flex flex-col w-full aspect-square md:aspect-auto">
+    <section className="relative justify-end flex flex-col w-full">
       <div className="inset-0 grid flex-grow grid-flow-col auto-cols-fr -z-1">
         {spread?.reference && (
-          <div className="overflow-clip">
+          <div className={height[sectionHeight]}>
             <SpreadMedia
               scale={2}
               sizes={
@@ -99,7 +105,7 @@ export function Banner({
           <div
             className={`absolute sm:px-8 md:px-12 bg-gradient-to-t from-primary/${overlayOpacityStart} to-primary/${overlayOpacityEnd} text-contrast w-full h-full z-10`}
           >
-            <div className="inner-content-wrapper relative w-full h-full">
+            <div className="page-width inner-content-wrapper relative h-full">
               <div
                 className={`inner-content flex flex-col items-baseline justify-between gap-4 px-6 py-8 absolute ${alignment[contentAlignment]}`}
               >
@@ -107,8 +113,8 @@ export function Banner({
                   <Heading
                     format
                     as="h2"
-                    size="display"
-                    className={`w-full max-w-m text-${textColor} uppercase ${textAlignment[contentAlignment]}`}
+                    size="heading"
+                    className={`w-full max-w-m text-${textColor} uppercase drop-shadow-lg ${textAlignment[contentAlignment]}`}
                   >
                     {heading.value}
                   </Heading>
@@ -119,7 +125,7 @@ export function Banner({
                     width="default"
                     as="p"
                     size="lead"
-                    className={`text-${textColor} max-w-full w-full ${textAlignment[contentAlignment]}`}
+                    className={`text-${textColor} max-w-full w-full drop-shadow-lg ${textAlignment[contentAlignment]}`}
                   >
                     {byline.value}
                   </Text>

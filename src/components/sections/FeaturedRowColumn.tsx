@@ -49,8 +49,8 @@ export function FeaturedRowColumn({
             <Heading
               format
               as="h3"
-              size="copy"
-              className="max-w-md mb-[15px] uppercase"
+              size="lead"
+              className="max-w-md my-[15px] uppercase"
             >
               {heading.value}
             </Heading>

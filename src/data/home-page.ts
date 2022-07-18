@@ -1,4 +1,11 @@
-export const responsiveBannerSettings: any = {
+import {
+  ResponsiveBannerSectionData,
+  FeaturedRowImageSectionData,
+  BannerSectionData,
+  FeaturedRowColumnsSectionData,
+} from '../types/home-page';
+
+export const responsiveBannerSettings: ResponsiveBannerSectionData = {
   heading: {value: 'Powered by Hydrogen'},
   byline: {
     value: 'The All New Hydrogen Snowboard Exclusively From Shopify',
@@ -6,13 +13,13 @@ export const responsiveBannerSettings: any = {
   cta: {value: 'Shop Now →'},
   handle: 'freestyle',
   spread: {
+    value: '',
     reference: {
       mediaContentType: 'IMAGE',
       alt: 'This is my alt',
       previewImage: {
         url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/responsive-banner-ex-large.jpg?v=1657834726',
       },
-      id: 'not-available', // might not need this
       image: {
         url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/responsive-banner-ex-large.jpg?v=1657834726',
         width: 2048,
@@ -21,13 +28,13 @@ export const responsiveBannerSettings: any = {
     },
   },
   largeSpread: {
+    value: '',
     reference: {
       mediaContentType: 'IMAGE',
       alt: 'This is my alt',
       previewImage: {
         url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/responsive-banner-ex-large.jpg?v=1657834726',
       },
-      id: 'not-available', // might not need this
       image: {
         url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/responsive-banner-ex-large.jpg?v=1657834726',
         width: 2048,
@@ -36,13 +43,13 @@ export const responsiveBannerSettings: any = {
     },
   },
   mediumSpread: {
+    value: '',
     reference: {
       mediaContentType: 'IMAGE',
       alt: 'This is my alt',
       previewImage: {
         url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/responsive-banner-ex-medium.jpg?v=1657834726',
       },
-      id: 'not-available', // might not need this
       image: {
         url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/responsive-banner-ex-medium.jpg?v=1657834726',
         width: 2048,
@@ -51,13 +58,13 @@ export const responsiveBannerSettings: any = {
     },
   },
   smallSpread: {
+    value: '',
     reference: {
       mediaContentType: 'IMAGE',
       alt: 'This is my alt',
       previewImage: {
         url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/responsive-banner-ex-medium.jpg?v=1657834726',
       },
-      id: 'not-available', // might not need this
       image: {
         url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/responsive-banner-ex-medium.jpg?v=1657834726',
         width: 2048,
@@ -65,13 +72,12 @@ export const responsiveBannerSettings: any = {
       },
     },
   },
-  height: 'not-full',
   top: false,
   loading: 'eager',
   displayHeading: false,
 };
 
-export const featuredRowImageOneSettings: any = {
+export const featuredRowImageOneSettings: FeaturedRowImageSectionData = {
   heading: {value: 'Hair Products'},
   subText: {
     value:
@@ -80,13 +86,13 @@ export const featuredRowImageOneSettings: any = {
   cta: {value: 'Shop Hair'},
   ctaLink: '/collections/mens-hair',
   featuredImage: {
+    value: '',
     reference: {
       mediaContentType: 'IMAGE',
       alt: 'This is my alt',
       previewImage: {
         url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/suavecito-page-featured-image-1_cb767b4d-4dc0-4aa0-aa6f-815c2dfd23e1.jpg',
       },
-      id: 'not-available', // might not need this
       image: {
         url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/suavecito-page-featured-image-1_cb767b4d-4dc0-4aa0-aa6f-815c2dfd23e1.jpg',
         width: 782,
@@ -97,7 +103,7 @@ export const featuredRowImageOneSettings: any = {
   loading: 'eager',
 };
 
-export const featuredRowImageTwoSettings: any = {
+export const featuredRowImageTwoSettings: FeaturedRowImageSectionData = {
   heading: {value: 'Combs, Brushes & Shaving Accessories'},
   subText: {
     value:
@@ -106,13 +112,13 @@ export const featuredRowImageTwoSettings: any = {
   cta: {value: 'Shop Combs & More'},
   ctaLink: '/collections/combs-brushes-shaving-accessories',
   featuredImage: {
+    value: '',
     reference: {
       mediaContentType: 'IMAGE',
       alt: 'This is my alt',
       previewImage: {
         url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/combs-brushes-shaving.jpg?v=1634138668',
       },
-      id: 'not-available', // might not need this
       image: {
         url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/combs-brushes-shaving.jpg?v=1634138668',
         width: 782,
@@ -123,7 +129,7 @@ export const featuredRowImageTwoSettings: any = {
   loading: 'eager',
 };
 
-export const bannerOneSettings: any = {
+export const bannerOneSettings: BannerSectionData = {
   heading: {value: ''},
   byline: {
     value: '',
@@ -131,13 +137,13 @@ export const bannerOneSettings: any = {
   cta: {value: 'Get Started!'},
   ctaLink: '/collections/mens-hair',
   spread: {
+    value: '',
     reference: {
       mediaContentType: 'IMAGE',
       alt: 'This is my alt',
       previewImage: {
         url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/subscription_box_banner_3b16d504-a6cf-4068-83c0-f0cd16a3d341_1950x.jpg?v=1648598529',
       },
-      id: 'not-available', // might not need this
       image: {
         url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/subscription_box_banner_3b16d504-a6cf-4068-83c0-f0cd16a3d341_1950x.jpg?v=16485985296',
         width: 1950,
@@ -145,7 +151,6 @@ export const bannerOneSettings: any = {
       },
     },
   },
-  height: 'not-full',
   top: false,
   loading: 'eager',
   displayContent: true,
@@ -154,9 +159,10 @@ export const bannerOneSettings: any = {
   buttonColor: 'primary-inverted',
   overlayOpacityStart: 30,
   overlayOpacityEnd: 40,
+  sectionHeight: 'small',
 };
 
-export const bannerTwoSettings: any = {
+export const bannerTwoSettings: BannerSectionData = {
   heading: {value: 'Hair Loss Treatment'},
   byline: {
     value:
@@ -165,13 +171,13 @@ export const bannerTwoSettings: any = {
   cta: {value: 'Shop Now'},
   ctaLink: '/collections/grow-it',
   spread: {
+    value: '',
     reference: {
       mediaContentType: 'IMAGE',
       alt: 'This is my alt',
       previewImage: {
         url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/medicated_banner2_2100x.jpg',
       },
-      id: 'not-available', // might not need this
       image: {
         url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/medicated_banner2_2100x.jpg',
         width: 2100,
@@ -179,7 +185,6 @@ export const bannerTwoSettings: any = {
       },
     },
   },
-  height: 'not-full',
   top: false,
   loading: 'eager',
   displayContent: true,
@@ -188,9 +193,10 @@ export const bannerTwoSettings: any = {
   buttonColor: 'primary-inverted',
   overlayOpacityStart: 60,
   overlayOpacityEnd: 90,
+  sectionHeight: 'small',
 };
 
-export const featuredRowColumnsOneSettings: any = {
+export const featuredRowColumnsOneSettings: FeaturedRowColumnsSectionData = {
   one: {
     heading: {value: 'Shave'},
     subText: {
@@ -200,6 +206,7 @@ export const featuredRowColumnsOneSettings: any = {
     cta: {value: 'Shop Shave'},
     ctaLink: '/collections/combs-brushes-shaving-accessories',
     featuredImage: {
+      value: '',
       reference: {
         mediaContentType: 'IMAGE',
         alt: 'This is my alt',
@@ -225,13 +232,13 @@ export const featuredRowColumnsOneSettings: any = {
     cta: {value: 'Shop Beard'},
     ctaLink: '/collections/combs-brushes-shaving-accessories',
     featuredImage: {
+      value: '',
       reference: {
         mediaContentType: 'IMAGE',
         alt: 'This is my alt',
         previewImage: {
           url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/suavecito-page-featured-image-3_720x.jpg?v=1632939309',
         },
-        id: 'not-available', // might not need this
         image: {
           url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/suavecito-page-featured-image-3_720x.jpg?v=1632939309',
           width: 720,
@@ -250,6 +257,7 @@ export const featuredRowColumnsOneSettings: any = {
     cta: {value: 'Shop Body'},
     ctaLink: '/collections/combs-brushes-shaving-accessories',
     featuredImage: {
+      value: '',
       reference: {
         mediaContentType: 'IMAGE',
         alt: 'This is my alt',
@@ -268,7 +276,7 @@ export const featuredRowColumnsOneSettings: any = {
   },
 };
 
-export const featuredRowColumnsTwoSettings: any = {
+export const featuredRowColumnsTwoSettings: FeaturedRowColumnsSectionData = {
   one: {
     heading: {value: 'Collaborations'},
     subText: {
@@ -278,6 +286,7 @@ export const featuredRowColumnsTwoSettings: any = {
     cta: {value: 'Shop Collabs'},
     ctaLink: '/collections/collaborations',
     featuredImage: {
+      value: '',
       reference: {
         mediaContentType: 'IMAGE',
         alt: 'This is my alt',
@@ -303,6 +312,7 @@ export const featuredRowColumnsTwoSettings: any = {
     cta: {value: 'Shop Apparel'},
     ctaLink: '/collections/apparel',
     featuredImage: {
+      value: '',
       reference: {
         mediaContentType: 'IMAGE',
         alt: 'This is my alt',
@@ -328,6 +338,7 @@ export const featuredRowColumnsTwoSettings: any = {
     cta: {value: 'Shop Collectibles'},
     ctaLink: '/collections/collectibles',
     featuredImage: {
+      value: '',
       reference: {
         mediaContentType: 'IMAGE',
         alt: 'This is my alt',
