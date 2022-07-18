@@ -1,12 +1,14 @@
-import {Link, useUrl, useCart} from '@shopify/hydrogen';
-import {useWindowScroll} from 'react-use';
-
+import {Link, useUrl, useCart, Image} from '@shopify/hydrogen';
+import {useRef, useState, MouseEvent} from 'react';
+import {useWindowScroll, useClickAway} from 'react-use';
 import {
   Heading,
   IconAccount,
   IconBag,
   IconMenu,
   IconSearch,
+  IconAccessibility,
+  IconArrow,
   Input,
 } from '~/components';
 
@@ -151,6 +153,21 @@ function DesktopHeader({
 }) {
   const {y} = useWindowScroll();
 
+  const [visibleSubNav, setVisibleSubNav] = useState<string>('none');
+  const ref = useRef(null);
+
+  useClickAway(ref, () => {
+    setVisibleSubNav('none');
+  });
+
+  const toggleSubNav = (evt: MouseEvent, itemId: string) => {
+    if (itemId !== visibleSubNav) {
+      setVisibleSubNav(itemId);
+    } else {
+      setVisibleSubNav('none');
+    }
+  };
+
   const styles = {
     button:
       'relative flex items-center justify-center w-8 h-8 focus:ring-primary/5',
@@ -160,22 +177,79 @@ function DesktopHeader({
         : 'bg-contrast/80 text-primary'
     } ${
       y > 50 && !isHome ? 'shadow-lightHeader ' : ''
-    }hidden h-nav lg:flex items-center sticky transition duration-300 backdrop-blur-lg z-40 top-0 justify-between w-full leading-none gap-8 px-12 py-8`,
+    }hidden lg:flex items-center transition duration-300 backdrop-blur-lg z-40 top-0 justify-between w-full leading-none gap-8 px-12 py-8 h-[120px]`,
   };
 
   return (
-    <header role="banner" className={styles.container}>
-      <div className="flex gap-12">
+    <header role="banner" className={styles.container} ref={ref}>
+      <div className="flex items-center gap-12">
         <Link className={`font-bold`} to="/">
-          {title}
+          <Image
+            alt="page logo"
+            src="https://cdn.shopify.com/s/files/1/0274/1389/files/suavecito-logo-full_bf2605b5-794c-4e7b-acfd-96518ed0286b.png?v=1630549747"
+            width={180}
+            height={91.5}
+          />
         </Link>
         <nav className="flex gap-8">
-          {/* Top level menu items */}
-          {(menu?.items || []).map((item) => (
-            <Link key={item.id} to={item.to} target={item.target}>
-              {item.title}
-            </Link>
-          ))}
+          {/* Top level menu items without subItems */}
+          {(menu?.items || []).map((item) => {
+            if (item.items.length === 0) {
+              return (
+                <Link
+                  className="hover:underline"
+                  key={item.id}
+                  to={item.to}
+                  target={item.target}
+                  onClick={(evt) => setVisibleSubNav('none')}
+                >
+                  {item.title}
+                </Link>
+              );
+            }
+            {
+              /* Top level menu items with subItems */
+            }
+            return (
+              <div key={item.id} className="relative">
+                <button
+                  className="hover:underline"
+                  onClick={(evt) => toggleSubNav(evt, item.id)}
+                >
+                  <span className="align-baseline inline-block">
+                    {item.title}
+                  </span>
+                  <span className="align-baseline inline-block ml-[.5em]">
+                    <IconArrow direction="down" />
+                  </span>
+                </button>
+                <div
+                  className={`show-wrapper absolute top-[41px] bg-white py-[11px] pr-[30px] ${
+                    item.id !== visibleSubNav ? 'hidden' : ''
+                  } `}
+                >
+                  {item?.items.map((subItem) => {
+                    return (
+                      <div
+                        key={subItem.id}
+                        className="pt-[4px] px-[15px] pb-[5px]"
+                      >
+                        <Link
+                          className="hover:underline whitespace-nowrap"
+                          key={subItem.id}
+                          to={subItem.to}
+                          target={subItem.target}
+                          onClick={(evt) => setVisibleSubNav('none')}
+                        >
+                          {subItem.title}
+                        </Link>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            );
+          })}
         </nav>
       </div>
       <div className="flex items-center gap-1">
@@ -183,23 +257,15 @@ function DesktopHeader({
           action={`/${countryCode ? countryCode + '/' : ''}search`}
           className="flex items-center gap-2"
         >
-          <Input
-            className={
-              isHome
-                ? 'focus:border-contrast/20 dark:focus:border-primary/20'
-                : 'focus:border-primary/20'
-            }
-            type="search"
-            variant="minisearch"
-            placeholder="Search"
-            name="q"
-          />
           <button type="submit" className={styles.button}>
             <IconSearch />
           </button>
         </form>
         <Link to={'/account'} className={styles.button}>
           <IconAccount />
+        </Link>
+        <Link to={'/account'} className={styles.button}>
+          <IconAccessibility />
         </Link>
         <button onClick={openCart} className={styles.button}>
           <IconBag />
