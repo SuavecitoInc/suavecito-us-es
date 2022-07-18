@@ -13,27 +13,79 @@ export function Banner({
   cta,
   ctaLink,
   heading,
-  height,
   loading,
   spread,
-  top,
-  displayHeading,
+  displayContent,
+  contentAlignment = 'bottom-right',
+  textColor = 'black',
+  buttonColor = 'suavecito',
+  overlayOpacityStart = 50,
+  overlayOpacityEnd = 70,
+  sectionHeight = 'small',
 }: {
   byline: Metafield;
   cta: Metafield;
   ctaLink: string;
   heading: Metafield;
-  height?: 'full';
   loading?: 'eager' | 'lazy';
   spread: Metafield;
-  top?: boolean;
-  displayHeading?: boolean;
+  displayContent?: boolean;
+  contentAlignment?:
+    | 'top-left'
+    | 'top-right'
+    | 'center-center'
+    | 'bottom-left'
+    | 'bottom-right';
+  textColor?: 'black' | 'white';
+  buttonColor?:
+    | 'primary'
+    | 'secondary'
+    | 'inline'
+    | 'suavecito'
+    | 'suavecita'
+    | 'yellow'
+    | 'grey'
+    | 'primary-inverted';
+  overlayOpacityStart?: number;
+  overlayOpacityEnd?: number;
+  sectionHeight?: 'x-small' | 'small' | 'medium' | 'large';
 }) {
+  const alignment = {
+    'top-left': 'top-0 left-0 text-left',
+    'top-right': 'top-0 right-0 text-right',
+    'center-center': 'top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2',
+    'bottom-left': 'bottom-0 left-0 text-left',
+    'bottom-right': 'bottom-0 right-0 text-right',
+  };
+
+  const textAlignment = {
+    'top-left': ' text-left',
+    'top-right': 'text-right',
+    'center-center': 'text-center',
+    'bottom-left': 'text-left',
+    'bottom-right': 'text-right',
+  };
+
+  const buttonAlignment = {
+    'top-left': 'mr-auto',
+    'top-right': 'ml-auto',
+    'center-center': 'mx-auto',
+    'bottom-left': 'mr-auto',
+    'bottom-right': 'ml-auto',
+  };
+
+  const height = {
+    'x-small': 'aspect-square md:aspect-[16/5] lg:aspect-[16/3]',
+    small: 'aspcect-square md:aspect-[16/5]',
+    medium: 'aspcect-square md:aspect-[16/7]',
+    large: 'aspcect-square md:aspect-[16/9]',
+  };
+
   return (
-    <section className={`relative justify-end flex flex-col w-full`}>
-      <div className="relative inset-0 grid flex-grow grid-flow-col pointer-events-none auto-cols-fr -z-10 content-stretch overflow-clip">
+    <section className="relative justify-end flex flex-col w-full">
+      <div className="inset-0 grid flex-grow grid-flow-col auto-cols-fr -z-1">
         {spread?.reference && (
-          <div className="">
+          <div className={height[sectionHeight]}>
             <SpreadMedia
               scale={2}
               sizes={
@@ -48,24 +100,46 @@ export function Banner({
             />
           </div>
         )}
-        {displayHeading && (
-          <div className="absolute flex flex-col items-baseline justify-between gap-4 px-6 py-8 sm:px-8 md:px-12 bg-gradient-to-t dark:from-contrast/60 dark:text-primary from-primary/60 text-contrast w-full h-full">
-            <div className="">
-              {heading?.value && (
-                <Heading format as="h2" size="display" className="max-w-md">
-                  {heading.value}
-                </Heading>
-              )}
-              {byline?.value && (
-                <Text format width="narrow" as="p" size="lead">
-                  {byline.value}
-                </Text>
-              )}
-              {cta?.value && (
-                <Button size="lead" to={ctaLink} className="uppercase">
-                  {cta.value}
-                </Button>
-              )}
+        {displayContent && (
+          <div
+            className={`absolute sm:px-8 md:px-12 bg-gradient-to-t from-primary/${overlayOpacityStart} to-primary/${overlayOpacityEnd} text-contrast w-full h-full z-10`}
+          >
+            <div className="page-width inner-content-wrapper relative h-full">
+              <div
+                className={`inner-content flex flex-col items-baseline justify-between gap-4 px-6 py-8 absolute ${alignment[contentAlignment]}`}
+              >
+                {heading?.value && (
+                  <Heading
+                    format
+                    as="h2"
+                    size="heading"
+                    className={`w-full max-w-m text-${textColor} uppercase drop-shadow-lg ${textAlignment[contentAlignment]}`}
+                  >
+                    {heading.value}
+                  </Heading>
+                )}
+                {byline?.value && (
+                  <Text
+                    format
+                    width="default"
+                    as="p"
+                    size="lead"
+                    className={`text-${textColor} max-w-full w-full drop-shadow-lg ${textAlignment[contentAlignment]}`}
+                  >
+                    {byline.value}
+                  </Text>
+                )}
+                {cta?.value && (
+                  <Button
+                    size="lead"
+                    to={ctaLink}
+                    className={`uppercase ${buttonAlignment[contentAlignment]}`}
+                    variant={buttonColor}
+                  >
+                    {cta.value}
+                  </Button>
+                )}
+              </div>
             </div>
           </div>
         )}

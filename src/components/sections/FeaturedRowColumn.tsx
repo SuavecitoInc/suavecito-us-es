@@ -8,7 +8,7 @@ interface Metafield {
   reference?: object;
 }
 
-export function FeaturedRowImageWithText({
+export function FeaturedRowColumn({
   heading,
   subText,
   cta,
@@ -24,8 +24,8 @@ export function FeaturedRowImageWithText({
   loading?: 'eager' | 'lazy';
 }) {
   return (
-    <section className="featured-row-image-with-text pt-[55px] pb-[55px]">
-      <div className="page-width relative flex flex-col md:flex-row gap-4 md:gap-0 justify-center items-center">
+    <article className="featured-row-image-with-text">
+      <div className="relative flex flex-col gap-1">
         <div className="flex-1">
           <div className="image-wrapper aspect-[1] overflow-clip inset-0">
             <FeaturedMedia
@@ -44,13 +44,13 @@ export function FeaturedRowImageWithText({
             />
           </div>
         </div>
-        <div className="flex-1 md:pl-[35px]">
+        <div className="flex-1">
           {heading?.value && (
             <Heading
               format
               as="h3"
-              size="heading"
-              className="max-w-md mb-[15px] uppercase"
+              size="lead"
+              className="max-w-md my-[15px] uppercase"
             >
               {heading.value}
             </Heading>
@@ -67,7 +67,7 @@ export function FeaturedRowImageWithText({
           )}
         </div>
       </div>
-    </section>
+    </article>
   );
 }
 

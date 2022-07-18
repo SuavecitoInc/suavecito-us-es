@@ -19,14 +19,15 @@ export function Button({
     | 'suavecito'
     | 'suavecita'
     | 'yellow'
-    | 'grey';
+    | 'grey'
+    | 'primary-inverted';
+
   width?: 'auto' | 'full';
   [key: string]: any;
 }) {
   const Component = props?.to ? Link : as;
 
-  const baseButtonClasses =
-    'inline-block rounded font-medium text-center py-3 px-6';
+  const baseButtonClasses = 'inline-block font-medium text-center py-2 px-4';
 
   const variants = {
     primary: `${baseButtonClasses} bg-primary hover:bg-primary text-contrast`,
@@ -36,6 +37,7 @@ export function Button({
     suavecita: `${baseButtonClasses} bg-suave-pink hover:bg-suave-pink-focus text-contrast`,
     yellow: `${baseButtonClasses} bg-suave-yellow hover:bg-suave-yellow-focus text-contrast`,
     grey: `${baseButtonClasses} bg-suave-grey hover:bg-suave-grey-focus text-contrast`,
+    'primary-inverted': `${baseButtonClasses} bg-suave-white hover:bg-suave-white-focus text-contrast text-suave-red`,
   };
 
   const widths = {

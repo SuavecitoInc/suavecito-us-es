@@ -27,6 +27,8 @@ module.exports = {
         'suave-yellow-focus': '#E08C09',
         'suave-grey': '#808080',
         'suave-grey-focus': '#676767',
+        'suave-white': '#FFFFFF',
+        'suave-white-focus': '#E6E6E6',
       },
       screens: {
         sm: '32em',
