@@ -19,6 +19,7 @@ import {
   FeaturedRowImageWithText,
   Divider,
   FeaturedRowColumns,
+  FeaturedVideo,
 } from '~/components';
 import {Layout, ProductSwimlane, BestSellers} from '~/components/index.server';
 import {
@@ -31,10 +32,12 @@ import {
   responsiveBannerSettings,
   featuredRowImageOneSettings,
   featuredRowImageTwoSettings,
+  featuredRowImageThreeSettings,
   bannerOneSettings,
   bannerTwoSettings,
   featuredRowColumnsOneSettings,
   featuredRowColumnsTwoSettings,
+  featuredVideoSettings,
 } from '../data/home-page';
 
 export default function Homepage() {
@@ -88,17 +91,7 @@ function HomepageContent() {
         <Hero {...primaryHero} height="full" top loading="eager" />
       )} */}
 
-      <ResponsiveBanner {...responsiveBannerSettings} />
-      <FeaturedRowImageWithText {...featuredRowImageOneSettings} />
-      <Divider width="half" />
-      <BestSellers />
-      <Banner {...bannerOneSettings} />
-      <FeaturedRowColumns {...featuredRowColumnsOneSettings} />
-      <FeaturedRowImageWithText {...featuredRowImageTwoSettings} />
-      <Banner {...bannerTwoSettings} />
-      <FeaturedRowColumns {...featuredRowColumnsTwoSettings} />
-
-      <ProductSwimlane
+      {/* <ProductSwimlane
         data={featuredProducts.nodes}
         title="Featured Products"
         divider="bottom"
@@ -108,7 +101,19 @@ function HomepageContent() {
         data={featuredCollections.nodes}
         title="Collections"
       />
-      {tertiaryHero && <Hero {...tertiaryHero} />}
+      {tertiaryHero && <Hero {...tertiaryHero} />} */}
+
+      <ResponsiveBanner {...responsiveBannerSettings} />
+      <FeaturedRowImageWithText {...featuredRowImageOneSettings} />
+      <Divider width="half" />
+      <BestSellers />
+      <Banner {...bannerOneSettings} />
+      <FeaturedRowColumns {...featuredRowColumnsOneSettings} />
+      <FeaturedRowImageWithText {...featuredRowImageTwoSettings} />
+      <Banner {...bannerTwoSettings} />
+      <FeaturedRowColumns {...featuredRowColumnsTwoSettings} />
+      <FeaturedVideo {...featuredVideoSettings} />
+      <FeaturedRowImageWithText {...featuredRowImageThreeSettings} />
     </>
   );
 }

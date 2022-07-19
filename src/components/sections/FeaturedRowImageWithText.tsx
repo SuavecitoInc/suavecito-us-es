@@ -46,14 +46,9 @@ export function FeaturedRowImageWithText({
         </div>
         <div className="flex-1 md:pl-[35px]">
           {heading?.value && (
-            <Heading
-              format
-              as="h3"
-              size="heading"
-              className="max-w-md mb-[15px] uppercase"
-            >
+            <h3 className="max-w-md mb-[15px] uppercase font-bold text-2xl lg:text-3xl">
               {heading.value}
-            </Heading>
+            </h3>
           )}
           {subText?.value && (
             <Text format width="wide" as="p" size="copy" className="mb-[20px]">

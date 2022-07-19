@@ -76,9 +76,9 @@ export function Banner({
 
   const height = {
     'x-small': 'aspect-square md:aspect-[16/5] lg:aspect-[16/3]',
-    small: 'aspcect-square md:aspect-[16/5]',
-    medium: 'aspcect-square md:aspect-[16/7]',
-    large: 'aspcect-square md:aspect-[16/9]',
+    small: 'aspect-square md:aspect-[16/5]',
+    medium: 'aspect-square md:aspect-[16/7]',
+    large: 'aspect-square md:aspect-[16/9]',
   };
 
   return (
@@ -109,14 +109,11 @@ export function Banner({
                 className={`inner-content flex flex-col items-baseline justify-between gap-4 px-6 py-8 absolute ${alignment[contentAlignment]}`}
               >
                 {heading?.value && (
-                  <Heading
-                    format
-                    as="h2"
-                    size="heading"
-                    className={`w-full max-w-m text-${textColor} uppercase drop-shadow-lg ${textAlignment[contentAlignment]}`}
+                  <h2
+                    className={`w-full max-w-m text-${textColor} uppercase drop-shadow-lg ${textAlignment[contentAlignment]} font-bold text-3xl lg:text-4xl`}
                   >
                     {heading.value}
-                  </Heading>
+                  </h2>
                 )}
                 {byline?.value && (
                   <Text
