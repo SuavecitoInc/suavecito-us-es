@@ -10,14 +10,9 @@ import type {
 export function BestSellers({title = 'Best Sellers', count = 4, ...props}) {
   return (
     <Section padding="y" {...props}>
-      <Heading
-        format
-        as="h3"
-        size="heading"
-        className="uppercase mx-auto text-center"
-      >
+      <h3 className="max-w-md mb-[15px] uppercase font-bold mx-auto text-center text-2xl lg:text-3xl">
         {title}
-      </Heading>
+      </h3>
       <div className="page-width grid grid-cols-2 gap-4 md:grid-cols-4">
         <BestSellerProducts count={count} />
       </div>

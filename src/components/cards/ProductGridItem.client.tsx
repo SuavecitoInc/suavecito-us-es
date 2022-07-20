@@ -57,7 +57,7 @@ export function ProductGridItem({
   return (
     <Link onClick={onClick} to={`/products/${product.handle}`}>
       <div className={styles}>
-        <div className="product-image">
+        <div className="product-image hover:opacity-80">
           {/* <Text
             as="label"
             size="fine"
