@@ -17,6 +17,7 @@ import {
   Heading,
   ProductDetail,
   ProductForm,
+  ProductOptionsForm,
   ProductGallery,
   Section,
   Text,
@@ -52,8 +53,20 @@ export default function Product() {
     },
   });
 
-  const {media, title, vendor, descriptionHtml, id} = product;
+  const {media, title, vendor, descriptionHtml, id, options} = product;
   const {shippingPolicy, refundPolicy} = shop;
+
+  const defaultOptionNames = options.map(
+    (option: {name: string}) => option.name,
+  );
+
+  const defaultAvailable = defaultOptionNames.reduce(
+    (accumulator: any, value: any) => {
+      const arr: any[] = [];
+      return {...accumulator, [value]: arr};
+    },
+    {},
+  );
 
   return (
     <Layout>
@@ -77,7 +90,14 @@ export default function Product() {
                     <Text className={'opacity-50 font-medium'}>{vendor}</Text>
                   )}
                 </div>
-                <ProductForm />
+                {/* <ProductForm /> */}
+                <Suspense>
+                  <ProductOptionsForm
+                    optionNames={defaultOptionNames}
+                    initialAvailable={defaultAvailable}
+                  />
+                </Suspense>
+
                 <div className="grid gap-4 py-4">
                   {descriptionHtml && (
                     <ProductDetail
@@ -128,6 +148,9 @@ const PRODUCT_QUERY = gql`
         nodes {
           ...Media
         }
+      }
+      options {
+        name
       }
       variants(first: 100) {
         nodes {
