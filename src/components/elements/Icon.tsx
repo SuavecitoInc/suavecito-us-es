@@ -7,18 +7,19 @@ type IconProps = JSX.IntrinsicElements['svg'] & {
 function Icon({
   children,
   className,
-  fill = 'currentColor',
+  fill = 'suave-red',
   stroke,
   ...props
 }: IconProps) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 20 20"
       {...props}
-      fill={fill}
       stroke={stroke}
-      className={clsx('w-5 h-5', className)}
+      className={clsx(
+        'w-5 h-5 inline-flex text-center align-middle',
+        className,
+      )}
     >
       {children}
     </svg>
@@ -71,17 +72,17 @@ export function IconClose(props: IconProps) {
   );
 }
 
-export function IconArrow({direction = 'down'}: IconProps) {
+export function IconArrow({direction = 'down', fill = 'suave-red'}: IconProps) {
   let rotate;
 
   switch (direction) {
     case 'down':
       rotate = 'rotate-0';
       break;
-    case 'right':
+    case 'up':
       rotate = 'rotate-180';
       break;
-    case 'up':
+    case 'right':
       rotate = '-rotate-90';
       break;
     case 'left':
@@ -92,7 +93,10 @@ export function IconArrow({direction = 'down'}: IconProps) {
   }
 
   return (
-    <Icon className={`w-5 h-5 ${rotate}`}>
+    <Icon
+      className={`w-[9px] h-[9px] ${rotate} fill-${fill}`}
+      viewBox="0 0 9 9"
+    >
       <title>Arrow</title>
       <path d="M8.542 2.558a.625.625 0 0 1 0 .884l-3.6 3.6a.626.626 0 0 1-.884 0l-3.6-3.6a.625.625 0 1 1 .884-.884L4.5 5.716l3.158-3.158a.625.625 0 0 1 .884 0z" />
     </Icon>
@@ -146,26 +150,26 @@ export function IconSelect(props: IconProps) {
   );
 }
 
-export function IconBag(props: IconProps) {
+export function IconBag({
+  fill = 'suave-red',
+  ...props
+}: React.ComponentProps<typeof Icon>) {
   return (
-    <Icon {...props}>
+    <Icon {...props} viewBox="0 0 37 40" className={`fill-${fill}`}>
       <title>Bag</title>
-      <path
-        fillRule="evenodd"
-        d="M8.125 5a1.875 1.875 0 0 1 3.75 0v.375h-3.75V5Zm-1.25.375V5a3.125 3.125 0 1 1 6.25 0v.375h3.5V15A2.625 2.625 0 0 1 14 17.625H6A2.625 2.625 0 0 1 3.375 15V5.375h3.5ZM4.625 15V6.625h10.75V15c0 .76-.616 1.375-1.375 1.375H6c-.76 0-1.375-.616-1.375-1.375Z"
-      />
+      <path d="M36.5 34.8L33.3 8h-5.9C26.7 3.9 23 .8 18.5.8S10.3 3.9 9.6 8H3.7L.5 34.8c-.2 1.5.4 2.4.9 3 .5.5 1.4 1.2 3.1 1.2h28c1.3 0 2.4-.4 3.1-1.3.7-.7 1-1.8.9-2.9zm-18-30c2.2 0 4.1 1.4 4.7 3.2h-9.5c.7-1.9 2.6-3.2 4.8-3.2zM4.5 35l2.8-23h2.2v3c0 1.1.9 2 2 2s2-.9 2-2v-3h10v3c0 1.1.9 2 2 2s2-.9 2-2v-3h2.2l2.8 23h-28z" />
     </Icon>
   );
 }
 
-export function IconAccount(props: IconProps) {
+export function IconAccount({
+  fill = 'suave-red',
+  ...props
+}: React.ComponentProps<typeof Icon>) {
   return (
-    <Icon {...props}>
+    <Icon {...props} viewBox="0 0 28.33 37.68" className={`fill-${fill}`}>
       <title>Account</title>
-      <path
-        fillRule="evenodd"
-        d="M9.9998 12.625c-1.9141 0-3.6628.698-5.0435 1.8611C3.895 13.2935 3.25 11.7221 3.25 10c0-3.728 3.022-6.75 6.75-6.75 3.7279 0 6.75 3.022 6.75 6.75 0 1.7222-.645 3.2937-1.7065 4.4863-1.3807-1.1632-3.1295-1.8613-5.0437-1.8613ZM10 18c-2.3556 0-4.4734-1.0181-5.9374-2.6382C2.7806 13.9431 2 12.0627 2 10c0-4.4183 3.5817-8 8-8s8 3.5817 8 8-3.5817 8-8 8Zm0-12.5c-1.567 0-2.75 1.394-2.75 3s1.183 3 2.75 3 2.75-1.394 2.75-3-1.183-3-2.75-3Z"
-      />
+      <path d="M14.17 14.9a7.45 7.45 0 1 0-7.5-7.45 7.46 7.46 0 0 0 7.5 7.45zm0-10.91a3.45 3.45 0 1 1-3.5 3.46A3.46 3.46 0 0 1 14.17 4zM14.17 16.47A14.18 14.18 0 0 0 0 30.68c0 1.41.66 4 5.11 5.66a27.17 27.17 0 0 0 9.06 1.34c6.54 0 14.17-1.84 14.17-7a14.18 14.18 0 0 0-14.17-14.21zm0 17.21c-6.3 0-10.17-1.77-10.17-3a10.17 10.17 0 1 1 20.33 0c.01 1.23-3.86 3-10.16 3z" />
     </Icon>
   );
 }
@@ -179,14 +183,14 @@ export function IconHelp(props: IconProps) {
   );
 }
 
-export function IconSearch(props: IconProps) {
+export function IconSearch({
+  fill = 'suave-red',
+  ...props
+}: React.ComponentProps<typeof Icon>) {
   return (
-    <Icon {...props}>
+    <Icon {...props} viewBox="0 0 37 40" className={`fill-${fill}`}>
       <title>Search</title>
-      <path
-        fillRule="evenodd"
-        d="M13.3 8.52a4.77 4.77 0 1 1-9.55 0 4.77 4.77 0 0 1 9.55 0Zm-.98 4.68a6.02 6.02 0 1 1 .88-.88l4.3 4.3-.89.88-4.3-4.3Z"
-      />
+      <path d="M35.6 36l-9.8-9.8c4.1-5.4 3.6-13.2-1.3-18.1-5.4-5.4-14.2-5.4-19.7 0-5.4 5.4-5.4 14.2 0 19.7 2.6 2.6 6.1 4.1 9.8 4.1 3 0 5.9-1 8.3-2.8l9.8 9.8c.4.4.9.6 1.4.6s1-.2 1.4-.6c.9-.9.9-2.1.1-2.9zm-20.9-8.2c-2.6 0-5.1-1-7-2.9-3.9-3.9-3.9-10.1 0-14C9.6 9 12.2 8 14.7 8s5.1 1 7 2.9c3.9 3.9 3.9 10.1 0 14-1.9 1.9-4.4 2.9-7 2.9z" />
     </Icon>
   );
 }
@@ -235,9 +239,14 @@ export function IconRemove(props: IconProps) {
   );
 }
 
-export function IconAccessibility(props: IconProps) {
+export function IconAccessibility({fill = 'suave-red', ...props}: IconProps) {
   return (
-    <Icon {...props} fill="transparent" viewBox="0 0 77.58 77.58">
+    <Icon
+      viewBox="0 0 576 576"
+      {...props}
+      fill={fill}
+      className={`fill-${fill}`}
+    >
       <title>Accessibility</title>
       <g>
         <g>

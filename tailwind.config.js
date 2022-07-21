@@ -29,10 +29,11 @@ module.exports = {
         'suave-grey-focus': '#676767',
         'suave-white': '#FFFFFF',
         'suave-white-focus': '#E6E6E6',
+        'color-border': '#ebebeb',
       },
       screens: {
         sm: '32em',
-        md: '48em',
+        md: '750px',
         lg: '64em',
         xl: '80em',
         '2xl': '96em',
@@ -44,7 +45,7 @@ module.exports = {
         '2xl-only': {min: '96em'},
       },
       spacing: {
-        nav: 'var(--height-nav)',
+        nav: '121.5px',
         screen: 'var(--screen-height, 100vh)',
       },
       height: {
@@ -56,8 +57,10 @@ module.exports = {
         mobileGallery: 'calc(100vw - 3rem)',
       },
       fontFamily: {
+        // display: ['Humanist 521', 'sans-serif'],
+        // body: ['Humanist 521', 'sans-serif'],
         sans: ['Helvetica Neue', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        serif: ['"IBMPlexSerif"', 'Palatino', 'ui-serif'],
+        serif: ['"Humanist 521"', 'Palatino', 'sans-serif'],
       },
       fontSize: {
         display: ['var(--font-size-display)', '1.1'],
