@@ -1,5 +1,5 @@
-import {useEffect, useCallback, useState, useTransition} from 'react';
-
+import {useEffect, useCallback, useState} from 'react';
+import {useEffectOnce} from 'react-use';
 import {
   useProductOptions,
   isBrowser,
@@ -12,8 +12,13 @@ import {
 
 import {Heading, Text, Button, ProductOptions} from '~/components';
 
-export function ProductOptionsForm() {
-  const [isPending, startTransition] = useTransition();
+export function ProductOptionsForm({
+  optionNames,
+  initialAvailable,
+}: {
+  optionNames: string[];
+  initialAvailable: {[key: string]: any[]};
+}) {
   const {pathname, search} = useUrl();
   const [params, setParams] = useState(new URLSearchParams(search));
 
@@ -26,19 +31,9 @@ export function ProductOptionsForm() {
   } = useProductOptions();
 
   // new state
-  const [optionNames, setOptionNames] = useState<string[]>(() =>
-    Object.keys(selectedOptions as any),
-  );
-
   const [availableOptions, setAvailableOptions] = useState<{
     [key: string]: any;
-  }>(() => {
-    const value: {[key: string]: any} = {};
-    options?.forEach((option) => {
-      if (option?.name) value[option.name] = option.values;
-    });
-    return value;
-  });
+  }>(initialAvailable);
   // new state
 
   const isOutOfStock = !selectedVariant?.availableForSale || false;
@@ -57,48 +52,42 @@ export function ProductOptionsForm() {
     setParams(new URLSearchParams(search));
   }, [params, search]);
 
-  useEffect(() => {
-    // set main
+  useEffectOnce(() => {
     let mainValue: string;
     const initialSelectedOptions: {[key: string]: string} = {};
     let available: {[key: string]: any[]} = {};
-    startTransition(() => {
-      (options as OptionWithValues[]).map(({name, values}) => {
-        if (!params) return;
-        const currentValue = params.get(name.toLowerCase()) || null;
-        if (currentValue) {
-          const matchedValue = values.filter(
-            (value) => encodeURIComponent(value.toLowerCase()) === currentValue,
-          );
-          if (name === optionNames[0]) {
-            mainValue = matchedValue[0];
-          }
-          setSelectedOption(name, matchedValue[0]);
-          initialSelectedOptions[name] = matchedValue[0];
-          if (mainValue !== '') {
-            available = filterOptions(name, matchedValue[0], mainValue);
-            // setAvailableOptions(available);
-          }
-        } else {
-          params.set(
-            encodeURIComponent(name.toLowerCase()),
-            encodeURIComponent(selectedOptions![name]!.toLowerCase()),
-          ),
-            window.history.replaceState(
-              null,
-              '',
-              `${pathname}?${params.toString()}`,
-            );
+    (options as OptionWithValues[]).map(({name, values}) => {
+      if (!params) return;
+      const currentValue = params.get(name.toLowerCase()) || null;
+      if (currentValue) {
+        const matchedValue = values.filter(
+          (value) => encodeURIComponent(value.toLowerCase()) === currentValue,
+        );
+        if (name === optionNames[0]) {
+          mainValue = matchedValue[0];
         }
-      });
-      if (optionNames.length > 2) {
-        available = filterLastOption(initialSelectedOptions, available);
+        setSelectedOption(name, matchedValue[0]);
+        initialSelectedOptions[name] = matchedValue[0];
+        if (mainValue !== '') {
+          available = filterOptions(name, matchedValue[0], mainValue);
+        }
+      } else {
+        params.set(
+          encodeURIComponent(name.toLowerCase()),
+          encodeURIComponent(selectedOptions![name]!.toLowerCase()),
+        ),
+          window.history.replaceState(
+            null,
+            '',
+            `${pathname}?${params.toString()}`,
+          );
       }
-      setAvailableOptions(available);
     });
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    if (optionNames.length > 2) {
+      available = filterLastOption(initialSelectedOptions, available);
+    }
+    setAvailableOptions(available);
+  });
 
   // filter
   const filterOptions = useCallback(
@@ -255,22 +244,6 @@ export function ProductOptionsForm() {
                   {name}
                 </Heading>
                 <div className="flex flex-wrap items-baseline gap-4">
-                  {/* {isPending ? (
-                    <ProductOptions
-                      name={name}
-                      handleChange={handleChange}
-                      values={values}
-                    />
-                  ) : (
-                    <ProductOptions
-                      name={name}
-                      handleChange={handleChange}
-                      values={values}
-                      availableOptions={availableOptions}
-                      index={index}
-                    />
-                  )} */}
-                  {isPending && <p>Loading ...</p>}
                   <ProductOptions
                     name={name}
                     handleChange={handleChange}
