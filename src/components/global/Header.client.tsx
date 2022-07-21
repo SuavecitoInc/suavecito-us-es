@@ -1,5 +1,5 @@
 import {Link, useUrl, useCart, Image} from '@shopify/hydrogen';
-import {useRef, useState, MouseEvent} from 'react';
+import {useRef, useState, MouseEvent, useEffect} from 'react';
 import {useWindowScroll, useClickAway} from 'react-use';
 import {
   Heading,
@@ -99,6 +99,13 @@ function MobileHeader({
   const {y} = useWindowScroll();
 
   const [isMobileOpen, setMobileOpen] = useState(false);
+  const [currentSubCollection, setCurrentSubCollection] =
+    useState<EnhancedMenuItem | null>(null);
+
+  const closeMobileMenu = (setter: boolean) => {
+    setCurrentSubCollection(null);
+    setMobileOpen(setter);
+  };
 
   const fillColor = brand === 'suavecito' ? 'suave-pink' : 'suave-red';
 
@@ -110,7 +117,7 @@ function MobileHeader({
         : 'bg-contrast/80'
     } ${
       y > 50 && !isHome ? 'shadow-lightHeader ' : ''
-    }flex md:hidden items-center h-nav backdrop-blur-lg z-40 top-0 justify-between w-full leading-none gap-4 md:px-8 text-${fillColor}`,
+    }flex md:hidden items-center backdrop-blur-lg z-40 top-0 justify-between w-full leading-none gap-4 md:px-8 text-${fillColor}`,
   };
 
   return (
@@ -144,7 +151,7 @@ function MobileHeader({
             <CartBadge dark={isHome} />
           </button>
           <button
-            onClick={(evt) => setMobileOpen(!isMobileOpen)}
+            onClick={(evt) => closeMobileMenu(!isMobileOpen)}
             className={styles.button}
           >
             {!isMobileOpen ? <IconMenu fill={fillColor} /> : <IconClose />}
@@ -156,6 +163,8 @@ function MobileHeader({
         setMobileOpen={setMobileOpen}
         fillColor={fillColor}
         menu={menu}
+        currentSubCollection={currentSubCollection}
+        setCurrentSubCollection={setCurrentSubCollection}
       />
     </>
   );
