@@ -17,6 +17,7 @@ import {
   Heading,
   ProductDetail,
   ProductForm,
+  ProductOptionsForm,
   ProductGallery,
   Section,
   Text,
@@ -77,7 +78,11 @@ export default function Product() {
                     <Text className={'opacity-50 font-medium'}>{vendor}</Text>
                   )}
                 </div>
-                <ProductForm />
+                {/* <ProductForm /> */}
+                <Suspense>
+                  <ProductOptionsForm />
+                </Suspense>
+
                 <div className="grid gap-4 py-4">
                   {descriptionHtml && (
                     <ProductDetail

@@ -90,7 +90,7 @@ function SpreadPicture({
 }) {
   const generateSrcSet = (url: string | undefined | null) => {
     if (typeof url !== 'string') return;
-    return `${url} 500w, ${url} 900w, ${url} 1400`;
+    return `${url} 500w, ${url} 900w, ${url} 1400w`;
   };
 
   const largeMedia = largeSpread.reference as Media;
