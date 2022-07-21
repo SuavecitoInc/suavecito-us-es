@@ -31,6 +31,9 @@ export function ProductOptionsForm({
   } = useProductOptions();
 
   // new state
+  // const [availableOptions, setAvailableOptions] = useState<{
+  //   [key: string]: any;
+  // }>(initialAvailable);
   const [availableOptions, setAvailableOptions] = useState<{
     [key: string]: any;
   }>(initialAvailable);
@@ -52,46 +55,11 @@ export function ProductOptionsForm({
     setParams(new URLSearchParams(search));
   }, [params, search]);
 
-  // useEffectOnce(() => {
-  //   let mainValue: string;
-  //   const initialSelectedOptions: {[key: string]: string} = {};
-  //   let available: {[key: string]: any[]} = {};
-  //   (options as OptionWithValues[]).map(({name, values}) => {
-  //     if (!params) return;
-  //     const currentValue = params.get(name.toLowerCase()) || null;
-  //     if (currentValue) {
-  //       const matchedValue = values.filter(
-  //         (value) => encodeURIComponent(value.toLowerCase()) === currentValue,
-  //       );
-  //       if (name === optionNames[0]) {
-  //         mainValue = matchedValue[0];
-  //       }
-  //       setSelectedOption(name, matchedValue[0]);
-  //       initialSelectedOptions[name] = matchedValue[0];
-  //       if (mainValue !== '') {
-  //         available = filterOptions(name, matchedValue[0], mainValue);
-  //       }
-  //     } else {
-  //       params.set(
-  //         encodeURIComponent(name.toLowerCase()),
-  //         encodeURIComponent(selectedOptions![name]!.toLowerCase()),
-  //       ),
-  //         window.history.replaceState(
-  //           null,
-  //           '',
-  //           `${pathname}?${params.toString()}`,
-  //         );
-  //     }
-  //   });
-  //   if (optionNames.length > 2) {
-  //     available = filterLastOption(initialSelectedOptions, available);
-  //   }
-  //   setAvailableOptions(available);
-  // });
-
-  useEffect(() => {
+  useEffectOnce(() => {
     let mainValue: string;
-    const initialSelectedOptions: {[key: string]: string} = {};
+    const initialSelectedOptions: {[key: string]: string | undefined} = {
+      ...selectedOptions,
+    };
     let available: {[key: string]: any[]} = {};
     (options as OptionWithValues[]).map(({name, values}) => {
       if (!params) return;
@@ -123,9 +91,12 @@ export function ProductOptionsForm({
     if (optionNames.length > 2) {
       available = filterLastOption(initialSelectedOptions, available);
     }
+
     setAvailableOptions(available);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    // don't seem to need this in dev only in build, why?
+    const value = initialSelectedOptions[optionNames[0]] as string;
+    handleChange(optionNames[0], value);
+  });
 
   // filter
   const filterOptions = useCallback(
