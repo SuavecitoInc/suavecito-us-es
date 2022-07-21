@@ -47,7 +47,7 @@ function OptionsGrid({
         let disabledOption = false;
         if (index && availableOptions)
           disabledOption =
-            index !== 0 ? !availableOptions[name].includes(value) : false;
+            index !== 0 ? !availableOptions[name]?.includes(value) : false;
 
         return (
           <Text as="label" key={id} htmlFor={id}>
