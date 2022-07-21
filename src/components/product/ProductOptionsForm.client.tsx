@@ -31,13 +31,9 @@ export function ProductOptionsForm({
   } = useProductOptions();
 
   // new state
-  // const [availableOptions, setAvailableOptions] = useState<{
-  //   [key: string]: any;
-  // }>(initialAvailable);
   const [availableOptions, setAvailableOptions] = useState<{
     [key: string]: any;
   }>(initialAvailable);
-  // new state
 
   const isOutOfStock = !selectedVariant?.availableForSale || false;
   // const isOnSale =

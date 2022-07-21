@@ -37,7 +37,6 @@ function OptionsGrid({
 }) {
   const {selectedOptions} = useProductOptions();
 
-  // console.log('AVAILABLE OPTIONS', availableOptions);
   return (
     <>
       {values.map((value) => {
@@ -64,7 +63,11 @@ function OptionsGrid({
             <div
               className={`leading-none py-1 border-b-[1.5px] cursor-pointer transition-all duration-200 ${
                 checked ? 'border-primary/50' : 'border-primary/0'
-              } ${disabledOption ? 'text-suave-red' : 'text-black'}`}
+              } ${
+                disabledOption
+                  ? 'text-suave-white-focus'
+                  : 'text-black hover:text-suave-grey'
+              }`}
             >
               {value}
             </div>
