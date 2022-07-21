@@ -52,7 +52,44 @@ export function ProductOptionsForm({
     setParams(new URLSearchParams(search));
   }, [params, search]);
 
-  useEffectOnce(() => {
+  // useEffectOnce(() => {
+  //   let mainValue: string;
+  //   const initialSelectedOptions: {[key: string]: string} = {};
+  //   let available: {[key: string]: any[]} = {};
+  //   (options as OptionWithValues[]).map(({name, values}) => {
+  //     if (!params) return;
+  //     const currentValue = params.get(name.toLowerCase()) || null;
+  //     if (currentValue) {
+  //       const matchedValue = values.filter(
+  //         (value) => encodeURIComponent(value.toLowerCase()) === currentValue,
+  //       );
+  //       if (name === optionNames[0]) {
+  //         mainValue = matchedValue[0];
+  //       }
+  //       setSelectedOption(name, matchedValue[0]);
+  //       initialSelectedOptions[name] = matchedValue[0];
+  //       if (mainValue !== '') {
+  //         available = filterOptions(name, matchedValue[0], mainValue);
+  //       }
+  //     } else {
+  //       params.set(
+  //         encodeURIComponent(name.toLowerCase()),
+  //         encodeURIComponent(selectedOptions![name]!.toLowerCase()),
+  //       ),
+  //         window.history.replaceState(
+  //           null,
+  //           '',
+  //           `${pathname}?${params.toString()}`,
+  //         );
+  //     }
+  //   });
+  //   if (optionNames.length > 2) {
+  //     available = filterLastOption(initialSelectedOptions, available);
+  //   }
+  //   setAvailableOptions(available);
+  // });
+
+  useEffect(() => {
     let mainValue: string;
     const initialSelectedOptions: {[key: string]: string} = {};
     let available: {[key: string]: any[]} = {};
@@ -87,7 +124,8 @@ export function ProductOptionsForm({
       available = filterLastOption(initialSelectedOptions, available);
     }
     setAvailableOptions(available);
-  });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   // filter
   const filterOptions = useCallback(
