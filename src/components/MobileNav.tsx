@@ -28,7 +28,7 @@ export function MobileNav({
   const windowSize = useWindowSize().width;
 
   useEffect(() => {
-    if (windowSize > 750) {
+    if (windowSize >= 768) {
       setMobileOpen(false);
       setCurrentSubCollection(null);
     }
