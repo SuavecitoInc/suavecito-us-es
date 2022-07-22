@@ -16,8 +16,6 @@ import {NotFound, Layout, ProductSwimlane} from '~/components/index.server';
 import {
   Heading,
   ProductDetail,
-  // ProductForm,
-  // ProductOptionsForm,
   ProductOptionsVariantForm,
   ProductGallery,
   Section,
@@ -83,7 +81,6 @@ export default function Product() {
                     <Text className={'opacity-50 font-medium'}>{vendor}</Text>
                   )}
                 </div>
-                {/* <ProductForm /> */}
                 <Suspense>
                   <ProductOptionsVariantForm optionNames={defaultOptionNames} />
                 </Suspense>
