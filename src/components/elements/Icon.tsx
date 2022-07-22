@@ -7,18 +7,19 @@ type IconProps = JSX.IntrinsicElements['svg'] & {
 function Icon({
   children,
   className,
-  fill = 'currentColor',
+  fill = 'suave-red',
   stroke,
   ...props
 }: IconProps) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 20 20"
       {...props}
-      fill={fill}
       stroke={stroke}
-      className={clsx('w-5 h-5', className)}
+      className={clsx(
+        'w-5 h-5 inline-flex text-center align-middle',
+        className,
+      )}
     >
       {children}
     </svg>
@@ -71,20 +72,20 @@ export function IconClose(props: IconProps) {
   );
 }
 
-export function IconArrow({direction = 'right'}: IconProps) {
+export function IconArrow({direction = 'down', fill = 'suave-red'}: IconProps) {
   let rotate;
 
   switch (direction) {
-    case 'right':
+    case 'down':
       rotate = 'rotate-0';
       break;
-    case 'left':
+    case 'up':
       rotate = 'rotate-180';
       break;
-    case 'up':
+    case 'right':
       rotate = '-rotate-90';
       break;
-    case 'down':
+    case 'left':
       rotate = 'rotate-90';
       break;
     default:
@@ -92,9 +93,12 @@ export function IconArrow({direction = 'right'}: IconProps) {
   }
 
   return (
-    <Icon className={`w-5 h-5 ${rotate}`}>
+    <Icon
+      className={`w-[9px] h-[9px] ${rotate} fill-${fill}`}
+      viewBox="0 0 9 9"
+    >
       <title>Arrow</title>
-      <path d="M7 3L14 10L7 17" strokeWidth="1.25" />
+      <path d="M8.542 2.558a.625.625 0 0 1 0 .884l-3.6 3.6a.626.626 0 0 1-.884 0l-3.6-3.6a.625.625 0 1 1 .884-.884L4.5 5.716l3.158-3.158a.625.625 0 0 1 .884 0z" />
     </Icon>
   );
 }
@@ -110,14 +114,14 @@ export function IconCaret({
     case 'down':
       rotate = 'rotate-0';
       break;
-    case 'up':
-      rotate = 'rotate-180';
-      break;
     case 'left':
-      rotate = '-rotate-90';
+      rotate = 'rotate-90';
       break;
     case 'right':
-      rotate = 'rotate-90';
+      rotate = '-rotate-90';
+      break;
+    case 'up':
+      rotate = 'rotate-180';
       break;
     default:
       rotate = 'rotate-0';
@@ -146,26 +150,26 @@ export function IconSelect(props: IconProps) {
   );
 }
 
-export function IconBag(props: IconProps) {
+export function IconBag({
+  fill = 'suave-red',
+  ...props
+}: React.ComponentProps<typeof Icon>) {
   return (
-    <Icon {...props}>
+    <Icon {...props} viewBox="0 0 37 40" className={`fill-${fill}`}>
       <title>Bag</title>
-      <path
-        fillRule="evenodd"
-        d="M8.125 5a1.875 1.875 0 0 1 3.75 0v.375h-3.75V5Zm-1.25.375V5a3.125 3.125 0 1 1 6.25 0v.375h3.5V15A2.625 2.625 0 0 1 14 17.625H6A2.625 2.625 0 0 1 3.375 15V5.375h3.5ZM4.625 15V6.625h10.75V15c0 .76-.616 1.375-1.375 1.375H6c-.76 0-1.375-.616-1.375-1.375Z"
-      />
+      <path d="M36.5 34.8L33.3 8h-5.9C26.7 3.9 23 .8 18.5.8S10.3 3.9 9.6 8H3.7L.5 34.8c-.2 1.5.4 2.4.9 3 .5.5 1.4 1.2 3.1 1.2h28c1.3 0 2.4-.4 3.1-1.3.7-.7 1-1.8.9-2.9zm-18-30c2.2 0 4.1 1.4 4.7 3.2h-9.5c.7-1.9 2.6-3.2 4.8-3.2zM4.5 35l2.8-23h2.2v3c0 1.1.9 2 2 2s2-.9 2-2v-3h10v3c0 1.1.9 2 2 2s2-.9 2-2v-3h2.2l2.8 23h-28z" />
     </Icon>
   );
 }
 
-export function IconAccount(props: IconProps) {
+export function IconAccount({
+  fill = 'suave-red',
+  ...props
+}: React.ComponentProps<typeof Icon>) {
   return (
-    <Icon {...props}>
+    <Icon {...props} viewBox="0 0 28.33 37.68" className={`fill-${fill}`}>
       <title>Account</title>
-      <path
-        fillRule="evenodd"
-        d="M9.9998 12.625c-1.9141 0-3.6628.698-5.0435 1.8611C3.895 13.2935 3.25 11.7221 3.25 10c0-3.728 3.022-6.75 6.75-6.75 3.7279 0 6.75 3.022 6.75 6.75 0 1.7222-.645 3.2937-1.7065 4.4863-1.3807-1.1632-3.1295-1.8613-5.0437-1.8613ZM10 18c-2.3556 0-4.4734-1.0181-5.9374-2.6382C2.7806 13.9431 2 12.0627 2 10c0-4.4183 3.5817-8 8-8s8 3.5817 8 8-3.5817 8-8 8Zm0-12.5c-1.567 0-2.75 1.394-2.75 3s1.183 3 2.75 3 2.75-1.394 2.75-3-1.183-3-2.75-3Z"
-      />
+      <path d="M14.17 14.9a7.45 7.45 0 1 0-7.5-7.45 7.46 7.46 0 0 0 7.5 7.45zm0-10.91a3.45 3.45 0 1 1-3.5 3.46A3.46 3.46 0 0 1 14.17 4zM14.17 16.47A14.18 14.18 0 0 0 0 30.68c0 1.41.66 4 5.11 5.66a27.17 27.17 0 0 0 9.06 1.34c6.54 0 14.17-1.84 14.17-7a14.18 14.18 0 0 0-14.17-14.21zm0 17.21c-6.3 0-10.17-1.77-10.17-3a10.17 10.17 0 1 1 20.33 0c.01 1.23-3.86 3-10.16 3z" />
     </Icon>
   );
 }
@@ -179,14 +183,14 @@ export function IconHelp(props: IconProps) {
   );
 }
 
-export function IconSearch(props: IconProps) {
+export function IconSearch({
+  fill = 'suave-red',
+  ...props
+}: React.ComponentProps<typeof Icon>) {
   return (
-    <Icon {...props}>
+    <Icon {...props} viewBox="0 0 37 40" className={`fill-${fill}`}>
       <title>Search</title>
-      <path
-        fillRule="evenodd"
-        d="M13.3 8.52a4.77 4.77 0 1 1-9.55 0 4.77 4.77 0 0 1 9.55 0Zm-.98 4.68a6.02 6.02 0 1 1 .88-.88l4.3 4.3-.89.88-4.3-4.3Z"
-      />
+      <path d="M35.6 36l-9.8-9.8c4.1-5.4 3.6-13.2-1.3-18.1-5.4-5.4-14.2-5.4-19.7 0-5.4 5.4-5.4 14.2 0 19.7 2.6 2.6 6.1 4.1 9.8 4.1 3 0 5.9-1 8.3-2.8l9.8 9.8c.4.4.9.6 1.4.6s1-.2 1.4-.6c.9-.9.9-2.1.1-2.9zm-20.9-8.2c-2.6 0-5.1-1-7-2.9-3.9-3.9-3.9-10.1 0-14C9.6 9 12.2 8 14.7 8s5.1 1 7 2.9c3.9 3.9 3.9 10.1 0 14-1.9 1.9-4.4 2.9-7 2.9z" />
     </Icon>
   );
 }
@@ -231,6 +235,45 @@ export function IconRemove(props: IconProps) {
         d="M8 6L8 5C8 4 8.75 3 10 3C11.25 3 12 4 12 5V6"
         strokeWidth="1.25"
       />
+    </Icon>
+  );
+}
+
+export function IconAccessibility({fill = 'suave-red', ...props}: IconProps) {
+  return (
+    <Icon
+      viewBox="0 0 576 576"
+      {...props}
+      fill={fill}
+      className={`fill-${fill}`}
+    >
+      <title>Accessibility</title>
+      <g>
+        <g>
+          <path
+            d="M286.98,161.27c-43.56,0-78.98-35.44-78.98-78.98s35.44-78.98,78.98-78.98s78.98,35.44,78.98,78.98
+              S330.54,161.27,286.98,161.27z M286.98,41.22c-22.65,0-41.07,18.42-41.07,41.07s18.42,41.07,41.07,41.07s41.07-18.42,41.07-41.07
+              S309.64,41.22,286.98,41.22z"
+          />
+        </g>
+        <g>
+          <path
+            d="M375.57,571.98c-9.49,0-18.7-2.61-27.07-7.8c-9.34-5.79-16.72-14.52-21.36-25.22l-40.22-92.86l-40.02,92.81
+            c-4.62,10.74-12.02,19.48-21.37,25.29c-15.18,9.4-33.09,10.34-50.47,2.62c-15.49-6.89-26.26-19.32-31.14-35.95
+            c-4.18-14.29-3.21-30.14,2.75-44.63l67.69-164.8v-46.29l-105.82-15.87c-7.01-1.05-13.43-3.5-19.05-7.26
+            c-19.37-12.92-27.86-34.71-23.3-59.77c4.74-26.06,19.27-37.61,30.62-42.72c12.01-5.41,22.83-4.55,24.88-4.32l0.91,0.13
+            c1.09,0.18,109.6,17.53,164.43,18.14c54.84-0.6,163.34-17.96,164.43-18.14l0.91-0.13c18.48-2.04,48.53,8.78,55.5,47.04
+            c4.55,25.02-3.91,46.79-23.22,59.72c-5.65,3.79-12.11,6.26-19.21,7.32l-105.76,15.86v46.28l67.69,164.8
+            c5.95,14.49,6.93,30.34,2.75,44.63c-4.86,16.63-15.63,29.06-31.14,35.95C391.17,570.25,383.27,571.98,375.57,571.98z
+            M286.82,350.51l75.09,173.37c1.53,3.53,3.85,6.4,6.55,8.07c3.02,1.88,7.46,3.59,15.1,0.2c5.28-2.36,8.41-6.04,10.15-11.96
+            c1.77-6.06,1.27-13.01-1.43-19.57l-70.53-171.71v-86.41l138.04-20.7c1.48-0.23,2.77-0.68,3.72-1.32
+            c6.64-4.45,8.88-11.26,7.02-21.45l0,0c-2.43-13.4-8.92-16.15-14.05-16.11c-11.78,1.87-113.88,17.9-169.3,18.46H287h-0.19
+            c-55.41-0.57-157.53-16.58-169.3-18.46c-5.05-0.03-11.62,2.71-14.05,16.11c-1.85,10.2,0.38,17.01,7.04,21.46
+            c0.95,0.63,2.2,1.08,3.64,1.29l138.12,20.71v86.41l-70.54,171.7c-2.7,6.56-3.21,13.52-1.43,19.57c1.74,5.93,4.86,9.62,10.15,11.96
+            c7.63,3.4,12.07,1.67,15.1-0.19c2.69-1.67,5-4.54,6.54-8.07L286.82,350.51z"
+          />
+        </g>
+      </g>
     </Icon>
   );
 }

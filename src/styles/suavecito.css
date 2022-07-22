@@ -11,8 +11,14 @@
     padding-left: 22px;
     padding-right: 22px;
   }
+  .site-header {
+    padding: 0;
+  }
 }
 
+.site-header {
+  padding: 0 55px;
+}
 /* .divider {
   border-bottom: 1px solid #000;
   margin: 0 auto;

@@ -14,14 +14,14 @@
   --font-size-display: 3rem; /* text-4xl */
   --color-shop-pay: #5a31f4;
   --shop-pay-button--width: 100%; /* Sets the width for the shop-pay-button web component */
-  --height-nav: 3rem;
+  --height-nav: 121.5px;
   --screen-height: 100vh;
 
-  @media (min-width: 32em) {
+  /* @media (min-width: 32em) {
     --height-nav: 4rem;
-  }
+  } */
   @media (min-width: 48em) {
-    --height-nav: 6rem;
+    /* --height-nav: 6rem; */
     --font-size-heading: 2.25rem; /* text-4xl */
     --font-size-display: 3.75rem; /* text-6xl */
   }
