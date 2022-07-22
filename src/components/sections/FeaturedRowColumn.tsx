@@ -24,7 +24,7 @@ export function FeaturedRowColumn({
   loading?: 'eager' | 'lazy';
 }) {
   return (
-    <article className="featured-row-image-with-text">
+    <article className="featured-row-image-with-text my-[25px] md:my-0">
       <div className="relative flex flex-col gap-1">
         <div className="flex-1">
           <div className="image-wrapper aspect-[1] overflow-clip inset-0">

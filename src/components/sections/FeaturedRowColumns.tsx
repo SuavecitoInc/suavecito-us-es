@@ -15,7 +15,7 @@ export function FeaturedRowColumns({
   three: any;
 }) {
   return (
-    <div className="page-width grid grid-cols-1 md:grid-cols-3 gap-6 py-[55px]">
+    <div className="page-width grid grid-cols-1 md:grid-cols-3 gap-6 py-0 md:py-[55px]">
       <FeaturedRowColumn {...one} />
       <FeaturedRowColumn {...two} />
       <FeaturedRowColumn {...three} />

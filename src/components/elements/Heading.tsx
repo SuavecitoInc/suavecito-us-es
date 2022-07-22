@@ -17,15 +17,8 @@ export function Heading({
   size?: 'display' | 'heading' | 'lead' | 'copy';
   width?: 'default' | 'narrow' | 'wide';
 } & React.HTMLAttributes<HTMLHeadingElement>) {
-  // const sizes = {
-  //   display: 'font-bold text-display',
-  //   heading: 'font-bold text-heading',
-  //   lead: 'font-bold text-lead',
-  //   copy: 'font-medium text-copy',
-  // };
-
   const sizes = {
-    display: 'font-bold text-heading lg:text-display',
+    display: 'font-bold text-display',
     heading: 'font-bold text-heading',
     lead: 'font-bold text-lead',
     copy: 'font-medium text-copy',
@@ -46,8 +39,7 @@ export function Heading({
 
   return (
     <Component {...props} className={styles}>
-      {/* {format ? formatText(children) : children} */}
-      {children}
+      {format ? formatText(children) : children}
     </Component>
   );
 }

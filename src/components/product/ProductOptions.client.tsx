@@ -12,7 +12,8 @@ export function ProductOptions({
   values: any[];
   [key: string]: any;
 } & React.ComponentProps<typeof OptionsGrid>) {
-  const asDropdown = values.length > 7;
+  // const asDropdown = values.length > 7;
+  const asDropdown = false;
 
   return asDropdown ? (
     <OptionsDropdown values={values} {...props} />
@@ -25,10 +26,14 @@ function OptionsGrid({
   values,
   name,
   handleChange,
+  availableOptions,
+  index,
 }: {
   values: string[];
   name: string;
   handleChange: (name: string, value: string) => void;
+  availableOptions?: {[key: string]: any};
+  index?: number;
 }) {
   const {selectedOptions} = useProductOptions();
 
@@ -37,6 +42,11 @@ function OptionsGrid({
       {values.map((value) => {
         const checked = selectedOptions![name] === value;
         const id = `option-${name}-${value}`;
+
+        let disabledOption = false;
+        if (index && availableOptions)
+          disabledOption =
+            index !== 0 ? !availableOptions[name]?.includes(value) : false;
 
         return (
           <Text as="label" key={id} htmlFor={id}>
@@ -48,10 +58,15 @@ function OptionsGrid({
               value={value}
               checked={checked}
               onChange={() => handleChange(name, value)}
+              disabled={disabledOption}
             />
             <div
               className={`leading-none py-1 border-b-[1.5px] cursor-pointer transition-all duration-200 ${
                 checked ? 'border-primary/50' : 'border-primary/0'
+              } ${
+                disabledOption
+                  ? 'text-suave-white-focus'
+                  : 'text-black hover:text-suave-grey'
               }`}
             >
               {value}

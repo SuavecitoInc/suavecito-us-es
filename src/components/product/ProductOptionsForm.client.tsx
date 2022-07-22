@@ -1,5 +1,5 @@
 import {useEffect, useCallback, useState} from 'react';
-
+import {useEffectOnce} from 'react-use';
 import {
   useProductOptions,
   isBrowser,
@@ -9,20 +9,36 @@ import {
   OptionWithValues,
   ShopPayButton,
 } from '@shopify/hydrogen';
+import {useAvailableOptions} from '~/hooks';
 
 import {Heading, Text, Button, ProductOptions} from '~/components';
+import {ProductVariant} from '@shopify/hydrogen/storefront-api-types';
 
-export function ProductForm() {
+export function ProductOptionsForm({optionNames}: {optionNames: string[]}) {
   const {pathname, search} = useUrl();
   const [params, setParams] = useState(new URLSearchParams(search));
 
-  const {options, setSelectedOption, selectedOptions, selectedVariant} =
-    useProductOptions();
+  const {
+    options,
+    setSelectedOption,
+    selectedOptions,
+    selectedVariant,
+    variants,
+  } = useProductOptions();
+
+  const {
+    availableOptions,
+    setAvailableOptions,
+    filterOptions,
+    filterLastOption,
+  } = useAvailableOptions(
+    options as {name: string; values: string[]}[],
+    variants as ProductVariant[],
+    optionNames,
+  );
 
   const isOutOfStock = !selectedVariant?.availableForSale || false;
-  // const isOnSale =
-  //   selectedVariant?.priceV2?.amount <
-  //     selectedVariant?.compareAtPriceV2?.amount || false;
+
   const isOnSale =
     selectedVariant?.priceV2?.amount &&
     selectedVariant?.compareAtPriceV2?.amount
@@ -35,7 +51,12 @@ export function ProductForm() {
     setParams(new URLSearchParams(search));
   }, [params, search]);
 
-  useEffect(() => {
+  useEffectOnce(() => {
+    let mainValue: string;
+    const initialSelectedOptions: {[key: string]: string | undefined} = {
+      ...selectedOptions,
+    };
+    let available: {[key: string]: any[]} = {};
     (options as OptionWithValues[]).map(({name, values}) => {
       if (!params) return;
       const currentValue = params.get(name.toLowerCase()) || null;
@@ -43,7 +64,11 @@ export function ProductForm() {
         const matchedValue = values.filter(
           (value) => encodeURIComponent(value.toLowerCase()) === currentValue,
         );
+        if (name === optionNames[0]) {
+          mainValue = matchedValue[0];
+        }
         setSelectedOption(name, matchedValue[0]);
+        initialSelectedOptions[name] = matchedValue[0];
       } else {
         params.set(
           encodeURIComponent(name.toLowerCase()),
@@ -56,33 +81,76 @@ export function ProductForm() {
           );
       }
     });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+
+    mainValue = initialSelectedOptions[optionNames[0]] as string;
+    available = filterOptions(optionNames[0], mainValue, mainValue);
+    if (optionNames.length > 2) {
+      available = filterLastOption(initialSelectedOptions, available);
+    }
+
+    setAvailableOptions(available);
+  });
 
   const handleChange = useCallback(
     (name: string, value: string) => {
-      setSelectedOption(name, value);
-      if (!params) return;
-      params.set(
-        encodeURIComponent(name.toLowerCase()),
-        encodeURIComponent(value.toLowerCase()),
+      const newSelectedOptions: any = {...selectedOptions};
+      newSelectedOptions[name] = value;
+
+      // filter
+      let available = filterOptions(
+        name,
+        value,
+        newSelectedOptions[optionNames[0]],
       );
-      if (isBrowser()) {
-        window.history.replaceState(
-          null,
-          '',
-          `${pathname}?${params.toString()}`,
-        );
+
+      // update new selected options based on filtered
+      optionNames.forEach((optionName) => {
+        if (optionName !== optionNames[0]) {
+          const optionValue = available[optionName][0];
+          newSelectedOptions[optionName] = optionValue;
+        }
+      });
+
+      // update last option based on first two
+      if (optionNames.length > 2) {
+        available = filterLastOption(newSelectedOptions, available);
       }
+      setAvailableOptions(available);
+      // update params
+      if (!params) return;
+      optionNames.forEach((optionName) => {
+        const optionValue = newSelectedOptions[optionName];
+        setSelectedOption(optionName, optionValue);
+        params.set(
+          encodeURIComponent(optionName.toLowerCase()),
+          encodeURIComponent(optionValue.toLowerCase()),
+        );
+        if (isBrowser()) {
+          window.history.replaceState(
+            null,
+            '',
+            `${pathname}?${params.toString()}`,
+          );
+        }
+      });
     },
-    [setSelectedOption, params, pathname],
+    [
+      selectedOptions,
+      setSelectedOption,
+      params,
+      pathname,
+      optionNames,
+      filterOptions,
+      filterLastOption,
+      setAvailableOptions,
+    ],
   );
 
   return (
     <form className="grid gap-10">
       {
         <div className="grid gap-4">
-          {(options as OptionWithValues[]).map(({name, values}) => {
+          {(options as OptionWithValues[]).map(({name, values}, index) => {
             if (values.length === 1) {
               return null;
             }
@@ -99,6 +167,8 @@ export function ProductForm() {
                     name={name}
                     handleChange={handleChange}
                     values={values}
+                    availableOptions={availableOptions}
+                    index={index}
                   />
                 </div>
               </div>

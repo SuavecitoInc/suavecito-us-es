@@ -150,3 +150,8 @@ export interface BannerSectionData {
   overlayOpacityEnd?: number;
   sectionHeight?: 'x-small' | 'small' | 'medium' | 'large';
 }
+
+export interface FeaturedVideoSectionData {
+  coverImage: Metafield;
+  youtubeVideoId: Metafield;
+}

@@ -3,6 +3,7 @@ import {
   FeaturedRowImageSectionData,
   BannerSectionData,
   FeaturedRowColumnsSectionData,
+  FeaturedVideoSectionData,
 } from '../types/home-page';
 
 export const responsiveBannerSettings: ResponsiveBannerSectionData = {
@@ -129,6 +130,33 @@ export const featuredRowImageTwoSettings: FeaturedRowImageSectionData = {
   loading: 'eager',
 };
 
+export const featuredRowImageThreeSettings: FeaturedRowImageSectionData = {
+  heading: {value: 'Pomade, Hair Wax, Clay, Gel, Paste?'},
+  subText: {
+    value:
+      'Which is right for me? Find out which products will work for your hair and the style you want to achieve.',
+  },
+  cta: {value: 'Learn More'},
+  ctaLink:
+    '/blogs/grooming-tips/pomade-hair-wax-clay-gel-paste-which-is-right-for-me',
+  featuredImage: {
+    value: '',
+    reference: {
+      mediaContentType: 'IMAGE',
+      alt: 'This is my alt',
+      previewImage: {
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/suavecito-page-featured-image-8_1080x.jpg?v=1632939356',
+      },
+      image: {
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/suavecito-page-featured-image-8_1080x.jpg?v=1632939356',
+        width: 782,
+        height: 782,
+      },
+    },
+  },
+  loading: 'eager',
+};
+
 export const bannerOneSettings: BannerSectionData = {
   heading: {value: ''},
   byline: {
@@ -213,7 +241,6 @@ export const featuredRowColumnsOneSettings: FeaturedRowColumnsSectionData = {
         previewImage: {
           url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/suavecito-page-featured-image-2_720x.jpg?v=1632939292',
         },
-        id: 'not-available', // might not need this
         image: {
           url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/suavecito-page-featured-image-2_720x.jpg?v=1632939292',
           width: 720,
@@ -264,7 +291,6 @@ export const featuredRowColumnsOneSettings: FeaturedRowColumnsSectionData = {
         previewImage: {
           url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/suavecito-page-featured-image-4_720x.jpg?v=1632939320',
         },
-        id: 'not-available', // might not need this
         image: {
           url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/suavecito-page-featured-image-4_720x.jpg?v=1632939320',
           width: 720,
@@ -293,7 +319,6 @@ export const featuredRowColumnsTwoSettings: FeaturedRowColumnsSectionData = {
         previewImage: {
           url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/suavecito-page-featured-image-5_720x.jpg?v=1632844585',
         },
-        id: 'not-available', // might not need this
         image: {
           url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/suavecito-page-featured-image-5_720x.jpg?v=1632844585',
           width: 720,
@@ -319,7 +344,6 @@ export const featuredRowColumnsTwoSettings: FeaturedRowColumnsSectionData = {
         previewImage: {
           url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/suavecito-page-featured-image-6_720x.jpg?v=1632844696',
         },
-        id: 'not-available', // might not need this
         image: {
           url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/suavecito-page-featured-image-6_720x.jpg?v=1632844696',
           width: 720,
@@ -345,7 +369,6 @@ export const featuredRowColumnsTwoSettings: FeaturedRowColumnsSectionData = {
         previewImage: {
           url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/suavecito-page-featured-image-7_720x.jpg?v=1632844657',
         },
-        id: 'not-available', // might not need this
         image: {
           url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/suavecito-page-featured-image-7_720x.jpg?v=1632844657',
           width: 720,
@@ -354,5 +377,26 @@ export const featuredRowColumnsTwoSettings: FeaturedRowColumnsSectionData = {
       },
     },
     loading: 'eager',
+  },
+};
+
+export const featuredVideoSettings: FeaturedVideoSectionData = {
+  coverImage: {
+    value: '',
+    reference: {
+      mediaContentType: 'IMAGE',
+      alt: '',
+      previeImage: {
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/21_Suavecito_Anchor_16x9_v1_R6_ENG.00_00_14_11.Still003.jpg?v=1634907949',
+      },
+      image: {
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/21_Suavecito_Anchor_16x9_v1_R6_ENG.00_00_14_11.Still003.jpg?v=1634907949',
+        width: 1920,
+        height: 1080,
+      },
+    },
+  },
+  youtubeVideoId: {
+    value: 'hFLTrGcAx9c',
   },
 };
