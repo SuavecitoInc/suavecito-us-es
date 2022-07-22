@@ -46,9 +46,7 @@ export function ProductOptionsVariantForm({
   );
 
   const isOutOfStock = !selectedVariant?.availableForSale || false;
-  // const isOnSale =
-  //   selectedVariant?.priceV2?.amount <
-  //     selectedVariant?.compareAtPriceV2?.amount || false;
+
   const isOnSale =
     selectedVariant?.priceV2?.amount &&
     selectedVariant?.compareAtPriceV2?.amount
