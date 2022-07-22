@@ -62,8 +62,8 @@ export default function Product() {
   );
 
   const defaultAvailable = defaultOptionNames.reduce(
-    (accumulator: any, value: any) => {
-      const arr: any[] = [];
+    (accumulator: {[key: string]: string[]}, value: string) => {
+      const arr: string[] = [];
       return {...accumulator, [value]: arr};
     },
     {},

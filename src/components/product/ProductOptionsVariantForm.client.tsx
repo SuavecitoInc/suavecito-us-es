@@ -9,7 +9,7 @@ import {
   OptionWithValues,
   ShopPayButton,
 } from '@shopify/hydrogen';
-import {useFilteredVariants} from '~/hooks/useFilteredVariants';
+import {useVariantsWithOptions, useAvailableOptions} from '~/hooks';
 
 import {Heading, Text, Button, ProductOptions} from '~/components';
 import {ProductVariant} from '@shopify/hydrogen/storefront-api-types';
@@ -32,12 +32,20 @@ export function ProductOptionsVariantForm({
     variants,
   } = useProductOptions();
 
-  const filteredVariants = useFilteredVariants(variants as ProductVariant[]);
+  const {findVariantWithOptions} = useVariantsWithOptions(
+    variants as ProductVariant[],
+  );
 
-  // new state
-  const [availableOptions, setAvailableOptions] = useState<{
-    [key: string]: any;
-  }>(initialAvailable);
+  const {
+    availableOptions,
+    setAvailableOptions,
+    filterOptions,
+    filterLastOption,
+  } = useAvailableOptions(
+    options as {name: string; values: string[]}[],
+    variants as ProductVariant[],
+    optionNames,
+  );
 
   const isOutOfStock = !selectedVariant?.availableForSale || false;
   // const isOnSale =
@@ -101,7 +109,6 @@ export function ProductOptionsVariantForm({
 
     setAvailableOptions(available);
     // don't seem to need this in dev only in build, why?
-    // don't seem to need this in dev only in build, why?
     mainValue = initialSelectedOptions[optionNames[0]] as string;
     available = filterOptions(optionNames[0], mainValue, mainValue);
     setAvailableOptions(available);
@@ -109,90 +116,6 @@ export function ProductOptionsVariantForm({
     // const value = initialSelectedOptions[optionNames[0]] as string;
     // handleChange(optionNames[0], value);
   });
-
-  // filter
-  const filterOptions = useCallback(
-    (name: string, value: string, masterValue: string) => {
-      const defaultAvailableOptions: {[key: string]: any} = {};
-      options?.forEach((option) => {
-        if (option?.name) defaultAvailableOptions[option.name] = [];
-      });
-      const available: any = {...defaultAvailableOptions};
-      available[name] = [];
-
-      variants?.forEach((variant) => {
-        if (!variant?.selectedOptions) return;
-        const values = variant?.selectedOptions.filter(
-          (option) => option?.value === value,
-        );
-
-        if (values.length > 0) {
-          values.forEach((option) => {
-            if (!available[name].includes(option?.value)) {
-              available[name].push(option?.value);
-            }
-          });
-        }
-      });
-
-      variants?.forEach((variant) => {
-        if (!variant?.selectedOptions) return;
-        const values = variant?.selectedOptions.filter(
-          (option) => option?.value === masterValue,
-        );
-
-        if (values.length > 0) {
-          variant?.selectedOptions.forEach((option) => {
-            if (
-              option?.name &&
-              !available[option?.name].includes(option?.value)
-            ) {
-              available[option?.name].push(option?.value);
-            }
-          });
-        }
-      });
-      // set option 1
-      if (options) {
-        const option1 = options[0];
-        available[optionNames[0]] = option1?.values;
-      }
-      return available;
-    },
-    [variants, options, optionNames],
-  );
-
-  const filterLastOption = useCallback(
-    (currentSelectedOptions: any, available: any) => {
-      const firstOption = optionNames[0];
-      const secondOption = optionNames[1];
-      const thirdOption = optionNames[2];
-      available[thirdOption] = [];
-
-      const thirdValues: any[] = [];
-      variants?.forEach((variant) => {
-        if (!variant?.selectedOptions) return;
-        const firstValues = variant?.selectedOptions.filter(
-          (option) => option?.value === currentSelectedOptions[firstOption],
-        );
-        const secondValues = variant?.selectedOptions.filter(
-          (option) => option?.value === currentSelectedOptions[secondOption],
-        );
-        if (firstValues.length > 0 && secondValues.length > 0) {
-          const thirdValue = variant?.selectedOptions.find(
-            (option) => option?.name === thirdOption,
-          );
-          if (!thirdValues.includes(thirdValue)) {
-            thirdValues.push(thirdValue?.value);
-          }
-        }
-      });
-
-      available[thirdOption] = thirdValues;
-      return available;
-    },
-    [variants, optionNames],
-  );
 
   const handleChange = useCallback(
     (name: string, value: string) => {
@@ -226,11 +149,7 @@ export function ProductOptionsVariantForm({
         setSelectedOption(optionName, optionValue);
       });
       // get variant id
-      const foundVariant = filteredVariants.find(
-        (variant) =>
-          JSON.stringify(variant.selectedOptions) ===
-          JSON.stringify(newSelectedOptions),
-      );
+      const foundVariant = findVariantWithOptions(newSelectedOptions);
       if (foundVariant) {
         const id = foundVariant.id.replace('gid://shopify/ProductVariant/', '');
         params.set(encodeURIComponent('variant'), encodeURIComponent(id));
@@ -251,28 +170,10 @@ export function ProductOptionsVariantForm({
       optionNames,
       filterOptions,
       filterLastOption,
-      filteredVariants,
+      findVariantWithOptions,
+      setAvailableOptions,
     ],
   );
-
-  // update variant id on variant change
-  // useEffect(() => {
-  //   if (selectedVariant) {
-  //     const variantGID = selectedVariant?.id as string;
-  //     const id = variantGID.replace('gid://shopify/ProductVariant/', '');
-  //     if (isBrowser()) {
-  //       window.history.replaceState(null, '', `${pathname}?variant=${id}`);
-  //     }
-  //   }
-  // }, [selectedVariant, pathname]);
-
-  // useEffect(() => {
-  //   console.log('SELECTED OPTIONS HAVE CHANGED', selectedOptions);
-  // }, [selectedOptions]);
-
-  useEffect(() => {
-    console.log('SELECTED VARIANT HAVE CHANGED', selectedVariant);
-  }, [selectedVariant]);
 
   return (
     <form className="grid gap-10">
