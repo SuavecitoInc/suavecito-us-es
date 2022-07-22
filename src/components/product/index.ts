@@ -4,3 +4,4 @@ export {ProductGrid} from './ProductGrid.client';
 export {ProductDetail} from './ProductDetail.client';
 export {ProductOptions} from './ProductOptions.client';
 export {ProductOptionsForm} from './ProductOptionsForm.client';
+export {ProductOptionsVariantForm} from './ProductOptionsVariantForm.client';

@@ -16,8 +16,7 @@ import {NotFound, Layout, ProductSwimlane} from '~/components/index.server';
 import {
   Heading,
   ProductDetail,
-  ProductForm,
-  ProductOptionsForm,
+  ProductOptionsVariantForm,
   ProductGallery,
   Section,
   Text,
@@ -60,14 +59,6 @@ export default function Product() {
     (option: {name: string}) => option.name,
   );
 
-  const defaultAvailable = defaultOptionNames.reduce(
-    (accumulator: any, value: any) => {
-      const arr: any[] = [];
-      return {...accumulator, [value]: arr};
-    },
-    {},
-  );
-
   return (
     <Layout>
       <Suspense>
@@ -90,12 +81,8 @@ export default function Product() {
                     <Text className={'opacity-50 font-medium'}>{vendor}</Text>
                   )}
                 </div>
-                {/* <ProductForm /> */}
                 <Suspense>
-                  <ProductOptionsForm
-                    optionNames={defaultOptionNames}
-                    initialAvailable={defaultAvailable}
-                  />
+                  <ProductOptionsVariantForm optionNames={defaultOptionNames} />
                 </Suspense>
 
                 <div className="grid gap-4 py-4">

@@ -9,12 +9,16 @@ import {
   OptionWithValues,
   ShopPayButton,
 } from '@shopify/hydrogen';
-import {useAvailableOptions} from '~/hooks';
+import {useVariantsWithOptions, useAvailableOptions} from '~/hooks';
 
 import {Heading, Text, Button, ProductOptions} from '~/components';
 import {ProductVariant} from '@shopify/hydrogen/storefront-api-types';
 
-export function ProductOptionsForm({optionNames}: {optionNames: string[]}) {
+export function ProductOptionsVariantForm({
+  optionNames,
+}: {
+  optionNames: string[];
+}) {
   const {pathname, search} = useUrl();
   const [params, setParams] = useState(new URLSearchParams(search));
 
@@ -25,6 +29,10 @@ export function ProductOptionsForm({optionNames}: {optionNames: string[]}) {
     selectedVariant,
     variants,
   } = useProductOptions();
+
+  const {findVariantWithOptions} = useVariantsWithOptions(
+    variants as ProductVariant[],
+  );
 
   const {
     availableOptions,
@@ -57,30 +65,37 @@ export function ProductOptionsForm({optionNames}: {optionNames: string[]}) {
       ...selectedOptions,
     };
     let available: {[key: string]: any[]} = {};
-    (options as OptionWithValues[]).map(({name, values}) => {
-      if (!params) return;
-      const currentValue = params.get(name.toLowerCase()) || null;
-      if (currentValue) {
-        const matchedValue = values.filter(
-          (value) => encodeURIComponent(value.toLowerCase()) === currentValue,
+
+    // get variant
+    const currentVariant = params.get('variant') || null;
+    if (currentVariant) {
+      const variantGID = `gid://shopify/ProductVariant/${currentVariant}`;
+      const matchedVariant: any = variants?.find(
+        (variant) => variant?.id === variantGID,
+      );
+      // get selected options
+      optionNames.forEach((name) => {
+        const variantOption = matchedVariant?.selectedOptions.find(
+          (option: {name: string; value: string}) => option?.name === name,
         );
+        // set main value
         if (name === optionNames[0]) {
-          mainValue = matchedValue[0];
+          mainValue = variantOption?.value;
         }
-        setSelectedOption(name, matchedValue[0]);
-        initialSelectedOptions[name] = matchedValue[0];
-      } else {
-        params.set(
-          encodeURIComponent(name.toLowerCase()),
-          encodeURIComponent(selectedOptions![name]!.toLowerCase()),
-        ),
-          window.history.replaceState(
-            null,
-            '',
-            `${pathname}?${params.toString()}`,
-          );
-      }
-    });
+        // set new selected options
+        setSelectedOption(name, variantOption?.value);
+        initialSelectedOptions[name] = variantOption?.value;
+      });
+    } else {
+      let id = selectedVariant?.id as string;
+      if (id) id = id.replace('gid://shopify/ProductVariant/', '');
+      params.set(encodeURIComponent('variant'), encodeURIComponent(id)),
+        window.history.replaceState(
+          null,
+          '',
+          `${pathname}?${params.toString()}`,
+        );
+    }
 
     mainValue = initialSelectedOptions[optionNames[0]] as string;
     available = filterOptions(optionNames[0], mainValue, mainValue);
@@ -121,10 +136,12 @@ export function ProductOptionsForm({optionNames}: {optionNames: string[]}) {
       optionNames.forEach((optionName) => {
         const optionValue = newSelectedOptions[optionName];
         setSelectedOption(optionName, optionValue);
-        params.set(
-          encodeURIComponent(optionName.toLowerCase()),
-          encodeURIComponent(optionValue.toLowerCase()),
-        );
+      });
+      // get variant id
+      const foundVariant = findVariantWithOptions(newSelectedOptions);
+      if (foundVariant) {
+        const id = foundVariant.id.replace('gid://shopify/ProductVariant/', '');
+        params.set(encodeURIComponent('variant'), encodeURIComponent(id));
         if (isBrowser()) {
           window.history.replaceState(
             null,
@@ -132,7 +149,7 @@ export function ProductOptionsForm({optionNames}: {optionNames: string[]}) {
             `${pathname}?${params.toString()}`,
           );
         }
-      });
+      }
     },
     [
       selectedOptions,
@@ -142,6 +159,7 @@ export function ProductOptionsForm({optionNames}: {optionNames: string[]}) {
       optionNames,
       filterOptions,
       filterLastOption,
+      findVariantWithOptions,
       setAvailableOptions,
     ],
   );
