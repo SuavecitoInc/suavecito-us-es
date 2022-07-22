@@ -87,11 +87,11 @@ export function ProductOptionsForm({
     if (optionNames.length > 2) {
       available = filterLastOption(initialSelectedOptions, available);
     }
-    console.log('AVAILABLE', available);
+    // don't seem to need this in dev only in build, why?
     mainValue = initialSelectedOptions[optionNames[0]] as string;
     available = filterOptions(optionNames[0], mainValue, mainValue);
     setAvailableOptions(available);
-    // don't seem to need this in dev only in build, why?
+
     // const value = initialSelectedOptions[optionNames[0]] as string;
     // handleChange(optionNames[0], value);
   });

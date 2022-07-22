@@ -93,7 +93,7 @@ export default function Product() {
                 </div>
                 {/* <ProductForm /> */}
                 <Suspense>
-                  <ProductOptionsForm
+                  <ProductOptionsVariantForm
                     optionNames={defaultOptionNames}
                     initialAvailable={defaultAvailable}
                   />
