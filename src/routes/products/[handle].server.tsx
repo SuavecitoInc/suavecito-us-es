@@ -11,15 +11,26 @@ import {
 } from '@shopify/hydrogen';
 
 import {MEDIA_FRAGMENT} from '~/lib/fragments';
-import {getExcerpt} from '~/lib/utils';
-import {NotFound, Layout, ProductSwimlane} from '~/components/index.server';
+import {
+  PRODUCT_SECTION_FRAGMENT,
+  VARIANT_METAFIELD_IMAGES_FRAGMENT,
+} from '~/lib/suavecito-fragments';
+import {
+  NotFound,
+  Layout,
+  ProductSwimlane,
+  ProductSectionImageText,
+  ProductSectionContentGrid,
+} from '~/components/index.server';
 import {
   Heading,
   ProductDetail,
   ProductOptionsVariantForm,
-  ProductGallery,
+  ProductImages,
+  ProductMetafieldImages,
   Section,
   Text,
+  Divider,
 } from '~/components';
 
 export default function Product() {
@@ -52,75 +63,122 @@ export default function Product() {
     },
   });
 
-  const {media, title, vendor, descriptionHtml, id, options} = product;
+  const {
+    images,
+    title,
+    vendor,
+    descriptionHtml,
+    options,
+    variants,
+    tags,
+    productSectionFeaturedImage1,
+    productSectionFeaturedImage2,
+    productSectionDescription,
+    productSectionListItemText1,
+    productSectionListItemImage1,
+    productSectionListItemText2,
+    productSectionListItemImage2,
+    productSectionListItemText3,
+    productSectionListItemImage3,
+    productSectionListItemText4,
+    productSectionListItemImage4,
+  } = product;
   const {shippingPolicy, refundPolicy} = shop;
 
   const defaultOptionNames = options.map(
     (option: {name: string}) => option.name,
   );
 
+  const productContentGridData = {
+    productSectionFeaturedImage1,
+    productSectionFeaturedImage2,
+    productSectionDescription,
+    productSectionListItemText1,
+    productSectionListItemText2,
+    productSectionListItemText3,
+    productSectionListItemText4,
+    productSectionListItemImage1,
+    productSectionListItemImage2,
+    productSectionListItemImage3,
+    productSectionListItemImage4,
+  };
+
   return (
     <Layout>
       <Suspense>
         <Seo type="product" data={product} />
       </Suspense>
-      <ProductOptionsProvider data={product}>
-        <Section padding="x" className="px-0">
-          <div className="grid items-start md:gap-6 lg:gap-20 md:grid-cols-2 lg:grid-cols-3">
-            <ProductGallery
-              media={media.nodes}
-              className="w-screen md:w-full lg:col-span-2"
-            />
-            <div className="sticky md:-mb-nav md:top-nav md:-translate-y-nav md:h-screen md:pt-nav hiddenScroll md:overflow-y-scroll">
-              <section className="flex flex-col w-full max-w-xl gap-8 p-6 md:mx-auto md:max-w-sm md:px-0">
-                <div className="grid gap-2">
-                  <Heading as="h1" format className="whitespace-normal">
-                    {title}
-                  </Heading>
-                  {vendor && (
-                    <Text className={'opacity-50 font-medium'}>{vendor}</Text>
-                  )}
-                </div>
-                <Suspense>
-                  <ProductOptionsVariantForm optionNames={defaultOptionNames} />
-                </Suspense>
+      <div className="page-width">
+        <ProductOptionsProvider data={product}>
+          <Section padding="x" className="px-0">
+            <div className="flex flex-col md:flex-row gap-10">
+              {/* if metafield images exist  */}
+              {variants.nodes[0]?.variantImage1 ? (
+                <ProductMetafieldImages className="flex-1" />
+              ) : (
+                <ProductImages images={images.nodes} className="flex-1" />
+              )}
+              <div className="flex-1">
+                <section className="">
+                  <div className="grid gap-2">
+                    <Heading as="h1" format className="whitespace-normal">
+                      {title}
+                    </Heading>
+                    {vendor && (
+                      <Text className={'opacity-50 font-medium'}>{vendor}</Text>
+                    )}
+                  </div>
+                  <Suspense>
+                    <ProductOptionsVariantForm
+                      optionNames={defaultOptionNames}
+                      tags={tags}
+                    />
+                  </Suspense>
 
-                <div className="grid gap-4 py-4">
-                  {descriptionHtml && (
-                    <ProductDetail
-                      title="Product Details"
-                      content={descriptionHtml}
-                    />
-                  )}
-                  {shippingPolicy?.body && (
-                    <ProductDetail
-                      title="Shipping"
-                      content={getExcerpt(shippingPolicy.body)}
-                      learnMore={`/policies/${shippingPolicy.handle}`}
-                    />
-                  )}
-                  {refundPolicy?.body && (
-                    <ProductDetail
-                      title="Returns"
-                      content={getExcerpt(refundPolicy.body)}
-                      learnMore={`/policies/${refundPolicy.handle}`}
-                    />
-                  )}
-                </div>
-              </section>
+                  {/* <div className="grid gap-4 py-4">
+                    {descriptionHtml && (
+                      <ProductDetail
+                        title="Product Details"
+                        content={descriptionHtml}
+                      />
+                    )}
+                    {shippingPolicy?.body && (
+                      <ProductDetail
+                        title="Shipping"
+                        content={getExcerpt(shippingPolicy.body)}
+                        learnMore={`/policies/${shippingPolicy.handle}`}
+                      />
+                    )}
+                    {refundPolicy?.body && (
+                      <ProductDetail
+                        title="Returns"
+                        content={getExcerpt(refundPolicy.body)}
+                        learnMore={`/policies/${refundPolicy.handle}`}
+                      />
+                    )}
+                  </div> */}
+                </section>
+              </div>
             </div>
-          </div>
-        </Section>
-        <Suspense>
-          <ProductSwimlane title="Related Products" data={id} />
-        </Suspense>
-      </ProductOptionsProvider>
+          </Section>
+          {/* <Suspense>
+            <ProductSwimlane title="Related Products" data={id} />
+          </Suspense> */}
+        </ProductOptionsProvider>
+
+        {/* check if productSectionFeaturedImage1 && productSectionDescription are set */}
+        {productSectionFeaturedImage1 && productSectionDescription && (
+          <ProductSectionContentGrid {...productContentGridData} />
+        )}
+      </div>
     </Layout>
   );
 }
 
 const PRODUCT_QUERY = gql`
   ${MEDIA_FRAGMENT}
+  ${PRODUCT_SECTION_FRAGMENT}
+  ${VARIANT_METAFIELD_IMAGES_FRAGMENT}
   query Product(
     $country: CountryCode
     $language: LanguageCode
@@ -139,6 +197,17 @@ const PRODUCT_QUERY = gql`
       options {
         name
       }
+      images(first: 20) {
+        nodes {
+          id
+          url
+          altText
+          width
+          height
+        }
+      }
+      tags
+      ...ProductSection
       variants(first: 100) {
         nodes {
           id
@@ -168,6 +237,7 @@ const PRODUCT_QUERY = gql`
             amount
             currencyCode
           }
+          ...VariantMetafieldImages
         }
       }
       seo {
