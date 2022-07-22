@@ -65,6 +65,7 @@ export function useAvailableOptions(
         const option1 = options[0];
         available[optionNames[0]] = option1?.values;
       }
+
       return available;
     },
     [variants, options, optionNames],
@@ -98,6 +99,7 @@ export function useAvailableOptions(
       });
 
       available[thirdOption] = thirdValues;
+
       return available;
     },
     [variants, optionNames],

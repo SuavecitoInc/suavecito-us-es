@@ -1,4 +1,4 @@
-import {useEffect, useCallback, useState, useMemo} from 'react';
+import {useEffect, useCallback, useState} from 'react';
 import {useEffectOnce} from 'react-use';
 import {
   useProductOptions,
@@ -16,10 +16,8 @@ import {ProductVariant} from '@shopify/hydrogen/storefront-api-types';
 
 export function ProductOptionsVariantForm({
   optionNames,
-  initialAvailable,
 }: {
   optionNames: string[];
-  initialAvailable: {[key: string]: any[]};
 }) {
   const {pathname, search} = useUrl();
   const [params, setParams] = useState(new URLSearchParams(search));
@@ -89,9 +87,6 @@ export function ProductOptionsVariantForm({
         // set new selected options
         setSelectedOption(name, variantOption?.value);
         initialSelectedOptions[name] = variantOption?.value;
-        if (mainValue !== '') {
-          available = filterOptions(name, variantOption?.value, mainValue);
-        }
       });
     } else {
       let id = selectedVariant?.id as string;
@@ -103,18 +98,14 @@ export function ProductOptionsVariantForm({
           `${pathname}?${params.toString()}`,
         );
     }
+
+    mainValue = initialSelectedOptions[optionNames[0]] as string;
+    available = filterOptions(optionNames[0], mainValue, mainValue);
     if (optionNames.length > 2) {
       available = filterLastOption(initialSelectedOptions, available);
     }
 
     setAvailableOptions(available);
-    // don't seem to need this in dev only in build, why?
-    // mainValue = initialSelectedOptions[optionNames[0]] as string;
-    // available = filterOptions(optionNames[0], mainValue, mainValue);
-    // setAvailableOptions(available);
-
-    // const value = initialSelectedOptions[optionNames[0]] as string;
-    // handleChange(optionNames[0], value);
   });
 
   const handleChange = useCallback(
