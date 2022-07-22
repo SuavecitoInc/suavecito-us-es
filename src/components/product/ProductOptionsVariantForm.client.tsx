@@ -1,4 +1,4 @@
-import {useEffect, useCallback, useState} from 'react';
+import {useEffect, useCallback, useState, useMemo} from 'react';
 import {useEffectOnce} from 'react-use';
 import {
   useProductOptions,
@@ -12,7 +12,7 @@ import {
 
 import {Heading, Text, Button, ProductOptions} from '~/components';
 
-export function ProductOptionsForm({
+export function ProductOptionsVariantForm({
   optionNames,
   initialAvailable,
 }: {
@@ -29,6 +29,26 @@ export function ProductOptionsForm({
     selectedVariant,
     variants,
   } = useProductOptions();
+
+  const filteredVariants = useMemo(() => {
+    const arr: {id: string; selectedOptions: {[key: string]: string}}[] = [];
+    variants?.forEach((variant) => {
+      if (variant?.selectedOptions) {
+        const v: {id: string; selectedOptions: {[key: string]: string}} = {
+          id: '',
+          selectedOptions: {},
+        };
+        v.id = variant?.id as string;
+        variant?.selectedOptions.forEach((option) => {
+          const name = option?.name as string;
+          const value = option?.value as string;
+          v.selectedOptions[name] = value;
+        });
+        arr.push(v);
+      }
+    });
+    return arr;
+  }, [variants]);
 
   // new state
   const [availableOptions, setAvailableOptions] = useState<{
@@ -57,39 +77,44 @@ export function ProductOptionsForm({
       ...selectedOptions,
     };
     let available: {[key: string]: any[]} = {};
-    (options as OptionWithValues[]).map(({name, values}) => {
-      if (!params) return;
-      const currentValue = params.get(name.toLowerCase()) || null;
-      if (currentValue) {
-        const matchedValue = values.filter(
-          (value) => encodeURIComponent(value.toLowerCase()) === currentValue,
+
+    // get variant
+    const currentVariant = params.get('variant') || null;
+    if (currentVariant) {
+      const variantGID = `gid://shopify/ProductVariant/${currentVariant}`;
+      const matchedVariant: any = variants?.find(
+        (variant) => variant?.id === variantGID,
+      );
+      // get selected options
+      optionNames.forEach((name) => {
+        const variantOption = matchedVariant?.selectedOptions.find(
+          (option: {name: string; value: string}) => option?.name === name,
         );
+        // set main value
         if (name === optionNames[0]) {
-          mainValue = matchedValue[0];
+          mainValue = variantOption?.value;
         }
-        setSelectedOption(name, matchedValue[0]);
-        initialSelectedOptions[name] = matchedValue[0];
+        // set new selected options
+        setSelectedOption(name, variantOption?.value);
+        initialSelectedOptions[name] = variantOption?.value;
         if (mainValue !== '') {
-          available = filterOptions(name, matchedValue[0], mainValue);
+          available = filterOptions(name, variantOption?.value, mainValue);
         }
-      } else {
-        params.set(
-          encodeURIComponent(name.toLowerCase()),
-          encodeURIComponent(selectedOptions![name]!.toLowerCase()),
-        ),
-          window.history.replaceState(
-            null,
-            '',
-            `${pathname}?${params.toString()}`,
-          );
-      }
-    });
+      });
+    } else {
+      let id = selectedVariant?.id as string;
+      if (id) id = id.replace('gid://shopify/ProductVariant/', '');
+      params.set(encodeURIComponent('variant'), encodeURIComponent(id)),
+        window.history.replaceState(
+          null,
+          '',
+          `${pathname}?${params.toString()}`,
+        );
+    }
     if (optionNames.length > 2) {
       available = filterLastOption(initialSelectedOptions, available);
     }
-    console.log('AVAILABLE', available);
-    mainValue = initialSelectedOptions[optionNames[0]] as string;
-    available = filterOptions(optionNames[0], mainValue, mainValue);
+
     setAvailableOptions(available);
     // don't seem to need this in dev only in build, why?
     // const value = initialSelectedOptions[optionNames[0]] as string;
@@ -210,10 +235,16 @@ export function ProductOptionsForm({
       optionNames.forEach((optionName) => {
         const optionValue = newSelectedOptions[optionName];
         setSelectedOption(optionName, optionValue);
-        params.set(
-          encodeURIComponent(optionName.toLowerCase()),
-          encodeURIComponent(optionValue.toLowerCase()),
-        );
+      });
+      // get variant id
+      const foundVariant = filteredVariants.find(
+        (variant) =>
+          JSON.stringify(variant.selectedOptions) ===
+          JSON.stringify(newSelectedOptions),
+      );
+      if (foundVariant) {
+        const id = foundVariant.id.replace('gid://shopify/ProductVariant/', '');
+        params.set(encodeURIComponent('variant'), encodeURIComponent(id));
         if (isBrowser()) {
           window.history.replaceState(
             null,
@@ -221,7 +252,7 @@ export function ProductOptionsForm({
             `${pathname}?${params.toString()}`,
           );
         }
-      });
+      }
     },
     [
       selectedOptions,
@@ -231,8 +262,28 @@ export function ProductOptionsForm({
       optionNames,
       filterOptions,
       filterLastOption,
+      filteredVariants,
     ],
   );
+
+  // update variant id on variant change
+  // useEffect(() => {
+  //   if (selectedVariant) {
+  //     const variantGID = selectedVariant?.id as string;
+  //     const id = variantGID.replace('gid://shopify/ProductVariant/', '');
+  //     if (isBrowser()) {
+  //       window.history.replaceState(null, '', `${pathname}?variant=${id}`);
+  //     }
+  //   }
+  // }, [selectedVariant, pathname]);
+
+  // useEffect(() => {
+  //   console.log('SELECTED OPTIONS HAVE CHANGED', selectedOptions);
+  // }, [selectedOptions]);
+
+  useEffect(() => {
+    console.log('SELECTED VARIANT HAVE CHANGED', selectedVariant);
+  }, [selectedVariant]);
 
   return (
     <form className="grid gap-10">

@@ -18,6 +18,7 @@ import {
   ProductDetail,
   ProductForm,
   ProductOptionsForm,
+  ProductOptionsVariantForm,
   ProductGallery,
   Section,
   Text,
