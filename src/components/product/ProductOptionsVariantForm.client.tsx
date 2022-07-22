@@ -34,26 +34,6 @@ export function ProductOptionsVariantForm({
 
   const filteredVariants = useFilteredVariants(variants as ProductVariant[]);
 
-  // const filteredVariants = useMemo(() => {
-  //   const arr: {id: string; selectedOptions: {[key: string]: string}}[] = [];
-  //   variants?.forEach((variant) => {
-  //     if (variant?.selectedOptions) {
-  //       const v: {id: string; selectedOptions: {[key: string]: string}} = {
-  //         id: '',
-  //         selectedOptions: {},
-  //       };
-  //       v.id = variant?.id as string;
-  //       variant?.selectedOptions.forEach((option) => {
-  //         const name = option?.name as string;
-  //         const value = option?.value as string;
-  //         v.selectedOptions[name] = value;
-  //       });
-  //       arr.push(v);
-  //     }
-  //   });
-  //   return arr;
-  // }, [variants]);
-
   // new state
   const [availableOptions, setAvailableOptions] = useState<{
     [key: string]: any;
