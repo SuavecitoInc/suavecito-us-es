@@ -25,11 +25,11 @@ export function ProductSectionImageText({
 }) {
   const renderTextContent = () => {
     return (
-      <div className="flex-1 flex justify-center items-center">
+      <div className="flex-1 flex justify-center items-center py-4">
         {featuredText && (
           <div
             className={`text-justify ${
-              imagePosition === 'left' ? 'pl-[35px]' : 'pr-[35px]'
+              imagePosition === 'left' ? 'md:pl-[35px]' : 'md:pr-[35px]'
             }`}
             dangerouslySetInnerHTML={{__html: featuredText.value}}
           />
@@ -38,7 +38,7 @@ export function ProductSectionImageText({
         {items && (
           <div
             className={`list ${
-              imagePosition === 'left' ? 'pl-[35px]' : 'pr-[35px]'
+              imagePosition === 'left' ? 'md:pl-[35px]' : 'md:md:pr-[35px]'
             }`}
           >
             {items.map((item) => {
@@ -71,7 +71,11 @@ export function ProductSectionImageText({
   };
 
   return (
-    <div className="flex">
+    <div
+      className={`flex ${
+        imagePosition === 'left' ? 'flex-col' : 'flex-col-reverse'
+      } md:flex-row gap-6 md:gap-0`}
+    >
       {imagePosition === 'right' && renderTextContent()}
 
       <div className="flex-1">

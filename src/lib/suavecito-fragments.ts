@@ -80,6 +80,26 @@ export const PRODUCT_SECTION_FRAGMENT = gql`
         ...Media
       }
     }
+    productSectionHowToImage: metafield(
+      namespace: "debut"
+      key: "section_how_to_image"
+    ) {
+      reference {
+        ...Media
+      }
+    }
+    productSectionHowToText: metafield(
+      namespace: "debut"
+      key: "section_how_to"
+    ) {
+      value
+    }
+    productSectionHowToEmbeddedVideo: metafield(
+      namespace: "debut"
+      key: "video_embed"
+    ) {
+      value
+    }
   }
 `;
 

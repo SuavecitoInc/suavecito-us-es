@@ -19,8 +19,8 @@ import {
   NotFound,
   Layout,
   ProductSwimlane,
-  ProductSectionImageText,
   ProductSectionContentGrid,
+  ProductSectionHowTo,
 } from '~/components/index.server';
 import {
   Heading,
@@ -82,6 +82,9 @@ export default function Product() {
     productSectionListItemImage3,
     productSectionListItemText4,
     productSectionListItemImage4,
+    productSectionHowToImage,
+    productSectionHowToText,
+    productSectionHowToEmbeddedVideo,
   } = product;
   const {shippingPolicy, refundPolicy} = shop;
 
@@ -101,6 +104,12 @@ export default function Product() {
     productSectionListItemImage2,
     productSectionListItemImage3,
     productSectionListItemImage4,
+  };
+
+  const productContentHowTo = {
+    productSectionHowToImage,
+    productSectionHowToText,
+    productSectionHowToEmbeddedVideo,
   };
 
   return (
@@ -169,6 +178,11 @@ export default function Product() {
         {/* check if productSectionFeaturedImage1 && productSectionDescription are set */}
         {productSectionFeaturedImage1 && productSectionDescription && (
           <ProductSectionContentGrid {...productContentGridData} />
+        )}
+
+        {/* Product Section How To */}
+        {productSectionHowToText && productSectionHowToImage && (
+          <ProductSectionHowTo {...productContentHowTo} />
         )}
       </div>
     </Layout>

@@ -34,34 +34,36 @@ export function ProductSectionContentGrid({
   return (
     <section>
       <Divider width="half" className="my-[55px]" />
-      <ProductSectionImageText
-        featuredImage={productSectionFeaturedImage1}
-        featuredText={productSectionDescription}
-      />
-      {productSectionListItemText1 && (
+      <div className="flex flex-col gap-6 md:gap-0">
         <ProductSectionImageText
-          featuredImage={productSectionFeaturedImage2}
-          imagePosition="left"
-          items={[
-            {
-              text: productSectionListItemText1,
-              image: productSectionListItemImage1,
-            },
-            {
-              text: productSectionListItemText2,
-              image: productSectionListItemImage2,
-            },
-            {
-              text: productSectionListItemText3,
-              image: productSectionListItemImage3,
-            },
-            {
-              text: productSectionListItemText4,
-              image: productSectionListItemImage4,
-            },
-          ]}
+          featuredImage={productSectionFeaturedImage1}
+          featuredText={productSectionDescription}
         />
-      )}
+        {productSectionListItemText1 && (
+          <ProductSectionImageText
+            featuredImage={productSectionFeaturedImage2}
+            imagePosition="left"
+            items={[
+              {
+                text: productSectionListItemText1,
+                image: productSectionListItemImage1,
+              },
+              {
+                text: productSectionListItemText2,
+                image: productSectionListItemImage2,
+              },
+              {
+                text: productSectionListItemText3,
+                image: productSectionListItemImage3,
+              },
+              {
+                text: productSectionListItemText4,
+                image: productSectionListItemImage4,
+              },
+            ]}
+          />
+        )}
+      </div>
     </section>
   );
 }

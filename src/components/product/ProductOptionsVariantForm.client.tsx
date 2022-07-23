@@ -190,7 +190,7 @@ export function ProductOptionsVariantForm({
                     <Heading as="legend" size="lead" className="min-w-[4rem]">
                       {name}
                     </Heading>
-                    <div className="grid grid-cols-4 auto-rows-max items-center justify-center gap-4">
+                    <div className="grid grid-cols-4 md:grid-cols-3 lg:grid-cols-4 auto-rows-max items-center justify-center gap-4">
                       <ProductOptions
                         name={name}
                         handleChange={handleChange}
@@ -212,7 +212,7 @@ export function ProductOptionsVariantForm({
                 <Heading as="legend" size="lead" className="min-w-[4rem]">
                   {name}
                 </Heading>
-                <div className="grid grid-cols-4 auto-rows-max items-center justify-center gap-4">
+                <div className="grid grid-cols-4 md:grid-cols-3 lg:grid-cols-4 auto-rows-max items-center justify-center gap-4">
                   <ProductOptions
                     name={name}
                     handleChange={handleChange}
