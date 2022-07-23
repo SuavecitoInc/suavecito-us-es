@@ -1,4 +1,6 @@
-# Hydrogen Demo Store
+# Suavecito Hydrogen
+
+> Based on the Hydrogen Demo Store by Shopify
 
 Hydrogen is a React framework and SDK that you can use to build fast and dynamic Shopify custom storefronts.
 
