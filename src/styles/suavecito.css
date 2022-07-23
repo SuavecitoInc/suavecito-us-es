@@ -31,8 +31,7 @@
   height: 0;
 }
 
-.youtube-video .featured-video-iframe,
-.youtube-video iframe {
+.youtube-video .featured-video-iframe {
   position: absolute;
   top: 0;
   left: 0;

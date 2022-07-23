@@ -85,7 +85,7 @@ export function FeaturedVideo({
   return (
     <section className="featured-video page-width relative flex flex-col w-full">
       {coverImage?.reference && (
-        <div className="video-wrapper relative">{renderContent()}</div>
+        <div className="relative">{renderContent()}</div>
       )}
     </section>
   );
