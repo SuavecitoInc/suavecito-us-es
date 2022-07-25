@@ -1,4 +1,4 @@
-import {useEffect, useCallback, useState} from 'react';
+import React, {useEffect, useCallback, useState} from 'react';
 import {useEffectOnce} from 'react-use';
 import {
   useProductOptions,
@@ -16,8 +16,10 @@ import {ProductVariant} from '@shopify/hydrogen/storefront-api-types';
 
 export function ProductOptionsVariantForm({
   optionNames,
+  tags,
 }: {
   optionNames: string[];
+  tags: string[];
 }) {
   const {pathname, search} = useUrl();
   const [params, setParams] = useState(new URLSearchParams(search));
@@ -172,6 +174,36 @@ export function ProductOptionsVariantForm({
             if (values.length === 1) {
               return null;
             }
+            // @ts-ignore Variant Fragrance Profile does not  exist on selected variant
+            if (index === 1 && selectedVariant?.variantFragranceProfile) {
+              return (
+                <React.Fragment key={name}>
+                  <div
+                    className="fragrance-profile"
+                    dangerouslySetInnerHTML={{
+                      // @ts-ignore Variant Fragrance Profile does not  exist on selected variant
+                      __html: selectedVariant?.variantFragranceProfile.value,
+                    }}
+                  />
+
+                  <div className="flex flex-col flex-wrap mb-4 gap-y-2 last:mb-0">
+                    <Heading as="legend" size="lead" className="min-w-[4rem]">
+                      {name}
+                    </Heading>
+                    <div className="grid grid-cols-4 md:grid-cols-3 lg:grid-cols-4 auto-rows-max items-center justify-center gap-4">
+                      <ProductOptions
+                        name={name}
+                        handleChange={handleChange}
+                        values={values}
+                        availableOptions={availableOptions}
+                        index={index}
+                      />
+                    </div>
+                  </div>
+                </React.Fragment>
+              );
+            }
+
             return (
               <div
                 key={name}
@@ -180,7 +212,7 @@ export function ProductOptionsVariantForm({
                 <Heading as="legend" size="lead" className="min-w-[4rem]">
                   {name}
                 </Heading>
-                <div className="flex flex-wrap items-baseline gap-4">
+                <div className="grid grid-cols-4 md:grid-cols-3 lg:grid-cols-4 auto-rows-max items-center justify-center gap-4">
                   <ProductOptions
                     name={name}
                     handleChange={handleChange}
@@ -194,6 +226,36 @@ export function ProductOptionsVariantForm({
           })}
         </div>
       }
+
+      <div className="gird-gap-2">
+        {selectedVariant && (
+          <div className="text-black font-bold text-3xl">
+            <Money
+              withoutTrailingZeros
+              data={selectedVariant.priceV2!}
+              as="span"
+            />
+            {(isOnSale || tags.includes('On Sale')) && (
+              <>
+                {selectedVariant.compareAtPriceV2 && (
+                  <Money
+                    withoutTrailingZeros
+                    data={selectedVariant.compareAtPriceV2!}
+                    as="span"
+                    className="opacity-50 strike"
+                  />
+                )}
+              </>
+            )}
+            {(isOnSale || tags.includes('On Sale')) && (
+              <span className="bg-suave-yellow text-black font-semibold mr-2 px-2.5 py-0.5 ml-4">
+                Sale
+              </span>
+            )}
+          </div>
+        )}
+      </div>
+
       <div className="grid items-stretch gap-4">
         <AddToCartButton
           variantId={selectedVariant?.id}
@@ -203,7 +265,7 @@ export function ProductOptionsVariantForm({
         >
           <Button
             width="full"
-            variant={isOutOfStock ? 'secondary' : 'primary'}
+            variant={isOutOfStock ? 'secondary' : 'suavecito'}
             as="span"
           >
             {isOutOfStock ? (
@@ -213,25 +275,12 @@ export function ProductOptionsVariantForm({
                 as="span"
                 className="flex items-center justify-center gap-2"
               >
-                <span>Add to bag</span> <span>·</span>{' '}
-                <Money
-                  withoutTrailingZeros
-                  data={selectedVariant.priceV2!}
-                  as="span"
-                />
-                {isOnSale && (
-                  <Money
-                    withoutTrailingZeros
-                    data={selectedVariant.compareAtPriceV2!}
-                    as="span"
-                    className="opacity-50 strike"
-                  />
-                )}
+                <span>ADD TO CART</span>
               </Text>
             )}
           </Button>
         </AddToCartButton>
-        {!isOutOfStock && <ShopPayButton variantIds={[selectedVariant.id!]} />}
+        {/* {!isOutOfStock && <ShopPayButton variantIds={[selectedVariant.id!]} />} */}
       </div>
     </form>
   );

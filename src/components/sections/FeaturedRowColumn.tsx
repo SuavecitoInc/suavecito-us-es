@@ -1,4 +1,4 @@
-import {Image, Link, Video} from '@shopify/hydrogen';
+import {Image} from '@shopify/hydrogen';
 import type {Media} from '@shopify/hydrogen/storefront-api-types';
 
 import {Heading, Text, Button} from '~/components';
