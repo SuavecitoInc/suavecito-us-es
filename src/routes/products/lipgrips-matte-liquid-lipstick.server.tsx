@@ -14,6 +14,7 @@ import {MEDIA_FRAGMENT} from '~/lib/fragments';
 import {
   PRODUCT_SECTION_FRAGMENT,
   VARIANT_METAFIELD_IMAGES_FRAGMENT,
+  VARIANT_METAFIELD_COLOR_IMAGES_FRAGMENT,
 } from '~/lib/suavecito-fragments';
 import {
   NotFound,
@@ -35,7 +36,7 @@ import {
 import {ProductVariant} from '@shopify/hydrogen/storefront-api-types';
 
 export default function Product() {
-  const {handle} = useRouteParams();
+  const handle = 'lipgrips-matte-liquid-lipstick';
   const {
     language: {isoCode: languageCode},
     country: {isoCode: countryCode},
@@ -113,6 +114,15 @@ export default function Product() {
     productSectionHowToEmbeddedVideo,
   };
 
+  const getColorOptions = () => {
+    const colorOptions: any[] = [];
+    variants.nodes?.map((variant: ProductVariant) => {
+      // @ts-ignore
+      colorOptions.push(variant?.variantColorImage);
+    });
+    return colorOptions;
+  };
+
   return (
     <Layout>
       <Suspense>
@@ -129,7 +139,7 @@ export default function Product() {
                 <ProductImages images={images.nodes} className="flex-1" />
               )}
               <div className="flex-1">
-                <section>
+                <section className="">
                   <div className="grid gap-2">
                     <Heading as="h1" format className="whitespace-normal">
                       {title}
@@ -142,6 +152,7 @@ export default function Product() {
                     <ProductOptionsVariantForm
                       optionNames={defaultOptionNames}
                       tags={tags}
+                      colorOptions={getColorOptions()}
                     />
                   </Suspense>
 
@@ -194,6 +205,7 @@ const PRODUCT_QUERY = gql`
   ${MEDIA_FRAGMENT}
   ${PRODUCT_SECTION_FRAGMENT}
   ${VARIANT_METAFIELD_IMAGES_FRAGMENT}
+  ${VARIANT_METAFIELD_COLOR_IMAGES_FRAGMENT}
   query Product(
     $country: CountryCode
     $language: LanguageCode
@@ -253,6 +265,7 @@ const PRODUCT_QUERY = gql`
             currencyCode
           }
           ...VariantMetafieldImages
+          ...VariantMetafieldColorImages
         }
       }
       seo {

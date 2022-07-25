@@ -5,7 +5,6 @@ import {
   Seo,
   ShopifyAnalyticsConstants,
   useLocalization,
-  useRouteParams,
   useServerAnalytics,
   useShopQuery,
 } from '@shopify/hydrogen';
@@ -24,18 +23,15 @@ import {
 } from '~/components/index.server';
 import {
   Heading,
-  ProductDetail,
   ProductOptionsVariantForm,
-  ProductImages,
   ProductMetafieldImages,
   Section,
   Text,
   Divider,
 } from '~/components';
-import {ProductVariant} from '@shopify/hydrogen/storefront-api-types';
 
 export default function Product() {
-  const {handle} = useRouteParams();
+  const handle = 'original-hold-pomade';
   const {
     language: {isoCode: languageCode},
     country: {isoCode: countryCode},
@@ -122,12 +118,8 @@ export default function Product() {
         <ProductOptionsProvider data={product}>
           <Section padding="x" className="px-0">
             <div className="flex flex-col md:flex-row gap-10">
-              {/* if metafield images exist  */}
-              {variants.nodes[0]?.variantImage1 ? (
-                <ProductMetafieldImages className="flex-1" />
-              ) : (
-                <ProductImages images={images.nodes} className="flex-1" />
-              )}
+              <ProductMetafieldImages className="flex-1" />
+
               <div className="flex-1">
                 <section>
                   <div className="grid gap-2">
@@ -144,36 +136,10 @@ export default function Product() {
                       tags={tags}
                     />
                   </Suspense>
-
-                  {/* <div className="grid gap-4 py-4">
-                    {descriptionHtml && (
-                      <ProductDetail
-                        title="Product Details"
-                        content={descriptionHtml}
-                      />
-                    )}
-                    {shippingPolicy?.body && (
-                      <ProductDetail
-                        title="Shipping"
-                        content={getExcerpt(shippingPolicy.body)}
-                        learnMore={`/policies/${shippingPolicy.handle}`}
-                      />
-                    )}
-                    {refundPolicy?.body && (
-                      <ProductDetail
-                        title="Returns"
-                        content={getExcerpt(refundPolicy.body)}
-                        learnMore={`/policies/${refundPolicy.handle}`}
-                      />
-                    )}
-                  </div> */}
                 </section>
               </div>
             </div>
           </Section>
-          {/* <Suspense>
-            <ProductSwimlane title="Related Products" data={id} />
-          </Suspense> */}
         </ProductOptionsProvider>
 
         {/* check if productSectionFeaturedImage1 && productSectionDescription are set */}

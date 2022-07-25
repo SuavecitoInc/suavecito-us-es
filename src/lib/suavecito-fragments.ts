@@ -133,3 +133,16 @@ export const VARIANT_METAFIELD_IMAGES_FRAGMENT = gql`
     }
   }
 `;
+
+export const VARIANT_METAFIELD_COLOR_IMAGES_FRAGMENT = gql`
+  fragment VariantMetafieldColorImages on ProductVariant {
+    variantColorImage: metafield(
+      namespace: "debut"
+      key: "variant_color_image"
+    ) {
+      reference {
+        ...Media
+      }
+    }
+  }
+`;

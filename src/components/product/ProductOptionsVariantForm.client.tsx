@@ -11,15 +11,28 @@ import {
 } from '@shopify/hydrogen';
 import {useVariantsWithOptions, useAvailableOptions} from '~/hooks';
 
-import {Heading, Text, Button, ProductOptions} from '~/components';
-import {ProductVariant} from '@shopify/hydrogen/storefront-api-types';
+import {
+  Heading,
+  Text,
+  Button,
+  ProductOptions,
+  ProductColorOptions,
+} from '~/components';
+import {Media, ProductVariant} from '@shopify/hydrogen/storefront-api-types';
+
+interface Metafield {
+  value: string;
+  reference?: object;
+}
 
 export function ProductOptionsVariantForm({
   optionNames,
   tags,
+  colorOptions = [],
 }: {
   optionNames: string[];
   tags: string[];
+  colorOptions?: Metafield[];
 }) {
   const {pathname, search} = useUrl();
   const [params, setParams] = useState(new URLSearchParams(search));
@@ -170,14 +183,31 @@ export function ProductOptionsVariantForm({
     <form className="grid gap-10">
       {
         <div className="grid gap-4">
+          {colorOptions.length > 0 &&
+            (options as OptionWithValues[]).map(({name, values}, index) => {
+              if (values.length === 1) {
+                return null;
+              }
+              <ProductColorOptions
+                key={name}
+                name={name}
+                handleChange={handleChange}
+                values={values}
+                colorOptions={colorOptions}
+                availableOptions={availableOptions}
+                index={index}
+              />;
+            })}
+
           {(options as OptionWithValues[]).map(({name, values}, index) => {
             if (values.length === 1) {
               return null;
             }
+
             // @ts-ignore Variant Fragrance Profile does not  exist on selected variant
             if (index === 1 && selectedVariant?.variantFragranceProfile) {
               return (
-                <React.Fragment key={name}>
+                <div className="grid gap-4" key={name}>
                   <div
                     className="fragrance-profile"
                     dangerouslySetInnerHTML={{
@@ -200,26 +230,25 @@ export function ProductOptionsVariantForm({
                       />
                     </div>
                   </div>
-                </React.Fragment>
+                </div>
               );
             }
 
             return (
-              <div
-                key={name}
-                className="flex flex-col flex-wrap mb-4 gap-y-2 last:mb-0"
-              >
-                <Heading as="legend" size="lead" className="min-w-[4rem]">
-                  {name}
-                </Heading>
-                <div className="grid grid-cols-4 md:grid-cols-3 lg:grid-cols-4 auto-rows-max items-center justify-center gap-4">
-                  <ProductOptions
-                    name={name}
-                    handleChange={handleChange}
-                    values={values}
-                    availableOptions={availableOptions}
-                    index={index}
-                  />
+              <div key={name}>
+                <div className="flex flex-col flex-wrap mb-4 gap-y-2 last:mb-0">
+                  <Heading as="legend" size="lead" className="min-w-[4rem]">
+                    {name}
+                  </Heading>
+                  <div className="grid grid-cols-4 md:grid-cols-3 lg:grid-cols-4 auto-rows-max items-center justify-center gap-4">
+                    <ProductOptions
+                      name={name}
+                      handleChange={handleChange}
+                      values={values}
+                      availableOptions={availableOptions}
+                      index={index}
+                    />
+                  </div>
                 </div>
               </div>
             );
@@ -242,7 +271,7 @@ export function ProductOptionsVariantForm({
                     withoutTrailingZeros
                     data={selectedVariant.compareAtPriceV2!}
                     as="span"
-                    className="opacity-50 strike"
+                    className="ml-3 opacity-50 strike"
                   />
                 )}
               </>

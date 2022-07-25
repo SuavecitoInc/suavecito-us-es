@@ -8,3 +8,4 @@ export {ProductOptionsForm} from './ProductOptionsForm.client';
 export {ProductOptionsVariantForm} from './ProductOptionsVariantForm.client';
 export {ProductImages} from './ProductImages.client';
 export {ProductMetafieldImages} from './ProductMetafieldImages.client';
+export {ProductColorOptions} from './ProductColorOptions.client';
