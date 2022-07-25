@@ -21,7 +21,7 @@ import type {EnhancedMenu, EnhancedMenuItem} from '~/lib/utils';
 
 import {Brands} from '~/data/brands';
 
-import {MobileNav} from '../MobileNav';
+import {MobileNav} from '../sections/MobileNav';
 /**
  * A client component that specifies the content of the header on the website
  */
@@ -126,6 +126,7 @@ function MobileHeader({
         <Link
           className="flex items-center justify-start flex-grow w-full h-full flex-shrink-1 my-[15px]"
           to="/"
+          onClick={(evt) => closeMobileMenu(false)}
         >
           <Image
             alt={Brands[brand].alt}
