@@ -18,10 +18,15 @@ const SHOP_NAME_FALLBACK = 'Hydrogen';
 
 export function Layout({
   children,
-  theme = 'firme-club',
+  theme = 'suavecito',
 }: {
   children: React.ReactNode;
-  theme: string;
+  theme?:
+    | 'suavecito'
+    | 'suavecita'
+    | 'firme club'
+    | 'premium blends'
+    | 'cerveza cito';
 }) {
   return (
     <>

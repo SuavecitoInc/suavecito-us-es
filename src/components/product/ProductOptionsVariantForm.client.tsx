@@ -18,7 +18,7 @@ import {
   ProductOptions,
   ProductColorOptions,
 } from '~/components';
-import {Media, ProductVariant} from '@shopify/hydrogen/storefront-api-types';
+import {ProductVariant} from '@shopify/hydrogen/storefront-api-types';
 
 interface Metafield {
   value: string;
@@ -26,10 +26,12 @@ interface Metafield {
 }
 
 export function ProductOptionsVariantForm({
+  theme = 'suavecito',
   optionNames,
   tags,
   colorOptions = [],
 }: {
+  theme?: 'suavecito' | 'suavecita';
   optionNames: string[];
   tags: string[];
   colorOptions?: Metafield[];
@@ -183,39 +185,55 @@ export function ProductOptionsVariantForm({
     <form className="grid gap-10">
       {
         <div className="grid gap-4">
-          {colorOptions.length > 0 &&
+          {colorOptions.length > 0 && (
+            <ColorOptions
+              name="Color"
+              handleChange={handleChange}
+              // @ts-ignore
+              values={options[0].values}
+              colorOptions={colorOptions}
+              availableOptions={availableOptions}
+            />
+          )}
+
+          {colorOptions.length === 0 &&
             (options as OptionWithValues[]).map(({name, values}, index) => {
               if (values.length === 1) {
                 return null;
               }
-              <ProductColorOptions
-                key={name}
-                name={name}
-                handleChange={handleChange}
-                values={values}
-                colorOptions={colorOptions}
-                availableOptions={availableOptions}
-                index={index}
-              />;
-            })}
 
-          {(options as OptionWithValues[]).map(({name, values}, index) => {
-            if (values.length === 1) {
-              return null;
-            }
+              // @ts-ignore Variant Fragrance Profile does not  exist on selected variant
+              if (index === 1 && selectedVariant?.variantFragranceProfile) {
+                return (
+                  <div className="grid gap-4" key={name}>
+                    <div
+                      className="fragrance-profile"
+                      dangerouslySetInnerHTML={{
+                        // @ts-ignore Variant Fragrance Profile does not  exist on selected variant
+                        __html: selectedVariant?.variantFragranceProfile.value,
+                      }}
+                    />
 
-            // @ts-ignore Variant Fragrance Profile does not  exist on selected variant
-            if (index === 1 && selectedVariant?.variantFragranceProfile) {
+                    <div className="flex flex-col flex-wrap mb-4 gap-y-2 last:mb-0">
+                      <Heading as="legend" size="lead" className="min-w-[4rem]">
+                        {name}
+                      </Heading>
+                      <div className="grid grid-cols-4 md:grid-cols-3 lg:grid-cols-4 auto-rows-max items-center justify-center gap-4">
+                        <ProductOptions
+                          name={name}
+                          handleChange={handleChange}
+                          values={values}
+                          availableOptions={availableOptions}
+                          index={index}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                );
+              }
+
               return (
-                <div className="grid gap-4" key={name}>
-                  <div
-                    className="fragrance-profile"
-                    dangerouslySetInnerHTML={{
-                      // @ts-ignore Variant Fragrance Profile does not  exist on selected variant
-                      __html: selectedVariant?.variantFragranceProfile.value,
-                    }}
-                  />
-
+                <div key={name}>
                   <div className="flex flex-col flex-wrap mb-4 gap-y-2 last:mb-0">
                     <Heading as="legend" size="lead" className="min-w-[4rem]">
                       {name}
@@ -232,27 +250,7 @@ export function ProductOptionsVariantForm({
                   </div>
                 </div>
               );
-            }
-
-            return (
-              <div key={name}>
-                <div className="flex flex-col flex-wrap mb-4 gap-y-2 last:mb-0">
-                  <Heading as="legend" size="lead" className="min-w-[4rem]">
-                    {name}
-                  </Heading>
-                  <div className="grid grid-cols-4 md:grid-cols-3 lg:grid-cols-4 auto-rows-max items-center justify-center gap-4">
-                    <ProductOptions
-                      name={name}
-                      handleChange={handleChange}
-                      values={values}
-                      availableOptions={availableOptions}
-                      index={index}
-                    />
-                  </div>
-                </div>
-              </div>
-            );
-          })}
+            })}
         </div>
       }
 
@@ -294,7 +292,7 @@ export function ProductOptionsVariantForm({
         >
           <Button
             width="full"
-            variant={isOutOfStock ? 'secondary' : 'suavecito'}
+            variant={isOutOfStock ? 'secondary' : theme}
             as="span"
           >
             {isOutOfStock ? (
@@ -312,5 +310,39 @@ export function ProductOptionsVariantForm({
         {/* {!isOutOfStock && <ShopPayButton variantIds={[selectedVariant.id!]} />} */}
       </div>
     </form>
+  );
+}
+
+function ColorOptions({
+  name,
+  values,
+  handleChange,
+  colorOptions,
+  availableOptions,
+}: {
+  name: string;
+  values: any[];
+  handleChange: (name: string, value: string) => void;
+  colorOptions: Metafield[];
+  availableOptions: {[key: string]: string[]};
+}) {
+  const {selectedOptions} = useProductOptions();
+
+  return (
+    <div className="flex flex-col flex-wrap mb-4 gap-y-2 last:mb-0">
+      <Heading as="legend" size="lead" className="min-w-[4rem]">
+        {/* @ts-ignore */}
+        {name}: {selectedOptions[name]}
+      </Heading>
+      <div className="grid grid-cols-4 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 auto-rows-max items-center justify-center gap-4">
+        <ProductColorOptions
+          name={name}
+          handleChange={handleChange}
+          values={values}
+          colorOptions={colorOptions}
+          availableOptions={availableOptions}
+        />
+      </div>
+    </div>
   );
 }

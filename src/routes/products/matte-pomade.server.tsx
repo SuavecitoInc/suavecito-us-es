@@ -33,7 +33,7 @@ import {
 } from '~/components';
 
 export default function Product() {
-  const handle = 'original-hold-pomade';
+  const handle = 'matte-pomade';
   const {
     language: {isoCode: languageCode},
     country: {isoCode: countryCode},

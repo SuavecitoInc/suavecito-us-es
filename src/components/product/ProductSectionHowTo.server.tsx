@@ -11,7 +11,7 @@ export function ProductSectionHowTo({
   productSectionHowToText,
   productSectionHowToEmbeddedVideo,
 }: {
-  productSectionHowToImage: Metafield;
+  productSectionHowToImage?: Metafield;
   productSectionHowToText: Metafield;
   productSectionHowToEmbeddedVideo: Metafield;
 }) {
@@ -21,8 +21,16 @@ export function ProductSectionHowTo({
       <Heading as="h3" size="heading" className="uppercase text-center">
         How to Use
       </Heading>
-      <div className="pt-6 flex flex-col md:flex-row gap-6 border-b-2 border-black">
-        <div className="flex-1 flex flex-col">
+      <div
+        className={`pt-6 flex flex-col md:flex-row gap-6 ${
+          productSectionHowToImage && 'border-b-2 border-black'
+        }`}
+      >
+        <div
+          className={`flex-1 flex flex-col ${
+            !productSectionHowToImage && 'justify-center'
+          }`}
+        >
           {productSectionHowToText && (
             <div
               className="directions"

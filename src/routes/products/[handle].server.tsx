@@ -11,17 +11,8 @@ import {
 } from '@shopify/hydrogen';
 
 import {MEDIA_FRAGMENT} from '~/lib/fragments';
-import {
-  PRODUCT_SECTION_FRAGMENT,
-  VARIANT_METAFIELD_IMAGES_FRAGMENT,
-} from '~/lib/suavecito-fragments';
-import {
-  NotFound,
-  Layout,
-  ProductSwimlane,
-  ProductSectionContentGrid,
-  ProductSectionHowTo,
-} from '~/components/index.server';
+import {PRODUCT_APPAREL_FRAGMENT} from '~/lib/suavecito-fragments';
+import {NotFound, Layout, ProductSwimlane} from '~/components/index.server';
 import {
   Heading,
   ProductDetail,
@@ -31,8 +22,8 @@ import {
   Section,
   Text,
   Divider,
+  ProductSectionInfoTabs,
 } from '~/components';
-import {ProductVariant} from '@shopify/hydrogen/storefront-api-types';
 
 export default function Product() {
   const {handle} = useRouteParams();
@@ -72,20 +63,13 @@ export default function Product() {
     options,
     variants,
     tags,
-    productSectionFeaturedImage1,
-    productSectionFeaturedImage2,
-    productSectionDescription,
-    productSectionListItemText1,
-    productSectionListItemImage1,
-    productSectionListItemText2,
-    productSectionListItemImage2,
-    productSectionListItemText3,
-    productSectionListItemImage3,
-    productSectionListItemText4,
-    productSectionListItemImage4,
-    productSectionHowToImage,
-    productSectionHowToText,
-    productSectionHowToEmbeddedVideo,
+    apparelFit,
+    apparelMaterial,
+    apparelColor,
+    apparelLogoFront,
+    apparelLogoBack,
+    sizeChart,
+    oldSizeChart,
   } = product;
   const {shippingPolicy, refundPolicy} = shop;
 
@@ -93,24 +77,46 @@ export default function Product() {
     (option: {name: string}) => option.name,
   );
 
-  const productContentGridData = {
-    productSectionFeaturedImage1,
-    productSectionFeaturedImage2,
-    productSectionDescription,
-    productSectionListItemText1,
-    productSectionListItemText2,
-    productSectionListItemText3,
-    productSectionListItemText4,
-    productSectionListItemImage1,
-    productSectionListItemImage2,
-    productSectionListItemImage3,
-    productSectionListItemImage4,
-  };
+  const getTabsContent = () => {
+    const tabs: {title: string; content: any}[] = [];
+    // features
+    if (
+      apparelFit ||
+      apparelMaterial ||
+      apparelColor ||
+      apparelLogoFront ||
+      apparelLogoBack
+    ) {
+      const features: {title: string; content: {[key: string]: string}} = {
+        title: 'Features',
+        content: {},
+      };
+      if (apparelFit) features.content.fit = apparelFit.value;
+      if (apparelMaterial) features.content.material = apparelMaterial.value;
+      if (apparelColor) features.content.color = apparelColor.value;
+      if (apparelLogoFront) features.content.logoFront = apparelLogoFront.value;
+      if (apparelLogoBack) features.content.logoBack = apparelLogoBack.value;
+      tabs.push(features);
+    }
+    // description
+    tabs.push({
+      title: 'Description',
+      content: descriptionHtml,
+    });
+    // product size chart
+    // let productSizeChartType: string | null = null;
+    // if (sizeChart) {
+    //   productSizeChartType = sizeChart.value;
+    // } else if (oldSizeChart) {
+    //   productSizeChartType = oldSizeChart.value;
+    // }
 
-  const productContentHowTo = {
-    productSectionHowToImage,
-    productSectionHowToText,
-    productSectionHowToEmbeddedVideo,
+    // tabs.push({
+    //   title: 'Size Chart',
+    //   content: productSizeChartType,
+    // });
+
+    return tabs;
   };
 
   return (
@@ -176,15 +182,11 @@ export default function Product() {
           </Suspense> */}
         </ProductOptionsProvider>
 
-        {/* check if productSectionFeaturedImage1 && productSectionDescription are set */}
-        {productSectionFeaturedImage1 && productSectionDescription && (
-          <ProductSectionContentGrid {...productContentGridData} />
-        )}
-
-        {/* Product Section How To */}
-        {productSectionHowToText && productSectionHowToImage && (
-          <ProductSectionHowTo {...productContentHowTo} />
-        )}
+        <div className="grid gap-4 py-4">
+          {descriptionHtml && (
+            <ProductSectionInfoTabs tabs={getTabsContent()} />
+          )}
+        </div>
       </div>
     </Layout>
   );
@@ -192,8 +194,7 @@ export default function Product() {
 
 const PRODUCT_QUERY = gql`
   ${MEDIA_FRAGMENT}
-  ${PRODUCT_SECTION_FRAGMENT}
-  ${VARIANT_METAFIELD_IMAGES_FRAGMENT}
+  ${PRODUCT_APPAREL_FRAGMENT}
   query Product(
     $country: CountryCode
     $language: LanguageCode
@@ -222,7 +223,7 @@ const PRODUCT_QUERY = gql`
         }
       }
       tags
-      ...ProductSection
+      ...ProductApparel
       variants(first: 100) {
         nodes {
           id
@@ -252,7 +253,6 @@ const PRODUCT_QUERY = gql`
             amount
             currencyCode
           }
-          ...VariantMetafieldImages
         }
       }
       seo {

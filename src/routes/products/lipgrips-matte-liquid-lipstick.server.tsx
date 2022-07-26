@@ -5,7 +5,6 @@ import {
   Seo,
   ShopifyAnalyticsConstants,
   useLocalization,
-  useRouteParams,
   useServerAnalytics,
   useShopQuery,
 } from '@shopify/hydrogen';
@@ -15,23 +14,23 @@ import {
   PRODUCT_SECTION_FRAGMENT,
   VARIANT_METAFIELD_IMAGES_FRAGMENT,
   VARIANT_METAFIELD_COLOR_IMAGES_FRAGMENT,
+  VARIANT_METAFIELD_LIFESTYLE_IMAGES_FRAGMENT,
 } from '~/lib/suavecito-fragments';
 import {
   NotFound,
   Layout,
-  ProductSwimlane,
   ProductSectionContentGrid,
   ProductSectionHowTo,
+  ProductSectionYouMayAlsoLike,
 } from '~/components/index.server';
 import {
   Heading,
-  ProductDetail,
   ProductOptionsVariantForm,
   ProductImages,
   ProductMetafieldImages,
+  ProductSectionGetInspired,
   Section,
   Text,
-  Divider,
 } from '~/components';
 import {ProductVariant} from '@shopify/hydrogen/storefront-api-types';
 
@@ -124,20 +123,22 @@ export default function Product() {
   };
 
   return (
-    <Layout>
+    <Layout theme={vendor.toLowerCase()}>
       <Suspense>
         <Seo type="product" data={product} />
       </Suspense>
-      <div className="page-width">
-        <ProductOptionsProvider data={product}>
+      <ProductOptionsProvider data={product}>
+        <div className="page-width">
           <Section padding="x" className="px-0">
             <div className="flex flex-col md:flex-row gap-10">
               {/* if metafield images exist  */}
-              {variants.nodes[0]?.variantImage1 ? (
-                <ProductMetafieldImages className="flex-1" />
-              ) : (
-                <ProductImages images={images.nodes} className="flex-1" />
-              )}
+              <Suspense>
+                {variants.nodes[0]?.variantImage1 ? (
+                  <ProductMetafieldImages className="flex-1" />
+                ) : (
+                  <ProductImages images={images.nodes} className="flex-1" />
+                )}
+              </Suspense>
               <div className="flex-1">
                 <section className="">
                   <div className="grid gap-2">
@@ -150,34 +151,12 @@ export default function Product() {
                   </div>
                   <Suspense>
                     <ProductOptionsVariantForm
+                      theme={vendor.toLowerCase()}
                       optionNames={defaultOptionNames}
                       tags={tags}
                       colorOptions={getColorOptions()}
                     />
                   </Suspense>
-
-                  {/* <div className="grid gap-4 py-4">
-                    {descriptionHtml && (
-                      <ProductDetail
-                        title="Product Details"
-                        content={descriptionHtml}
-                      />
-                    )}
-                    {shippingPolicy?.body && (
-                      <ProductDetail
-                        title="Shipping"
-                        content={getExcerpt(shippingPolicy.body)}
-                        learnMore={`/policies/${shippingPolicy.handle}`}
-                      />
-                    )}
-                    {refundPolicy?.body && (
-                      <ProductDetail
-                        title="Returns"
-                        content={getExcerpt(refundPolicy.body)}
-                        learnMore={`/policies/${refundPolicy.handle}`}
-                      />
-                    )}
-                  </div> */}
                 </section>
               </div>
             </div>
@@ -185,18 +164,25 @@ export default function Product() {
           {/* <Suspense>
             <ProductSwimlane title="Related Products" data={id} />
           </Suspense> */}
-        </ProductOptionsProvider>
 
-        {/* check if productSectionFeaturedImage1 && productSectionDescription are set */}
-        {productSectionFeaturedImage1 && productSectionDescription && (
-          <ProductSectionContentGrid {...productContentGridData} />
-        )}
+          {/* Product Section Get Inspired */}
+          {variants.nodes[0].variantLifestyleImage1 && (
+            <ProductSectionGetInspired theme={vendor.toLowerCase()} />
+          )}
 
-        {/* Product Section How To */}
-        {productSectionHowToText && productSectionHowToImage && (
-          <ProductSectionHowTo {...productContentHowTo} />
-        )}
-      </div>
+          {/* Product Section Grid */}
+          {productSectionFeaturedImage1 && productSectionDescription && (
+            <ProductSectionContentGrid {...productContentGridData} />
+          )}
+
+          {/* Product Section How To */}
+          {productSectionHowToText && productSectionHowToEmbeddedVideo && (
+            <ProductSectionHowTo {...productContentHowTo} />
+          )}
+
+          <ProductSectionYouMayAlsoLike />
+        </div>
+      </ProductOptionsProvider>
     </Layout>
   );
 }
@@ -206,6 +192,7 @@ const PRODUCT_QUERY = gql`
   ${PRODUCT_SECTION_FRAGMENT}
   ${VARIANT_METAFIELD_IMAGES_FRAGMENT}
   ${VARIANT_METAFIELD_COLOR_IMAGES_FRAGMENT}
+  ${VARIANT_METAFIELD_LIFESTYLE_IMAGES_FRAGMENT}
   query Product(
     $country: CountryCode
     $language: LanguageCode
@@ -266,6 +253,7 @@ const PRODUCT_QUERY = gql`
           }
           ...VariantMetafieldImages
           ...VariantMetafieldColorImages
+          ...VariantMetafieldLifestyleImages
         }
       }
       seo {

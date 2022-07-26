@@ -21,7 +21,6 @@ import {
   ProductSectionContentGrid,
   ProductSectionHowTo,
   ProductSectionHowItLooks,
-  PomadeCompareChart,
   ProductSectionYouMayAlsoLike,
 } from '~/components/index.server';
 import {
@@ -33,7 +32,7 @@ import {
 } from '~/components';
 
 export default function Product() {
-  const handle = 'original-hold-pomade';
+  const handle = 'hair-cream';
   const {
     language: {isoCode: languageCode},
     country: {isoCode: countryCode},
@@ -175,7 +174,6 @@ export default function Product() {
       )}
 
       <div className="page-width">
-        <PomadeCompareChart />
         <ProductSectionYouMayAlsoLike />
       </div>
     </Layout>
