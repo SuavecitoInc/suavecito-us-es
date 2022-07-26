@@ -10,20 +10,24 @@ export function MobileNav({
   isMobileOpen,
   setMobileOpen,
   menu,
-  fillColor,
+  theme,
   currentSubCollection,
   setCurrentSubCollection,
 }: {
   isMobileOpen: boolean;
   setMobileOpen: (b: boolean) => void;
   menu?: EnhancedMenu;
-  fillColor: string;
+  theme?: 'suavecito' | 'suavecita';
   currentSubCollection: EnhancedMenuItem | null;
   setCurrentSubCollection: (i: EnhancedMenuItem | null) => void;
 }) {
   const toggleSubMenu = (item: EnhancedMenuItem) => {
     setCurrentSubCollection(item);
   };
+
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [setMobileOpen]);
 
   const windowSize = useWindowSize().width;
 
@@ -38,28 +42,25 @@ export function MobileNav({
     setCurrentSubCollection(null);
   };
 
+  const themeText: any = {
+    suavecito: 'text-suave-red',
+    suavecita: 'text-suave-pink',
+  };
+
   return (
-    <>
+    <div className={`${!isMobileOpen ? 'hidden' : ''}`}>
       <Transition
-        className={'md:hidden'}
+        className={'md:hidden ' + themeText[theme!]}
         show={isMobileOpen}
-        enter="ease-in"
-        enterFrom="translate-y-100 opacity-0 duration-100"
-        enterTo="translate-y-0 opacity-100"
-        leave="ease-out"
-        leaveFrom="translate-y-0 opacity-100"
-        leaveTo="translate-y-100 opacity-0"
+        enter="transform transition ease-in-out duration-500"
+        enterFrom="-translate-y-full"
+        enterTo="translate-y-0"
+        leave="transform transition ease-in-out duration-500"
+        leaveFrom="translate-y-0"
+        leaveTo="-translate-y-full"
       >
-        <Transition
-          show={currentSubCollection !== null ? false : true}
-          enter="ease-in-out"
-          enterFrom="translate-y-0 opacity-0"
-          enterTo="translate-y-0 opacity-100"
-          leave="ease-out"
-          leaveFrom="translate-y-0 opacity-100"
-          leaveTo="translate-y-0 opacity-0"
-        >
-          <div>
+        <Transition show={currentSubCollection !== null ? false : true}>
+          <nav>
             <ul className="flex flex-col">
               {(menu?.items || []).map((item: EnhancedMenuItem) => {
                 if (item.items.length === 0) {
@@ -72,6 +73,7 @@ export function MobileNav({
                         className="hover:underline text-[15px]"
                         to={item.to}
                         target={item.target}
+                        onClick={(evt) => setMobileOpen(false)}
                       >
                         {item.title}
                       </Link>
@@ -89,23 +91,28 @@ export function MobileNav({
                     >
                       <span>{item.title}</span>
                       <span>
-                        <IconArrow direction="right" fill={fillColor} />
+                        <IconArrow
+                          direction="right"
+                          theme={theme}
+                          width={'w-[14px]'}
+                          height={'w-[14px]'}
+                        />
                       </span>
                     </button>
                   </li>
                 );
               })}
             </ul>
-          </div>
+          </nav>
         </Transition>
         <Transition
           show={currentSubCollection === null ? false : true}
-          enter="ease-in-out"
-          enterFrom="translate-y-0 opacity-0"
-          enterTo="translate-y-0 opacity-100"
-          leave="ease-out"
-          leaveFrom="translate-y-0 opacity-100"
-          leaveTo="translate-y-0 opacity-0"
+          enter="transform transition ease-in-out duration-300"
+          enterFrom="-translate-x-full"
+          enterTo="translate-x-0"
+          leave="transform transition ease-in-out duration-300"
+          leaveFrom="translate-x-0"
+          leaveTo="-translate-x-full"
         >
           {currentSubCollection && (
             <ul className="flex flex-col">
@@ -115,7 +122,12 @@ export function MobileNav({
                     className="px-[21px] py-[15px] border border-solid border-color-gray-300"
                     onClick={(evt) => untoggleSubMenu()}
                   >
-                    <IconArrow direction="left" fill={fillColor} />
+                    <IconArrow
+                      direction="left"
+                      theme={theme}
+                      width={'w-[14px]'}
+                      height={'w-[14px]'}
+                    />
                   </button>
                   <span className="px-[18px]">
                     {currentSubCollection.title}
@@ -131,6 +143,7 @@ export function MobileNav({
                     className="hover:underline text-[15px] flex w-full"
                     to={subItem.to}
                     target={subItem.target}
+                    onClick={(evt) => setMobileOpen(false)}
                   >
                     {subItem.title}
                   </Link>
@@ -140,6 +153,6 @@ export function MobileNav({
           )}
         </Transition>
       </Transition>
-    </>
+    </div>
   );
 }

@@ -21,21 +21,20 @@ import type {EnhancedMenu, EnhancedMenuItem} from '~/lib/utils';
 
 import {Brands} from '~/data/brands';
 
-import {MobileNav} from '../MobileNav';
+import {MobileNav} from '../sections/MobileNav';
 /**
  * A client component that specifies the content of the header on the website
  */
 export function Header({
   title,
   menu,
-  brand = 'suavecito',
+  theme = 'suavecito',
 }: {
   title: string;
   menu?: EnhancedMenu;
-  brand?: string;
+  theme?: string;
 }) {
   const {pathname} = useUrl();
-
   const localeMatch = /^\/([a-z]{2})(\/|$)/i.exec(pathname);
   const countryCode = localeMatch ? localeMatch[1] : undefined;
 
@@ -64,7 +63,7 @@ export function Header({
         title={title}
         menu={menu}
         openCart={openCart}
-        brand={brand}
+        theme={theme}
       />
       <MobileHeader
         countryCode={countryCode}
@@ -73,7 +72,7 @@ export function Header({
         menu={menu}
         openCart={openCart}
         openMenu={openMenu}
-        brand={brand}
+        theme={theme}
       />
     </>
   );
@@ -86,11 +85,11 @@ function MobileHeader({
   openCart,
   openMenu,
   menu,
-  brand,
+  theme,
 }: {
   countryCode?: string | null;
   title: string;
-  brand: string;
+  theme: string;
   isHome: boolean;
   menu?: EnhancedMenu;
   openCart: () => void;
@@ -107,7 +106,12 @@ function MobileHeader({
     setMobileOpen(setter);
   };
 
-  const fillColor = brand === 'suavecito' ? 'suave-pink' : 'suave-red';
+  const themeName = theme === 'suavecita' ? 'suavecita' : 'suavecito';
+
+  const themeText: any = {
+    suavecito: 'text-suave-red',
+    suavecita: 'text-suave-pink',
+  };
 
   const styles = {
     button: 'relative flex items-center justify-center w-8 h-8',
@@ -117,7 +121,9 @@ function MobileHeader({
         : 'bg-contrast/80'
     } ${
       y > 50 && !isHome ? 'shadow-lightHeader ' : ''
-    }flex md:hidden items-center backdrop-blur-lg z-40 top-0 justify-between w-full leading-none gap-4 md:px-8 text-${fillColor}`,
+    }flex md:hidden items-center backdrop-blur-lg z-40 top-0 justify-between w-full leading-none gap-4 md:px-8 ${
+      themeText[themeName]
+    }`,
   };
 
   return (
@@ -126,42 +132,43 @@ function MobileHeader({
         <Link
           className="flex items-center justify-start flex-grow w-full h-full flex-shrink-1 my-[15px]"
           to="/"
+          onClick={(evt) => closeMobileMenu(false)}
         >
           <Image
-            alt={Brands[brand].alt}
-            src={Brands[brand].src}
-            width={Brands[brand].width}
-            height={Brands[brand].height}
+            alt={Brands[theme].alt}
+            src={Brands[theme].src}
+            width={Brands[theme].width}
+            height={Brands[theme].height}
             className="pl-[22px]"
           />
         </Link>
 
         <div className="flex items-center justify-end w-full gap-2 pr-[13px]">
           <Link to={'/account'} className={styles.button}>
-            <IconAccessibility fill={fillColor} />
+            <IconAccessibility theme={themeName} />
           </Link>
           <button type="submit" className={styles.button}>
-            <IconSearch fill={fillColor} />
+            <IconSearch theme={themeName} />
           </button>
           <Link to={'/account'} className={styles.button}>
-            <IconAccount fill={fillColor} />
+            <IconAccount theme={themeName} />
           </Link>
           <button onClick={openCart} className={styles.button}>
-            <IconBag fill={fillColor} />
+            <IconBag theme={themeName} />
             <CartBadge dark={isHome} />
           </button>
           <button
             onClick={(evt) => closeMobileMenu(!isMobileOpen)}
             className={styles.button}
           >
-            {!isMobileOpen ? <IconMenu fill={fillColor} /> : <IconClose />}
+            {!isMobileOpen ? <IconMenu theme={themeName} /> : <IconClose />}
           </button>
         </div>
       </header>
       <MobileNav
         isMobileOpen={isMobileOpen}
         setMobileOpen={setMobileOpen}
-        fillColor={fillColor}
+        theme={themeName}
         menu={menu}
         currentSubCollection={currentSubCollection}
         setCurrentSubCollection={setCurrentSubCollection}
@@ -176,21 +183,19 @@ function DesktopHeader({
   menu,
   openCart,
   title,
-  brand,
+  theme,
 }: {
   countryCode?: string | null;
   isHome: boolean;
   openCart: () => void;
   menu?: EnhancedMenu;
   title: string;
-  brand: string;
+  theme: string;
 }) {
   const {y} = useWindowScroll();
 
   const [visibleSubNav, setVisibleSubNav] = useState<string>('none');
   const ref = useRef(null);
-
-  const fillColor = brand === 'suavecita' ? 'suave-pink' : 'suave-red';
 
   useClickAway(ref, () => {
     setVisibleSubNav('none');
@@ -205,6 +210,12 @@ function DesktopHeader({
     return true;
   };
 
+  const themeName = theme === 'suavecita' ? 'suavecita' : 'suavecito';
+  const themeText: any = {
+    suavecito: 'text-suave-red',
+    suavecita: 'text-suave-pink',
+  };
+
   const styles = {
     button:
       'relative flex items-center justify-center w-8 h-8 focus:ring-primary/5',
@@ -214,7 +225,9 @@ function DesktopHeader({
         : 'bg-contrast/80'
     } ${
       y > 50 && !isHome ? 'shadow-lightHeader ' : ''
-    }hidden md:flex items-center transition duration-300 backdrop-blur-lg z-40 top-0 justify-between w-full leading-none gap-8 site-header h-nav text-${fillColor}`,
+    }hidden md:flex items-center transition duration-300 backdrop-blur-lg z-40 top-0 justify-between w-full leading-none gap-8 site-header h-nav ${
+      themeText[themeName]
+    }`,
   };
 
   return (
@@ -222,10 +235,10 @@ function DesktopHeader({
       <div className="flex-shrink-0">
         <Link className={`flex-shrink-0`} to="/">
           <Image
-            alt={Brands[brand].alt}
-            src={Brands[brand].src}
-            width={Brands[brand].width}
-            height={Brands[brand].height}
+            alt={Brands[theme].alt}
+            src={Brands[theme].src}
+            width={Brands[theme].width}
+            height={Brands[theme].height}
           />
         </Link>
       </div>
@@ -259,8 +272,13 @@ function DesktopHeader({
               >
                 <div>
                   {item.title}
-                  <span className="ml-[10px] w-[7.5px] h-[7.5px]">
-                    <IconArrow direction="down" className="ml-[10px]" />
+                  <span className="ml-[10px]">
+                    <IconArrow
+                      direction="down"
+                      width={'w-[7px]'}
+                      height={'w-[7px]'}
+                      theme={themeName}
+                    />
                   </span>
                 </div>
               </button>
@@ -294,16 +312,16 @@ function DesktopHeader({
       </nav>
       <div className="flex items-center gap-2">
         <Link to={'/account'} className={styles.button}>
-          <IconAccessibility fill={fillColor} />
+          <IconAccessibility theme={themeName} />
         </Link>
         <button type="submit" className={styles.button}>
-          <IconSearch fill={fillColor} />
+          <IconSearch theme={themeName} />
         </button>
         <Link to={'/account'} className={styles.button}>
-          <IconAccount fill={fillColor} />
+          <IconAccount theme={themeName} />
         </Link>
         <button onClick={openCart} className={styles.button}>
-          <IconBag fill={fillColor} />
+          <IconBag theme={themeName} />
           <CartBadge dark={isHome} />
         </button>
       </div>
