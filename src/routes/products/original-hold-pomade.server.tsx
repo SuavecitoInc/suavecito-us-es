@@ -5,28 +5,35 @@ import {
   Seo,
   ShopifyAnalyticsConstants,
   useLocalization,
-  useRouteParams,
   useServerAnalytics,
   useShopQuery,
 } from '@shopify/hydrogen';
 
 import {MEDIA_FRAGMENT} from '~/lib/fragments';
-import {PRODUCT_APPAREL_FRAGMENT} from '~/lib/suavecito-fragments';
-import {NotFound, Layout, ProductSwimlane} from '~/components/index.server';
+import {
+  PRODUCT_SECTION_FRAGMENT,
+  VARIANT_METAFIELD_IMAGES_FRAGMENT,
+  PRODUCT_SECTION_HOW_IT_LOOKS_FRAGMENT,
+} from '~/lib/suavecito-fragments';
+import {
+  NotFound,
+  Layout,
+  ProductSectionContentGrid,
+  ProductSectionHowTo,
+  ProductSectionHowItLooks,
+  PomadeCompareChart,
+  ProductSectionYouMayAlsoLike,
+} from '~/components/index.server';
 import {
   Heading,
-  ProductDetail,
   ProductOptionsVariantForm,
-  ProductImages,
   ProductMetafieldImages,
   Section,
   Text,
-  Divider,
-  ProductSectionInfoTabs,
 } from '~/components';
 
 export default function Product() {
-  const {handle} = useRouteParams();
+  const handle = 'original-hold-pomade';
   const {
     language: {isoCode: languageCode},
     country: {isoCode: countryCode},
@@ -56,67 +63,67 @@ export default function Product() {
   });
 
   const {
-    images,
     title,
     vendor,
-    descriptionHtml,
     options,
-    variants,
     tags,
-    apparelFit,
-    apparelMaterial,
-    apparelColor,
-    apparelLogoFront,
-    apparelLogoBack,
-    sizeChart,
-    oldSizeChart,
+    productSectionFeaturedImage1,
+    productSectionFeaturedImage2,
+    productSectionDescription,
+    productSectionListItemText1,
+    productSectionListItemImage1,
+    productSectionListItemText2,
+    productSectionListItemImage2,
+    productSectionListItemText3,
+    productSectionListItemImage3,
+    productSectionListItemText4,
+    productSectionListItemImage4,
+    productSectionHowToImage,
+    productSectionHowToText,
+    productSectionHowToEmbeddedVideo,
+    howItLooksImage1,
+    howItLooksImage2,
+    howItLooksImage3,
+    howItLooksImage4,
+    howItLooksImage5,
+    howItLooksImage6,
+    howItLooksImage7,
+    howItLooksImage8,
   } = product;
-  const {shippingPolicy, refundPolicy} = shop;
 
   const defaultOptionNames = options.map(
     (option: {name: string}) => option.name,
   );
 
-  const getTabsContent = () => {
-    const tabs: {title: string; content: any}[] = [];
-    // features
-    if (
-      apparelFit ||
-      apparelMaterial ||
-      apparelColor ||
-      apparelLogoFront ||
-      apparelLogoBack
-    ) {
-      const features: {title: string; content: {[key: string]: string}} = {
-        title: 'Features',
-        content: {},
-      };
-      if (apparelFit) features.content.fit = apparelFit.value;
-      if (apparelMaterial) features.content.material = apparelMaterial.value;
-      if (apparelColor) features.content.color = apparelColor.value;
-      if (apparelLogoFront) features.content.logoFront = apparelLogoFront.value;
-      if (apparelLogoBack) features.content.logoBack = apparelLogoBack.value;
-      tabs.push(features);
-    }
-    // description
-    tabs.push({
-      title: 'Description',
-      content: descriptionHtml,
-    });
-    // product size chart
-    // let productSizeChartType: string | null = null;
-    // if (sizeChart) {
-    //   productSizeChartType = sizeChart.value;
-    // } else if (oldSizeChart) {
-    //   productSizeChartType = oldSizeChart.value;
-    // }
+  const productContentGridData = {
+    productSectionFeaturedImage1,
+    productSectionFeaturedImage2,
+    productSectionDescription,
+    productSectionListItemText1,
+    productSectionListItemText2,
+    productSectionListItemText3,
+    productSectionListItemText4,
+    productSectionListItemImage1,
+    productSectionListItemImage2,
+    productSectionListItemImage3,
+    productSectionListItemImage4,
+  };
 
-    // tabs.push({
-    //   title: 'Size Chart',
-    //   content: productSizeChartType,
-    // });
+  const productContentHowTo = {
+    productSectionHowToImage,
+    productSectionHowToText,
+    productSectionHowToEmbeddedVideo,
+  };
 
-    return tabs;
+  const productContentHowItLooks = {
+    howItLooksImage1,
+    howItLooksImage2,
+    howItLooksImage3,
+    howItLooksImage4,
+    howItLooksImage5,
+    howItLooksImage6,
+    howItLooksImage7,
+    howItLooksImage8,
   };
 
   return (
@@ -128,12 +135,8 @@ export default function Product() {
         <ProductOptionsProvider data={product}>
           <Section padding="x" className="px-0">
             <div className="flex flex-col md:flex-row gap-10">
-              {/* if metafield images exist  */}
-              {variants.nodes[0]?.variantImage1 ? (
-                <ProductMetafieldImages className="flex-1" />
-              ) : (
-                <ProductImages images={images.nodes} className="flex-1" />
-              )}
+              <ProductMetafieldImages className="flex-1" />
+
               <div className="flex-1">
                 <section>
                   <div className="grid gap-2">
@@ -150,43 +153,30 @@ export default function Product() {
                       tags={tags}
                     />
                   </Suspense>
-
-                  {/* <div className="grid gap-4 py-4">
-                    {descriptionHtml && (
-                      <ProductDetail
-                        title="Product Details"
-                        content={descriptionHtml}
-                      />
-                    )}
-                    {shippingPolicy?.body && (
-                      <ProductDetail
-                        title="Shipping"
-                        content={getExcerpt(shippingPolicy.body)}
-                        learnMore={`/policies/${shippingPolicy.handle}`}
-                      />
-                    )}
-                    {refundPolicy?.body && (
-                      <ProductDetail
-                        title="Returns"
-                        content={getExcerpt(refundPolicy.body)}
-                        learnMore={`/policies/${refundPolicy.handle}`}
-                      />
-                    )}
-                  </div> */}
                 </section>
               </div>
             </div>
           </Section>
-          {/* <Suspense>
-            <ProductSwimlane title="Related Products" data={id} />
-          </Suspense> */}
         </ProductOptionsProvider>
 
-        <div className="grid gap-4 py-4">
-          {descriptionHtml && (
-            <ProductSectionInfoTabs tabs={getTabsContent()} />
-          )}
-        </div>
+        {/* check if productSectionFeaturedImage1 && productSectionDescription are set */}
+        {productSectionFeaturedImage1 && productSectionDescription && (
+          <ProductSectionContentGrid {...productContentGridData} />
+        )}
+
+        {/* Product Section How To */}
+        {productSectionHowToText && productSectionHowToImage && (
+          <ProductSectionHowTo {...productContentHowTo} />
+        )}
+      </div>
+      {/* Product Section How it Looks */}
+      {howItLooksImage1 && howItLooksImage2 && (
+        <ProductSectionHowItLooks {...productContentHowItLooks} />
+      )}
+
+      <div className="page-width">
+        <PomadeCompareChart />
+        <ProductSectionYouMayAlsoLike />
       </div>
     </Layout>
   );
@@ -194,7 +184,9 @@ export default function Product() {
 
 const PRODUCT_QUERY = gql`
   ${MEDIA_FRAGMENT}
-  ${PRODUCT_APPAREL_FRAGMENT}
+  ${PRODUCT_SECTION_FRAGMENT}
+  ${VARIANT_METAFIELD_IMAGES_FRAGMENT}
+  ${PRODUCT_SECTION_HOW_IT_LOOKS_FRAGMENT}
   query Product(
     $country: CountryCode
     $language: LanguageCode
@@ -223,7 +215,8 @@ const PRODUCT_QUERY = gql`
         }
       }
       tags
-      ...ProductApparel
+      ...ProductSection
+      ...ProductSectionHowItLooks
       variants(first: 100) {
         nodes {
           id
@@ -253,6 +246,7 @@ const PRODUCT_QUERY = gql`
             amount
             currencyCode
           }
+          ...VariantMetafieldImages
         }
       }
       seo {
