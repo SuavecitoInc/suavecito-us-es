@@ -10,13 +10,13 @@ export function ProductSectionInfoTabs({
   tabs: {title: string; content: any}[];
 }) {
   const themeTabStyles = {
-    suavecito: 'text-suave-red',
-    suavecita: 'text-suave-pink',
+    suavecito: 'text-suave-red hover:text-suave-red-focus',
+    suavecita: 'text-suave-pink hover:text-suave-pink-focus',
   };
 
   const themeSelectedTabStyles = {
-    suavecito: 'bg-suave-red',
-    suavecita: 'bg-suave-pink',
+    suavecito: 'bg-suave-red hover:bg-suave-red-focus',
+    suavecita: 'bg-suave-pink hover:bg-suave-pink-focus',
   };
 
   const tabStyles = `${themeTabStyles[theme]} text-3xl font-bold uppercase py-2 px-4`;
@@ -25,7 +25,7 @@ export function ProductSectionInfoTabs({
   return (
     <section className="border-t border-[#cccccc] py-6">
       <Tab.Group>
-        <Tab.List className="flex gap-6 justify-center items-center">
+        <Tab.List className="flex gap-6 justify-center items-center mb-[30px]">
           {tabs.map((tab) => (
             <Tab key={`tab-${tab.title}`} as={Fragment}>
               {({selected}: {selected: boolean}) => (

@@ -72,3 +72,60 @@
   height: 20px;
   clip-path: polygon(0% 0%, 50% 100%, 100% 0%);
 }
+
+/* Fonts */
+:root {
+  --nexa-rust: 'NexaRustSansBlack', Helvetica, 'Helvetica Neue', Arial,
+    'Lucida Grande', sans-serif;
+  --myriad-pro: 'MyriadProBold', Helvetica, 'Helvetica Neue', Arial,
+    'Lucida Grande', sans-serif;
+  --humanist521: 'Humanist521BT', sans-serif;
+}
+
+body {
+  font-family: var(--humanist521);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2 .h3,
+.h4,
+.h5,
+.h6 {
+  font-family: var(--nexa-rust);
+}
+
+.premium-blends h1,
+.premium-blends h2,
+.premium-blends h3,
+.premium-blends h4,
+.premium-blends h5,
+.premium-blends h6,
+.premium-blends .h1,
+.premium-blends .h2 .h3,
+.premium-blends .h4,
+.premium-blends .h5,
+.premium-blends .h6 {
+  font-family: var(--myriad-pro);
+}
+
+.btn {
+  font-family: var(--nexa-rust);
+}
+
+.font-nexa-rust {
+  font-family: var(--nexa-rust);
+}
+
+.font-humanist521 {
+  font-family: var(--humanist521);
+}
+
+.font-myriad-pro {
+  font-family: var(--myriad-pro);
+}

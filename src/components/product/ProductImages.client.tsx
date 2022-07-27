@@ -32,11 +32,7 @@ export function ProductImages({
   // change featured image on variant change
   useEffect(() => {
     // only change image if more than 1 option
-    if (
-      selectedVariant?.image &&
-      selectedVariant?.selectedOptions &&
-      selectedVariant?.selectedOptions?.length > 1
-    ) {
+    if (selectedVariant?.image && selectedVariant?.selectedOptions) {
       const variantImage = selectedVariant?.image;
       // find image
       const foundImage = findImageById(variantImage.id as string);

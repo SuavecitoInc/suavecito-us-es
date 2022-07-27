@@ -17,7 +17,10 @@ import type {
   ProductVariantConnection,
 } from '@shopify/hydrogen/storefront-api-types';
 
+import type {BrandTheme} from '~/types/suavecito';
+
 export function ProductGridItem({
+  theme = 'suavecito',
   product,
   label,
   className,
@@ -25,6 +28,7 @@ export function ProductGridItem({
   onClick,
   titleColor = 'suave-red',
 }: {
+  theme?: BrandTheme;
   product: Product;
   label?: string;
   className?: string;
@@ -53,6 +57,15 @@ export function ProductGridItem({
   }
 
   const styles = clsx('grid gap-6 bg-white', className);
+
+  const colors: {[key: string]: string} = {
+    suavecito: 'text-suave-red',
+    suavecita: 'text-suave-pink',
+    'premium blends': 'text-suave-red',
+    'firme club': 'text-suave-red',
+    'cerveza cito': 'text-suave-red',
+    'tres noir': 'text-suave-red',
+  };
 
   return (
     <Link onClick={onClick} to={`/products/${product.handle}`}>
@@ -84,7 +97,7 @@ export function ProductGridItem({
         </div>
         <div className="grid gap-1">
           <Text
-            className={`w-full uppercase font-bold text-${titleColor} overflow-hidden whitespace-nowrap text-ellipsis `}
+            className={`w-full uppercase font-bold text-${titleColor} overflow-hidden whitespace-nowrap text-ellipsis ${colors[theme]}`}
             as="h3"
           >
             {product.title}

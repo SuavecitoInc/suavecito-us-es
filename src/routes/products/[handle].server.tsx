@@ -12,16 +12,18 @@ import {
 
 import {MEDIA_FRAGMENT} from '~/lib/fragments';
 import {PRODUCT_APPAREL_FRAGMENT} from '~/lib/suavecito-fragments';
-import {NotFound, Layout, ProductSwimlane} from '~/components/index.server';
+import {
+  NotFound,
+  Layout,
+  ProductSectionYouMayAlsoLike,
+} from '~/components/index.server';
 import {
   Heading,
-  ProductDetail,
   ProductOptionsVariantForm,
   ProductImages,
   ProductMetafieldImages,
   Section,
   Text,
-  Divider,
   ProductSectionInfoTabs,
 } from '~/components';
 
@@ -71,7 +73,6 @@ export default function Product() {
     sizeChart,
     oldSizeChart,
   } = product;
-  const {shippingPolicy, refundPolicy} = shop;
 
   const defaultOptionNames = options.map(
     (option: {name: string}) => option.name,
@@ -119,8 +120,10 @@ export default function Product() {
     return tabs;
   };
 
+  const theme = vendor.toLowerCase();
+
   return (
-    <Layout>
+    <Layout theme={theme}>
       <Suspense>
         <Seo type="product" data={product} />
       </Suspense>
@@ -129,11 +132,13 @@ export default function Product() {
           <Section padding="x" className="px-0">
             <div className="flex flex-col md:flex-row gap-10">
               {/* if metafield images exist  */}
-              {variants.nodes[0]?.variantImage1 ? (
-                <ProductMetafieldImages className="flex-1" />
-              ) : (
-                <ProductImages images={images.nodes} className="flex-1" />
-              )}
+              <Suspense>
+                {variants.nodes[0]?.variantImage1 ? (
+                  <ProductMetafieldImages className="flex-1" />
+                ) : (
+                  <ProductImages images={images.nodes} className="flex-1" />
+                )}
+              </Suspense>
               <div className="flex-1">
                 <section>
                   <div className="grid gap-2">
@@ -146,47 +151,24 @@ export default function Product() {
                   </div>
                   <Suspense>
                     <ProductOptionsVariantForm
+                      theme={theme}
                       optionNames={defaultOptionNames}
                       tags={tags}
                     />
                   </Suspense>
-
-                  {/* <div className="grid gap-4 py-4">
-                    {descriptionHtml && (
-                      <ProductDetail
-                        title="Product Details"
-                        content={descriptionHtml}
-                      />
-                    )}
-                    {shippingPolicy?.body && (
-                      <ProductDetail
-                        title="Shipping"
-                        content={getExcerpt(shippingPolicy.body)}
-                        learnMore={`/policies/${shippingPolicy.handle}`}
-                      />
-                    )}
-                    {refundPolicy?.body && (
-                      <ProductDetail
-                        title="Returns"
-                        content={getExcerpt(refundPolicy.body)}
-                        learnMore={`/policies/${refundPolicy.handle}`}
-                      />
-                    )}
-                  </div> */}
                 </section>
               </div>
             </div>
           </Section>
-          {/* <Suspense>
-            <ProductSwimlane title="Related Products" data={id} />
-          </Suspense> */}
         </ProductOptionsProvider>
 
         <div className="grid gap-4 py-4">
           {descriptionHtml && (
-            <ProductSectionInfoTabs tabs={getTabsContent()} />
+            <ProductSectionInfoTabs theme={theme} tabs={getTabsContent()} />
           )}
         </div>
+
+        <ProductSectionYouMayAlsoLike theme={theme} productId={product.id} />
       </div>
     </Layout>
   );

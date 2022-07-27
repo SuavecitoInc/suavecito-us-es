@@ -27,14 +27,12 @@ function OptionsGrid({
   name,
   handleChange,
   availableOptions,
-  index,
 }: {
   values: string[];
   colorOptions?: Metafield[];
   name: string;
   handleChange: (name: string, value: string) => void;
   availableOptions?: {[key: string]: any};
-  index?: number;
 }) {
   const {selectedOptions} = useProductOptions();
 

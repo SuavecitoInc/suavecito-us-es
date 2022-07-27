@@ -215,7 +215,11 @@ export function ProductOptionsVariantForm({
                     />
 
                     <div className="flex flex-col flex-wrap mb-4 gap-y-2 last:mb-0">
-                      <Heading as="legend" size="lead" className="min-w-[4rem]">
+                      <Heading
+                        as="legend"
+                        size="lead"
+                        className="min-w-[4rem] font-nexa-rust"
+                      >
                         {name}
                       </Heading>
                       <div className="grid grid-cols-4 md:grid-cols-3 lg:grid-cols-4 auto-rows-max items-center justify-center gap-4">
@@ -235,7 +239,11 @@ export function ProductOptionsVariantForm({
               return (
                 <div key={name}>
                   <div className="flex flex-col flex-wrap mb-4 gap-y-2 last:mb-0">
-                    <Heading as="legend" size="lead" className="min-w-[4rem]">
+                    <Heading
+                      as="legend"
+                      size="lead"
+                      className="min-w-[4rem] font-nexa-rust"
+                    >
                       {name}
                     </Heading>
                     <div className="grid grid-cols-4 md:grid-cols-3 lg:grid-cols-4 auto-rows-max items-center justify-center gap-4">
@@ -330,7 +338,7 @@ function ColorOptions({
 
   return (
     <div className="flex flex-col flex-wrap mb-4 gap-y-2 last:mb-0">
-      <Heading as="legend" size="lead" className="min-w-[4rem]">
+      <Heading as="legend" size="lead" className="min-w-[4rem] font-nexa-rust">
         {/* @ts-ignore */}
         {name}: {selectedOptions[name]}
       </Heading>

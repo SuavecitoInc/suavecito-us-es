@@ -64,7 +64,7 @@ function OptionsGrid({
               disabled={disabledOption}
             />
             <div
-              className={`leading-none py-1 cursor-pointer transition-all duration-200 text-sm md:text-base ${
+              className={`leading-none py-1 cursor-pointer transition-all duration-200 text-sm ${
                 disabledOption ? 'text-suave-white-focus' : ' text-black'
               }`}
             >
