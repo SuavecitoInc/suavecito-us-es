@@ -176,7 +176,7 @@ export default function Product() {
 
       <div className="page-width">
         <PomadeCompareChart />
-        <ProductSectionYouMayAlsoLike />
+        <ProductSectionYouMayAlsoLike productId={product.id} />
       </div>
     </Layout>
   );

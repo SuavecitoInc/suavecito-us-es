@@ -12,5 +12,5 @@ export function Divider({
 
   const styles = `divider border-b-[1px] border-black ${widths[width]} mx-auto my-[10px] ${className}`;
 
-  return <div className={styles}></div>;
+  return <div className={styles} />;
 }
