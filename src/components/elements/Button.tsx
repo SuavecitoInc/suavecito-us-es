@@ -1,6 +1,5 @@
 import clsx from 'clsx';
 import {Link} from '@shopify/hydrogen';
-
 import {missingClass} from '~/lib/utils';
 
 export function Button({
@@ -16,11 +15,15 @@ export function Button({
     | 'primary'
     | 'secondary'
     | 'inline'
-    | 'suavecito'
-    | 'suavecita'
     | 'yellow'
     | 'grey'
-    | 'primary-inverted';
+    | 'primary-inverted'
+    | 'suavecito'
+    | 'suavecita'
+    | 'premium blends'
+    | 'firme club'
+    | 'cerveza cito'
+    | 'tres noir';
 
   width?: 'auto' | 'full';
   [key: string]: any;
@@ -34,11 +37,15 @@ export function Button({
     primary: `${baseButtonClasses} bg-primary hover:bg-primary text-contrast`,
     secondary: `${baseButtonClasses} border border-primary/10 bg-contrast text-primary`,
     inline: 'border-b border-primary/10 leading-none pb-1',
-    suavecito: `${baseButtonClasses} bg-suave-red hover:bg-suave-red-focus text-contrast`,
-    suavecita: `${baseButtonClasses} bg-suave-pink hover:bg-suave-pink-focus text-contrast`,
     yellow: `${baseButtonClasses} bg-suave-yellow hover:bg-suave-yellow-focus text-contrast`,
     grey: `${baseButtonClasses} bg-suave-grey hover:bg-suave-grey-focus text-contrast`,
     'primary-inverted': `${baseButtonClasses} bg-suave-white hover:bg-suave-white-focus text-contrast text-suave-red`,
+    suavecito: `${baseButtonClasses} bg-suave-red hover:bg-suave-red-focus text-contrast`,
+    suavecita: `${baseButtonClasses} bg-suave-pink hover:bg-suave-pink-focus text-contrast`,
+    'premium blends': `${baseButtonClasses} bg-suave-red hover:bg-suave-red-focus text-contrast`,
+    'firme club': `${baseButtonClasses} bg-suave-red hover:bg-suave-red-focus text-contrast`,
+    'cerveza cito': `${baseButtonClasses} bg-suave-red hover:bg-suave-red-focus text-contrast`,
+    'tres noir': `${baseButtonClasses} bg-suave-red hover:bg-suave-red-focus text-contrast`,
   };
 
   const widths = {

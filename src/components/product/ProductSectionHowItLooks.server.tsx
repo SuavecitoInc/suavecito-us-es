@@ -51,6 +51,8 @@ export function ProductSectionHowItLooks({
           if (image) {
             return (
               <MetafieldMedia
+                // @ts-ignore
+                key={image?.reference.id}
                 scale={2}
                 sizes={
                   image?.reference
