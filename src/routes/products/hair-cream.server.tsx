@@ -174,7 +174,7 @@ export default function Product() {
       )}
 
       <div className="page-width">
-        <ProductSectionYouMayAlsoLike />
+        <ProductSectionYouMayAlsoLike productId={product.id} />
       </div>
     </Layout>
   );

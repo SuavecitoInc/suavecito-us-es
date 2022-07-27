@@ -11,3 +11,4 @@ export {ProductMetafieldImages} from './ProductMetafieldImages.client';
 export {ProductColorOptions} from './ProductColorOptions.client';
 export {ProductSectionInfoTabs} from './ProductSectionInfoTabs.client';
 export {ProductSectionGetInspired} from './ProductSectionGetInspired.client';
+export {ProductMobileSelection} from './ProductMobileSelection.client';

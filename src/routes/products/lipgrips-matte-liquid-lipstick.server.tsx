@@ -139,6 +139,7 @@ export default function Product() {
                   <ProductImages images={images.nodes} className="flex-1" />
                 )}
               </Suspense>
+
               <div className="flex-1">
                 <section className="">
                   <div className="grid gap-2">
@@ -161,28 +162,27 @@ export default function Product() {
               </div>
             </div>
           </Section>
-          {/* <Suspense>
-            <ProductSwimlane title="Related Products" data={id} />
-          </Suspense> */}
 
           {/* Product Section Get Inspired */}
           {variants.nodes[0].variantLifestyleImage1 && (
-            <ProductSectionGetInspired theme={vendor.toLowerCase()} />
+            <ProductSectionGetInspired theme="suavecita" />
           )}
-
-          {/* Product Section Grid */}
-          {productSectionFeaturedImage1 && productSectionDescription && (
-            <ProductSectionContentGrid {...productContentGridData} />
-          )}
-
-          {/* Product Section How To */}
-          {productSectionHowToText && productSectionHowToEmbeddedVideo && (
-            <ProductSectionHowTo {...productContentHowTo} />
-          )}
-
-          <ProductSectionYouMayAlsoLike />
         </div>
       </ProductOptionsProvider>
+
+      <div className="page-width">
+        {/* Product Section Grid */}
+        {productSectionFeaturedImage1 && productSectionDescription && (
+          <ProductSectionContentGrid {...productContentGridData} />
+        )}
+
+        {/* Product Section How To */}
+        {productSectionHowToText && productSectionHowToEmbeddedVideo && (
+          <ProductSectionHowTo {...productContentHowTo} />
+        )}
+
+        <ProductSectionYouMayAlsoLike productId={product.id} />
+      </div>
     </Layout>
   );
 }

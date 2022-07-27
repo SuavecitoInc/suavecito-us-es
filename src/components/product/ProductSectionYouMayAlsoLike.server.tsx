@@ -6,16 +6,17 @@ import type {Product} from '@shopify/hydrogen/storefront-api-types';
 
 export function ProductSectionYouMayAlsoLike({
   title = 'You May Also Like',
+  productId = 'gid://shopify/Product/161353365',
   count = 4,
   ...props
 }) {
   const bestSellersMarkup = useMemo(() => {
     return (
       <Suspense>
-        <Products count={count} />
+        <Products count={count} productId={productId} />
       </Suspense>
     );
-  }, [count]);
+  }, [count, productId]);
 
   return (
     <Section padding="y" {...props}>
@@ -39,32 +40,38 @@ function ProductGrid({products}: {products: Product[]}) {
   );
 }
 
-function Products({count}: {count: number}) {
+function Products({count, productId}: {count: number; productId: string}) {
   const {
-    data: {products},
+    data: {productRecommendations},
   } = useShopQuery({
     query: YOU_MAY_ALSO_LIKE_QUERY,
     variables: {
-      count,
+      productId,
     },
     cache: CacheLong(),
     preload: true,
   });
 
-  return <ProductGrid products={products.nodes} />;
+  const getMultipleRandom = (arr: any[], num: number) => {
+    const shuffled = [...arr].sort(() => 0.5 - Math.random());
+
+    return shuffled.slice(0, num);
+  };
+
+  return (
+    <ProductGrid products={getMultipleRandom(productRecommendations, count)} />
+  );
 }
 
 const YOU_MAY_ALSO_LIKE_QUERY = gql`
   ${PRODUCT_CARD_FRAGMENT}
-  query bestSellers(
-    $count: Int
+  query productRecommendations(
+    $productId: ID!
     $countryCode: CountryCode
     $languageCode: LanguageCode
   ) @inContext(country: $countryCode, language: $languageCode) {
-    products(first: $count, sortKey: BEST_SELLING) {
-      nodes {
-        ...ProductCard
-      }
+    productRecommendations(productId: $productId) {
+      ...ProductCard
     }
   }
 `;
