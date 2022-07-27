@@ -11,3 +11,25 @@
   font-style: italic;
   src: url('/fonts/IBMPlexSerif-TextItalic.woff2') format('woff2');
 }
+
+/* custom fonts */
+@font-face {
+  font-family: 'Humanist521';
+  font-display: swap;
+  font-style: normal;
+  src: url('/fonts/Humanist521BT.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'MyriadProBold';
+  font-display: swap;
+  font-style: normal;
+  src: url('/fonts/MyriadProBold.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'NexaRustSansBlack';
+  font-display: swap;
+  font-style: normal;
+  src: url('/fonts/NexaRustSansBlack.otf') format('opentype');
+}

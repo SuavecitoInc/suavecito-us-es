@@ -20,9 +20,15 @@ export function ProductForm() {
     useProductOptions();
 
   const isOutOfStock = !selectedVariant?.availableForSale || false;
+  // const isOnSale =
+  //   selectedVariant?.priceV2?.amount <
+  //     selectedVariant?.compareAtPriceV2?.amount || false;
   const isOnSale =
-    selectedVariant?.priceV2?.amount <
-      selectedVariant?.compareAtPriceV2?.amount || false;
+    selectedVariant?.priceV2?.amount &&
+    selectedVariant?.compareAtPriceV2?.amount
+      ? selectedVariant?.priceV2?.amount <
+          selectedVariant?.compareAtPriceV2?.amount || false
+      : false;
 
   useEffect(() => {
     if (params || !search) return;

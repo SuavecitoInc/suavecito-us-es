@@ -1,0 +1,131 @@
+/* custom helpers */
+.page-width {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 55px;
+  padding-right: 55px;
+}
+
+@media only screen and (max-width: 749px) {
+  .page-width {
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+  .site-header {
+    padding: 0;
+  }
+}
+
+.site-header {
+  padding: 0 55px;
+}
+/* .divider {
+  border-bottom: 1px solid #000;
+  margin: 0 auto;
+} */
+
+.youtube-video {
+  position: relative;
+  padding-bottom: 56.25%;
+  padding-top: 25px;
+  height: 0;
+}
+
+.youtube-video .featured-video-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.video-wrapper {
+  position: relative;
+  overflow: hidden;
+  max-width: 100%;
+  padding-bottom: 56.25%;
+  height: 0;
+  height: auto;
+}
+.video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.triangle-container {
+  position: relative;
+  height: 20px;
+  width: 100%;
+}
+
+.triangle-container .triangle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin-top: -1px;
+  width: 100%;
+  height: 20px;
+  clip-path: polygon(0% 0%, 50% 100%, 100% 0%);
+}
+
+/* Fonts */
+:root {
+  --nexa-rust: 'NexaRustSansBlack', Helvetica, 'Helvetica Neue', Arial,
+    'Lucida Grande', sans-serif;
+  --myriad-pro: 'MyriadProBold', Helvetica, 'Helvetica Neue', Arial,
+    'Lucida Grande', sans-serif;
+  --humanist521: 'Humanist521BT', sans-serif;
+}
+
+body {
+  font-family: var(--humanist521);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2 .h3,
+.h4,
+.h5,
+.h6 {
+  font-family: var(--nexa-rust);
+}
+
+.premium-blends h1,
+.premium-blends h2,
+.premium-blends h3,
+.premium-blends h4,
+.premium-blends h5,
+.premium-blends h6,
+.premium-blends .h1,
+.premium-blends .h2 .h3,
+.premium-blends .h4,
+.premium-blends .h5,
+.premium-blends .h6 {
+  font-family: var(--myriad-pro);
+}
+
+.btn {
+  font-family: var(--nexa-rust);
+}
+
+.font-nexa-rust {
+  font-family: var(--nexa-rust);
+}
+
+.font-humanist521 {
+  font-family: var(--humanist521);
+}
+
+.font-myriad-pro {
+  font-family: var(--myriad-pro);
+}
