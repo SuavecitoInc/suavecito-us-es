@@ -1,4 +1,4 @@
-import {Suspense, useContext} from 'react';
+import {Suspense} from 'react';
 import {
   CacheLong,
   gql,
@@ -11,34 +11,12 @@ import {
 
 import {MEDIA_FRAGMENT, PRODUCT_CARD_FRAGMENT} from '~/lib/fragments';
 import {getHeroPlaceholder} from '~/lib/placeholders';
-import {
-  FeaturedCollections,
-  Hero,
-  Banner,
-  ResponsiveBanner,
-  FeaturedRowImageWithText,
-  Divider,
-  FeaturedRowColumns,
-  FeaturedVideo,
-} from '~/components';
-import {Layout, ProductSwimlane, BestSellers} from '~/components/index.server';
+import {FeaturedCollections, Hero} from '~/components';
+import {Layout, ProductSwimlane} from '~/components/index.server';
 import {
   CollectionConnection,
   ProductConnection,
 } from '@shopify/hydrogen/storefront-api-types';
-
-// hard coded data
-import {
-  responsiveBannerSettings,
-  featuredRowImageOneSettings,
-  featuredRowImageTwoSettings,
-  featuredRowImageThreeSettings,
-  bannerOneSettings,
-  bannerTwoSettings,
-  featuredRowColumnsOneSettings,
-  featuredRowColumnsTwoSettings,
-  featuredVideoSettings,
-} from '../data/home-page';
 
 export default function Homepage() {
   useServerAnalytics({
@@ -87,11 +65,10 @@ function HomepageContent() {
 
   return (
     <>
-      {/* {primaryHero && (
+      {primaryHero && (
         <Hero {...primaryHero} height="full" top loading="eager" />
-      )} */}
-
-      {/* <ProductSwimlane
+      )}
+      <ProductSwimlane
         data={featuredProducts.nodes}
         title="Featured Products"
         divider="bottom"
@@ -101,19 +78,7 @@ function HomepageContent() {
         data={featuredCollections.nodes}
         title="Collections"
       />
-      {tertiaryHero && <Hero {...tertiaryHero} />} */}
-
-      <ResponsiveBanner {...responsiveBannerSettings} />
-      <FeaturedRowImageWithText {...featuredRowImageOneSettings} />
-      <Divider width="half" />
-      <BestSellers />
-      <Banner {...bannerOneSettings} />
-      <FeaturedRowColumns {...featuredRowColumnsOneSettings} />
-      <FeaturedRowImageWithText {...featuredRowImageTwoSettings} />
-      <Banner {...bannerTwoSettings} />
-      <FeaturedRowColumns {...featuredRowColumnsTwoSettings} />
-      <FeaturedVideo {...featuredVideoSettings} />
-      <FeaturedRowImageWithText {...featuredRowImageThreeSettings} />
+      {tertiaryHero && <Hero {...tertiaryHero} />}
     </>
   );
 }

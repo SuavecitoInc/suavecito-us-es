@@ -11,20 +11,15 @@ import {
 } from '@shopify/hydrogen';
 
 import {MEDIA_FRAGMENT} from '~/lib/fragments';
-import {PRODUCT_APPAREL_FRAGMENT} from '~/lib/suavecito-fragments';
-import {
-  NotFound,
-  Layout,
-  ProductSectionYouMayAlsoLike,
-} from '~/components/index.server';
+import {getExcerpt} from '~/lib/utils';
+import {NotFound, Layout, ProductSwimlane} from '~/components/index.server';
 import {
   Heading,
-  ProductOptionsVariantForm,
-  ProductImages,
-  ProductMetafieldImages,
+  ProductDetail,
+  ProductForm,
+  ProductGallery,
   Section,
   Text,
-  ProductSectionInfoTabs,
 } from '~/components';
 
 export default function Product() {
@@ -57,126 +52,68 @@ export default function Product() {
     },
   });
 
-  const {
-    images,
-    title,
-    vendor,
-    descriptionHtml,
-    options,
-    variants,
-    tags,
-    apparelFit,
-    apparelMaterial,
-    apparelColor,
-    apparelLogoFront,
-    apparelLogoBack,
-    sizeChart,
-    oldSizeChart,
-  } = product;
-
-  const defaultOptionNames = options.map(
-    (option: {name: string}) => option.name,
-  );
-
-  const getTabsContent = () => {
-    const tabs: {title: string; content: any}[] = [];
-    // features
-    if (
-      apparelFit ||
-      apparelMaterial ||
-      apparelColor ||
-      apparelLogoFront ||
-      apparelLogoBack
-    ) {
-      const features: {title: string; content: {[key: string]: string}} = {
-        title: 'Features',
-        content: {},
-      };
-      if (apparelFit) features.content.fit = apparelFit.value;
-      if (apparelMaterial) features.content.material = apparelMaterial.value;
-      if (apparelColor) features.content.color = apparelColor.value;
-      if (apparelLogoFront) features.content.logoFront = apparelLogoFront.value;
-      if (apparelLogoBack) features.content.logoBack = apparelLogoBack.value;
-      tabs.push(features);
-    }
-    // description
-    tabs.push({
-      title: 'Description',
-      content: descriptionHtml,
-    });
-    // product size chart
-    // let productSizeChartType: string | null = null;
-    // if (sizeChart) {
-    //   productSizeChartType = sizeChart.value;
-    // } else if (oldSizeChart) {
-    //   productSizeChartType = oldSizeChart.value;
-    // }
-
-    // tabs.push({
-    //   title: 'Size Chart',
-    //   content: productSizeChartType,
-    // });
-
-    return tabs;
-  };
-
-  const theme = vendor.toLowerCase();
+  const {media, title, vendor, descriptionHtml, id} = product;
+  const {shippingPolicy, refundPolicy} = shop;
 
   return (
-    <Layout theme={theme}>
+    <Layout>
       <Suspense>
         <Seo type="product" data={product} />
       </Suspense>
-      <div className="page-width">
-        <ProductOptionsProvider data={product}>
-          <Section padding="x" className="px-0">
-            <div className="flex flex-col md:flex-row gap-10">
-              {/* if metafield images exist  */}
-              <Suspense>
-                {variants.nodes[0]?.variantImage1 ? (
-                  <ProductMetafieldImages className="flex-1" />
-                ) : (
-                  <ProductImages images={images.nodes} className="flex-1" />
-                )}
-              </Suspense>
-              <div className="flex-1">
-                <section>
-                  <div className="grid gap-2">
-                    <Heading as="h1" format className="whitespace-normal">
-                      {title}
-                    </Heading>
-                    {vendor && (
-                      <Text className={'opacity-50 font-medium'}>{vendor}</Text>
-                    )}
-                  </div>
-                  <Suspense>
-                    <ProductOptionsVariantForm
-                      theme={theme}
-                      optionNames={defaultOptionNames}
-                      tags={tags}
+      <ProductOptionsProvider data={product}>
+        <Section padding="x" className="px-0">
+          <div className="grid items-start md:gap-6 lg:gap-20 md:grid-cols-2 lg:grid-cols-3">
+            <ProductGallery
+              media={media.nodes}
+              className="w-screen md:w-full lg:col-span-2"
+            />
+            <div className="sticky md:-mb-nav md:top-nav md:-translate-y-nav md:h-screen md:pt-nav hiddenScroll md:overflow-y-scroll">
+              <section className="flex flex-col w-full max-w-xl gap-8 p-6 md:mx-auto md:max-w-sm md:px-0">
+                <div className="grid gap-2">
+                  <Heading as="h1" format className="whitespace-normal">
+                    {title}
+                  </Heading>
+                  {vendor && (
+                    <Text className={'opacity-50 font-medium'}>{vendor}</Text>
+                  )}
+                </div>
+                <ProductForm />
+                <div className="grid gap-4 py-4">
+                  {descriptionHtml && (
+                    <ProductDetail
+                      title="Product Details"
+                      content={descriptionHtml}
                     />
-                  </Suspense>
-                </section>
-              </div>
+                  )}
+                  {shippingPolicy?.body && (
+                    <ProductDetail
+                      title="Shipping"
+                      content={getExcerpt(shippingPolicy.body)}
+                      learnMore={`/policies/${shippingPolicy.handle}`}
+                    />
+                  )}
+                  {refundPolicy?.body && (
+                    <ProductDetail
+                      title="Returns"
+                      content={getExcerpt(refundPolicy.body)}
+                      learnMore={`/policies/${refundPolicy.handle}`}
+                    />
+                  )}
+                </div>
+              </section>
             </div>
-          </Section>
-        </ProductOptionsProvider>
-
-        <div className="grid gap-4 py-4">
-          {descriptionHtml && (
-            <ProductSectionInfoTabs theme={theme} tabs={getTabsContent()} />
-          )}
-        </div>
-
-        <ProductSectionYouMayAlsoLike theme={theme} productId={product.id} />
-      </div>
+          </div>
+        </Section>
+        <Suspense>
+          <ProductSwimlane title="Related Products" data={id} />
+        </Suspense>
+      </ProductOptionsProvider>
     </Layout>
   );
 }
 
 const PRODUCT_QUERY = gql`
   ${MEDIA_FRAGMENT}
-  ${PRODUCT_APPAREL_FRAGMENT}
   query Product(
     $country: CountryCode
     $language: LanguageCode
@@ -192,20 +129,6 @@ const PRODUCT_QUERY = gql`
           ...Media
         }
       }
-      options {
-        name
-      }
-      images(first: 20) {
-        nodes {
-          id
-          url
-          altText
-          width
-          height
-        }
-      }
-      tags
-      ...ProductApparel
       variants(first: 100) {
         nodes {
           id

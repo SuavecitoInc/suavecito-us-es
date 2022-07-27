@@ -83,7 +83,6 @@ export function ProductGallery({
             key={med.id || med.image.id}
           >
             <MediaFile
-              // @ts-ignore
               tabIndex="0"
               className={`w-full h-full aspect-square fadeIn object-cover`}
               data={data}

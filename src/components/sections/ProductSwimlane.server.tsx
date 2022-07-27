@@ -1,5 +1,5 @@
 import {Suspense, useMemo} from 'react';
-import {gql, useShopQuery, useLocalization, CacheLong} from '@shopify/hydrogen';
+import {gql, useShopQuery, useLocalization} from '@shopify/hydrogen';
 import {PRODUCT_CARD_FRAGMENT} from '~/lib/fragments';
 import {ProductCard, Section} from '~/components';
 import type {
@@ -81,8 +81,6 @@ function RecommendedProducts({
       languageCode,
       countryCode,
     },
-    cache: CacheLong(),
-    preload: true,
   });
 
   const mergedProducts = products.recommended

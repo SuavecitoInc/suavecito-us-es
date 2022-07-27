@@ -6,28 +6,15 @@ import {Header} from '~/components';
 import {Footer} from '~/components/index.server';
 import {parseMenu} from '~/lib/utils';
 
-const HEADER_MENU_HANDLE = 'debut-main';
-const FOOTER_MENU_HANDLE = 'debut-footer-brands';
-const FOOTER_MENU_HANDLE_2 = 'debut-footer-help';
+const HEADER_MENU_HANDLE = 'main-menu';
+const FOOTER_MENU_HANDLE = 'footer';
 
 const SHOP_NAME_FALLBACK = 'Hydrogen';
 
 /**
  * A server component that defines a structure and organization of a page that can be used in different parts of the Hydrogen app
  */
-
-export function Layout({
-  children,
-  theme = 'suavecito',
-}: {
-  children: React.ReactNode;
-  theme?:
-    | 'suavecito'
-    | 'suavecita'
-    | 'firme club'
-    | 'premium blends'
-    | 'cerveza cito';
-}) {
+export function Layout({children}: {children: React.ReactNode}) {
   return (
     <>
       <div className="flex flex-col min-h-screen">
@@ -37,27 +24,27 @@ export function Layout({
           </a>
         </div>
         <Suspense fallback={<Header title={SHOP_NAME_FALLBACK} />}>
-          <HeaderWithMenu theme={theme} />
+          <HeaderWithMenu />
         </Suspense>
         <main role="main" id="mainContent" className="flex-grow">
           {children}
         </main>
       </div>
       <Suspense fallback={<Footer />}>
-        <FooterWithMenu theme={theme} />
+        <FooterWithMenu />
       </Suspense>
     </>
   );
 }
 
-function HeaderWithMenu({theme}: {theme: string}) {
+function HeaderWithMenu() {
   const {shopName, headerMenu} = useLayoutQuery();
-  return <Header title={shopName} menu={headerMenu} theme={theme} />;
+  return <Header title={shopName} menu={headerMenu} />;
 }
 
-function FooterWithMenu({theme}: {theme: string}) {
-  const {footerMenu, footerMenu2} = useLayoutQuery();
-  return <Footer menu={footerMenu} menu2={footerMenu2} theme={theme} />;
+function FooterWithMenu() {
+  const {footerMenu} = useLayoutQuery();
+  return <Footer menu={footerMenu} />;
 }
 
 function useLayoutQuery() {
@@ -69,14 +56,12 @@ function useLayoutQuery() {
     shop: Shop;
     headerMenu: Menu;
     footerMenu: Menu;
-    footerMenu2: Menu;
   }>({
     query: SHOP_QUERY,
     variables: {
       language: languageCode,
       headerMenuHandle: HEADER_MENU_HANDLE,
       footerMenuHandle: FOOTER_MENU_HANDLE,
-      footerMenuHandle2: FOOTER_MENU_HANDLE_2,
     },
     cache: CacheLong(),
     preload: '*',
@@ -101,11 +86,8 @@ function useLayoutQuery() {
   const footerMenu = data?.footerMenu
     ? parseMenu(data.footerMenu, customPrefixes)
     : undefined;
-  const footerMenu2 = data?.footerMenu2
-    ? parseMenu(data.footerMenu2, customPrefixes)
-    : undefined;
 
-  return {footerMenu, footerMenu2, headerMenu, shopName};
+  return {footerMenu, headerMenu, shopName};
 }
 
 const SHOP_QUERY = gql`
@@ -121,7 +103,6 @@ const SHOP_QUERY = gql`
     $language: LanguageCode
     $headerMenuHandle: String!
     $footerMenuHandle: String!
-    $footerMenuHandle2: String!
   ) @inContext(language: $language) {
     shop {
       name
@@ -136,15 +117,6 @@ const SHOP_QUERY = gql`
       }
     }
     footerMenu: menu(handle: $footerMenuHandle) {
-      id
-      items {
-        ...MenuItem
-        items {
-          ...MenuItem
-        }
-      }
-    }
-    footerMenu2: menu(handle: $footerMenuHandle2) {
       id
       items {
         ...MenuItem
