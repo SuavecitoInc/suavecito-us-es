@@ -1,46 +1,73 @@
 import {Suspense, useMemo} from 'react';
 import {gql, useShopQuery, CacheLong} from '@shopify/hydrogen';
 import {PRODUCT_CARD_FRAGMENT} from '~/lib/fragments';
-import {ProductGridItem, Section, Heading} from '~/components';
+import {ProductGridItem, Section} from '~/components';
 import type {Product} from '@shopify/hydrogen/storefront-api-types';
+import type {BrandTheme} from '~/types/suavecito';
 
 export function ProductSectionYouMayAlsoLike({
+  theme = 'suavecito',
   title = 'You May Also Like',
   productId = 'gid://shopify/Product/161353365',
   count = 4,
   ...props
 }) {
-  const bestSellersMarkup = useMemo(() => {
+  const recommendedProductMarkup = useMemo(() => {
     return (
       <Suspense>
-        <Products count={count} productId={productId} />
+        <Products
+          count={count}
+          productId={productId}
+          theme={theme as BrandTheme}
+        />
       </Suspense>
     );
-  }, [count, productId]);
+  }, [count, productId, theme]);
 
   return (
     <Section padding="y" {...props}>
-      <h3 className="max-w-md mb-[15px] uppercase font-bold mx-auto text-center text-2xl lg:text-3xl">
+      <h3
+        className={`max-w-md mb-[15px] uppercase font-bold mx-auto text-center text-2xl lg:text-3xl`}
+      >
         {title}
       </h3>
       <div className="page-width grid grid-cols-2 gap-4 md:grid-cols-4">
-        {bestSellersMarkup}
+        {recommendedProductMarkup}
       </div>
     </Section>
   );
 }
 
-function ProductGrid({products}: {products: Product[]}) {
+function ProductGrid({
+  theme,
+  products,
+}: {
+  theme: BrandTheme;
+  products: Product[];
+}) {
   return (
     <>
       {products.map((product) => (
-        <ProductGridItem product={product} key={product.id} className="" />
+        <ProductGridItem
+          theme={theme}
+          product={product}
+          key={product.id}
+          className=""
+        />
       ))}
     </>
   );
 }
 
-function Products({count, productId}: {count: number; productId: string}) {
+function Products({
+  theme,
+  count,
+  productId,
+}: {
+  theme: BrandTheme;
+  count: number;
+  productId: string;
+}) {
   const {
     data: {productRecommendations},
   } = useShopQuery({
@@ -59,7 +86,10 @@ function Products({count, productId}: {count: number; productId: string}) {
   };
 
   return (
-    <ProductGrid products={getMultipleRandom(productRecommendations, count)} />
+    <ProductGrid
+      theme={theme}
+      products={getMultipleRandom(productRecommendations, count)}
+    />
   );
 }
 
