@@ -18,7 +18,8 @@ import {
   ProductOptions,
   ProductColorOptions,
 } from '~/components';
-import {ProductVariant} from '@shopify/hydrogen/storefront-api-types';
+import type {ProductVariant} from '@shopify/hydrogen/storefront-api-types';
+import type {BrandTheme} from '~/types/suavecito';
 
 interface Metafield {
   value: string;
@@ -27,17 +28,21 @@ interface Metafield {
 
 export function ProductOptionsVariantForm({
   theme = 'suavecito',
+  showQuantitySelector = true,
   optionNames,
   tags,
   colorOptions = [],
 }: {
-  theme?: 'suavecito' | 'suavecita';
+  theme?: BrandTheme;
+  showQuantitySelector?: boolean;
   optionNames: string[];
   tags: string[];
   colorOptions?: Metafield[];
 }) {
   const {pathname, search} = useUrl();
   const [params, setParams] = useState(new URLSearchParams(search));
+
+  const [quantity, setQuantity] = useState<string>('1');
 
   const {
     options,
@@ -181,6 +186,9 @@ export function ProductOptionsVariantForm({
     ],
   );
 
+  const handleQuantity = (e: {target: {value: React.SetStateAction<string>}}) =>
+    setQuantity(e.target.value);
+
   return (
     <form className="grid gap-10">
       {
@@ -291,12 +299,28 @@ export function ProductOptionsVariantForm({
         )}
       </div>
 
-      <div className="grid items-stretch gap-4">
+      <div
+        className={`grid ${
+          showQuantitySelector ? 'grid-cols-3' : 'items-stretch'
+        } gap-4`}
+      >
+        {showQuantitySelector && (
+          <input
+            type="number"
+            min="1"
+            pattern="[0-9]*"
+            onChange={handleQuantity}
+            value={quantity}
+            className="col-span-1 w-[60%]"
+          />
+        )}
+
         <AddToCartButton
           variantId={selectedVariant?.id}
-          quantity={1}
+          quantity={Number(quantity)}
           accessibleAddingToCartLabel="Adding item to your cart"
           disabled={isOutOfStock}
+          className={`${showQuantitySelector ? 'col-span-2' : ''}`}
         >
           <Button
             width="full"
