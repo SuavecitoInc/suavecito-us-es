@@ -9,10 +9,10 @@ interface Metafield {
 
 export function ProductSectionGetInspired({
   theme = 'suavecito',
-  getInspiredImage1,
-  getInspiredImage2,
-  getInspiredImage3,
-  getInspiredImage4,
+  getInspiredImage1 = null,
+  getInspiredImage2 = null,
+  getInspiredImage3 = null,
+  getInspiredImage4 = null,
 }: {
   theme?: 'suavecito' | 'suavecita';
   getInspiredImage1?: null | Metafield;

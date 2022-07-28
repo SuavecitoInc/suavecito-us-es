@@ -82,9 +82,9 @@ export function ProductOptionsVariantForm({
   }, [params, search]);
 
   // reset quantity on variant change
-  useEffect(() => {
-    if (showQuantitySelector) setQuantity('1');
-  }, [selectedVariant, showQuantitySelector]);
+  // useEffect(() => {
+  //   if (showQuantitySelector) setQuantity('1');
+  // }, [selectedVariant, showQuantitySelector]);
 
   useEffectOnce(() => {
     let mainValue: string;
@@ -322,6 +322,7 @@ export function ProductOptionsVariantForm({
             pattern="[0-9]*"
             onChange={handleQuantity}
             value={quantity}
+            disabled={isOutOfStock}
             className="col-span-1 w-[60%]"
           />
         )}
