@@ -9,8 +9,16 @@ interface Metafield {
 
 export function ProductSectionGetInspired({
   theme = 'suavecito',
+  getInspiredImage1,
+  getInspiredImage2,
+  getInspiredImage3,
+  getInspiredImage4,
 }: {
   theme?: 'suavecito' | 'suavecita';
+  getInspiredImage1?: null | Metafield;
+  getInspiredImage2?: null | Metafield;
+  getInspiredImage3?: null | Metafield;
+  getInspiredImage4?: null | Metafield;
 }) {
   const {selectedVariant} = useProductOptions();
 
@@ -19,14 +27,26 @@ export function ProductSectionGetInspired({
     suavecita: 'suave-pink',
   };
 
-  // @ts-ignore
-  const lifesStyleImage1 = selectedVariant?.variantLifestyleImage1 as Metafield;
-  // @ts-ignore
-  const lifesStyleImage2 = selectedVariant?.variantLifestyleImage2 as Metafield;
-  // @ts-ignore
-  const lifesStyleImage3 = selectedVariant?.variantLifestyleImage3 as Metafield;
-  // @ts-ignore
-  const lifesStyleImage4 = selectedVariant?.variantLifestyleImage4 as Metafield;
+  let lifesStyleImage1: Metafield;
+  let lifesStyleImage2: Metafield;
+  let lifesStyleImage3: Metafield;
+  let lifesStyleImage4: Metafield;
+
+  if (getInspiredImage1) {
+    lifesStyleImage1 = getInspiredImage1 as Metafield;
+    lifesStyleImage2 = getInspiredImage2 as Metafield;
+    lifesStyleImage3 = getInspiredImage3 as Metafield;
+    lifesStyleImage4 = getInspiredImage4 as Metafield;
+  } else {
+    // @ts-ignore
+    lifesStyleImage1 = selectedVariant?.variantLifestyleImage1 as Metafield;
+    // @ts-ignore
+    lifesStyleImage2 = selectedVariant?.variantLifestyleImage2 as Metafield;
+    // @ts-ignore
+    lifesStyleImage3 = selectedVariant?.variantLifestyleImage3 as Metafield;
+    // @ts-ignore
+    lifesStyleImage4 = selectedVariant?.variantLifestyleImage4 as Metafield;
+  }
 
   return (
     <section className="w-full">
