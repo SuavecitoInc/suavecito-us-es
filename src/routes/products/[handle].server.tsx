@@ -82,10 +82,8 @@ export default function Product() {
     const tabs: {title: string; content: any}[] = [];
     // features
     if (
-      apparelFit ||
-      apparelMaterial ||
-      apparelColor ||
-      apparelLogoFront ||
+      (apparelFit || apparelMaterial || apparelColor) &&
+      apparelLogoFront &&
       apparelLogoBack
     ) {
       const features: {title: string; content: {[key: string]: string}} = {
@@ -162,11 +160,11 @@ export default function Product() {
           </Section>
         </ProductOptionsProvider>
 
-        <div className="grid gap-4 py-4">
-          {descriptionHtml && (
+        {descriptionHtml && (
+          <div className="grid gap-4 py-4">
             <ProductSectionInfoTabs theme={theme} tabs={getTabsContent()} />
-          )}
-        </div>
+          </div>
+        )}
 
         <ProductSectionYouMayAlsoLike theme={theme} productId={product.id} />
       </div>
@@ -210,6 +208,7 @@ const PRODUCT_QUERY = gql`
         nodes {
           id
           availableForSale
+          quantityAvailable
           selectedOptions {
             name
             value

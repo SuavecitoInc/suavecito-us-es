@@ -81,6 +81,11 @@ export function ProductOptionsVariantForm({
     setParams(new URLSearchParams(search));
   }, [params, search]);
 
+  // reset quantity on variant change
+  // useEffect(() => {
+  //   if (showQuantitySelector) setQuantity('1');
+  // }, [selectedVariant, showQuantitySelector]);
+
   useEffectOnce(() => {
     let mainValue: string;
     const initialSelectedOptions: {[key: string]: string | undefined} = {
@@ -195,7 +200,8 @@ export function ProductOptionsVariantForm({
         <div className="grid gap-4">
           {colorOptions.length > 0 && (
             <ColorOptions
-              name="Color"
+              // @ts-ignore
+              name={options[0].name}
               handleChange={handleChange}
               // @ts-ignore
               values={options[0].values}
@@ -308,9 +314,15 @@ export function ProductOptionsVariantForm({
           <input
             type="number"
             min="1"
+            max={
+              selectedVariant?.quantityAvailable
+                ? selectedVariant?.quantityAvailable
+                : '10'
+            }
             pattern="[0-9]*"
             onChange={handleQuantity}
             value={quantity}
+            disabled={isOutOfStock}
             className="col-span-1 w-[60%]"
           />
         )}

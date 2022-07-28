@@ -7,18 +7,29 @@ interface Metafield {
 }
 
 export function ProductSectionHowTo({
+  theme = 'suavecito',
   productSectionHowToImage,
   productSectionHowToText,
   productSectionHowToEmbeddedVideo,
 }: {
+  theme?: 'suavecito' | 'suavecita';
   productSectionHowToImage?: Metafield;
   productSectionHowToText: Metafield;
   productSectionHowToEmbeddedVideo: Metafield;
 }) {
+  const colors = {
+    suavecito: 'text-black',
+    suavecita: 'text-suave-pink',
+  };
+
   return (
     <section>
       <Divider width="half" className="my-[55px]" />
-      <Heading as="h3" size="heading" className="uppercase text-center">
+      <Heading
+        as="h3"
+        size="heading"
+        className={`uppercase text-center ${colors[theme]}`}
+      >
         How to Use
       </Heading>
       <div

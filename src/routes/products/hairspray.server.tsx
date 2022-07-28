@@ -20,20 +20,19 @@ import {
   Layout,
   ProductSectionContentGrid,
   ProductSectionHowTo,
-  ProductSectionHowItLooks,
-  PomadeCompareChart,
   ProductSectionYouMayAlsoLike,
+  ProductSectionHowItLooks,
 } from '~/components/index.server';
 import {
   Heading,
   ProductOptionsVariantForm,
-  ProductMetafieldImages,
+  ProductImages,
   Section,
   Text,
 } from '~/components';
 
 export default function Product() {
-  const handle = 'firme-strong-hold-pomade';
+  const handle = 'hairspray';
   const {
     language: {isoCode: languageCode},
     country: {isoCode: countryCode},
@@ -66,6 +65,7 @@ export default function Product() {
     title,
     vendor,
     options,
+    images,
     tags,
     productSectionFeaturedImage1,
     productSectionFeaturedImage2,
@@ -135,7 +135,7 @@ export default function Product() {
         <ProductOptionsProvider data={product}>
           <Section padding="x" className="px-0">
             <div className="flex flex-col md:flex-row gap-10">
-              <ProductMetafieldImages className="flex-1" />
+              <ProductImages images={images.nodes} className="flex-1" />
 
               <div className="flex-1">
                 <section>
@@ -169,13 +169,13 @@ export default function Product() {
           <ProductSectionHowTo {...productContentHowTo} />
         )}
       </div>
+
       {/* Product Section How it Looks */}
       {howItLooksImage1 && howItLooksImage2 && (
         <ProductSectionHowItLooks {...productContentHowItLooks} />
       )}
 
       <div className="page-width">
-        <PomadeCompareChart />
         <ProductSectionYouMayAlsoLike productId={product.id} />
       </div>
     </Layout>

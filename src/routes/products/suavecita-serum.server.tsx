@@ -13,27 +13,29 @@ import {MEDIA_FRAGMENT} from '~/lib/fragments';
 import {
   PRODUCT_SECTION_FRAGMENT,
   VARIANT_METAFIELD_IMAGES_FRAGMENT,
-  PRODUCT_SECTION_HOW_IT_LOOKS_FRAGMENT,
+  VARIANT_METAFIELD_COLOR_IMAGES_FRAGMENT,
+  VARIANT_METAFIELD_LIFESTYLE_IMAGES_FRAGMENT,
+  PRODUCT_SECTION_GET_INSPIRED_FRAGMENT,
 } from '~/lib/suavecito-fragments';
 import {
   NotFound,
   Layout,
   ProductSectionContentGrid,
   ProductSectionHowTo,
-  ProductSectionHowItLooks,
-  PomadeCompareChart,
   ProductSectionYouMayAlsoLike,
 } from '~/components/index.server';
 import {
   Heading,
   ProductOptionsVariantForm,
+  ProductImages,
   ProductMetafieldImages,
+  ProductSectionGetInspired,
   Section,
   Text,
 } from '~/components';
 
 export default function Product() {
-  const handle = 'firme-strong-hold-pomade';
+  const handle = 'suavecita-serum';
   const {
     language: {isoCode: languageCode},
     country: {isoCode: countryCode},
@@ -63,9 +65,12 @@ export default function Product() {
   });
 
   const {
+    images,
     title,
     vendor,
+    descriptionHtml,
     options,
+    variants,
     tags,
     productSectionFeaturedImage1,
     productSectionFeaturedImage2,
@@ -81,14 +86,10 @@ export default function Product() {
     productSectionHowToImage,
     productSectionHowToText,
     productSectionHowToEmbeddedVideo,
-    howItLooksImage1,
-    howItLooksImage2,
-    howItLooksImage3,
-    howItLooksImage4,
-    howItLooksImage5,
-    howItLooksImage6,
-    howItLooksImage7,
-    howItLooksImage8,
+    getInspiredImage1,
+    getInspiredImage2,
+    getInspiredImage3,
+    getInspiredImage4,
   } = product;
 
   const defaultOptionNames = options.map(
@@ -115,30 +116,33 @@ export default function Product() {
     productSectionHowToEmbeddedVideo,
   };
 
-  const productContentHowItLooks = {
-    howItLooksImage1,
-    howItLooksImage2,
-    howItLooksImage3,
-    howItLooksImage4,
-    howItLooksImage5,
-    howItLooksImage6,
-    howItLooksImage7,
-    howItLooksImage8,
+  const productContentGetInspired = {
+    getInspiredImage1,
+    getInspiredImage2,
+    getInspiredImage3,
+    getInspiredImage4,
   };
 
   return (
-    <Layout>
+    <Layout theme={vendor.toLowerCase()}>
       <Suspense>
         <Seo type="product" data={product} />
       </Suspense>
-      <div className="page-width">
-        <ProductOptionsProvider data={product}>
+      <ProductOptionsProvider data={product}>
+        <div className="page-width">
           <Section padding="x" className="px-0">
             <div className="flex flex-col md:flex-row gap-10">
-              <ProductMetafieldImages className="flex-1" />
+              {/* if metafield images exist  */}
+              <Suspense>
+                {variants.nodes[0]?.variantImage1 ? (
+                  <ProductMetafieldImages className="flex-1" />
+                ) : (
+                  <ProductImages images={images.nodes} className="flex-1" />
+                )}
+              </Suspense>
 
               <div className="flex-1">
-                <section>
+                <section className="">
                   <div className="grid gap-2">
                     <Heading as="h1" format className="whitespace-normal">
                       {title}
@@ -149,6 +153,7 @@ export default function Product() {
                   </div>
                   <Suspense>
                     <ProductOptionsVariantForm
+                      theme={vendor.toLowerCase()}
                       optionNames={defaultOptionNames}
                       tags={tags}
                     />
@@ -157,25 +162,29 @@ export default function Product() {
               </div>
             </div>
           </Section>
-        </ProductOptionsProvider>
 
-        {/* check if productSectionFeaturedImage1 && productSectionDescription are set */}
+          {/* Product Section Get Inspired */}
+          {variants.nodes[0].variantLifestyleImage1 ||
+            (getInspiredImage1 && (
+              <ProductSectionGetInspired
+                theme="suavecita"
+                {...productContentGetInspired}
+              />
+            ))}
+        </div>
+      </ProductOptionsProvider>
+
+      <div className="page-width">
+        {/* Product Section Grid */}
         {productSectionFeaturedImage1 && productSectionDescription && (
           <ProductSectionContentGrid {...productContentGridData} />
         )}
 
         {/* Product Section How To */}
-        {productSectionHowToText && productSectionHowToImage && (
-          <ProductSectionHowTo {...productContentHowTo} />
+        {productSectionHowToText && productSectionHowToEmbeddedVideo && (
+          <ProductSectionHowTo theme="suavecita" {...productContentHowTo} />
         )}
-      </div>
-      {/* Product Section How it Looks */}
-      {howItLooksImage1 && howItLooksImage2 && (
-        <ProductSectionHowItLooks {...productContentHowItLooks} />
-      )}
 
-      <div className="page-width">
-        <PomadeCompareChart />
         <ProductSectionYouMayAlsoLike productId={product.id} />
       </div>
     </Layout>
@@ -186,7 +195,9 @@ const PRODUCT_QUERY = gql`
   ${MEDIA_FRAGMENT}
   ${PRODUCT_SECTION_FRAGMENT}
   ${VARIANT_METAFIELD_IMAGES_FRAGMENT}
-  ${PRODUCT_SECTION_HOW_IT_LOOKS_FRAGMENT}
+  ${VARIANT_METAFIELD_COLOR_IMAGES_FRAGMENT}
+  ${VARIANT_METAFIELD_LIFESTYLE_IMAGES_FRAGMENT}
+  ${PRODUCT_SECTION_GET_INSPIRED_FRAGMENT}
   query Product(
     $country: CountryCode
     $language: LanguageCode
@@ -216,7 +227,7 @@ const PRODUCT_QUERY = gql`
       }
       tags
       ...ProductSection
-      ...ProductSectionHowItLooks
+      ...ProductSectionGetInspired
       variants(first: 100) {
         nodes {
           id
@@ -248,6 +259,8 @@ const PRODUCT_QUERY = gql`
             currencyCode
           }
           ...VariantMetafieldImages
+          ...VariantMetafieldColorImages
+          ...VariantMetafieldLifestyleImages
         }
       }
       seo {

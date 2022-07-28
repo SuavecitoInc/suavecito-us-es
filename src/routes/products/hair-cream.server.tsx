@@ -219,6 +219,7 @@ const PRODUCT_QUERY = gql`
         nodes {
           id
           availableForSale
+          quantityAvailable
           selectedOptions {
             name
             value

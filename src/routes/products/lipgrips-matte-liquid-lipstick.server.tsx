@@ -32,7 +32,7 @@ import {
   Section,
   Text,
 } from '~/components';
-import {ProductVariant} from '@shopify/hydrogen/storefront-api-types';
+import {getColorOptions} from '~/lib/helpers';
 
 export default function Product() {
   const handle = 'lipgrips-matte-liquid-lipstick';
@@ -113,15 +113,6 @@ export default function Product() {
     productSectionHowToEmbeddedVideo,
   };
 
-  const getColorOptions = () => {
-    const colorOptions: any[] = [];
-    variants.nodes?.map((variant: ProductVariant) => {
-      // @ts-ignore
-      colorOptions.push(variant?.variantColorImage);
-    });
-    return colorOptions;
-  };
-
   return (
     <Layout theme={vendor.toLowerCase()}>
       <Suspense>
@@ -155,7 +146,7 @@ export default function Product() {
                       theme={vendor.toLowerCase()}
                       optionNames={defaultOptionNames}
                       tags={tags}
-                      colorOptions={getColorOptions()}
+                      colorOptions={getColorOptions(variants)}
                     />
                   </Suspense>
                 </section>
@@ -178,7 +169,7 @@ export default function Product() {
 
         {/* Product Section How To */}
         {productSectionHowToText && productSectionHowToEmbeddedVideo && (
-          <ProductSectionHowTo {...productContentHowTo} />
+          <ProductSectionHowTo theme="suavecita" {...productContentHowTo} />
         )}
 
         <ProductSectionYouMayAlsoLike productId={product.id} />
@@ -226,6 +217,7 @@ const PRODUCT_QUERY = gql`
         nodes {
           id
           availableForSale
+          quantityAvailable
           selectedOptions {
             name
             value

@@ -278,3 +278,40 @@ export const PRODUCT_SECTION_HOW_IT_LOOKS_FRAGMENT = gql`
     }
   }
 `;
+
+export const PRODUCT_SECTION_GET_INSPIRED_FRAGMENT = gql`
+  fragment ProductSectionGetInspired on Product {
+    getInspiredImage1: metafield(
+      namespace: "debut"
+      key: "default_lifestyle_image_1"
+    ) {
+      reference {
+        ...Media
+      }
+    }
+    getInspiredImage2: metafield(
+      namespace: "debut"
+      key: "default_lifestyle_image_2"
+    ) {
+      reference {
+        ...Media
+      }
+    }
+    getInspiredImage3: metafield(
+      namespace: "debut"
+      key: "default_lifestyle_image_3"
+    ) {
+      reference {
+        ...Media
+      }
+    }
+    getInspiredImage4: metafield(
+      namespace: "debut"
+      key: "default_lifestyle_image_4"
+    ) {
+      reference {
+        ...Media
+      }
+    }
+  }
+`;
