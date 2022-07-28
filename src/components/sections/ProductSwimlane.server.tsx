@@ -7,6 +7,8 @@ import type {
   ProductConnection,
 } from '@shopify/hydrogen/storefront-api-types';
 
+import {ProductGridItem} from '~/components';
+
 const mockProducts = new Array(12).fill('');
 
 export function ProductSwimlane({
@@ -37,7 +39,7 @@ export function ProductSwimlane({
 
   return (
     <Section heading={title} padding="y" {...props}>
-      <div className="swimlane hiddenScroll md:pb-8 md:scroll-px-8 lg:scroll-px-12 md:px-8 lg:px-12">
+      <div className="swimlane overflow-y-scroll md:scroll-px-8 lg:scroll-px-12 md:px-8 lg:px-12">
         {productCardsMarkup}
       </div>
     </Section>
@@ -48,10 +50,15 @@ function ProductCards({products}: {products: Product[]}) {
   return (
     <>
       {products.map((product) => (
-        <ProductCard
+        // <ProductCard
+        //   product={product}
+        //   key={product.id}
+        //   className={'snap-start w-80'}
+        // />
+        <ProductGridItem
           product={product}
           key={product.id}
-          className={'snap-start w-80'}
+          className={'snap-start w-60'}
         />
       ))}
     </>

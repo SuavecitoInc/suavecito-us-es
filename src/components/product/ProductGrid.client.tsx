@@ -5,6 +5,8 @@ import {Button, Grid, ProductCard} from '~/components';
 import {getImageLoadingPriority} from '~/lib/const';
 import type {Collection, Product} from '@shopify/hydrogen/storefront-api-types';
 
+import {ProductGridItem} from '~/components';
+
 export function ProductGrid({
   url,
   collection,
@@ -85,7 +87,12 @@ export function ProductGrid({
     <>
       <Grid layout="products">
         {products.map((product, i) => (
-          <ProductCard
+          // <ProductCard
+          //   key={product.id}
+          //   product={product}
+          //   loading={getImageLoadingPriority(i)}
+          // />
+          <ProductGridItem
             key={product.id}
             product={product}
             loading={getImageLoadingPriority(i)}

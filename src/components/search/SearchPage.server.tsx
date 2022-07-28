@@ -11,9 +11,7 @@ export function SearchPage({
   return (
     <Layout>
       <PageHeader>
-        <Heading as="h1" size="copy">
-          Search
-        </Heading>
+        <Heading as="h1">Search</Heading>
         <form className="relative flex w-full text-heading">
           <Input
             defaultValue={searchTerm}
