@@ -5,3 +5,4 @@ export * from './search/index.server';
 export {DefaultSeo} from './DefaultSeo.server';
 
 export * from './product/index.server';
+export * from './templates/index.server';
