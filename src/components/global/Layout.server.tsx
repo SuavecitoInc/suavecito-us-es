@@ -12,6 +12,8 @@ const FOOTER_MENU_HANDLE_2 = 'debut-footer-help';
 
 const SHOP_NAME_FALLBACK = 'Hydrogen';
 
+import {BrandTheme} from '~/types/suavecito';
+
 /**
  * A server component that defines a structure and organization of a page that can be used in different parts of the Hydrogen app
  */
@@ -21,12 +23,7 @@ export function Layout({
   theme = 'suavecito',
 }: {
   children: React.ReactNode;
-  theme?:
-    | 'suavecito'
-    | 'suavecita'
-    | 'firme club'
-    | 'premium blends'
-    | 'cerveza cito';
+  theme?: BrandTheme;
 }) {
   return (
     <>
@@ -50,12 +47,12 @@ export function Layout({
   );
 }
 
-function HeaderWithMenu({theme}: {theme: string}) {
+function HeaderWithMenu({theme}: {theme: BrandTheme}) {
   const {shopName, headerMenu} = useLayoutQuery();
   return <Header title={shopName} menu={headerMenu} theme={theme} />;
 }
 
-function FooterWithMenu({theme}: {theme: string}) {
+function FooterWithMenu({theme}: {theme: BrandTheme}) {
   const {footerMenu, footerMenu2} = useLayoutQuery();
   return <Footer menu={footerMenu} menu2={footerMenu2} theme={theme} />;
 }

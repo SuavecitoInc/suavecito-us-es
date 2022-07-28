@@ -5,8 +5,10 @@ import {
   IconTiktok,
   IconYoutube,
 } from '~/components';
+import {BrandTheme} from '~/types/suavecito';
 
-export function SocialMediaList() {
+export function SocialMediaList({theme}: {theme?: BrandTheme}) {
+  const mainColor = theme === 'suavecita' ? 'suavecita' : 'suavecito';
   return (
     <>
       <ul className="flex justify-between items-center pt-[7px]">
@@ -17,7 +19,11 @@ export function SocialMediaList() {
             rel="noreferrer"
             aria-describedby="a11y-external-message"
           >
-            <IconInstagram height="w-[40px]" width="w-[40px]" />
+            <IconInstagram
+              height="w-[40px]"
+              width="w-[40px]"
+              theme={mainColor}
+            />
           </a>
         </li>
         <li>
@@ -27,7 +33,11 @@ export function SocialMediaList() {
             rel="noreferrer"
             aria-describedby="a11y-external-message"
           >
-            <IconFacebook height="w-[40px]" width="w-[40px]" />
+            <IconFacebook
+              height="w-[40px]"
+              width="w-[40px]"
+              theme={mainColor}
+            />
           </a>
         </li>
         <li>
@@ -37,7 +47,7 @@ export function SocialMediaList() {
             rel="noreferrer"
             aria-describedby="a11y-external-message"
           >
-            <IconTwitter height="w-[40px]" width="w-[40px]" />
+            <IconTwitter height="w-[40px]" width="w-[40px]" theme={mainColor} />
           </a>
         </li>
         <li>
@@ -47,7 +57,7 @@ export function SocialMediaList() {
             rel="noreferrer"
             aria-describedby="a11y-external-message"
           >
-            <IconYoutube height="w-[40px]" width="w-[40px]" />
+            <IconYoutube height="w-[40px]" width="w-[40px]" theme={mainColor} />
           </a>
         </li>
         <li>
@@ -57,7 +67,7 @@ export function SocialMediaList() {
             rel="noreferrer"
             aria-describedby="a11y-external-message"
           >
-            <IconTiktok height="w-[40px]" width="w-[40px]" />
+            <IconTiktok height="w-[40px]" width="w-[40px]" theme={mainColor} />
           </a>
         </li>
       </ul>

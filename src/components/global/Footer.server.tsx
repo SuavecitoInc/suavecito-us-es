@@ -3,6 +3,8 @@ import {useUrl} from '@shopify/hydrogen';
 import {Section, Heading, FooterMenu, CountrySelector} from '~/components';
 import type {EnhancedMenu} from '~/lib/utils';
 
+import {BrandTheme} from '~/types/suavecito';
+
 /**
  * A server component that specifies the content of the footer on the website
  */
@@ -13,7 +15,7 @@ export function Footer({
 }: {
   menu?: EnhancedMenu;
   menu2?: EnhancedMenu;
-  theme?: string;
+  theme?: BrandTheme;
 }) {
   const {pathname} = useUrl();
 

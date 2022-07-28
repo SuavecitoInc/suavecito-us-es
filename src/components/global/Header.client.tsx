@@ -21,6 +21,8 @@ import type {EnhancedMenu, EnhancedMenuItem} from '~/lib/utils';
 
 import {Brands} from '~/data/brands';
 
+import {BrandTheme} from '~/types/suavecito';
+
 import {MobileNav} from '../sections/MobileNav';
 /**
  * A client component that specifies the content of the header on the website
@@ -32,7 +34,7 @@ export function Header({
 }: {
   title: string;
   menu?: EnhancedMenu;
-  theme?: string;
+  theme?: BrandTheme;
 }) {
   const {pathname} = useUrl();
   const localeMatch = /^\/([a-z]{2})(\/|$)/i.exec(pathname);
@@ -89,7 +91,7 @@ function MobileHeader({
 }: {
   countryCode?: string | null;
   title: string;
-  theme: string;
+  theme: BrandTheme;
   isHome: boolean;
   menu?: EnhancedMenu;
   openCart: () => void;
@@ -147,9 +149,9 @@ function MobileHeader({
           <Link to={'/account'} className={styles.button}>
             <IconAccessibility theme={themeName} />
           </Link>
-          <button type="submit" className={styles.button}>
+          <Link to={'/account'} className={styles.button}>
             <IconSearch theme={themeName} />
-          </button>
+          </Link>
           <Link to={'/account'} className={styles.button}>
             <IconAccount theme={themeName} />
           </Link>
@@ -190,7 +192,7 @@ function DesktopHeader({
   openCart: () => void;
   menu?: EnhancedMenu;
   title: string;
-  theme: string;
+  theme: BrandTheme;
 }) {
   const {y} = useWindowScroll();
 
@@ -314,9 +316,9 @@ function DesktopHeader({
         <Link to={'/account'} className={styles.button}>
           <IconAccessibility theme={themeName} />
         </Link>
-        <button type="submit" className={styles.button}>
+        <Link to={'/search'} className={styles.button}>
           <IconSearch theme={themeName} />
-        </button>
+        </Link>
         <Link to={'/account'} className={styles.button}>
           <IconAccount theme={themeName} />
         </Link>
