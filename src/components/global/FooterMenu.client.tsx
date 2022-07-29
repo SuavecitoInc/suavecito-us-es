@@ -77,7 +77,7 @@ export function FooterMenu({
           <div className={`flex-col ${styles.div}`}>
             <div className="sm-min:ml-auto sm-min:w-[80%]">
               <p className={styles.listHeader}>Subscribe for updates</p>
-              <SubscribeEmail theme={theme} />
+              {/* <SubscribeEmail theme={theme} /> */}
             </div>
             <div className="sm-min:ml-auto sm-min:w-[80%]">
               <p className={styles.listHeader}>Follow us</p>
