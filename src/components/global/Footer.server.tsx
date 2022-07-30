@@ -1,6 +1,6 @@
 import {useUrl} from '@shopify/hydrogen';
 
-import {Section, Heading, FooterMenu, CountrySelector} from '~/components';
+import {Section, FooterMenu} from '~/components';
 import type {EnhancedMenu} from '~/lib/utils';
 
 import {BrandTheme} from '~/types/suavecito';
@@ -19,15 +19,15 @@ export function Footer({
 }) {
   const {pathname} = useUrl();
 
-  const localeMatch = /^\/([a-z]{2})(\/|$)/i.exec(pathname);
-  const countryCode = localeMatch ? localeMatch[1] : null;
+  // const localeMatch = /^\/([a-z]{2})(\/|$)/i.exec(pathname);
+  // const countryCode = localeMatch ? localeMatch[1] : null;
 
-  const isHome = pathname === `/${countryCode ? countryCode + '/' : ''}`;
-  const itemsCount = menu
-    ? menu?.items?.length + 1 > 4
-      ? 4
-      : menu?.items?.length + 1
-    : [];
+  // const isHome = pathname === `/${countryCode ? countryCode + '/' : ''}`;
+  // const itemsCount = menu
+  //   ? menu?.items?.length + 1 > 4
+  //     ? 4
+  //     : menu?.items?.length + 1
+  //   : [];
 
   return (
     <Section as="footer" role="contentinfo" className="!p-0">
