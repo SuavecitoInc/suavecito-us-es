@@ -1,9 +1,5 @@
-// @ts-expect-error @headlessui/react incompatibility with node16 resolution
-import {Disclosure} from '@headlessui/react';
 import {Link} from '@shopify/hydrogen';
-import {list} from 'postcss';
-
-import {Heading, IconCaret, IconFooterAccessibility} from '~/components';
+import {IconFooterAccessibility} from '~/components';
 import type {EnhancedMenu, EnhancedMenuItem} from '~/lib/utils';
 
 import {SocialMediaList, SubscribeEmail} from '../sections/footer-sections';
@@ -77,7 +73,7 @@ export function FooterMenu({
           <div className={`flex-col ${styles.div}`}>
             <div className="sm-min:ml-auto sm-min:w-[80%]">
               <p className={styles.listHeader}>Subscribe for updates</p>
-              {/* <SubscribeEmail theme={theme} /> */}
+              <SubscribeEmail theme={theme} />
             </div>
             <div className="sm-min:ml-auto sm-min:w-[80%]">
               <p className={styles.listHeader}>Follow us</p>

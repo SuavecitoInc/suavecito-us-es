@@ -1,10 +1,11 @@
 import {HydrogenApiRoute} from '@shopify/hydrogen';
-import {fetchSync} from '@shopify/hydrogen';
-// import fetch from 'node-fetch';
+
+declare global {
+  const Oxygen: {env: any; [key: string]: any};
+}
 
 export const api: HydrogenApiRoute = async (request, options) => {
   const json = await request.json();
-  const body = json.body;
   const email: string = json.email;
   const phone: string = json.phone;
   const LIST_ID = 'T94qDB';

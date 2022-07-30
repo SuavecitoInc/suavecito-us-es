@@ -1,7 +1,10 @@
 import React, {useRef, useState} from 'react';
-import PhoneInput from 'react-phone-input-2';
+import RPI from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
 import {BrandTheme} from '~/types/suavecito';
+
+// @ts-ignore
+const PhoneInput = RPI.default ? RPI.default : RPI;
 
 export function SubscribeEmail({theme}: {theme?: BrandTheme}) {
   const formRef = useRef<HTMLFormElement>(null);
@@ -30,7 +33,7 @@ export function SubscribeEmail({theme}: {theme?: BrandTheme}) {
     suavecita: 'text-white',
   };
 
-  const validPhoneRegex = /^([0|\+[0-9]{1,5})?([0-9]{10})$/;
+  const validPhoneRegex = /^([0|+[0-9]{1,5})?([0-9]{10})$/;
   const fetchReq = async (email: string, phone: string) => {
     const phonePayload = allowPhone === true ? phone : '';
     try {
@@ -114,7 +117,7 @@ export function SubscribeEmail({theme}: {theme?: BrandTheme}) {
                 country={'us'}
                 placeholder="Mobile Phone"
                 value={phoneInput}
-                onChange={(phoneInput, country) =>
+                onChange={(phoneInput: string, country: string) =>
                   checkPhoneInput(phoneInput, country)
                 }
               />
