@@ -1,5 +1,11 @@
 import {Suspense} from 'react';
-import {useLocalization, useShopQuery, CacheLong, gql} from '@shopify/hydrogen';
+import {
+  useLocalization,
+  useShopQuery,
+  CacheLong,
+  gql,
+  useUrl,
+} from '@shopify/hydrogen';
 import type {Menu, Shop} from '@shopify/hydrogen/storefront-api-types';
 
 import {Header} from '~/components';
@@ -25,6 +31,9 @@ export function Layout({
   children: React.ReactNode;
   theme?: BrandTheme;
 }) {
+  const {pathname} = useUrl();
+  const isHome = pathname === '/';
+
   return (
     <div className={`${theme === 'premium blends' ? 'bg-black' : 'bg-white'}`}>
       <div className="flex flex-col min-h-screen">
@@ -39,7 +48,7 @@ export function Layout({
         <main
           role="main"
           id="mainContent"
-          className="flex-grow pt-[35px] md:pt-[55px]"
+          className={`flex-grow ${!isHome && 'pt-[35px] md:pt-[55px]'}`}
         >
           {children}
         </main>
