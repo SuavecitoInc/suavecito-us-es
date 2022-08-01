@@ -21,18 +21,19 @@ import {
   ProductSectionContentGrid,
   ProductSectionHowTo,
   ProductSectionHowItLooks,
-  PomadeCompareChart,
   ProductSectionYouMayAlsoLike,
 } from '~/components/index.server';
 import {
   Heading,
   ProductOptionsVariantForm,
   ProductMetafieldImages,
+  ProductImages,
   Section,
   Text,
+  Divider,
 } from '~/components';
 
-export function ProductMetafieldPomadeTemplate({handle}: {handle: string}) {
+export function ProductMetafieldSPBTemplate({handle}: {handle: string}) {
   const {
     language: {isoCode: languageCode},
     country: {isoCode: countryCode},
@@ -66,6 +67,8 @@ export function ProductMetafieldPomadeTemplate({handle}: {handle: string}) {
     vendor,
     options,
     tags,
+    variants,
+    images,
     productSectionFeaturedImage1,
     productSectionFeaturedImage2,
     productSectionDescription,
@@ -108,12 +111,6 @@ export function ProductMetafieldPomadeTemplate({handle}: {handle: string}) {
     productSectionListItemImage4,
   };
 
-  const productContentHowTo = {
-    productSectionHowToImage,
-    productSectionHowToText,
-    productSectionHowToEmbeddedVideo,
-  };
-
   const productContentHowItLooks = {
     howItLooksImage1,
     howItLooksImage2,
@@ -125,8 +122,14 @@ export function ProductMetafieldPomadeTemplate({handle}: {handle: string}) {
     howItLooksImage8,
   };
 
+  const productContentHowTo = {
+    productSectionHowToImage,
+    productSectionHowToText,
+    productSectionHowToEmbeddedVideo,
+  };
+
   return (
-    <Layout>
+    <Layout theme={product.vendor.toLowerCase()}>
       <Suspense>
         <Seo type="product" data={product} />
       </Suspense>
@@ -134,20 +137,34 @@ export function ProductMetafieldPomadeTemplate({handle}: {handle: string}) {
         <ProductOptionsProvider data={product}>
           <Section padding="x" className="px-0">
             <div className="flex flex-col md:flex-row gap-10">
-              <ProductMetafieldImages className="flex-1" />
+              {/* if metafield images exist  */}
+              <Suspense>
+                {variants.nodes[0]?.variantImage1 ? (
+                  <ProductMetafieldImages className="flex-1" />
+                ) : (
+                  <ProductImages images={images.nodes} className="flex-1" />
+                )}
+              </Suspense>
 
               <div className="flex-1">
                 <section>
                   <div className="grid gap-2">
-                    <Heading as="h1" format className="whitespace-normal">
+                    <Heading
+                      as="h1"
+                      format
+                      className="whitespace-normal text-white"
+                    >
                       {title}
                     </Heading>
                     {vendor && (
-                      <Text className={'opacity-50 font-medium'}>{vendor}</Text>
+                      <Text className={'text-white opacity-50 font-medium'}>
+                        {vendor}
+                      </Text>
                     )}
                   </div>
                   <Suspense>
                     <ProductOptionsVariantForm
+                      theme="premium blends"
                       optionNames={defaultOptionNames}
                       tags={tags}
                     />
@@ -160,22 +177,35 @@ export function ProductMetafieldPomadeTemplate({handle}: {handle: string}) {
 
         {/* check if productSectionFeaturedImage1 && productSectionDescription are set */}
         {productSectionFeaturedImage1 && productSectionDescription && (
-          <ProductSectionContentGrid {...productContentGridData} />
+          <ProductSectionContentGrid
+            theme="premium blends"
+            {...productContentGridData}
+          />
         )}
 
         {/* Product Section How To */}
         {productSectionHowToText && productSectionHowToEmbeddedVideo && (
-          <ProductSectionHowTo {...productContentHowTo} />
+          <ProductSectionHowTo
+            theme="premium blends"
+            {...productContentHowTo}
+          />
         )}
+
+        <Divider width="half" theme="premium blends" className="mt-[55px]" />
       </div>
+
       {/* Product Section How it Looks */}
       {howItLooksImage1 && howItLooksImage2 && (
-        <ProductSectionHowItLooks {...productContentHowItLooks} />
+        <ProductSectionHowItLooks
+          theme="premium blends"
+          {...productContentHowItLooks}
+        />
       )}
 
-      <div className="page-width">
-        <PomadeCompareChart />
-        <ProductSectionYouMayAlsoLike productId={product.id} />
+      <div className="w-full bg-white">
+        <div className="page-width">
+          <ProductSectionYouMayAlsoLike productId={product.id} />
+        </div>
       </div>
     </Layout>
   );

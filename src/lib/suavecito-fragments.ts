@@ -315,3 +315,23 @@ export const PRODUCT_SECTION_GET_INSPIRED_FRAGMENT = gql`
     }
   }
 `;
+
+export const PRODUCT_SECTION_HOW_TO_FRAGMENT = gql`
+  fragment ProductSectionHowTo on Product {
+    howToUse1: metafield(namespace: "debut", key: "default_lifestyle_image_1") {
+      reference {
+        ...Media
+      }
+    }
+    howToUse2: metafield(namespace: "debut", key: "default_lifestyle_image_2") {
+      reference {
+        ...Media
+      }
+    }
+    howToUse3: metafield(namespace: "debut", key: "default_lifestyle_image_3") {
+      reference {
+        ...Media
+      }
+    }
+  }
+`;

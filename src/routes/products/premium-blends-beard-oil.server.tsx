@@ -13,26 +13,26 @@ import {MEDIA_FRAGMENT} from '~/lib/fragments';
 import {
   PRODUCT_SECTION_FRAGMENT,
   VARIANT_METAFIELD_IMAGES_FRAGMENT,
-  PRODUCT_SECTION_HOW_IT_LOOKS_FRAGMENT,
+  PRODUCT_SECTION_HOW_TO_FRAGMENT,
 } from '~/lib/suavecito-fragments';
 import {
   NotFound,
   Layout,
   ProductSectionContentGrid,
-  ProductSectionHowTo,
-  ProductSectionHowItLooks,
-  PomadeCompareChart,
+  ProductSectionHowToMultipleImages,
   ProductSectionYouMayAlsoLike,
 } from '~/components/index.server';
 import {
   Heading,
   ProductOptionsVariantForm,
   ProductMetafieldImages,
+  ProductImages,
   Section,
   Text,
 } from '~/components';
 
-export function ProductMetafieldPomadeTemplate({handle}: {handle: string}) {
+export default function Product() {
+  const handle = 'premium-blends-beard-oil';
   const {
     language: {isoCode: languageCode},
     country: {isoCode: countryCode},
@@ -66,6 +66,8 @@ export function ProductMetafieldPomadeTemplate({handle}: {handle: string}) {
     vendor,
     options,
     tags,
+    variants,
+    images,
     productSectionFeaturedImage1,
     productSectionFeaturedImage2,
     productSectionDescription,
@@ -77,17 +79,11 @@ export function ProductMetafieldPomadeTemplate({handle}: {handle: string}) {
     productSectionListItemImage3,
     productSectionListItemText4,
     productSectionListItemImage4,
-    productSectionHowToImage,
     productSectionHowToText,
     productSectionHowToEmbeddedVideo,
-    howItLooksImage1,
-    howItLooksImage2,
-    howItLooksImage3,
-    howItLooksImage4,
-    howItLooksImage5,
-    howItLooksImage6,
-    howItLooksImage7,
-    howItLooksImage8,
+    howToUse1,
+    howToUse2,
+    howToUse3,
   } = product;
 
   const defaultOptionNames = options.map(
@@ -109,24 +105,15 @@ export function ProductMetafieldPomadeTemplate({handle}: {handle: string}) {
   };
 
   const productContentHowTo = {
-    productSectionHowToImage,
+    howToUse1,
+    howToUse2,
+    howToUse3,
     productSectionHowToText,
     productSectionHowToEmbeddedVideo,
   };
 
-  const productContentHowItLooks = {
-    howItLooksImage1,
-    howItLooksImage2,
-    howItLooksImage3,
-    howItLooksImage4,
-    howItLooksImage5,
-    howItLooksImage6,
-    howItLooksImage7,
-    howItLooksImage8,
-  };
-
   return (
-    <Layout>
+    <Layout theme={product.vendor.toLowerCase()}>
       <Suspense>
         <Seo type="product" data={product} />
       </Suspense>
@@ -134,20 +121,34 @@ export function ProductMetafieldPomadeTemplate({handle}: {handle: string}) {
         <ProductOptionsProvider data={product}>
           <Section padding="x" className="px-0">
             <div className="flex flex-col md:flex-row gap-10">
-              <ProductMetafieldImages className="flex-1" />
+              {/* if metafield images exist  */}
+              <Suspense>
+                {variants.nodes[0]?.variantImage1 ? (
+                  <ProductMetafieldImages className="flex-1" />
+                ) : (
+                  <ProductImages images={images.nodes} className="flex-1" />
+                )}
+              </Suspense>
 
               <div className="flex-1">
                 <section>
                   <div className="grid gap-2">
-                    <Heading as="h1" format className="whitespace-normal">
+                    <Heading
+                      as="h1"
+                      format
+                      className="whitespace-normal text-white"
+                    >
                       {title}
                     </Heading>
                     {vendor && (
-                      <Text className={'opacity-50 font-medium'}>{vendor}</Text>
+                      <Text className={'text-white opacity-50 font-medium'}>
+                        {vendor}
+                      </Text>
                     )}
                   </div>
                   <Suspense>
                     <ProductOptionsVariantForm
+                      theme="premium blends"
                       optionNames={defaultOptionNames}
                       tags={tags}
                     />
@@ -160,22 +161,25 @@ export function ProductMetafieldPomadeTemplate({handle}: {handle: string}) {
 
         {/* check if productSectionFeaturedImage1 && productSectionDescription are set */}
         {productSectionFeaturedImage1 && productSectionDescription && (
-          <ProductSectionContentGrid {...productContentGridData} />
+          <ProductSectionContentGrid
+            theme="premium blends"
+            {...productContentGridData}
+          />
         )}
 
         {/* Product Section How To */}
-        {productSectionHowToText && productSectionHowToEmbeddedVideo && (
-          <ProductSectionHowTo {...productContentHowTo} />
+        {productSectionHowToText && howToUse1 && (
+          <ProductSectionHowToMultipleImages
+            theme="premium blends"
+            {...productContentHowTo}
+          />
         )}
       </div>
-      {/* Product Section How it Looks */}
-      {howItLooksImage1 && howItLooksImage2 && (
-        <ProductSectionHowItLooks {...productContentHowItLooks} />
-      )}
 
-      <div className="page-width">
-        <PomadeCompareChart />
-        <ProductSectionYouMayAlsoLike productId={product.id} />
+      <div className="w-full bg-white">
+        <div className="page-width">
+          <ProductSectionYouMayAlsoLike productId={product.id} />
+        </div>
       </div>
     </Layout>
   );
@@ -185,7 +189,7 @@ const PRODUCT_QUERY = gql`
   ${MEDIA_FRAGMENT}
   ${PRODUCT_SECTION_FRAGMENT}
   ${VARIANT_METAFIELD_IMAGES_FRAGMENT}
-  ${PRODUCT_SECTION_HOW_IT_LOOKS_FRAGMENT}
+  ${PRODUCT_SECTION_HOW_TO_FRAGMENT}
   query Product(
     $country: CountryCode
     $language: LanguageCode
@@ -215,7 +219,7 @@ const PRODUCT_QUERY = gql`
       }
       tags
       ...ProductSection
-      ...ProductSectionHowItLooks
+      ...ProductSectionHowTo
       variants(first: 100) {
         nodes {
           id

@@ -1,6 +1,7 @@
 import {Image} from '@shopify/hydrogen';
 import {Media} from '@shopify/hydrogen/storefront-api-types';
 import {Heading} from '../index';
+import type {BrandTheme} from '~/types/suavecito';
 
 interface Metafield {
   value: string;
@@ -8,6 +9,7 @@ interface Metafield {
 }
 
 export function ProductSectionHowItLooks({
+  theme = 'suavecito',
   howItLooksImage1,
   howItLooksImage2,
   howItLooksImage3,
@@ -17,6 +19,7 @@ export function ProductSectionHowItLooks({
   howItLooksImage7,
   howItLooksImage8,
 }: {
+  theme?: BrandTheme;
   howItLooksImage1: Metafield | null;
   howItLooksImage2: Metafield | null;
   howItLooksImage3: Metafield | null;
@@ -42,7 +45,9 @@ export function ProductSectionHowItLooks({
       <Heading
         as="h3"
         size="heading"
-        className="uppercase text-center mx-auto max-w-full mb-[20px]"
+        className={`uppercase text-center mx-auto max-w-full mb-[20px] ${
+          theme === 'premium blends' && 'text-white'
+        }`}
       >
         How It Looks
       </Heading>

@@ -217,27 +217,24 @@ export function ProductOptionsVariantForm({
               }
 
               // @ts-ignore Variant Fragrance Profile does not  exist on selected variant
-              if (index === 1 && selectedVariant?.variantFragranceProfile) {
+              if (index === 0 && selectedVariant?.variantFragranceProfile) {
                 return (
                   <div className="grid gap-4" key={name}>
-                    <div
-                      className="fragrance-profile"
-                      dangerouslySetInnerHTML={{
-                        // @ts-ignore Variant Fragrance Profile does not  exist on selected variant
-                        __html: selectedVariant?.variantFragranceProfile.value,
-                      }}
-                    />
-
                     <div className="flex flex-col flex-wrap mb-4 gap-y-2 last:mb-0">
                       <Heading
                         as="legend"
                         size="lead"
-                        className="min-w-[4rem] font-nexa-rust"
+                        className={`min-w-[4rem] font-nexa-rust ${
+                          theme === 'premium blends'
+                            ? 'text-white'
+                            : 'text-black'
+                        }`}
                       >
                         {name}
                       </Heading>
                       <div className="grid grid-cols-4 md:grid-cols-3 lg:grid-cols-4 auto-rows-max items-center justify-center gap-4">
                         <ProductOptions
+                          theme={theme}
                           name={name}
                           handleChange={handleChange}
                           values={values}
@@ -246,6 +243,16 @@ export function ProductOptionsVariantForm({
                         />
                       </div>
                     </div>
+
+                    <div
+                      className={`fragrance-pofile ${
+                        theme === 'premium blends' && 'text-white'
+                      }`}
+                      dangerouslySetInnerHTML={{
+                        // @ts-ignore Variant Fragrance Profile does not  exist on selected variant
+                        __html: selectedVariant?.variantFragranceProfile.value,
+                      }}
+                    />
                   </div>
                 );
               }
@@ -256,12 +263,15 @@ export function ProductOptionsVariantForm({
                     <Heading
                       as="legend"
                       size="lead"
-                      className="min-w-[4rem] font-nexa-rust"
+                      className={`min-w-[4rem] font-nexa-rust ${
+                        theme === 'premium blends' ? 'text-white' : 'text-black'
+                      }`}
                     >
                       {name}
                     </Heading>
                     <div className="grid grid-cols-4 md:grid-cols-3 lg:grid-cols-4 auto-rows-max items-center justify-center gap-4">
                       <ProductOptions
+                        theme={theme}
                         name={name}
                         handleChange={handleChange}
                         values={values}
@@ -278,7 +288,11 @@ export function ProductOptionsVariantForm({
 
       <div className="gird-gap-2">
         {selectedVariant && (
-          <div className="text-black font-bold text-3xl">
+          <div
+            className={`${
+              theme === 'premium blends' ? 'text-white' : 'text-black'
+            } font-bold text-3xl`}
+          >
             <Money
               withoutTrailingZeros
               data={selectedVariant.priceV2!}

@@ -42,7 +42,7 @@ export function Button({
     'primary-inverted': `${baseButtonClasses} bg-suave-white hover:bg-suave-white-focus text-contrast text-suave-red`,
     suavecito: `${baseButtonClasses} bg-suave-red hover:bg-suave-red-focus text-contrast`,
     suavecita: `${baseButtonClasses} bg-suave-pink hover:bg-suave-pink-focus text-contrast`,
-    'premium blends': `${baseButtonClasses} bg-suave-red hover:bg-suave-red-focus text-contrast`,
+    'premium blends': `${baseButtonClasses} bg-suave-white hover:bg-suave-white-focus text-black`,
     'firme club': `${baseButtonClasses} bg-suave-red hover:bg-suave-red-focus text-contrast`,
     'cerveza cito': `${baseButtonClasses} bg-suave-red hover:bg-suave-red-focus text-contrast`,
     'tres noir': `${baseButtonClasses} bg-suave-red hover:bg-suave-red-focus text-contrast`,
