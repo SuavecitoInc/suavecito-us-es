@@ -1,5 +1,7 @@
 import {Divider, Heading} from '../index';
 import {Image} from '@shopify/hydrogen';
+import {MenuItemType} from '@shopify/hydrogen/storefront-api-types';
+import type {BrandTheme} from '~/types/suavecito';
 
 interface Metafield {
   value: string;
@@ -12,7 +14,7 @@ export function ProductSectionHowTo({
   productSectionHowToText,
   productSectionHowToEmbeddedVideo,
 }: {
-  theme?: 'suavecito' | 'suavecita';
+  theme?: BrandTheme;
   productSectionHowToImage?: Metafield;
   productSectionHowToText: Metafield;
   productSectionHowToEmbeddedVideo: Metafield;
@@ -20,11 +22,15 @@ export function ProductSectionHowTo({
   const colors = {
     suavecito: 'text-black',
     suavecita: 'text-suave-pink',
+    'premium blends': 'text-white',
+    'firme club': 'text-black',
+    'tres noir': 'text-black',
+    'cerveza cito': 'text-black',
   };
 
   return (
     <section>
-      <Divider width="half" className="my-[55px]" />
+      <Divider width="half" theme={theme} className="my-[55px]" />
       <Heading
         as="h3"
         size="heading"
@@ -34,7 +40,10 @@ export function ProductSectionHowTo({
       </Heading>
       <div
         className={`pt-6 flex flex-col md:flex-row gap-6 ${
-          productSectionHowToImage && 'border-b-2 border-black'
+          productSectionHowToImage &&
+          `border-b-2 ${
+            theme === 'premium blends' ? 'border-white' : 'border-black'
+          }`
         }`}
       >
         <div
@@ -44,7 +53,9 @@ export function ProductSectionHowTo({
         >
           {productSectionHowToText && (
             <div
-              className="directions"
+              className={`directions ${
+                theme === 'premium blends' && 'text-white'
+              }`}
               dangerouslySetInnerHTML={{__html: productSectionHowToText.value}}
             />
           )}

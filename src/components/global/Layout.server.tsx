@@ -26,7 +26,7 @@ export function Layout({
   theme?: BrandTheme;
 }) {
   return (
-    <>
+    <div className={`${theme === 'premium blends' ? 'bg-black' : 'bg-white'}`}>
       <div className="flex flex-col min-h-screen">
         <div className="">
           <a href="#mainContent" className="sr-only">
@@ -36,14 +36,18 @@ export function Layout({
         <Suspense fallback={<Header title={SHOP_NAME_FALLBACK} />}>
           <HeaderWithMenu theme={theme} />
         </Suspense>
-        <main role="main" id="mainContent" className="flex-grow">
+        <main
+          role="main"
+          id="mainContent"
+          className="flex-grow pt-[35px] md:pt-[55px]"
+        >
           {children}
         </main>
       </div>
       <Suspense fallback={<Footer />}>
         <FooterWithMenu theme={theme} />
       </Suspense>
-    </>
+    </div>
   );
 }
 

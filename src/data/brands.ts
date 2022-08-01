@@ -20,19 +20,19 @@ export const Brands: BrandsType = {
     height: '91.5',
     alt: 'Suavecita Logo',
   },
-  'premium-blends': {
+  'premium blends': {
     src: 'https://cdn.shopify.com/s/files/1/0274/1389/files/premium-blends-logo-hq.png?v=1634065459',
     width: '150',
     height: '100.41',
     alt: 'Premium Blends Logo',
   },
-  'cerveza-cito': {
+  'cerveza cito': {
     src: 'https://cdn.shopify.com/s/files/1/0274/1389/files/cerveza-cito-logo_7aae574b-e56b-4c10-9597-745f909adc33.png?v=1634064427',
     width: '85',
     height: '85',
     alt: 'Cerveza Cito Logo',
   },
-  'firme-club': {
+  'firme club': {
     src: 'https://cdn.shopify.com/s/files/1/0274/1389/files/firme-club-logo-black.png?v=1634065277',
     width: '90',
     height: '90',
