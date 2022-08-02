@@ -109,7 +109,7 @@ export function ProductSectionKitIncludes({
             {items.map((el) => (
               <div
                 key={`features-${el.id}`}
-                className={`border-x-2 border-white even:bg-[#C8C8C8] py-2 px-4 grow-1 shrink-0 basis-[60%] md:basis-[40%] ${width[itemsLength]}`}
+                className={`border-x-2 border-white even:bg-[#C8C8C8] py-2 px-4 grow-1 shrink-0 basis-[60%] md:basis-[40%] ${width[itemsLength]} text-left`}
               >
                 <p>Features:</p>
                 <div
