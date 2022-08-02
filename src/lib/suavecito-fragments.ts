@@ -335,3 +335,86 @@ export const PRODUCT_SECTION_HOW_TO_FRAGMENT = gql`
     }
   }
 `;
+
+export const PRODUCT_SECTION_KIT_INCLUDES = gql`
+  fragment ProductSectionKitIncludes on Product {
+    kitProduct1: metafield(namespace: "debut", key: "kit_product_1") {
+      value
+    }
+    kitProduct2: metafield(namespace: "debut", key: "kit_product_2") {
+      value
+    }
+    kitProduct3: metafield(namespace: "debut", key: "kit_product_3") {
+      value
+    }
+    kitProduct4: metafield(namespace: "debut", key: "kit_product_4") {
+      value
+    }
+    kitProduct5: metafield(namespace: "debut", key: "kit_product_5") {
+      value
+    }
+    kitProduct6: metafield(namespace: "debut", key: "kit_product_6") {
+      value
+    }
+    kitProductVariant1: metafield(
+      namespace: "debut"
+      key: "kit_product_variant_1"
+    ) {
+      value
+    }
+    kitProductVariant2: metafield(
+      namespace: "debut"
+      key: "kit_product_variant_2"
+    ) {
+      value
+    }
+    kitProductVariant3: metafield(
+      namespace: "debut"
+      key: "kit_product_variant_3"
+    ) {
+      value
+    }
+    kitProductVariant4: metafield(
+      namespace: "debut"
+      key: "kit_product_variant_4"
+    ) {
+      value
+    }
+    kitProductVariant5: metafield(
+      namespace: "debut"
+      key: "kit_product_variant_5"
+    ) {
+      value
+    }
+    kitProductVariant6: metafield(
+      namespace: "debut"
+      key: "kit_product_variant_6"
+    ) {
+      value
+    }
+    kitProductVariant7: metafield(
+      namespace: "debut"
+      key: "kit_product_variant_7"
+    ) {
+      value
+    }
+    kitProductVariant8: metafield(
+      namespace: "debut"
+      key: "kit_product_variant_8"
+    ) {
+      value
+    }
+    kitProductVariant9: metafield(
+      namespace: "debut"
+      key: "kit_product_variant_9"
+    ) {
+      value
+    }
+    kitProductVariant10: metafield(
+      namespace: "debut"
+      key: "kit_product_variant_10"
+    ) {
+      value
+    }
+  }
+`;
