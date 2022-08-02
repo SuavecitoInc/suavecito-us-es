@@ -118,6 +118,8 @@ export default function Product() {
     return tabs;
   };
 
+  const tabsContent = getTabsContent();
+
   const theme = vendor.toLowerCase();
 
   return (
@@ -147,22 +149,33 @@ export default function Product() {
                       <Text className={'opacity-50 font-medium'}>{vendor}</Text>
                     )}
                   </div>
-                  <Suspense>
-                    <ProductOptionsVariantForm
-                      theme={theme}
-                      optionNames={defaultOptionNames}
-                      tags={tags}
-                    />
-                  </Suspense>
+                  {product.productType !== 'FGWP' && (
+                    <Suspense>
+                      <ProductOptionsVariantForm
+                        theme={theme}
+                        optionNames={defaultOptionNames}
+                        tags={tags}
+                      />
+                    </Suspense>
+                  )}
+                  {/* display description here if no features, otherwise render tabs */}
+                  {descriptionHtml && tabsContent.length === 1 && (
+                    <div className="py-10">
+                      <div
+                        className="description"
+                        dangerouslySetInnerHTML={{__html: descriptionHtml}}
+                      />
+                    </div>
+                  )}
                 </section>
               </div>
             </div>
           </Section>
         </ProductOptionsProvider>
 
-        {descriptionHtml && (
+        {descriptionHtml && tabsContent.length > 1 && (
           <div className="grid gap-4 py-4">
-            <ProductSectionInfoTabs theme={theme} tabs={getTabsContent()} />
+            <ProductSectionInfoTabs theme={theme} tabs={tabsContent} />
           </div>
         )}
 
@@ -183,6 +196,7 @@ const PRODUCT_QUERY = gql`
     product(handle: $handle) {
       id
       title
+      productType
       vendor
       descriptionHtml
       media(first: 7) {
