@@ -1,6 +1,5 @@
 import {Divider, Heading} from '../index';
 import {Image} from '@shopify/hydrogen';
-import {MenuItemType} from '@shopify/hydrogen/storefront-api-types';
 import type {BrandTheme} from '~/types/suavecito';
 
 interface Metafield {

@@ -140,3 +140,8 @@ h6,
   pointer-events: none;
   opacity: 0.5;
 }
+
+.metafield-features ul {
+  list-style-type: disc;
+  list-style-position: inside;
+}
