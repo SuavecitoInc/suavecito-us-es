@@ -97,9 +97,22 @@ export function ProductOptionsVariantForm({
     const currentVariant = params.get('variant') || null;
     if (currentVariant) {
       const variantGID = `gid://shopify/ProductVariant/${currentVariant}`;
-      const matchedVariant: any = variants?.find(
+      let matchedVariant: any = variants?.find(
         (variant) => variant?.id === variantGID,
       );
+      // set variant url param to first variant if variant id not found
+      if (!matchedVariant) {
+        // @ts-ignore
+        matchedVariant = variants[0];
+        let id = matchedVariant.id;
+        if (id) id = id.replace('gid://shopify/ProductVariant/', '');
+        params.set(encodeURIComponent('variant'), encodeURIComponent(id)),
+          window.history.replaceState(
+            null,
+            '',
+            `${pathname}?${params.toString()}`,
+          );
+      }
       // get selected options
       optionNames.forEach((name) => {
         const variantOption = matchedVariant?.selectedOptions.find(
