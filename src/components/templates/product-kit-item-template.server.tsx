@@ -96,7 +96,7 @@ export function ProductKitItemTemplate({handle}: {handle: string}) {
     kitProduct5,
     kitProduct6,
   ]
-    .filter((el) => el != null)
+    .filter((el) => el !== null)
     .map((el) => el.value);
 
   const kitProductVariants = [
@@ -111,7 +111,7 @@ export function ProductKitItemTemplate({handle}: {handle: string}) {
     kitProductVariant9,
     kitProductVariant10,
   ]
-    .filter((el) => el != null)
+    .filter((el) => el !== null)
     .map((el) => el.value);
 
   return (
@@ -156,12 +156,15 @@ export function ProductKitItemTemplate({handle}: {handle: string}) {
           </Section>
         </ProductOptionsProvider>
 
-        <div className="page-width">
-          <ProductSectionKitIncludes
-            kitProducts={kitProducts}
-            kitProductVariants={kitProductVariants}
-          />
-        </div>
+        {(kitProductVariants.length > 0 || kitProducts.length > 0) && (
+          <div className="page-width">
+            <ProductSectionKitIncludes
+              theme={theme}
+              kitProducts={kitProducts}
+              kitProductVariants={kitProductVariants}
+            />
+          </div>
+        )}
 
         <ProductSectionYouMayAlsoLike theme={theme} productId={product.id} />
       </div>
