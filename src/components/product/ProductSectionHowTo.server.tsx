@@ -1,5 +1,6 @@
 import {Divider, Heading} from '../index';
 import {Image} from '@shopify/hydrogen';
+import type {BrandTheme} from '~/types/suavecito';
 
 interface Metafield {
   value: string;
@@ -7,23 +8,41 @@ interface Metafield {
 }
 
 export function ProductSectionHowTo({
+  theme = 'suavecito',
   productSectionHowToImage,
   productSectionHowToText,
   productSectionHowToEmbeddedVideo,
 }: {
+  theme?: BrandTheme;
   productSectionHowToImage?: Metafield;
   productSectionHowToText: Metafield;
   productSectionHowToEmbeddedVideo: Metafield;
 }) {
+  const colors = {
+    suavecito: 'text-black',
+    suavecita: 'text-suave-pink',
+    'premium blends': 'text-white',
+    'firme club': 'text-black',
+    'tres noir': 'text-black',
+    'cerveza cito': 'text-black',
+  };
+
   return (
     <section>
-      <Divider width="half" className="my-[55px]" />
-      <Heading as="h3" size="heading" className="uppercase text-center">
+      <Divider width="half" theme={theme} className="my-[55px]" />
+      <Heading
+        as="h3"
+        size="heading"
+        className={`uppercase text-center ${colors[theme]}`}
+      >
         How to Use
       </Heading>
       <div
         className={`pt-6 flex flex-col md:flex-row gap-6 ${
-          productSectionHowToImage && 'border-b-2 border-black'
+          productSectionHowToImage &&
+          `border-b-2 ${
+            theme === 'premium blends' ? 'border-white' : 'border-black'
+          }`
         }`}
       >
         <div
@@ -33,7 +52,9 @@ export function ProductSectionHowTo({
         >
           {productSectionHowToText && (
             <div
-              className="directions"
+              className={`directions ${
+                theme === 'premium blends' && 'text-white'
+              }`}
               dangerouslySetInnerHTML={{__html: productSectionHowToText.value}}
             />
           )}

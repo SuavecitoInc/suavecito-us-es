@@ -1,3 +1,4 @@
+import type {BrandTheme} from '~/types/suavecito';
 import {Divider} from '../index';
 import {ProductSectionImageText} from './ProductSectionImageText.server';
 
@@ -7,6 +8,7 @@ interface Metafield {
 }
 
 export function ProductSectionContentGrid({
+  theme = 'suavecito',
   productSectionFeaturedImage1,
   productSectionFeaturedImage2,
   productSectionDescription,
@@ -19,6 +21,7 @@ export function ProductSectionContentGrid({
   productSectionListItemImage3,
   productSectionListItemImage4,
 }: {
+  theme?: BrandTheme;
   productSectionFeaturedImage1: Metafield;
   productSectionFeaturedImage2: Metafield;
   productSectionDescription: Metafield;
@@ -33,8 +36,12 @@ export function ProductSectionContentGrid({
 }) {
   return (
     <section>
-      <Divider width="half" className="my-[55px]" />
-      <div className="flex flex-col gap-6 md:gap-0">
+      <Divider width="half" theme={theme} className="my-[55px]" />
+      <div
+        className={`flex flex-col gap-6 md:gap-0 ${
+          theme === 'premium blends' && 'text-white'
+        }`}
+      >
         <ProductSectionImageText
           featuredImage={productSectionFeaturedImage1}
           featuredText={productSectionDescription}

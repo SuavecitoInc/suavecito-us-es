@@ -24,10 +24,10 @@ export function NoResultRecommendations({
 
   return (
     <>
-      <FeaturedCollections
+      {/* <FeaturedCollections
         title="Trending Collections"
         data={data.featuredCollections.nodes}
-      />
+      /> */}
       <ProductSwimlane
         title="Trending Products"
         data={data.featuredProducts.nodes}

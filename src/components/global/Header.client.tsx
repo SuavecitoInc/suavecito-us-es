@@ -1,15 +1,13 @@
 import {Link, useUrl, useCart, Image} from '@shopify/hydrogen';
-import {useRef, useState, MouseEvent, useEffect} from 'react';
+import {useRef, useState, MouseEvent} from 'react';
 import {useWindowScroll, useClickAway} from 'react-use';
 import {
-  Heading,
   IconAccount,
   IconBag,
   IconMenu,
   IconSearch,
   IconAccessibility,
   IconArrow,
-  Input,
   IconClose,
 } from '~/components';
 
@@ -20,6 +18,8 @@ import {useDrawer} from './Drawer.client';
 import type {EnhancedMenu, EnhancedMenuItem} from '~/lib/utils';
 
 import {Brands} from '~/data/brands';
+
+import {BrandTheme} from '~/types/suavecito';
 
 import {MobileNav} from '../sections/MobileNav';
 /**
@@ -32,7 +32,7 @@ export function Header({
 }: {
   title: string;
   menu?: EnhancedMenu;
-  theme?: string;
+  theme?: BrandTheme;
 }) {
   const {pathname} = useUrl();
   const localeMatch = /^\/([a-z]{2})(\/|$)/i.exec(pathname);
@@ -79,17 +79,14 @@ export function Header({
 }
 
 function MobileHeader({
-  countryCode,
-  title,
   isHome,
   openCart,
-  openMenu,
   menu,
   theme,
 }: {
   countryCode?: string | null;
   title: string;
-  theme: string;
+  theme: BrandTheme;
   isHome: boolean;
   menu?: EnhancedMenu;
   openCart: () => void;
@@ -115,11 +112,7 @@ function MobileHeader({
 
   const styles = {
     button: 'relative flex items-center justify-center w-8 h-8',
-    container: `${
-      isHome
-        ? 'bg-primary/80 dark:bg-contrast/60 shadow-darkHeader'
-        : 'bg-contrast/80'
-    } ${
+    container: `bg-white ${
       y > 50 && !isHome ? 'shadow-lightHeader ' : ''
     }flex md:hidden items-center backdrop-blur-lg z-40 top-0 justify-between w-full leading-none gap-4 md:px-8 ${
       themeText[themeName]
@@ -147,9 +140,9 @@ function MobileHeader({
           <Link to={'/account'} className={styles.button}>
             <IconAccessibility theme={themeName} />
           </Link>
-          <button type="submit" className={styles.button}>
+          <Link to={'/account'} className={styles.button}>
             <IconSearch theme={themeName} />
-          </button>
+          </Link>
           <Link to={'/account'} className={styles.button}>
             <IconAccount theme={themeName} />
           </Link>
@@ -178,11 +171,9 @@ function MobileHeader({
 }
 
 function DesktopHeader({
-  countryCode,
   isHome,
   menu,
   openCart,
-  title,
   theme,
 }: {
   countryCode?: string | null;
@@ -190,7 +181,7 @@ function DesktopHeader({
   openCart: () => void;
   menu?: EnhancedMenu;
   title: string;
-  theme: string;
+  theme: BrandTheme;
 }) {
   const {y} = useWindowScroll();
 
@@ -219,11 +210,7 @@ function DesktopHeader({
   const styles = {
     button:
       'relative flex items-center justify-center w-8 h-8 focus:ring-primary/5',
-    container: `${
-      isHome
-        ? 'bg-primary/80 dark:bg-contrast/60 shadow-darkHeader'
-        : 'bg-contrast/80'
-    } ${
+    container: `bg-white ${
       y > 50 && !isHome ? 'shadow-lightHeader ' : ''
     }hidden md:flex items-center transition duration-300 backdrop-blur-lg z-40 top-0 justify-between w-full leading-none gap-8 site-header h-nav ${
       themeText[themeName]
@@ -314,9 +301,9 @@ function DesktopHeader({
         <Link to={'/account'} className={styles.button}>
           <IconAccessibility theme={themeName} />
         </Link>
-        <button type="submit" className={styles.button}>
+        <Link to={'/search'} className={styles.button}>
           <IconSearch theme={themeName} />
-        </button>
+        </Link>
         <Link to={'/account'} className={styles.button}>
           <IconAccount theme={themeName} />
         </Link>

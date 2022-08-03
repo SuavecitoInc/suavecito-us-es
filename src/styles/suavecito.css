@@ -129,3 +129,19 @@ h6,
 .font-myriad-pro {
   font-family: var(--myriad-pro);
 }
+
+.react-tel-input input {
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: 0 !important;
+}
+
+.btn-disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.metafield-features ul {
+  list-style-type: disc;
+  list-style-position: inside;
+}

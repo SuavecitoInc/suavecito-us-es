@@ -81,6 +81,11 @@ export function ProductOptionsVariantForm({
     setParams(new URLSearchParams(search));
   }, [params, search]);
 
+  // reset quantity on variant change
+  // useEffect(() => {
+  //   if (showQuantitySelector) setQuantity('1');
+  // }, [selectedVariant, showQuantitySelector]);
+
   useEffectOnce(() => {
     let mainValue: string;
     const initialSelectedOptions: {[key: string]: string | undefined} = {
@@ -195,7 +200,8 @@ export function ProductOptionsVariantForm({
         <div className="grid gap-4">
           {colorOptions.length > 0 && (
             <ColorOptions
-              name="Color"
+              // @ts-ignore
+              name={options[0].name}
               handleChange={handleChange}
               // @ts-ignore
               values={options[0].values}
@@ -211,27 +217,24 @@ export function ProductOptionsVariantForm({
               }
 
               // @ts-ignore Variant Fragrance Profile does not  exist on selected variant
-              if (index === 1 && selectedVariant?.variantFragranceProfile) {
+              if (index === 0 && selectedVariant?.variantFragranceProfile) {
                 return (
                   <div className="grid gap-4" key={name}>
-                    <div
-                      className="fragrance-profile"
-                      dangerouslySetInnerHTML={{
-                        // @ts-ignore Variant Fragrance Profile does not  exist on selected variant
-                        __html: selectedVariant?.variantFragranceProfile.value,
-                      }}
-                    />
-
                     <div className="flex flex-col flex-wrap mb-4 gap-y-2 last:mb-0">
                       <Heading
                         as="legend"
                         size="lead"
-                        className="min-w-[4rem] font-nexa-rust"
+                        className={`min-w-[4rem] font-nexa-rust ${
+                          theme === 'premium blends'
+                            ? 'text-white'
+                            : 'text-black'
+                        }`}
                       >
                         {name}
                       </Heading>
                       <div className="grid grid-cols-4 md:grid-cols-3 lg:grid-cols-4 auto-rows-max items-center justify-center gap-4">
                         <ProductOptions
+                          theme={theme}
                           name={name}
                           handleChange={handleChange}
                           values={values}
@@ -240,6 +243,16 @@ export function ProductOptionsVariantForm({
                         />
                       </div>
                     </div>
+
+                    <div
+                      className={`fragrance-pofile ${
+                        theme === 'premium blends' && 'text-white'
+                      }`}
+                      dangerouslySetInnerHTML={{
+                        // @ts-ignore Variant Fragrance Profile does not  exist on selected variant
+                        __html: selectedVariant?.variantFragranceProfile.value,
+                      }}
+                    />
                   </div>
                 );
               }
@@ -250,12 +263,15 @@ export function ProductOptionsVariantForm({
                     <Heading
                       as="legend"
                       size="lead"
-                      className="min-w-[4rem] font-nexa-rust"
+                      className={`min-w-[4rem] font-nexa-rust ${
+                        theme === 'premium blends' ? 'text-white' : 'text-black'
+                      }`}
                     >
                       {name}
                     </Heading>
                     <div className="grid grid-cols-4 md:grid-cols-3 lg:grid-cols-4 auto-rows-max items-center justify-center gap-4">
                       <ProductOptions
+                        theme={theme}
                         name={name}
                         handleChange={handleChange}
                         values={values}
@@ -272,7 +288,11 @@ export function ProductOptionsVariantForm({
 
       <div className="gird-gap-2">
         {selectedVariant && (
-          <div className="text-black font-bold text-3xl">
+          <div
+            className={`${
+              theme === 'premium blends' ? 'text-white' : 'text-black'
+            } font-bold text-3xl`}
+          >
             <Money
               withoutTrailingZeros
               data={selectedVariant.priceV2!}
@@ -308,9 +328,15 @@ export function ProductOptionsVariantForm({
           <input
             type="number"
             min="1"
+            max={
+              selectedVariant?.quantityAvailable
+                ? selectedVariant?.quantityAvailable
+                : '10'
+            }
             pattern="[0-9]*"
             onChange={handleQuantity}
             value={quantity}
+            disabled={isOutOfStock}
             className="col-span-1 w-[60%]"
           />
         )}

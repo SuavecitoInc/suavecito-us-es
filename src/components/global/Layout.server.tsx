@@ -1,5 +1,11 @@
 import {Suspense} from 'react';
-import {useLocalization, useShopQuery, CacheLong, gql} from '@shopify/hydrogen';
+import {
+  useLocalization,
+  useShopQuery,
+  CacheLong,
+  gql,
+  useUrl,
+} from '@shopify/hydrogen';
 import type {Menu, Shop} from '@shopify/hydrogen/storefront-api-types';
 
 import {Header} from '~/components';
@@ -12,6 +18,8 @@ const FOOTER_MENU_HANDLE_2 = 'debut-footer-help';
 
 const SHOP_NAME_FALLBACK = 'Hydrogen';
 
+import {BrandTheme} from '~/types/suavecito';
+
 /**
  * A server component that defines a structure and organization of a page that can be used in different parts of the Hydrogen app
  */
@@ -21,15 +29,13 @@ export function Layout({
   theme = 'suavecito',
 }: {
   children: React.ReactNode;
-  theme?:
-    | 'suavecito'
-    | 'suavecita'
-    | 'firme club'
-    | 'premium blends'
-    | 'cerveza cito';
+  theme?: BrandTheme;
 }) {
+  const {pathname} = useUrl();
+  const isHome = pathname === '/';
+
   return (
-    <>
+    <div className={`${theme === 'premium blends' ? 'bg-black' : 'bg-white'}`}>
       <div className="flex flex-col min-h-screen">
         <div className="">
           <a href="#mainContent" className="sr-only">
@@ -39,23 +45,27 @@ export function Layout({
         <Suspense fallback={<Header title={SHOP_NAME_FALLBACK} />}>
           <HeaderWithMenu theme={theme} />
         </Suspense>
-        <main role="main" id="mainContent" className="flex-grow">
+        <main
+          role="main"
+          id="mainContent"
+          className={`flex-grow ${!isHome && 'pt-[35px] md:pt-[55px]'}`}
+        >
           {children}
         </main>
       </div>
       <Suspense fallback={<Footer />}>
         <FooterWithMenu theme={theme} />
       </Suspense>
-    </>
+    </div>
   );
 }
 
-function HeaderWithMenu({theme}: {theme: string}) {
+function HeaderWithMenu({theme}: {theme: BrandTheme}) {
   const {shopName, headerMenu} = useLayoutQuery();
   return <Header title={shopName} menu={headerMenu} theme={theme} />;
 }
 
-function FooterWithMenu({theme}: {theme: string}) {
+function FooterWithMenu({theme}: {theme: BrandTheme}) {
   const {footerMenu, footerMenu2} = useLayoutQuery();
   return <Footer menu={footerMenu} menu2={footerMenu2} theme={theme} />;
 }
