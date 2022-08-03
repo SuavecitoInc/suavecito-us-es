@@ -1,11 +1,14 @@
 import {gql, useShopQuery, Link, Image} from '@shopify/hydrogen';
 import {Divider, Heading} from '../index';
 import {Media} from '@shopify/hydrogen/storefront-api-types';
+import {BrandTheme} from '~/types/suavecito';
 
 export function ProductSectionKitIncludes({
+  theme = 'suavecito',
   kitProducts,
   kitProductVariants,
 }: {
+  theme: BrandTheme;
   kitProducts: {value: string}[];
   kitProductVariants: {value: string}[];
 }) {
@@ -29,7 +32,7 @@ export function ProductSectionKitIncludes({
     preload: true,
   });
 
-  const items = [...productVariants, ...products];
+  const items = [...productVariants, ...products].filter((el) => el !== null);
 
   const itemsLength = items.length;
 
@@ -46,8 +49,26 @@ export function ProductSectionKitIncludes({
   };
 
   const rowStyles = `flex flex-row text-center ${
-    itemsLength < 4 && 'justify-center'
+    itemsLength <= 3 && 'lg:justify-center'
   }`;
+
+  const textColor: {[key: string]: string} = {
+    suavecito: 'text-suave-red',
+    suavecita: 'text-suave-pink',
+    'premium blends': 'text-suave-red',
+    'firme club': 'text-suave-red',
+    'cerveza cito': 'text-suave-red',
+    'tres noir': 'text-suave-red',
+  };
+
+  const hoverTextColor: {[key: string]: string} = {
+    suavecito: 'hover:text-suave-red-focus',
+    suavecita: 'hover:text-suave-pink-focus',
+    'premium blends': 'hover:text-suave-red-focus',
+    'firme club': 'hover:text-suave-red-focus',
+    'cerveza cito': 'hover:text-suave-red-focus',
+    'tres noir': 'hover:text-suave-red-focus',
+  };
 
   return (
     <section>
@@ -98,7 +119,7 @@ export function ProductSectionKitIncludes({
             {items.map((el) => (
               <div
                 key={`title-${el.id}`}
-                className={`border-x-2 border-white uppercase odd:bg-[#cccccc] even:bg-[#989898] p-2 text-suave-red font-bold grow-1 shrink-0 basis-[60%] md:basis-[40%] ${width[itemsLength]}`}
+                className={`${textColor[theme]} border-x-2 border-white uppercase odd:bg-[#cccccc] even:bg-[#989898] p-2 text-suave-red font-bold grow-1 shrink-0 basis-[60%] md:basis-[40%] ${width[itemsLength]}`}
               >
                 {el.variants ? el.title : el.product.title}
               </div>
@@ -112,10 +133,12 @@ export function ProductSectionKitIncludes({
                 className={`border-x-2 border-white even:bg-[#C8C8C8] py-2 px-4 grow-1 shrink-0 basis-[60%] md:basis-[40%] ${width[itemsLength]} text-left`}
               >
                 <p>Features:</p>
-                <div
-                  className="metafield-features"
-                  dangerouslySetInnerHTML={{__html: el.features.value}}
-                />
+                {el.features && (
+                  <div
+                    className="metafield-features"
+                    dangerouslySetInnerHTML={{__html: el.features.value}}
+                  />
+                )}
               </div>
             ))}
           </div>
@@ -140,7 +163,7 @@ export function ProductSectionKitIncludes({
             {items.map((el) => (
               <div
                 key={`handle-${el.id}`}
-                className={`border-x-2 border-white even:bg-[#C8C8C8] p-2 text-suave-red grow-1 shrink-0 basis-[60%] md:basis-[40%] ${width[itemsLength]}`}
+                className={`${textColor[theme]} ${hoverTextColor[theme]} border-x-2 border-white even:bg-[#C8C8C8] p-2 text-suave-red grow-1 shrink-0 basis-[60%] md:basis-[40%] ${width[itemsLength]}`}
               >
                 <Link
                   to={`/products/${
