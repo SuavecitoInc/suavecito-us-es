@@ -12,20 +12,34 @@ import {
 } from '@shopify/hydrogen';
 
 import {PRODUCT_CARD_FRAGMENT} from '~/lib/fragments';
-import {PageHeader, ProductGrid, Section, Text} from '~/components';
+import {
+  PageHeader,
+  ProductGrid,
+  Section,
+  Text,
+  FeaturedProductGrid,
+} from '~/components';
 import {NotFound, Layout} from '~/components/index.server';
+import {FeaturedProductRow} from '../collection/FeaturedProductRow.server';
+import {HeroBanner} from '~/components/collection/HeroBanner';
 
 const pageBy = 48;
 
-export default function Collection({params}: HydrogenRouteProps) {
-  const {handle} = params;
+export function CollectionFeaturedImages({handle}: {handle: string}) {
   const {
     language: {isoCode: language},
     country: {isoCode: country},
   } = useLocalization();
 
   const {
-    data: {collection},
+    data: {
+      collection,
+      collectionSection1,
+      collectionSection2,
+      collectionSection3,
+      collectionSection4,
+    },
+    //data[collectionSection${i}]
   } = useShopQuery({
     query: COLLECTION_QUERY,
     variables: {
@@ -47,30 +61,28 @@ export default function Collection({params}: HydrogenRouteProps) {
       resourceId: collection.id,
     },
   });
-
   return (
     <Layout>
       <Suspense>
         <Seo type="collection" data={collection} />
       </Suspense>
-      <PageHeader heading={collection.title} className="justify-center">
-        {collection?.description && (
-          <div className="flex items-baseline justify-between w-full">
-            <div>
-              <Text format width="narrow" as="p" className="inline-block">
-                {collection.description}
-              </Text>
-            </div>
-          </div>
-        )}
-      </PageHeader>
-      <Section>
-        <ProductGrid
-          key={collection.id}
-          collection={collection}
+      <section>
+        <HeroBanner collection={collection} />
+      </section>
+      <section>
+        <FeaturedProductRow
+          key={collectionSection1.id}
+          collection={collectionSection1}
           url={`/collections/${handle}?country=${country}`}
+          position="left"
         />
-      </Section>
+        <FeaturedProductRow
+          key={collectionSection2.id}
+          collection={collectionSection2}
+          url={`/collections/${handle}?country=${country}`}
+          position="right"
+        />
+      </section>
     </Layout>
   );
 }
@@ -129,6 +141,96 @@ const COLLECTION_QUERY = gql`
         altText
       }
       products(first: $pageBy, after: $cursor) {
+        nodes {
+          ...ProductCard
+        }
+        pageInfo {
+          hasNextPage
+          endCursor
+        }
+      }
+    }
+    collectionSection1: collection(handle: "water-based-pomades") {
+      id
+      title
+      description
+      seo {
+        description
+        title
+      }
+      products(first: 100) {
+        nodes {
+          ...ProductCard
+        }
+        pageInfo {
+          hasNextPage
+          endCursor
+        }
+      }
+    }
+    collectionSection2: collection(handle: "matte-pomades") {
+      id
+      title
+      description
+      seo {
+        description
+        title
+      }
+      products(first: 100) {
+        nodes {
+          ...ProductCard
+        }
+        pageInfo {
+          hasNextPage
+          endCursor
+        }
+      }
+    }
+    collectionSection3: collection(handle: "oil-based-pomades") {
+      id
+      title
+      description
+      seo {
+        description
+        title
+      }
+      products(first: 100) {
+        nodes {
+          ...ProductCard
+        }
+        pageInfo {
+          hasNextPage
+          endCursor
+        }
+      }
+    }
+    collectionSection4: collection(handle: "mens-styling") {
+      id
+      title
+      description
+      seo {
+        description
+        title
+      }
+      products(first: 100) {
+        nodes {
+          ...ProductCard
+        }
+        pageInfo {
+          hasNextPage
+          endCursor
+        }
+      }
+    }
+    collectionSection5: collection(handle: "hair-care") {
+      id
+      title
+      description
+      seo {
+        description
+        title
+      }
+      products(first: 100) {
         nodes {
           ...ProductCard
         }
