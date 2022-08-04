@@ -56,12 +56,6 @@ export default function Search({
             <Text className="opacity-50">No results, try something else.</Text>
           </Section>
         )}
-        <Suspense>
-          <NoResultRecommendations
-            country={countryCode}
-            language={languageCode}
-          />
-        </Suspense>
       </SearchPage>
     );
   }
