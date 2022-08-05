@@ -1,7 +1,7 @@
 import type {Collection, Product} from '@shopify/hydrogen/storefront-api-types';
 import {Image} from '@shopify/hydrogen';
 
-import {SwiperSlide} from 'swiper/react';
+// import {SwiperSlide} from 'swiper/react';
 
 export function ProductImageCarousel({collection}: {collection: Collection}) {
   // SwiperCore.use([Navigation, Pagination]);
@@ -20,7 +20,7 @@ export function ProductImageCarousel({collection}: {collection: Collection}) {
   // });
   return (
     <>
-      <div className="w-full h-full">
+      {/* <div className="w-full h-full">
         <div className="swiper-container h-[667px] w-[553px]">
           <div className="swiper-wrapper">
             <div className="swiper-slide">
@@ -42,7 +42,8 @@ export function ProductImageCarousel({collection}: {collection: Collection}) {
           <div className="swiper-button-next"></div>
           <div className="swiper-scrollbar"></div>
         </div>
-      </div>
+      </div> */}
+      <div>image</div>
     </>
   );
 }
