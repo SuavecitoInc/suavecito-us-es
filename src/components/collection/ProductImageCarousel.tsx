@@ -1,49 +1,71 @@
 import type {Collection, Product} from '@shopify/hydrogen/storefront-api-types';
 import {Image} from '@shopify/hydrogen';
+// @ts-ignore
+import {Swiper, SwiperSlide} from 'swiper/react';
+// @ts-ignore
+import {Navigation, Pagination} from 'swiper';
+/*
+[
+  {
+    "collection handle" : {
+      images: [
+        {
+          image {
+          }
+          url {
 
-// import {SwiperSlide} from 'swiper/react';
+          }
+        }
+      ]
+    }
+  },
+]
+*/
 
 export function ProductImageCarousel({collection}: {collection: Collection}) {
-  // SwiperCore.use([Navigation, Pagination]);
-  // const swiper = new Swiper('.swiper-container', {
-  //   // Optional parameters
-  //   // If we need pagination
-  //   pagination: {
-  //     el: '.swiper-pagination',
-  //   },
-
-  //   // Navigation arrows
-  //   navigation: {
-  //     nextEl: '.swiper-button-next',
-  //     prevEl: '.swiper-button-prev',
-  //   },
-  // });
   return (
     <>
-      {/* <div className="w-full h-full">
-        <div className="swiper-container h-[667px] w-[553px]">
-          <div className="swiper-wrapper">
-            <div className="swiper-slide">
-              <Image
-                alt={'alt'}
-                height={667}
-                width={553}
-                src={
-                  'https://cdn.shopify.com/s/files/1/0274/1389/files/subscription_box_vertical_hair.jpg?v=1648599886'
-                }
-              ></Image>
-            </div>
-            <div className="swiper-slide">Slide 2</div>
-            <div className="swiper-slide">Slide 3</div>
-          </div>
-          <div className="swiper-pagination"></div>
-
-          <div className="swiper-button-prev"></div>
-          <div className="swiper-button-next"></div>
-          <div className="swiper-scrollbar"></div>
-        </div>
-      </div> */}
-      <div>image</div>
+      <div>
+        <Swiper
+          // install Swiper modules
+          className="relative"
+          modules={[Navigation, Pagination]}
+          slidesPerView={1}
+          navigation
+          pagination={{clickable: true}}
+          // onSwiper={(swiper) => console.log(swiper)}
+          // onSlideChange={() => console.log('slide change')}
+        >
+          <SwiperSlide>
+            <Image
+              alt={'alt'}
+              height={667}
+              width={553}
+              src={
+                'https://cdn.shopify.com/s/files/1/0274/1389/files/subscription_box_vertical_hair.jpg?v=1648599886'
+              }
+            ></Image>
+          </SwiperSlide>
+          <SwiperSlide>
+            <Image
+              alt={'alt'}
+              height={667}
+              width={553}
+              src={
+                'https://cdn.shopify.com/s/files/1/0274/1389/files/subscription_box_vertical_hair.jpg?v=1648599886'
+              }
+            ></Image>
+          </SwiperSlide>
+        </Swiper>
+      </div>
     </>
   );
 }
+
+// export function CarouselImage({}) {
+//   return (
+//     <figure className="">
+//       <Image></Image>
+//     </figure>
+//   );
+// }
