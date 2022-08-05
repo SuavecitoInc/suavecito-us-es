@@ -17,32 +17,44 @@ export function FeaturedBanner({collection}: {collection: Collection}) {
     inner: `py-[55px] relative`,
     table: `flex items-center justify-center flex-col text-[2.1rem] text-white text-center page-width`,
     description: `text-[1.1rem] font-bold`,
-    gridWrapper: `overflow-x-scroll w-full`,
+    gridWrapper: `overflow-x-auto w-full`,
     grid: `grid text-white mt-[3em] auto-rows-min text-copy`,
     colEven: 'bg-[#666666] opacity-90',
     colOdd: 'bg-black',
     colTitle: `font-bold uppercase border-solid border-white border-b py-[0.7em] px-[2em]`,
     row: 'flex-1 border-solid border-white border-b py-[0.7em] px-[2em]',
     bestFor: `py-[0.7em] px-[2em]`,
+    gridItem: 'grid place-items-center py-[0.7em] px-[2em]',
   };
-  let gridItems = [];
+  // handles CSS logic
+  // eslint-disable-next-line prefer-const
+  let gridItems: {
+    text: string;
+    border: boolean;
+    color: boolean;
+    title: boolean;
+    id: number;
+  }[] = [];
   chartEl?.columns.forEach((el, index) => {
     gridItems.push({
       text: el.name,
       border: true,
       color: isEven(index) ? false : true,
+      title: true,
+      id: index + 1,
     });
   });
-  chartEl?.columns.forEach((el) => {
+  chartEl?.columns.forEach((el, upperIndex) => {
     el.rows.forEach((i, index) => {
       gridItems.push({
         text: i,
-        border: true,
+        border: upperIndex === chartEl.columns.length - 1 ? false : true,
         color: isEven(index) ? false : true,
+        title: false,
+        id: upperIndex + (index + 1) * 100,
       });
     });
   });
-  console.log(gridItems);
   return (
     <section>
       <div
@@ -58,29 +70,21 @@ export function FeaturedBanner({collection}: {collection: Collection}) {
                 style={{gridTemplateColumns: `repeat(${gridLength}, 1fr)`}}
                 className={styles.grid}
               >
-                {chartEl?.columns?.map((col, index) => (
-                  <div
-                    className={isEven(index) ? styles.colEven : styles.colOdd}
-                    key={col.name}
-                  >
-                    <p className={styles.colTitle}>{col.name}</p>
-                    {col.rows.map((row, index) => {
-                      if (index !== col.rows.length - 1) {
-                        return (
-                          <div className={styles.row} key={row}>
-                            {row}
-                          </div>
-                        );
-                      }
-                      return (
-                        <div className={styles.bestFor} key={row}>
-                          <strong>Best for: </strong>
-                          {row}
-                        </div>
-                      );
-                    })}
-                  </div>
-                ))}
+                {gridItems?.map((item, index) => {
+                  const gridStyles = `${styles.gridItem} ${
+                    item.border ? 'border-solid border-b border-bottom' : ''
+                  } ${!item.color ? 'bg-[#666666]' : 'bg-black'} ${
+                    item.title ? 'font-bold uppercase' : ''
+                  }`;
+                  return (
+                    <div className={gridStyles} key={item.id}>
+                      <span>
+                        <strong>{`${!item.border ? 'Best For: ' : ''}`}</strong>
+                        {item.text}
+                      </span>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </div>

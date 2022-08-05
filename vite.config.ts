@@ -8,11 +8,17 @@ export default defineConfig({
     alias: [{find: /^~\/(.*)/, replacement: '/src/$1'}],
   },
   optimizeDeps: {
-    include: ['@headlessui/react', 'clsx', 'react-use', 'typographic-base'],
+    include: [
+      '@headlessui/react',
+      'clsx',
+      'react-use',
+      'typographic-base',
+      'swiper/react',
+    ],
   },
   test: {
     globals: true,
     testTimeout: 10000,
-    hookTimeout: 10000,
+    hookTimeout: 1000,
   },
 });

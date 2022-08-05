@@ -10,25 +10,17 @@ export const HairChart = [
     columns: [
       {
         name: 'Light Hold Pomade',
-        rows: [
-          'Light Hold',
-          'Medium Shine',
-          'Fine or thinning hair. Loose or messy styles',
-        ],
+        rows: ['Light Hold', 'Medium Hold', 'Strong Hold'],
       },
       {
         name: 'Original Hold Pomade',
-        rows: [
-          'Medium Hold',
-          'Medium Shine',
-          'All hair types and textures. Pompadours, side parts and slick backs.',
-        ],
+        rows: ['Medium Shine', 'Medium Shine', 'Medium Shine'],
       },
       {
         name: 'Firme (Strong) Hold Pomade',
         rows: [
-          'Strong Hold',
-          'Medium Shine',
+          'Fine or thinning hair. Loose or messy styles.',
+          'All hair types and textures. Pompadours, side parts and slick backs.',
           'Thick, curly, or stubborn hair. Pompadours, side parts and slick backs.',
         ],
       },
@@ -45,38 +37,28 @@ export const HairChart = [
     columns: [
       {
         name: 'Matte Pomade',
-        rows: [
-          'Medium Hold',
-          'Low Shine',
-          'Original Scent',
-          'All hair types and textures. Traditional or more textured, natural styles.',
-        ],
+        rows: ['Medium Hold', 'Strong Hold', 'Medium Hold', 'Light Hold'],
       },
       {
         name: 'Firme Clay Pomade',
-        rows: [
-          'Strong Hold',
-          'Low Shine',
-          'Original Scent',
-          'Fine, short, or stubborn hair. Textured, messy styles.',
-        ],
+        rows: ['Low Shine', 'Low Shine', 'Low Shine', 'Low Shine'],
       },
       {
         name: 'Premium Blends Matte Pomade',
         rows: [
-          'Medium Hold',
-          'Low Shine',
+          'Original Scent',
+          'Original Scent',
           'No Added Scent',
-          'All hair types and textures. Reworkable or more textured, natural styles.',
+          'Original Scent',
         ],
       },
       {
         name: 'Matte Hair Cream W/DHT Blocker',
         rows: [
-          'Light Hold',
-          'Low Shine',
-          'Original Scent',
-          'Fine or thinning hair. Loose or messy styles',
+          'All hair types and textures. Traditional or more textured, natural styles.',
+          'Fine, short, or stubborn hair. Textured, messy styles.',
+          'All hair types and textures. Reworkable or more textured, natural styles.',
+          'Fine or thinning hair. Loose or messy styles.',
         ],
       },
     ],
