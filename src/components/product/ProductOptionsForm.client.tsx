@@ -8,9 +8,9 @@ import {
   Money,
   OptionWithValues,
   ShopPayButton,
+  useLocalization,
 } from '@shopify/hydrogen';
 import {useAvailableOptions} from '~/hooks';
-
 import {Heading, Text, Button, ProductOptions} from '~/components';
 import {ProductVariant} from '@shopify/hydrogen/storefront-api-types';
 

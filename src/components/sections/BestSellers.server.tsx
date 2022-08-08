@@ -7,10 +7,18 @@ import {
   CacheLong,
 } from '@shopify/hydrogen';
 import {PRODUCT_CARD_FRAGMENT} from '~/lib/fragments';
-import {ProductGridItem, Section, Heading} from '~/components';
+import {ProductGridItem, Section} from '~/components';
 import type {Product} from '@shopify/hydrogen/storefront-api-types';
+import {homePageData} from '~/locale';
 
 export function BestSellers({title = 'Best Sellers', count = 4, ...props}) {
+  const {
+    language: {isoCode: languageCode},
+    country: {isoCode: countryCode},
+  } = useLocalization();
+
+  title = homePageData.bestSellers[languageCode];
+
   const bestSellersMarkup = useMemo(() => {
     return (
       <Suspense>

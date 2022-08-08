@@ -1,4 +1,4 @@
-import {Image} from '@shopify/hydrogen';
+import {Image, useLocalization} from '@shopify/hydrogen';
 import {Media} from '@shopify/hydrogen/storefront-api-types';
 import {Heading} from '../index';
 import type {BrandTheme} from '~/types/suavecito';
@@ -29,6 +29,15 @@ export function ProductSectionHowItLooks({
   howItLooksImage7: Metafield | null;
   howItLooksImage8: Metafield | null;
 }) {
+  const {
+    language: {isoCode: languageCode},
+  } = useLocalization();
+
+  const title: {[key: string]: string} = {
+    EN: 'How It Looks',
+    ES: 'Como luce',
+  };
+
   const images = [
     howItLooksImage1,
     howItLooksImage2,
@@ -49,7 +58,7 @@ export function ProductSectionHowItLooks({
           theme === 'premium blends' && 'text-white'
         }`}
       >
-        How It Looks
+        {title[languageCode]}
       </Heading>
       <div className="flex flex-row gap-2 overflow-x-scroll">
         {images.map((image) => {

@@ -8,9 +8,10 @@ import {
   Money,
   OptionWithValues,
   ShopPayButton,
+  useLocalization,
+  SelectedOptions,
 } from '@shopify/hydrogen';
 import {useVariantsWithOptions, useAvailableOptions} from '~/hooks';
-
 import {
   Heading,
   Text,
@@ -20,6 +21,7 @@ import {
 } from '~/components';
 import type {ProductVariant} from '@shopify/hydrogen/storefront-api-types';
 import type {BrandTheme} from '~/types/suavecito';
+import {productData} from '~/locale';
 
 interface Metafield {
   value: string;
@@ -39,6 +41,11 @@ export function ProductOptionsVariantForm({
   tags: string[];
   colorOptions?: Metafield[];
 }) {
+  const {
+    language: {isoCode: languageCode},
+    country: {isoCode: countryCode},
+  } = useLocalization();
+
   const {pathname, search} = useUrl();
   const [params, setParams] = useState(new URLSearchParams(search));
 
@@ -47,6 +54,8 @@ export function ProductOptionsVariantForm({
   const {
     options,
     setSelectedOption,
+    setSelectedOptions,
+    setSelectedVariant,
     selectedOptions,
     selectedVariant,
     variants,
@@ -97,9 +106,22 @@ export function ProductOptionsVariantForm({
     const currentVariant = params.get('variant') || null;
     if (currentVariant) {
       const variantGID = `gid://shopify/ProductVariant/${currentVariant}`;
-      const matchedVariant: any = variants?.find(
+      let matchedVariant: any = variants?.find(
         (variant) => variant?.id === variantGID,
       );
+      // set variant url param to first variant if variant id not found
+      if (!matchedVariant) {
+        // @ts-ignore
+        matchedVariant = variants[0];
+        let id = matchedVariant.id;
+        if (id) id = id.replace('gid://shopify/ProductVariant/', '');
+        params.set(encodeURIComponent('variant'), encodeURIComponent(id)),
+          window.history.replaceState(
+            null,
+            '',
+            `${pathname}?${params.toString()}`,
+          );
+      }
       // get selected options
       optionNames.forEach((name) => {
         const variantOption = matchedVariant?.selectedOptions.find(
@@ -200,6 +222,7 @@ export function ProductOptionsVariantForm({
         <div className="grid gap-4">
           {colorOptions.length > 0 && (
             <ColorOptions
+              languageCode={languageCode}
               // @ts-ignore
               name={options[0].name}
               handleChange={handleChange}
@@ -216,6 +239,9 @@ export function ProductOptionsVariantForm({
                 return null;
               }
 
+              const localeName =
+                productData.options[name.toLowerCase()][languageCode];
+
               // @ts-ignore Variant Fragrance Profile does not  exist on selected variant
               if (index === 0 && selectedVariant?.variantFragranceProfile) {
                 return (
@@ -230,7 +256,7 @@ export function ProductOptionsVariantForm({
                             : 'text-black'
                         }`}
                       >
-                        {name}
+                        {localeName}
                       </Heading>
                       <div className="grid grid-cols-4 md:grid-cols-3 lg:grid-cols-4 auto-rows-max items-center justify-center gap-4">
                         <ProductOptions
@@ -267,7 +293,7 @@ export function ProductOptionsVariantForm({
                         theme === 'premium blends' ? 'text-white' : 'text-black'
                       }`}
                     >
-                      {name}
+                      {localeName}
                     </Heading>
                     <div className="grid grid-cols-4 md:grid-cols-3 lg:grid-cols-4 auto-rows-max items-center justify-center gap-4">
                       <ProductOptions
@@ -354,13 +380,15 @@ export function ProductOptionsVariantForm({
             as="span"
           >
             {isOutOfStock ? (
-              <Text>Sold out</Text>
+              <Text>{productData.soldOut[languageCode]}</Text>
             ) : (
               <Text
                 as="span"
                 className="flex items-center justify-center gap-2"
               >
-                <span>ADD TO CART</span>
+                <span className="uppercase">
+                  {productData.addToCart[languageCode]}
+                </span>
               </Text>
             )}
           </Button>
@@ -372,12 +400,14 @@ export function ProductOptionsVariantForm({
 }
 
 function ColorOptions({
+  languageCode,
   name,
   values,
   handleChange,
   colorOptions,
   availableOptions,
 }: {
+  languageCode: any;
   name: string;
   values: any[];
   handleChange: (name: string, value: string) => void;
@@ -386,11 +416,13 @@ function ColorOptions({
 }) {
   const {selectedOptions} = useProductOptions();
 
+  const localeName = productData.options[name.toLowerCase()][languageCode];
+
   return (
     <div className="flex flex-col flex-wrap mb-4 gap-y-2 last:mb-0">
       <Heading as="legend" size="lead" className="min-w-[4rem] font-nexa-rust">
         {/* @ts-ignore */}
-        {name}: {selectedOptions[name]}
+        {localeName}: {selectedOptions[name]}
       </Heading>
       <div className="grid grid-cols-4 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 auto-rows-max items-center justify-center gap-4">
         <ProductColorOptions

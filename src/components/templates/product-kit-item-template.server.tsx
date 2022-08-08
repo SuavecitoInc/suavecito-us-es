@@ -7,6 +7,7 @@ import {
   useLocalization,
   useServerAnalytics,
   useShopQuery,
+  useUrl,
 } from '@shopify/hydrogen';
 
 import {MEDIA_FRAGMENT} from '~/lib/fragments';
@@ -21,13 +22,15 @@ import {
   Heading,
   ProductOptionsVariantForm,
   ProductImages,
-  ProductMetafieldImages,
   Section,
   Text,
-  ProductSectionInfoTabs,
 } from '~/components';
 
 export function ProductKitItemTemplate({handle}: {handle: string}) {
+  const {search} = useUrl();
+  const params = new URLSearchParams(search);
+  const initialVariant = params.get('variant');
+
   const {
     language: {isoCode: languageCode},
     country: {isoCode: countryCode},
@@ -96,7 +99,7 @@ export function ProductKitItemTemplate({handle}: {handle: string}) {
     kitProduct5,
     kitProduct6,
   ]
-    .filter((el) => el != null)
+    .filter((el) => el !== null)
     .map((el) => el.value);
 
   const kitProductVariants = [
@@ -111,7 +114,7 @@ export function ProductKitItemTemplate({handle}: {handle: string}) {
     kitProductVariant9,
     kitProductVariant10,
   ]
-    .filter((el) => el != null)
+    .filter((el) => el !== null)
     .map((el) => el.value);
 
   return (
@@ -120,7 +123,14 @@ export function ProductKitItemTemplate({handle}: {handle: string}) {
         <Seo type="product" data={product} />
       </Suspense>
       <div className="page-width">
-        <ProductOptionsProvider data={product}>
+        <ProductOptionsProvider
+          data={product}
+          initialVariantId={
+            initialVariant
+              ? `gid://shopify/ProductVariant/${initialVariant}`
+              : undefined
+          }
+        >
           <Section padding="x" className="px-0">
             <div className="flex flex-col md:flex-row gap-10">
               {/* if metafield images exist  */}
@@ -156,12 +166,15 @@ export function ProductKitItemTemplate({handle}: {handle: string}) {
           </Section>
         </ProductOptionsProvider>
 
-        <div className="page-width">
-          <ProductSectionKitIncludes
-            kitProducts={kitProducts}
-            kitProductVariants={kitProductVariants}
-          />
-        </div>
+        {(kitProductVariants.length > 0 || kitProducts.length > 0) && (
+          <div className="page-width">
+            <ProductSectionKitIncludes
+              theme={theme}
+              kitProducts={kitProducts}
+              kitProductVariants={kitProductVariants}
+            />
+          </div>
+        )}
 
         <ProductSectionYouMayAlsoLike theme={theme} productId={product.id} />
       </div>

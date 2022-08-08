@@ -1,6 +1,6 @@
-import {Image, Link} from '@shopify/hydrogen';
+import {Image, Link, useLocalization} from '@shopify/hydrogen';
 import {Media} from '@shopify/hydrogen/storefront-api-types';
-import {chartData} from '../..//data/pomade-chart';
+import {chartData} from '../..//data/pomade-chart-es';
 import {Heading} from '../index';
 
 const colors: {
@@ -36,6 +36,15 @@ const colors: {
 };
 
 export function PomadeCompareChart() {
+  const {
+    language: {isoCode: languageCode},
+  } = useLocalization();
+
+  const title: {[key: string]: string} = {
+    EN: 'Compare',
+    ES: 'Comparar',
+  };
+
   return (
     <section className="py-[35px]">
       <Heading
