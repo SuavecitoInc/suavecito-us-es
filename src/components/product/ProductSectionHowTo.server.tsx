@@ -1,5 +1,5 @@
 import {Divider, Heading} from '../index';
-import {Image} from '@shopify/hydrogen';
+import {Image, useLocalization} from '@shopify/hydrogen';
 import type {BrandTheme} from '~/types/suavecito';
 
 interface Metafield {
@@ -18,6 +18,15 @@ export function ProductSectionHowTo({
   productSectionHowToText: Metafield;
   productSectionHowToEmbeddedVideo: Metafield;
 }) {
+  const {
+    language: {isoCode: languageCode},
+  } = useLocalization();
+
+  const title: {[key: string]: string} = {
+    EN: 'How to Use',
+    ES: 'Cómo Utilizar',
+  };
+
   const colors = {
     suavecito: 'text-black',
     suavecita: 'text-suave-pink',
@@ -35,7 +44,7 @@ export function ProductSectionHowTo({
         size="heading"
         className={`uppercase text-center ${colors[theme]}`}
       >
-        How to Use
+        {title[languageCode]}
       </Heading>
       <div
         className={`pt-6 flex flex-col md:flex-row gap-6 ${

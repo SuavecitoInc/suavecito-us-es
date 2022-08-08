@@ -3,7 +3,7 @@ import RPI from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
 import {BrandTheme} from '~/types/suavecito';
 import {useLocalization} from '@shopify/hydrogen';
-import locale from '~/data/locale';
+import {footerData} from '~/locale';
 
 // @ts-ignore
 const PhoneInput = RPI.default ? RPI.default : RPI;
@@ -114,7 +114,7 @@ export function SubscribeEmail({theme}: {theme?: BrandTheme}) {
               <input
                 className="w-full border-none"
                 type="email"
-                placeholder={locale.footer.newsletter.email[languageCode]}
+                placeholder={footerData.newsletter.email[languageCode]}
                 onChange={(evt) => setEmailInput(evt.target.value)}
                 required
               />
@@ -122,7 +122,7 @@ export function SubscribeEmail({theme}: {theme?: BrandTheme}) {
             <div className="flex mb-[5px] klaviyo-input">
               <PhoneInput
                 country={'us'}
-                placeholder={locale.footer.newsletter.phone[languageCode]}
+                placeholder={footerData.newsletter.phone[languageCode]}
                 value={phoneInput}
                 onChange={(phoneInput: string, country: string) =>
                   checkPhoneInput(phoneInput, country)
@@ -133,7 +133,7 @@ export function SubscribeEmail({theme}: {theme?: BrandTheme}) {
                 type="submit"
                 ref={buttonRef}
               >
-                {locale.footer.newsletter.submit[languageCode]}
+                {footerData.newsletter.submit[languageCode]}
               </button>
             </div>
             <div>
@@ -146,7 +146,7 @@ export function SubscribeEmail({theme}: {theme?: BrandTheme}) {
               <p
                 className={`text-[10px] ${pColor[mainColor]}`}
                 dangerouslySetInnerHTML={{
-                  __html: locale.footer.newsletter.disclaimer[languageCode],
+                  __html: footerData.newsletter.disclaimer[languageCode],
                 }}
               />
             </div>

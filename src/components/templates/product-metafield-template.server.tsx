@@ -7,6 +7,7 @@ import {
   useLocalization,
   useServerAnalytics,
   useShopQuery,
+  useUrl,
 } from '@shopify/hydrogen';
 
 import {MEDIA_FRAGMENT} from '~/lib/fragments';
@@ -33,6 +34,10 @@ import {
 } from '~/components';
 
 export function ProductMetafieldTemplate({handle}: {handle: string}) {
+  const {search} = useUrl();
+  const params = new URLSearchParams(search);
+  const initialVariant = params.get('variant');
+
   const {
     language: {isoCode: languageCode},
     country: {isoCode: countryCode},
@@ -133,7 +138,14 @@ export function ProductMetafieldTemplate({handle}: {handle: string}) {
         <Seo type="product" data={product} />
       </Suspense>
       <div className="page-width">
-        <ProductOptionsProvider data={product}>
+        <ProductOptionsProvider
+          data={product}
+          initialVariantId={
+            initialVariant
+              ? `gid://shopify/ProductVariant/${initialVariant}`
+              : undefined
+          }
+        >
           <Section padding="x" className="px-0">
             <div className="flex flex-col md:flex-row gap-10">
               {/* if metafield images exist  */}

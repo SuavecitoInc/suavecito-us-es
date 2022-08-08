@@ -44,6 +44,10 @@ export function ProductMetafieldImages({className}: {className?: string}) {
     setActiveThumbnail(index);
   };
 
+  useEffect(() => {
+    console.log('SELECTED Variant', selectedVariant);
+  }, [selectedVariant]);
+
   return (
     <div
       className={`product-images md:grid-flow-row hiddenScroll md:p-0 md:overflow-x-auto md:grid-cols-2 ${className}`}
