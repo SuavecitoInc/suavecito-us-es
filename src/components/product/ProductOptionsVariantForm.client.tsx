@@ -216,14 +216,6 @@ export function ProductOptionsVariantForm({
   const handleQuantity = (e: {target: {value: React.SetStateAction<string>}}) =>
     setQuantity(e.target.value);
 
-  useEffect(() => {
-    console.log('SELECTED OPTIONS', selectedOptions);
-  }, [selectedOptions]);
-
-  useEffect(() => {
-    console.log('SELECTED VARIANT ___', selectedVariant);
-  }, [selectedVariant]);
-
   return (
     <form className="grid gap-10">
       {
