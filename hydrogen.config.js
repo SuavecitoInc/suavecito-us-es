@@ -8,7 +8,7 @@ import {
 
 export default defineConfig({
   shopify: () => ({
-    defaultLanguageCode: 'EN',
+    defaultLanguageCode: 'es',
     defaultCountryCode: 'US',
     storeDomain: Oxygen.env.SHOPIFY_STORE_DOMAIN,
     storefrontToken: Oxygen.env.SHOPIFY_STOREFRONT_API_PUBLIC_TOKEN,

@@ -367,13 +367,13 @@ export function ProductOptionsVariantForm({
             as="span"
           >
             {isOutOfStock ? (
-              <Text>Sold out</Text>
+              <Text>Sold Out</Text>
             ) : (
               <Text
                 as="span"
                 className="flex items-center justify-center gap-2"
               >
-                <span>ADD TO CART</span>
+                <span className="uppercase">Add to Cart</span>
               </Text>
             )}
           </Button>

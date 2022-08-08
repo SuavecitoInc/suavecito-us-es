@@ -134,7 +134,9 @@ export function ProductMetafieldPomadeTemplate({handle}: {handle: string}) {
         <ProductOptionsProvider data={product}>
           <Section padding="x" className="px-0">
             <div className="flex flex-col md:flex-row gap-10">
-              <ProductMetafieldImages className="flex-1" />
+              <Suspense>
+                <ProductMetafieldImages className="flex-1" />
+              </Suspense>
 
               <div className="flex-1">
                 <section>

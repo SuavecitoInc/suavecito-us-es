@@ -2,11 +2,18 @@ import React, {useRef, useState} from 'react';
 import RPI from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
 import {BrandTheme} from '~/types/suavecito';
+import {useLocalization} from '@shopify/hydrogen';
+import locale from '~/data/locale';
 
 // @ts-ignore
 const PhoneInput = RPI.default ? RPI.default : RPI;
 
 export function SubscribeEmail({theme}: {theme?: BrandTheme}) {
+  const {
+    language: {isoCode: languageCode},
+    country: {isoCode: countryCode},
+  } = useLocalization();
+
   const formRef = useRef<HTMLFormElement>(null);
 
   const formOutcomeRef = useRef<HTMLParagraphElement | null>(null);
@@ -107,7 +114,7 @@ export function SubscribeEmail({theme}: {theme?: BrandTheme}) {
               <input
                 className="w-full border-none"
                 type="email"
-                placeholder="Email Address"
+                placeholder={locale.footer.newsletter.email[languageCode]}
                 onChange={(evt) => setEmailInput(evt.target.value)}
                 required
               />
@@ -115,7 +122,7 @@ export function SubscribeEmail({theme}: {theme?: BrandTheme}) {
             <div className="flex mb-[5px] klaviyo-input">
               <PhoneInput
                 country={'us'}
-                placeholder="Mobile Phone"
+                placeholder={locale.footer.newsletter.phone[languageCode]}
                 value={phoneInput}
                 onChange={(phoneInput: string, country: string) =>
                   checkPhoneInput(phoneInput, country)
@@ -126,7 +133,7 @@ export function SubscribeEmail({theme}: {theme?: BrandTheme}) {
                 type="submit"
                 ref={buttonRef}
               >
-                Submit
+                {locale.footer.newsletter.submit[languageCode]}
               </button>
             </div>
             <div>
@@ -136,14 +143,12 @@ export function SubscribeEmail({theme}: {theme?: BrandTheme}) {
               ></p>
             </div>
             <div>
-              <p className={`text-[10px] ${pColor[mainColor]}`}>
-                By clicking SUBSCRIBE, you agree to receive marketing text
-                messages from Suavecito, Inc. at the number provided, including
-                messages sent by autodialer. Consent is not a condition of any
-                purchase. Message and data rates may apply. Message frequency
-                varies. Reply HELP for help or STOP to cancel. View our Privacy
-                Policy and Terms of Service.
-              </p>
+              <p
+                className={`text-[10px] ${pColor[mainColor]}`}
+                dangerouslySetInnerHTML={{
+                  __html: locale.footer.newsletter.disclaimer[languageCode],
+                }}
+              />
             </div>
           </div>
         </form>
