@@ -22,25 +22,27 @@ import {
 import {NotFound, Layout} from '~/components/index.server';
 import {FeaturedProductRow} from '../collection/FeaturedProductRow.server';
 import {HeroBanner} from '~/components/collection/HeroBanner';
+import {BrandTheme} from '~/types/suavecito';
 
 const pageBy = 48;
 
-export function CollectionFeaturedImages({handle}: {handle: string}) {
+export function CollectionFeaturedImages({
+  handle,
+  query,
+  theme = 'suavecito',
+}: {
+  handle: string;
+  query: string;
+  theme?: BrandTheme;
+}) {
   const {
     language: {isoCode: language},
     country: {isoCode: country},
   } = useLocalization();
 
-  const {
-    data: {
-      collection,
-      collectionSection1,
-      collectionSection2,
-      collectionSection3,
-      collectionSection4,
-    },
-    //data[collectionSection${i}]
-  } = useShopQuery({
+  const COLLECTION_QUERY = query;
+
+  const {data}: {data: any} = useShopQuery({
     query: COLLECTION_QUERY,
     variables: {
       handle,
@@ -50,39 +52,40 @@ export function CollectionFeaturedImages({handle}: {handle: string}) {
     },
     preload: true,
   });
-
-  if (!collection) {
+  console.log('data', data);
+  if (!data.collection) {
     return <NotFound type="collection" />;
   }
 
   useServerAnalytics({
     shopify: {
       pageType: ShopifyAnalyticsConstants.pageType.collection,
-      resourceId: collection.id,
+      resourceId: data.collection.id,
     },
   });
   return (
     <Layout>
       <Suspense>
-        <Seo type="collection" data={collection} />
+        <Seo type="collection" data={data.collection} />
       </Suspense>
       <section>
-        <HeroBanner collection={collection} />
+        <HeroBanner collection={data.collection} />
       </section>
-      <section>
-        <FeaturedProductRow
-          key={collectionSection1.id}
-          collection={collectionSection1}
-          url={`/collections/${handle}?country=${country}`}
-          position="left"
-        />
-        <FeaturedProductRow
-          key={collectionSection2.id}
-          collection={collectionSection2}
-          url={`/collections/${handle}?country=${country}`}
-          position="right"
-        />
-      </section>
+      {Array.from(Array(6)).map(
+        (x, i) =>
+          data[`collectionSection${i + 1}`] && (
+            <div key={data[`collectionSection${i + 1}`].id}>
+              <FeaturedProductRow
+                theme={theme}
+                collection={data[`collectionSection${i + 1}`]}
+                url={`/collections/${
+                  data[`collectionSection${i + 1}`].handle
+                }?country=${country}`}
+                position={(i + 1) % 2 !== 0 ? 'left' : 'right'}
+              />
+            </div>
+          ),
+      )}
     </Layout>
   );
 }
@@ -115,133 +118,6 @@ export async function api(
     },
   });
 }
-
-const COLLECTION_QUERY = gql`
-  ${PRODUCT_CARD_FRAGMENT}
-  query CollectionDetails(
-    $handle: String!
-    $country: CountryCode
-    $language: LanguageCode
-    $pageBy: Int!
-    $cursor: String
-  ) @inContext(country: $country, language: $language) {
-    collection(handle: $handle) {
-      id
-      title
-      description
-      seo {
-        description
-        title
-      }
-      image {
-        id
-        url
-        width
-        height
-        altText
-      }
-      products(first: $pageBy, after: $cursor) {
-        nodes {
-          ...ProductCard
-        }
-        pageInfo {
-          hasNextPage
-          endCursor
-        }
-      }
-    }
-    collectionSection1: collection(handle: "water-based-pomades") {
-      id
-      title
-      description
-      seo {
-        description
-        title
-      }
-      products(first: 100) {
-        nodes {
-          ...ProductCard
-        }
-        pageInfo {
-          hasNextPage
-          endCursor
-        }
-      }
-    }
-    collectionSection2: collection(handle: "matte-pomades") {
-      id
-      title
-      description
-      seo {
-        description
-        title
-      }
-      products(first: 100) {
-        nodes {
-          ...ProductCard
-        }
-        pageInfo {
-          hasNextPage
-          endCursor
-        }
-      }
-    }
-    collectionSection3: collection(handle: "oil-based-pomades") {
-      id
-      title
-      description
-      seo {
-        description
-        title
-      }
-      products(first: 100) {
-        nodes {
-          ...ProductCard
-        }
-        pageInfo {
-          hasNextPage
-          endCursor
-        }
-      }
-    }
-    collectionSection4: collection(handle: "mens-styling") {
-      id
-      title
-      description
-      seo {
-        description
-        title
-      }
-      products(first: 100) {
-        nodes {
-          ...ProductCard
-        }
-        pageInfo {
-          hasNextPage
-          endCursor
-        }
-      }
-    }
-    collectionSection5: collection(handle: "hair-care") {
-      id
-      title
-      description
-      seo {
-        description
-        title
-      }
-      products(first: 100) {
-        nodes {
-          ...ProductCard
-        }
-        pageInfo {
-          hasNextPage
-          endCursor
-        }
-      }
-    }
-  }
-`;
 
 const PAGINATE_COLLECTION_QUERY = gql`
   ${PRODUCT_CARD_FRAGMENT}

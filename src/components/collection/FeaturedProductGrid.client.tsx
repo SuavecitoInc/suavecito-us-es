@@ -5,16 +5,20 @@ import {Button, Grid, ProductCard} from '~/components';
 import {getImageLoadingPriority} from '~/lib/const';
 import type {Collection, Product} from '@shopify/hydrogen/storefront-api-types';
 
+import {BrandTheme} from '~/types/suavecito';
+
 import {ProductGridItem, ProductImageCarousel} from '~/components';
 
 export function FeaturedProductGrid({
   url,
   collection,
   position = 'left',
+  theme = 'suavecito',
 }: {
   position?: string;
   url: string;
   collection: Collection;
+  theme?: BrandTheme;
 }) {
   const nextButtonRef = useRef(null);
   const initialProducts = collection?.products?.nodes || [];
@@ -86,8 +90,10 @@ export function FeaturedProductGrid({
   }
 
   const styles = {
-    flexParent: `flex flex-row sm-max:flex-col`,
-    flexChild: `flex-1 mx-5 my-5`,
+    flexParent: `flex flex-col md:flex-row`,
+    flexChild: `flex-1 p-5 overflow-hidden w-full md:w-[50%]`,
+    btnWrapper: `flex justify-center items-center`,
+    btn: `btn`,
   };
 
   return (
@@ -115,6 +121,7 @@ export function FeaturedProductGrid({
                   key={product.id}
                   product={product}
                   loading={getImageLoadingPriority(i)}
+                  theme={theme}
                 />
               ))}
             </Grid>
@@ -123,7 +130,7 @@ export function FeaturedProductGrid({
         <Grid layout="products">
           {products.length > 3 &&
             products
-              .slice(4)
+              .slice(4, 11)
               .map((product, i) => (
                 <ProductGridItem
                   key={product.id}
@@ -131,6 +138,13 @@ export function FeaturedProductGrid({
                   loading={getImageLoadingPriority(i)}
                 />
               ))}
+          {products.length > 11 && (
+            <div className={styles.btnWrapper}>
+              <Link to={url} className={styles.btn}>
+                View More
+              </Link>
+            </div>
+          )}
         </Grid>
       </section>
     </>

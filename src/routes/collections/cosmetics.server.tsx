@@ -1,7 +1,7 @@
 import {CollectionFeaturedImages} from '~/components/index.server';
 
 export default function Collection() {
-  const handle = 'mens-hair';
+  const handle = 'cosmetics';
   return <CollectionFeaturedImages handle={handle} query={COLLECTION_QUERY} />;
 }
 
@@ -42,7 +42,7 @@ const COLLECTION_QUERY = gql`
         }
       }
     }
-    collectionSection1: collection(handle: "water-based-pomades") {
+    collectionSection1: collection(handle: "lips") {
       id
       handle
       title
@@ -61,7 +61,7 @@ const COLLECTION_QUERY = gql`
         }
       }
     }
-    collectionSection2: collection(handle: "matte-pomades") {
+    collectionSection2: collection(handle: "eyes") {
       id
       handle
       title
@@ -80,64 +80,7 @@ const COLLECTION_QUERY = gql`
         }
       }
     }
-    collectionSection3: collection(handle: "oil-based-pomades") {
-      id
-      handle
-      title
-      description
-      seo {
-        description
-        title
-      }
-      products(first: 100) {
-        nodes {
-          ...ProductCard
-        }
-        pageInfo {
-          hasNextPage
-          endCursor
-        }
-      }
-    }
-    collectionSection4: collection(handle: "mens-styling") {
-      id
-      handle
-      title
-      description
-      seo {
-        description
-        title
-      }
-      products(first: 100) {
-        nodes {
-          ...ProductCard
-        }
-        pageInfo {
-          hasNextPage
-          endCursor
-        }
-      }
-    }
-    collectionSection5: collection(handle: "hair-care") {
-      id
-      handle
-      title
-      description
-      seo {
-        description
-        title
-      }
-      products(first: 100) {
-        nodes {
-          ...ProductCard
-        }
-        pageInfo {
-          hasNextPage
-          endCursor
-        }
-      }
-    }
-    collectionSection6: collection(handle: "grow-it") {
+    collectionSection3: collection(handle: "makeup-brushes") {
       id
       handle
       title
