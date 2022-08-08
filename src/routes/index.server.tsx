@@ -38,7 +38,7 @@ import {
   featuredRowColumnsOneSettings,
   featuredRowColumnsTwoSettings,
   featuredVideoSettings,
-} from '../data/home-page';
+} from '../data/home-page-es';
 
 export default function Homepage() {
   useServerAnalytics({
