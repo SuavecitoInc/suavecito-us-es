@@ -7,6 +7,7 @@ import {
   useLocalization,
   useServerAnalytics,
   useShopQuery,
+  useUrl,
 } from '@shopify/hydrogen';
 
 import {MEDIA_FRAGMENT} from '~/lib/fragments';
@@ -16,7 +17,6 @@ import {
   VARIANT_METAFIELD_COLOR_IMAGES_FRAGMENT,
   VARIANT_METAFIELD_LIFESTYLE_IMAGES_FRAGMENT,
   PRODUCT_SECTION_GET_INSPIRED_FRAGMENT,
-  PRODUCT_SECTION_HOW_IT_LOOKS_FRAGMENT,
 } from '~/lib/suavecito-fragments';
 import {
   NotFound,
@@ -40,6 +40,10 @@ export function ProductMetafieldGetInspiredTemplate({
 }: {
   handle: string;
 }) {
+  const {search} = useUrl();
+  const params = new URLSearchParams(search);
+  const initialVariant = params.get('variant');
+
   const {
     language: {isoCode: languageCode},
     country: {isoCode: countryCode},
@@ -132,7 +136,14 @@ export function ProductMetafieldGetInspiredTemplate({
       <Suspense>
         <Seo type="product" data={product} />
       </Suspense>
-      <ProductOptionsProvider data={product}>
+      <ProductOptionsProvider
+        data={product}
+        initialVariantId={
+          initialVariant
+            ? `gid://shopify/ProductVariant/${initialVariant}`
+            : undefined
+        }
+      >
         <div className="page-width">
           <Section padding="x" className="px-0">
             <div className="flex flex-col md:flex-row gap-10">

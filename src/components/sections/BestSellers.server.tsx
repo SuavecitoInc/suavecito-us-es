@@ -9,7 +9,7 @@ import {
 import {PRODUCT_CARD_FRAGMENT} from '~/lib/fragments';
 import {ProductGridItem, Section} from '~/components';
 import type {Product} from '@shopify/hydrogen/storefront-api-types';
-import locale from '~/data/locale';
+import {homePageData} from '~/locale';
 
 export function BestSellers({title = 'Best Sellers', count = 4, ...props}) {
   const {
@@ -17,7 +17,7 @@ export function BestSellers({title = 'Best Sellers', count = 4, ...props}) {
     country: {isoCode: countryCode},
   } = useLocalization();
 
-  title = locale.homePage.bestSellers[languageCode];
+  title = homePageData.bestSellers[languageCode];
 
   const bestSellersMarkup = useMemo(() => {
     return (
