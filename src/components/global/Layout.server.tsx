@@ -27,13 +27,15 @@ import {BrandTheme} from '~/types/suavecito';
 export function Layout({
   children,
   theme = 'suavecito',
+  showTopPadding = true,
 }: {
   children: React.ReactNode;
   theme?: BrandTheme;
+  showTopPadding?: boolean;
 }) {
   const {pathname} = useUrl();
   const isHome = pathname === '/';
-
+  console.log('here');
   return (
     <div className={`${theme === 'premium blends' ? 'bg-black' : 'bg-white'}`}>
       <div className="flex flex-col min-h-screen">
@@ -48,7 +50,9 @@ export function Layout({
         <main
           role="main"
           id="mainContent"
-          className={`flex-grow ${!isHome && 'pt-[35px] md:pt-[55px]'}`}
+          className={`flex-grow ${
+            !isHome && !isHome && showTopPadding && 'pt-[35px] md:pt-[55px]'
+          }`}
         >
           {children}
         </main>

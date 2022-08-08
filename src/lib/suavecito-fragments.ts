@@ -418,3 +418,40 @@ export const PRODUCT_SECTION_KIT_INCLUDES = gql`
     }
   }
 `;
+
+export const COLLECTION_PRODUCT_FRAGMENT = gql`
+  fragment CollectionProduct on Product {
+    id
+    title
+    publishedAt
+    handle
+    tags
+    variants(first: 100) {
+      nodes {
+        id
+        image {
+          url
+          altText
+          width
+          height
+        }
+        priceV2 {
+          amount
+          currencyCode
+        }
+        compareAtPriceV2 {
+          amount
+          currencyCode
+        }
+        variantColorImage: metafield(
+          namespace: "debut"
+          key: "variant_color_image"
+        ) {
+          reference {
+            ...Media
+          }
+        }
+      }
+    }
+  }
+`;

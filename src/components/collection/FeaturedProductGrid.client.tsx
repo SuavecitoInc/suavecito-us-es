@@ -1,7 +1,7 @@
 import {useState, useRef, useEffect, useCallback} from 'react';
 import {Link, flattenConnection} from '@shopify/hydrogen';
 
-import {Button, Grid, ProductCard} from '~/components';
+import {Button, Grid, ProductCard, ProductColorSwatches} from '~/components';
 import {getImageLoadingPriority} from '~/lib/const';
 import type {Collection, Product} from '@shopify/hydrogen/storefront-api-types';
 
@@ -117,27 +117,24 @@ export function FeaturedProductGrid({
             </p>
             <Grid items={2} layout="products">
               {products.slice(0, 4).map((product, i) => (
-                <ProductGridItem
-                  key={product.id}
-                  product={product}
-                  loading={getImageLoadingPriority(i)}
-                  theme={theme}
-                />
+                <div key={product.id}>
+                  <CollectionGridItem
+                    product={product}
+                    index={i}
+                    theme={theme}
+                  />
+                </div>
               ))}
             </Grid>
           </div>
         </div>
         <Grid layout="products">
           {products.length > 3 &&
-            products
-              .slice(4, 11)
-              .map((product, i) => (
-                <ProductGridItem
-                  key={product.id}
-                  product={product}
-                  loading={getImageLoadingPriority(i)}
-                />
-              ))}
+            products.slice(4, 11).map((product, i) => (
+              <div key={product.id}>
+                <CollectionGridItem product={product} index={i} theme={theme} />
+              </div>
+            ))}
           {products.length > 11 && (
             <div className={styles.btnWrapper}>
               <Link to={url} className={styles.btn}>
@@ -147,6 +144,19 @@ export function FeaturedProductGrid({
           )}
         </Grid>
       </section>
+    </>
+  );
+}
+
+function CollectionGridItem({product, index, theme}) {
+  return (
+    <>
+      <ProductGridItem
+        product={product}
+        loading={getImageLoadingPriority(index)}
+        theme={theme}
+      />
+      <ProductColorSwatches product={product} theme={theme} />
     </>
   );
 }

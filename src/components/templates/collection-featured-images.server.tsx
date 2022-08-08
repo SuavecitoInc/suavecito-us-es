@@ -52,7 +52,6 @@ export function CollectionFeaturedImages({
     },
     preload: true,
   });
-  console.log('data', data);
   if (!data.collection) {
     return <NotFound type="collection" />;
   }
@@ -64,7 +63,7 @@ export function CollectionFeaturedImages({
     },
   });
   return (
-    <Layout>
+    <Layout theme={theme} showTopPadding={false}>
       <Suspense>
         <Seo type="collection" data={data.collection} />
       </Suspense>

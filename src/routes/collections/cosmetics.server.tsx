@@ -2,14 +2,22 @@ import {CollectionFeaturedImages} from '~/components/index.server';
 
 export default function Collection() {
   const handle = 'cosmetics';
-  return <CollectionFeaturedImages handle={handle} query={COLLECTION_QUERY} />;
+  return (
+    <CollectionFeaturedImages
+      handle={handle}
+      query={COLLECTION_QUERY}
+      theme={'suavecita'}
+    />
+  );
 }
 
-import {PRODUCT_CARD_FRAGMENT} from '~/lib/fragments';
+import {COLLECTION_PRODUCT_FRAGMENT} from '~/lib/suavecito-fragments';
+import {MEDIA_FRAGMENT} from '~/lib/fragments';
 import {gql} from '@shopify/hydrogen';
 
 const COLLECTION_QUERY = gql`
-  ${PRODUCT_CARD_FRAGMENT}
+  ${COLLECTION_PRODUCT_FRAGMENT}
+  ${MEDIA_FRAGMENT}
   query CollectionDetails(
     $handle: String!
     $country: CountryCode
@@ -34,7 +42,7 @@ const COLLECTION_QUERY = gql`
       }
       products(first: $pageBy, after: $cursor) {
         nodes {
-          ...ProductCard
+          ...CollectionProduct
         }
         pageInfo {
           hasNextPage
@@ -53,7 +61,7 @@ const COLLECTION_QUERY = gql`
       }
       products(first: 100) {
         nodes {
-          ...ProductCard
+          ...CollectionProduct
         }
         pageInfo {
           hasNextPage
@@ -72,7 +80,7 @@ const COLLECTION_QUERY = gql`
       }
       products(first: 100) {
         nodes {
-          ...ProductCard
+          ...CollectionProduct
         }
         pageInfo {
           hasNextPage
@@ -91,7 +99,7 @@ const COLLECTION_QUERY = gql`
       }
       products(first: 100) {
         nodes {
-          ...ProductCard
+          ...CollectionProduct
         }
         pageInfo {
           hasNextPage
