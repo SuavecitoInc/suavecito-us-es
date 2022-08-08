@@ -3,7 +3,18 @@ const bannerHeight = 1279;
 
 interface Metafield {
   value: string;
-  reference?: object;
+  reference?: {
+    mediaContentType: string;
+    alt: string;
+    previewImage: {
+      url: string;
+    };
+    image: {
+      url: string;
+      width: number;
+      height: number;
+    };
+  };
 }
 
 export const AdBanners: {

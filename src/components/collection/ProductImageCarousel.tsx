@@ -10,7 +10,18 @@ import {IconArrow} from '~/components';
 
 interface Metafield {
   value: string;
-  reference?: object;
+  reference?: {
+    mediaContentType: string;
+    alt: string;
+    previewImage: {
+      url: string;
+    };
+    image: {
+      url: string;
+      width: number;
+      height: number;
+    };
+  };
 }
 
 export function ProductImageCarousel({
@@ -20,12 +31,12 @@ export function ProductImageCarousel({
   collection: Collection;
   theme?: BrandTheme;
 }) {
-  console.log('handle', collection.handle);
   return (
     <>
       <div>
         <Swiper
           // install Swiper modules
+          // @ts-ignore
           modules={[Navigation, Pagination]}
           slidesPerView={1}
           navigation
@@ -60,6 +71,7 @@ export function CarouselBanner({
 }) {
   return (
     <div>
+      {/*// @ts-ignore */}
       <Image
         src={carouselBanner.banner?.reference?.image.url}
         width={carouselBanner.banner?.reference?.image.width}

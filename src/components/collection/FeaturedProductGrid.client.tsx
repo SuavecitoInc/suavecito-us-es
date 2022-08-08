@@ -148,7 +148,15 @@ export function FeaturedProductGrid({
   );
 }
 
-function CollectionGridItem({product, index, theme}) {
+function CollectionGridItem({
+  product,
+  index,
+  theme,
+}: {
+  product: Product;
+  index: number;
+  theme: BrandTheme;
+}) {
   return (
     <>
       <ProductGridItem

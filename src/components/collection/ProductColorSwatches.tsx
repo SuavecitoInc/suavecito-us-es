@@ -3,7 +3,7 @@ import type {
   ProductVariant,
 } from '@shopify/hydrogen/storefront-api-types';
 import {BrandTheme} from '~/types/suavecito';
-import {Image, Metafield, Link} from '@shopify/hydrogen';
+import {Image, Link} from '@shopify/hydrogen';
 export function ProductColorSwatches({
   product,
   theme = 'suavecito',
@@ -11,6 +11,26 @@ export function ProductColorSwatches({
   product: Product;
   theme?: BrandTheme;
 }) {
+  interface Metafield {
+    value: string;
+    reference?: {
+      mediaContentType: string;
+      alt: string;
+      previewImage: {
+        url: string;
+      };
+      image: {
+        url: string;
+        width: number;
+        height: number;
+      };
+    };
+  }
+
+  interface ProductVariantWithMetafield extends ProductVariant {
+    variantColorImage?: Metafield | null;
+  }
+
   const styles = {
     wrapper: `grid gap-[.5em] grid-cols-3 lg:grid-cols-6 grid-rows-1 mt-[6px] w-full max-w-[120px] lg:max-w-full`,
     imageWrapper: ``,
@@ -33,7 +53,7 @@ export function ProductColorSwatches({
   return showSwatches ? (
     <div className={styles.wrapper}>
       {product.variants.nodes.slice(0, 5).map(
-        (variant: ProductVariant) =>
+        (variant: ProductVariantWithMetafield) =>
           variant.variantColorImage && (
             <div className={styles.imageWrapper} key={variant.id}>
               <Link
@@ -42,9 +62,10 @@ export function ProductColorSwatches({
                   variant.id,
                 )}`}
               >
+                {/*// @ts-ignore */}
                 <Image
                   className={styles.image}
-                  data={variant.variantColorImage.reference.image}
+                  data={variant?.variantColorImage.reference?.image}
                   width={60}
                   height={60}
                   alt={`${variant.title} color swatch`}
