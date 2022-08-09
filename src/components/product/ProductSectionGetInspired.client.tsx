@@ -1,6 +1,6 @@
 import {Image, useProductOptions} from '@shopify/hydrogen';
-import {Media, ProductVariant} from '@shopify/hydrogen/storefront-api-types';
 import {Divider, Heading} from '../index';
+import type {Media} from '@shopify/hydrogen/storefront-api-types';
 
 interface Metafield {
   value: string;
@@ -8,18 +8,21 @@ interface Metafield {
 }
 
 export function ProductSectionGetInspired({
+  lang = 'EN',
   theme = 'suavecito',
   getInspiredImage1 = null,
   getInspiredImage2 = null,
   getInspiredImage3 = null,
   getInspiredImage4 = null,
 }: {
+  lang?: 'EN' | 'ES';
   theme?: 'suavecito' | 'suavecita';
   getInspiredImage1?: null | Metafield;
   getInspiredImage2?: null | Metafield;
   getInspiredImage3?: null | Metafield;
   getInspiredImage4?: null | Metafield;
 }) {
+  const title = lang === 'ES' ? 'Inspírate' : 'Get Inspired';
   const {selectedVariant} = useProductOptions();
 
   const colors = {
@@ -56,7 +59,7 @@ export function ProductSectionGetInspired({
         size="heading"
         className={`mb-[35px] uppercase text-center text-${colors[theme]}`}
       >
-        GET INSPIRED
+        {title}
       </Heading>
       <div className="grid grid-cols-4 gap-4">
         {lifesStyleImage1 && (

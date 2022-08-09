@@ -1,7 +1,9 @@
-import {Image, Link, useLocalization} from '@shopify/hydrogen';
+import {Image, Link} from '@shopify/hydrogen';
 import {Media} from '@shopify/hydrogen/storefront-api-types';
 import {chartData} from '../..//data/pomade-chart-es';
 import {Heading} from '../index';
+
+const LANG = Oxygen.env.LANGUAGE;
 
 const colors: {
   [key: string]: {
@@ -35,15 +37,8 @@ const colors: {
   },
 };
 
-export function PomadeCompareChart() {
-  const {
-    language: {isoCode: languageCode},
-  } = useLocalization();
-
-  const title: {[key: string]: string} = {
-    EN: 'Compare',
-    ES: 'Comparar',
-  };
+export function PomadeCompareChart({lang = LANG}: {lang: 'EN' | 'ES'}) {
+  const title = lang === 'ES' ? 'Compare' : 'Compare';
 
   return (
     <section className="py-[35px]">
@@ -52,7 +47,7 @@ export function PomadeCompareChart() {
         size="heading"
         className="uppercase text-center mx-auto max-w-full mb-[20px]"
       >
-        Compare
+        {title}
       </Heading>
       <div className="w-full overflow-scroll">
         <div className="w-[500vw] md:w-full grid grid-rows grid-cols-6 gap-1 text-center">

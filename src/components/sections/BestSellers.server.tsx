@@ -1,23 +1,19 @@
 import {Suspense, useMemo} from 'react';
-import {
-  gql,
-  useShopQuery,
-  useLocalization,
-  CacheNone,
-  CacheLong,
-} from '@shopify/hydrogen';
+import {gql, useShopQuery, CacheLong} from '@shopify/hydrogen';
 import {PRODUCT_CARD_FRAGMENT} from '~/lib/fragments';
 import {ProductGridItem, Section} from '~/components';
 import type {Product} from '@shopify/hydrogen/storefront-api-types';
 import {homePageData} from '~/locale';
 
-export function BestSellers({title = 'Best Sellers', count = 4, ...props}) {
-  const {
-    language: {isoCode: languageCode},
-    country: {isoCode: countryCode},
-  } = useLocalization();
+const LANG = Oxygen.env.LANGUAGE;
 
-  title = homePageData.bestSellers[languageCode];
+export function BestSellers({
+  lang = LANG,
+  title = 'Best Sellers',
+  count = 4,
+  ...props
+}) {
+  title = homePageData.bestSellers[lang];
 
   const bestSellersMarkup = useMemo(() => {
     return (

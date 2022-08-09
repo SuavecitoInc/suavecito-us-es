@@ -3,15 +3,21 @@ import {Divider, Heading} from '../index';
 import {Media} from '@shopify/hydrogen/storefront-api-types';
 import {BrandTheme} from '~/types/suavecito';
 
+const LANG = Oxygen.env.LANGUAGE;
+
 export function ProductSectionKitIncludes({
+  lang = LANG,
   theme = 'suavecito',
   kitProducts,
   kitProductVariants,
 }: {
+  lang?: 'EN' | 'ES';
   theme: BrandTheme;
   kitProducts: {value: string}[];
   kitProductVariants: {value: string}[];
 }) {
+  const title = lang === 'ES' ? `Qué está incluido` : `What's Included`;
+
   const {
     data: {nodes: products},
   } = useShopQuery({
@@ -74,8 +80,7 @@ export function ProductSectionKitIncludes({
     <section>
       <Divider width="half" className="my-[35px]" />
       <Heading as="h3" size="heading" className="text-center">
-        {/* eslint-disable-next-line react/no-unescaped-entities */}
-        What's Included
+        {title}
       </Heading>
       <div className="w-full overflow-scroll">
         <div className="w-full max-w-[500vw] md:max-w-full h-auto overflow-x-scroll">

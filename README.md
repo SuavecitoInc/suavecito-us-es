@@ -10,6 +10,15 @@ Hydrogen is a React framework and SDK that you can use to build fast and dynamic
 
 ## Getting started
 
+**Setup:**
+.env
+
+```
+SHOPIFY_STORE_DOMAIN="store.myshopify.com"
+SHOPIFY_STOREFRONT_API_PUBLIC_TOKEN="TOKEN"
+LANGUAGE="EN or ES"
+```
+
 **Requirements:**
 
 - Node.js version 16.5.0 or higher

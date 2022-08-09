@@ -34,6 +34,8 @@ import {
   Divider,
 } from '~/components';
 
+const LANG = Oxygen.env.LANGUAGE;
+
 export function ProductMetafieldSPBTemplate({handle}: {handle: string}) {
   const {search} = useUrl();
   const params = new URLSearchParams(search);
@@ -176,6 +178,7 @@ export function ProductMetafieldSPBTemplate({handle}: {handle: string}) {
                   </div>
                   <Suspense>
                     <ProductOptionsVariantForm
+                      lang={LANG}
                       theme="premium blends"
                       optionNames={defaultOptionNames}
                       tags={tags}
@@ -190,6 +193,7 @@ export function ProductMetafieldSPBTemplate({handle}: {handle: string}) {
         {/* check if productSectionFeaturedImage1 && productSectionDescription are set */}
         {productSectionFeaturedImage1 && productSectionDescription && (
           <ProductSectionContentGrid
+            lang={LANG}
             theme="premium blends"
             {...productContentGridData}
           />
@@ -198,6 +202,7 @@ export function ProductMetafieldSPBTemplate({handle}: {handle: string}) {
         {/* Product Section How To */}
         {productSectionHowToText && productSectionHowToEmbeddedVideo && (
           <ProductSectionHowTo
+            lang={LANG}
             theme="premium blends"
             {...productContentHowTo}
           />
@@ -209,6 +214,7 @@ export function ProductMetafieldSPBTemplate({handle}: {handle: string}) {
       {/* Product Section How it Looks */}
       {howItLooksImage1 && howItLooksImage2 && (
         <ProductSectionHowItLooks
+          lang={LANG}
           theme="premium blends"
           {...productContentHowItLooks}
         />
@@ -216,7 +222,7 @@ export function ProductMetafieldSPBTemplate({handle}: {handle: string}) {
 
       <div className="w-full bg-white">
         <div className="page-width">
-          <ProductSectionYouMayAlsoLike productId={product.id} />
+          <ProductSectionYouMayAlsoLike lang={LANG} productId={product.id} />
         </div>
       </div>
     </Layout>

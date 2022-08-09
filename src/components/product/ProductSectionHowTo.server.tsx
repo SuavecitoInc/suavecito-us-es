@@ -1,6 +1,8 @@
 import {Divider, Heading} from '../index';
-import {Image, useLocalization} from '@shopify/hydrogen';
+import {Image} from '@shopify/hydrogen';
 import type {BrandTheme} from '~/types/suavecito';
+
+const LANG = Oxygen.env.LANGUAGE;
 
 interface Metafield {
   value: string;
@@ -8,20 +10,18 @@ interface Metafield {
 }
 
 export function ProductSectionHowTo({
+  lang = LANG,
   theme = 'suavecito',
   productSectionHowToImage,
   productSectionHowToText,
   productSectionHowToEmbeddedVideo,
 }: {
+  lang?: 'EN' | 'ES';
   theme?: BrandTheme;
   productSectionHowToImage?: Metafield;
   productSectionHowToText: Metafield;
   productSectionHowToEmbeddedVideo: Metafield;
 }) {
-  const {
-    language: {isoCode: languageCode},
-  } = useLocalization();
-
   const title: {[key: string]: string} = {
     EN: 'How to Use',
     ES: 'Cómo Utilizar',
@@ -44,7 +44,7 @@ export function ProductSectionHowTo({
         size="heading"
         className={`uppercase text-center ${colors[theme]}`}
       >
-        {title[languageCode]}
+        {title[lang]}
       </Heading>
       <div
         className={`pt-6 flex flex-col md:flex-row gap-6 ${

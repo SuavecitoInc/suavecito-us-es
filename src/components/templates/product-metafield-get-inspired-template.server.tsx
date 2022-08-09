@@ -35,6 +35,8 @@ import {
   Text,
 } from '~/components';
 
+const LANG = Oxygen.env.LANGUAGE;
+
 export function ProductMetafieldGetInspiredTemplate({
   handle,
 }: {
@@ -168,6 +170,7 @@ export function ProductMetafieldGetInspiredTemplate({
                   </div>
                   <Suspense>
                     <ProductOptionsVariantForm
+                      lang={LANG}
                       theme={vendor.toLowerCase()}
                       optionNames={defaultOptionNames}
                       tags={tags}
@@ -182,6 +185,7 @@ export function ProductMetafieldGetInspiredTemplate({
           {variants.nodes[0].variantLifestyleImage1 ||
             (getInspiredImage1 && (
               <ProductSectionGetInspired
+                lang={LANG}
                 theme="suavecita"
                 {...productContentGetInspired}
               />
@@ -192,15 +196,19 @@ export function ProductMetafieldGetInspiredTemplate({
       <div className="page-width">
         {/* Product Section Grid */}
         {productSectionFeaturedImage1 && productSectionDescription && (
-          <ProductSectionContentGrid {...productContentGridData} />
+          <ProductSectionContentGrid lang={LANG} {...productContentGridData} />
         )}
 
         {/* Product Section How To */}
         {productSectionHowToText && productSectionHowToEmbeddedVideo && (
-          <ProductSectionHowTo theme="suavecita" {...productContentHowTo} />
+          <ProductSectionHowTo
+            lang={LANG}
+            theme="suavecita"
+            {...productContentHowTo}
+          />
         )}
 
-        <ProductSectionYouMayAlsoLike productId={product.id} />
+        <ProductSectionYouMayAlsoLike lang={LANG} productId={product.id} />
       </div>
     </Layout>
   );

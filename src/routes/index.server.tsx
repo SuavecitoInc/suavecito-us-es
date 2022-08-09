@@ -35,6 +35,8 @@ import {
   featuredVideoSettings,
 } from '../data/home-page-es';
 
+const LANG = Oxygen.env.LANGUAGE;
+
 export default function Homepage() {
   useServerAnalytics({
     shopify: {
@@ -78,7 +80,7 @@ function HomepageContent() {
       <ResponsiveBanner {...responsiveBannerSettings} />
       <FeaturedRowImageWithText {...featuredRowImageOneSettings} />
       <Divider width="half" />
-      <BestSellers />
+      <BestSellers lang={LANG} />
       <Banner {...bannerOneSettings} />
       <FeaturedRowColumns {...featuredRowColumnsOneSettings} />
       <FeaturedRowImageWithText {...featuredRowImageTwoSettings} />

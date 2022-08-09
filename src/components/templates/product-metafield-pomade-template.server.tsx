@@ -33,6 +33,8 @@ import {
   Text,
 } from '~/components';
 
+const LANG = Oxygen.env.LANGUAGE;
+
 export function ProductMetafieldPomadeTemplate({handle}: {handle: string}) {
   const {search} = useUrl();
   const params = new URLSearchParams(search);
@@ -162,6 +164,7 @@ export function ProductMetafieldPomadeTemplate({handle}: {handle: string}) {
                   </div>
                   <Suspense>
                     <ProductOptionsVariantForm
+                      lang={LANG}
                       optionNames={defaultOptionNames}
                       tags={tags}
                     />
@@ -174,22 +177,22 @@ export function ProductMetafieldPomadeTemplate({handle}: {handle: string}) {
 
         {/* check if productSectionFeaturedImage1 && productSectionDescription are set */}
         {productSectionFeaturedImage1 && productSectionDescription && (
-          <ProductSectionContentGrid {...productContentGridData} />
+          <ProductSectionContentGrid lang={LANG} {...productContentGridData} />
         )}
 
         {/* Product Section How To */}
         {productSectionHowToText && productSectionHowToEmbeddedVideo && (
-          <ProductSectionHowTo {...productContentHowTo} />
+          <ProductSectionHowTo lang={LANG} {...productContentHowTo} />
         )}
       </div>
       {/* Product Section How it Looks */}
       {howItLooksImage1 && howItLooksImage2 && (
-        <ProductSectionHowItLooks {...productContentHowItLooks} />
+        <ProductSectionHowItLooks lang={LANG} {...productContentHowItLooks} />
       )}
 
       <div className="page-width">
-        <PomadeCompareChart />
-        <ProductSectionYouMayAlsoLike productId={product.id} />
+        <PomadeCompareChart lang={LANG} />
+        <ProductSectionYouMayAlsoLike lang={LANG} productId={product.id} />
       </div>
     </Layout>
   );

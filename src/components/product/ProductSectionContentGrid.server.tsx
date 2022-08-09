@@ -2,12 +2,15 @@ import type {BrandTheme} from '~/types/suavecito';
 import {Divider} from '../index';
 import {ProductSectionImageText} from './ProductSectionImageText.server';
 
+const LANG = Oxygen.env.LANGUAGE;
+
 interface Metafield {
   value: string;
   reference?: object;
 }
 
 export function ProductSectionContentGrid({
+  lang = LANG,
   theme = 'suavecito',
   productSectionFeaturedImage1,
   productSectionFeaturedImage2,
@@ -21,6 +24,7 @@ export function ProductSectionContentGrid({
   productSectionListItemImage3,
   productSectionListItemImage4,
 }: {
+  lang?: 'EN' | 'ES';
   theme?: BrandTheme;
   productSectionFeaturedImage1: Metafield;
   productSectionFeaturedImage2: Metafield;

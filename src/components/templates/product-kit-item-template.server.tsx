@@ -26,6 +26,8 @@ import {
   Text,
 } from '~/components';
 
+const LANG = Oxygen.env.LANGUAGE;
+
 export function ProductKitItemTemplate({handle}: {handle: string}) {
   const {search} = useUrl();
   const params = new URLSearchParams(search);
@@ -169,6 +171,7 @@ export function ProductKitItemTemplate({handle}: {handle: string}) {
         {(kitProductVariants.length > 0 || kitProducts.length > 0) && (
           <div className="page-width">
             <ProductSectionKitIncludes
+              lang={LANG}
               theme={theme}
               kitProducts={kitProducts}
               kitProductVariants={kitProductVariants}

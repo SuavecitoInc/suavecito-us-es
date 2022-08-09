@@ -1,7 +1,9 @@
-import {Image, useLocalization} from '@shopify/hydrogen';
+import {Image} from '@shopify/hydrogen';
 import {Media} from '@shopify/hydrogen/storefront-api-types';
 import {Heading} from '../index';
 import type {BrandTheme} from '~/types/suavecito';
+
+const LANG = Oxygen.env.LANGUAGE;
 
 interface Metafield {
   value: string;
@@ -9,6 +11,7 @@ interface Metafield {
 }
 
 export function ProductSectionHowItLooks({
+  lang = LANG,
   theme = 'suavecito',
   howItLooksImage1,
   howItLooksImage2,
@@ -19,6 +22,7 @@ export function ProductSectionHowItLooks({
   howItLooksImage7,
   howItLooksImage8,
 }: {
+  lang?: 'EN' | 'ES';
   theme?: BrandTheme;
   howItLooksImage1: Metafield | null;
   howItLooksImage2: Metafield | null;
@@ -29,10 +33,6 @@ export function ProductSectionHowItLooks({
   howItLooksImage7: Metafield | null;
   howItLooksImage8: Metafield | null;
 }) {
-  const {
-    language: {isoCode: languageCode},
-  } = useLocalization();
-
   const title: {[key: string]: string} = {
     EN: 'How It Looks',
     ES: 'Como luce',
@@ -58,7 +58,7 @@ export function ProductSectionHowItLooks({
           theme === 'premium blends' && 'text-white'
         }`}
       >
-        {title[languageCode]}
+        {title[lang]}
       </Heading>
       <div className="flex flex-row gap-2 overflow-x-scroll">
         {images.map((image) => {
