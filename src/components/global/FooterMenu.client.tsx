@@ -98,7 +98,11 @@ export function FooterMenu({
         <section className={styles.nav}>
           <div className={styles.div}>
             <div className="flex items-center">
-              <IconFooterAccessibility width={'w-[50px]'} height={'h-[50px]'} />
+              <IconFooterAccessibility
+                width={'w-[50px]'}
+                height={'h-[50px]'}
+                theme={mainColor}
+              />
             </div>
             <p
               className={`text-justify p-4 text-[15px] ${pColor[mainColor]}`}
