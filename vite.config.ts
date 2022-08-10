@@ -15,5 +15,5 @@ export default defineConfig({
     testTimeout: 10000,
     hookTimeout: 10000,
   },
-  envPrefix: 'PUBLIC_',
+  envPrefix: 'VITE_',
 });
