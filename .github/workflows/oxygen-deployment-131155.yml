@@ -15,6 +15,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      
+      - name: create env file
+        run: |
+          touch .env
+          echo ENGINE_API_KEY=${{ secrets.ENGINE_API_KEY }} >> .env
 
       - name: Setup node.js
         uses: actions/setup-node@v2
