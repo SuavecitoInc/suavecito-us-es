@@ -1,8 +1,7 @@
 import {useEffect, useState} from 'react';
-import {Image} from '@shopify/hydrogen';
+import {Image, useProductOptions} from '@shopify/hydrogen';
 import type {Media} from '@shopify/hydrogen/storefront-api-types';
 import type {ProductVariant} from '@shopify/hydrogen/storefront-api-types';
-import {useProductOptions} from '@shopify/hydrogen';
 
 /**
  * A client component for product metafield images
@@ -43,10 +42,6 @@ export function ProductMetafieldImages({className}: {className?: string}) {
     setFeaturedImage(imageMetafield?.reference);
     setActiveThumbnail(index);
   };
-
-  useEffect(() => {
-    console.log('SELECTED Variant', selectedVariant);
-  }, [selectedVariant]);
 
   return (
     <div

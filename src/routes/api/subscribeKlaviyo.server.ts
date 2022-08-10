@@ -9,7 +9,7 @@ export const api: HydrogenApiRoute = async (request, options) => {
   const email: string = json.email;
   const phone: string = json.phone;
   const LIST_ID = 'T94qDB';
-  const KLAVIYO_API_KEY = Oxygen.env.KLAVIYO_API_KEY;
+  const KLAVIYO_API_KEY = import.meta.env.KLAVIYO_API_KEY;
   const url = `https://a.klaviyo.com/api/v2/list/${LIST_ID}/subscribe?api_key=${KLAVIYO_API_KEY}`;
   const fetchOptions = {
     method: 'POST',

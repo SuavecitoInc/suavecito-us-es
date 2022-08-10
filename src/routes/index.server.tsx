@@ -76,9 +76,29 @@ function HomepageContent() {
   return (
     <>
       <ResponsiveBanner {...responsiveBannerSettings} />
+      <div className="test">
+        <p className="text-center">
+          {`process.env.PUBLIC_LANGAGE_CODE`} ={' '}
+          {process.env.PUBLIC_LANGUAGE_CODE}
+        </p>
+        <p className="text-center">
+          {`process.env.VITE_LANGAGE_CODE`} = {process.env.VITE_LANGUAGE_CODE}
+        </p>
+        <p className="text-center">
+          {`Oxygen.env.LANGAGE_CODE`} = {Oxygen.env.LANGUAGE_CODE}
+        </p>
+        <p className="text-center">
+          {`import.meta.env.PUBLIC_LANGUAGE_CODE`} ={' '}
+          {import.meta.env.PUBLIC_LANGUAGE_CODE}
+        </p>
+        <p className="text-center">
+          {`import.meta.env.VITE_LANGUAGE_CODE`} ={' '}
+          {import.meta.env.VITE_LANGUAGE_CODE}
+        </p>
+      </div>
       <FeaturedRowImageWithText {...featuredRowImageOneSettings} />
       <Divider width="half" />
-      <BestSellers />
+      <BestSellers lang={languageCode} />
       <Banner {...bannerOneSettings} />
       <FeaturedRowColumns {...featuredRowColumnsOneSettings} />
       <FeaturedRowImageWithText {...featuredRowImageTwoSettings} />

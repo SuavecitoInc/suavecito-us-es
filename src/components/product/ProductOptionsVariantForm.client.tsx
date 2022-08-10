@@ -8,7 +8,6 @@ import {
   Money,
   OptionWithValues,
   ShopPayButton,
-  useLocalization,
   SelectedOptions,
 } from '@shopify/hydrogen';
 import {useVariantsWithOptions, useAvailableOptions} from '~/hooks';
@@ -29,23 +28,20 @@ interface Metafield {
 }
 
 export function ProductOptionsVariantForm({
+  lang = 'EN',
   theme = 'suavecito',
   showQuantitySelector = true,
   optionNames,
   tags,
   colorOptions = [],
 }: {
+  lang?: 'EN' | 'ES';
   theme?: BrandTheme;
   showQuantitySelector?: boolean;
   optionNames: string[];
   tags: string[];
   colorOptions?: Metafield[];
 }) {
-  const {
-    language: {isoCode: languageCode},
-    country: {isoCode: countryCode},
-  } = useLocalization();
-
   const {pathname, search} = useUrl();
   const [params, setParams] = useState(new URLSearchParams(search));
 
@@ -222,7 +218,7 @@ export function ProductOptionsVariantForm({
         <div className="grid gap-4">
           {colorOptions.length > 0 && (
             <ColorOptions
-              languageCode={languageCode}
+              languageCode={lang}
               // @ts-ignore
               name={options[0].name}
               handleChange={handleChange}
@@ -240,7 +236,9 @@ export function ProductOptionsVariantForm({
               }
 
               const localeName =
-                productData.options[name.toLowerCase()][languageCode];
+                productData.options[name.toLowerCase()] !== undefined
+                  ? productData.options[name.toLowerCase()][lang]
+                  : name;
 
               // @ts-ignore Variant Fragrance Profile does not  exist on selected variant
               if (index === 0 && selectedVariant?.variantFragranceProfile) {
@@ -380,15 +378,13 @@ export function ProductOptionsVariantForm({
             as="span"
           >
             {isOutOfStock ? (
-              <Text>{productData.soldOut[languageCode]}</Text>
+              <Text>{productData.soldOut[lang]}</Text>
             ) : (
               <Text
                 as="span"
                 className="flex items-center justify-center gap-2"
               >
-                <span className="uppercase">
-                  {productData.addToCart[languageCode]}
-                </span>
+                <span className="uppercase">{productData.addToCart[lang]}</span>
               </Text>
             )}
           </Button>
@@ -416,7 +412,10 @@ function ColorOptions({
 }) {
   const {selectedOptions} = useProductOptions();
 
-  const localeName = productData.options[name.toLowerCase()][languageCode];
+  const localeName =
+    productData.options[name.toLowerCase()] !== undefined
+      ? productData.options[name.toLowerCase()][languageCode]
+      : name;
 
   return (
     <div className="flex flex-col flex-wrap mb-4 gap-y-2 last:mb-0">

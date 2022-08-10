@@ -8,6 +8,10 @@ export const productData: {[key: string]: any} = {
     ES: 'Vendido',
   },
   options: {
+    color: {
+      EN: 'Color',
+      ES: 'Color',
+    },
     fragrance: {
       EN: 'Fragrance',
       ES: 'Fragancia',
@@ -19,6 +23,10 @@ export const productData: {[key: string]: any} = {
     size: {
       EN: 'Size',
       ES: 'Tamaño',
+    },
+    style: {
+      EN: 'Style',
+      ES: 'Estillo',
     },
   },
 };
