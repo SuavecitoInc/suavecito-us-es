@@ -55,7 +55,7 @@ export default function Homepage() {
 }
 
 function HomepageContent() {
-  const LANG = import.meta.env.VITE_LANGUAGE_CODE;
+  const LANG = 'ES';
   const {
     language: {isoCode: languageCode},
     country: {isoCode: countryCode},

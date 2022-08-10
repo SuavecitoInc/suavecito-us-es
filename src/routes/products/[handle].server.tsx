@@ -27,7 +27,7 @@ import {
   ProductSectionInfoTabs,
 } from '~/components';
 
-const LANG = import.meta.env.VITE_LANGUAGE_CODE;
+const LANG = 'ES';
 
 export default function Product() {
   const {handle} = useRouteParams();
