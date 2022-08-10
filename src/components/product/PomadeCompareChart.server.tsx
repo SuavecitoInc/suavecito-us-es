@@ -3,7 +3,7 @@ import {Media} from '@shopify/hydrogen/storefront-api-types';
 import {chartData} from '../../data/pomade-chart-es';
 import {Heading} from '../index';
 
-const LANG = import.meta.env.PUBLIC_LANGUAGE;
+const LANG = import.meta.env.PUBLIC_LANGUAGE_CODE;
 
 const colors: {
   [key: string]: {
@@ -39,7 +39,7 @@ const colors: {
 
 export function PomadeCompareChart({lang = LANG}: {lang: 'EN' | 'ES'}) {
   const title = lang === 'ES' ? 'Compare' : 'Compare';
-  const langCode = lang.toLowerCase();
+  const languageCode = lang.toLowerCase();
   const washabilityTitle = lang === 'ES' ? 'Lavabilidad' : 'Washability';
   const bestForTitle = lang === 'ES' ? 'Mejor Para' : 'Best For';
 
@@ -55,8 +55,11 @@ export function PomadeCompareChart({lang = LANG}: {lang: 'EN' | 'ES'}) {
       <div className="w-full overflow-scroll">
         <div className="w-[500vw] md:w-full grid grid-rows grid-cols-6 gap-1 text-center">
           {chartData.map(({product}) => (
-            <div key={`${product.data[langCode].title}-image`} className="p-2">
-              <Link to={`/products${product.link}`}>
+            <div
+              key={`${product.data[languageCode].title}-image`}
+              className="p-2"
+            >
+              <Link to={`/products${product.data.link}`}>
                 <FeaturedMedia
                   scale={2}
                   sizes={
@@ -81,12 +84,12 @@ export function PomadeCompareChart({lang = LANG}: {lang: 'EN' | 'ES'}) {
         <div className="w-[500vw] md:w-full grid grid-rows grid-cols-6 gap-1 text-center text-sm">
           {chartData.map(({product}) => (
             <div
-              key={product.data[langCode].title}
+              key={product.data[languageCode].title}
               className={`${
                 colors[product.data.color].header
               } px-4 pt-4 font-bold uppercase`}
             >
-              {product.data[langCode].title}
+              {product.data[languageCode].title}
             </div>
           ))}
         </div>
@@ -94,7 +97,7 @@ export function PomadeCompareChart({lang = LANG}: {lang: 'EN' | 'ES'}) {
         <div className="w-[500vw] md:w-full grid grid-rows grid-cols-6 gap-1 text-center text-sm">
           {chartData.map(({product}) => (
             <div
-              key={`${product.data[langCode].title}-triangle`}
+              key={`${product.data[languageCode].title}-triangle`}
               className={`triangle-container ${
                 colors[product.data.color].body
               } p-4`}
@@ -109,47 +112,47 @@ export function PomadeCompareChart({lang = LANG}: {lang: 'EN' | 'ES'}) {
         <div className="w-[500vw] md:w-full grid grid-rows grid-cols-6 gap-1 text-center text-sm">
           {chartData.map(({product}) => (
             <div
-              key={`${product.data[langCode].title}-${product.data[langCode].hold}`}
+              key={`${product.data[languageCode].title}-${product.data[languageCode].hold}`}
               className={`${
                 colors[product.data.color].body
               } p-4 border-b-2 border-black`}
             >
-              {product.data[langCode].hold}
+              {product.data[languageCode].hold}
             </div>
           ))}
         </div>
         <div className="w-[500vw] md:w-full grid grid-rows grid-cols-6 gap-1 text-center text-sm">
           {chartData.map(({product}) => (
             <div
-              key={`${product.data[langCode].title}-${product.data[langCode].shine}`}
+              key={`${product.data[languageCode].title}-${product.data[languageCode].shine}`}
               className={`${
                 colors[product.data.color].body
               } p-4 border-b-2 border-black`}
             >
-              {product.data[langCode].shine}
+              {product.data[languageCode].shine}
             </div>
           ))}
         </div>
         <div className="w-[500vw] md:w-full grid grid-rows grid-cols-6 gap-1 text-center text-sm">
           {chartData.map(({product}) => (
             <div
-              key={`${product.data[langCode].title}-${product.data[langCode].washability}`}
+              key={`${product.data[languageCode].title}-${product.data[languageCode].washability}`}
               className={`${
                 colors[product.data.color].body
               } p-4 border-b-2 border-black`}
             >
-              {washabilityTitle}: {product.data[langCode].washability}
+              {washabilityTitle}: {product.data[languageCode].washability}
             </div>
           ))}
         </div>
         <div className="w-[500vw] md:w-full grid grid-rows grid-cols-6 gap-1 text-sm">
           {chartData.map(({product}) => (
             <div
-              key={`${product.data[langCode].title}-${product.data[langCode].bestFor}`}
+              key={`${product.data[languageCode].title}-${product.data[languageCode].bestFor}`}
               className={`${colors[product.data.color].body} p-4`}
             >
               <span className="font-bold">{bestForTitle}: </span>
-              {product.data[langCode].bestFor}
+              {product.data[languageCode].bestFor}
             </div>
           ))}
         </div>

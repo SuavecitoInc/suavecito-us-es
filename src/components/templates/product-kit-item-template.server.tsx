@@ -26,7 +26,7 @@ import {
   Text,
 } from '~/components';
 
-const LANG = import.meta.env.PUBLIC_LANGUAGE;
+const LANG = import.meta.env.PUBLIC_LANGUAGE_CODE;
 
 export function ProductKitItemTemplate({handle}: {handle: string}) {
   const {search} = useUrl();

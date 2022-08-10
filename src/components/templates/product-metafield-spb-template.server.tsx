@@ -34,7 +34,7 @@ import {
   Divider,
 } from '~/components';
 
-const LANG = import.meta.env.PUBLIC_LANGUAGE;
+const LANG = import.meta.env.PUBLIC_LANGUAGE_CODE;
 
 export function ProductMetafieldSPBTemplate({handle}: {handle: string}) {
   const {search} = useUrl();

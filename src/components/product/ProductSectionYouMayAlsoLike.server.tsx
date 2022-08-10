@@ -5,7 +5,7 @@ import {ProductGridItem, Section} from '~/components';
 import type {Product} from '@shopify/hydrogen/storefront-api-types';
 import type {BrandTheme} from '~/types/suavecito';
 
-const LANG = import.meta.env.PUBLIC_LANGUAGE;
+const LANG = import.meta.env.PUBLIC_LANGUAGE_CODE;
 
 export function ProductSectionYouMayAlsoLike({
   lang = LANG,
