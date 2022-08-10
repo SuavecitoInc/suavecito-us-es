@@ -34,7 +34,7 @@ import {
 } from '~/components';
 
 export function ProductMetafieldPomadeTemplate({handle}: {handle: string}) {
-  const LANG = Oxygen.env.LANGUAGE_CODE;
+  const LANG = import.meta.env.VITE_LANGUAGE_CODE;
   const {search} = useUrl();
   const params = new URLSearchParams(search);
   const initialVariant = params.get('variant');

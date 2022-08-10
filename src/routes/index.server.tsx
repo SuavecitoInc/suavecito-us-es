@@ -55,7 +55,7 @@ export default function Homepage() {
 }
 
 function HomepageContent() {
-  const LANG = Oxygen.env.LANGUAGE_CODE;
+  const LANG = import.meta.env.VITE_LANGUAGE_CODE;
   const {
     language: {isoCode: languageCode},
     country: {isoCode: countryCode},
@@ -77,6 +77,15 @@ function HomepageContent() {
   return (
     <>
       <ResponsiveBanner {...responsiveBannerSettings} />
+      <div className="test">
+        <p className="text-center">
+          import.meta.env.VITE_LANGUAGE_CODE = {LANG}
+        </p>
+        <p className="text-center">
+          import.meta.env.VITE_LANGUAGE_CODE ={' '}
+          {import.meta.env.VITE_LANGUAGE_CODE}
+        </p>
+      </div>
       <FeaturedRowImageWithText {...featuredRowImageOneSettings} />
       <Divider width="half" />
       <BestSellers lang={LANG} />
