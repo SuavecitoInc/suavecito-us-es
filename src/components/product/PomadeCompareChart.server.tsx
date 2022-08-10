@@ -3,8 +3,6 @@ import {Media} from '@shopify/hydrogen/storefront-api-types';
 import {chartData} from '../../data/pomade-chart-es';
 import {Heading} from '../index';
 
-const LANG = import.meta.env.PUBLIC_LANGUAGE_CODE;
-
 const colors: {
   [key: string]: {
     header: string;
@@ -37,7 +35,7 @@ const colors: {
   },
 };
 
-export function PomadeCompareChart({lang = LANG}: {lang: 'EN' | 'ES'}) {
+export function PomadeCompareChart({lang = 'EN'}: {lang: 'EN' | 'ES'}) {
   const title = lang === 'ES' ? 'Compare' : 'Compare';
   const languageCode = lang.toLowerCase();
   const washabilityTitle = lang === 'ES' ? 'Lavabilidad' : 'Washability';

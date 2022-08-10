@@ -2,15 +2,13 @@ import type {BrandTheme} from '~/types/suavecito';
 import {Divider} from '../index';
 import {ProductSectionImageText} from './ProductSectionImageText.server';
 
-const LANG = import.meta.env.PUBLIC_LANGUAGE_CODE;
-
 interface Metafield {
   value: string;
   reference?: object;
 }
 
 export function ProductSectionContentGrid({
-  lang = LANG,
+  lang = 'EN',
   theme = 'suavecito',
   productSectionFeaturedImage1,
   productSectionFeaturedImage2,

@@ -5,10 +5,8 @@ import {ProductGridItem, Section} from '~/components';
 import type {Product} from '@shopify/hydrogen/storefront-api-types';
 import type {BrandTheme} from '~/types/suavecito';
 
-const LANG = import.meta.env.PUBLIC_LANGUAGE_CODE;
-
 export function ProductSectionYouMayAlsoLike({
-  lang = LANG,
+  lang = 'EN',
   theme = 'suavecito',
   title = 'You May Also Like',
   productId = 'gid://shopify/Product/161353365',

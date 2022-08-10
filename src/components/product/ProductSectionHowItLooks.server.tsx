@@ -3,15 +3,13 @@ import {Media} from '@shopify/hydrogen/storefront-api-types';
 import {Heading} from '../index';
 import type {BrandTheme} from '~/types/suavecito';
 
-const LANG = import.meta.env.PUBLIC_LANGUAGE_CODE;
-
 interface Metafield {
   value: string;
   reference?: object;
 }
 
 export function ProductSectionHowItLooks({
-  lang = LANG,
+  lang = 'EN',
   theme = 'suavecito',
   howItLooksImage1,
   howItLooksImage2,

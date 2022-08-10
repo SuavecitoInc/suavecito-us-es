@@ -26,9 +26,8 @@ import {
   Text,
 } from '~/components';
 
-const LANG = import.meta.env.PUBLIC_LANGUAGE_CODE;
-
 export function ProductKitItemTemplate({handle}: {handle: string}) {
+  const LANG = import.meta.env.PUBLIC_LANGUAGE_CODE;
   const {search} = useUrl();
   const params = new URLSearchParams(search);
   const initialVariant = params.get('variant');
