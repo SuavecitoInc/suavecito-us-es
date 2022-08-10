@@ -3,7 +3,7 @@ import {Media} from '@shopify/hydrogen/storefront-api-types';
 import {chartData} from '../../data/pomade-chart-es';
 import {Heading} from '../index';
 
-const LANG = Oxygen.env.LANGUAGE;
+const LANG = import.meta.env.LANGUAGE;
 
 const colors: {
   [key: string]: {

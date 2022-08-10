@@ -35,7 +35,7 @@ import {
   Text,
 } from '~/components';
 
-const LANG = Oxygen.env.LANGUAGE;
+const LANG = import.meta.env.LANGUAGE;
 
 export function ProductMetafieldGetInspiredTemplate({
   handle,

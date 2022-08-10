@@ -33,7 +33,7 @@ import {
   Text,
 } from '~/components';
 
-const LANG = Oxygen.env.LANGUAGE;
+const LANG = import.meta.env.LANGUAGE;
 
 export function ProductMetafieldPomadeTemplate({handle}: {handle: string}) {
   const {search} = useUrl();

@@ -5,7 +5,7 @@ import {ProductGridItem, Section} from '~/components';
 import type {Product} from '@shopify/hydrogen/storefront-api-types';
 import {homePageData} from '~/locale';
 
-const LANG = Oxygen.env.LANGUAGE;
+const LANG = import.meta.env.LANGUAGE;
 
 export function BestSellers({
   lang = LANG,

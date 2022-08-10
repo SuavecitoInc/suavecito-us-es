@@ -36,7 +36,7 @@ import {
 } from '~/components';
 import {getColorOptions} from '~/lib/helpers';
 
-const LANG = Oxygen.env.LANGUAGE;
+const LANG = import.meta.env.LANGUAGE;
 
 export function ProductMetafieldColorsGetInspiredTemplate({
   handle,

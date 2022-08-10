@@ -27,7 +27,7 @@ import {
   ProductSectionInfoTabs,
 } from '~/components';
 
-const LANG = Oxygen.env.LANGUAGE;
+const LANG = import.meta.env.LANGUAGE;
 
 export default function Product() {
   const {handle} = useRouteParams();

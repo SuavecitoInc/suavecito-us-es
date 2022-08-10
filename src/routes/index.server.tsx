@@ -35,7 +35,7 @@ import {
   featuredVideoSettings,
 } from '../data/home-page-es';
 
-const LANG = Oxygen.env.LANGUAGE;
+const LANG = import.meta.env.LANGUAGE;
 
 export default function Homepage() {
   useServerAnalytics({

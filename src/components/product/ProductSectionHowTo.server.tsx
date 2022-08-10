@@ -2,7 +2,7 @@ import {Divider, Heading} from '../index';
 import {Image} from '@shopify/hydrogen';
 import type {BrandTheme} from '~/types/suavecito';
 
-const LANG = Oxygen.env.LANGUAGE;
+const LANG = import.meta.env.LANGUAGE;
 
 interface Metafield {
   value: string;

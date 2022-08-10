@@ -34,7 +34,7 @@ import {
   Divider,
 } from '~/components';
 
-const LANG = Oxygen.env.LANGUAGE;
+const LANG = import.meta.env.LANGUAGE;
 
 export function ProductMetafieldSPBTemplate({handle}: {handle: string}) {
   const {search} = useUrl();
