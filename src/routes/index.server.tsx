@@ -81,6 +81,9 @@ function HomepageContent() {
         <p className="text-center">
           import.meta.env.PUBLIC_LANGUAGE_CODE = {LANG}
         </p>
+        <p className="text-center">
+          OXYGEN.env.PUBLIC_LANGUAGE_CODE = {Oxygen.env.LANGUAGE_CODE}
+        </p>
       </div>
       <FeaturedRowImageWithText {...featuredRowImageOneSettings} />
       <Divider width="half" />
