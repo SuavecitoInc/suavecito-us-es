@@ -55,7 +55,7 @@ export default function Homepage() {
 }
 
 function HomepageContent() {
-  const LANG = Oxygen.env.LANGUAGE_CODE;
+  const LANG = 'ES';
   const {
     language: {isoCode: languageCode},
     country: {isoCode: countryCode},
@@ -78,10 +78,6 @@ function HomepageContent() {
     <>
       <ResponsiveBanner {...responsiveBannerSettings} />
       <div className="test">
-        <p className="text-center">Oxygen.env.LANGUAGE_CODE = {LANG}</p>
-        <p className="text-center">
-          Oxygen.env.LANGUAGE_CODE = {Oxygen.env.LANGUAGE_CODE}
-        </p>
         <p className="text-center">
           import.meta.env.VITE_LANGUAGE_CODE ={' '}
           {import.meta.env.VITE_LANGUAGE_CODE}
