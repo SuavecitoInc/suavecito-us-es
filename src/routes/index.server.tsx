@@ -55,7 +55,7 @@ export default function Homepage() {
 }
 
 function HomepageContent() {
-  const LANG = import.meta.env.PUBLIC_LANGUAGE_CODE;
+  const LANG = Oxygen.env.LANGUAGE_CODE;
   const {
     language: {isoCode: languageCode},
     country: {isoCode: countryCode},
@@ -77,14 +77,6 @@ function HomepageContent() {
   return (
     <>
       <ResponsiveBanner {...responsiveBannerSettings} />
-      <div className="test">
-        <p className="text-center">
-          import.meta.env.PUBLIC_LANGUAGE_CODE = {LANG}
-        </p>
-        <p className="text-center">
-          OXYGEN.env.PUBLIC_LANGUAGE_CODE = {Oxygen.env.LANGUAGE_CODE}
-        </p>
-      </div>
       <FeaturedRowImageWithText {...featuredRowImageOneSettings} />
       <Divider width="half" />
       <BestSellers lang={LANG} />
