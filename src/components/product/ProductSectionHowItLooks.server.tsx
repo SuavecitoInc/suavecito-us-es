@@ -3,7 +3,7 @@ import {Media} from '@shopify/hydrogen/storefront-api-types';
 import {Heading} from '../index';
 import type {BrandTheme} from '~/types/suavecito';
 
-const LANG = import.meta.env.LANGUAGE;
+const LANG = import.meta.env.PUBLIC_LANGUAGE;
 
 interface Metafield {
   value: string;

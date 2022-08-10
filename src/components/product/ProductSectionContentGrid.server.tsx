@@ -2,7 +2,7 @@ import type {BrandTheme} from '~/types/suavecito';
 import {Divider} from '../index';
 import {ProductSectionImageText} from './ProductSectionImageText.server';
 
-const LANG = import.meta.env.LANGUAGE;
+const LANG = import.meta.env.PUBLIC_LANGUAGE;
 
 interface Metafield {
   value: string;

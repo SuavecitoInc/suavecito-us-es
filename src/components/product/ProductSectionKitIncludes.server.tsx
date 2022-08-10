@@ -3,7 +3,7 @@ import {Divider, Heading} from '../index';
 import {Media} from '@shopify/hydrogen/storefront-api-types';
 import {BrandTheme} from '~/types/suavecito';
 
-const LANG = import.meta.env.LANGUAGE;
+const LANG = import.meta.env.PUBLIC_LANGUAGE;
 
 export function ProductSectionKitIncludes({
   lang = LANG,

@@ -35,7 +35,7 @@ import {
   featuredVideoSettings,
 } from '../data/home-page-es';
 
-const LANG = import.meta.env.LANGUAGE;
+const LANG = import.meta.env.PUBLIC_LANGUAGE;
 
 export default function Homepage() {
   useServerAnalytics({

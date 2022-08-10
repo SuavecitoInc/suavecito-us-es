@@ -36,7 +36,7 @@ import {
 } from '~/components';
 import {getColorOptions} from '~/lib/helpers';
 
-const LANG = import.meta.env.LANGUAGE;
+const LANG = import.meta.env.PUBLIC_LANGUAGE;
 
 export function ProductMetafieldColorsGetInspiredTemplate({
   handle,

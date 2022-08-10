@@ -35,7 +35,7 @@ import {
   Text,
 } from '~/components';
 
-const LANG = import.meta.env.LANGUAGE;
+const LANG = import.meta.env.PUBLIC_LANGUAGE;
 
 export function ProductMetafieldGetInspiredTemplate({
   handle,

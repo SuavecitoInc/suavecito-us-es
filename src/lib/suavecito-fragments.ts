@@ -1,6 +1,6 @@
 import {gql} from '@shopify/hydrogen';
 
-const LANG = import.meta.env.LANGUAGE;
+const LANG = import.meta.env.PUBLIC_LANGUAGE;
 
 export const PRODUCT_SECTION_FRAGMENT =
   LANG === 'ES'
