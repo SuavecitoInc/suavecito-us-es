@@ -40,7 +40,7 @@ export function ProductMetafieldGetInspiredTemplate({
 }: {
   handle: string;
 }) {
-  const LANG = 'ES';
+  const LANG = Oxygen.env.LANGUAGE_CODE;
   const {search} = useUrl();
   const params = new URLSearchParams(search);
   const initialVariant = params.get('variant');
