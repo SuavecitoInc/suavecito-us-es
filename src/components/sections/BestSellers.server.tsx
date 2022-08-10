@@ -5,10 +5,8 @@ import {ProductGridItem, Section} from '~/components';
 import type {Product} from '@shopify/hydrogen/storefront-api-types';
 import {homePageData} from '~/locale';
 
-const LANG = import.meta.env.PUBLIC_LANGUAGE_CODE;
-
 export function BestSellers({
-  lang = LANG,
+  lang = 'EN',
   title = 'Best Sellers',
   count = 4,
   ...props
