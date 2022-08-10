@@ -1,11 +1,10 @@
-import {Suspense, useContext} from 'react';
+import {Suspense} from 'react';
 import {
   CacheLong,
   gql,
   Seo,
   ShopifyAnalyticsConstants,
   useServerAnalytics,
-  useLocalization,
   useShopQuery,
 } from '@shopify/hydrogen';
 import {
@@ -17,10 +16,6 @@ import {
   FeaturedVideo,
 } from '~/components';
 import {Layout, BestSellers} from '~/components/index.server';
-import {
-  CollectionConnection,
-  ProductConnection,
-} from '@shopify/hydrogen/storefront-api-types';
 
 // hard coded data
 import {
@@ -55,50 +50,14 @@ export default function Homepage() {
 }
 
 function HomepageContent() {
-  const {
-    language: {isoCode: languageCode},
-    country: {isoCode: countryCode},
-  } = useLocalization();
-
-  const {data} = useShopQuery<{
-    heroBanners: CollectionConnection;
-    featuredCollections: CollectionConnection;
-    featuredProducts: ProductConnection;
-  }>({
-    query: HOMEPAGE_CONTENT_QUERY,
-    variables: {
-      language: languageCode,
-      country: countryCode,
-    },
-    preload: true,
-  });
+  const LANG = import.meta.env.PUBLIC_LANGUAGE_CODE;
 
   return (
     <>
       <ResponsiveBanner {...responsiveBannerSettings} />
-      <div className="test">
-        <p className="text-center">
-          {`process.env.PUBLIC_LANGAGE_CODE`} ={' '}
-          {process.env.PUBLIC_LANGUAGE_CODE}
-        </p>
-        <p className="text-center">
-          {`process.env.VITE_LANGAGE_CODE`} = {process.env.VITE_LANGUAGE_CODE}
-        </p>
-        <p className="text-center">
-          {`Oxygen.env.LANGAGE_CODE`} = {Oxygen.env.LANGUAGE_CODE}
-        </p>
-        <p className="text-center">
-          {`import.meta.env.PUBLIC_LANGUAGE_CODE`} ={' '}
-          {import.meta.env.PUBLIC_LANGUAGE_CODE}
-        </p>
-        <p className="text-center">
-          {`import.meta.env.VITE_LANGUAGE_CODE`} ={' '}
-          {import.meta.env.VITE_LANGUAGE_CODE}
-        </p>
-      </div>
       <FeaturedRowImageWithText {...featuredRowImageOneSettings} />
       <Divider width="half" />
-      <BestSellers lang={languageCode} />
+      <BestSellers lang={LANG} />
       <Banner {...bannerOneSettings} />
       <FeaturedRowColumns {...featuredRowColumnsOneSettings} />
       <FeaturedRowImageWithText {...featuredRowImageTwoSettings} />
@@ -132,24 +91,6 @@ function SeoForHomepage() {
     />
   );
 }
-
-const HOMEPAGE_CONTENT_QUERY = gql`
-  query homepage($country: CountryCode, $language: LanguageCode)
-  @inContext(country: $country, language: $language) {
-    heroBanners: collections(
-      first: 3
-      query: "collection_type:custom"
-      sortKey: UPDATED_AT
-    ) {
-      nodes {
-        id
-        handle
-        title
-        descriptionHtml
-      }
-    }
-  }
-`;
 
 const HOMEPAGE_SEO_QUERY = gql`
   query homeShopInfo {
