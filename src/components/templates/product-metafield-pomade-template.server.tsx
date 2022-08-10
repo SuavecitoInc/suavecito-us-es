@@ -34,7 +34,6 @@ import {
 } from '~/components';
 
 export function ProductMetafieldPomadeTemplate({handle}: {handle: string}) {
-  const LANG = 'ES';
   const {search} = useUrl();
   const params = new URLSearchParams(search);
   const initialVariant = params.get('variant');
@@ -43,6 +42,8 @@ export function ProductMetafieldPomadeTemplate({handle}: {handle: string}) {
     language: {isoCode: languageCode},
     country: {isoCode: countryCode},
   } = useLocalization();
+
+  const LANG = languageCode as 'EN' | 'ES';
 
   const {
     data: {product, shop},

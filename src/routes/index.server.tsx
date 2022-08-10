@@ -55,7 +55,6 @@ export default function Homepage() {
 }
 
 function HomepageContent() {
-  const LANG = 'ES';
   const {
     language: {isoCode: languageCode},
     country: {isoCode: countryCode},
@@ -79,20 +78,27 @@ function HomepageContent() {
       <ResponsiveBanner {...responsiveBannerSettings} />
       <div className="test">
         <p className="text-center">
-          Oxygen.env.LANGUAGE_CODE = {Oxygen.env.LANGUAGE_CODE}
+          {`process.env.PUBLIC_LANGAGE_CODE`} ={' '}
+          {process.env.PUBLIC_LANGUAGE_CODE}
         </p>
         <p className="text-center">
-          import.meta.env.PUBLIC_LANGUAGE_CODE ={' '}
+          {`process.env.VITE_LANGAGE_CODE`} = {process.env.VITE_LANGUAGE_CODE}
+        </p>
+        <p className="text-center">
+          {`Oxygen.env.LANGAGE_CODE`} = {Oxygen.env.LANGUAGE_CODE}
+        </p>
+        <p className="text-center">
+          {`import.meta.env.PUBLIC_LANGUAGE_CODE`} ={' '}
           {import.meta.env.PUBLIC_LANGUAGE_CODE}
         </p>
         <p className="text-center">
-          import.meta.env.VITE_LANGUAGE_CODE ={' '}
+          {`import.meta.env.VITE_LANGUAGE_CODE`} ={' '}
           {import.meta.env.VITE_LANGUAGE_CODE}
         </p>
       </div>
       <FeaturedRowImageWithText {...featuredRowImageOneSettings} />
       <Divider width="half" />
-      <BestSellers lang={LANG} />
+      <BestSellers lang={languageCode} />
       <Banner {...bannerOneSettings} />
       <FeaturedRowColumns {...featuredRowColumnsOneSettings} />
       <FeaturedRowImageWithText {...featuredRowImageTwoSettings} />
