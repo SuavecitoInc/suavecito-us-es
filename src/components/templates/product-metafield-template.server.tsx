@@ -43,7 +43,7 @@ export function ProductMetafieldTemplate({handle}: {handle: string}) {
     country: {isoCode: countryCode},
   } = useLocalization();
 
-  const LANG = languageCode as 'EN' | 'ES';
+  const LANG = import.meta.env.PUBLIC_LANGUAGE_CODE;
 
   const {
     data: {product, shop},
