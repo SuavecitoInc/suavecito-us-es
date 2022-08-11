@@ -2,18 +2,18 @@ import React, {useRef, useState} from 'react';
 import RPI from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
 import {BrandTheme} from '~/types/suavecito';
-import {useLocalization} from '@shopify/hydrogen';
 import {footerData} from '~/locale';
 
 // @ts-ignore
 const PhoneInput = RPI.default ? RPI.default : RPI;
 
-export function SubscribeEmail({theme}: {theme?: BrandTheme}) {
-  const {
-    language: {isoCode: languageCode},
-    country: {isoCode: countryCode},
-  } = useLocalization();
-
+export function SubscribeEmail({
+  lang = 'EN',
+  theme,
+}: {
+  lang?: 'EN' | 'ES';
+  theme?: BrandTheme;
+}) {
   const formRef = useRef<HTMLFormElement>(null);
 
   const formOutcomeRef = useRef<HTMLParagraphElement | null>(null);
@@ -114,7 +114,7 @@ export function SubscribeEmail({theme}: {theme?: BrandTheme}) {
               <input
                 className="w-full border-none"
                 type="email"
-                placeholder={footerData.newsletter.email[languageCode]}
+                placeholder={footerData.newsletter.email[lang]}
                 onChange={(evt) => setEmailInput(evt.target.value)}
                 required
               />
@@ -122,7 +122,7 @@ export function SubscribeEmail({theme}: {theme?: BrandTheme}) {
             <div className="flex mb-[5px] klaviyo-input">
               <PhoneInput
                 country={'us'}
-                placeholder={footerData.newsletter.phone[languageCode]}
+                placeholder={footerData.newsletter.phone[lang]}
                 value={phoneInput}
                 onChange={(phoneInput: string, country: string) =>
                   checkPhoneInput(phoneInput, country)
@@ -133,7 +133,7 @@ export function SubscribeEmail({theme}: {theme?: BrandTheme}) {
                 type="submit"
                 ref={buttonRef}
               >
-                {footerData.newsletter.submit[languageCode]}
+                {footerData.newsletter.submit[lang]}
               </button>
             </div>
             <div>
@@ -146,7 +146,7 @@ export function SubscribeEmail({theme}: {theme?: BrandTheme}) {
               <p
                 className={`text-[10px] ${pColor[mainColor]}`}
                 dangerouslySetInnerHTML={{
-                  __html: footerData.newsletter.disclaimer[languageCode],
+                  __html: footerData.newsletter.disclaimer[lang],
                 }}
               />
             </div>

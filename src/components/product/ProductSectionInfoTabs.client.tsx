@@ -3,9 +3,11 @@ import {useState, Fragment} from 'react';
 import {Tab} from '@headlessui/react';
 
 export function ProductSectionInfoTabs({
+  lang = 'EN',
   theme = 'suavecito',
   tabs,
 }: {
+  lang?: 'EN' | 'ES';
   theme?: 'suavecito' | 'suavecita';
   tabs: {title: string; content: any}[];
 }) {
@@ -22,6 +24,25 @@ export function ProductSectionInfoTabs({
   const tabStyles = `${themeTabStyles[theme]} text-3xl font-bold uppercase py-2 px-4`;
   const selectedTabStyles = `${themeSelectedTabStyles[theme]} text-white text-3xl font-bold uppercase py-2 px-4`;
 
+  const tabTitles: {
+    [key: string]: {
+      [key: string]: string;
+    };
+  } = {
+    Features: {
+      EN: 'Features',
+      ES: 'Características',
+    },
+    Description: {
+      EN: 'Description',
+      ES: 'Descripción',
+    },
+    'Size Chart': {
+      EN: 'Size Chart',
+      ES: 'Carta del Tamaño',
+    },
+  };
+
   return (
     <section className="border-t border-[#cccccc] py-6">
       <Tab.Group>
@@ -30,7 +51,7 @@ export function ProductSectionInfoTabs({
             <Tab key={`tab-${tab.title}`} as={Fragment}>
               {({selected}: {selected: boolean}) => (
                 <button className={selected ? selectedTabStyles : tabStyles}>
-                  {tab.title}
+                  {tabTitles[tab.title][lang]}
                 </button>
               )}
             </Tab>
@@ -40,7 +61,7 @@ export function ProductSectionInfoTabs({
           {tabs.map((tab) => (
             <Tab.Panel key={`panel-${tab.title}`}>
               {tab.title === 'Features' ? (
-                <FeaturesTab content={tab.content} />
+                <FeaturesTab lang={lang} content={tab.content} />
               ) : (
                 <div
                   className=""
@@ -56,8 +77,10 @@ export function ProductSectionInfoTabs({
 }
 
 function FeaturesTab({
+  lang,
   content,
 }: {
+  lang: 'EN' | 'ES';
   content: {
     fit: string;
     material: string;
@@ -66,13 +89,15 @@ function FeaturesTab({
     logoBack: string;
   };
 }) {
-  const logo = () => {
+  const logo = (lang: string) => {
     if (content.logoFront === 'true' && content.logoBack === 'true') {
-      return 'Front and Back Logo';
+      return lang === 'ES'
+        ? 'Logotipo delantero y trasero'
+        : 'Front and Back Logo';
     } else if (content.logoFront === 'true') {
-      return 'Front Logo';
+      return lang === 'ES' ? 'Logotipo delantero' : 'Front Logo';
     } else if (content.logoBack === 'true') {
-      return 'Back Logo';
+      return lang === 'ES' ? 'Logotipo trasero' : 'Back Logo';
     }
   };
   return (
@@ -80,7 +105,7 @@ function FeaturesTab({
       <li>{content.fit}</li>
       <li>{content.material}</li>
       <li>{content.color}</li>
-      <li>{logo()}</li>
+      <li>{logo(lang)}</li>
     </ul>
   );
 }

@@ -36,6 +36,8 @@ export function ProductKitItemTemplate({handle}: {handle: string}) {
     country: {isoCode: countryCode},
   } = useLocalization();
 
+  const LANG = import.meta.env.PUBLIC_LANGUAGE_CODE;
+
   const {
     data: {product, shop},
   } = useShopQuery({
@@ -169,6 +171,7 @@ export function ProductKitItemTemplate({handle}: {handle: string}) {
         {(kitProductVariants.length > 0 || kitProducts.length > 0) && (
           <div className="page-width">
             <ProductSectionKitIncludes
+              lang={LANG}
               theme={theme}
               kitProducts={kitProducts}
               kitProductVariants={kitProductVariants}
