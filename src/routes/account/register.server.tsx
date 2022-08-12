@@ -13,6 +13,7 @@ import {Layout} from '~/components/index.server';
 import {getApiErrorMessage} from '~/lib/utils';
 
 export default function Register({response}: HydrogenRouteProps) {
+  const LANG = import.meta.env.PUBLIC_LANGUAGE_CODE;
   response.cache(CacheNone());
 
   return (
@@ -20,7 +21,7 @@ export default function Register({response}: HydrogenRouteProps) {
       <Suspense>
         <Seo type="noindex" data={{title: 'Register'}} />
       </Suspense>
-      <AccountCreateForm />
+      <AccountCreateForm lang={LANG} />
     </Layout>
   );
 }

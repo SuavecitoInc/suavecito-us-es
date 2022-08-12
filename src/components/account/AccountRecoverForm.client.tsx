@@ -2,11 +2,42 @@ import {useState} from 'react';
 
 import {emailValidation} from '~/lib/utils';
 
+const recover_form: {[key: string]: any} = {
+  submit_success: {
+    request_sent: {
+      EN: 'Request Sent.',
+      ES: 'Solicitud enviada.',
+    },
+    message: {
+      EN: 'If that email address is in our system, you will receive an email with instructions about how to reset your password in a few minutes.',
+      ES: 'Si esa dirección de correo electrónico está en nuestro sistema, recibirá un correo electrónico con instrucciones sobre cómo restablecer su contraseña en unos pocos minutos.',
+    },
+  },
+  title: {
+    EN: 'Forgot Password.',
+    ES: 'Has olvidado tu contraseña',
+  },
+  sub_title: {
+    EN: 'Enter the email address associated with your account to receive a link to reset your password.',
+    ES: 'Ingrese la dirección de correo electrónico asociada con su cuenta para recibir un enlace para restablecer su contraseña.',
+  },
+  email_address: {
+    EN: 'Email address',
+    ES: 'Correo electrónico',
+  },
+  button: {
+    request_reset: {
+      EN: 'Request Reset Link',
+      ES: 'Solicitar Restablecimiento de Contraseña',
+    },
+  },
+};
+
 interface FormElements {
   email: HTMLInputElement;
 }
 
-export function AccountRecoverForm() {
+export function AccountRecoverForm({lang = 'EN'}: {lang?: 'EN' | 'ES'}) {
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [email, setEmail] = useState('');
@@ -40,20 +71,15 @@ export function AccountRecoverForm() {
       <div className="max-w-md w-full">
         {submitSuccess ? (
           <>
-            <h1 className="text-4xl">Request Sent.</h1>
-            <p className="mt-4">
-              If that email address is in our system, you will receive an email
-              with instructions about how to reset your password in a few
-              minutes.
-            </p>
+            <h1 className="text-4xl">
+              {recover_form.submit_success.request_sent[lang]}
+            </h1>
+            <p className="mt-4">{recover_form.submit_success.message[lang]}</p>
           </>
         ) : (
           <>
-            <h1 className="text-4xl">Forgot Password.</h1>
-            <p className="mt-4">
-              Enter the email address associated with your account to receive a
-              link to reset your password.
-            </p>
+            <h1 className="text-4xl">{recover_form.title[lang]}</h1>
+            <p className="mt-4">{recover_form.sub_title[lang]}</p>
           </>
         )}
         <form noValidate className="pt-6 pb-8 mt-4 mb-4" onSubmit={onSubmit}>
@@ -72,7 +98,7 @@ export function AccountRecoverForm() {
               type="email"
               autoComplete="email"
               required
-              placeholder="Email address"
+              placeholder={recover_form.email_address[lang]}
               aria-label="Email address"
               // eslint-disable-next-line jsx-a11y/no-autofocus
               autoFocus
@@ -89,10 +115,10 @@ export function AccountRecoverForm() {
           </div>
           <div className="flex items-center justify-between">
             <button
-              className="bg-gray-900 text-contrast rounded py-2 px-4 focus:shadow-outline block w-full"
+              className="bg-suave-red hover:bg-suave-red-focus rounded-sm text-contrast py-2 px-4 focus:shadow-outline block w-full"
               type="submit"
             >
-              Request Reset Link
+              {recover_form.button.request_reset[lang]}
             </button>
           </div>
         </form>

@@ -31,7 +31,7 @@ export function Button({
   const Component = props?.to ? Link : as;
 
   const baseButtonClasses =
-    'btn inline-block font-medium text-center py-2 px-4';
+    'btn inline-block font-medium text-center py-2 px-4 rounded-sm';
 
   const variants = {
     primary: `${baseButtonClasses} bg-primary hover:bg-primary text-contrast`,
