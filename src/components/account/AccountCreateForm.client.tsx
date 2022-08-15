@@ -5,12 +5,43 @@ import {emailValidation, passwordValidation} from '~/lib/utils';
 
 import {callLoginApi} from './AccountLoginForm.client';
 
+const create_form: {[key: string]: any} = {
+  title: {
+    EN: 'Create an account.',
+    ES: 'Crea una cuenta.',
+  },
+  placeholder: {
+    email_address: {
+      EN: 'Email address',
+      ES: 'Correo electrónico',
+    },
+    password: {
+      EN: 'Password',
+      ES: 'Contraseña',
+    },
+  },
+  button: {
+    create_account: {
+      EN: 'Create Account',
+      ES: 'Crear Cuenta',
+    },
+  },
+  already_have_account: {
+    EN: 'Already have an account?',
+    ES: '¿Ya tienes una cuenta?',
+  },
+  login: {
+    EN: 'Login',
+    ES: 'Iniciar',
+  },
+};
+
 interface FormElements {
   email: HTMLInputElement;
   password: HTMLInputElement;
 }
 
-export function AccountCreateForm() {
+export function AccountCreateForm({lang = 'EN'}: {lang?: 'EN' | 'ES'}) {
   const navigate = useNavigate();
 
   const [submitError, setSubmitError] = useState<null | string>(null);
@@ -64,7 +95,7 @@ export function AccountCreateForm() {
   return (
     <div className="flex justify-center my-24 px-4">
       <div className="max-w-md w-full">
-        <h1 className="text-4xl">Create an Account.</h1>
+        <h1 className="text-4xl">{create_form.title[lang]}</h1>
         <form noValidate className="pt-6 pb-8 mt-4 mb-4" onSubmit={onSubmit}>
           {submitError && (
             <div className="flex items-center justify-center mb-6 bg-zinc-500">
@@ -81,7 +112,7 @@ export function AccountCreateForm() {
               type="email"
               autoComplete="email"
               required
-              placeholder="Email address"
+              placeholder={create_form.placeholder.email_address[lang]}
               aria-label="Email address"
               // eslint-disable-next-line jsx-a11y/no-autofocus
               autoFocus
@@ -105,7 +136,7 @@ export function AccountCreateForm() {
               name="password"
               type="password"
               autoComplete="current-password"
-              placeholder="Password"
+              placeholder={create_form.placeholder.password[lang]}
               aria-label="Password"
               value={password}
               minLength={8}
@@ -122,17 +153,17 @@ export function AccountCreateForm() {
           </div>
           <div className="flex items-center justify-between">
             <button
-              className="bg-gray-900 text-contrast rounded py-2 px-4 focus:shadow-outline block w-full"
+              className="bg-suave-red hover:bg-suave-red-focus text-contrast rounded-sm py-2 px-4 focus:shadow-outline block w-full"
               type="submit"
             >
-              Create Account
+              {create_form.button.create_account[lang]}
             </button>
           </div>
           <div className="flex items-center mt-4">
             <p className="align-baseline text-sm">
-              Already have an account? &nbsp;
+              {create_form.already_have_account[lang]} &nbsp;
               <Link className="inline underline" to="/account">
-                Sign in
+                {create_form.login[lang]}
               </Link>
             </p>
           </div>

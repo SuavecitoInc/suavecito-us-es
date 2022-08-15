@@ -14,6 +14,7 @@ import {AccountLoginForm} from '~/components';
 import {Layout} from '~/components/index.server';
 
 export default function Login({response}: HydrogenRouteProps) {
+  const LANG = import.meta.env.PUBLIC_LANGUAGE_CODE;
   response.cache(CacheNone());
 
   const {
@@ -31,7 +32,7 @@ export default function Login({response}: HydrogenRouteProps) {
       <Suspense>
         <Seo type="noindex" data={{title: 'Login'}} />
       </Suspense>
-      <AccountLoginForm shopName={name} />
+      <AccountLoginForm lang={LANG} shopName={name} />
     </Layout>
   );
 }

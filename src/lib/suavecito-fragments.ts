@@ -2,26 +2,10 @@ import {gql} from '@shopify/hydrogen';
 
 const LANG = import.meta.env.PUBLIC_LANGUAGE_CODE;
 
-export const PRODUCT_SECTION_FRAGMENT =
+const PRODUCT_SECTION_LANG_FRAGMENT =
   LANG === 'ES'
     ? gql`
-        fragment ProductSection on Product {
-          productSectionFeaturedImage1: metafield(
-            namespace: "debut"
-            key: "section_featured_image_1"
-          ) {
-            reference {
-              ...Media
-            }
-          }
-          productSectionFeaturedImage2: metafield(
-            namespace: "debut"
-            key: "section_featured_image_2"
-          ) {
-            reference {
-              ...Media
-            }
-          }
+        fragment ProductSectionLang on Product {
           productSectionDescription: metafield(
             namespace: "debut"
             key: "section_product_description_es"
@@ -52,38 +36,6 @@ export const PRODUCT_SECTION_FRAGMENT =
           ) {
             value
           }
-          productSectionListItemImage1: metafield(
-            namespace: "debut"
-            key: "section_list_item_1_image"
-          ) {
-            reference {
-              ...Media
-            }
-          }
-          productSectionListItemImage2: metafield(
-            namespace: "debut"
-            key: "section_list_item_2_image"
-          ) {
-            reference {
-              ...Media
-            }
-          }
-          productSectionListItemImage3: metafield(
-            namespace: "debut"
-            key: "section_list_item_3_image"
-          ) {
-            reference {
-              ...Media
-            }
-          }
-          productSectionListItemImage4: metafield(
-            namespace: "debut"
-            key: "section_list_item_4_image"
-          ) {
-            reference {
-              ...Media
-            }
-          }
           productSectionHowToImage: metafield(
             namespace: "debut"
             key: "section_how_to_image_es"
@@ -107,23 +59,7 @@ export const PRODUCT_SECTION_FRAGMENT =
         }
       `
     : gql`
-        fragment ProductSection on Product {
-          productSectionFeaturedImage1: metafield(
-            namespace: "debut"
-            key: "section_featured_image_1"
-          ) {
-            reference {
-              ...Media
-            }
-          }
-          productSectionFeaturedImage2: metafield(
-            namespace: "debut"
-            key: "section_featured_image_2"
-          ) {
-            reference {
-              ...Media
-            }
-          }
+        fragment ProductSectionLang on Product {
           productSectionDescription: metafield(
             namespace: "debut"
             key: "section_product_description"
@@ -154,38 +90,6 @@ export const PRODUCT_SECTION_FRAGMENT =
           ) {
             value
           }
-          productSectionListItemImage1: metafield(
-            namespace: "debut"
-            key: "section_list_item_1_image"
-          ) {
-            reference {
-              ...Media
-            }
-          }
-          productSectionListItemImage2: metafield(
-            namespace: "debut"
-            key: "section_list_item_2_image"
-          ) {
-            reference {
-              ...Media
-            }
-          }
-          productSectionListItemImage3: metafield(
-            namespace: "debut"
-            key: "section_list_item_3_image"
-          ) {
-            reference {
-              ...Media
-            }
-          }
-          productSectionListItemImage4: metafield(
-            namespace: "debut"
-            key: "section_list_item_4_image"
-          ) {
-            reference {
-              ...Media
-            }
-          }
           productSectionHowToImage: metafield(
             namespace: "debut"
             key: "section_how_to_image"
@@ -208,6 +112,61 @@ export const PRODUCT_SECTION_FRAGMENT =
           }
         }
       `;
+
+export const PRODUCT_SECTION_FRAGMENT = gql`
+  ${PRODUCT_SECTION_LANG_FRAGMENT}
+  fragment ProductSection on Product {
+    ...ProductSectionLang
+    productSectionFeaturedImage1: metafield(
+      namespace: "debut"
+      key: "section_featured_image_1"
+    ) {
+      reference {
+        ...Media
+      }
+    }
+    productSectionFeaturedImage2: metafield(
+      namespace: "debut"
+      key: "section_featured_image_2"
+    ) {
+      reference {
+        ...Media
+      }
+    }
+    productSectionListItemImage1: metafield(
+      namespace: "debut"
+      key: "section_list_item_1_image"
+    ) {
+      reference {
+        ...Media
+      }
+    }
+    productSectionListItemImage2: metafield(
+      namespace: "debut"
+      key: "section_list_item_2_image"
+    ) {
+      reference {
+        ...Media
+      }
+    }
+    productSectionListItemImage3: metafield(
+      namespace: "debut"
+      key: "section_list_item_3_image"
+    ) {
+      reference {
+        ...Media
+      }
+    }
+    productSectionListItemImage4: metafield(
+      namespace: "debut"
+      key: "section_list_item_4_image"
+    ) {
+      reference {
+        ...Media
+      }
+    }
+  }
+`;
 
 export const VARIANT_METAFIELD_IMAGES_FRAGMENT = gql`
   fragment VariantMetafieldImages on ProductVariant {

@@ -1,12 +1,69 @@
 import {useState} from 'react';
 import {useNavigate, Link} from '@shopify/hydrogen/client';
 
+const login_form: {[key: string]: any} = {
+  email_address: {
+    EN: 'Email address',
+    ES: 'Correo electrónico',
+  },
+  button: {
+    next: {
+      EN: 'Next',
+      ES: 'Continuar',
+    },
+    login: {
+      EN: 'Login',
+      ES: 'Iniciar',
+    },
+  },
+  new_to: {
+    EN: 'New to',
+    ES: 'Nuevo a',
+  },
+  create_an_account: {
+    EN: 'Create an account',
+    ES: 'Crea una cuenta',
+  },
+  change_email: {
+    EN: 'Change email',
+    ES: 'Cambiar e-mail',
+  },
+  forgot_password: {
+    EN: 'Forgot password',
+    ES: 'Has olvidado tu contraseña',
+  },
+  errors: {
+    valid_email: {
+      EN: 'Please enter a valid email',
+      ES: 'Por favor introduzca un correo electrónico válido',
+    },
+    enter_password: {
+      EN: 'Please enter a password',
+      ES: 'Porfavor ingrese una contraseña',
+    },
+    valid_password: {
+      EN: 'Passwords must be at least 6 characters',
+      ES: 'Las contraseñas deben tener al menos 6 caracteres',
+    },
+    submit_error: {
+      EN: 'Sorry we did not recognize either your email or password. Please try to sign in again or create a new account.',
+      ES: 'Lo sentimos, no reconocimos su correo electrónico o su contraseña. Intente iniciar sesión de nuevo o cree una cuenta nueva.',
+    },
+  },
+};
+
 interface FormElements {
   email: HTMLInputElement;
   password: HTMLInputElement;
 }
 
-export function AccountLoginForm({shopName}: {shopName: string}) {
+export function AccountLoginForm({
+  lang = 'EN',
+  shopName,
+}: {
+  lang?: 'EN' | 'ES';
+  shopName: string;
+}) {
   const navigate = useNavigate();
 
   const [hasSubmitError, setHasSubmitError] = useState(false);
@@ -34,7 +91,7 @@ export function AccountLoginForm({shopName}: {shopName: string}) {
     if (event.currentTarget.email.validity.valid) {
       setShowEmailField(false);
     } else {
-      setEmailError('Please enter a valid email');
+      setEmailError(login_form.errors.valid_email[lang]);
     }
   }
 
@@ -57,8 +114,8 @@ export function AccountLoginForm({shopName}: {shopName: string}) {
     } else {
       setPasswordError(
         validity.valueMissing
-          ? 'Please enter a password'
-          : 'Passwords must be at least 6 characters',
+          ? login_form.errors.enter_password[lang]
+          : login_form.errors.valid_password[lang],
       );
     }
   }
@@ -71,21 +128,23 @@ export function AccountLoginForm({shopName}: {shopName: string}) {
     setPasswordError(null);
   }
 
+  const title = lang === 'ES' ? 'Iniciar' : 'Login';
+
   return (
     <div className="flex justify-center my-24 px-4">
       <div className="max-w-md w-full">
-        <h1 className="text-4xl">Sign in.</h1>
+        <h1 className="text-4xl uppercase text-center">{title}</h1>
         <form noValidate className="pt-6 pb-8 mt-4 mb-4" onSubmit={onSubmit}>
           {hasSubmitError && (
             <div className="flex items-center justify-center mb-6 bg-zinc-500">
               <p className="m-4 text-s text-contrast">
-                Sorry we did not recognize either your email or password. Please
-                try to sign in again or create a new account.
+                {login_form.errors.submit_error[lang]}
               </p>
             </div>
           )}
           {showEmailField && (
             <EmailField
+              lang={lang}
               shopName={shopName}
               email={email}
               setEmail={setEmail}
@@ -93,10 +152,11 @@ export function AccountLoginForm({shopName}: {shopName: string}) {
             />
           )}
           {!showEmailField && (
-            <ValidEmail email={email} resetForm={resetForm} />
+            <ValidEmail lang={lang} email={email} resetForm={resetForm} />
           )}
           {!showEmailField && (
             <PasswordField
+              lang={lang}
               password={password}
               setPassword={setPassword}
               passwordError={passwordError}
@@ -137,11 +197,13 @@ export async function callLoginApi({
 }
 
 function EmailField({
+  lang,
   email,
   setEmail,
   emailError,
   shopName,
 }: {
+  lang: 'EN' | 'ES';
   email: string;
   setEmail: (email: string) => void;
   emailError: null | string;
@@ -159,7 +221,7 @@ function EmailField({
           type="email"
           autoComplete="email"
           required
-          placeholder="Email address"
+          placeholder={login_form.email_address[lang]}
           aria-label="Email address"
           // eslint-disable-next-line jsx-a11y/no-autofocus
           autoFocus
@@ -176,17 +238,17 @@ function EmailField({
       </div>
       <div className="flex items-center justify-between">
         <button
-          className="bg-gray-900 rounded text-contrast py-2 px-4 focus:shadow-outline block w-full"
+          className="bg-suave-red hover:bg-suave-red-focus rounded-sm text-contrast py-2 px-4 focus:shadow-outline block w-full"
           type="submit"
         >
-          Next
+          {login_form.button.next[lang]}
         </button>
       </div>
       <div className="flex items-center mt-8 border-t  border-gray-300">
         <p className="align-baseline text-sm mt-6">
-          New to {shopName}? &nbsp;
+          {login_form.new_to[lang]} {shopName}? &nbsp;
           <Link className="inline underline" to="/account/register">
-            Create an account
+            {login_form.create_an_account[lang]}
           </Link>
         </p>
       </div>
@@ -195,9 +257,11 @@ function EmailField({
 }
 
 function ValidEmail({
+  lang,
   email,
   resetForm,
 }: {
+  lang: 'EN' | 'ES';
   email: string;
   resetForm: () => void;
 }) {
@@ -219,7 +283,7 @@ function ValidEmail({
           type="button"
           onClick={resetForm}
         >
-          Change email
+          {login_form.change_email[lang]}
         </button>
       </div>
     </div>
@@ -227,10 +291,12 @@ function ValidEmail({
 }
 
 function PasswordField({
+  lang,
   password,
   setPassword,
   passwordError,
 }: {
+  lang: 'EN' | 'ES';
   password: string;
   setPassword: (password: string) => void;
   passwordError: null | string;
@@ -265,10 +331,10 @@ function PasswordField({
       </div>
       <div className="flex items-center justify-between">
         <button
-          className="bg-gray-900 text-contrast rounded py-2 px-4 focus:shadow-outline block w-full"
+          className="bg-suave-red hover:bg-suave-red-focus text-contrast rounded-sm py-2 px-4 focus:shadow-outline block w-full"
           type="submit"
         >
-          Sign in
+          {login_form.button.login[lang]}
         </button>
       </div>
       <div className="flex items-center justify-between mt-4">
@@ -277,7 +343,7 @@ function PasswordField({
           className="inline-block align-baseline text-sm text-primary/50"
           to="/account/recover"
         >
-          Forgot password
+          {login_form.forgot_password[lang]}
         </Link>
       </div>
     </>
