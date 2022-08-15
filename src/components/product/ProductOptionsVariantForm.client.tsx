@@ -128,7 +128,7 @@ export function ProductOptionsVariantForm({
           mainValue = variantOption?.value;
         }
         // set new selected options
-        setSelectedOption(name, variantOption?.value);
+        // setSelectedOption(name, variantOption?.value);
         initialSelectedOptions[name] = variantOption?.value;
       });
     } else {

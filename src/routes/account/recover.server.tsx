@@ -18,6 +18,7 @@ import {Layout} from '~/components/index.server';
  * page `/account/reset/[resetToken]`.
  */
 export default function AccountRecover({response}: HydrogenRouteProps) {
+  const LANG = import.meta.env.PUBLIC_LANGUAGE_CODE;
   response.cache(CacheNone());
 
   return (
@@ -25,7 +26,7 @@ export default function AccountRecover({response}: HydrogenRouteProps) {
       <Suspense>
         <Seo type="noindex" data={{title: 'Recover password'}} />
       </Suspense>
-      <AccountRecoverForm />
+      <AccountRecoverForm lang={LANG} />
     </Layout>
   );
 }
