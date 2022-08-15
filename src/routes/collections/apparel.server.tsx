@@ -1,7 +1,7 @@
 import {CollectionFeaturedImages} from '~/components/index.server';
 
 export default function Collection() {
-  const handle = 'mens-hair';
+  const handle = 'apparel';
   return <CollectionFeaturedImages handle={handle} query={COLLECTION_QUERY} />;
 }
 
@@ -49,19 +49,10 @@ const COLLECTION_QUERY = gql`
         }
       }
     }
-    collectionSection1: collection(handle: "water-based-pomades") {
+    collectionSection1: collection(handle: "mens-apparel") {
       ...FilteredCollectionWithMetafield
     }
-    collectionSection2: collection(handle: "matte-pomades") {
-      ...FilteredCollectionWithMetafield
-    }
-    collectionSection3: collection(handle: "oil-based-pomades") {
-      ...FilteredCollectionWithMetafield
-    }
-    collectionSection4: collection(handle: "mens-styling") {
-      ...FilteredCollectionWithMetafield
-    }
-    collectionSection5: collection(handle: "hair-care") {
+    collectionSection2: collection(handle: "womens-apparel") {
       ...FilteredCollectionWithMetafield
     }
   }

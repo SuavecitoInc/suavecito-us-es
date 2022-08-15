@@ -21,7 +21,7 @@ import {
 } from '~/components';
 import {NotFound, Layout} from '~/components/index.server';
 import {FeaturedProductRow} from '../collection/FeaturedProductRow.server';
-import {HeroBanner} from '~/components/collection/HeroBanner';
+import {HeroBanner} from '../collection/HeroBanner.server';
 import {BrandTheme} from '~/types/suavecito';
 
 const pageBy = 48;

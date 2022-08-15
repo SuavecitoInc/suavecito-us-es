@@ -1,9 +1,11 @@
+import {Image, Link} from '@shopify/hydrogen';
+
+import type {BrandTheme} from '~/types/suavecito';
 import type {
   Product,
   ProductVariant,
 } from '@shopify/hydrogen/storefront-api-types';
-import {BrandTheme} from '~/types/suavecito';
-import {Image, Link} from '@shopify/hydrogen';
+
 export function ProductColorSwatches({
   product,
   theme = 'suavecito',

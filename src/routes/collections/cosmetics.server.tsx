@@ -11,11 +11,15 @@ export default function Collection() {
   );
 }
 
-import {COLLECTION_PRODUCT_FRAGMENT} from '~/lib/suavecito-fragments';
+import {
+  FILTERED_COLLECTION_FRAGMENT,
+  COLLECTION_PRODUCT_FRAGMENT,
+} from '~/lib/suavecito-fragments';
 import {MEDIA_FRAGMENT} from '~/lib/fragments';
 import {gql} from '@shopify/hydrogen';
 
 const COLLECTION_QUERY = gql`
+  ${FILTERED_COLLECTION_FRAGMENT}
   ${COLLECTION_PRODUCT_FRAGMENT}
   ${MEDIA_FRAGMENT}
   query CollectionDetails(
@@ -27,6 +31,7 @@ const COLLECTION_QUERY = gql`
   ) @inContext(country: $country, language: $language) {
     collection(handle: $handle) {
       id
+      handle
       title
       description
       seo {
@@ -51,61 +56,10 @@ const COLLECTION_QUERY = gql`
       }
     }
     collectionSection1: collection(handle: "lips") {
-      id
-      handle
-      title
-      description
-      seo {
-        description
-        title
-      }
-      products(first: 100) {
-        nodes {
-          ...CollectionProduct
-        }
-        pageInfo {
-          hasNextPage
-          endCursor
-        }
-      }
+      ...FilteredCollectionWithMetafield
     }
     collectionSection2: collection(handle: "eyes") {
-      id
-      handle
-      title
-      description
-      seo {
-        description
-        title
-      }
-      products(first: 100) {
-        nodes {
-          ...CollectionProduct
-        }
-        pageInfo {
-          hasNextPage
-          endCursor
-        }
-      }
-    }
-    collectionSection3: collection(handle: "makeup-brushes") {
-      id
-      handle
-      title
-      description
-      seo {
-        description
-        title
-      }
-      products(first: 100) {
-        nodes {
-          ...CollectionProduct
-        }
-        pageInfo {
-          hasNextPage
-          endCursor
-        }
-      }
+      ...FilteredCollectionWithMetafield
     }
   }
 `;

@@ -2,13 +2,7 @@ import {useState, useRef, useEffect, useCallback} from 'react';
 import {Link, flattenConnection} from '@shopify/hydrogen';
 import {getImageLoadingPriority} from '~/lib/const';
 
-import {
-  Button,
-  Grid,
-  ProductColorSwatches,
-  ProductGridItem,
-  ProductImageCarousel,
-} from '~/components';
+import {Button, Grid} from '~/components';
 
 import type {
   Collection,
@@ -17,13 +11,17 @@ import type {
 } from '@shopify/hydrogen/storefront-api-types';
 import type {BrandTheme} from '~/types/suavecito';
 
-export function FeaturedProductGrid({
+import {
+  ProductGridItem,
+  ProductImageCarousel,
+  VariantGridItem,
+} from '~/components';
+
+export function VariantProductRow({
   url,
   collection,
-  position = 'left',
   theme = 'suavecito',
 }: {
-  position?: string;
   url: string;
   collection: Collection;
   theme?: BrandTheme;
@@ -107,45 +105,19 @@ export function FeaturedProductGrid({
   return (
     <>
       <section className="my-8">
-        <div className={styles.flexParent}>
-          <div
-            className={`${styles.flexChild} ${
-              position === 'left' ? 'order-1' : 'order-2'
-            }`}
-          >
-            <ProductImageCarousel collection={collection} />
-          </div>
-          <div
-            className={`${styles.flexChild} ${
-              position === 'left' ? 'order-2' : 'order-1'
-            }`}
-          >
-            <p className="font-nexa-rust text-left text-[1.5rem] sm-max:text-[1.2rem] mb-4">
-              {collection['headingName']
-                ? collection['headingName'].value
-                : collection.title}
-            </p>
-            <Grid items={2} layout="products">
-              {products.slice(0, 4).map((product, i) => (
-                <div key={product.id}>
-                  <CollectionGridItem
-                    product={product}
-                    index={i}
-                    theme={theme}
-                  />
-                </div>
-              ))}
-            </Grid>
-          </div>
-        </div>
         <Grid layout="products">
-          {products.length > 3 &&
-            products.slice(4, 11).map((product, i) => (
+          {products.length &&
+            products.slice(0, 3).map((product, i) => (
               <div key={product.id}>
-                <CollectionGridItem product={product} index={i} theme={theme} />
+                <CollectionGridItem
+                  product={product}
+                  index={i}
+                  theme={theme}
+                  collection={collection}
+                />
               </div>
             ))}
-          {products.length > 11 && (
+          {products.length > 3 && (
             <div className={styles.btnWrapper}>
               <Link to={url} className={styles.btn}>
                 <Button variant={theme}>View More</Button>
@@ -162,19 +134,41 @@ function CollectionGridItem({
   product,
   index,
   theme,
+  collection,
 }: {
   product: Product;
   index: number;
   theme: BrandTheme;
+  collection: Collection;
 }) {
+  interface Metafield {
+    value: string;
+    reference?: object;
+  }
+  interface ProductVariantWithMetafield extends ProductVariant {
+    variantTitle?: Metafield | null;
+  }
+  const featuredVariant = product.variants.nodes.findIndex(
+    (_variant: ProductVariantWithMetafield) =>
+      _variant.variantTitle &&
+      collection.title.includes(_variant.variantTitle.value),
+  );
   return (
     <>
-      <ProductGridItem
-        product={product}
-        loading={getImageLoadingPriority(index)}
-        theme={theme}
-      />
-      <ProductColorSwatches product={product} theme={theme} />
+      {featuredVariant !== -1 ? (
+        <VariantGridItem
+          product={product}
+          loading={getImageLoadingPriority(index)}
+          theme={theme}
+          variantIndex={featuredVariant}
+        />
+      ) : (
+        <ProductGridItem
+          product={product}
+          loading={getImageLoadingPriority(index)}
+          theme={theme}
+        />
+      )}
     </>
   );
 }

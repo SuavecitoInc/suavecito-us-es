@@ -1,13 +1,15 @@
-import type {Collection, Product} from '@shopify/hydrogen/storefront-api-types';
 import {Image, Link} from '@shopify/hydrogen';
-import {AdBanners} from '~/data/ad-banners';
 // @ts-ignore
 import {Swiper, SwiperSlide} from 'swiper/react';
 // @ts-ignore
 import {Navigation, Pagination} from 'swiper';
+
+import {AdBanners} from '~/data/ad-banners';
+
 import {BrandTheme} from '~/types/suavecito';
 import {IconArrow} from '~/components';
 
+import type {Collection, Product} from '@shopify/hydrogen/storefront-api-types';
 interface Metafield {
   value: string;
   reference?: {

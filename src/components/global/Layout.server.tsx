@@ -12,9 +12,9 @@ import {Header} from '~/components';
 import {Footer} from '~/components/index.server';
 import {parseMenu} from '~/lib/utils';
 
-const HEADER_MENU_HANDLE = 'debut-main';
-const FOOTER_MENU_HANDLE = 'debut-footer-brands';
-const FOOTER_MENU_HANDLE_2 = 'debut-footer-help';
+const HEADER_MENU_HANDLE = 'hydrogen-es-header';
+const FOOTER_MENU_HANDLE = 'hydrogen-es-footer-brands';
+const FOOTER_MENU_HANDLE_2 = 'hydrogen-es-footer-help';
 
 const SHOP_NAME_FALLBACK = 'Hydrogen';
 
@@ -35,7 +35,6 @@ export function Layout({
 }) {
   const {pathname} = useUrl();
   const isHome = pathname === '/';
-  console.log('here');
   return (
     <div className={`${theme === 'premium blends' ? 'bg-black' : 'bg-white'}`}>
       <div className="flex flex-col min-h-screen">
@@ -71,7 +70,7 @@ function HeaderWithMenu({theme}: {theme: BrandTheme}) {
 
 function FooterWithMenu({theme}: {theme: BrandTheme}) {
   const {footerMenu, footerMenu2} = useLayoutQuery();
-  return <Footer menu={footerMenu} menu2={footerMenu2} theme={theme} />;
+  return <Footer menu={footerMenu} menu2={footerMenu2} theme={theme} lang={'ES'}/>;
 }
 
 function useLayoutQuery() {

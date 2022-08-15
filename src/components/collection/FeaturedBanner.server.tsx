@@ -1,8 +1,11 @@
-import {Image} from '@shopify/hydrogen';
-import {HairChart} from '~/data/mens-hair-chart';
-import {Collection} from '@shopify/hydrogen/storefront-api-types';
+import {CollectionFeaturedBanners} from '~/data/collection-featured-banners';
+
+import type {Collection} from '@shopify/hydrogen/storefront-api-types';
+
 export function FeaturedBanner({collection}: {collection: Collection}) {
-  const chartEl = HairChart.find((el) => el.title === collection.title);
+  const chartEl = CollectionFeaturedBanners.find(
+    (el) => el.handle === collection.handle,
+  );
   const backgroundImg = chartEl?.backgroundImage.src;
   const gridLength = chartEl?.columns.length;
   const isEven = (num: number) => {
@@ -13,9 +16,9 @@ export function FeaturedBanner({collection}: {collection: Collection}) {
     }
   };
   const styles = {
-    wrapper: `bg-center bg-cover w-full min-h-[475px] h-full sm-max:min-h-[357px] hero-with-text`,
-    inner: `py-[55px] relative`,
-    table: `flex items-center justify-center flex-col text-[2.1rem] text-white text-center page-width`,
+    wrapper: `bg-center bg-cover w-full min-h-[365px] h-full sm-max:min-h-[247px] hero-with-text`,
+    inner: `py-[55px] relative min-h-[365px] h-full sm-max:min-h-[247px]`,
+    table: `flex items-center justify-center flex-col text-[2.1rem] text-white text-center page-width min-h-[365px] h-full sm-max:min-h-[247px]`,
     description: `text-[1.1rem] font-bold`,
     gridWrapper: `overflow-x-auto w-full`,
     grid: `grid text-white mt-[3em] auto-rows-min text-copy`,
@@ -25,6 +28,7 @@ export function FeaturedBanner({collection}: {collection: Collection}) {
     row: 'flex-1 border-solid border-white border-b py-[0.7em] px-[2em]',
     bestFor: `py-[0.7em] px-[2em]`,
     gridItem: 'grid place-items-center py-[0.7em] px-[2em]',
+    h3: 'mb-[15px]',
   };
   // handles CSS logic
   // eslint-disable-next-line prefer-const
@@ -55,7 +59,7 @@ export function FeaturedBanner({collection}: {collection: Collection}) {
       });
     });
   });
-  return (
+  return chartEl ? (
     <section>
       <div
         style={{backgroundImage: `url(${backgroundImg})`}}
@@ -63,7 +67,7 @@ export function FeaturedBanner({collection}: {collection: Collection}) {
       >
         <div className={styles.inner}>
           <div className={styles.table}>
-            <h3>{collection.title}</h3>
+            <h3 className={styles.h3}>{chartEl?.title}</h3>
             <p className={styles.description}>{chartEl?.description}</p>
             <div className={styles.gridWrapper}>
               <div
@@ -79,7 +83,9 @@ export function FeaturedBanner({collection}: {collection: Collection}) {
                   return (
                     <div className={gridStyles} key={item.id}>
                       <span>
-                        <strong>{`${!item.border ? 'Best For: ' : ''}`}</strong>
+                        <strong>{`${
+                          !item.border ? 'Lo mejor para: ' : ''
+                        }`}</strong>
                         {item.text}
                       </span>
                     </div>
@@ -91,5 +97,7 @@ export function FeaturedBanner({collection}: {collection: Collection}) {
         </div>
       </div>
     </section>
+  ) : (
+    <></>
   );
 }
