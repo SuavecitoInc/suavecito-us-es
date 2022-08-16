@@ -38,7 +38,7 @@ export function ResponsiveBanner({
   return (
     <Link to={`/collections/${handle}`}>
       <section
-        className={`reponsive-banner relative justify-end flex flex-col w-full pb-[55px] ${
+        className={`reponsive-banner relative justify-end flex flex-col w-full pb-0 md:pb-[55px] ${
           top && '-mt-nav'
         }`}
       >
