@@ -59,13 +59,11 @@ export function MobileNav({
         }}
         show={isMobileOpen}
         enter="transform transition-all ease-in-out duration-300"
-        // enterFrom="-translate-y-full opacity-0"
-        enterFrom={`-translate-y-[${height}px] opacity-0`}
+        enterFrom="-translate-y-full opacity-0"
         enterTo="translate-y-0 opacity-100"
         leave="transform transition-all ease-in-out duration-300"
         leaveFrom="translate-y-0 opacity-100"
-        // leaveTo="-translate-y-full opacity-0"
-        leaveTo={`-translate-y-[${height}px] opacity-0`}
+        leaveTo="-translate-y-full opacity-0"
       >
         <Transition show={currentSubCollection !== null ? false : true}>
           <nav>
