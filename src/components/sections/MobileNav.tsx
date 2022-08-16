@@ -1,10 +1,12 @@
+import {useEffect, useState, useRef} from 'react';
 import {Link} from '@shopify/hydrogen';
 import {IconArrow} from '~/components';
 import {EnhancedMenu, EnhancedMenuItem} from '~/lib/utils';
-import {useEffect, useState} from 'react';
 // @ts-expect-error @headlessui/react incompatibility with node16 resolution
 import {Transition} from '@headlessui/react';
-import {useWindowSize} from 'react-use';
+import {useWindowSize, useSize} from 'react-use';
+
+import useIsomorphicLayoutEffect from '../../hooks/useIsomorphicLayoutEffect';
 
 export function MobileNav({
   isMobileOpen,
@@ -21,6 +23,13 @@ export function MobileNav({
   currentSubCollection: EnhancedMenuItem | null;
   setCurrentSubCollection: (i: EnhancedMenuItem | null) => void;
 }) {
+  // new
+  const mobileRef = useRef<any>(null);
+  const [height, setHeight] = useState<number>(0);
+
+  const [element, ref] = useState<HTMLElement | null>(null);
+  const [minHeight, setMinHeight] = useState<number>(0);
+
   const toggleSubMenu = (item: EnhancedMenuItem) => {
     setCurrentSubCollection(item);
   };
@@ -40,6 +49,7 @@ export function MobileNav({
 
   const untoggleSubMenu = () => {
     setCurrentSubCollection(null);
+    setMinHeight(height);
   };
 
   const themeText: any = {
@@ -47,17 +57,39 @@ export function MobileNav({
     suavecita: 'text-suave-pink',
   };
 
+  useIsomorphicLayoutEffect(() => {
+    if (!element) return;
+    setMinHeight(element.clientHeight);
+  }, [element]);
+
+  useIsomorphicLayoutEffect(() => {
+    if (mobileRef.current && isMobileOpen && height === 0) {
+      setHeight(mobileRef.current.clientHeight);
+    }
+  }, [mobileRef, height, isMobileOpen]);
+
+  // notes
+  // make main translate y set inside visible and get height htat way
+
   return (
-    <div className={`${!isMobileOpen ? 'hidden' : ''}`}>
+    <div
+      id="hello"
+      className={`${!isMobileOpen ? 'hidden' : ''}`}
+      ref={mobileRef}
+    >
       <Transition
-        className={'md:hidden ' + themeText[theme!]}
-        show={isMobileOpen}
-        enter="transform transition ease-in-out duration-500"
-        enterFrom="-translate-y-full"
-        enterTo="translate-y-0"
-        leave="transform transition ease-in-out duration-500"
-        leaveFrom="translate-y-0"
-        leaveTo="-translate-y-full"
+        className={`md:hidden ${themeText[theme!]}`}
+        style={{
+          minHeight: `${minHeight}px`,
+        }}
+        show={true}
+        // show={isMobileOpen}
+        enter="transform transition-all ease-in-out duration-300"
+        enterFrom="-translate-y-full opacity-0"
+        enterTo="translate-y-0 opacity-100"
+        leave="transform transition-all ease-in-out duration-300"
+        leaveFrom="translate-y-0 opacity-100"
+        leaveTo="-translate-y-full opacity-0"
       >
         <Transition show={currentSubCollection !== null ? false : true}>
           <nav>
@@ -106,13 +138,14 @@ export function MobileNav({
           </nav>
         </Transition>
         <Transition
+          ref={ref}
           show={currentSubCollection === null ? false : true}
-          enter="transform transition ease-in-out duration-300"
-          enterFrom="-translate-x-full"
-          enterTo="translate-x-0"
-          leave="transform transition ease-in-out duration-300"
-          leaveFrom="translate-x-0"
-          leaveTo="-translate-x-full"
+          enter="transform transition-all ease-in-out duration-300"
+          enterFrom="-translate-x-full opacity-0"
+          enterTo="translate-x-0 opacity-100 max-h-fit"
+          leave="transform transition-all ease-in-out duration-300"
+          leaveFrom="translate-x-0 opacity-100 max-h-fit"
+          leaveTo="-translate-x-full opacity-0"
         >
           {currentSubCollection && (
             <ul className="flex flex-col">
