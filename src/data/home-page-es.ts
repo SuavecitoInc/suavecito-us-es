@@ -315,7 +315,7 @@ export const featuredRowColumnsTwoSettings: FeaturedRowColumnsSectionData = {
       value: '',
       reference: {
         mediaContentType: 'IMAGE',
-        alt: 'This is my alt',
+        alt: 'Colaboraciones',
         previewImage: {
           url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/suavecito-page-featured-image-5_720x.jpg?v=1632844585',
         },
@@ -340,7 +340,7 @@ export const featuredRowColumnsTwoSettings: FeaturedRowColumnsSectionData = {
       value: '',
       reference: {
         mediaContentType: 'IMAGE',
-        alt: 'This is my alt',
+        alt: 'Ropa',
         previewImage: {
           url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/suavecito-page-featured-image-6_720x.jpg?v=1632844696',
         },
@@ -365,7 +365,7 @@ export const featuredRowColumnsTwoSettings: FeaturedRowColumnsSectionData = {
       value: '',
       reference: {
         mediaContentType: 'IMAGE',
-        alt: 'This is my alt',
+        alt: 'Coleccionables',
         previewImage: {
           url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/suavecito-page-featured-image-7_720x.jpg?v=1632844657',
         },
