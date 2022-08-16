@@ -4,9 +4,8 @@ import {IconArrow} from '~/components';
 import {EnhancedMenu, EnhancedMenuItem} from '~/lib/utils';
 // @ts-expect-error @headlessui/react incompatibility with node16 resolution
 import {Transition} from '@headlessui/react';
-import {useWindowSize, useSize} from 'react-use';
-
-import useIsomorphicLayoutEffect from '../../hooks/useIsomorphicLayoutEffect';
+import {useWindowSize, useMeasure, useSize} from 'react-use';
+import useIsomorphicLayoutEffect from '~/hooks/useIsomorphicLayoutEffect';
 
 export function MobileNav({
   isMobileOpen,
@@ -23,12 +22,7 @@ export function MobileNav({
   currentSubCollection: EnhancedMenuItem | null;
   setCurrentSubCollection: (i: EnhancedMenuItem | null) => void;
 }) {
-  // new
-  const mobileRef = useRef<any>(null);
-  const [height, setHeight] = useState<number>(0);
-
-  const [element, ref] = useState<HTMLElement | null>(null);
-  const [minHeight, setMinHeight] = useState<number>(0);
+  const [ref, {height}] = useMeasure();
 
   const toggleSubMenu = (item: EnhancedMenuItem) => {
     setCurrentSubCollection(item);
@@ -49,7 +43,6 @@ export function MobileNav({
 
   const untoggleSubMenu = () => {
     setCurrentSubCollection(null);
-    setMinHeight(height);
   };
 
   const themeText: any = {
@@ -57,39 +50,22 @@ export function MobileNav({
     suavecita: 'text-suave-pink',
   };
 
-  useIsomorphicLayoutEffect(() => {
-    if (!element) return;
-    setMinHeight(element.clientHeight);
-  }, [element]);
-
-  useIsomorphicLayoutEffect(() => {
-    if (mobileRef.current && isMobileOpen && height === 0) {
-      setHeight(mobileRef.current.clientHeight);
-    }
-  }, [mobileRef, height, isMobileOpen]);
-
-  // notes
-  // make main translate y set inside visible and get height htat way
-
   return (
-    <div
-      id="hello"
-      className={`${!isMobileOpen ? 'hidden' : ''}`}
-      ref={mobileRef}
-    >
+    <div className={`${!isMobileOpen ? 'hidden' : ''}`}>
       <Transition
         className={`md:hidden ${themeText[theme!]}`}
         style={{
-          minHeight: `${minHeight}px`,
+          minHeight: `${height}px`,
         }}
-        show={true}
-        // show={isMobileOpen}
+        show={isMobileOpen}
         enter="transform transition-all ease-in-out duration-300"
-        enterFrom="-translate-y-full opacity-0"
+        // enterFrom="-translate-y-full opacity-0"
+        enterFrom={`-translate-y-[${height}px] opacity-0`}
         enterTo="translate-y-0 opacity-100"
         leave="transform transition-all ease-in-out duration-300"
         leaveFrom="translate-y-0 opacity-100"
-        leaveTo="-translate-y-full opacity-0"
+        // leaveTo="-translate-y-full opacity-0"
+        leaveTo={`-translate-y-[${height}px] opacity-0`}
       >
         <Transition show={currentSubCollection !== null ? false : true}>
           <nav>
