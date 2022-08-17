@@ -1,10 +1,11 @@
+import {useEffect, useState, useRef} from 'react';
 import {Link} from '@shopify/hydrogen';
 import {IconArrow} from '~/components';
 import {EnhancedMenu, EnhancedMenuItem} from '~/lib/utils';
-import {useEffect, useState} from 'react';
 // @ts-expect-error @headlessui/react incompatibility with node16 resolution
 import {Transition} from '@headlessui/react';
-import {useWindowSize} from 'react-use';
+import {useWindowSize, useMeasure, useSize} from 'react-use';
+import useIsomorphicLayoutEffect from '~/hooks/useIsomorphicLayoutEffect';
 
 export function MobileNav({
   isMobileOpen,
@@ -21,13 +22,15 @@ export function MobileNav({
   currentSubCollection: EnhancedMenuItem | null;
   setCurrentSubCollection: (i: EnhancedMenuItem | null) => void;
 }) {
+  const [ref, {height}] = useMeasure();
+
   const toggleSubMenu = (item: EnhancedMenuItem) => {
     setCurrentSubCollection(item);
   };
 
-  useEffect(() => {
-    setMobileOpen(false);
-  }, [setMobileOpen]);
+  // useEffect(() => {
+  //   setMobileOpen(false);
+  // }, [setMobileOpen]);
 
   const windowSize = useWindowSize().width;
 
@@ -48,18 +51,33 @@ export function MobileNav({
   };
 
   return (
-    <div className={`${!isMobileOpen ? 'hidden' : ''}`}>
+    <div
+      className={`relative ${!isMobileOpen ? 'hidden' : ''}`}
+      style={{
+        minHeight: `${height}px`,
+      }}
+    >
       <Transition
-        className={'md:hidden ' + themeText[theme!]}
+        className={`md:hidden ${themeText[theme!]}`}
+        // appear={true}
+        // show={true}
         show={isMobileOpen}
-        enter="transform transition ease-in-out duration-500"
+        enter="transition ease-in-out duration-150 transform"
         enterFrom="-translate-y-full"
         enterTo="translate-y-0"
-        leave="transform transition ease-in-out duration-500"
+        leave="transition ease-in-out duration-150 transform"
         leaveFrom="translate-y-0"
         leaveTo="-translate-y-full"
       >
-        <Transition show={currentSubCollection !== null ? false : true}>
+        <Transition
+          show={currentSubCollection !== null ? false : true}
+          enter="transition ease-in-out duration-300 transform"
+          enterFrom="-translate-x-full"
+          enterTo="translate-x-0"
+          leave="transition ease-in-out duration-300 transform"
+          leaveFrom="translate-x-0"
+          leaveTo="-translate-x-full"
+        >
           <nav>
             <ul className="flex flex-col">
               {(menu?.items || []).map((item: EnhancedMenuItem) => {
@@ -106,13 +124,14 @@ export function MobileNav({
           </nav>
         </Transition>
         <Transition
+          ref={ref}
           show={currentSubCollection === null ? false : true}
-          enter="transform transition ease-in-out duration-300"
-          enterFrom="-translate-x-full"
+          enter="transition ease-in-out duration-300 transform absolute top-0 left-0 right-0 w-full"
+          enterFrom="translate-x-full"
           enterTo="translate-x-0"
-          leave="transform transition ease-in-out duration-300"
+          leave="transition ease-in-out duration-300 transform absolute top-0 left-0 right-0 w-full"
           leaveFrom="translate-x-0"
-          leaveTo="-translate-x-full"
+          leaveTo="translate-x-full"
         >
           {currentSubCollection && (
             <ul className="flex flex-col">
