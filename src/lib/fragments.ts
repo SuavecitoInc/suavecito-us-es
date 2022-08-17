@@ -43,6 +43,7 @@ export const PRODUCT_CARD_FRAGMENT = gql`
     title
     publishedAt
     handle
+    tags
     variants(first: 1) {
       nodes {
         id

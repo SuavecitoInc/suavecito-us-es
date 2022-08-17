@@ -3,6 +3,7 @@ import clsx from 'clsx';
 type IconProps = JSX.IntrinsicElements['svg'] & {
   direction?: 'up' | 'right' | 'down' | 'left';
   theme?: 'suavecito' | 'suavecita';
+  defaultFill?: boolean;
 };
 
 function Icon({
@@ -78,6 +79,7 @@ export function IconClose(props: IconProps) {
 export function IconArrow({
   direction = 'down',
   theme = 'suavecito',
+  defaultFill = false,
   ...props
 }: IconProps) {
   let rotate;
@@ -99,7 +101,11 @@ export function IconArrow({
       rotate = 'rotate-0';
   }
   const styles = {
-    fill: theme === 'suavecito' ? 'fill-suave-red' : 'fill-suave-pink',
+    fill: defaultFill
+      ? 'fill-white'
+      : theme === 'suavecito'
+      ? 'fill-suave-red'
+      : 'fill-suave-pink',
   };
   return (
     <Icon {...props} className={`${rotate} ${styles.fill}`} viewBox="0 0 9 9">
