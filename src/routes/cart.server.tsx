@@ -1,15 +1,11 @@
-import {
-  Seo,
-  gql,
-  useShopQuery,
-  CacheLong,
-  CartProvider,
-} from '@shopify/hydrogen';
+import {Seo, gql, useShopQuery, CacheLong} from '@shopify/hydrogen';
 import {FREE_GIFT_PRODUCT_CARD_FRAGMENT} from '~/lib/suavecito-fragments';
-import {PageHeader, CartPageDetails} from '~/components';
+import {PageHeader, CartPageDetails, CartDetails, Section} from '~/components';
 import {Layout} from '~/components/index.server';
 
 export default function Cart() {
+  const LANG = import.meta.env.PUBLIC_LANGUAGE_CODE;
+
   const {
     data: {fgwp1, fgwp2, fgwp3, fgwp4},
   } = useShopQuery({
@@ -26,13 +22,16 @@ export default function Cart() {
 
   const freeGifts = [fgwp1, fgwp2, fgwp3, fgwp4];
 
+  const title = LANG === 'ES' ? 'Tu carrito' : 'Your Cart';
+
   return (
     <Layout>
       <Seo type="page" data={{title: 'Cart'}} />
-      <PageHeader heading="Your Cart" className="max-w-7xl mx-auto" />
-      <CartProvider>
-        <CartPageDetails layout="page" freeGifts={freeGifts} />
-      </CartProvider>
+      <PageHeader heading={title} className="max-w-7xl mx-auto" />
+      <CartPageDetails layout="page" freeGifts={freeGifts} />
+      {/* <Section className="max-w-7xl mx-auto">
+        <CartDetails layout="page" />
+      </Section> */}
     </Layout>
   );
 }

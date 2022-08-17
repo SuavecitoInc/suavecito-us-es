@@ -1,46 +1,51 @@
 import {SetStateAction, Dispatch} from 'react';
 import {Image} from '@shopify/hydrogen';
+import {ImLock, ImUnlocked} from 'react-icons/im';
 import type {Product} from '@shopify/hydrogen/storefront-api-types';
 import type {Image as ImageType} from '@shopify/hydrogen/storefront-api-types';
 
-import {Button, Heading} from '~/components';
+import {Button, Heading, Section} from '~/components';
 
 const fgwp_locale: {[key: string]: any} = {
   title: {
     EN: 'Free Gift With Purchase',
-    ES: '',
+    ES: 'Regalo Gratis Con Compra',
   },
   sub_title: {
     first: {
       EN: 'You are',
-      ES: '',
+      ES: '¡Estás a',
     },
     second: {
       EN: 'away from unlocking a FREE Gift!',
-      ES: '',
+      ES: 'de obtener un regalo GRATIS!',
     },
   },
   select_your_gift: {
     EN: 'Select your gift',
-    ES: '',
+    ES: 'Selecciona tu regalo',
   },
   buttons: {
     add: {
-      EN: 'Add my free Gift',
-      ES: '',
+      EN: 'Add free Gift',
+      ES: 'Agregar regalo gratis',
     },
     spend: {
       EN: 'Spend',
-      ES: '',
+      ES: 'Gaste',
     },
     left_to_unlock: {
       EN: 'to unlock gift',
-      ES: '',
+      ES: 'para obtener el regalo',
     },
     added: {
       EN: 'Gift Added',
-      ES: '',
+      ES: 'Regalo añadido',
     },
+  },
+  or: {
+    EN: 'OR',
+    ES: 'O',
   },
 };
 
@@ -85,6 +90,8 @@ export function CartFreeGiftWithPurchase({
   addFreeGiftToCart: (tierSelected: number) => void;
   freeGiftsEligible: {[key: number]: number};
 }) {
+  const LANG = import.meta.env.PUBLIC_LANGUAGE_CODE;
+
   const tierDiff: {[key: number]: number} = {
     0: tier1Diff,
     1: tier2Diff,
@@ -94,30 +101,28 @@ export function CartFreeGiftWithPurchase({
   const freeGiftAvailable = freeGiftsInCart < freeGiftsEligible[currentTier];
 
   return (
-    <section className="fgwp bg-[#ccc] py-[35px]">
+    <Section className="fgwp bg-[#ccc] py-[35px]">
       <Heading
         format
         as="h3"
         size="heading"
         className="text-center w-full max-w-full"
       >
-        Free Gift With Purchase
+        {fgwp_locale.title[LANG]}
       </Heading>
       <div className="my-4">
         <p className="text-center">
-          You are{' '}
+          {fgwp_locale.sub_title.first[LANG]}{' '}
           <span className="text-suave-red">
             ${`${currentTier === 3 ? '0' : tierDiff[currentTier]}`}{' '}
           </span>{' '}
-          away from unlocking a FREE gift!
+          {fgwp_locale.sub_title.second[LANG]}
         </p>
-        <p className="text-center">
-          Select your {`gift${currentTier === 3 ? 's' : ''}`}:
-        </p>
+        <p className="text-center">{fgwp_locale.select_your_gift[LANG]}:</p>
       </div>
-      {/* <p className="text-center">FREE GIFTS IN CART: {freeGiftsInCart}</p> */}
-      <section className="cards max-w-7xl mx-auto grid grid-cols-3 gap-4">
+      <section className="cards max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-4">
         <TierCard
+          lang={LANG}
           products={tier1Products}
           tier={1}
           productHandler={setTier1Value}
@@ -134,6 +139,7 @@ export function CartFreeGiftWithPurchase({
           freeGiftAvailable={freeGiftAvailable}
         />
         <TierCard
+          lang={LANG}
           products={tier2Products}
           tier={2}
           productHandler={setTier2Value}
@@ -150,6 +156,7 @@ export function CartFreeGiftWithPurchase({
           freeGiftAvailable={freeGiftAvailable}
         />
         <Tier3Card
+          lang={LANG}
           products={tier3Products}
           tier={3}
           productHandler1={setTier3Value1}
@@ -164,7 +171,7 @@ export function CartFreeGiftWithPurchase({
           freeGiftAvailable={freeGiftAvailable}
         />
       </section>
-    </section>
+    </Section>
   );
 }
 
@@ -208,6 +215,7 @@ function ProductCard({
 }
 
 function TierCard({
+  lang,
   tier,
   products,
   productValue,
@@ -219,6 +227,7 @@ function TierCard({
   addFreeGiftToCart,
   freeGiftAvailable,
 }: {
+  lang: 'EN' | 'ES';
   tier: number;
   products: Product[];
   productValue: string;
@@ -231,57 +240,63 @@ function TierCard({
   freeGiftAvailable: boolean;
 }) {
   return (
-    <div
-      className={`flex flex-col gap-4 h-full ${
-        tierDisabled ? 'opacity-30' : 'opacity-100'
-      }`}
-    >
-      <div className="flex justify-center items-center border border-[#ccc] rounded-lg p-4 grow shrink basis-auto bg-white">
-        <div className="grid grid-cols-3 gap-4">
-          <div className="flex justify-center items-center">
-            <ProductCard
-              product={products[0]}
-              inputName={`tier-${tier}`}
-              productHandler={productHandler}
-              productValue={productValue}
-              tierDisabled={tierDisabled}
-            />
-          </div>
-          <div className="flex justify-center items-center">
-            <p className="uppercase font-bold">- OR -</p>
-          </div>
-          <div className="flex justify-center items-center">
-            <ProductCard
-              product={products[1]}
-              inputName={`tier-${tier}`}
-              productHandler={productHandler}
-              productValue={productValue}
-              tierDisabled={tierDisabled}
-            />
+    <div className={`relative ${tierDisabled ? 'opacity-30' : 'opacity-100'}`}>
+      <div className="absolute top-2 left-2 z-10">
+        {tierDisabled ? (
+          <ImLock className="h-5 w-5" />
+        ) : (
+          <ImUnlocked className="h-5 w-5" />
+        )}
+      </div>
+      <div className="flex flex-col gap-4 h-full">
+        <div className="flex justify-center items-center border border-[#ccc] rounded-lg p-4 grow shrink basis-auto bg-white">
+          <div className="grid grid-cols-3 gap-4">
+            <div className="flex justify-center items-center">
+              <ProductCard
+                product={products[0]}
+                inputName={`tier-${tier}`}
+                productHandler={productHandler}
+                productValue={productValue}
+                tierDisabled={tierDisabled}
+              />
+            </div>
+            <div className="flex justify-center items-center">
+              <p className="uppercase font-bold">- {fgwp_locale.or[lang]} -</p>
+            </div>
+            <div className="flex justify-center items-center">
+              <ProductCard
+                product={products[1]}
+                inputName={`tier-${tier}`}
+                productHandler={productHandler}
+                productValue={productValue}
+                tierDisabled={tierDisabled}
+              />
+            </div>
           </div>
         </div>
-      </div>
 
-      <div className="w-full text-center">
-        {freeGiftAvailable ? (
-          <Button
-            type="button"
-            disabled={tierDisabled}
-            onClick={() => addFreeGiftToCart(tier)}
-          >
-            {tierDiff === 0
-              ? 'Add my free gift'
-              : `Spend $${tierDiff} to unlock gift`}
-          </Button>
-        ) : (
-          <Button disabled={true}>Gift Added</Button>
-        )}
+        <div className="w-full text-center">
+          {freeGiftAvailable ? (
+            <Button
+              type="button"
+              disabled={tierDisabled}
+              onClick={() => addFreeGiftToCart(tier)}
+            >
+              {tierDiff === 0
+                ? `${fgwp_locale.buttons.add[lang]}`
+                : `${fgwp_locale.buttons.spend[lang]} $${tierDiff} ${fgwp_locale.buttons.left_to_unlock[lang]}`}
+            </Button>
+          ) : (
+            <Button disabled={true}>{fgwp_locale.buttons.added[lang]}</Button>
+          )}
+        </div>
       </div>
     </div>
   );
 }
 
 function Tier3Card({
+  lang,
   tier = 3,
   products,
   productValue1,
@@ -295,6 +310,7 @@ function Tier3Card({
   addFreeGiftToCart,
   freeGiftAvailable,
 }: {
+  lang: 'EN' | 'ES';
   tier: number;
   products: Product[];
   productValue1: string;
@@ -309,73 +325,97 @@ function Tier3Card({
   freeGiftAvailable: boolean;
 }) {
   return (
-    <div
-      className={`flex flex-col gap-4 h-full ${
-        tierDisabled ? 'opacity-30' : 'opacity-100'
-      }`}
-    >
-      <div className="flex justify-center items-center border border-[#ccc] rounded-lg p-4 grow shrink basis-auto bg-white">
-        <div className="grid grid-cols-3 gap-4">
-          <div className="flex justify-center items-center">
-            <ProductCard
-              product={products[0]}
-              inputName={`tier-${tier}-1`}
-              productHandler={productHandler1}
-              productValue={productValue1}
-              tierDisabled={tierDisabled}
-            />
-          </div>
-          <div className="flex justify-center items-center">
-            <p className="uppercase font-bold">- OR -</p>
-          </div>
-          <div className="flex justify-center items-center">
-            <ProductCard
-              product={products[1]}
-              inputName={`tier-${tier}-1`}
-              productHandler={productHandler1}
-              productValue={productValue1}
-              tierDisabled={tierDisabled}
-            />
-          </div>
+    <div className={`relative ${tierDisabled ? 'opacity-30' : 'opacity-100'}`}>
+      <div className="absolute top-2 left-2 z-10">
+        {tierDisabled ? (
+          <ImLock className="h-5 w-5" />
+        ) : (
+          <ImUnlocked className="h-5 w-5" />
+        )}
+      </div>
+      <div className="flex flex-col gap-4 h-full">
+        <div className="flex justify-center items-center border border-[#ccc] rounded-lg p-4 grow shrink basis-auto bg-white">
+          <div className="grid grid-cols-3 gap-4">
+            <div className="flex justify-center items-center">
+              <ProductCard
+                product={products[0]}
+                inputName={`tier-${tier}-1`}
+                productHandler={productHandler1}
+                productValue={productValue1}
+                tierDisabled={tierDisabled}
+              />
+            </div>
+            <div className="flex justify-center items-center">
+              <p className="uppercase font-bold">- {fgwp_locale.or[lang]} -</p>
+            </div>
+            <div className="flex justify-center items-center">
+              <ProductCard
+                product={products[1]}
+                inputName={`tier-${tier}-1`}
+                productHandler={productHandler1}
+                productValue={productValue1}
+                tierDisabled={tierDisabled}
+              />
+            </div>
 
-          <div className="flex justify-center items-center">
-            <ProductCard
-              product={products[2]}
-              inputName={`tier-${tier}-2`}
-              productHandler={productHandler2}
-              productValue={productValue2}
-              tierDisabled={tierDisabled}
-            />
-          </div>
-          <div className="flex justify-center items-center">
-            <p className="uppercase font-bold">- OR -</p>
-          </div>
-          <div className="flex justify-center items-center">
-            <ProductCard
-              product={products[3]}
-              inputName={`tier-${tier}-2`}
-              productHandler={productHandler2}
-              productValue={productValue2}
-              tierDisabled={tierDisabled}
-            />
+            <div className="flex justify-center items-center">
+              <ProductCard
+                product={products[2]}
+                inputName={`tier-${tier}-2`}
+                productHandler={productHandler2}
+                productValue={productValue2}
+                tierDisabled={tierDisabled}
+              />
+            </div>
+            <div className="flex justify-center items-center">
+              <p className="uppercase font-bold">- {fgwp_locale.or[lang]} -</p>
+            </div>
+            <div className="flex justify-center items-center">
+              <ProductCard
+                product={products[3]}
+                inputName={`tier-${tier}-2`}
+                productHandler={productHandler2}
+                productValue={productValue2}
+                tierDisabled={tierDisabled}
+              />
+            </div>
           </div>
         </div>
-      </div>
 
-      <div className="w-full text-center">
-        {freeGiftAvailable ? (
-          <Button
-            type="button"
-            disabled={tierDisabled}
-            onClick={() => addFreeGiftToCart(tier)}
-          >
-            {tierDiff === 0
-              ? 'Add my free gift'
-              : `Spend $${tierDiff} to unlock gift`}
-          </Button>
-        ) : (
-          <Button disabled={true}>Gift Added</Button>
-        )}
+        <div className="w-full text-center">
+          {freeGiftAvailable ? (
+            <Button
+              type="button"
+              disabled={tierDisabled}
+              onClick={() => addFreeGiftToCart(tier)}
+            >
+              {tierDiff === 0
+                ? `${fgwp_locale.buttons.add[lang]}`
+                : `${fgwp_locale.buttons.spend[lang]} $${tierDiff} ${fgwp_locale.buttons.left_to_unlock[lang]}`}
+            </Button>
+          ) : (
+            <Button disabled={true}>{fgwp_locale.buttons.added[lang]}</Button>
+          )}
+        </div>
+        {/* <div className="w-full text-center">
+          {freeGiftAvailable ? (
+            <>
+              <p>
+                {`${fgwp_locale.buttons.spend[lang]} $${tierDiff} ${fgwp_locale.buttons.left_to_unlock[lang]}`}
+              </p>
+              <Button
+                type="button"
+                disabled={tierDisabled}
+                variant={tierDisabled ? 'secondary' : 'primary'}
+                onClick={() => addFreeGiftToCart(tier)}
+              >
+                {fgwp_locale.buttons.add[lang]}
+              </Button>
+            </>
+          ) : (
+            <Button disabled={true}>{fgwp_locale.buttons.added[lang]}</Button>
+          )}
+        </div> */}
       </div>
     </div>
   );

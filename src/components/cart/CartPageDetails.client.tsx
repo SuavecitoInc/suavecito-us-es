@@ -14,8 +14,28 @@ import {
   CartLineItem,
   CartEmpty,
   CartFreeGiftWithPurchase,
+  Section,
 } from '~/components';
 import {useFreeGiftWithPurchase} from '~/hooks/useFreeGiftWithPurchase';
+
+const cart_page: {[key: string]: any} = {
+  subtotal: {
+    EN: 'Subtotal',
+    ES: 'Total Parcial',
+  },
+  continue_to_checkout: {
+    EN: 'Continue to Checkout',
+    ES: 'Continuar a la comprobación',
+  },
+  please_add_free_gift: {
+    EN: 'Please Add Free Gift Below To Continue',
+    ES: 'Agregue un regalo gratis para continuar',
+  },
+  order_summary: {
+    EN: 'Order Summary',
+    ES: 'Resumen del pedido',
+  },
+};
 
 export function CartPageDetails({
   layout,
@@ -26,6 +46,8 @@ export function CartPageDetails({
   onClose?: () => void;
   freeGifts: Product[];
 }) {
+  const LANG = import.meta.env.PUBLIC_LANGUAGE_CODE;
+
   const {
     tier1Diff,
     tier2Diff,
@@ -76,9 +98,9 @@ export function CartPageDetails({
 
   if (lines.length === 0) {
     return (
-      <section className="max-w-7xl mx-auto">
+      <Section className="max-w-7xl mx-auto">
         <CartEmpty onClose={onClose} layout={layout} />
-      </section>
+      </Section>
     );
   }
 
@@ -101,7 +123,7 @@ export function CartPageDetails({
 
   return (
     <>
-      <section className="max-w-7xl mx-auto">
+      <Section className="max-w-7xl mx-auto">
         <form className={container[layout]}>
           <section
             ref={scrollRef}
@@ -123,19 +145,28 @@ export function CartPageDetails({
             className={summary[layout]}
           >
             <h2 id="summary-heading" className="sr-only">
-              Order summary
+              {cart_page.order_summary[LANG]}
             </h2>
-            <OrderSummary />
-            <CartCheckoutActions disableCheckout={freeGiftAvailable} />
+            <OrderSummary lang={LANG} />
+            <CartCheckoutActions
+              lang={LANG}
+              disableCheckout={freeGiftAvailable}
+            />
           </section>
         </form>
-      </section>
+      </Section>
       <CartFreeGiftWithPurchase {...fgwp} />
     </>
   );
 }
 
-function CartCheckoutActions({disableCheckout}: {disableCheckout: boolean}) {
+function CartCheckoutActions({
+  lang,
+  disableCheckout,
+}: {
+  lang: 'EN' | 'ES';
+  disableCheckout: boolean;
+}) {
   const {checkoutUrl} = useCart();
   const localeCheckoutUrl = `${checkoutUrl}?locale=es`;
 
@@ -143,26 +174,29 @@ function CartCheckoutActions({disableCheckout}: {disableCheckout: boolean}) {
     <>
       <div className="grid gap-4">
         {!disableCheckout ? (
-          <Button to={localeCheckoutUrl}>Continue to Checkout</Button>
+          <>
+            <Button to={localeCheckoutUrl}>
+              {cart_page.continue_to_checkout[lang]}
+            </Button>
+            <CartShopPayButton />
+          </>
         ) : (
-          <button type="button" disabled={true}>
-            Please add FREE Gift Below
-          </button>
+          <Button type="button" variant="secondary" disabled={true}>
+            {cart_page.please_add_free_gift[lang]}
+          </Button>
         )}
-
-        <CartShopPayButton />
       </div>
     </>
   );
 }
 
-function OrderSummary() {
+function OrderSummary({lang}: {lang: 'EN' | 'ES'}) {
   const {cost} = useCart();
   return (
     <>
       <dl className="grid">
         <div className="flex items-center justify-between font-medium">
-          <Text as="dt">Subtotal</Text>
+          <Text as="dt">{cart_page.subtotal[lang]}</Text>
           <Text as="dd">
             {cost?.subtotalAmount?.amount ? (
               <Money data={cost?.subtotalAmount} />
