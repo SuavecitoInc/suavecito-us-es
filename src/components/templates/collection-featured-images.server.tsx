@@ -12,21 +12,37 @@ import {
 } from '@shopify/hydrogen';
 
 import {PRODUCT_CARD_FRAGMENT} from '~/lib/fragments';
-import {PageHeader, ProductGrid, Section, Text} from '~/components';
+import {
+  PageHeader,
+  ProductGrid,
+  Section,
+  Text,
+  FeaturedProductGrid,
+} from '~/components';
 import {NotFound, Layout} from '~/components/index.server';
+import {FeaturedProductRow} from '../collection/FeaturedProductRow.server';
+import {HeroBanner} from '../collection/HeroBanner.server';
+import {BrandTheme} from '~/types/suavecito';
 
 const pageBy = 48;
 
-export default function Collection({params}: HydrogenRouteProps) {
-  const {handle} = params;
+export function CollectionFeaturedImages({
+  handle,
+  query,
+  theme = 'suavecito',
+}: {
+  handle: string;
+  query: string;
+  theme?: BrandTheme;
+}) {
   const {
     language: {isoCode: language},
     country: {isoCode: country},
   } = useLocalization();
 
-  const {
-    data: {collection},
-  } = useShopQuery({
+  const COLLECTION_QUERY = query;
+
+  const {data}: {data: any} = useShopQuery({
     query: COLLECTION_QUERY,
     variables: {
       handle,
@@ -36,41 +52,39 @@ export default function Collection({params}: HydrogenRouteProps) {
     },
     preload: true,
   });
-
-  if (!collection) {
+  if (!data.collection) {
     return <NotFound type="collection" />;
   }
 
   useServerAnalytics({
     shopify: {
       pageType: ShopifyAnalyticsConstants.pageType.collection,
-      resourceId: collection.id,
+      resourceId: data.collection.id,
     },
   });
-
   return (
-    <Layout showTopPadding={false}>
+    <Layout theme={theme} showTopPadding={false}>
       <Suspense>
-        <Seo type="collection" data={collection} />
+        <Seo type="collection" data={data.collection} />
       </Suspense>
-      <PageHeader heading={collection.title} className="justify-center">
-        {collection?.description && (
-          <div className="flex items-baseline justify-between w-full">
-            <div>
-              <Text format width="narrow" as="p" className="inline-block">
-                {collection.description}
-              </Text>
+      <section>
+        <HeroBanner collection={data.collection} />
+      </section>
+      {Array.from(Array(6)).map(
+        (x, i) =>
+          data[`collectionSection${i + 1}`] && (
+            <div key={data[`collectionSection${i + 1}`].id}>
+              <FeaturedProductRow
+                theme={theme}
+                collection={data[`collectionSection${i + 1}`]}
+                url={`/collections/${
+                  data[`collectionSection${i + 1}`].handle
+                }?country=${country}`}
+                position={(i + 1) % 2 !== 0 ? 'left' : 'right'}
+              />
             </div>
-          </div>
-        )}
-      </PageHeader>
-      <Section>
-        <ProductGrid
-          key={collection.id}
-          collection={collection}
-          url={`/collections/${handle}?country=${country}`}
-        />
-      </Section>
+          ),
+      )}
     </Layout>
   );
 }
@@ -103,53 +117,6 @@ export async function api(
     },
   });
 }
-
-const COLLECTION_QUERY = gql`
-  ${PRODUCT_CARD_FRAGMENT}
-  query CollectionDetails(
-    $handle: String!
-    $country: CountryCode
-    $language: LanguageCode
-    $pageBy: Int!
-    $cursor: String
-  ) @inContext(country: $country, language: $language) {
-    collection(handle: $handle) {
-      id
-      title
-      description
-      seo {
-        description
-        title
-      }
-      image {
-        id
-        url
-        width
-        height
-        altText
-      }
-      products(
-        first: $pageBy
-        after: $cursor
-        filters: {
-          productMetafield: {
-            namespace: "suave"
-            key: "hydrogen_es_enabled"
-            value: "true"
-          }
-        }
-      ) {
-        nodes {
-          ...ProductCard
-        }
-        pageInfo {
-          hasNextPage
-          endCursor
-        }
-      }
-    }
-  }
-`;
 
 const PAGINATE_COLLECTION_QUERY = gql`
   ${PRODUCT_CARD_FRAGMENT}

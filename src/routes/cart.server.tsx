@@ -1,7 +1,12 @@
-import {Suspense} from 'react';
-import {Seo, gql, useShopQuery, CacheLong} from '@shopify/hydrogen';
+import {
+  Seo,
+  gql,
+  useShopQuery,
+  CacheLong,
+  CartProvider,
+} from '@shopify/hydrogen';
 import {FREE_GIFT_PRODUCT_CARD_FRAGMENT} from '~/lib/suavecito-fragments';
-import {PageHeader, CartPageDetails, CartDetails, Section} from '~/components';
+import {PageHeader, CartPageDetails} from '~/components';
 import {Layout} from '~/components/index.server';
 
 export default function Cart() {
@@ -25,12 +30,9 @@ export default function Cart() {
     <Layout>
       <Seo type="page" data={{title: 'Cart'}} />
       <PageHeader heading="Your Cart" className="max-w-7xl mx-auto" />
-      <Suspense>
+      <CartProvider>
         <CartPageDetails layout="page" freeGifts={freeGifts} />
-      </Suspense>
-      {/* <Section className="max-w-7xl mx-auto">
-        <CartDetails layout="page" />
-      </Section> */}
+      </CartProvider>
     </Layout>
   );
 }

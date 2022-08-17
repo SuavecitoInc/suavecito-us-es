@@ -145,3 +145,51 @@ h6,
   list-style-type: disc;
   list-style-position: inside;
 }
+
+.hero-with-text {
+  position: relative;
+}
+.hero-with-text::before {
+  content: '';
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.swiper-pagination {
+  bottom: calc(40px + 10px) !important;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  background: white;
+  width: 25px !important;
+  height: 25px !important;
+  border-radius: 50%;
+  padding: 17px;
+}
+
+.swiper-button-next:after,
+.swiper-rtl .swiper-button-prev:after,
+.swiper-button-prev:after,
+.swiper-rtl .swiper-button-next:after {
+  font-size: 1.25rem !important;
+  font-weight: bolder;
+  color: rgba(0, 0, 0, 0.5);
+  text-align: center;
+}
+
+.swiper-pagination-bullet {
+  width: 15px !important;
+  height: 15px !important;
+  border: 1px solid white;
+  background: none !important;
+  opacity: unset !important;
+}
+
+.swiper-pagination-bullet-active {
+  background: white !important;
+}

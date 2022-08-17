@@ -514,3 +514,146 @@ export const FREE_GIFT_PRODUCT_CARD_FRAGMENT = gql`
     }
   }
 `;
+
+export const COLLECTION_PRODUCT_FRAGMENT = gql`
+  fragment CollectionProduct on Product {
+    id
+    title
+    publishedAt
+    handle
+    tags
+    variants(first: 100) {
+      nodes {
+        id
+        image {
+          url
+          altText
+          width
+          height
+        }
+        priceV2 {
+          amount
+          currencyCode
+        }
+        compareAtPriceV2 {
+          amount
+          currencyCode
+        }
+        variantColorImage: metafield(
+          namespace: "debut"
+          key: "variant_color_image"
+        ) {
+          reference {
+            ...Media
+          }
+        }
+      }
+    }
+  }
+`;
+
+export const FILTERED_COLLECTION_FRAGMENT = gql`
+  fragment FilteredCollectionWithMetafield on Collection {
+    id
+    handle
+    title
+    description
+    seo {
+      description
+      title
+    }
+    headingName: metafield(
+      namespace: "hydrogen"
+      key: "subcollection_heading"
+    ) {
+      value
+    }
+    products(
+      first: 100
+      filters: {
+        productMetafield: {
+          namespace: "suave"
+          key: "hydrogen_es_enabled"
+          value: "true"
+        }
+      }
+    ) {
+      nodes {
+        ...CollectionProduct
+      }
+      pageInfo {
+        hasNextPage
+        endCursor
+      }
+    }
+  }
+`;
+
+export const COLLECTION_PRODUCT_VARIANT_IMAGE_FRAGMENT = gql`
+  fragment CollectionProductWithVariantImage on Product {
+    id
+    title
+    publishedAt
+    handle
+    tags
+    variants(first: 100) {
+      nodes {
+        id
+        image {
+          url
+          altText
+          width
+          height
+        }
+        priceV2 {
+          amount
+          currencyCode
+        }
+        compareAtPriceV2 {
+          amount
+          currencyCode
+        }
+        variantImage1: metafield(namespace: "debut", key: "variant_image_1") {
+          reference {
+            ...Media
+          }
+        }
+        variantTitle: metafield(namespace: "debut", key: "variant_title") {
+          value
+        }
+      }
+    }
+  }
+`;
+
+export const FILTERED_COLLECTION_WITH_VARIANT_FRAGMENT = gql`
+  fragment FilteredCollectionWithVariantImage on Collection {
+    id
+    handle
+    title
+    description
+    seo {
+      description
+      title
+    }
+    products(
+      first: 100
+      filters: {
+        productMetafield: {
+          namespace: "suave"
+          key: "hydrogen_es_enabled"
+          value: "true"
+        }
+      }
+    ) {
+      nodes {
+        ...CollectionProductWithVariantImage
+      }
+      pageInfo {
+        hasNextPage
+        endCursor
+>>>>>>> a926dfc21d2c1c7804d79bcb3268569bb6241ee8
+      }
+    }
+  }
+`;

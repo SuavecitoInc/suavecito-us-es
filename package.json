@@ -21,6 +21,7 @@
     "@tailwindcss/forms": "^0.5.2",
     "@tailwindcss/typography": "^0.5.2",
     "@types/react": "^18.0.14",
+    "@types/swiper": "^6.0.0",
     "eslint": "^8.18.0",
     "eslint-plugin-hydrogen": "^0.12.2",
     "playwright": "^1.22.2",
@@ -46,6 +47,7 @@
     "react-use": "^17.4.0",
     "react-youtube": "^9.0.3",
     "remove": "^0.1.5",
+    "swiper": "^8.3.2",
     "title": "^3.4.4",
     "typographic-base": "^1.0.4"
   },
