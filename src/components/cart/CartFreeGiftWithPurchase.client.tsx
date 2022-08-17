@@ -127,8 +127,6 @@ export function CartFreeGiftWithPurchase({
           tier={1}
           productHandler={setTier1Value}
           productValue={tier1Value}
-          tierHandler={setCurrentTier}
-          tierValue={currentTier}
           tierDiff={tier1Diff}
           tierDisabled={
             freeGiftAvailable && currentTier >= 1 && freeGiftsInCart !== 1
@@ -144,8 +142,6 @@ export function CartFreeGiftWithPurchase({
           tier={2}
           productHandler={setTier2Value}
           productValue={tier2Value}
-          tierHandler={setCurrentTier}
-          tierValue={currentTier}
           tierDiff={tier2Diff}
           tierDisabled={
             freeGiftAvailable && currentTier >= 2 && freeGiftsInCart !== 1
@@ -163,8 +159,6 @@ export function CartFreeGiftWithPurchase({
           productHandler2={setTier3Value2}
           productValue1={tier3Value1}
           productValue2={tier3Value2}
-          tierHandler={setCurrentTier}
-          tierValue={currentTier}
           tierDiff={tier3Diff}
           tierDisabled={freeGiftAvailable && currentTier >= 3 ? false : true}
           addFreeGiftToCart={addFreeGiftToCart}
@@ -220,8 +214,6 @@ function TierCard({
   products,
   productValue,
   productHandler,
-  tierHandler,
-  tierValue,
   tierDiff,
   tierDisabled,
   addFreeGiftToCart,
@@ -232,8 +224,6 @@ function TierCard({
   products: Product[];
   productValue: string;
   productHandler: Dispatch<SetStateAction<string>>;
-  tierHandler: Dispatch<SetStateAction<number>>;
-  tierValue: number;
   tierDiff: number;
   tierDisabled: boolean;
   addFreeGiftToCart: (tierSelected: number) => void;
@@ -303,8 +293,6 @@ function Tier3Card({
   productValue2,
   productHandler1,
   productHandler2,
-  tierHandler,
-  tierValue,
   tierDiff,
   tierDisabled,
   addFreeGiftToCart,
@@ -317,8 +305,6 @@ function Tier3Card({
   productValue2: string;
   productHandler1: Dispatch<SetStateAction<string>>;
   productHandler2: Dispatch<SetStateAction<string>>;
-  tierHandler: Dispatch<SetStateAction<number>>;
-  tierValue: number;
   tierDiff: number;
   tierDisabled: boolean;
   addFreeGiftToCart: (tierSelected: number) => void;
