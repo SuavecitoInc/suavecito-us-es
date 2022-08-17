@@ -4,8 +4,7 @@ import {IconArrow} from '~/components';
 import {EnhancedMenu, EnhancedMenuItem} from '~/lib/utils';
 // @ts-expect-error @headlessui/react incompatibility with node16 resolution
 import {Transition} from '@headlessui/react';
-import {useWindowSize, useMeasure, useSize} from 'react-use';
-import useIsomorphicLayoutEffect from '~/hooks/useIsomorphicLayoutEffect';
+import {useWindowSize, useMeasure} from 'react-use';
 
 export function MobileNav({
   isMobileOpen,
@@ -59,8 +58,6 @@ export function MobileNav({
     >
       <Transition
         className={`md:hidden ${themeText[theme!]}`}
-        // appear={true}
-        // show={true}
         show={isMobileOpen}
         enter="transition ease-in-out duration-150 transform"
         enterFrom="-translate-y-full"

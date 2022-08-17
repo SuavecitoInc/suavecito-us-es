@@ -484,6 +484,37 @@ export const PRODUCT_SECTION_KIT_INCLUDES = gql`
   }
 `;
 
+export const FREE_GIFT_PRODUCT_CARD_FRAGMENT = gql`
+  fragment FreeGiftProductCard on Product {
+    id
+    title
+    publishedAt
+    handle
+    availableForSale
+    variants(first: 1) {
+      nodes {
+        id
+        availableForSale
+        quantityAvailable
+        image {
+          url
+          altText
+          width
+          height
+        }
+        priceV2 {
+          amount
+          currencyCode
+        }
+        compareAtPriceV2 {
+          amount
+          currencyCode
+        }
+      }
+    }
+  }
+`;
+
 export const COLLECTION_PRODUCT_FRAGMENT = gql`
   fragment CollectionProduct on Product {
     id
@@ -621,6 +652,7 @@ export const FILTERED_COLLECTION_WITH_VARIANT_FRAGMENT = gql`
       pageInfo {
         hasNextPage
         endCursor
+>>>>>>> a926dfc21d2c1c7804d79bcb3268569bb6241ee8
       }
     }
   }
