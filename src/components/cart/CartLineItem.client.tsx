@@ -13,7 +13,9 @@ import {Heading, IconRemove, Text} from '~/components';
 
 export function CartLineItem() {
   const {linesRemove} = useCart();
-  const {id: lineId, quantity, merchandise} = useCartLine();
+  const {id: lineId, quantity, merchandise, attributes} = useCartLine();
+
+  const isFgwpItem = attributes.find((el) => el.key === '_fgwp') ? true : false;
 
   return (
     <li key={lineId} className="flex gap-4">
@@ -40,16 +42,29 @@ export function CartLineItem() {
           </Heading>
 
           <div className="grid pb-2">
-            {(merchandise?.selectedOptions || []).map((option) => (
+            {/* {(merchandise?.selectedOptions || []).map((option) => (
               <Text color="subtle" key={option.name}>
                 {option.name}: {option.value}
               </Text>
-            ))}
+            ))} */}
+            {(merchandise?.selectedOptions || []).map((option) => {
+              if (option.name === 'Title' && option.value === 'Default Title')
+                return null;
+              return (
+                <Text color="subtle" key={option.name}>
+                  {option.name}: {option.value}
+                </Text>
+              );
+            })}
           </div>
 
           <div className="flex items-center gap-2">
             <div className="flex justify-start text-copy">
-              <CartLineQuantityAdjust lineId={lineId} quantity={quantity} />
+              {!isFgwpItem ? (
+                <CartLineQuantityAdjust lineId={lineId} quantity={quantity} />
+              ) : (
+                <p>{quantity}</p>
+              )}
             </div>
             <button
               type="button"

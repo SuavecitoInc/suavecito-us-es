@@ -483,3 +483,34 @@ export const PRODUCT_SECTION_KIT_INCLUDES = gql`
     }
   }
 `;
+
+export const FREE_GIFT_PRODUCT_CARD_FRAGMENT = gql`
+  fragment FreeGiftProductCard on Product {
+    id
+    title
+    publishedAt
+    handle
+    availableForSale
+    variants(first: 1) {
+      nodes {
+        id
+        availableForSale
+        quantityAvailable
+        image {
+          url
+          altText
+          width
+          height
+        }
+        priceV2 {
+          amount
+          currencyCode
+        }
+        compareAtPriceV2 {
+          amount
+          currencyCode
+        }
+      }
+    }
+  }
+`;
