@@ -27,7 +27,7 @@ import {
   ProductSectionInfoTabs,
 } from '~/components';
 
-const LANG = 'ES';
+const LANG = import.meta.env.PUBLIC_LANGUAGE_CODE;
 
 export default function Product() {
   const {handle} = useRouteParams();
@@ -82,7 +82,7 @@ export default function Product() {
   );
 
   const description =
-    spanishDescription !== null && LANG === 'ES'
+    spanishDescription !== null && LANG === 'es'
       ? spanishDescription.value
       : descriptionHtml;
 

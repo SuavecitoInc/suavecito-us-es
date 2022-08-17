@@ -8,10 +8,10 @@ import {footerData} from '~/locale';
 const PhoneInput = RPI.default ? RPI.default : RPI;
 
 export function SubscribeEmail({
-  lang = 'EN',
+  lang = 'en',
   theme,
 }: {
-  lang?: 'EN' | 'ES';
+  lang?: 'en' | 'es';
   theme?: BrandTheme;
 }) {
   const formRef = useRef<HTMLFormElement>(null);

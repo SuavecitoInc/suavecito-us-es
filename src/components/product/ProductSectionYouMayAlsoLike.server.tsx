@@ -6,14 +6,14 @@ import type {Product} from '@shopify/hydrogen/storefront-api-types';
 import type {BrandTheme} from '~/types/suavecito';
 
 export function ProductSectionYouMayAlsoLike({
-  lang = 'EN',
+  lang = 'en',
   theme = 'suavecito',
   title = 'You May Also Like',
   productId = 'gid://shopify/Product/161353365',
   count = 4,
   ...props
 }) {
-  title = lang === 'ES' ? 'También te puede interesar' : 'You May Also Like';
+  title = lang === 'es' ? 'También te puede interesar' : 'You May Also Like';
 
   const recommendedProductMarkup = useMemo(() => {
     return (

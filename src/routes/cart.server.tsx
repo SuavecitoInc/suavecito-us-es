@@ -22,7 +22,7 @@ export default function Cart() {
 
   const freeGifts = [fgwp1, fgwp2, fgwp3, fgwp4];
 
-  const title = LANG === 'ES' ? 'Tu carrito' : 'Your Cart';
+  const title = LANG === 'es' ? 'Tu carrito' : 'Your Cart';
 
   return (
     <Layout>

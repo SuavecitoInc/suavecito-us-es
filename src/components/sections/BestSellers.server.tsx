@@ -6,7 +6,7 @@ import type {Product} from '@shopify/hydrogen/storefront-api-types';
 import {homePageData} from '~/locale';
 
 export function BestSellers({
-  lang = 'EN',
+  lang = 'en',
   title = 'Best Sellers',
   count = 4,
   ...props

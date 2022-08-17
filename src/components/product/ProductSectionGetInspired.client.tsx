@@ -8,21 +8,21 @@ interface Metafield {
 }
 
 export function ProductSectionGetInspired({
-  lang = 'EN',
+  lang = 'en',
   theme = 'suavecito',
   getInspiredImage1 = null,
   getInspiredImage2 = null,
   getInspiredImage3 = null,
   getInspiredImage4 = null,
 }: {
-  lang?: 'EN' | 'ES';
+  lang?: 'en' | 'es';
   theme?: 'suavecito' | 'suavecita';
   getInspiredImage1?: null | Metafield;
   getInspiredImage2?: null | Metafield;
   getInspiredImage3?: null | Metafield;
   getInspiredImage4?: null | Metafield;
 }) {
-  const title = lang === 'ES' ? 'Inspírate' : 'Get Inspired';
+  const title = lang === 'es' ? 'Inspírate' : 'Get Inspired';
   const {selectedVariant} = useProductOptions();
 
   const colors = {

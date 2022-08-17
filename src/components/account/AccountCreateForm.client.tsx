@@ -7,32 +7,32 @@ import {callLoginApi} from './AccountLoginForm.client';
 
 const create_form: {[key: string]: any} = {
   title: {
-    EN: 'Create an account.',
-    ES: 'Crea una cuenta.',
+    en: 'Create an account.',
+    es: 'Crea una cuenta.',
   },
   placeholder: {
     email_address: {
-      EN: 'Email address',
-      ES: 'Correo electrónico',
+      en: 'Email address',
+      es: 'Correo electrónico',
     },
     password: {
-      EN: 'Password',
-      ES: 'Contraseña',
+      en: 'Password',
+      es: 'Contraseña',
     },
   },
   button: {
     create_account: {
-      EN: 'Create Account',
-      ES: 'Crear Cuenta',
+      en: 'Create Account',
+      es: 'Crear Cuenta',
     },
   },
   already_have_account: {
-    EN: 'Already have an account?',
-    ES: '¿Ya tienes una cuenta?',
+    en: 'Already have an account?',
+    es: '¿Ya tienes una cuenta?',
   },
   login: {
-    EN: 'Login',
-    ES: 'Iniciar',
+    en: 'Login',
+    es: 'Iniciar',
   },
 };
 

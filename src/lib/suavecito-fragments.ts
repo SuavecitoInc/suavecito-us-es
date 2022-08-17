@@ -3,7 +3,7 @@ import {gql} from '@shopify/hydrogen';
 const LANG = import.meta.env.PUBLIC_LANGUAGE_CODE;
 
 const PRODUCT_SECTION_LANG_FRAGMENT =
-  LANG === 'ES'
+  LANG === 'es'
     ? gql`
         fragment ProductSectionLang on Product {
           productSectionDescription: metafield(

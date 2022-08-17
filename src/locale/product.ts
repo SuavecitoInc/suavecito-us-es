@@ -1,32 +1,32 @@
 export const productData: {[key: string]: any} = {
   addToCart: {
-    EN: 'Add to Cart',
-    ES: 'Agregar al Carrito',
+    en: 'Add to Cart',
+    es: 'Agregar al Carrito',
   },
   soldOut: {
-    EN: 'Sold Out',
-    ES: 'Vendido',
+    en: 'Sold Out',
+    es: 'Vendido',
   },
   options: {
     color: {
-      EN: 'Color',
-      ES: 'Color',
+      en: 'Color',
+      es: 'Color',
     },
     fragrance: {
-      EN: 'Fragrance',
-      ES: 'Fragancia',
+      en: 'Fragrance',
+      es: 'Fragancia',
     },
     edition: {
-      EN: 'Edition',
-      ES: 'Edición',
+      en: 'Edition',
+      es: 'Edición',
     },
     size: {
-      EN: 'Size',
-      ES: 'Tamaño',
+      en: 'Size',
+      es: 'Tamaño',
     },
     style: {
-      EN: 'Style',
-      ES: 'Estillo',
+      en: 'Style',
+      es: 'Estillo',
     },
   },
 };

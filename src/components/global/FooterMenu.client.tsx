@@ -9,12 +9,12 @@ import {footerData} from '~/locale';
  * A server component that specifies the content of the footer on the website
  */
 export function FooterMenu({
-  lang = 'EN',
+  lang = 'en',
   menu,
   menu2,
   theme = 'suavecito',
 }: {
-  lang?: 'EN' | 'ES';
+  lang?: 'en' | 'es';
   menu?: EnhancedMenu;
   menu2?: EnhancedMenu;
   theme?: BrandTheme;

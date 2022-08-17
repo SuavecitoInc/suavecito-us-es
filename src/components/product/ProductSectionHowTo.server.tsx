@@ -8,13 +8,13 @@ interface Metafield {
 }
 
 export function ProductSectionHowTo({
-  lang = 'EN',
+  lang = 'en',
   theme = 'suavecito',
   productSectionHowToImage,
   productSectionHowToText,
   productSectionHowToEmbeddedVideo,
 }: {
-  lang?: 'EN' | 'ES';
+  lang?: 'en' | 'es';
   theme?: BrandTheme;
   productSectionHowToImage?: Metafield;
   productSectionHowToText: Metafield;

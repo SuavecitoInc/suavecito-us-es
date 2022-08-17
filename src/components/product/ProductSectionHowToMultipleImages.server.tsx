@@ -9,7 +9,7 @@ interface Metafield {
 }
 
 export function ProductSectionHowToMultipleImages({
-  lang = 'EN',
+  lang = 'en',
   theme = 'suavecito',
   howToUse1,
   howToUse2,
@@ -17,7 +17,7 @@ export function ProductSectionHowToMultipleImages({
   productSectionHowToText,
   productSectionHowToEmbeddedVideo,
 }: {
-  lang?: 'EN' | 'ES';
+  lang?: 'en' | 'es';
   theme?: BrandTheme;
   howToUse1?: Metafield;
   howToUse2?: Metafield;

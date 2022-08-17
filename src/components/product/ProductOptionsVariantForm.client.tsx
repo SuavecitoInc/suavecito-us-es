@@ -28,14 +28,14 @@ interface Metafield {
 }
 
 export function ProductOptionsVariantForm({
-  lang = 'EN',
+  lang = 'en',
   theme = 'suavecito',
   showQuantitySelector = true,
   optionNames,
   tags,
   colorOptions = [],
 }: {
-  lang?: 'EN' | 'ES';
+  lang?: 'en' | 'es';
   theme?: BrandTheme;
   showQuantitySelector?: boolean;
   optionNames: string[];
@@ -403,7 +403,7 @@ function ColorOptions({
   colorOptions,
   availableOptions,
 }: {
-  languageCode: any;
+  languageCode: 'en' | 'es';
   name: string;
   values: any[];
   handleChange: (name: string, value: string) => void;

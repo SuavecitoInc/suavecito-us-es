@@ -1,26 +1,26 @@
 export const loginData: {[key: string]: any} = {
   title: {
-    EN: 'Login',
-    ES: 'Ingresar',
+    en: 'Login',
+    es: 'Ingresar',
   },
   email: {
-    EN: 'Email Address',
-    ES: 'Correo Electrónico',
+    en: 'Email Address',
+    es: 'Correo Electrónico',
   },
   password: {
-    EN: 'Password',
-    ES: 'Contraseña',
+    en: 'Password',
+    es: 'Contraseña',
   },
   forgotPassword: {
-    EN: 'Forgot your password?',
-    ES: '¿Olvidaste tu contraseña?',
+    en: 'Forgot your password?',
+    es: '¿Olvidaste tu contraseña?',
   },
   signIn: {
-    EN: 'Signin',
-    ES: 'Registrarse',
+    en: 'Signin',
+    es: 'Registrarse',
   },
   createAccount: {
-    EN: 'Create Account',
-    ES: 'Crear una cuenta',
+    en: 'Create Account',
+    es: 'Crear una cuenta',
   },
 };

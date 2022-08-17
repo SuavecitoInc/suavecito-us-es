@@ -5,30 +5,30 @@ import {emailValidation} from '~/lib/utils';
 const recover_form: {[key: string]: any} = {
   submit_success: {
     request_sent: {
-      EN: 'Request Sent.',
-      ES: 'Solicitud enviada.',
+      en: 'Request Sent.',
+      es: 'Solicitud enviada.',
     },
     message: {
-      EN: 'If that email address is in our system, you will receive an email with instructions about how to reset your password in a few minutes.',
-      ES: 'Si esa dirección de correo electrónico está en nuestro sistema, recibirá un correo electrónico con instrucciones sobre cómo restablecer su contraseña en unos pocos minutos.',
+      en: 'If that email address is in our system, you will receive an email with instructions about how to reset your password in a few minutes.',
+      es: 'Si esa dirección de correo electrónico está en nuestro sistema, recibirá un correo electrónico con instrucciones sobre cómo restablecer su contraseña en unos pocos minutos.',
     },
   },
   title: {
-    EN: 'Forgot Password.',
-    ES: 'Has olvidado tu contraseña',
+    en: 'Forgot Password.',
+    es: 'Has olvidado tu contraseña',
   },
   sub_title: {
-    EN: 'Enter the email address associated with your account to receive a link to reset your password.',
-    ES: 'Ingrese la dirección de correo electrónico asociada con su cuenta para recibir un enlace para restablecer su contraseña.',
+    en: 'Enter the email address associated with your account to receive a link to reset your password.',
+    es: 'Ingrese la dirección de correo electrónico asociada con su cuenta para recibir un enlace para restablecer su contraseña.',
   },
   email_address: {
-    EN: 'Email address',
-    ES: 'Correo electrónico',
+    en: 'Email address',
+    es: 'Correo electrónico',
   },
   button: {
     request_reset: {
-      EN: 'Request Reset Link',
-      ES: 'Solicitar Restablecimiento de Contraseña',
+      en: 'Request Reset Link',
+      es: 'Solicitar Restablecimiento de Contraseña',
     },
   },
 };

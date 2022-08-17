@@ -20,20 +20,20 @@ import {useFreeGiftWithPurchase} from '~/hooks/useFreeGiftWithPurchase';
 
 const cart_page: {[key: string]: any} = {
   subtotal: {
-    EN: 'Subtotal',
-    ES: 'Total Parcial',
+    en: 'Subtotal',
+    es: 'Total Parcial',
   },
   continue_to_checkout: {
-    EN: 'Continue to Checkout',
-    ES: 'Continuar a la comprobación',
+    en: 'Continue to Checkout',
+    es: 'Continuar a la comprobación',
   },
   please_add_free_gift: {
-    EN: 'Please Add Free Gift Below To Continue',
-    ES: 'Agregue un regalo gratis para continuar',
+    en: 'Please Add Free Gift Below To Continue',
+    es: 'Agregue un regalo gratis para continuar',
   },
   order_summary: {
-    EN: 'Order Summary',
-    ES: 'Resumen del pedido',
+    en: 'Order Summary',
+    es: 'Resumen del pedido',
   },
 };
 
