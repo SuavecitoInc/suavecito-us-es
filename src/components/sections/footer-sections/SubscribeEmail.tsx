@@ -2,10 +2,28 @@ import React, {useRef, useState} from 'react';
 import RPI from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
 import {BrandTheme} from '~/types/suavecito';
-import {footerData} from '~/locale';
 
 // @ts-ignore
 const PhoneInput = RPI.default ? RPI.default : RPI;
+
+export const newsletter: {[key: string]: any} = {
+  email: {
+    en: 'Email Address',
+    es: 'Correo Electrónico',
+  },
+  phone: {
+    en: 'Mobile Phone',
+    es: 'Teléfono Móvil',
+  },
+  disclaimer: {
+    en: 'By clicking SUBSCRIBE, you agree to receive marketing text messages from Suavecito, Inc. at the number provided, including messages sent by autodialer. Consent is not a condition of any purchase. Message and data rates may apply. Message frequency varies. Reply HELP for help or STOP to cancel. View our Privacy Policy and Terms of Service.',
+    es: 'Al hacer clic en SUSCRIBIRSE, acepta recibir mensajes de texto de marketing de Suavecito, Inc. al número proporcionado, incluidos los mensajes enviados por marcador automático. El consentimiento no es una condición de ninguna compra. Se pueden aplicar tarifas por mensajes y datos. La frecuencia de los mensajes varía. Responda HELP para obtener ayuda o STOP para cancelar. Vea nuestra Política de Privacidad y Términos de Servicio.',
+  },
+  submit: {
+    en: 'Submit',
+    es: 'Enviar',
+  },
+};
 
 export function SubscribeEmail({
   lang = 'en',
@@ -114,7 +132,7 @@ export function SubscribeEmail({
               <input
                 className="w-full border-none"
                 type="email"
-                placeholder={footerData.newsletter.email[lang]}
+                placeholder={newsletter.email[lang]}
                 onChange={(evt) => setEmailInput(evt.target.value)}
                 required
               />
@@ -122,7 +140,7 @@ export function SubscribeEmail({
             <div className="flex mb-[5px] klaviyo-input">
               <PhoneInput
                 country={'us'}
-                placeholder={footerData.newsletter.phone[lang]}
+                placeholder={newsletter.phone[lang]}
                 value={phoneInput}
                 onChange={(phoneInput: string, country: string) =>
                   checkPhoneInput(phoneInput, country)
@@ -133,7 +151,7 @@ export function SubscribeEmail({
                 type="submit"
                 ref={buttonRef}
               >
-                {footerData.newsletter.submit[lang]}
+                {newsletter.submit[lang]}
               </button>
             </div>
             <div>
@@ -146,7 +164,7 @@ export function SubscribeEmail({
               <p
                 className={`text-[10px] ${pColor[mainColor]}`}
                 dangerouslySetInnerHTML={{
-                  __html: footerData.newsletter.disclaimer[lang],
+                  __html: newsletter.disclaimer[lang],
                 }}
               />
             </div>

@@ -8,7 +8,6 @@ import {
   Money,
   OptionWithValues,
   ShopPayButton,
-  SelectedOptions,
 } from '@shopify/hydrogen';
 import {useVariantsWithOptions, useAvailableOptions} from '~/hooks';
 import {
@@ -20,12 +19,44 @@ import {
 } from '~/components';
 import type {ProductVariant} from '@shopify/hydrogen/storefront-api-types';
 import type {BrandTheme} from '~/types/suavecito';
-import {productData} from '~/locale';
 
 interface Metafield {
   value: string;
   reference?: object;
 }
+
+const product_form: {[key: string]: any} = {
+  addToCart: {
+    en: 'Add to Cart',
+    es: 'Agregar al Carrito',
+  },
+  soldOut: {
+    en: 'Sold Out',
+    es: 'Vendido',
+  },
+  options: {
+    color: {
+      en: 'Color',
+      es: 'Color',
+    },
+    fragrance: {
+      en: 'Fragrance',
+      es: 'Fragancia',
+    },
+    edition: {
+      en: 'Edition',
+      es: 'Edición',
+    },
+    size: {
+      en: 'Size',
+      es: 'Tamaño',
+    },
+    style: {
+      en: 'Style',
+      es: 'Estillo',
+    },
+  },
+};
 
 export function ProductOptionsVariantForm({
   lang = 'en',
@@ -50,8 +81,6 @@ export function ProductOptionsVariantForm({
   const {
     options,
     setSelectedOption,
-    setSelectedOptions,
-    setSelectedVariant,
     selectedOptions,
     selectedVariant,
     variants,
@@ -236,8 +265,8 @@ export function ProductOptionsVariantForm({
               }
 
               const localeName =
-                productData.options[name.toLowerCase()] !== undefined
-                  ? productData.options[name.toLowerCase()][lang]
+                product_form.options[name.toLowerCase()] !== undefined
+                  ? product_form.options[name.toLowerCase()][lang]
                   : name;
 
               // @ts-ignore Variant Fragrance Profile does not  exist on selected variant
@@ -378,13 +407,15 @@ export function ProductOptionsVariantForm({
             as="span"
           >
             {isOutOfStock ? (
-              <Text>{productData.soldOut[lang]}</Text>
+              <Text>{product_form.soldOut[lang]}</Text>
             ) : (
               <Text
                 as="span"
                 className="flex items-center justify-center gap-2"
               >
-                <span className="uppercase">{productData.addToCart[lang]}</span>
+                <span className="uppercase">
+                  {product_form.addToCart[lang]}
+                </span>
               </Text>
             )}
           </Button>
@@ -413,8 +444,8 @@ function ColorOptions({
   const {selectedOptions} = useProductOptions();
 
   const localeName =
-    productData.options[name.toLowerCase()] !== undefined
-      ? productData.options[name.toLowerCase()][languageCode]
+    product_form.options[name.toLowerCase()] !== undefined
+      ? product_form.options[name.toLowerCase()][languageCode]
       : name;
 
   return (
