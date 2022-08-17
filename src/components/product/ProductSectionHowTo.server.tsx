@@ -7,6 +7,11 @@ interface Metafield {
   reference?: object;
 }
 
+const title: {[key: string]: string} = {
+  en: 'How to Use',
+  es: 'Cómo Utilizar',
+};
+
 export function ProductSectionHowTo({
   lang = 'en',
   theme = 'suavecito',
@@ -20,11 +25,6 @@ export function ProductSectionHowTo({
   productSectionHowToText: Metafield;
   productSectionHowToEmbeddedVideo: Metafield;
 }) {
-  const title: {[key: string]: string} = {
-    EN: 'How to Use',
-    ES: 'Cómo Utilizar',
-  };
-
   const colors = {
     suavecito: 'text-black',
     suavecita: 'text-suave-pink',
