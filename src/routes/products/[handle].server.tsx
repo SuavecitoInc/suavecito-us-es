@@ -150,7 +150,13 @@ export default function Product() {
               <div className="flex-1">
                 <section>
                   <div className="grid gap-2">
-                    <Heading as="h1" format className="whitespace-normal">
+                    <Heading
+                      as="h1"
+                      format
+                      className={`whitespace-normal ${
+                        theme === 'premium blends' && 'text-white'
+                      }`}
+                    >
                       {title}
                     </Heading>
                     {vendor && (
@@ -169,7 +175,11 @@ export default function Product() {
                   )}
                   {/* display description here if no features, otherwise render tabs */}
                   {description && tabsContent.length === 1 && (
-                    <div className="py-10">
+                    <div
+                      className={`py-10 ${
+                        theme === 'premium blends' && 'text-white'
+                      }`}
+                    >
                       <div
                         className="description"
                         dangerouslySetInnerHTML={{__html: description}}
@@ -191,12 +201,12 @@ export default function Product() {
             />
           </div>
         )}
+      </div>
 
-        <ProductSectionYouMayAlsoLike
-          lang={LANG}
-          theme={theme}
-          productId={product.id}
-        />
+      <div className={`w-full ${theme === 'premium blends' && 'bg-white'}`}>
+        <div className="page-width">
+          <ProductSectionYouMayAlsoLike lang={LANG} productId={product.id} />
+        </div>
       </div>
     </Layout>
   );

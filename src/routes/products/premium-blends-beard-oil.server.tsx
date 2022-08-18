@@ -32,6 +32,7 @@ import {
 } from '~/components';
 
 export default function Product() {
+  const LANG = import.meta.env.PUBLIC_LANGUAGE_CODE;
   const handle = 'premium-blends-beard-oil';
   const {
     language: {isoCode: languageCode},
@@ -148,6 +149,7 @@ export default function Product() {
                   </div>
                   <Suspense>
                     <ProductOptionsVariantForm
+                      lang={LANG}
                       theme="premium blends"
                       optionNames={defaultOptionNames}
                       tags={tags}
@@ -162,6 +164,7 @@ export default function Product() {
         {/* check if productSectionFeaturedImage1 && productSectionDescription are set */}
         {productSectionFeaturedImage1 && productSectionDescription && (
           <ProductSectionContentGrid
+            lang={LANG}
             theme="premium blends"
             {...productContentGridData}
           />
@@ -170,6 +173,7 @@ export default function Product() {
         {/* Product Section How To */}
         {productSectionHowToText && howToUse1 && (
           <ProductSectionHowToMultipleImages
+            lang={LANG}
             theme="premium blends"
             {...productContentHowTo}
           />
@@ -178,7 +182,7 @@ export default function Product() {
 
       <div className="w-full bg-white">
         <div className="page-width">
-          <ProductSectionYouMayAlsoLike productId={product.id} />
+          <ProductSectionYouMayAlsoLike lang={LANG} productId={product.id} />
         </div>
       </div>
     </Layout>

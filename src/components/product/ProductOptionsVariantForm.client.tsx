@@ -241,6 +241,9 @@ export function ProductOptionsVariantForm({
   const handleQuantity = (e: {target: {value: React.SetStateAction<string>}}) =>
     setQuantity(e.target.value);
 
+  const secondary: 'secondary' | 'premium blends secondary' =
+    theme === 'premium blends' ? `${theme} secondary` : 'secondary';
+
   return (
     <form className="grid gap-10">
       {
@@ -403,7 +406,7 @@ export function ProductOptionsVariantForm({
         >
           <Button
             width="full"
-            variant={isOutOfStock ? 'secondary' : theme}
+            variant={isOutOfStock ? secondary : theme}
             as="span"
           >
             {isOutOfStock ? (

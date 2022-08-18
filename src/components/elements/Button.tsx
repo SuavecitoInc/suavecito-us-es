@@ -21,6 +21,7 @@ export function Button({
     | 'suavecito'
     | 'suavecita'
     | 'premium blends'
+    | 'premium blends secondary'
     | 'firme club'
     | 'cerveza cito'
     | 'tres noir';
@@ -43,6 +44,7 @@ export function Button({
     suavecito: `${baseButtonClasses} bg-suave-red hover:bg-suave-red-focus text-contrast`,
     suavecita: `${baseButtonClasses} bg-suave-pink hover:bg-suave-pink-focus text-contrast`,
     'premium blends': `${baseButtonClasses} bg-suave-white hover:bg-suave-white-focus text-black`,
+    'premium blends secondary': `${baseButtonClasses} border border-primary/10 bg-[#2E2E2E] text-suave-grey`,
     'firme club': `${baseButtonClasses} bg-suave-red hover:bg-suave-red-focus text-contrast`,
     'cerveza cito': `${baseButtonClasses} bg-suave-red hover:bg-suave-red-focus text-contrast`,
     'tres noir': `${baseButtonClasses} bg-suave-red hover:bg-suave-red-focus text-contrast`,
