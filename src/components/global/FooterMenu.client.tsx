@@ -3,18 +3,44 @@ import {IconFooterAccessibility} from '~/components';
 import type {EnhancedMenu, EnhancedMenuItem} from '~/lib/utils';
 import {SocialMediaList, SubscribeEmail} from '../sections/footer-sections';
 import {BrandTheme} from '~/types/suavecito';
-import {footerData} from '~/locale';
+
+export const footer_menu: {[key: string]: any} = {
+  brands: {
+    en: 'Brands',
+    es: 'Marcas',
+  },
+  help: {
+    en: 'Help',
+    es: 'Ayuda',
+  },
+  newsletter: {
+    title: {
+      en: 'Subscribe for updates',
+      es: 'Suscríbete para actualizaciones',
+    },
+  },
+  social: {
+    followUs: {
+      en: 'Follow Us',
+      es: 'Síganos',
+    },
+  },
+  accessibility: {
+    en: 'Suavecito is committed to providing a web experience that is accessible to all people by meeting or exceeding the requirements of the WCAG 2.0 AA. Accessibility is an ongoing effort, and we are here to help. Feel free to email us at <a href="mailto:info@suavecito.com" class="hover:underline text-suave-red hover:text-suave-red-focus ">info@suavecito.com</a> or chat with us live for assistance.',
+    es: 'Suavecito se compromete a brindar una experiencia web que sea accesible para todas las personas al cumplir o superar los requisitos de las WCAG 2.0 AA. La accesibilidad es un esfuerzo continuo y estamos aquí para ayudar. No dude en enviarnos un correo electrónico a <a href="mailto:info@suavecito.com" class="hover:underline text-suave-red hover:text-suave-red-focus ">info@suavecito.com</a> o chatee con nosotros en vivo para obtener ayuda.',
+  },
+};
 
 /**
  * A server component that specifies the content of the footer on the website
  */
 export function FooterMenu({
-  lang = 'EN',
+  lang = 'en',
   menu,
   menu2,
   theme = 'suavecito',
 }: {
-  lang?: 'EN' | 'ES';
+  lang?: 'en' | 'es';
   menu?: EnhancedMenu;
   menu2?: EnhancedMenu;
   theme?: BrandTheme;
@@ -52,9 +78,7 @@ export function FooterMenu({
         <section className={styles.nav}>
           <div className={styles.div}>
             <ul className={styles.ul}>
-              <p className={styles.listHeader}>
-                {footerData.menu.brands[lang]}
-              </p>
+              <p className={styles.listHeader}>{footer_menu.brands[lang]}</p>
               {(menu?.items || []).map((item: EnhancedMenuItem) => (
                 <li key={item.id} className={styles.li}>
                   <Link to={item.to} target={item.target}>
@@ -64,7 +88,7 @@ export function FooterMenu({
               ))}{' '}
             </ul>
             <ul className={styles.ul}>
-              <p className={styles.listHeader}>{footerData.menu.help[lang]}</p>
+              <p className={styles.listHeader}>{footer_menu.help[lang]}</p>
               {(menu2?.items || []).map((item: EnhancedMenuItem) => (
                 <li key={item.id} className={styles.li}>
                   <Link to={item.to} target={item.target}>
@@ -77,13 +101,13 @@ export function FooterMenu({
           <div className={`flex-col ${styles.div}`}>
             <div className="sm-min:ml-auto sm-min:w-[80%]">
               <p className={styles.listHeader}>
-                {footerData.newsletter.title[lang]}
+                {footer_menu.newsletter.title[lang]}
               </p>
               <SubscribeEmail lang={lang} theme={theme} />
             </div>
             <div className="sm-min:ml-auto sm-min:w-[80%]">
               <p className={styles.listHeader}>
-                {footerData.social.followUs[lang]}
+                {footer_menu.social.followUs[lang]}
               </p>
               <SocialMediaList theme={theme} />
             </div>
@@ -101,7 +125,7 @@ export function FooterMenu({
             <p
               className={`text-justify p-4 text-[15px] ${pColor[mainColor]}`}
               dangerouslySetInnerHTML={{
-                __html: footerData.accessibility[lang],
+                __html: footer_menu.accessibility[lang],
               }}
             />
           </div>

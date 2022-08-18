@@ -9,7 +9,7 @@ interface Metafield {
 }
 
 export function ProductSectionHowItLooks({
-  lang = 'EN',
+  lang = 'en',
   theme = 'suavecito',
   howItLooksImage1,
   howItLooksImage2,
@@ -20,7 +20,7 @@ export function ProductSectionHowItLooks({
   howItLooksImage7,
   howItLooksImage8,
 }: {
-  lang?: 'EN' | 'ES';
+  lang?: 'en' | 'es';
   theme?: BrandTheme;
   howItLooksImage1: Metafield | null;
   howItLooksImage2: Metafield | null;
@@ -32,8 +32,8 @@ export function ProductSectionHowItLooks({
   howItLooksImage8: Metafield | null;
 }) {
   const title: {[key: string]: string} = {
-    EN: 'How It Looks',
-    ES: 'Como luce',
+    en: 'How It Looks',
+    es: 'Como luce',
   };
 
   const images = [

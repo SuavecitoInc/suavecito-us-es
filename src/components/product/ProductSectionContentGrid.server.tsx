@@ -8,7 +8,7 @@ interface Metafield {
 }
 
 export function ProductSectionContentGrid({
-  lang = 'EN',
+  lang = 'en',
   theme = 'suavecito',
   productSectionFeaturedImage1,
   productSectionFeaturedImage2,
@@ -22,7 +22,7 @@ export function ProductSectionContentGrid({
   productSectionListItemImage3,
   productSectionListItemImage4,
 }: {
-  lang?: 'EN' | 'ES';
+  lang?: 'en' | 'es';
   theme?: BrandTheme;
   productSectionFeaturedImage1: Metafield;
   productSectionFeaturedImage2: Metafield;

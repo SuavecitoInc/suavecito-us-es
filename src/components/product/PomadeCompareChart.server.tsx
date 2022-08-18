@@ -35,11 +35,11 @@ const colors: {
   },
 };
 
-export function PomadeCompareChart({lang = 'EN'}: {lang: 'EN' | 'ES'}) {
-  const title = lang === 'ES' ? 'Compare' : 'Compare';
+export function PomadeCompareChart({lang = 'en'}: {lang: 'en' | 'es'}) {
+  const title = lang === 'es' ? 'Compare' : 'Compare';
   const languageCode = lang.toLowerCase();
-  const washabilityTitle = lang === 'ES' ? 'Lavabilidad' : 'Washability';
-  const bestForTitle = lang === 'ES' ? 'Mejor Para' : 'Best For';
+  const washabilityTitle = lang === 'es' ? 'Lavabilidad' : 'Washability';
+  const bestForTitle = lang === 'es' ? 'Mejor Para' : 'Best For';
 
   return (
     <section className="py-[35px]">

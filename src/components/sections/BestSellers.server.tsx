@@ -3,15 +3,21 @@ import {gql, useShopQuery, CacheLong} from '@shopify/hydrogen';
 import {PRODUCT_CARD_FRAGMENT} from '~/lib/fragments';
 import {ProductGridItem, Section} from '~/components';
 import type {Product} from '@shopify/hydrogen/storefront-api-types';
-import {homePageData} from '~/locale';
+
+const best_sellers: {[key: string]: any} = {
+  title: {
+    en: 'Best Sellers',
+    es: 'Más Vendidos',
+  },
+};
 
 export function BestSellers({
-  lang = 'EN',
+  lang = 'en',
   title = 'Best Sellers',
   count = 4,
   ...props
 }) {
-  title = homePageData.bestSellers[lang];
+  title = best_sellers.title[lang];
 
   const bestSellersMarkup = useMemo(() => {
     return (

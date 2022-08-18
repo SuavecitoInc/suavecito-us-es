@@ -8,44 +8,44 @@ import {Button, Heading, Section} from '~/components';
 
 const fgwp_locale: {[key: string]: any} = {
   title: {
-    EN: 'Free Gift With Purchase',
-    ES: 'Regalo Gratis Con Compra',
+    en: 'Free Gift With Purchase',
+    es: 'Regalo Gratis Con Compra',
   },
   sub_title: {
     first: {
-      EN: 'You are',
-      ES: '¡Estás a',
+      en: 'You are',
+      es: '¡Estás a',
     },
     second: {
-      EN: 'away from unlocking a FREE Gift!',
-      ES: 'de obtener un regalo GRATIS!',
+      en: 'away from unlocking a FREE Gift!',
+      es: 'de obtener un regalo GRATIS!',
     },
   },
   select_your_gift: {
-    EN: 'Select your gift',
-    ES: 'Selecciona tu regalo',
+    en: 'Select your gift',
+    es: 'Selecciona tu regalo',
   },
   buttons: {
     add: {
-      EN: 'Add free Gift',
-      ES: 'Agregar regalo gratis',
+      en: 'Add free Gift',
+      es: 'Agregar regalo gratis',
     },
     spend: {
-      EN: 'Spend',
-      ES: 'Gaste',
+      en: 'Spend',
+      es: 'Gaste',
     },
     left_to_unlock: {
-      EN: 'to unlock gift',
-      ES: 'para obtener el regalo',
+      en: 'to unlock gift',
+      es: 'para obtener el regalo',
     },
     added: {
-      EN: 'Gift Added',
-      ES: 'Regalo añadido',
+      en: 'Gift Added',
+      es: 'Regalo añadido',
     },
   },
   or: {
-    EN: 'OR',
-    ES: 'O',
+    en: 'OR',
+    es: 'O',
   },
 };
 

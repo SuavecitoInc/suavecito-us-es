@@ -4,17 +4,17 @@ import {Media} from '@shopify/hydrogen/storefront-api-types';
 import {BrandTheme} from '~/types/suavecito';
 
 export function ProductSectionKitIncludes({
-  lang = 'EN',
+  lang = 'en',
   theme = 'suavecito',
   kitProducts,
   kitProductVariants,
 }: {
-  lang?: 'EN' | 'ES';
+  lang?: 'en' | 'es';
   theme: BrandTheme;
   kitProducts: {value: string}[];
   kitProductVariants: {value: string}[];
 }) {
-  const title = lang === 'ES' ? `Qué está incluido` : `What's Included`;
+  const title = lang === 'es' ? `Qué está incluido` : `What's Included`;
 
   const {
     data: {nodes: products},

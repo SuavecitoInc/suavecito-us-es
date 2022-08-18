@@ -3,11 +3,11 @@ import {useState, Fragment} from 'react';
 import {Tab} from '@headlessui/react';
 
 export function ProductSectionInfoTabs({
-  lang = 'EN',
+  lang = 'en',
   theme = 'suavecito',
   tabs,
 }: {
-  lang?: 'EN' | 'ES';
+  lang?: 'en' | 'es';
   theme?: 'suavecito' | 'suavecita';
   tabs: {title: string; content: any}[];
 }) {
@@ -80,7 +80,7 @@ function FeaturesTab({
   lang,
   content,
 }: {
-  lang: 'EN' | 'ES';
+  lang: 'en' | 'es';
   content: {
     fit: string;
     material: string;

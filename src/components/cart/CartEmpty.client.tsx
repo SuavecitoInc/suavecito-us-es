@@ -7,13 +7,13 @@ import {Suspense} from 'react';
 
 const empty_cart: {[key: string]: any} = {
   message: {
-    EN: 'Looks like you haven’t added anything yet, let’s get you started!',
-    ES: 'Parece que aún no has añadido nada, ¡comencemos!',
+    en: 'Looks like you haven’t added anything yet, let’s get you started!',
+    es: 'Parece que aún no has añadido nada, ¡comencemos!',
   },
   button: {
     continue_shopping: {
-      EN: 'Continue Shopping',
-      ES: 'Seguir comprando',
+      en: 'Continue Shopping',
+      es: 'Seguir comprando',
     },
   },
 };

@@ -3,51 +3,51 @@ import {useNavigate, Link} from '@shopify/hydrogen/client';
 
 const login_form: {[key: string]: any} = {
   email_address: {
-    EN: 'Email address',
-    ES: 'Correo electrónico',
+    en: 'Email address',
+    es: 'Correo electrónico',
   },
   button: {
     next: {
-      EN: 'Next',
-      ES: 'Continuar',
+      en: 'Next',
+      es: 'Continuar',
     },
     login: {
-      EN: 'Login',
-      ES: 'Iniciar',
+      en: 'Login',
+      es: 'Iniciar',
     },
   },
   new_to: {
-    EN: 'New to',
-    ES: 'Nuevo a',
+    en: 'New to',
+    es: 'Nuevo a',
   },
   create_an_account: {
-    EN: 'Create an account',
-    ES: 'Crea una cuenta',
+    en: 'Create an account',
+    es: 'Crea una cuenta',
   },
   change_email: {
-    EN: 'Change email',
-    ES: 'Cambiar e-mail',
+    en: 'Change email',
+    es: 'Cambiar e-mail',
   },
   forgot_password: {
-    EN: 'Forgot password',
-    ES: 'Has olvidado tu contraseña',
+    en: 'Forgot password',
+    es: 'Has olvidado tu contraseña',
   },
   errors: {
     valid_email: {
-      EN: 'Please enter a valid email',
-      ES: 'Por favor introduzca un correo electrónico válido',
+      en: 'Please enter a valid email',
+      es: 'Por favor introduzca un correo electrónico válido',
     },
     enter_password: {
-      EN: 'Please enter a password',
-      ES: 'Porfavor ingrese una contraseña',
+      en: 'Please enter a password',
+      es: 'Porfavor ingrese una contraseña',
     },
     valid_password: {
-      EN: 'Passwords must be at least 6 characters',
-      ES: 'Las contraseñas deben tener al menos 6 caracteres',
+      en: 'Passwords must be at least 6 characters',
+      es: 'Las contraseñas deben tener al menos 6 caracteres',
     },
     submit_error: {
-      EN: 'Sorry we did not recognize either your email or password. Please try to sign in again or create a new account.',
-      ES: 'Lo sentimos, no reconocimos su correo electrónico o su contraseña. Intente iniciar sesión de nuevo o cree una cuenta nueva.',
+      en: 'Sorry we did not recognize either your email or password. Please try to sign in again or create a new account.',
+      es: 'Lo sentimos, no reconocimos su correo electrónico o su contraseña. Intente iniciar sesión de nuevo o cree una cuenta nueva.',
     },
   },
 };

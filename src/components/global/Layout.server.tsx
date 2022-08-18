@@ -70,7 +70,7 @@ function HeaderWithMenu({theme}: {theme: BrandTheme}) {
 
 function FooterWithMenu({theme}: {theme: BrandTheme}) {
   const {footerMenu, footerMenu2} = useLayoutQuery();
-  return <Footer menu={footerMenu} menu2={footerMenu2} theme={theme} lang={'ES'}/>;
+  return <Footer menu={footerMenu} menu2={footerMenu2} theme={theme} />;
 }
 
 function useLayoutQuery() {
