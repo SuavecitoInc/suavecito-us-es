@@ -1,16 +1,24 @@
 import {Suspense, useMemo} from 'react';
-import {
-  gql,
-  useShopQuery,
-  useLocalization,
-  CacheNone,
-  CacheLong,
-} from '@shopify/hydrogen';
+import {gql, useShopQuery, CacheLong} from '@shopify/hydrogen';
 import {PRODUCT_CARD_FRAGMENT} from '~/lib/fragments';
-import {ProductGridItem, Section, Heading} from '~/components';
+import {ProductGridItem, Section} from '~/components';
 import type {Product} from '@shopify/hydrogen/storefront-api-types';
 
-export function BestSellers({title = 'Best Sellers', count = 4, ...props}) {
+const best_sellers: {[key: string]: any} = {
+  title: {
+    en: 'Best Sellers',
+    es: 'Más Vendidos',
+  },
+};
+
+export function BestSellers({
+  lang = 'en',
+  title = 'Best Sellers',
+  count = 4,
+  ...props
+}) {
+  title = best_sellers.title[lang];
+
   const bestSellersMarkup = useMemo(() => {
     return (
       <Suspense>

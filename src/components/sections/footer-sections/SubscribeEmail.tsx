@@ -6,7 +6,32 @@ import {BrandTheme} from '~/types/suavecito';
 // @ts-ignore
 const PhoneInput = RPI.default ? RPI.default : RPI;
 
-export function SubscribeEmail({theme}: {theme?: BrandTheme}) {
+export const newsletter: {[key: string]: any} = {
+  email: {
+    en: 'Email Address',
+    es: 'Correo Electrónico',
+  },
+  phone: {
+    en: 'Mobile Phone',
+    es: 'Teléfono Móvil',
+  },
+  disclaimer: {
+    en: 'By clicking SUBSCRIBE, you agree to receive marketing text messages from Suavecito, Inc. at the number provided, including messages sent by autodialer. Consent is not a condition of any purchase. Message and data rates may apply. Message frequency varies. Reply HELP for help or STOP to cancel. View our Privacy Policy and Terms of Service.',
+    es: 'Al hacer clic en SUSCRIBIRSE, acepta recibir mensajes de texto de marketing de Suavecito, Inc. al número proporcionado, incluidos los mensajes enviados por marcador automático. El consentimiento no es una condición de ninguna compra. Se pueden aplicar tarifas por mensajes y datos. La frecuencia de los mensajes varía. Responda HELP para obtener ayuda o STOP para cancelar. Vea nuestra Política de Privacidad y Términos de Servicio.',
+  },
+  submit: {
+    en: 'Submit',
+    es: 'Enviar',
+  },
+};
+
+export function SubscribeEmail({
+  lang = 'en',
+  theme,
+}: {
+  lang?: 'en' | 'es';
+  theme?: BrandTheme;
+}) {
   const formRef = useRef<HTMLFormElement>(null);
 
   const formOutcomeRef = useRef<HTMLParagraphElement | null>(null);
@@ -107,7 +132,7 @@ export function SubscribeEmail({theme}: {theme?: BrandTheme}) {
               <input
                 className="w-full border-none"
                 type="email"
-                placeholder="Email Address"
+                placeholder={newsletter.email[lang]}
                 onChange={(evt) => setEmailInput(evt.target.value)}
                 required
               />
@@ -115,7 +140,7 @@ export function SubscribeEmail({theme}: {theme?: BrandTheme}) {
             <div className="flex mb-[5px] klaviyo-input">
               <PhoneInput
                 country={'us'}
-                placeholder="Mobile Phone"
+                placeholder={newsletter.phone[lang]}
                 value={phoneInput}
                 onChange={(phoneInput: string, country: string) =>
                   checkPhoneInput(phoneInput, country)
@@ -126,7 +151,7 @@ export function SubscribeEmail({theme}: {theme?: BrandTheme}) {
                 type="submit"
                 ref={buttonRef}
               >
-                Submit
+                {newsletter.submit[lang]}
               </button>
             </div>
             <div>
@@ -136,14 +161,12 @@ export function SubscribeEmail({theme}: {theme?: BrandTheme}) {
               ></p>
             </div>
             <div>
-              <p className={`text-[10px] ${pColor[mainColor]}`}>
-                By clicking SUBSCRIBE, you agree to receive marketing text
-                messages from Suavecito, Inc. at the number provided, including
-                messages sent by autodialer. Consent is not a condition of any
-                purchase. Message and data rates may apply. Message frequency
-                varies. Reply HELP for help or STOP to cancel. View our Privacy
-                Policy and Terms of Service.
-              </p>
+              <p
+                className={`text-[10px] ${pColor[mainColor]}`}
+                dangerouslySetInnerHTML={{
+                  __html: newsletter.disclaimer[lang],
+                }}
+              />
             </div>
           </div>
         </form>

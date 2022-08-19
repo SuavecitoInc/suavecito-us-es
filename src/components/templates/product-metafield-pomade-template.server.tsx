@@ -7,6 +7,7 @@ import {
   useLocalization,
   useServerAnalytics,
   useShopQuery,
+  useUrl,
 } from '@shopify/hydrogen';
 
 import {MEDIA_FRAGMENT} from '~/lib/fragments';
@@ -33,10 +34,16 @@ import {
 } from '~/components';
 
 export function ProductMetafieldPomadeTemplate({handle}: {handle: string}) {
+  const {search} = useUrl();
+  const params = new URLSearchParams(search);
+  const initialVariant = params.get('variant');
+
   const {
     language: {isoCode: languageCode},
     country: {isoCode: countryCode},
   } = useLocalization();
+
+  const LANG = import.meta.env.PUBLIC_LANGUAGE_CODE;
 
   const {
     data: {product, shop},
@@ -131,10 +138,19 @@ export function ProductMetafieldPomadeTemplate({handle}: {handle: string}) {
         <Seo type="product" data={product} />
       </Suspense>
       <div className="page-width">
-        <ProductOptionsProvider data={product}>
+        <ProductOptionsProvider
+          data={product}
+          initialVariantId={
+            initialVariant
+              ? `gid://shopify/ProductVariant/${initialVariant}`
+              : undefined
+          }
+        >
           <Section padding="x" className="px-0">
             <div className="flex flex-col md:flex-row gap-10">
-              <ProductMetafieldImages className="flex-1" />
+              <Suspense>
+                <ProductMetafieldImages className="flex-1" />
+              </Suspense>
 
               <div className="flex-1">
                 <section>
@@ -148,6 +164,7 @@ export function ProductMetafieldPomadeTemplate({handle}: {handle: string}) {
                   </div>
                   <Suspense>
                     <ProductOptionsVariantForm
+                      lang={LANG}
                       optionNames={defaultOptionNames}
                       tags={tags}
                     />
@@ -160,22 +177,22 @@ export function ProductMetafieldPomadeTemplate({handle}: {handle: string}) {
 
         {/* check if productSectionFeaturedImage1 && productSectionDescription are set */}
         {productSectionFeaturedImage1 && productSectionDescription && (
-          <ProductSectionContentGrid {...productContentGridData} />
+          <ProductSectionContentGrid lang={LANG} {...productContentGridData} />
         )}
 
         {/* Product Section How To */}
         {productSectionHowToText && productSectionHowToEmbeddedVideo && (
-          <ProductSectionHowTo {...productContentHowTo} />
+          <ProductSectionHowTo lang={LANG} {...productContentHowTo} />
         )}
       </div>
       {/* Product Section How it Looks */}
       {howItLooksImage1 && howItLooksImage2 && (
-        <ProductSectionHowItLooks {...productContentHowItLooks} />
+        <ProductSectionHowItLooks lang={LANG} {...productContentHowItLooks} />
       )}
 
       <div className="page-width">
-        <PomadeCompareChart />
-        <ProductSectionYouMayAlsoLike productId={product.id} />
+        <PomadeCompareChart lang={LANG} />
+        <ProductSectionYouMayAlsoLike lang={LANG} productId={product.id} />
       </div>
     </Layout>
   );

@@ -1,7 +1,122 @@
 import {gql} from '@shopify/hydrogen';
 
+const LANG = import.meta.env.PUBLIC_LANGUAGE_CODE;
+
+const PRODUCT_SECTION_LANG_FRAGMENT =
+  LANG === 'es'
+    ? gql`
+        fragment ProductSectionLang on Product {
+          productSectionDescription: metafield(
+            namespace: "debut"
+            key: "section_product_description_es"
+          ) {
+            value
+          }
+          productSectionListItemText1: metafield(
+            namespace: "debut"
+            key: "section_list_item_1_text_es"
+          ) {
+            value
+          }
+          productSectionListItemText2: metafield(
+            namespace: "debut"
+            key: "section_list_item_2_text_es"
+          ) {
+            value
+          }
+          productSectionListItemText3: metafield(
+            namespace: "debut"
+            key: "section_list_item_3_text_es"
+          ) {
+            value
+          }
+          productSectionListItemText4: metafield(
+            namespace: "debut"
+            key: "section_list_item_4_text_es"
+          ) {
+            value
+          }
+          productSectionHowToImage: metafield(
+            namespace: "debut"
+            key: "section_how_to_image_es"
+          ) {
+            reference {
+              ...Media
+            }
+          }
+          productSectionHowToText: metafield(
+            namespace: "debut"
+            key: "section_how_to_es"
+          ) {
+            value
+          }
+          productSectionHowToEmbeddedVideo: metafield(
+            namespace: "debut"
+            key: "video_embed_es"
+          ) {
+            value
+          }
+        }
+      `
+    : gql`
+        fragment ProductSectionLang on Product {
+          productSectionDescription: metafield(
+            namespace: "debut"
+            key: "section_product_description"
+          ) {
+            value
+          }
+          productSectionListItemText1: metafield(
+            namespace: "debut"
+            key: "section_list_item_1_text"
+          ) {
+            value
+          }
+          productSectionListItemText2: metafield(
+            namespace: "debut"
+            key: "section_list_item_2_text"
+          ) {
+            value
+          }
+          productSectionListItemText3: metafield(
+            namespace: "debut"
+            key: "section_list_item_3_text"
+          ) {
+            value
+          }
+          productSectionListItemText4: metafield(
+            namespace: "debut"
+            key: "section_list_item_4_text"
+          ) {
+            value
+          }
+          productSectionHowToImage: metafield(
+            namespace: "debut"
+            key: "section_how_to_image"
+          ) {
+            reference {
+              ...Media
+            }
+          }
+          productSectionHowToText: metafield(
+            namespace: "debut"
+            key: "section_how_to"
+          ) {
+            value
+          }
+          productSectionHowToEmbeddedVideo: metafield(
+            namespace: "debut"
+            key: "video_embed"
+          ) {
+            value
+          }
+        }
+      `;
+
 export const PRODUCT_SECTION_FRAGMENT = gql`
+  ${PRODUCT_SECTION_LANG_FRAGMENT}
   fragment ProductSection on Product {
+    ...ProductSectionLang
     productSectionFeaturedImage1: metafield(
       namespace: "debut"
       key: "section_featured_image_1"
@@ -17,36 +132,6 @@ export const PRODUCT_SECTION_FRAGMENT = gql`
       reference {
         ...Media
       }
-    }
-    productSectionDescription: metafield(
-      namespace: "debut"
-      key: "section_product_description"
-    ) {
-      value
-    }
-    productSectionListItemText1: metafield(
-      namespace: "debut"
-      key: "section_list_item_1_text"
-    ) {
-      value
-    }
-    productSectionListItemText2: metafield(
-      namespace: "debut"
-      key: "section_list_item_2_text"
-    ) {
-      value
-    }
-    productSectionListItemText3: metafield(
-      namespace: "debut"
-      key: "section_list_item_3_text"
-    ) {
-      value
-    }
-    productSectionListItemText4: metafield(
-      namespace: "debut"
-      key: "section_list_item_4_text"
-    ) {
-      value
     }
     productSectionListItemImage1: metafield(
       namespace: "debut"
@@ -79,26 +164,6 @@ export const PRODUCT_SECTION_FRAGMENT = gql`
       reference {
         ...Media
       }
-    }
-    productSectionHowToImage: metafield(
-      namespace: "debut"
-      key: "section_how_to_image"
-    ) {
-      reference {
-        ...Media
-      }
-    }
-    productSectionHowToText: metafield(
-      namespace: "debut"
-      key: "section_how_to"
-    ) {
-      value
-    }
-    productSectionHowToEmbeddedVideo: metafield(
-      namespace: "debut"
-      key: "video_embed"
-    ) {
-      value
     }
   }
 `;
@@ -415,6 +480,180 @@ export const PRODUCT_SECTION_KIT_INCLUDES = gql`
       key: "kit_product_variant_10"
     ) {
       value
+    }
+  }
+`;
+
+export const FREE_GIFT_PRODUCT_CARD_FRAGMENT = gql`
+  fragment FreeGiftProductCard on Product {
+    id
+    title
+    publishedAt
+    handle
+    availableForSale
+    variants(first: 1) {
+      nodes {
+        id
+        availableForSale
+        quantityAvailable
+        image {
+          url
+          altText
+          width
+          height
+        }
+        priceV2 {
+          amount
+          currencyCode
+        }
+        compareAtPriceV2 {
+          amount
+          currencyCode
+        }
+      }
+    }
+  }
+`;
+
+export const COLLECTION_PRODUCT_FRAGMENT = gql`
+  fragment CollectionProduct on Product {
+    id
+    title
+    publishedAt
+    handle
+    tags
+    variants(first: 100) {
+      nodes {
+        id
+        image {
+          url
+          altText
+          width
+          height
+        }
+        priceV2 {
+          amount
+          currencyCode
+        }
+        compareAtPriceV2 {
+          amount
+          currencyCode
+        }
+        variantColorImage: metafield(
+          namespace: "debut"
+          key: "variant_color_image"
+        ) {
+          reference {
+            ...Media
+          }
+        }
+      }
+    }
+  }
+`;
+
+export const FILTERED_COLLECTION_FRAGMENT = gql`
+  fragment FilteredCollectionWithMetafield on Collection {
+    id
+    handle
+    title
+    description
+    seo {
+      description
+      title
+    }
+    headingName: metafield(
+      namespace: "hydrogen"
+      key: "subcollection_heading"
+    ) {
+      value
+    }
+    products(
+      first: 100
+      filters: {
+        productMetafield: {
+          namespace: "suave"
+          key: "hydrogen_es_enabled"
+          value: "true"
+        }
+      }
+    ) {
+      nodes {
+        ...CollectionProduct
+      }
+      pageInfo {
+        hasNextPage
+        endCursor
+      }
+    }
+  }
+`;
+
+export const COLLECTION_PRODUCT_VARIANT_IMAGE_FRAGMENT = gql`
+  fragment CollectionProductWithVariantImage on Product {
+    id
+    title
+    publishedAt
+    handle
+    tags
+    variants(first: 100) {
+      nodes {
+        id
+        image {
+          url
+          altText
+          width
+          height
+        }
+        priceV2 {
+          amount
+          currencyCode
+        }
+        compareAtPriceV2 {
+          amount
+          currencyCode
+        }
+        variantImage1: metafield(namespace: "debut", key: "variant_image_1") {
+          reference {
+            ...Media
+          }
+        }
+        variantTitle: metafield(namespace: "debut", key: "variant_title") {
+          value
+        }
+      }
+    }
+  }
+`;
+
+export const FILTERED_COLLECTION_WITH_VARIANT_FRAGMENT = gql`
+  fragment FilteredCollectionWithVariantImage on Collection {
+    id
+    handle
+    title
+    description
+    seo {
+      description
+      title
+    }
+    products(
+      first: 100
+      filters: {
+        productMetafield: {
+          namespace: "suave"
+          key: "hydrogen_es_enabled"
+          value: "true"
+        }
+      }
+    ) {
+      nodes {
+        ...CollectionProductWithVariantImage
+      }
+      pageInfo {
+        hasNextPage
+        endCursor
+>>>>>>> a926dfc21d2c1c7804d79bcb3268569bb6241ee8
+      }
     }
   }
 `;

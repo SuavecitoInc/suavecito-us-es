@@ -7,12 +7,19 @@ interface Metafield {
   reference?: object;
 }
 
+const title: {[key: string]: string} = {
+  en: 'How to Use',
+  es: 'Cómo Utilizar',
+};
+
 export function ProductSectionHowTo({
+  lang = 'en',
   theme = 'suavecito',
   productSectionHowToImage,
   productSectionHowToText,
   productSectionHowToEmbeddedVideo,
 }: {
+  lang?: 'en' | 'es';
   theme?: BrandTheme;
   productSectionHowToImage?: Metafield;
   productSectionHowToText: Metafield;
@@ -35,7 +42,7 @@ export function ProductSectionHowTo({
         size="heading"
         className={`uppercase text-center ${colors[theme]}`}
       >
-        How to Use
+        {title[lang]}
       </Heading>
       <div
         className={`pt-6 flex flex-col md:flex-row gap-6 ${

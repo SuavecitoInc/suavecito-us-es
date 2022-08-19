@@ -10,11 +10,18 @@ import {
 
 import {PRODUCT_CARD_FRAGMENT} from '~/lib/fragments';
 import {ProductGrid, Section, Text} from '~/components';
-import {NoResultRecommendations, SearchPage} from '~/components/index.server';
+import {SearchPage} from '~/components/index.server';
 import {PAGINATION_SIZE} from '~/lib/const';
 import type {Collection} from '@shopify/hydrogen/storefront-api-types';
-import {Suspense} from 'react';
-import {ProductGridItem} from '~/components';
+
+const TAG = 'hydrogen_es';
+
+const search_page: {[key: string]: any} = {
+  no_results: {
+    en: 'No results, try something else',
+    es: 'No hay resultados, intenta otra cosa',
+  },
+};
 
 export default function Search({
   pageBy = PAGINATION_SIZE,
@@ -23,6 +30,8 @@ export default function Search({
   pageBy?: number;
   params: HydrogenRouteProps['params'];
 }) {
+  const LANG = import.meta.env.PUBLIC_LANGUAGE_CODE;
+
   const {
     language: {isoCode: languageCode},
     country: {isoCode: countryCode},
@@ -33,6 +42,8 @@ export default function Search({
 
   const searchTerm = searchParams.get('q');
 
+  const modifiedSearchTerm = `tag:${TAG} AND ${searchTerm}`;
+
   const {data} = useShopQuery<any>({
     query: SEARCH_QUERY,
     variables: {
@@ -40,7 +51,7 @@ export default function Search({
       country: countryCode,
       language: languageCode,
       pageBy,
-      searchTerm,
+      searchTerm: modifiedSearchTerm,
     },
     preload: true,
   });
@@ -53,15 +64,9 @@ export default function Search({
       <SearchPage searchTerm={searchTerm ? decodeURI(searchTerm) : null}>
         {noResults && (
           <Section padding="x">
-            <Text className="opacity-50">No results, try something else.</Text>
+            <Text className="opacity-50">{search_page.no_results[LANG]}</Text>
           </Section>
         )}
-        <Suspense>
-          <NoResultRecommendations
-            country={countryCode}
-            language={languageCode}
-          />
-        </Suspense>
       </SearchPage>
     );
   }
@@ -98,6 +103,8 @@ export async function api(
   const searchTerm = url.searchParams.get('q');
   const {handle} = params;
 
+  const modifiedSearchTerm = `tag:${TAG} AND ${searchTerm}`;
+
   return await queryShop({
     query: PAGINATE_SEARCH_QUERY,
     variables: {
@@ -105,7 +112,7 @@ export async function api(
       cursor,
       pageBy: PAGINATION_SIZE,
       country,
-      searchTerm,
+      searchTerm: modifiedSearchTerm,
     },
   });
 }

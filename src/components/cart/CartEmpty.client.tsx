@@ -5,6 +5,19 @@ import {Button, Text, ProductCard, Heading, Skeleton} from '~/components';
 import type {Product} from '@shopify/hydrogen/storefront-api-types';
 import {Suspense} from 'react';
 
+const empty_cart: {[key: string]: any} = {
+  message: {
+    en: 'Looks like you haven’t added anything yet, let’s get you started!',
+    es: 'Parece que aún no has añadido nada, ¡comencemos!',
+  },
+  button: {
+    continue_shopping: {
+      en: 'Continue Shopping',
+      es: 'Seguir comprando',
+    },
+  },
+};
+
 export function CartEmpty({
   onClose,
   layout = 'drawer',
@@ -12,6 +25,8 @@ export function CartEmpty({
   onClose?: () => void;
   layout?: 'page' | 'drawer';
 }) {
+  const LANG = import.meta.env.PUBLIC_LANGUAGE_CODE;
+
   const scrollRef = useRef(null);
   const {y} = useScroll(scrollRef);
 
@@ -30,15 +45,14 @@ export function CartEmpty({
   return (
     <div ref={scrollRef} className={container[layout]}>
       <section className="grid gap-6">
-        <Text format>
-          Looks like you haven&rsquo;t added anything yet, let&rsquo;s get you
-          started!
-        </Text>
+        <Text format>{empty_cart.message[LANG]}</Text>
         <div>
-          <Button onClick={onClose}>Continue shopping</Button>
+          <Button onClick={onClose}>
+            {empty_cart.button.continue_shopping[LANG]}
+          </Button>
         </div>
       </section>
-      <section className="grid gap-8 pt-4">
+      {/* <section className="grid gap-8 pt-4">
         <Heading format size="copy">
           Shop Best Sellers
         </Heading>
@@ -49,37 +63,37 @@ export function CartEmpty({
             <TopProducts onClose={onClose} />
           </Suspense>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 }
 
-function TopProducts({onClose}: {onClose?: () => void}) {
-  const products: Product[] = fetchSync('/api/bestSellers').json();
+// function TopProducts({onClose}: {onClose?: () => void}) {
+//   const products: Product[] = fetchSync('/api/bestSellers').json();
 
-  if (products.length === 0) {
-    return <Text format>No products found.</Text>;
-  }
+//   if (products.length === 0) {
+//     return <Text format>No products found.</Text>;
+//   }
 
-  return (
-    <>
-      {products.map((product) => (
-        <ProductCard product={product} key={product.id} onClick={onClose} />
-      ))}
-    </>
-  );
-}
+//   return (
+//     <>
+//       {products.map((product) => (
+//         <ProductCard product={product} key={product.id} onClick={onClose} />
+//       ))}
+//     </>
+//   );
+// }
 
-function Loading() {
-  return (
-    <>
-      {[...new Array(4)].map((_, i) => (
-        // eslint-disable-next-line react/no-array-index-key
-        <div key={i} className="grid gap-2">
-          <Skeleton className="aspect-[3/4]" />
-          <Skeleton className="w-32 h-4" />
-        </div>
-      ))}
-    </>
-  );
-}
+// function Loading() {
+//   return (
+//     <>
+//       {[...new Array(4)].map((_, i) => (
+//         // eslint-disable-next-line react/no-array-index-key
+//         <div key={i} className="grid gap-2">
+//           <Skeleton className="aspect-[3/4]" />
+//           <Skeleton className="w-32 h-4" />
+//         </div>
+//       ))}
+//     </>
+//   );
+// }

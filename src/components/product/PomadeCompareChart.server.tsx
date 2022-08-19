@@ -1,6 +1,6 @@
 import {Image, Link} from '@shopify/hydrogen';
 import {Media} from '@shopify/hydrogen/storefront-api-types';
-import {chartData} from '../..//data/pomade-chart';
+import {chartData} from '../../data/pomade-chart-es';
 import {Heading} from '../index';
 
 const colors: {
@@ -35,7 +35,12 @@ const colors: {
   },
 };
 
-export function PomadeCompareChart() {
+export function PomadeCompareChart({lang = 'en'}: {lang: 'en' | 'es'}) {
+  const title = lang === 'es' ? 'Compare' : 'Compare';
+  const languageCode = lang.toLowerCase();
+  const washabilityTitle = lang === 'es' ? 'Lavabilidad' : 'Washability';
+  const bestForTitle = lang === 'es' ? 'Mejor Para' : 'Best For';
+
   return (
     <section className="py-[35px]">
       <Heading
@@ -43,27 +48,30 @@ export function PomadeCompareChart() {
         size="heading"
         className="uppercase text-center mx-auto max-w-full mb-[20px]"
       >
-        Compare
+        {title}
       </Heading>
       <div className="w-full overflow-scroll">
         <div className="w-[500vw] md:w-full grid grid-rows grid-cols-6 gap-1 text-center">
-          {chartData.map((el) => (
-            <div key={`${el.product.title}-image`} className="p-2">
-              <Link to={`/products${el.product.link}`}>
+          {chartData.map(({product}) => (
+            <div
+              key={`${product.data[languageCode].title}-image`}
+              className="p-2"
+            >
+              <Link to={`/products${product.data.link}`}>
                 <FeaturedMedia
                   scale={2}
                   sizes={
-                    el.product.featuredImage?.reference
+                    product.featuredImage?.reference
                       ? '(min-width: 80em) 700px, (min-width: 48em) 450px, 500px'
                       : '(min-width: 80em) 1400px, (min-width: 48em) 900px, 500px'
                   }
                   widths={
-                    el.product.featuredImage?.reference
+                    product.featuredImage?.reference
                       ? [500, 450, 700]
                       : [500, 900, 1400]
                   }
-                  width={el.product.featuredImage?.reference ? 375 : 750}
-                  data={el.product.featuredImage?.reference as unknown as Media}
+                  width={product.featuredImage?.reference ? 375 : 750}
+                  data={product.featuredImage?.reference as unknown as Media}
                   loading="eager"
                 />
               </Link>
@@ -72,77 +80,77 @@ export function PomadeCompareChart() {
         </div>
 
         <div className="w-[500vw] md:w-full grid grid-rows grid-cols-6 gap-1 text-center text-sm">
-          {chartData.map((el) => (
+          {chartData.map(({product}) => (
             <div
-              key={el.product.title}
+              key={product.data[languageCode].title}
               className={`${
-                colors[el.product.color].header
+                colors[product.data.color].header
               } px-4 pt-4 font-bold uppercase`}
             >
-              {el.product.title}
+              {product.data[languageCode].title}
             </div>
           ))}
         </div>
 
         <div className="w-[500vw] md:w-full grid grid-rows grid-cols-6 gap-1 text-center text-sm">
-          {chartData.map((el) => (
+          {chartData.map(({product}) => (
             <div
-              key={`${el.product.title}-triangle`}
+              key={`${product.data[languageCode].title}-triangle`}
               className={`triangle-container ${
-                colors[el.product.color].body
+                colors[product.data.color].body
               } p-4`}
             >
               <div
-                className={`triangle ${colors[el.product.color].header} p-4`}
+                className={`triangle ${colors[product.data.color].header} p-4`}
               />
             </div>
           ))}
         </div>
 
         <div className="w-[500vw] md:w-full grid grid-rows grid-cols-6 gap-1 text-center text-sm">
-          {chartData.map((el) => (
+          {chartData.map(({product}) => (
             <div
-              key={`${el.product.title}-${el.product.hold}`}
+              key={`${product.data[languageCode].title}-${product.data[languageCode].hold}`}
               className={`${
-                colors[el.product.color].body
+                colors[product.data.color].body
               } p-4 border-b-2 border-black`}
             >
-              {el.product.hold}
+              {product.data[languageCode].hold}
             </div>
           ))}
         </div>
         <div className="w-[500vw] md:w-full grid grid-rows grid-cols-6 gap-1 text-center text-sm">
-          {chartData.map((el) => (
+          {chartData.map(({product}) => (
             <div
-              key={`${el.product.title}-${el.product.shine}`}
+              key={`${product.data[languageCode].title}-${product.data[languageCode].shine}`}
               className={`${
-                colors[el.product.color].body
+                colors[product.data.color].body
               } p-4 border-b-2 border-black`}
             >
-              {el.product.shine}
+              {product.data[languageCode].shine}
             </div>
           ))}
         </div>
         <div className="w-[500vw] md:w-full grid grid-rows grid-cols-6 gap-1 text-center text-sm">
-          {chartData.map((el) => (
+          {chartData.map(({product}) => (
             <div
-              key={`${el.product.title}-${el.product.washability}`}
+              key={`${product.data[languageCode].title}-${product.data[languageCode].washability}`}
               className={`${
-                colors[el.product.color].body
+                colors[product.data.color].body
               } p-4 border-b-2 border-black`}
             >
-              Washability: {el.product.washability}
+              {washabilityTitle}: {product.data[languageCode].washability}
             </div>
           ))}
         </div>
         <div className="w-[500vw] md:w-full grid grid-rows grid-cols-6 gap-1 text-sm">
-          {chartData.map((el) => (
+          {chartData.map(({product}) => (
             <div
-              key={`${el.product.title}-${el.product.bestFor}`}
-              className={`${colors[el.product.color].body} p-4`}
+              key={`${product.data[languageCode].title}-${product.data[languageCode].bestFor}`}
+              className={`${colors[product.data.color].body} p-4`}
             >
-              <span className="font-bold">Best For: </span>
-              {el.product.bestFor}
+              <span className="font-bold">{bestForTitle}: </span>
+              {product.data[languageCode].bestFor}
             </div>
           ))}
         </div>

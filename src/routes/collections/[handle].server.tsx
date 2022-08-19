@@ -49,11 +49,11 @@ export default function Collection({params}: HydrogenRouteProps) {
   });
 
   return (
-    <Layout>
+    <Layout showTopPadding={false}>
       <Suspense>
         <Seo type="collection" data={collection} />
       </Suspense>
-      <PageHeader heading={collection.title}>
+      <PageHeader heading={collection.title} className="justify-center">
         {collection?.description && (
           <div className="flex items-baseline justify-between w-full">
             <div>
@@ -128,7 +128,17 @@ const COLLECTION_QUERY = gql`
         height
         altText
       }
-      products(first: $pageBy, after: $cursor) {
+      products(
+        first: $pageBy
+        after: $cursor
+        filters: {
+          productMetafield: {
+            namespace: "suave"
+            key: "hydrogen_es_enabled"
+            value: "true"
+          }
+        }
+      ) {
         nodes {
           ...ProductCard
         }

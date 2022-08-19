@@ -27,6 +27,8 @@ import {
   ProductSectionInfoTabs,
 } from '~/components';
 
+const LANG = import.meta.env.PUBLIC_LANGUAGE_CODE;
+
 export default function Product() {
   const {handle} = useRouteParams();
   const {
@@ -72,11 +74,17 @@ export default function Product() {
     apparelLogoBack,
     sizeChart,
     oldSizeChart,
+    spanishDescription,
   } = product;
 
   const defaultOptionNames = options.map(
     (option: {name: string}) => option.name,
   );
+
+  const description =
+    spanishDescription !== null && LANG === 'es'
+      ? spanishDescription.value
+      : descriptionHtml;
 
   const getTabsContent = () => {
     const tabs: {title: string; content: any}[] = [];
@@ -100,7 +108,7 @@ export default function Product() {
     // description
     tabs.push({
       title: 'Description',
-      content: descriptionHtml,
+      content: description,
     });
     // product size chart
     // let productSizeChartType: string | null = null;
@@ -142,7 +150,13 @@ export default function Product() {
               <div className="flex-1">
                 <section>
                   <div className="grid gap-2">
-                    <Heading as="h1" format className="whitespace-normal">
+                    <Heading
+                      as="h1"
+                      format
+                      className={`whitespace-normal ${
+                        theme === 'premium blends' && 'text-white'
+                      }`}
+                    >
                       {title}
                     </Heading>
                     {vendor && (
@@ -152,6 +166,7 @@ export default function Product() {
                   {product.productType !== 'FGWP' && (
                     <Suspense>
                       <ProductOptionsVariantForm
+                        lang={LANG}
                         theme={theme}
                         optionNames={defaultOptionNames}
                         tags={tags}
@@ -159,11 +174,15 @@ export default function Product() {
                     </Suspense>
                   )}
                   {/* display description here if no features, otherwise render tabs */}
-                  {descriptionHtml && tabsContent.length === 1 && (
-                    <div className="py-10">
+                  {description && tabsContent.length === 1 && (
+                    <div
+                      className={`py-10 ${
+                        theme === 'premium blends' && 'text-white'
+                      }`}
+                    >
                       <div
                         className="description"
-                        dangerouslySetInnerHTML={{__html: descriptionHtml}}
+                        dangerouslySetInnerHTML={{__html: description}}
                       />
                     </div>
                   )}
@@ -173,13 +192,21 @@ export default function Product() {
           </Section>
         </ProductOptionsProvider>
 
-        {descriptionHtml && tabsContent.length > 1 && (
+        {description && tabsContent.length > 1 && (
           <div className="grid gap-4 py-4">
-            <ProductSectionInfoTabs theme={theme} tabs={tabsContent} />
+            <ProductSectionInfoTabs
+              lang={LANG}
+              theme={theme}
+              tabs={tabsContent}
+            />
           </div>
         )}
+      </div>
 
-        <ProductSectionYouMayAlsoLike theme={theme} productId={product.id} />
+      <div className={`w-full ${theme === 'premium blends' && 'bg-white'}`}>
+        <div className="page-width">
+          <ProductSectionYouMayAlsoLike lang={LANG} productId={product.id} />
+        </div>
       </div>
     </Layout>
   );
@@ -253,6 +280,12 @@ const PRODUCT_QUERY = gql`
       seo {
         description
         title
+      }
+      spanishDescription: metafield(
+        namespace: "debut"
+        key: "section_product_description_es"
+      ) {
+        value
       }
     }
     shop {

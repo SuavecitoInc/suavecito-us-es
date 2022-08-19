@@ -9,6 +9,7 @@ interface Metafield {
 }
 
 export function ProductSectionHowItLooks({
+  lang = 'en',
   theme = 'suavecito',
   howItLooksImage1,
   howItLooksImage2,
@@ -19,6 +20,7 @@ export function ProductSectionHowItLooks({
   howItLooksImage7,
   howItLooksImage8,
 }: {
+  lang?: 'en' | 'es';
   theme?: BrandTheme;
   howItLooksImage1: Metafield | null;
   howItLooksImage2: Metafield | null;
@@ -29,6 +31,11 @@ export function ProductSectionHowItLooks({
   howItLooksImage7: Metafield | null;
   howItLooksImage8: Metafield | null;
 }) {
+  const title: {[key: string]: string} = {
+    en: 'How It Looks',
+    es: 'Como luce',
+  };
+
   const images = [
     howItLooksImage1,
     howItLooksImage2,
@@ -49,7 +56,7 @@ export function ProductSectionHowItLooks({
           theme === 'premium blends' && 'text-white'
         }`}
       >
-        How It Looks
+        {title[lang]}
       </Heading>
       <div className="flex flex-row gap-2 overflow-x-scroll">
         {images.map((image) => {
