@@ -19,18 +19,27 @@ export function useFreeGiftWithPurchase(freeGifts: Product[]) {
   const tier2Products = [freeGifts[2], freeGifts[3]];
   const tier3Products = [...freeGifts];
 
-  const [tier1Value, setTier1Value] = useState<string>(
-    freeGifts[0].variants.nodes[0].id,
-  );
-  const [tier2Value, setTier2Value] = useState<string>(
-    freeGifts[2].variants.nodes[0].id,
-  );
-  const [tier3Value1, setTier3Value1] = useState<string>(
-    freeGifts[0].variants.nodes[0].id,
-  );
-  const [tier3Value2, setTier3Value2] = useState<string>(
-    freeGifts[2].variants.nodes[0].id,
-  );
+  // get first available, if not found return first, product component will handle oos
+  const getFirstAvailable = (arr: Product[]) => {
+    const found = arr.find((product: Product) => {
+      if (
+        product.variants.nodes[0] &&
+        product.variants.nodes[0].quantityAvailable
+      )
+        return product.variants.nodes[0].quantityAvailable > 0;
+    });
+    let firstAvailable = arr[0].variants.nodes[0].id;
+    if (found) firstAvailable = found.variants.nodes[0].id;
+    return firstAvailable;
+  };
+
+  const tier1FirstAvailable = getFirstAvailable([freeGifts[0], freeGifts[1]]);
+  const tier2FirstAvailable = getFirstAvailable([freeGifts[2], freeGifts[3]]);
+
+  const [tier1Value, setTier1Value] = useState<string>(tier1FirstAvailable);
+  const [tier2Value, setTier2Value] = useState<string>(tier2FirstAvailable);
+  const [tier3Value1, setTier3Value1] = useState<string>(tier1FirstAvailable);
+  const [tier3Value2, setTier3Value2] = useState<string>(tier2FirstAvailable);
 
   const [currentTier, setCurrentTier] = useState<number>(0);
 
