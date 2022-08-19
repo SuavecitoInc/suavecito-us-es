@@ -1,7 +1,20 @@
 import {Seo, gql, useShopQuery, CacheLong} from '@shopify/hydrogen';
 import {FREE_GIFT_PRODUCT_CARD_FRAGMENT} from '~/lib/suavecito-fragments';
-import {PageHeader, CartPageDetails, CartDetails, Section} from '~/components';
+import {
+  PageHeader,
+  CartPageDetails,
+  CartFreeGiftWithPurchase,
+} from '~/components';
 import {Layout} from '~/components/index.server';
+
+import {FreeGiftProvider} from '~/components/FreeGiftProvider/FreeGiftProvider.client';
+import {
+  FGWP_ENABLED,
+  FGWP_1,
+  FGWP_2,
+  FGWP_3,
+  FGWP_4,
+} from '~/data/free-gift-with-purchase';
 
 export default function Cart() {
   const LANG = import.meta.env.PUBLIC_LANGUAGE_CODE;
@@ -11,10 +24,10 @@ export default function Cart() {
   } = useShopQuery({
     query: FGWP_QUERY,
     variables: {
-      handle1: 'cosmetic-bag-beige-fgwp',
-      handle2: 'hand-sanitizer-fgwp',
-      handle3: 'lipgrip-tenacity-fgwp',
-      handle4: 'shave-soap-whiskey-bar-fgwp',
+      handle1: FGWP_1,
+      handle2: FGWP_2,
+      handle3: FGWP_3,
+      handle4: FGWP_4,
     },
     preload: true,
     cache: CacheLong(),
@@ -28,10 +41,10 @@ export default function Cart() {
     <Layout>
       <Seo type="page" data={{title: 'Cart'}} />
       <PageHeader heading={title} className="max-w-7xl mx-auto" />
-      <CartPageDetails layout="page" freeGifts={freeGifts} />
-      {/* <Section className="max-w-7xl mx-auto">
-        <CartDetails layout="page" />
-      </Section> */}
+      <FreeGiftProvider freeGifts={freeGifts} enabled={FGWP_ENABLED}>
+        <CartPageDetails layout="page" />
+        {FGWP_ENABLED && <CartFreeGiftWithPurchase />}
+      </FreeGiftProvider>
     </Layout>
   );
 }
