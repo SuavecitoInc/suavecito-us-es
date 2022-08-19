@@ -23,16 +23,7 @@ const COLLECTION_QUERY = gql`
     $pageBy: Int!
     $cursor: String
   ) @inContext(country: $country, language: $language) {
-    collection(
-      handle: $handle
-      filters: {
-        productMetafield: {
-          namespace: "suave"
-          key: "hydrogen_es_enabled"
-          value: "true"
-        }
-      }
-    ) {
+    collection(handle: $handle) {
       id
       handle
       title
@@ -48,7 +39,17 @@ const COLLECTION_QUERY = gql`
         height
         altText
       }
-      products(first: $pageBy, after: $cursor) {
+      products(
+        first: $pageBy
+        after: $cursor
+        filters: {
+          productMetafield: {
+            namespace: "suave"
+            key: "hydrogen_es_enabled"
+            value: "true"
+          }
+        }
+      ) {
         nodes {
           ...CollectionProduct
         }

@@ -57,16 +57,7 @@ const COLLECTIONS_QUERY = gql`
     $language: LanguageCode
     $pageBy: Int!
   ) @inContext(country: $country, language: $language) {
-    collections(
-      first: $pageBy
-      filters: {
-        productMetafield: {
-          namespace: "suave"
-          key: "hydrogen_es_enabled"
-          value: "true"
-        }
-      }
-    ) {
+    collections(first: $pageBy) {
       nodes {
         id
         title

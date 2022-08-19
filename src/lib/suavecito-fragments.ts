@@ -652,7 +652,6 @@ export const FILTERED_COLLECTION_WITH_VARIANT_FRAGMENT = gql`
       pageInfo {
         hasNextPage
         endCursor
->>>>>>> a926dfc21d2c1c7804d79bcb3268569bb6241ee8
       }
     }
   }

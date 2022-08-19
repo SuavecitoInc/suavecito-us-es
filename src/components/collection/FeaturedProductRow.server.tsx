@@ -1,4 +1,4 @@
-import {FeaturedProductGrid} from '~/components';
+import {FeaturedProductGrid} from './FeaturedProductGrid.server';
 import {FeaturedBanner} from './FeaturedBanner.server';
 
 import type {Collection} from '@shopify/hydrogen/storefront-api-types';
@@ -9,11 +9,13 @@ export function FeaturedProductRow({
   url,
   position = 'left',
   theme = 'suavecito',
+  lang = 'en',
 }: {
   collection: Collection;
   url: string;
   position?: string;
   theme?: BrandTheme;
+  lang?: 'en' | 'es';
 }) {
   return (
     <section>
@@ -23,6 +25,7 @@ export function FeaturedProductRow({
           url={url}
           position={position}
           theme={theme}
+          lang={lang}
         />
       </div>
       <FeaturedBanner collection={collection} />

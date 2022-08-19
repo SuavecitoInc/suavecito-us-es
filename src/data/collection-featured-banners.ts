@@ -175,6 +175,39 @@ export const CollectionFeaturedBanners = [
     columns: [],
   },
   {
+    handle: 'cleansing-treatment',
+    title: 'Tinte de pelo semipermanente',
+    backgroundImage: {
+      src: 'https://cdn.shopify.com/s/files/1/0274/1389/files/suavecita-womens-hair-hero-2.jpg?v=1632786299',
+      alt: 'Tinte de pelo semipermanente',
+    },
+    description:
+      'Una fórmula a base de acondicionador de tinte directo que permite añadir un color vibrante a tu cabello preaclarado sin dañarlo.',
+    columns: [],
+  },
+  {
+    handle: 'hair-color-1',
+    title: 'Herramientas para el cabello',
+    backgroundImage: {
+      src: 'https://cdn.shopify.com/s/files/1/0274/1389/files/suavecita-womens-hair-hero-3.jpg?v=1632786299',
+      alt: 'Styling Products',
+    },
+    description:
+      'No sólo ofrecemos productos de alta calidad, sino también herramientas y accesorios duraderos para que peinar tu cabello sea una experiencia fácil y placentera. Todo diseñado, probado y aprobado por tus amigas aquí en Suavecita.',
+    columns: [],
+  },
+  {
+    handle: 'lips',
+    title: 'Cosméticos Suavecita',
+    backgroundImage: {
+      src: 'https://cdn.shopify.com/s/files/1/0274/1389/files/cosmetics_hero.jpg?v=1633128296',
+      alt: 'Styling Products',
+    },
+    description:
+      'Desde el lápiz de labios hasta las pestañas, Suavecita tiene cubiertas tus necesidades cosméticas. Nuestros productos son veganos y libres de crueldad, de alta calidad y asequibles.',
+    columns: [],
+  },
+  {
     handle: 'suavecito-collectibles',
     title: 'Suavecito y Suavecita',
     backgroundImage: {

@@ -38,17 +38,7 @@ const COLLECTION_QUERY = gql`
         height
         altText
       }
-      products(
-        first: $pageBy
-        after: $cursor
-        filters: {
-          productMetafield: {
-            namespace: "suave"
-            key: "hydrogen_es_enabled"
-            value: "true"
-          }
-        }
-      ) {
+      products(first: $pageBy, after: $cursor) {
         nodes {
           ...CollectionProductWithVariantImage
         }
