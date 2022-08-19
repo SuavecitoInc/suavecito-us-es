@@ -23,7 +23,16 @@ const COLLECTION_QUERY = gql`
     $pageBy: Int!
     $cursor: String
   ) @inContext(country: $country, language: $language) {
-    collection(handle: $handle) {
+    collection(
+      handle: $handle
+      filters: {
+        productMetafield: {
+          namespace: "suave"
+          key: "hydrogen_es_enabled"
+          value: "true"
+        }
+      }
+    ) {
       id
       handle
       title

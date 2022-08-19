@@ -11,11 +11,7 @@ import type {
 } from '@shopify/hydrogen/storefront-api-types';
 import type {BrandTheme} from '~/types/suavecito';
 
-import {
-  ProductGridItem,
-  ProductImageCarousel,
-  VariantGridItem,
-} from '~/components';
+import {ProductGridItem, VariantGridItem} from '~/components';
 
 export function VariantProductRow({
   url,

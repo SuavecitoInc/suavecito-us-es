@@ -9,7 +9,7 @@ import {AdBanners} from '~/data/ad-banners';
 import {BrandTheme} from '~/types/suavecito';
 import {IconArrow} from '~/components';
 
-import type {Collection, Product} from '@shopify/hydrogen/storefront-api-types';
+import type {Collection} from '@shopify/hydrogen/storefront-api-types';
 interface Metafield {
   value: string;
   reference?: {

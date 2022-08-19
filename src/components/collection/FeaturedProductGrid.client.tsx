@@ -10,11 +10,7 @@ import {
   ProductImageCarousel,
 } from '~/components';
 
-import type {
-  Collection,
-  Product,
-  ProductVariant,
-} from '@shopify/hydrogen/storefront-api-types';
+import type {Collection, Product} from '@shopify/hydrogen/storefront-api-types';
 import type {BrandTheme} from '~/types/suavecito';
 
 export function FeaturedProductGrid({
