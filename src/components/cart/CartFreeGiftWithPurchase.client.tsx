@@ -125,6 +125,7 @@ export function CartFreeGiftWithPurchase({
           lang={LANG}
           products={tier1Products}
           tier={1}
+          currentTier={currentTier}
           productHandler={setTier1Value}
           productValue={tier1Value}
           tierDiff={tier1Diff}
@@ -140,6 +141,7 @@ export function CartFreeGiftWithPurchase({
           lang={LANG}
           products={tier2Products}
           tier={2}
+          currentTier={currentTier}
           productHandler={setTier2Value}
           productValue={tier2Value}
           tierDiff={tier2Diff}
@@ -155,6 +157,7 @@ export function CartFreeGiftWithPurchase({
           lang={LANG}
           products={tier3Products}
           tier={3}
+          currentTier={currentTier}
           productHandler1={setTier3Value1}
           productHandler2={setTier3Value2}
           productValue1={tier3Value1}
@@ -221,9 +224,55 @@ function ProductCard({
   );
 }
 
+function AddGiftButton({
+  lang,
+  freeGiftAvailable,
+  addFreeGiftToCart,
+  currentTier,
+  tier,
+  tierDiff,
+  tierDisabled,
+}: {
+  lang: 'EN' | 'ES';
+  freeGiftAvailable: boolean;
+  addFreeGiftToCart: (tierSelected: number) => void;
+  currentTier: number;
+  tier: number;
+  tierDiff: number;
+  tierDisabled: boolean;
+}) {
+  // const enabled = freeGiftAvailable && currentTier > 0 ? true : false;
+  const giftAdded = !freeGiftAvailable && currentTier > 0 ? true : false;
+
+  if (giftAdded)
+    return <Button disabled={true}>{fgwp_locale.buttons.added[lang]}</Button>;
+
+  return (
+    <>
+      <p>
+        {`${fgwp_locale.buttons.spend[lang]} $${tierDiff} ${fgwp_locale.buttons.left_to_unlock[lang]}`}
+      </p>
+      <Button
+        type="button"
+        disabled={tierDisabled}
+        variant={tierDisabled ? 'secondary' : 'suavecito'}
+        onClick={() => addFreeGiftToCart(tier)}
+        className="w-1/2 lg:w-full text-center"
+      >
+        {!tierDisabled ? (
+          fgwp_locale.buttons.add[lang]
+        ) : (
+          <ImLock className="h-5 w-5 mx-auto text-center" />
+        )}
+      </Button>
+    </>
+  );
+}
+
 function TierCard({
   lang,
   tier,
+  currentTier,
   products,
   productValue,
   productHandler,
@@ -234,6 +283,7 @@ function TierCard({
 }: {
   lang: 'EN' | 'ES';
   tier: number;
+  currentTier: number;
   products: Product[];
   productValue: string;
   productHandler: Dispatch<SetStateAction<string>>;
@@ -279,28 +329,15 @@ function TierCard({
         </div>
 
         <div className="w-full text-center">
-          {freeGiftAvailable ? (
-            <>
-              <p>
-                {`${fgwp_locale.buttons.spend[lang]} $${tierDiff} ${fgwp_locale.buttons.left_to_unlock[lang]}`}
-              </p>
-              <Button
-                type="button"
-                disabled={tierDisabled}
-                variant={tierDisabled ? 'secondary' : 'suavecito'}
-                onClick={() => addFreeGiftToCart(tier)}
-                className="w-1/2 lg:w-full text-center"
-              >
-                {!tierDisabled ? (
-                  fgwp_locale.buttons.add[lang]
-                ) : (
-                  <ImLock className="h-5 w-5 mx-auto text-center" />
-                )}
-              </Button>
-            </>
-          ) : (
-            <Button disabled={true}>{fgwp_locale.buttons.added[lang]}</Button>
-          )}
+          <AddGiftButton
+            lang={lang}
+            freeGiftAvailable={freeGiftAvailable}
+            addFreeGiftToCart={addFreeGiftToCart}
+            currentTier={currentTier}
+            tier={tier}
+            tierDiff={tierDiff}
+            tierDisabled={tierDisabled}
+          />
         </div>
       </div>
     </div>
@@ -310,6 +347,7 @@ function TierCard({
 function Tier3Card({
   lang,
   tier = 3,
+  currentTier,
   products,
   productValue1,
   productValue2,
@@ -322,6 +360,7 @@ function Tier3Card({
 }: {
   lang: 'EN' | 'ES';
   tier: number;
+  currentTier: number;
   products: Product[];
   productValue1: string;
   productValue2: string;
@@ -395,28 +434,15 @@ function Tier3Card({
         </div>
 
         <div className="w-full text-center">
-          {freeGiftAvailable ? (
-            <>
-              <p>
-                {`${fgwp_locale.buttons.spend[lang]} $${tierDiff} ${fgwp_locale.buttons.left_to_unlock[lang]}`}
-              </p>
-              <Button
-                type="button"
-                disabled={tierDisabled}
-                variant={tierDisabled ? 'secondary' : 'suavecito'}
-                onClick={() => addFreeGiftToCart(tier)}
-                className="w-1/2 lg:w-full text-center"
-              >
-                {!tierDisabled ? (
-                  fgwp_locale.buttons.add[lang]
-                ) : (
-                  <ImLock className="h-5 w-5 mx-auto text-center" />
-                )}
-              </Button>
-            </>
-          ) : (
-            <Button disabled={true}>{fgwp_locale.buttons.added[lang]}</Button>
-          )}
+          <AddGiftButton
+            lang={lang}
+            freeGiftAvailable={freeGiftAvailable}
+            addFreeGiftToCart={addFreeGiftToCart}
+            currentTier={currentTier}
+            tier={tier}
+            tierDiff={tierDiff}
+            tierDisabled={tierDisabled}
+          />
         </div>
       </div>
     </div>
