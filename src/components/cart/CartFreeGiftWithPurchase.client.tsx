@@ -65,7 +65,7 @@ export function CartFreeGiftWithPurchase({
   tier3Value2,
   setTier3Value2,
   currentTier,
-  setCurrentTier,
+  // setCurrentTier,
   freeGiftsInCart,
   addFreeGiftToCart,
   freeGiftsEligible,
@@ -241,11 +241,14 @@ function AddGiftButton({
   tierDiff: number;
   tierDisabled: boolean;
 }) {
-  // const enabled = freeGiftAvailable && currentTier > 0 ? true : false;
   const giftAdded = !freeGiftAvailable && currentTier > 0 ? true : false;
 
   if (giftAdded)
-    return <Button disabled={true}>{fgwp_locale.buttons.added[lang]}</Button>;
+    return (
+      <Button disabled={true} variant="secondary">
+        {fgwp_locale.buttons.added[lang]}
+      </Button>
+    );
 
   return (
     <>
