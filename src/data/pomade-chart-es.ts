@@ -1,27 +1,3 @@
-interface Metafield {
-  value: string;
-  reference?: object;
-}
-
-interface ProductData {
-  title: string;
-  hold: string;
-  shine: string;
-  washability: string;
-  bestFor: string;
-}
-
-interface Product {
-  featuredImage: Metafield;
-  data: {
-    loading: 'eager' | 'lazy';
-    link: string;
-    color: string;
-    en: ProductData;
-    es: ProductData;
-  };
-}
-
 export const chartData: {[key: string]: any}[] = [
   {
     product: {
