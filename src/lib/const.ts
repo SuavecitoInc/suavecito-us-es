@@ -8,3 +8,7 @@ export function getImageLoadingPriority(
 ) {
   return index < maxEagerLoadCount ? ATTR_LOADING_EAGER : undefined;
 }
+
+export const LANG = import.meta.env.PUBLIC_LANGUAGE_CODE;
+
+export const PRODUCT_FILTER_TAG: false | string = LANG ? 'hydrogen_es' : false;

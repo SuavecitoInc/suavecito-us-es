@@ -11,10 +11,8 @@ import {
 import {PRODUCT_CARD_FRAGMENT} from '~/lib/fragments';
 import {ProductGrid, Section, Text} from '~/components';
 import {SearchPage} from '~/components/index.server';
-import {PAGINATION_SIZE} from '~/lib/const';
+import {PAGINATION_SIZE, PRODUCT_FILTER_TAG} from '~/lib/const';
 import type {Collection} from '@shopify/hydrogen/storefront-api-types';
-
-const TAG = 'hydrogen_es';
 
 const search_page: {[key: string]: any} = {
   no_results: {
@@ -42,7 +40,9 @@ export default function Search({
 
   const searchTerm = searchParams.get('q');
 
-  const modifiedSearchTerm = `tag:${TAG} AND ${searchTerm}`;
+  const modifiedSearchTerm = PRODUCT_FILTER_TAG
+    ? `tag:${PRODUCT_FILTER_TAG} AND ${searchTerm}`
+    : searchTerm;
 
   const {data} = useShopQuery<any>({
     query: SEARCH_QUERY,
@@ -103,7 +103,9 @@ export async function api(
   const searchTerm = url.searchParams.get('q');
   const {handle} = params;
 
-  const modifiedSearchTerm = `tag:${TAG} AND ${searchTerm}`;
+  const modifiedSearchTerm = !PRODUCT_FILTER_TAG
+    ? `tag:${PRODUCT_FILTER_TAG} AND ${searchTerm}`
+    : searchTerm;
 
   return await queryShop({
     query: PAGINATE_SEARCH_QUERY,
