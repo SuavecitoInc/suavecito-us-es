@@ -142,17 +142,6 @@ export const CollectionFeaturedBanners = [
     ],
   },
   {
-    handle: 'beard-mustache',
-    title: 'Productos de peinado',
-    backgroundImage: {
-      src: 'https://cdn.shopify.com/s/files/1/0274/1389/files/suavecito-hair-styling-products-chart-background.jpg?v=1632786258',
-      alt: 'Styling Products',
-    },
-    description:
-      'Si la pomada no es lo tuyo, Suavecito ofrece una gama de otros productos de peinado que pueden ayudarte a conseguir cualquier peinado que desees.',
-    columns: [],
-  },
-  {
     handle: 'body-care',
     title: 'Cuidado e higiene del cuerpo',
     backgroundImage: {

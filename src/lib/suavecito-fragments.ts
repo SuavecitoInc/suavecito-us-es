@@ -636,6 +636,12 @@ export const FILTERED_COLLECTION_WITH_VARIANT_FRAGMENT = gql`
       description
       title
     }
+    headingName: metafield(
+      namespace: "hydrogen"
+      key: "subcollection_heading"
+    ) {
+      value
+    }
     products(
       first: 100
       filters: {
