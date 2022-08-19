@@ -1,8 +1,19 @@
-import {useEffect, useState, useMemo} from 'react';
+import {useEffect, useCallback, useMemo, ReactNode, useState} from 'react';
 import {useCart} from '@shopify/hydrogen';
-import type {Product} from '@shopify/hydrogen/storefront-api-types';
+import type {Product, CartLine} from '@shopify/hydrogen/storefront-api-types';
 
-export function useFreeGiftWithPurchase(freeGifts: Product[]) {
+import {FreeGiftContext} from './context';
+import {DefaultFreeGiftContext} from './types';
+
+export function FreeGiftProvider({
+  enabled = true,
+  freeGifts,
+  children,
+}: {
+  enabled?: boolean;
+  freeGifts: Product[];
+  children: ReactNode;
+}) {
   const {cost, linesAdd, linesRemove, lines, status} = useCart();
 
   const TIER_1_MIN = 55;
@@ -15,9 +26,15 @@ export function useFreeGiftWithPurchase(freeGifts: Product[]) {
   const [tier2Diff, setTier2Diff] = useState<number>(0);
   const [tier3Diff, setTier3Diff] = useState<number>(0);
 
-  const tier1Products = [freeGifts[0], freeGifts[1]];
-  const tier2Products = [freeGifts[2], freeGifts[3]];
-  const tier3Products = [...freeGifts];
+  const tier1Products = useMemo(
+    () => [freeGifts[0], freeGifts[1]],
+    [freeGifts],
+  );
+  const tier2Products = useMemo(
+    () => [freeGifts[2], freeGifts[3]],
+    [freeGifts],
+  );
+  const tier3Products = useMemo(() => [...freeGifts], [freeGifts]);
 
   // get first available, if not found return first, product component will handle oos
   const getFirstAvailable = (arr: Product[]) => {
@@ -119,72 +136,100 @@ export function useFreeGiftWithPurchase(freeGifts: Product[]) {
     }
   }, [currentTier, freeGiftsEligible, freeGiftsInCart, lines, linesRemove]);
 
-  const addFreeGiftToCart = (tierSelected: number) => {
-    // check if previous tier product in cart
-    // if so add the new product
-    let freeGiftLine: any;
-    if (tierSelected === 3) {
-      lines.forEach((line) => {
-        const findFGWP = line.attributes.find((el) => el.key === '_fgwp');
-        if (findFGWP) {
-          freeGiftLine = line;
-        }
-      });
-    }
-
-    const values: any = {
-      1: [tier1Value],
-      2: [tier2Value],
-      3: [tier3Value1, tier3Value2],
-    };
-    const newLines: {
-      merchandiseId: string;
-      quantity: number;
-      attributes: {key: string; value: string}[];
-    }[] = [];
-
-    let skipRemove = false;
-
-    values[tierSelected].forEach((id: string) => {
-      if (freeGiftLine && id === freeGiftLine.merchandise.id) {
-        skipRemove = true;
-      } else {
-        newLines.push({
-          merchandiseId: id,
-          quantity: 1,
-          attributes: [
-            {
-              key: '_fgwp',
-              value: 'true',
-            },
-          ],
+  const addFreeGiftToCart = useCallback(
+    (tierSelected: number) => {
+      // check if previous tier product in cart
+      // if so add the new product
+      let freeGiftLine: CartLine | undefined;
+      if (tierSelected === 3) {
+        lines.forEach((line) => {
+          const findFGWP = line.attributes.find((el) => el.key === '_fgwp');
+          if (findFGWP) {
+            freeGiftLine = line as CartLine;
+          }
         });
       }
-    });
-    linesAdd(newLines);
 
-    if (freeGiftLine && !skipRemove) setRemoveLineId(freeGiftLine.id);
-  };
+      const values: {[key: number]: string[]} = {
+        1: [tier1Value],
+        2: [tier2Value],
+        3: [tier3Value1, tier3Value2],
+      };
+      const newLines: {
+        merchandiseId: string;
+        quantity: number;
+        attributes: {key: string; value: string}[];
+      }[] = [];
 
-  return {
-    tier1Diff,
-    tier2Diff,
-    tier3Diff,
-    tier1Products,
-    tier2Products,
-    tier3Products,
-    tier1Value,
-    setTier1Value,
-    tier2Value,
-    setTier2Value,
-    tier3Value1,
-    setTier3Value1,
-    tier3Value2,
-    setTier3Value2,
-    currentTier,
-    setCurrentTier,
-    freeGiftsInCart,
+      let skipRemove = false;
+
+      values[tierSelected].forEach((id: string) => {
+        if (freeGiftLine && id === freeGiftLine.merchandise.id) {
+          skipRemove = true;
+        } else {
+          newLines.push({
+            merchandiseId: id,
+            quantity: 1,
+            attributes: [
+              {
+                key: '_fgwp',
+                value: 'true',
+              },
+            ],
+          });
+        }
+      });
+      linesAdd(newLines);
+
+      if (freeGiftLine && !skipRemove) setRemoveLineId(freeGiftLine.id);
+    },
+    [lines, linesAdd, tier1Value, tier2Value, tier3Value1, tier3Value2],
+  );
+
+  const freeGiftContextValue = useMemo<DefaultFreeGiftContext>(() => {
+    return {
+      enabled,
+      tier1Diff,
+      tier2Diff,
+      tier3Diff,
+      tier1Products,
+      tier2Products,
+      tier3Products,
+      tier1Value,
+      setTier1Value,
+      tier2Value,
+      setTier2Value,
+      tier3Value1,
+      setTier3Value1,
+      tier3Value2,
+      setTier3Value2,
+      currentTier,
+      setCurrentTier,
+      freeGiftsInCart,
+      addFreeGiftToCart,
+      freeGiftsEligible,
+    };
+  }, [
+    enabled,
     addFreeGiftToCart,
+    currentTier,
     freeGiftsEligible,
-  };
+    freeGiftsInCart,
+    tier1Diff,
+    tier1Products,
+    tier1Value,
+    tier2Diff,
+    tier2Products,
+    tier2Value,
+    tier3Diff,
+    tier3Products,
+    tier3Value1,
+    tier3Value2,
+  ]);
+
+  return (
+    <FreeGiftContext.Provider value={freeGiftContextValue}>
+      {children}
+    </FreeGiftContext.Provider>
+  );
 }

@@ -6,17 +6,9 @@ import {
   CartShopPayButton,
   Money,
 } from '@shopify/hydrogen';
-import {Product} from '@shopify/hydrogen/storefront-api-types';
 
-import {
-  Button,
-  Text,
-  CartLineItem,
-  CartEmpty,
-  CartFreeGiftWithPurchase,
-  Section,
-} from '~/components';
-import {useFreeGiftWithPurchase} from '~/hooks/useFreeGiftWithPurchase';
+import {Button, Text, CartLineItem, CartEmpty, Section} from '~/components';
+import {useFreeGiftWithPurchase} from '../FreeGiftProvider/';
 
 const cart_page: {[key: string]: any} = {
   subtotal: {
@@ -40,57 +32,14 @@ const cart_page: {[key: string]: any} = {
 export function CartPageDetails({
   layout,
   onClose,
-  freeGifts,
 }: {
   layout: 'drawer' | 'page';
   onClose?: () => void;
-  freeGifts: Product[];
 }) {
   const LANG = import.meta.env.PUBLIC_LANGUAGE_CODE;
 
-  const {
-    tier1Diff,
-    tier2Diff,
-    tier3Diff,
-    tier1Products,
-    tier2Products,
-    tier3Products,
-    tier1Value,
-    setTier1Value,
-    tier2Value,
-    setTier2Value,
-    tier3Value1,
-    setTier3Value1,
-    tier3Value2,
-    setTier3Value2,
-    currentTier,
-    setCurrentTier,
-    freeGiftsInCart,
-    addFreeGiftToCart,
-    freeGiftsEligible,
-  } = useFreeGiftWithPurchase(freeGifts);
-
-  const fgwp = {
-    tier1Diff,
-    tier2Diff,
-    tier3Diff,
-    tier1Products,
-    tier2Products,
-    tier3Products,
-    tier1Value,
-    setTier1Value,
-    tier2Value,
-    setTier2Value,
-    tier3Value1,
-    setTier3Value1,
-    tier3Value2,
-    setTier3Value2,
-    currentTier,
-    setCurrentTier,
-    freeGiftsInCart,
-    addFreeGiftToCart,
-    freeGiftsEligible,
-  };
+  const {enabled, freeGiftsInCart, freeGiftsEligible, currentTier} =
+    useFreeGiftWithPurchase();
 
   const {lines} = useCart();
   const scrollRef = useRef(null);
@@ -122,41 +71,35 @@ export function CartPageDetails({
   const freeGiftAvailable = freeGiftsInCart < freeGiftsEligible[currentTier];
 
   return (
-    <>
-      <Section className="max-w-7xl mx-auto">
-        <form className={container[layout]}>
-          <section
-            ref={scrollRef}
-            aria-labelledby="cart-contents"
-            className={`${content[layout]} ${y > 0 ? 'border-t' : ''}`}
-          >
-            <ul className="grid gap-6 md:gap-10">
-              {lines.map((line) => {
-                return (
-                  <CartLineProvider key={line.id} line={line}>
-                    <CartLineItem />
-                  </CartLineProvider>
-                );
-              })}
-            </ul>
-          </section>
-          <section
-            aria-labelledby="summary-heading"
-            className={summary[layout]}
-          >
-            <h2 id="summary-heading" className="sr-only">
-              {cart_page.order_summary[LANG]}
-            </h2>
-            <OrderSummary lang={LANG} />
-            <CartCheckoutActions
-              lang={LANG}
-              disableCheckout={freeGiftAvailable}
-            />
-          </section>
-        </form>
-      </Section>
-      <CartFreeGiftWithPurchase {...fgwp} />
-    </>
+    <Section className="max-w-7xl mx-auto">
+      <form className={container[layout]}>
+        <section
+          ref={scrollRef}
+          aria-labelledby="cart-contents"
+          className={`${content[layout]} ${y > 0 ? 'border-t' : ''}`}
+        >
+          <ul className="grid gap-6 md:gap-10">
+            {lines.map((line) => {
+              return (
+                <CartLineProvider key={line.id} line={line}>
+                  <CartLineItem />
+                </CartLineProvider>
+              );
+            })}
+          </ul>
+        </section>
+        <section aria-labelledby="summary-heading" className={summary[layout]}>
+          <h2 id="summary-heading" className="sr-only">
+            {cart_page.order_summary[LANG]}
+          </h2>
+          <OrderSummary lang={LANG} />
+          <CartCheckoutActions
+            lang={LANG}
+            disableCheckout={enabled ? freeGiftAvailable : false}
+          />
+        </section>
+      </form>
+    </Section>
   );
 }
 
