@@ -79,6 +79,7 @@ export function CollectionCollaborations({
                 url={`/collections/${
                   data[`collectionSection${i + 1}`].handle
                 }?country=${country}`}
+                lang={lang}
               />
             </div>
           ),
