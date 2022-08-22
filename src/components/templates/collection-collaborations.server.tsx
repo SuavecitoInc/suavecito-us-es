@@ -26,6 +26,13 @@ export function CollectionCollaborations({
   theme?: BrandTheme;
   lang?: 'en' | 'es';
 }) {
+  const collabs = {
+    description: {
+      en: 'Suavecito has had the opportunity to collaborate with a wide range of properties, from local artists to classic Universal Monsters. Here you’ll find our most recent licensed products which include pomades, accessories, cosmetics and more!',
+      es: 'Suavecito ha tenido la oportunidad de colaborar con una amplia gama de propiedades. Aquí encontrarás nuestros productos con licencia más recientes que incluyen pomadas, accesorios, cosméticos y mucho más.',
+    },
+  };
+
   const {
     language: {isoCode: language},
     country: {isoCode: country},
@@ -53,6 +60,7 @@ export function CollectionCollaborations({
       resourceId: data.collection.id,
     },
   });
+
   return (
     <Layout theme={theme} showTopPadding={false}>
       <Suspense>
@@ -62,9 +70,7 @@ export function CollectionCollaborations({
         <HeroBanner collection={data.collection} />
         <div className="page-width">
           <p className="text-center py-[55px] font-bold">
-            Suavecito ha tenido la oportunidad de colaborar con una amplia gama
-            de propiedades. Aquí encontrarás nuestros productos con licencia más
-            recientes que incluyen pomadas, accesorios, cosméticos y mucho más.
+            {collabs.description[lang]}
           </p>
         </div>
       </section>

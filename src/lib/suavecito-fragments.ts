@@ -552,42 +552,80 @@ export const COLLECTION_PRODUCT_FRAGMENT = gql`
   }
 `;
 
-export const FILTERED_COLLECTION_FRAGMENT = gql`
-  fragment FilteredCollectionWithMetafield on Collection {
-    id
-    handle
-    title
-    description
-    seo {
-      description
-      title
-    }
-    headingName: metafield(
-      namespace: "hydrogen"
-      key: "subcollection_heading"
-    ) {
-      value
-    }
-    products(
-      first: 100
-      filters: {
-        productMetafield: {
-          namespace: "suave"
-          key: "hydrogen_es_enabled"
-          value: "true"
+export const FILTERED_COLLECTION_FRAGMENT =
+  LANG === 'es'
+    ? gql`
+        fragment FilteredCollectionWithMetafield on Collection {
+          id
+          handle
+          title
+          description
+          seo {
+            description
+            title
+          }
+          headingName: metafield(
+            namespace: "suave"
+            key: "sub_collection_header_es"
+          ) {
+            value
+          }
+          products(
+            first: 100
+            filters: {
+              productMetafield: {
+                namespace: "suave"
+                key: "hydrogen_es_enabled"
+                value: "true"
+              }
+            }
+          ) {
+            nodes {
+              ...CollectionProduct
+            }
+            pageInfo {
+              hasNextPage
+              endCursor
+            }
+          }
         }
-      }
-    ) {
-      nodes {
-        ...CollectionProduct
-      }
-      pageInfo {
-        hasNextPage
-        endCursor
-      }
-    }
-  }
-`;
+      `
+    : gql`
+        fragment FilteredCollectionWithMetafield on Collection {
+          id
+          handle
+          title
+          description
+          seo {
+            description
+            title
+          }
+          headingName: metafield(
+            namespace: "suave"
+            key: "sub_collection_header_en"
+          ) {
+            value
+          }
+          products(
+            first: 100
+            filters: {
+              productMetafield: {
+                namespace: "suave"
+                key: "hydrogen_es_enabled"
+                value: "true"
+              }
+            }
+          ) {
+            nodes {
+              ...CollectionProduct
+            }
+            pageInfo {
+              hasNextPage
+              endCursor
+            }
+          }
+        }
+      `;
 
 export const COLLECTION_PRODUCT_VARIANT_IMAGE_FRAGMENT = gql`
   fragment CollectionProductWithVariantImage on Product {
@@ -626,39 +664,77 @@ export const COLLECTION_PRODUCT_VARIANT_IMAGE_FRAGMENT = gql`
   }
 `;
 
-export const FILTERED_COLLECTION_WITH_VARIANT_FRAGMENT = gql`
-  fragment FilteredCollectionWithVariantImage on Collection {
-    id
-    handle
-    title
-    description
-    seo {
-      description
-      title
-    }
-    headingName: metafield(
-      namespace: "hydrogen"
-      key: "subcollection_heading"
-    ) {
-      value
-    }
-    products(
-      first: 100
-      filters: {
-        productMetafield: {
-          namespace: "suave"
-          key: "hydrogen_es_enabled"
-          value: "true"
+export const FILTERED_COLLECTION_WITH_VARIANT_FRAGMENT =
+  LANG === 'es'
+    ? gql`
+        fragment FilteredCollectionWithVariantImage on Collection {
+          id
+          handle
+          title
+          description
+          seo {
+            description
+            title
+          }
+          headingName: metafield(
+            namespace: "suave"
+            key: "sub_collection_header_es"
+          ) {
+            value
+          }
+          products(
+            first: 100
+            filters: {
+              productMetafield: {
+                namespace: "suave"
+                key: "hydrogen_es_enabled"
+                value: "true"
+              }
+            }
+          ) {
+            nodes {
+              ...CollectionProductWithVariantImage
+            }
+            pageInfo {
+              hasNextPage
+              endCursor
+            }
+          }
         }
-      }
-    ) {
-      nodes {
-        ...CollectionProductWithVariantImage
-      }
-      pageInfo {
-        hasNextPage
-        endCursor
-      }
-    }
-  }
-`;
+      `
+    : gql`
+        fragment FilteredCollectionWithVariantImage on Collection {
+          id
+          handle
+          title
+          description
+          seo {
+            description
+            title
+          }
+          headingName: metafield(
+            namespace: "suave"
+            key: "sub_collection_header_en"
+          ) {
+            value
+          }
+          products(
+            first: 100
+            filters: {
+              productMetafield: {
+                namespace: "suave"
+                key: "hydrogen_es_enabled"
+                value: "true"
+              }
+            }
+          ) {
+            nodes {
+              ...CollectionProductWithVariantImage
+            }
+            pageInfo {
+              hasNextPage
+              endCursor
+            }
+          }
+        }
+      `;

@@ -142,10 +142,7 @@ export function ContactForm({
         <Button className="btn">{contactFormData.submit[lang]}</Button>
       </div>
       <div>
-        <p
-          ref={responseRef}
-          className="text-[1rem] text-black text-center mt-[10px]"
-        ></p>
+        <p ref={responseRef} className="text-[1rem] mt-[10px]"></p>
       </div>
     </form>
   );

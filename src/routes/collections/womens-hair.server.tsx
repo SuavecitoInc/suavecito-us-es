@@ -1,16 +1,22 @@
-import {CollectionFeaturedImages} from '~/components/index.server';
-
-export default function Collection() {
-  const handle = 'womens-hair';
-  return <CollectionFeaturedImages handle={handle} query={COLLECTION_QUERY} />;
-}
-
 import {
   FILTERED_COLLECTION_FRAGMENT,
   COLLECTION_PRODUCT_FRAGMENT,
 } from '~/lib/suavecito-fragments';
 import {MEDIA_FRAGMENT} from '~/lib/fragments';
 import {gql} from '@shopify/hydrogen';
+
+import {CollectionFeaturedImages} from '~/components/index.server';
+
+export default function Collection() {
+  const handle = 'womens-hair';
+  return (
+    <CollectionFeaturedImages
+      handle={handle}
+      query={COLLECTION_QUERY}
+      theme={'suavecita'}
+    />
+  );
+}
 
 const COLLECTION_QUERY = gql`
   ${FILTERED_COLLECTION_FRAGMENT}

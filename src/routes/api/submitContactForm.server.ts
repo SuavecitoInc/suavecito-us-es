@@ -12,8 +12,8 @@ export const api: HydrogenApiRoute = async (request, options) => {
   const email: string = json.email;
   const phone: string = json.phone;
   const message: string = json.message;
-  const zendeskEndpoint = Oxygen.env.ZENDESK_ENDPOINT;
-  const zendeskEmail = Oxygen.env.ZENDESK_EMAIL;
+  const zendeskEndpoint = import.meta.env.PUBLIC_ZENDESK_ENDPOINT;
+  const zendeskEmail = import.meta.env.PUBLIC_ZENDESK_EMAIL;
   const zendeskToken = Oxygen.env.ZENDESK_TOKEN;
   const ticket = {
     comment: {

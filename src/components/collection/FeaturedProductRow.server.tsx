@@ -28,7 +28,7 @@ export function FeaturedProductRow({
           lang={lang}
         />
       </div>
-      <FeaturedBanner collection={collection} />
+      <FeaturedBanner lang={lang} collection={collection} />
     </section>
   );
 }
