@@ -109,7 +109,7 @@ const COLLECTION_QUERY = gql`
   query CollectionDetails(
     $handle: String!
     $country: CountryCode
-    $language: LanguageCode=
+    $language: LanguageCode
     $pageBy: Int!
     $cursor: String
   ) @inContext(country: $country, language: $language) {

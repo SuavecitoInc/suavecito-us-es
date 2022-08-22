@@ -62,6 +62,65 @@ export function AccountAddressEdit({
     close();
   }
 
+  const editTranslations = {
+    editAddress: {
+      en: 'Edit Address',
+      es: 'Editar dirección',
+    },
+    firstName: {
+      en: 'First name',
+      es: 'Nombre',
+    },
+    lastName: {
+      en: 'Last name',
+      es: 'Apellido',
+    },
+    company: {
+      en: 'Company',
+      es: 'Negocio',
+    },
+    addressLine1: {
+      en: 'Address line 1',
+      es: 'Dirección 1',
+    },
+    addressLine2: {
+      en: 'Address line 2',
+      es: 'Dirección 2',
+    },
+    city: {
+      en: 'City',
+      es: 'Ciudad',
+    },
+    state: {
+      en: 'State / Province',
+      es: 'Estado / Provincia',
+    },
+    zip: {
+      en: 'Zip / Postal Code',
+      es: 'Código postal',
+    },
+    country: {
+      en: 'Country',
+      es: 'País',
+    },
+    phone: {
+      en: 'Phone',
+      es: 'Teléfono móvil',
+    },
+    setAsDefaultAddress: {
+      en: '',
+      es: '',
+    },
+    save: {
+      en: 'Save',
+      es: 'Guardar',
+    },
+    cancel: {
+      en: 'Cancel',
+      es: 'Cancelar',
+    },
+  };
+
   return (
     <>
       <Text className="mt-4 mb-6" as="h3" size="lead">

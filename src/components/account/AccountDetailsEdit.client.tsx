@@ -23,12 +23,14 @@ export function AccountDetailsEdit({
   phone: _phone = '',
   email: _email = '',
   close,
+  lang = 'en',
 }: {
   firstName?: string;
   lastName?: string;
   phone?: string;
   email?: string;
   close: () => void;
+  lang?: 'en' | 'es';
 }) {
   const [saving, setSaving] = useState(false);
   const [firstName, setFirstName] = useState(_firstName);
@@ -120,10 +122,61 @@ export function AccountDetailsEdit({
     close();
   }
 
+  const editTranslations = {
+    updateYourProfile: {
+      en: 'Update your profile',
+      es: 'Actualice su perfil',
+    },
+    firstName: {
+      en: 'First name',
+      es: 'Nombre',
+    },
+    lastName: {
+      en: 'Last name',
+      es: 'Apellido',
+    },
+    phone: {
+      en: 'Mobile',
+      es: 'Teléfono móvil',
+    },
+    email: {
+      en: 'Email',
+      es: 'Correo electrónico',
+    },
+    changeYourPassword: {
+      en: 'Change your password',
+      es: 'Cambie su contraseña',
+    },
+    currentPassword: {
+      en: 'Current password',
+      es: 'Contraseña actual',
+    },
+    newPassword1: {
+      en: 'New password',
+      es: 'Nueva contraseña',
+    },
+    newPassword2: {
+      en: 'Re-enter new password',
+      es: 'Vuelva a introducir su nueva contraseña',
+    },
+    passwordMustBe: {
+      en: 'Passwords must be at least 6 characters.',
+      es: 'La contraseña debe tener al menos 6 caracteres.',
+    },
+    save: {
+      en: 'Save',
+      es: 'Guardar',
+    },
+    cancel: {
+      en: 'Cancel',
+      es: 'Cancelar',
+    },
+  };
+
   return (
     <>
       <Text className="mt-4 mb-6" as="h3" size="lead">
-        Update your profile
+        {editTranslations.updateYourProfile[lang]}
       </Text>
       <form noValidate onSubmit={onSubmit}>
         {submitError && (
@@ -138,8 +191,8 @@ export function AccountDetailsEdit({
             name="firstname"
             type="text"
             autoComplete="given-name"
-            placeholder="First name"
-            aria-label="First name"
+            placeholder={editTranslations.firstName[lang]}
+            aria-label={editTranslations.firstName[lang]}
             value={firstName}
             onChange={(event) => {
               setFirstName(event.target.value);
@@ -153,8 +206,8 @@ export function AccountDetailsEdit({
             name="lastname"
             type="text"
             autoComplete="family-name"
-            placeholder="Last name"
-            aria-label="Last name"
+            placeholder={editTranslations.lastName[lang]}
+            aria-label={editTranslations.lastName[lang]}
             value={lastName}
             onChange={(event) => {
               setLastName(event.target.value);
@@ -168,8 +221,8 @@ export function AccountDetailsEdit({
             name="phone"
             type="tel"
             autoComplete="tel"
-            placeholder="Mobile"
-            aria-label="Mobile"
+            placeholder={editTranslations.phone[lang]}
+            aria-label={editTranslations.phone[lang]}
             value={phone}
             onChange={(event) => {
               setPhone(event.target.value);
@@ -186,8 +239,8 @@ export function AccountDetailsEdit({
             type="email"
             autoComplete="email"
             required
-            placeholder="Email address"
-            aria-label="Email address"
+            placeholder={editTranslations.email[lang]}
+            aria-label={editTranslations.email[lang]}
             value={email}
             onChange={(event) => {
               setEmail(event.target.value);
@@ -200,21 +253,21 @@ export function AccountDetailsEdit({
           </p>
         </div>
         <Text className="mb-6 mt-6" as="h3" size="lead">
-          Change your password
+          {editTranslations.changeYourPassword[lang]}
         </Text>
         <Password
           name="currentPassword"
-          label="Current password"
+          label={editTranslations.currentPassword[lang]}
           passwordError={currentPasswordError}
         />
         <Password
           name="newPassword"
-          label="New password"
+          label={editTranslations.newPassword1[lang]}
           passwordError={newPasswordError}
         />
         <Password
           name="newPassword2"
-          label="Re-enter new password"
+          label={editTranslations.newPassword2[lang]}
           passwordError={newPassword2Error}
         />
         <Text
@@ -224,7 +277,7 @@ export function AccountDetailsEdit({
             currentPasswordError || newPasswordError ? 'text-red-500' : ''
           }`}
         >
-          Passwords must be at least 6 characters.
+          {editTranslations.passwordMustBe[lang]}
         </Text>
         {newPassword2Error ? <br /> : null}
         <Text
@@ -243,7 +296,7 @@ export function AccountDetailsEdit({
             type="submit"
             disabled={saving}
           >
-            Save
+            {editTranslations.save[lang]}
           </Button>
         </div>
         <div className="mb-4">
@@ -254,7 +307,7 @@ export function AccountDetailsEdit({
             width="full"
             onClick={close}
           >
-            Cancel
+            {editTranslations.cancel[lang]}
           </Button>
         </div>
       </form>

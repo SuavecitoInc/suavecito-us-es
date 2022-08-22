@@ -7,9 +7,11 @@ import {AccountAddressEdit, AccountDeleteAddress} from '../index';
 export function AccountAddressBook({
   addresses,
   defaultAddress,
+  lang = 'en',
 }: {
   addresses: any[];
   defaultAddress: any;
+  lang?: 'en' | 'es';
 }) {
   const [editingAddress, setEditingAddress] = useState(null);
   const [deletingAddress, setDeletingAddress] = useState(null);
@@ -36,6 +38,21 @@ export function AccountAddressBook({
     setEditingAddress(address);
   }
 
+  const addressData = {
+    title: {
+      en: 'Address book',
+      es: 'Libreta de direcciones',
+    },
+    noAddress: {
+      en: `You haven't saved any addresses yet.`,
+      es: `Todavía no has guardado ninguna dirección.`,
+    },
+    addAddress: {
+      en: 'Add an address',
+      es: 'Añadir una dirección',
+    },
+  };
+
   return (
     <>
       {deletingAddress ? (
@@ -53,11 +70,11 @@ export function AccountAddressBook({
         </Modal>
       ) : null}
       <div className="grid w-full gap-4 p-4 py-6 md:gap-8 md:p-8 lg:p-12">
-        <h3 className="font-bold text-lead">Address Book</h3>
+        <h3 className="font-bold text-lead">{addressData.title[lang]}</h3>
         <div>
           {!addresses?.length ? (
             <Text className="mb-1" width="narrow" as="p" size="copy">
-              You haven&apos;t saved any addresses yet.
+              {addressData.noAddress[lang]}
             </Text>
           ) : null}
           <div className="w-48">
@@ -70,13 +87,14 @@ export function AccountAddressBook({
               }}
               variant="secondary"
             >
-              Add an Address
+              {addressData.addAddress[lang]}
             </Button>
           </div>
           {addresses?.length ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
               {fullDefaultAddress ? (
                 <Address
+                  lang={lang}
                   address={fullDefaultAddress}
                   defaultAddress
                   setDeletingAddress={setDeletingAddress.bind(
@@ -88,6 +106,7 @@ export function AccountAddressBook({
               ) : null}
               {addressesWithoutDefault.map((address) => (
                 <Address
+                  lang={lang}
                   key={address.id}
                   address={address}
                   setDeletingAddress={setDeletingAddress.bind(
@@ -110,18 +129,34 @@ function Address({
   defaultAddress,
   editAddress,
   setDeletingAddress,
+  lang = 'en',
 }: {
   address: any;
   defaultAddress?: boolean;
   editAddress: (address: any) => void;
   setDeletingAddress: MouseEventHandler<HTMLButtonElement>;
+  lang?: 'en' | 'es';
 }) {
+  const addressData = {
+    default: {
+      en: 'Default',
+      es: 'Defecto',
+    },
+    edit: {
+      en: 'Edit',
+      es: 'Editar',
+    },
+    remove: {
+      en: 'Remove',
+      es: 'Quitar',
+    },
+  };
   return (
     <div className="lg:p-8 p-6 border border-gray-200 rounded flex flex-col">
       {defaultAddress ? (
         <div className="mb-3 flex flex-row">
           <span className="px-3 py-1 text-xs font-medium rounded-full bg-primary/20 text-primary/50">
-            Default
+            {addressData.default[lang]}
           </span>
         </div>
       ) : null}
@@ -147,13 +182,13 @@ function Address({
           }}
           className="text-left underline text-sm"
         >
-          Edit
+          {addressData.edit[lang]}
         </button>
         <button
           onClick={setDeletingAddress}
           className="text-left text-primary/50 ml-6 text-sm"
         >
-          Remove
+          {addressData.remove[lang]}
         </button>
       </div>
     </div>
