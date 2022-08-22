@@ -636,6 +636,12 @@ export const FILTERED_COLLECTION_WITH_VARIANT_FRAGMENT = gql`
       description
       title
     }
+    headingName: metafield(
+      namespace: "hydrogen"
+      key: "subcollection_heading"
+    ) {
+      value
+    }
     products(
       first: 100
       filters: {
@@ -652,7 +658,6 @@ export const FILTERED_COLLECTION_WITH_VARIANT_FRAGMENT = gql`
       pageInfo {
         hasNextPage
         endCursor
->>>>>>> a926dfc21d2c1c7804d79bcb3268569bb6241ee8
       }
     }
   }

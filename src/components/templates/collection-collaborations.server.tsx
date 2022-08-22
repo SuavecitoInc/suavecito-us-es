@@ -1,39 +1,30 @@
 import {Suspense} from 'react';
 import {
-  gql,
-  type HydrogenRouteProps,
   Seo,
   ShopifyAnalyticsConstants,
   useServerAnalytics,
   useLocalization,
   useShopQuery,
-  type HydrogenRequest,
-  type HydrogenApiRouteOptions,
 } from '@shopify/hydrogen';
 
-import {PRODUCT_CARD_FRAGMENT} from '~/lib/fragments';
-import {
-  PageHeader,
-  ProductGrid,
-  Section,
-  Text,
-  FeaturedProductGrid,
-  VariantProductRow,
-} from '~/components';
 import {NotFound, Layout, FeaturedVariantRow} from '~/components/index.server';
 import {HeroBanner} from '../collection/HeroBanner.server';
 import {BrandTheme} from '~/types/suavecito';
 
 const pageBy = 48;
 
+const LANG = import.meta.env.PUBLIC_LANGUAGE_CODE;
+
 export function CollectionCollaborations({
   handle,
   query,
   theme = 'suavecito',
+  lang = LANG,
 }: {
   handle: string;
   query: string;
   theme?: BrandTheme;
+  lang?: 'en' | 'es';
 }) {
   const {
     language: {isoCode: language},
@@ -88,6 +79,7 @@ export function CollectionCollaborations({
                 url={`/collections/${
                   data[`collectionSection${i + 1}`].handle
                 }?country=${country}`}
+                lang={lang}
               />
             </div>
           ),
@@ -95,55 +87,3 @@ export function CollectionCollaborations({
     </Layout>
   );
 }
-
-// API endpoint that returns paginated products for this collection
-// @see templates/demo-store/src/components/product/ProductGrid.client.tsx
-export async function api(
-  request: HydrogenRequest,
-  {params, queryShop}: HydrogenApiRouteOptions,
-) {
-  if (request.method !== 'POST') {
-    return new Response('Method not allowed', {
-      status: 405,
-      headers: {Allow: 'POST'},
-    });
-  }
-  const url = new URL(request.url);
-
-  const cursor = url.searchParams.get('cursor');
-  const country = url.searchParams.get('country');
-  const {handle} = params;
-
-  return await queryShop({
-    query: PAGINATE_COLLECTION_QUERY,
-    variables: {
-      handle,
-      cursor,
-      pageBy,
-      country,
-    },
-  });
-}
-
-const PAGINATE_COLLECTION_QUERY = gql`
-  ${PRODUCT_CARD_FRAGMENT}
-  query CollectionPage(
-    $handle: String!
-    $pageBy: Int!
-    $cursor: String
-    $country: CountryCode
-    $language: LanguageCode
-  ) @inContext(country: $country, language: $language) {
-    collection(handle: $handle) {
-      products(first: $pageBy, after: $cursor) {
-        nodes {
-          ...ProductCard
-        }
-        pageInfo {
-          hasNextPage
-          endCursor
-        }
-      }
-    }
-  }
-`;

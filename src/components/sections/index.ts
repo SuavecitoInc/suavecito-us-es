@@ -6,3 +6,4 @@ export {FeaturedRowImageWithText} from './FeaturedRowImageWithText';
 export {FeaturedRowColumns} from './FeaturedRowColumns';
 export {FeaturedRowColumn} from './FeaturedRowColumn';
 export {FeaturedVideo} from './FeaturedVideo.client';
+export {ContactForm} from './ContactForm.client';
