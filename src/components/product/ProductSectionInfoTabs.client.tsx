@@ -136,7 +136,7 @@ function SizeChartTable({
   const header = sizeChartData[0];
 
   return (
-    <div className="block overflow-x-scroll border border-black">
+    <div className="block overflow-x-scroll">
       <div className="grid grid-cols-1">
         <table className="border border-black mx-auto">
           <thead>
