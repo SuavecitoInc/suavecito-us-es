@@ -27,6 +27,8 @@ import {
   ProductSectionInfoTabs,
 } from '~/components';
 
+import {sizeCharts} from '~/data/size-charts/';
+
 const LANG = import.meta.env.PUBLIC_LANGUAGE_CODE;
 
 export default function Product() {
@@ -111,17 +113,21 @@ export default function Product() {
       content: description,
     });
     // product size chart
-    // let productSizeChartType: string | null = null;
-    // if (sizeChart) {
-    //   productSizeChartType = sizeChart.value;
-    // } else if (oldSizeChart) {
-    //   productSizeChartType = oldSizeChart.value;
-    // }
+    let productSizeChartType: string | null = null;
+    if (sizeChart) {
+      productSizeChartType = sizeChart.value;
+    } else if (oldSizeChart) {
+      productSizeChartType = oldSizeChart.value;
+    }
 
-    // tabs.push({
-    //   title: 'Size Chart',
-    //   content: productSizeChartType,
-    // });
+    if (productSizeChartType) {
+      const sizeChartData = sizeCharts[`size-chart-${productSizeChartType}`];
+      if (sizeChartData)
+        tabs.push({
+          title: 'Size Chart',
+          content: sizeChartData,
+        });
+    }
 
     return tabs;
   };

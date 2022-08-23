@@ -1,8 +1,8 @@
 export const mensSizeCharts: {
   [key: string]: {[key: number]: string | any[]};
 } = {
-  'size-chart-mens-aaa-1301': {
-    1: [
+  'size-chart-mens-aaa-1301': [
+    [
       {en: 'Inches', es: 'Pulgadas'},
       'S',
       'M',
@@ -13,7 +13,7 @@ export const mensSizeCharts: {
       '4XL',
       '5XL',
     ],
-    2: [
+    [
       {en: 'Body Width', es: 'Ancho del cuerpo'},
       '18"',
       '20"',
@@ -24,7 +24,7 @@ export const mensSizeCharts: {
       '30"',
       '32"',
     ],
-    3: [
+    [
       {en: 'Body Length', es: 'Largo del cuerpo'},
       '27"',
       '29"',
@@ -35,7 +35,7 @@ export const mensSizeCharts: {
       '35"',
       '36"',
     ],
-    4: [
+    [
       {en: 'Neck Opening', es: 'Largo del cuerpo'},
       '7 1/2"',
       '7 1/2"',
@@ -46,7 +46,7 @@ export const mensSizeCharts: {
       '9"',
       '9"',
     ],
-    5: [
+    [
       {en: 'Collar Height', es: 'Altura del collar'},
       '1"',
       '1"',
@@ -57,7 +57,7 @@ export const mensSizeCharts: {
       '1"',
       '1"',
     ],
-    6: [
+    [
       {en: 'Shoulder Width', es: 'Ancho de hombro'},
       '17"',
       '19"',
@@ -68,7 +68,7 @@ export const mensSizeCharts: {
       '28"',
       '29"',
     ],
-    7: [
+    [
       {en: 'Bottom & Sleeve Hem 1/4" DN', es: 'Bottom & Sleeve Hem 1/4"'},
       '1"',
       '1"',
@@ -79,7 +79,7 @@ export const mensSizeCharts: {
       '1"',
       '1"',
     ],
-    8: [
+    [
       {en: 'Armhole (Straight)', es: 'Sisa (recto)'},
       '8 3/4"',
       '9 3/4"',
@@ -90,7 +90,7 @@ export const mensSizeCharts: {
       '14 1/2"',
       '15 1/2"',
     ],
-    9: [
+    [
       {en: 'Upper Sleeve Length', es: 'Largo de la manga superior'},
       '7 3/4"',
       '8 3/4"',
@@ -101,7 +101,7 @@ export const mensSizeCharts: {
       '10 1/2"',
       '11"',
     ],
-    10: [
+    [
       {en: 'Sleeve Opening (Relaxed)', es: 'Apertura de la manga (relajada)'},
       '6 1/2"',
       '7"',
@@ -112,9 +112,9 @@ export const mensSizeCharts: {
       '9 1/2"',
       '10"',
     ],
-  },
-  'size-chart-mens-aaa-1304': {
-    1: [
+  ],
+  'size-chart-mens-aaa-1304': [
+    [
       {en: 'Inches', es: 'Pulgadas'},
       'S',
       'M',
@@ -125,7 +125,7 @@ export const mensSizeCharts: {
       '4XL',
       '5XL',
     ],
-    2: [
+    [
       {en: 'Body Width', es: 'Ancho del cuerpo'},
       '18"',
       '20"',
@@ -136,7 +136,7 @@ export const mensSizeCharts: {
       '30"',
       '32"',
     ],
-    3: [
+    [
       {en: 'Body Length', es: 'Largo del cuerpo'},
       '27"',
       '29"',
@@ -147,7 +147,7 @@ export const mensSizeCharts: {
       '35"',
       '36"',
     ],
-    4: [
+    [
       {en: 'Neck Opening', es: 'Largo del cuerpo'},
       '7 1/2"',
       '7 1/2"',
@@ -158,7 +158,7 @@ export const mensSizeCharts: {
       '9"',
       '9"',
     ],
-    5: [
+    [
       {en: 'Collar Height', es: 'Altura del collar'},
       '1"',
       '1"',
@@ -169,7 +169,7 @@ export const mensSizeCharts: {
       '1"',
       '1"',
     ],
-    6: [
+    [
       {en: 'Shoulder Width', es: 'Ancho de hombro'},
       '17"',
       '19"',
@@ -180,7 +180,7 @@ export const mensSizeCharts: {
       '29"',
       '31"',
     ],
-    7: [
+    [
       {en: 'Bottom Hem (Straight)', es: 'Dobladillo inferior (recto)'},
       '1"',
       '1"',
@@ -191,7 +191,7 @@ export const mensSizeCharts: {
       '1"',
       '1"',
     ],
-    8: [
+    [
       {en: 'Armhole (Straight)', es: 'Sisa (recto)'},
       '8 3/4"',
       '9 3/4"',
@@ -202,7 +202,7 @@ export const mensSizeCharts: {
       '14 1/2"',
       '15 1/2"',
     ],
-    9: [
+    [
       {
         en: 'Sleeve Length (Armhole to Edge)',
         es: 'Largo de manga (de la sisa al borde)',
@@ -216,7 +216,7 @@ export const mensSizeCharts: {
       '28 1/4"',
       '29 1/4"',
     ],
-    10: [
+    [
       {en: 'Cuff Opening (Relaxed)', es: 'Apertura del puño (relajado)'},
       '3 3/4"',
       '3 3/4"',
@@ -227,7 +227,7 @@ export const mensSizeCharts: {
       '5"',
       '5"',
     ],
-    11: [
+    [
       {en: 'Cuff Height (Set In)', es: 'Altura del brazalete (ajustada)'},
       '2 1/4"',
       '2 1/4"',
@@ -238,10 +238,10 @@ export const mensSizeCharts: {
       '2 1/4"',
       '2 1/4"',
     ],
-  },
-  'size-chart-mens-aaa-1305': {
-    1: [{en: 'Inches', es: 'Pulgadas'}, 'S', 'M', 'L', 'XL', '2XL', '3XL'],
-    2: [
+  ],
+  'size-chart-mens-aaa-1305': [
+    [{en: 'Inches', es: 'Pulgadas'}, 'S', 'M', 'L', 'XL', '2XL', '3XL'],
+    [
       {en: 'Body Width', es: 'Ancho del cuerpo'},
       '18"',
       '20"',
@@ -250,7 +250,7 @@ export const mensSizeCharts: {
       '26"',
       '28"',
     ],
-    3: [
+    [
       {en: 'Body Length', es: 'Largo del cuerpo'},
       '27"',
       '29"',
@@ -259,7 +259,7 @@ export const mensSizeCharts: {
       '33"',
       '34"',
     ],
-    4: [
+    [
       {en: 'Neck Opening', es: 'Largo del cuerpo'},
       '7 1/2"',
       '7 1/2"',
@@ -268,7 +268,7 @@ export const mensSizeCharts: {
       '8 1/2"',
       '8 1/2"',
     ],
-    5: [
+    [
       {en: 'Collar Height', es: 'Altura del collar'},
       '1"',
       '1"',
@@ -277,7 +277,7 @@ export const mensSizeCharts: {
       '1"',
       '1"',
     ],
-    6: [
+    [
       {en: 'Shoulder Width', es: 'Ancho de hombro'},
       '17"',
       '19"',
@@ -286,8 +286,8 @@ export const mensSizeCharts: {
       '25"',
       '26"',
     ],
-    7: ['Bottom & Sleeve Hem (1/4" DN)', '1"', '1"', '1"', '1"', '1"', '1"'],
-    8: [
+    ['Bottom & Sleeve Hem (1/4" DN)', '1"', '1"', '1"', '1"', '1"', '1"'],
+    [
       {en: 'Armhole (Straight)', es: 'Sisa (recto)'},
       '8 3/4"',
       '9 3/4"',
@@ -296,7 +296,7 @@ export const mensSizeCharts: {
       '12 1/2"',
       '13 1/2"',
     ],
-    9: [
+    [
       {en: 'Upper Sleeve Length', es: 'Largo de la manga superior'},
       '7 3/4"',
       '8 1/4"',
@@ -305,7 +305,7 @@ export const mensSizeCharts: {
       '9 1/2"',
       '10"',
     ],
-    10: [
+    [
       {en: 'Sleeve Opening (Relaxed)', es: 'Apertura de la manga (relajada)'},
       '6 1/2"',
       '7"',
@@ -314,10 +314,10 @@ export const mensSizeCharts: {
       '8 1/2"',
       '9"',
     ],
-  },
-  'size-chart-mens-aaa-1307': {
-    1: [{en: 'Inches', es: 'Pulgadas'}, 'S', 'M', 'L', 'XL', '2XL', '3XL'],
-    2: [
+  ],
+  'size-chart-mens-aaa-1307': [
+    [{en: 'Inches', es: 'Pulgadas'}, 'S', 'M', 'L', 'XL', '2XL', '3XL'],
+    [
       {en: 'Body Width', es: 'Ancho del cuerpo'},
       '18"',
       '20"',
@@ -326,7 +326,7 @@ export const mensSizeCharts: {
       '26"',
       '28"',
     ],
-    3: [
+    [
       {en: 'Body Length', es: 'Largo del cuerpo'},
       '28"',
       '29"',
@@ -335,7 +335,7 @@ export const mensSizeCharts: {
       '33"',
       '34"',
     ],
-    4: [
+    [
       {en: 'Neck Opening', es: 'Largo del cuerpo'},
       '8"',
       '8"',
@@ -344,8 +344,8 @@ export const mensSizeCharts: {
       '9 1/2"',
       '10"',
     ],
-    5: ['Binding Fldr Width', '3/8"', '3/8"', '3/8"', '3/8"', '3/8"', '3/8"'],
-    6: [
+    ['Binding Fldr Width', '3/8"', '3/8"', '3/8"', '3/8"', '3/8"', '3/8"'],
+    [
       {en: 'Shoulder Width', es: 'Ancho de hombro'},
       '11 1/4"',
       '11 1/4"',
@@ -354,13 +354,13 @@ export const mensSizeCharts: {
       '12 1/2"',
       '14 3/8"',
     ],
-    7: ['Bottom Hem (Straight 1")', '1"', '1"', '1"', '1"', '1"', '1"'],
-    8: ['Armhole (Curved)', '11"', '12"', '13"', '14"', '15"', '17"'],
-    9: ['Strap Width (Outside to Outside)', '2"', '2"', '2"', '2"', '2"', '2"'],
-  },
-  'size-chart-mens-aaa-1309': {
-    1: [{en: 'Inches', es: 'Pulgadas'}, 'S', 'M', 'L', 'XL', '2XL', '3XL'],
-    2: [
+    ['Bottom Hem (Straight 1")', '1"', '1"', '1"', '1"', '1"', '1"'],
+    ['Armhole (Curved)', '11"', '12"', '13"', '14"', '15"', '17"'],
+    ['Strap Width (Outside to Outside)', '2"', '2"', '2"', '2"', '2"', '2"'],
+  ],
+  'size-chart-mens-aaa-1309': [
+    [{en: 'Inches', es: 'Pulgadas'}, 'S', 'M', 'L', 'XL', '2XL', '3XL'],
+    [
       {en: 'Body Width', es: 'Ancho del cuerpo'},
       '18"',
       '20"',
@@ -369,7 +369,7 @@ export const mensSizeCharts: {
       '26"',
       '28"',
     ],
-    3: [
+    [
       {en: 'Body Length', es: 'Largo del cuerpo'},
       '28"',
       '29"',
@@ -378,7 +378,7 @@ export const mensSizeCharts: {
       '33"',
       '34"',
     ],
-    4: [
+    [
       {
         en: 'Sleeve Length (Armhole to Edge)',
         es: 'Largo de manga (de la sisa al borde)',
@@ -390,7 +390,7 @@ export const mensSizeCharts: {
       '9 1/2"',
       '10"',
     ],
-    5: [
+    [
       {en: 'Tol +/-', es: 'Tol +/-'},
       '1/2"',
       '1/2"',
@@ -399,10 +399,10 @@ export const mensSizeCharts: {
       '1/2"',
       '1/2"',
     ],
-  },
-  'size-chart-mens-aaa-1334': {
-    1: [{en: 'Inches', es: 'Pulgadas'}, 'S', 'M', 'L', 'XL', '2XL', '3XL'],
-    2: [
+  ],
+  'size-chart-mens-aaa-1334': [
+    [{en: 'Inches', es: 'Pulgadas'}, 'S', 'M', 'L', 'XL', '2XL', '3XL'],
+    [
       {en: 'Body Length', es: 'Largo del cuerpo'},
       '29"',
       '30"',
@@ -411,7 +411,7 @@ export const mensSizeCharts: {
       '33"',
       '34"',
     ],
-    3: [
+    [
       {en: 'Body Width', es: 'Ancho del cuerpo'},
       '18"',
       '20"',
@@ -420,7 +420,7 @@ export const mensSizeCharts: {
       '26"',
       '28"',
     ],
-    4: [
+    [
       {en: 'Sleeve Length', es: 'largo de la manga'},
       '21"',
       '21 1/2"',
@@ -429,10 +429,10 @@ export const mensSizeCharts: {
       '23"',
       '23 1/2"',
     ],
-  },
-  'size-chart-mens-aaa-1572': {
-    1: [{en: 'Inches', es: 'Pulgadas'}, 'S', 'M', 'L', 'XL', '2XL', '3XL'],
-    2: [
+  ],
+  'size-chart-mens-aaa-1572': [
+    [{en: 'Inches', es: 'Pulgadas'}, 'S', 'M', 'L', 'XL', '2XL', '3XL'],
+    [
       {en: 'Body Width', es: 'Ancho del cuerpo'},
       '20"',
       '22"',
@@ -441,7 +441,7 @@ export const mensSizeCharts: {
       '28"',
       '30"',
     ],
-    3: [
+    [
       {en: 'Body Length', es: 'Largo del cuerpo'},
       '28"',
       '29"',
@@ -450,7 +450,7 @@ export const mensSizeCharts: {
       '32"',
       '33"',
     ],
-    4: [
+    [
       {en: 'Neck Opening', es: 'Largo del cuerpo'},
       '8"',
       '8"',
@@ -459,7 +459,7 @@ export const mensSizeCharts: {
       '9"',
       '9"',
     ],
-    5: [
+    [
       {en: 'Collar Height', es: 'Altura del collar'},
       '1 1/8"',
       '1 1/8"',
@@ -468,7 +468,7 @@ export const mensSizeCharts: {
       '1 1/8"',
       '1 1/8"',
     ],
-    6: [
+    [
       {
         en: 'Shoulder Width (Seam to Seam)',
         es: 'Ancho de hombro (costura a costura)',
@@ -480,7 +480,7 @@ export const mensSizeCharts: {
       '25"',
       '27"',
     ],
-    7: [
+    [
       {en: 'Waistband (Relaxed)', es: 'Cintura (relajada)'},
       '15"',
       '16"',
@@ -489,7 +489,7 @@ export const mensSizeCharts: {
       '22"',
       '24"',
     ],
-    8: [
+    [
       {
         en: 'Waistband Height (Set In)',
         es: 'Altura de la pretina (establecida)',
@@ -501,7 +501,7 @@ export const mensSizeCharts: {
       '2 1/4"',
       '2 1/4"',
     ],
-    9: [
+    [
       {en: 'Armhole (Straight)', es: 'Sisa (recto)'},
       '9 1/2"',
       '10"',
@@ -510,7 +510,7 @@ export const mensSizeCharts: {
       '11 1/2"',
       '12"',
     ],
-    10: [
+    [
       {
         en: 'Sleeve Length (Armhole to Edge)',
         es: 'Largo de manga (de la sisa al borde)',
@@ -522,7 +522,7 @@ export const mensSizeCharts: {
       '25 1/2"',
       '26"',
     ],
-    11: [
+    [
       {en: 'Cuff Opening (Relaxed)', es: 'Apertura del puño (relajado)'},
       '3 1/2"',
       '3 1/2"',
@@ -531,7 +531,7 @@ export const mensSizeCharts: {
       '4"',
       '4 1/2"',
     ],
-    12: [
+    [
       {en: 'Cuff Height (Set In)', es: 'Altura del brazalete (ajustada)'},
       '2 1/4"',
       '2 1/4"',
@@ -540,19 +540,11 @@ export const mensSizeCharts: {
       '2 1/4"',
       '2 1/4"',
     ],
-  },
-  'size-chart-mens-aaa-1573': {
-    1: [{en: 'Inches', es: 'Pulgadas'}, 'S', 'M', 'L', 'XL', '2XL', '3XL'],
-    2: [
-      'Body Width (1" Below Armhole)',
-      '20"',
-      '22"',
-      '24"',
-      '26"',
-      '28"',
-      '30"',
-    ],
-    3: [
+  ],
+  'size-chart-mens-aaa-1573': [
+    [{en: 'Inches', es: 'Pulgadas'}, 'S', 'M', 'L', 'XL', '2XL', '3XL'],
+    ['Body Width (1" Below Armhole)', '20"', '22"', '24"', '26"', '28"', '30"'],
+    [
       {en: 'Body Length (HPS to Edge)', es: 'Largo del cuerpo'},
       '28"',
       '29"',
@@ -561,7 +553,7 @@ export const mensSizeCharts: {
       '32"',
       '33"',
     ],
-    4: [
+    [
       {
         en: 'Neck Opening (Seam to Seam)',
         es: 'Abertura del cuello (costura a costura)',
@@ -573,7 +565,7 @@ export const mensSizeCharts: {
       '13"',
       '13"',
     ],
-    5: [
+    [
       {en: 'Hood Height (Center Hood)', es: 'Altura del capó (capó central)'},
       '15"',
       '15"',
@@ -582,7 +574,7 @@ export const mensSizeCharts: {
       '15 3/4"',
       '15 3/4"',
     ],
-    6: [
+    [
       {en: 'Hood Width', es: 'Ancho del capó'},
       '9 1/2"',
       '10 1/4"',
@@ -591,7 +583,7 @@ export const mensSizeCharts: {
       '12 1/2"',
       '12 1/2"',
     ],
-    7: [
+    [
       {
         en: 'Shoulder Width (Seam to Seam)',
         es: 'Ancho de hombro (costura a costura)',
@@ -603,7 +595,7 @@ export const mensSizeCharts: {
       '27 1/2"',
       '29 1/2"',
     ],
-    8: [
+    [
       {en: 'Waistband (Relaxed)', es: 'Cintura (relajada)'},
       '18"',
       '19"',
@@ -612,7 +604,7 @@ export const mensSizeCharts: {
       '22"',
       '23"',
     ],
-    9: [
+    [
       {
         en: 'Waistband Height (Set In)',
         es: 'Altura de la pretina (establecida)',
@@ -624,7 +616,7 @@ export const mensSizeCharts: {
       '2 1/4"',
       '2 1/4"',
     ],
-    10: [
+    [
       {en: 'Armhole (Straight)', es: 'Sisa (recto)'},
       '9 3/4"',
       '10 3/4"',
@@ -633,7 +625,7 @@ export const mensSizeCharts: {
       '13"',
       '13 1/2"',
     ],
-    11: [
+    [
       {en: 'Cuff Opening (Relaxed)', es: 'Apertura del puño (relajado)'},
       '3 1/2"',
       '3 1/2"',
@@ -642,7 +634,7 @@ export const mensSizeCharts: {
       '4"',
       '4 1/2"',
     ],
-    12: [
+    [
       {en: 'Cuff Height (Set In)', es: 'Altura del brazalete (ajustada)'},
       '2 1/4"',
       '2 1/4"',
@@ -651,10 +643,10 @@ export const mensSizeCharts: {
       '2 1/4"',
       '2 1/4"',
     ],
-  },
-  'size-chart-mens-aaa-1574': {
-    1: [{en: 'Inches', es: 'Pulgadas'}, 'S', 'M', 'L', 'XL', '2XL', '3XL'],
-    2: [
+  ],
+  'size-chart-mens-aaa-1574': [
+    [{en: 'Inches', es: 'Pulgadas'}, 'S', 'M', 'L', 'XL', '2XL', '3XL'],
+    [
       {en: 'Body Width', es: 'Ancho del cuerpo'},
       '21"',
       '23"',
@@ -663,7 +655,7 @@ export const mensSizeCharts: {
       '29"',
       '31"',
     ],
-    3: [
+    [
       {en: 'Body Length', es: 'Largo del cuerpo'},
       '28"',
       '29"',
@@ -672,7 +664,7 @@ export const mensSizeCharts: {
       '32 3/8"',
       '33 3/8"',
     ],
-    4: [
+    [
       {en: 'Neck Opening', es: 'Largo del cuerpo'},
       '9 1/2"',
       '9 3/4"',
@@ -681,7 +673,7 @@ export const mensSizeCharts: {
       '10 1/2"',
       '10 3/4"',
     ],
-    5: [
+    [
       {en: 'Hood Height (Center Hood)', es: 'Altura del capó (capó central)'},
       '14 3/4"',
       '15"',
@@ -690,7 +682,7 @@ export const mensSizeCharts: {
       '15 3/4"',
       '16"',
     ],
-    6: [
+    [
       {en: 'Hood Width', es: 'Ancho del capó'},
       '10 1/4"',
       '10 3/4"',
@@ -699,7 +691,7 @@ export const mensSizeCharts: {
       '12 1/4"',
       '12 3/4"',
     ],
-    7: [
+    [
       {
         en: 'Shoulder Width (Seam to Seam)',
         es: 'Ancho de hombro (costura a costura)',
@@ -711,7 +703,7 @@ export const mensSizeCharts: {
       '27 1/2"',
       '29 1/2"',
     ],
-    8: [
+    [
       {en: 'Waistband (Relaxed)', es: 'Cintura (relajada)'},
       '18"',
       '19"',
@@ -720,7 +712,7 @@ export const mensSizeCharts: {
       '22"',
       '23"',
     ],
-    9: [
+    [
       {
         en: 'Waistband Height (Set In)',
         es: 'Altura de la pretina (establecida)',
@@ -732,7 +724,7 @@ export const mensSizeCharts: {
       '2 1/4"',
       '2 1/4"',
     ],
-    10: [
+    [
       {en: 'Armhole (Straight)', es: 'Sisa (recto)'},
       '10 1/2"',
       '11 1/2"',
@@ -741,7 +733,7 @@ export const mensSizeCharts: {
       '13"',
       '13 1/2"',
     ],
-    11: [
+    [
       {
         en: 'Sleeve Length (Armhole to Edge)',
         es: 'Largo de manga (de la sisa al borde)',
@@ -753,7 +745,7 @@ export const mensSizeCharts: {
       '26 1/2"',
       '27"',
     ],
-    12: [
+    [
       {en: 'Cuff Opening (Relaxed)', es: 'Apertura del puño (relajado)'},
       '3 1/2"',
       '3 1/2"',
@@ -762,7 +754,7 @@ export const mensSizeCharts: {
       '4"',
       '4 1/2"',
     ],
-    13: [
+    [
       {en: 'Cuff Height (Set In)', es: 'Altura del brazalete (ajustada)'},
       '2 1/4"',
       '2 1/4"',
@@ -771,10 +763,10 @@ export const mensSizeCharts: {
       '2 1/4"',
       '2 1/4"',
     ],
-  },
-  'size-chart-mens-aaa-1701': {
-    1: [{en: 'Inches', es: 'Pulgadas'}, 'S', 'M', 'L', 'XL', '2XL', '3XL'],
-    2: [
+  ],
+  'size-chart-mens-aaa-1701': [
+    [{en: 'Inches', es: 'Pulgadas'}, 'S', 'M', 'L', 'XL', '2XL', '3XL'],
+    [
       {en: 'Body Width', es: 'Ancho del cuerpo'},
       '18"',
       '20"',
@@ -783,7 +775,7 @@ export const mensSizeCharts: {
       '26"',
       '28"',
     ],
-    3: [
+    [
       {en: 'Body Length', es: 'Largo del cuerpo'},
       '27"',
       '29"',
@@ -792,7 +784,7 @@ export const mensSizeCharts: {
       '33"',
       '34"',
     ],
-    4: [
+    [
       {en: 'Neck Opening', es: 'Largo del cuerpo'},
       '6 1/2"',
       '6 1/2"',
@@ -801,7 +793,7 @@ export const mensSizeCharts: {
       '7 1/2"',
       '7 1/2"',
     ],
-    5: [
+    [
       {en: 'Collar Height', es: 'Altura del collar'},
       '3/4"',
       '3/4"',
@@ -810,7 +802,7 @@ export const mensSizeCharts: {
       '3/4"',
       '3/4"',
     ],
-    6: [
+    [
       {en: 'Shoulder Width', es: 'Ancho de hombro'},
       '17"',
       '19"',
@@ -819,7 +811,7 @@ export const mensSizeCharts: {
       '25"',
       '27"',
     ],
-    7: [
+    [
       {en: 'Bottom & Sleeve Hem 1/4" DN', es: 'Bottom & Sleeve Hem 1/4"'},
       '3/4"',
       '3/4"',
@@ -828,7 +820,7 @@ export const mensSizeCharts: {
       '3/4"',
       '3/4"',
     ],
-    8: [
+    [
       {en: 'Armhole (Straight)', es: 'Sisa (recto)'},
       '8 3/4"',
       '9 3/4"',
@@ -837,7 +829,7 @@ export const mensSizeCharts: {
       '12 1/2"',
       '13 1/2"',
     ],
-    9: [
+    [
       {en: 'Upper Sleeve Length', es: 'Largo de la manga superior'},
       '7 3/4"',
       '8 1/4"',
@@ -846,7 +838,7 @@ export const mensSizeCharts: {
       '9 1/2"',
       '10"',
     ],
-    10: [
+    [
       {en: 'Sleeve Opening (Relaxed)', es: 'Apertura de la manga (relajada)'},
       '6 1/2"',
       '7"',
@@ -855,10 +847,10 @@ export const mensSizeCharts: {
       '8 1/2"',
       '9"',
     ],
-  },
-  'size-chart-mens-aaa-1901': {
-    1: [{en: 'Inches', es: 'Pulgadas'}, 'S', 'M', 'L', 'XL', '2XL', '3XL'],
-    2: [
+  ],
+  'size-chart-mens-aaa-1901': [
+    [{en: 'Inches', es: 'Pulgadas'}, 'S', 'M', 'L', 'XL', '2XL', '3XL'],
+    [
       {en: 'Body Width', es: 'Ancho del cuerpo'},
       '18"',
       '20"',
@@ -867,7 +859,7 @@ export const mensSizeCharts: {
       '26"',
       '28"',
     ],
-    3: [
+    [
       {en: 'Body Length', es: 'Largo del cuerpo'},
       '28"',
       '29"',
@@ -876,7 +868,7 @@ export const mensSizeCharts: {
       '32"',
       '33"',
     ],
-    4: [
+    [
       {en: 'Neck Opening', es: 'Largo del cuerpo'},
       '7 1/2"',
       '7 1/2"',
@@ -885,7 +877,7 @@ export const mensSizeCharts: {
       '8 1/2"',
       '8 1/2"',
     ],
-    5: [
+    [
       {en: 'Collar Height', es: 'Altura del collar'},
       '7/8"',
       '7/8"',
@@ -894,7 +886,7 @@ export const mensSizeCharts: {
       '7/8"',
       '7/8"',
     ],
-    6: [
+    [
       {en: 'Shoulder Width', es: 'Ancho de hombro'},
       '17"',
       '19"',
@@ -903,7 +895,7 @@ export const mensSizeCharts: {
       '25"',
       '27"',
     ],
-    7: [
+    [
       {en: 'Bottom & Sleeve Hem 1/4" DN', es: 'Bottom & Sleeve Hem 1/4"'},
       '3/4"',
       '3/4"',
@@ -912,7 +904,7 @@ export const mensSizeCharts: {
       '3/4"',
       '3/4"',
     ],
-    8: [
+    [
       {en: 'Armhole (Straight)', es: 'Sisa (recto)'},
       '8 3/4"',
       '9 3/4"',
@@ -921,7 +913,7 @@ export const mensSizeCharts: {
       '12 1/2"',
       '13 1/2"',
     ],
-    9: [
+    [
       {en: 'Upper Sleeve Length', es: 'Largo de la manga superior'},
       '7 1/4"',
       '7 3/4"',
@@ -930,7 +922,7 @@ export const mensSizeCharts: {
       '9 1/4"',
       '9 3/4"',
     ],
-    10: [
+    [
       {en: 'Sleeve Opening', es: 'Abertura de la manga'},
       '7"',
       '7 3/4"',
@@ -939,7 +931,7 @@ export const mensSizeCharts: {
       '9 1/2"',
       '10"',
     ],
-    11: [
+    [
       {en: 'Tol +/-', es: 'Tol +/-'},
       '1/4"',
       '1/4"',
@@ -948,19 +940,10 @@ export const mensSizeCharts: {
       '1/4"',
       '1/4"',
     ],
-  },
-  'size-chart-mens-aaa-5301': {
-    1: [
-      {en: 'Inches', es: 'Pulgadas'},
-      'XS',
-      'S',
-      'M',
-      'L',
-      'XL',
-      '2XL',
-      '3XL',
-    ],
-    2: [
+  ],
+  'size-chart-mens-aaa-5301': [
+    [{en: 'Inches', es: 'Pulgadas'}, 'XS', 'S', 'M', 'L', 'XL', '2XL', '3XL'],
+    [
       {en: 'Body Length', es: 'Largo del cuerpo'},
       '27"',
       '28"',
@@ -970,7 +953,7 @@ export const mensSizeCharts: {
       '32"',
       '33"',
     ],
-    3: [
+    [
       {en: 'Body Length Tolerance', es: 'Tolerancia del largo del cuerpo'},
       '+/- 1/2"',
       '+/- 1/2"',
@@ -980,7 +963,7 @@ export const mensSizeCharts: {
       '+/- 1/2"',
       '+/- 1/2"',
     ],
-    4: [
+    [
       {en: 'Body Width', es: 'Ancho del cuerpo'},
       '16"',
       '18"',
@@ -990,7 +973,7 @@ export const mensSizeCharts: {
       '26"',
       '28"',
     ],
-    5: [
+    [
       {en: 'Body Width Tolerance', es: 'Tolerancia del ancho del cuerpo'},
       '+/- 1/2"',
       '+/- 1/2"',
@@ -1000,10 +983,10 @@ export const mensSizeCharts: {
       '+/- 1/2"',
       '+/- 1/2"',
     ],
-  },
-  'size-chart-mens-american-apparel-5454': {
-    1: [{en: 'Inches', es: 'Pulgadas'}, 'XS', 'S', 'M', 'L', 'XL', '2XL'],
-    2: [
+  ],
+  'size-chart-mens-american-apparel-5454': [
+    [{en: 'Inches', es: 'Pulgadas'}, 'XS', 'S', 'M', 'L', 'XL', '2XL'],
+    [
       {en: 'Width', es: 'Ancho'},
       '37 1/4"',
       '39 1/4"',
@@ -1012,7 +995,7 @@ export const mensSizeCharts: {
       '54 1/4"',
       '55 1/4"',
     ],
-    3: [
+    [
       {en: 'Length', es: 'Largo'},
       '31"',
       '34 1/2"',
@@ -1021,10 +1004,10 @@ export const mensSizeCharts: {
       '33 1/4"',
       '33 7/8"',
     ],
-  },
-  'size-chart-mens-as-colour-5042': {
-    1: [{en: 'Inches', es: 'Pulgadas'}, 'XS', 'S', 'M', 'L', 'XL'],
-    2: [
+  ],
+  'size-chart-mens-as-colour-5042': [
+    [{en: 'Inches', es: 'Pulgadas'}, 'XS', 'S', 'M', 'L', 'XL'],
+    [
       {en: 'Body Width', es: 'Ancho del cuerpo'},
       '18"',
       '19"',
@@ -1032,7 +1015,7 @@ export const mensSizeCharts: {
       '21"',
       '21 3/4"',
     ],
-    3: [
+    [
       {en: 'Body Length', es: 'Largo del cuerpo'},
       '25"',
       '25 1/2"',
@@ -1040,10 +1023,10 @@ export const mensSizeCharts: {
       '26 1/4"',
       '26 1/2"',
     ],
-  },
-  'size-chart-mens-as-colour-5044': {
-    1: [{en: 'Inches', es: 'Pulgadas'}, 'XS', 'S', 'M', 'L', 'XL', '2XL'],
-    2: [
+  ],
+  'size-chart-mens-as-colour-5044': [
+    [{en: 'Inches', es: 'Pulgadas'}, 'XS', 'S', 'M', 'L', 'XL', '2XL'],
+    [
       {en: 'Body Width', es: 'Ancho del cuerpo'},
       '17"',
       '18 1/2"',
@@ -1052,7 +1035,7 @@ export const mensSizeCharts: {
       '24"',
       '25 1/4"',
     ],
-    3: [
+    [
       {en: 'Body Length', es: 'Largo del cuerpo'},
       '26 1/3"',
       '27 1/2"',
@@ -1061,10 +1044,10 @@ export const mensSizeCharts: {
       '32"',
       '33 3/4"',
     ],
-  },
-  'size-chart-mens-as-colour-5060': {
-    1: [{en: 'Inches', es: 'Pulgadas'}, 'S', 'M', 'L', 'XL', '2XL'],
-    2: [
+  ],
+  'size-chart-mens-as-colour-5060': [
+    [{en: 'Inches', es: 'Pulgadas'}, 'S', 'M', 'L', 'XL', '2XL'],
+    [
       {en: 'Body Width', es: 'Ancho del cuerpo'},
       '18 1/2"',
       '20 1/2"',
@@ -1072,7 +1055,7 @@ export const mensSizeCharts: {
       '24"',
       '25 1/4"',
     ],
-    3: [
+    [
       {en: 'Body Length', es: 'Largo del cuerpo'},
       '28"',
       '29 1/2"',
@@ -1080,10 +1063,10 @@ export const mensSizeCharts: {
       '32 1/4"',
       '32 1/2"',
     ],
-  },
-  'size-chart-mens-augusta-360-varsity': {
-    1: [{en: 'Inches', es: 'Pulgadas'}, 'S', 'M', 'L', 'XL', '2XL'],
-    2: [
+  ],
+  'size-chart-mens-augusta-360-varsity': [
+    [{en: 'Inches', es: 'Pulgadas'}, 'S', 'M', 'L', 'XL', '2XL'],
+    [
       {en: 'Body Length', es: 'Largo del cuerpo'},
       '28"',
       '29"',
@@ -1091,11 +1074,11 @@ export const mensSizeCharts: {
       '31 1/4"',
       '32 1/4"',
     ],
-    3: [{en: 'Chest', es: 'Pecho'}, '35"', '39"', '43"', '47"', '51"'],
-  },
-  'size-chart-mens-barber-smock': {
-    1: [{en: 'CM', es: 'CM'}, 'S', 'M', 'L', 'XL', '2XL', '3XL'],
-    2: [
+    [{en: 'Chest', es: 'Pecho'}, '35"', '39"', '43"', '47"', '51"'],
+  ],
+  'size-chart-mens-barber-smock': [
+    [{en: 'CM', es: 'CM'}, 'S', 'M', 'L', 'XL', '2XL', '3XL'],
+    [
       {en: 'Front Body Length', es: 'Largo frontal del cuerpo'},
       '72',
       '74',
@@ -1104,7 +1087,7 @@ export const mensSizeCharts: {
       '80',
       '83',
     ],
-    3: [
+    [
       {en: 'Shoulder Width', es: 'Ancho de hombro'},
       '46',
       '48',
@@ -1113,7 +1096,7 @@ export const mensSizeCharts: {
       '54',
       '57',
     ],
-    4: [
+    [
       {en: 'Chest Width', es: 'Ancho del pecho'},
       '58',
       '60',
@@ -1122,7 +1105,7 @@ export const mensSizeCharts: {
       '66',
       '69',
     ],
-    5: [
+    [
       {en: 'Hem Width', es: 'Ancho de costura'},
       '55',
       '57',
@@ -1131,7 +1114,7 @@ export const mensSizeCharts: {
       '63',
       '66',
     ],
-    6: [
+    [
       {en: 'Sleeve Length', es: 'largo de la manga'},
       '26',
       '27',
@@ -1140,7 +1123,7 @@ export const mensSizeCharts: {
       '30',
       '32',
     ],
-    7: [
+    [
       {en: 'Cuff Width', es: 'Ancho de la manga'},
       '19',
       '19.5',
@@ -1149,7 +1132,7 @@ export const mensSizeCharts: {
       '22.5',
       '24.5',
     ],
-    8: [
+    [
       {en: 'Arm Hole Width', es: 'Ancho del agujero del brazo'},
       '24.5',
       '25.5',
@@ -1158,8 +1141,8 @@ export const mensSizeCharts: {
       '29.5',
       '31',
     ],
-    9: ['1/2', '17.5', '18', '18.5', '19', '19.5', '20.5'],
-    10: [
+    ['1/2', '17.5', '18', '18.5', '19', '19.5', '20.5'],
+    [
       {en: 'Collar Height', es: 'Altura del collar'},
       '3',
       '3',
@@ -1168,7 +1151,7 @@ export const mensSizeCharts: {
       '3',
       '3.5',
     ],
-    11: [
+    [
       {en: '1/2 Neck Circumference', es: '1/2 circunferencia del cuello'},
       '22.5',
       '23.5',
@@ -1177,11 +1160,11 @@ export const mensSizeCharts: {
       '26.8',
       '28',
     ],
-  },
-  'size-chart-mens-baseball-tee': {
-    1: [{en: 'CM', es: 'CM'}, 'S', 'M', 'L', 'XL', '2XL', '3XL'],
-    2: [{en: 'Chest', es: 'Pecho'}, '45', '50', '56', '62', '63', '72'],
-    3: [
+  ],
+  'size-chart-mens-baseball-tee': [
+    [{en: 'CM', es: 'CM'}, 'S', 'M', 'L', 'XL', '2XL', '3XL'],
+    [{en: 'Chest', es: 'Pecho'}, '45', '50', '56', '62', '63', '72'],
+    [
       {en: 'Body Length', es: 'Largo del cuerpo'},
       '72',
       '73',
@@ -1190,7 +1173,7 @@ export const mensSizeCharts: {
       '79',
       '81',
     ],
-    4: [
+    [
       {en: 'Outside Sleeve Length', es: 'Largo del exterior de la manga'},
       '53',
       '53',
@@ -1199,7 +1182,7 @@ export const mensSizeCharts: {
       '59',
       '60',
     ],
-    5: [
+    [
       {en: 'InsideSleeve Length', es: 'Largo del interior de la manga'},
       '29',
       '29',
@@ -1208,7 +1191,7 @@ export const mensSizeCharts: {
       '31',
       '31',
     ],
-    6: [
+    [
       {en: 'Neck Width', es: 'Ancho del cuello'},
       '16.5',
       '19',
@@ -1217,7 +1200,7 @@ export const mensSizeCharts: {
       '20.5',
       '23',
     ],
-    7: [
+    [
       {en: 'Front Neck Drop', es: 'Caída frontal del cuello'},
       '12',
       '12',
@@ -1226,7 +1209,7 @@ export const mensSizeCharts: {
       '12.5',
       '12.5',
     ],
-    8: [
+    [
       {en: 'Sleeve Opening', es: 'Abertura de la manga'},
       '13.5',
       '15',
@@ -1235,9 +1218,9 @@ export const mensSizeCharts: {
       '16',
       '17',
     ],
-  },
-  'size-chart-mens-gildan-2000': {
-    1: [
+  ],
+  'size-chart-mens-gildan-2000': [
+    [
       {en: 'Inches', es: 'Pulgadas'},
       'S',
       'M',
@@ -1248,7 +1231,7 @@ export const mensSizeCharts: {
       '4XL',
       '5XL',
     ],
-    2: [
+    [
       {en: 'Body Length', es: 'Largo del cuerpo'},
       '28"',
       '29"',
@@ -1259,7 +1242,7 @@ export const mensSizeCharts: {
       '34"',
       '35"',
     ],
-    3: [
+    [
       {en: 'Body Length Tolerance', es: 'Tolerancia del largo del cuerpo'},
       '1/2"',
       '1/2"',
@@ -1270,7 +1253,7 @@ export const mensSizeCharts: {
       '1/2"',
       '1/2"',
     ],
-    4: [
+    [
       {en: 'Body Width', es: 'Ancho del cuerpo'},
       '18"',
       '20"',
@@ -1281,7 +1264,7 @@ export const mensSizeCharts: {
       '30"',
       '32"',
     ],
-    5: [
+    [
       {en: 'Body Width Tolerance', es: 'Tolerancia del ancho del cuerpo'},
       '3/4"',
       '3/4"',
@@ -1292,10 +1275,10 @@ export const mensSizeCharts: {
       '3/4"',
       '3/4"',
     ],
-  },
-  'size-chart-mens-gildan-2400': {
-    1: [{en: 'CM', es: 'CM'}, 'S', 'M', 'L', 'XL', '2XL', '3XL', '4XL', '5XL'],
-    2: [
+  ],
+  'size-chart-mens-gildan-2400': [
+    [{en: 'CM', es: 'CM'}, 'S', 'M', 'L', 'XL', '2XL', '3XL', '4XL', '5XL'],
+    [
       {en: 'Width', es: 'Ancho'},
       '46',
       '51',
@@ -1306,7 +1289,7 @@ export const mensSizeCharts: {
       '76',
       '81',
     ],
-    3: [
+    [
       {en: 'Length', es: 'Largo'},
       '71',
       '74',
@@ -1317,9 +1300,9 @@ export const mensSizeCharts: {
       '86',
       '89',
     ],
-  },
-  'size-chart-mens-gildan-5000': {
-    1: [
+  ],
+  'size-chart-mens-gildan-5000': [
+    [
       {en: 'Inches', es: 'Pulgadas'},
       'S',
       'M',
@@ -1330,7 +1313,7 @@ export const mensSizeCharts: {
       '4XL',
       '5XL',
     ],
-    2: [
+    [
       {en: 'Width', es: 'Ancho'},
       '18"',
       '20"',
@@ -1341,7 +1324,7 @@ export const mensSizeCharts: {
       '30"',
       '32"',
     ],
-    3: [
+    [
       {en: 'Length', es: 'Largo'},
       '28"',
       '29"',
@@ -1352,7 +1335,7 @@ export const mensSizeCharts: {
       '34"',
       '35"',
     ],
-    4: [
+    [
       {en: 'Sleeve Center Back', es: 'Centro de la manga en la espalda'},
       '15.63"',
       '17"',
@@ -1363,10 +1346,10 @@ export const mensSizeCharts: {
       '24.25"',
       '25.37"',
     ],
-  },
-  'size-chart-mens-gildan-18000': {
-    1: [{en: 'CM', es: 'CM'}, 'S', 'M', 'L', 'XL', '2XL', '3XL', '4XL', '5XL'],
-    2: [
+  ],
+  'size-chart-mens-gildan-18000': [
+    [{en: 'CM', es: 'CM'}, 'S', 'M', 'L', 'XL', '2XL', '3XL', '4XL', '5XL'],
+    [
       {en: 'Width', es: 'Ancho'},
       '51',
       '56',
@@ -1377,7 +1360,7 @@ export const mensSizeCharts: {
       '81',
       '86',
     ],
-    3: [
+    [
       {en: 'Length', es: 'Largo'},
       '69',
       '71',
@@ -1388,10 +1371,10 @@ export const mensSizeCharts: {
       '84',
       '86',
     ],
-  },
-  'size-chart-mens-gildan-18500': {
-    1: [{en: 'CM', es: 'CM'}, 'S', 'M', 'L', 'XL', '2XL', '3XL', '4XL', '5XL'],
-    2: [
+  ],
+  'size-chart-mens-gildan-18500': [
+    [{en: 'CM', es: 'CM'}, 'S', 'M', 'L', 'XL', '2XL', '3XL', '4XL', '5XL'],
+    [
       {en: 'Width', es: 'Ancho'},
       '51',
       '56',
@@ -1402,7 +1385,7 @@ export const mensSizeCharts: {
       '81',
       '86',
     ],
-    3: [
+    [
       {en: 'Length', es: 'Largo'},
       '69',
       '71',
@@ -1413,10 +1396,10 @@ export const mensSizeCharts: {
       '84',
       '86',
     ],
-  },
-  'size-chart-mens-independent-30rc': {
-    1: [{en: 'Inches', es: 'Pulgadas'}, 'S', 'M', 'L', 'XL', '2XL'],
-    2: [
+  ],
+  'size-chart-mens-independent-30rc': [
+    [{en: 'Inches', es: 'Pulgadas'}, 'S', 'M', 'L', 'XL', '2XL'],
+    [
       {en: 'Body Length (From HPS)', es: 'Largo del cuerpo'},
       '27.5"',
       '28.5"',
@@ -1424,7 +1407,7 @@ export const mensSizeCharts: {
       '30.5"',
       '31.5"',
     ],
-    3: [
+    [
       {
         en: 'Chest Width (1" Below Armhole)',
         es: 'Ancho del pecho (1" por debajo de la sisa)',
@@ -1435,7 +1418,7 @@ export const mensSizeCharts: {
       '24"',
       '25"',
     ],
-    4: [
+    [
       {
         en: 'Sleeve Length (From Center Back Including Cuff Rib)',
         es: 'Largo de la manga (desde el centro de la espalda)',
@@ -1446,9 +1429,9 @@ export const mensSizeCharts: {
       '38.5"',
       '39.75"',
     ],
-  },
-  'size-chart-mens-independent-4000z': {
-    1: [
+  ],
+  'size-chart-mens-independent-4000z': [
+    [
       {en: 'Inches', es: 'Pulgadas'},
       'XS',
       'S',
@@ -1461,7 +1444,7 @@ export const mensSizeCharts: {
       '5XL',
       '6XL',
     ],
-    2: [
+    [
       {en: 'Chest Width', es: 'Ancho del pecho'},
       '20 1/2"',
       '21"',
@@ -1474,7 +1457,7 @@ export const mensSizeCharts: {
       '31 1/2"',
       '33"',
     ],
-    3: [
+    [
       {en: 'Length', es: 'Largo'},
       '27 1/2"',
       '28 1/2"',
@@ -1487,7 +1470,7 @@ export const mensSizeCharts: {
       '34 1/2"',
       '35"',
     ],
-    4: [
+    [
       {en: 'Sleeve Length', es: 'largo de la manga'},
       '33 1/2"',
       '34 1/2"',
@@ -1500,19 +1483,10 @@ export const mensSizeCharts: {
       '40 1/2"',
       '41"',
     ],
-  },
-  'size-chart-mens-independent-afx90unz': {
-    1: [
-      {en: 'Inches', es: 'Pulgadas'},
-      'XS',
-      'S',
-      'M',
-      'L',
-      'XL',
-      '2XL',
-      '3XL',
-    ],
-    2: [
+  ],
+  'size-chart-mens-independent-afx90unz': [
+    [{en: 'Inches', es: 'Pulgadas'}, 'XS', 'S', 'M', 'L', 'XL', '2XL', '3XL'],
+    [
       {en: 'Chest Width', es: 'Ancho del pecho'},
       '18.5"',
       '19.5"',
@@ -1522,7 +1496,7 @@ export const mensSizeCharts: {
       '24.5"',
       '25.5"',
     ],
-    3: [
+    [
       {en: 'Length', es: 'Largo'},
       '22.5"',
       '24"',
@@ -1532,7 +1506,7 @@ export const mensSizeCharts: {
       '30.5"',
       '31.5"',
     ],
-    4: [
+    [
       {en: 'Sleeve Length', es: 'largo de la manga'},
       '29"',
       '30.5"',
@@ -1542,10 +1516,10 @@ export const mensSizeCharts: {
       '39"',
       '40.25"',
     ],
-  },
-  'size-chart-mens-independent-exp99ncb': {
-    1: [{en: 'Inches', es: 'Pulgadas'}, 'S', 'M', 'L', 'XL', '2XL', '3XL'],
-    2: [
+  ],
+  'size-chart-mens-independent-exp99ncb': [
+    [{en: 'Inches', es: 'Pulgadas'}, 'S', 'M', 'L', 'XL', '2XL', '3XL'],
+    [
       {en: 'Body Length (From HPS)', es: 'Largo del cuerpo'},
       '29"',
       '30"',
@@ -1554,7 +1528,7 @@ export const mensSizeCharts: {
       '33"',
       '34"',
     ],
-    3: [
+    [
       {
         en: 'Chest Width (1" Below Armhole)',
         es: 'Ancho del pecho (1" por debajo de la sisa)',
@@ -1566,7 +1540,7 @@ export const mensSizeCharts: {
       '26"',
       '27.5"',
     ],
-    4: [
+    [
       'Sleeve Length (From Shoulder To Sleeve Hem)',
       '26"',
       '27"',
@@ -1575,10 +1549,10 @@ export const mensSizeCharts: {
       '30"',
       '31"',
     ],
-  },
-  'size-chart-mens-independent-prm30sbc': {
-    1: [{en: 'Inches', es: 'Pulgadas'}, 'S', 'M', 'L', 'XL', '2XL', '3XL'],
-    2: [
+  ],
+  'size-chart-mens-independent-prm30sbc': [
+    [{en: 'Inches', es: 'Pulgadas'}, 'S', 'M', 'L', 'XL', '2XL', '3XL'],
+    [
       {en: 'Body Length', es: 'Largo del cuerpo'},
       '26.5"',
       '27.5"',
@@ -1587,7 +1561,7 @@ export const mensSizeCharts: {
       '30.5"',
       '31.5"',
     ],
-    3: [
+    [
       {en: 'Sleeve Length', es: 'largo de la manga'},
       '33.5"',
       '34.5"',
@@ -1596,19 +1570,10 @@ export const mensSizeCharts: {
       '37.5"',
       '38.5"',
     ],
-  },
-  'size-chart-mens-independent-ss1000c': {
-    1: [
-      {en: 'Inches', es: 'Pulgadas'},
-      'S',
-      'M',
-      'L',
-      'XL',
-      '2XL',
-      '3XL',
-      '4XL',
-    ],
-    2: [
+  ],
+  'size-chart-mens-independent-ss1000c': [
+    [{en: 'Inches', es: 'Pulgadas'}, 'S', 'M', 'L', 'XL', '2XL', '3XL', '4XL'],
+    [
       {en: 'Body Length (From HPS)', es: 'Largo del cuerpo'},
       '25.5"',
       '26.5"',
@@ -1618,7 +1583,7 @@ export const mensSizeCharts: {
       '30.5"',
       '31.5"',
     ],
-    3: [
+    [
       {
         en: 'Chest Width (1" Below Armhole)',
         es: 'Ancho del pecho (1" por debajo de la sisa)',
@@ -1631,7 +1596,7 @@ export const mensSizeCharts: {
       '24"',
       '25"',
     ],
-    4: [
+    [
       'Sleeve Length (From Center Back to Hem)',
       '32"',
       '33"',
@@ -1641,10 +1606,10 @@ export const mensSizeCharts: {
       '37.75"',
       '39',
     ],
-  },
-  'size-chart-mens-kokomo-shirt': {
-    1: [{en: 'CM', es: 'CM'}, 'S', 'M', 'L', 'XL', '2XL', '3XL', '4XL'],
-    2: [
+  ],
+  'size-chart-mens-kokomo-shirt': [
+    [{en: 'CM', es: 'CM'}, 'S', 'M', 'L', 'XL', '2XL', '3XL', '4XL'],
+    [
       'Shoulder To Shoulder',
       '45.5',
       '47.5',
@@ -1654,7 +1619,7 @@ export const mensSizeCharts: {
       '55.5',
       '57.5',
     ],
-    3: [
+    [
       {en: 'Armpit To Armpit', es: 'Axila a axila'},
       '50',
       '53',
@@ -1664,8 +1629,8 @@ export const mensSizeCharts: {
       '65',
       '68',
     ],
-    4: [{en: 'Bottom', es: 'Bajo'}, '50', '53', '56', '59', '62', '65', '68'],
-    5: [
+    [{en: 'Bottom', es: 'Bajo'}, '50', '53', '56', '59', '62', '65', '68'],
+    [
       {en: 'Sleeve Length', es: 'largo de la manga'},
       '21.5',
       '22.5',
@@ -1675,7 +1640,7 @@ export const mensSizeCharts: {
       '26.5',
       '27.5',
     ],
-    6: [
+    [
       {en: 'Sleeve Opening', es: 'Abertura de la manga'},
       '18',
       '18.5',
@@ -1685,7 +1650,7 @@ export const mensSizeCharts: {
       '20.5',
       '21',
     ],
-    7: [
+    [
       {en: 'Body Length', es: 'Largo del cuerpo'},
       '72.5',
       '74.5',
@@ -1695,19 +1660,10 @@ export const mensSizeCharts: {
       '82.5',
       '84.5',
     ],
-  },
-  'size-chart-mens-next-level-3600': {
-    1: [
-      {en: 'Inches', es: 'Pulgadas'},
-      'S',
-      'M',
-      'L',
-      'XL',
-      '2XL',
-      '3XL',
-      '4XL',
-    ],
-    2: [
+  ],
+  'size-chart-mens-next-level-3600': [
+    [{en: 'Inches', es: 'Pulgadas'}, 'S', 'M', 'L', 'XL', '2XL', '3XL', '4XL'],
+    [
       {en: 'High Point Shoulder Length', es: 'Largo del hombro de punto alto'},
       '28"',
       '29"',
@@ -1717,7 +1673,7 @@ export const mensSizeCharts: {
       '33"',
       '34"',
     ],
-    3: [
+    [
       {en: 'Bust 1" Below Armhole', es: 'Busto 1" debajo de la sisa'},
       '19"',
       '20.5"',
@@ -1727,10 +1683,10 @@ export const mensSizeCharts: {
       '28"',
       '30"',
     ],
-  },
-  'size-chart-mens-next-level-3633': {
-    1: [{en: 'Inches', es: 'Pulgadas'}, 'S', 'M', 'L', 'XL', '2XL'],
-    2: [
+  ],
+  'size-chart-mens-next-level-3633': [
+    [{en: 'Inches', es: 'Pulgadas'}, 'S', 'M', 'L', 'XL', '2XL'],
+    [
       {en: 'High Point Shoulder Length', es: 'Largo del hombro de punto alto'},
       '28.5"',
       '29.5"',
@@ -1738,7 +1694,7 @@ export const mensSizeCharts: {
       '31.5"',
       '32.5"',
     ],
-    3: [
+    [
       {en: 'Bust 1" Below Armhole', es: 'Busto 1" debajo de la sisa'},
       '18.5"',
       '20"',
@@ -1746,10 +1702,10 @@ export const mensSizeCharts: {
       '23.5"',
       '25.5"',
     ],
-  },
-  'size-chart-mens-pacific-sports-1314': {
-    1: [{en: 'Inches', es: 'Pulgadas'}, 'S', 'M', 'L', 'XL', '2XL', '3XL'],
-    2: [
+  ],
+  'size-chart-mens-pacific-sports-1314': [
+    [{en: 'Inches', es: 'Pulgadas'}, 'S', 'M', 'L', 'XL', '2XL', '3XL'],
+    [
       {en: 'Width', es: 'Ancho'},
       '19"',
       '20"',
@@ -1758,28 +1714,11 @@ export const mensSizeCharts: {
       '24 1/2"',
       '25 1/2"',
     ],
-    3: [
-      {en: 'Length', es: 'Largo'},
-      '28"',
-      '29"',
-      '30"',
-      '31"',
-      '32 1/2"',
-      '33"',
-    ],
-  },
-  'size-chart-mens-polos': {
-    1: [
-      {en: 'Inches', es: 'Pulgadas'},
-      'S',
-      'M',
-      'L',
-      'XL',
-      '2XL',
-      '3XL',
-      '4XL',
-    ],
-    2: [
+    [{en: 'Length', es: 'Largo'}, '28"', '29"', '30"', '31"', '32 1/2"', '33"'],
+  ],
+  'size-chart-mens-polos': [
+    [{en: 'Inches', es: 'Pulgadas'}, 'S', 'M', 'L', 'XL', '2XL', '3XL', '4XL'],
+    [
       {en: 'Chest', es: 'Pecho'},
       '35 - 37"',
       '38 - 40"',
@@ -1789,7 +1728,7 @@ export const mensSizeCharts: {
       '50 - 52"',
       '53 - 55"',
     ],
-    3: [
+    [
       {en: 'Waist', es: 'Cintura'},
       '32"',
       '34"',
@@ -1799,10 +1738,10 @@ export const mensSizeCharts: {
       '44"',
       '46"',
     ],
-  },
-  'size-chart-mens-spirit-jersey': {
-    1: [{en: 'Inches', es: 'Pulgadas'}, 'XS', 'S', 'M', 'L', 'XL', '2XL'],
-    2: [
+  ],
+  'size-chart-mens-spirit-jersey': [
+    [{en: 'Inches', es: 'Pulgadas'}, 'XS', 'S', 'M', 'L', 'XL', '2XL'],
+    [
       {en: 'Body Length', es: 'Largo del cuerpo'},
       '27 3/4"',
       '28 1/2"',
@@ -1811,7 +1750,7 @@ export const mensSizeCharts: {
       '30 3/4"',
       '31 1/2"',
     ],
-    3: [
+    [
       {en: 'Body Width', es: 'Ancho del cuerpo'},
       '21 1/2"',
       '22 1/2"',
@@ -1820,7 +1759,7 @@ export const mensSizeCharts: {
       '25 1/2"',
       '26 1/2"',
     ],
-    4: [
+    [
       {en: 'Body Width', es: 'Ancho del cuerpo'},
       '31"',
       '32"',
@@ -1829,10 +1768,10 @@ export const mensSizeCharts: {
       '35"',
       '35 1/2"',
     ],
-  },
-  'size-chart-mens-windbreaker': {
-    1: [{en: 'Inches', es: 'Pulgadas'}, 'S', 'M', 'L', 'XL', '2XL', '3XL'],
-    2: [
+  ],
+  'size-chart-mens-windbreaker': [
+    [{en: 'Inches', es: 'Pulgadas'}, 'S', 'M', 'L', 'XL', '2XL', '3XL'],
+    [
       {
         en: 'Highest Point Shoulder Length',
         es: 'Lago del hombro del punto más alto',
@@ -1844,7 +1783,7 @@ export const mensSizeCharts: {
       '29 1/2"',
       '32"',
     ],
-    3: [
+    [
       {
         en: 'Across Shoulders (Seam To Seam)',
         es: 'Hombros cruzados (costura a costura)',
@@ -1856,7 +1795,7 @@ export const mensSizeCharts: {
       '24"',
       '24"',
     ],
-    4: [
+    [
       {en: 'Front Neck Drop (Seam)', es: 'Caída del cuello frontal (costura)'},
       '24"',
       '25"',
@@ -1865,7 +1804,7 @@ export const mensSizeCharts: {
       '26 1/2"',
       '26 1/2"',
     ],
-    5: [
+    [
       {en: 'Sleeve Hem', es: 'Dobladillo de la manga'},
       '31"',
       '31"',
@@ -1874,7 +1813,7 @@ export const mensSizeCharts: {
       '33"',
       '33"',
     ],
-    6: [
+    [
       {en: 'Sweep Hem', es: 'Doblado'},
       '24 1/2"',
       '24 1/2"',
@@ -1883,7 +1822,7 @@ export const mensSizeCharts: {
       '29"',
       '32"',
     ],
-    7: [
+    [
       {en: 'Neckband Width', es: 'Ancho de la banda para el cuello'},
       '9"',
       '9"',
@@ -1892,5 +1831,5 @@ export const mensSizeCharts: {
       '9 1/2"',
       '9 1/2"',
     ],
-  },
+  ],
 };

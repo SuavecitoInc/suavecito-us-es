@@ -1,7 +1,7 @@
 export const womensSizeCharts: {[key: string]: {[key: number]: any[]}} = {
-  'size-chart-womens-alternative-apparel-5058': {
-    1: [{en: 'Inches', es: 'Pulgadas'}, 'S', 'M', 'L', 'XL', '2XL'],
-    2: [
+  'size-chart-womens-alternative-apparel-5058': [
+    [{en: 'Inches', es: 'Pulgadas'}, 'S', 'M', 'L', 'XL', '2XL'],
+    [
       {en: 'Bust', es: 'Busto'},
       '32 - 34"',
       '35 - 36"',
@@ -9,10 +9,10 @@ export const womensSizeCharts: {[key: string]: {[key: number]: any[]}} = {
       '39 - 40"',
       '41 - 42"',
     ],
-  },
-  'size-chart-womens-american-apparel-2410': {
-    1: [{en: 'Inches', es: 'Pulgadas'}, 'S', 'M', 'L', 'XL', '2XL'],
-    2: [
+  ],
+  'size-chart-womens-american-apparel-2410': [
+    [{en: 'Inches', es: 'Pulgadas'}, 'S', 'M', 'L', 'XL', '2XL'],
+    [
       {en: 'Body Length', es: 'Largo del cuerpo'},
       '25 3/4"',
       '26 1/4"',
@@ -20,7 +20,7 @@ export const womensSizeCharts: {[key: string]: {[key: number]: any[]}} = {
       '27 1/2"',
       '28 1/8"',
     ],
-    3: [
+    [
       {en: 'Body Width', es: 'Ancho del cuerpo'},
       '16 1/2"',
       '17 1/4"',
@@ -28,11 +28,11 @@ export const womensSizeCharts: {[key: string]: {[key: number]: any[]}} = {
       '19 1/4"',
       '20 1/4"',
     ],
-    4: [{en: 'Tol +/-', es: 'Tol +/-'}, '3/4"', '3/4"', '3/4"', '3/4"', '3/4"'],
-  },
-  'size-chart-womens-as-colour-4053': {
-    1: [{en: 'Inches', es: 'Pulgadas'}, 'S', 'M', 'L', 'XL'],
-    2: [
+    [{en: 'Tol +/-', es: 'Tol +/-'}, '3/4"', '3/4"', '3/4"', '3/4"', '3/4"'],
+  ],
+  'size-chart-womens-as-colour-4053': [
+    [{en: 'Inches', es: 'Pulgadas'}, 'S', 'M', 'L', 'XL'],
+    [
       {en: 'Body Width', es: 'Ancho del cuerpo'},
       '17.5"',
       '18.5"',
@@ -40,7 +40,7 @@ export const womensSizeCharts: {[key: string]: {[key: number]: any[]}} = {
       '20.5"',
       '21.5"',
     ],
-    3: [
+    [
       {en: 'Body Length', es: 'Largo del cuerpo'},
       '24.5"',
       '25"',
@@ -48,10 +48,10 @@ export const womensSizeCharts: {[key: string]: {[key: number]: any[]}} = {
       '25.75"',
       '26.25"',
     ],
-  },
-  'size-chart-womens-baseball-tee': {
-    1: [{en: 'Inches', es: 'Pulgadas'}, 'S', 'M', 'L', 'XL', '2XL'],
-    2: [
+  ],
+  'size-chart-womens-baseball-tee': [
+    [{en: 'Inches', es: 'Pulgadas'}, 'S', 'M', 'L', 'XL', '2XL'],
+    [
       {
         en: 'Highest Point Shoulder Length',
         es: 'Largo del hombro del punto más alto',
@@ -62,7 +62,7 @@ export const womensSizeCharts: {[key: string]: {[key: number]: any[]}} = {
       '26"',
       '26 1/2"',
     ],
-    3: [
+    [
       {en: 'Bust (1" Below Armhole)', es: 'Busto (1" debajo de la sisa)'},
       '14 1/2"',
       '15"',
@@ -70,7 +70,7 @@ export const womensSizeCharts: {[key: string]: {[key: number]: any[]}} = {
       '16"',
       '17"',
     ],
-    4: [
+    [
       {
         en: 'Across Shoulders (Seam To Seam)',
         es: 'A través de los hombros (costura a costura)',
@@ -81,7 +81,7 @@ export const womensSizeCharts: {[key: string]: {[key: number]: any[]}} = {
       '10"',
       '11"',
     ],
-    5: [
+    [
       {en: 'Front Neck Drop (Seam)', es: 'Caída del cuello frontal (costura)'},
       '20"',
       '21"',
@@ -89,7 +89,7 @@ export const womensSizeCharts: {[key: string]: {[key: number]: any[]}} = {
       '22 1/2"',
       '23"',
     ],
-    6: [
+    [
       {en: 'Sleeve Hem', es: 'Dobladillo de la manga'},
       '17"',
       '18"',
@@ -97,8 +97,8 @@ export const womensSizeCharts: {[key: string]: {[key: number]: any[]}} = {
       '19"',
       '19 1/2"',
     ],
-    7: [{en: 'Sweep Hem', es: 'Dobladillo'}, '10"', '11"', '12"', '13"', '14"'],
-    8: [
+    [{en: 'Sweep Hem', es: 'Dobladillo'}, '10"', '11"', '12"', '13"', '14"'],
+    [
       {en: 'Neckband Width', es: 'Ancho de la banda para el cuello'},
       '7"',
       '7"',
@@ -106,10 +106,10 @@ export const womensSizeCharts: {[key: string]: {[key: number]: any[]}} = {
       '7"',
       '7"',
     ],
-  },
-  'size-chart-womens-bella-6004': {
-    1: [{en: 'Inches', es: 'Pulgadas'}, 'S', 'M', 'L', 'XL', '2XL'],
-    2: [
+  ],
+  'size-chart-womens-bella-6004': [
+    [{en: 'Inches', es: 'Pulgadas'}, 'S', 'M', 'L', 'XL', '2XL'],
+    [
       {en: 'Chest', es: 'Pecho'},
       '16"',
       '16 3/4"',
@@ -117,7 +117,7 @@ export const womensSizeCharts: {[key: string]: {[key: number]: any[]}} = {
       '18 3/4"',
       '19 3/4"',
     ],
-    3: [
+    [
       {en: 'Body Length (From HPS)', es: 'Largo del cuerpo'},
       '26 1/4"',
       '26 1/2"',
@@ -125,10 +125,10 @@ export const womensSizeCharts: {[key: string]: {[key: number]: any[]}} = {
       '28"',
       '28 5/8"',
     ],
-  },
-  'size-chart-womens-bella-6050': {
-    1: [{en: 'Inches', es: 'Pulgadas'}, 'S', 'M', 'L', 'XL', '2XL'],
-    2: [
+  ],
+  'size-chart-womens-bella-6050': [
+    [{en: 'Inches', es: 'Pulgadas'}, 'S', 'M', 'L', 'XL', '2XL'],
+    [
       {en: 'Body Length', es: 'Largo del cuerpo'},
       '25 3/4"',
       '26 1/4"',
@@ -136,7 +136,7 @@ export const womensSizeCharts: {[key: string]: {[key: number]: any[]}} = {
       '27 1/2"',
       '28 1/8',
     ],
-    3: [
+    [
       {en: 'Body Width', es: 'Ancho del cuerpo'},
       '16 1/2"',
       '17 1/4"',
@@ -144,11 +144,11 @@ export const womensSizeCharts: {[key: string]: {[key: number]: any[]}} = {
       '19 1/4"',
       '20 1/4"',
     ],
-    4: [{en: 'Tol +/-', es: 'Tol +/-'}, '3/4"', '3/4"', '3/4"', '3/4"', '3/4"'],
-  },
-  'size-chart-womens-bella-6400': {
-    1: [{en: 'Inches', es: 'Pulgadas'}, 'S', 'M', 'L', 'XL', '2XL'],
-    2: [
+    [{en: 'Tol +/-', es: 'Tol +/-'}, '3/4"', '3/4"', '3/4"', '3/4"', '3/4"'],
+  ],
+  'size-chart-womens-bella-6400': [
+    [{en: 'Inches', es: 'Pulgadas'}, 'S', 'M', 'L', 'XL', '2XL'],
+    [
       {en: 'Body Length', es: 'Largo del cuerpo'},
       '25"',
       '25 3/4"',
@@ -156,7 +156,7 @@ export const womensSizeCharts: {[key: string]: {[key: number]: any[]}} = {
       '27 1/4"',
       '28',
     ],
-    3: [
+    [
       {en: 'Body Length Tolerance', es: 'Tolerancia del largo del cuerpo'},
       '1/2"',
       '1/2"',
@@ -164,7 +164,7 @@ export const womensSizeCharts: {[key: string]: {[key: number]: any[]}} = {
       '1/2"',
       '1/2"',
     ],
-    4: [
+    [
       {en: 'Body Width', es: 'Ancho del cuerpo'},
       '18 1/2"',
       '20"',
@@ -172,7 +172,7 @@ export const womensSizeCharts: {[key: string]: {[key: number]: any[]}} = {
       '24"',
       '26"',
     ],
-    5: [
+    [
       {en: 'Body Width Tolerance', es: 'Tolerancia del ancho del cuerpo'},
       '1/2"',
       '1/2"',
@@ -180,7 +180,7 @@ export const womensSizeCharts: {[key: string]: {[key: number]: any[]}} = {
       '1/2"',
       '1/2"',
     ],
-    6: [
+    [
       {en: 'Sleeve Length', es: 'Largo de la manga'},
       '7 3/4"',
       '8 1/4"',
@@ -188,10 +188,10 @@ export const womensSizeCharts: {[key: string]: {[key: number]: any[]}} = {
       '9 1/2"',
       '10 1/4"',
     ],
-  },
-  'size-chart-womens-bella-6405': {
-    1: [{en: 'Inches', es: 'Pulgadas'}, 'S', 'M', 'L', 'XL', '2XL'],
-    2: [
+  ],
+  'size-chart-womens-bella-6405': [
+    [{en: 'Inches', es: 'Pulgadas'}, 'S', 'M', 'L', 'XL', '2XL'],
+    [
       {en: 'Body Length', es: 'Largo del cuerpo'},
       '25"',
       '25 3/4"',
@@ -199,7 +199,7 @@ export const womensSizeCharts: {[key: string]: {[key: number]: any[]}} = {
       '27 1/4"',
       '28"',
     ],
-    3: [
+    [
       {en: 'Body Length Tolerance', es: 'Tolerancia del largo del cuerpo'},
       '1/2"',
       '1/2"',
@@ -207,7 +207,7 @@ export const womensSizeCharts: {[key: string]: {[key: number]: any[]}} = {
       '1/2"',
       '1/2"',
     ],
-    4: [
+    [
       {en: 'Body Width', es: 'Ancho del cuerpo'},
       '18 1/2"',
       '20"',
@@ -215,7 +215,7 @@ export const womensSizeCharts: {[key: string]: {[key: number]: any[]}} = {
       '24"',
       '26"',
     ],
-    5: [
+    [
       {en: 'Body Width Tolerance', es: 'Tolerancia del ancho del cuerpo'},
       '1/2"',
       '1/2"',
@@ -223,7 +223,7 @@ export const womensSizeCharts: {[key: string]: {[key: number]: any[]}} = {
       '1/2"',
       '1/2"',
     ],
-    6: [
+    [
       {en: 'Sleeve Length', es: 'Largo de la manga'},
       '7 3/4"',
       '8 1/4"',
@@ -231,10 +231,10 @@ export const womensSizeCharts: {[key: string]: {[key: number]: any[]}} = {
       '9 1/2"',
       '10 1/4"',
     ],
-  },
-  'size-chart-womens-bella-6500': {
-    1: [{en: 'Inches', es: 'Pulgadas'}, 'S', 'M', 'L', 'XL', '2XL'],
-    2: [
+  ],
+  'size-chart-womens-bella-6500': [
+    [{en: 'Inches', es: 'Pulgadas'}, 'S', 'M', 'L', 'XL', '2XL'],
+    [
       {en: 'Body Length', es: 'Largo del cuerpo'},
       '25 3/4"',
       '26 1/4"',
@@ -242,7 +242,7 @@ export const womensSizeCharts: {[key: string]: {[key: number]: any[]}} = {
       '27 1/2"',
       '28 1/8"',
     ],
-    3: [
+    [
       {
         en: {
           en: 'Body Length Tolerance',
@@ -256,7 +256,7 @@ export const womensSizeCharts: {[key: string]: {[key: number]: any[]}} = {
       '1/2"',
       '1/2"',
     ],
-    4: [
+    [
       {en: 'Body Widh', es: 'Ancho del cuerpo'},
       '17"',
       '17 3/4',
@@ -264,7 +264,7 @@ export const womensSizeCharts: {[key: string]: {[key: number]: any[]}} = {
       '19 3/4"',
       '20 3/4"',
     ],
-    5: [
+    [
       {en: 'Body Width Tolerance', es: 'Tolerancia del ancho del cuerpo'},
       '1/2"',
       '1/2"',
@@ -272,10 +272,10 @@ export const womensSizeCharts: {[key: string]: {[key: number]: any[]}} = {
       '1/2"',
       '1/2"',
     ],
-  },
-  'size-chart-womens-bella-8413': {
-    1: [{en: 'Inches', es: 'Pulgadas'}, 'S', 'M', 'L', 'XL', '2XL'],
-    2: [
+  ],
+  'size-chart-womens-bella-8413': [
+    [{en: 'Inches', es: 'Pulgadas'}, 'S', 'M', 'L', 'XL', '2XL'],
+    [
       {en: 'Body Length', es: 'Largo del cuerpo'},
       '26"',
       '26 1/2"',
@@ -283,7 +283,7 @@ export const womensSizeCharts: {[key: string]: {[key: number]: any[]}} = {
       '27 3/4"',
       '28 3/8"',
     ],
-    3: [
+    [
       {en: 'Body Width', es: 'Ancho del cuerpo'},
       '15 3/4"',
       '16 1/2"',
@@ -291,11 +291,11 @@ export const womensSizeCharts: {[key: string]: {[key: number]: any[]}} = {
       '18 1/2"',
       '19 1/2"',
     ],
-    4: [{en: 'Tol +/-', es: 'Tol +/-'}, '3/4"', '3/4"', '3/4"', '3/4"', '3/4"'],
-  },
-  'size-chart-womens-bella-8803': {
-    1: [{en: 'Inches', es: 'Pulgadas'}, 'S', 'M', 'L', 'XL', '2XL'],
-    2: [
+    [{en: 'Tol +/-', es: 'Tol +/-'}, '3/4"', '3/4"', '3/4"', '3/4"', '3/4"'],
+  ],
+  'size-chart-womens-bella-8803': [
+    [{en: 'Inches', es: 'Pulgadas'}, 'S', 'M', 'L', 'XL', '2XL'],
+    [
       {en: 'Body Length Front', es: 'Frente al largo del cuerpo'},
       '20 1/4',
       '20 5/8"',
@@ -303,7 +303,7 @@ export const womensSizeCharts: {[key: string]: {[key: number]: any[]}} = {
       '21 5/8"',
       '22 1/8"',
     ],
-    3: [
+    [
       {en: 'Body Width', es: 'Ancho del cuerpo'},
       '16"',
       '16 3/4"',
@@ -311,11 +311,11 @@ export const womensSizeCharts: {[key: string]: {[key: number]: any[]}} = {
       '18 3/4"',
       '19 3/4"',
     ],
-  },
-  'size-chart-womens-cotton-heritage-w7280-jogger': {
-    1: [{en: 'Inches', es: 'Pulgadas'}, 'XS', 'S', 'M', 'L', 'XL', '2XL'],
-    2: [{en: 'Waist', es: 'Cintura'}, '26"', '28"', '30"', '32"', '34"', '36"'],
-    3: [
+  ],
+  'size-chart-womens-cotton-heritage-w7280-jogger': [
+    [{en: 'Inches', es: 'Pulgadas'}, 'XS', 'S', 'M', 'L', 'XL', '2XL'],
+    [{en: 'Waist', es: 'Cintura'}, '26"', '28"', '30"', '32"', '34"', '36"'],
+    [
       {en: 'Inseam', es: 'Entrepierna'},
       '28"',
       '28.5"',
@@ -324,10 +324,10 @@ export const womensSizeCharts: {[key: string]: {[key: number]: any[]}} = {
       '30"',
       '30"',
     ],
-  },
-  'size-chart-womens-gildan-2400': {
-    1: [{en: 'Inches', es: 'Pulgadas'}, 'S', 'M', 'L', 'XL', '2XL'],
-    2: [
+  ],
+  'size-chart-womens-gildan-2400': [
+    [{en: 'Inches', es: 'Pulgadas'}, 'S', 'M', 'L', 'XL', '2XL'],
+    [
       {en: 'Body Length', es: 'Largo del cuerpo'},
       '25"',
       '26"',
@@ -335,8 +335,8 @@ export const womensSizeCharts: {[key: string]: {[key: number]: any[]}} = {
       '28"',
       '29"',
     ],
-    3: [{en: 'Bust', es: 'Busto'}, '36"', '40"', '44"', '48"', '52"'],
-    4: [
+    [{en: 'Bust', es: 'Busto'}, '36"', '40"', '44"', '48"', '52"'],
+    [
       {en: 'Sleeve Length', es: 'Largo de la manga'},
       '30"',
       '30 1/2"',
@@ -344,10 +344,10 @@ export const womensSizeCharts: {[key: string]: {[key: number]: any[]}} = {
       '32 1/2"',
       '33 1/2"',
     ],
-  },
-  'size-chart-womens-independent-ss240': {
-    1: [{en: 'Inches', es: 'Pulgadas'}, 'XS', 'S', 'M', 'L', 'XL', '2XL'],
-    2: [
+  ],
+  'size-chart-womens-independent-ss240': [
+    [{en: 'Inches', es: 'Pulgadas'}, 'XS', 'S', 'M', 'L', 'XL', '2XL'],
+    [
       {en: 'Body Length', es: 'Largo del cuerpo'},
       '23 1/2"',
       '24 1/2"',
@@ -356,10 +356,10 @@ export const womensSizeCharts: {[key: string]: {[key: number]: any[]}} = {
       '27 1/2"',
       '28 1/2"',
     ],
-  },
-  'size-chart-womens-independent-ss650': {
-    1: [{en: 'Inches', es: 'Pulgadas'}, 'XS', 'S', 'M', 'L', 'XL', '2XL'],
-    2: [
+  ],
+  'size-chart-womens-independent-ss650': [
+    [{en: 'Inches', es: 'Pulgadas'}, 'XS', 'S', 'M', 'L', 'XL', '2XL'],
+    [
       {en: 'Body Length', es: 'Largo del cuerpo'},
       '24"',
       '25"',
@@ -368,7 +368,7 @@ export const womensSizeCharts: {[key: string]: {[key: number]: any[]}} = {
       '28"',
       '29"',
     ],
-    3: [
+    [
       {en: 'Body Width', es: 'Ancho del cuerpo'},
       '18"',
       '19"',
@@ -377,10 +377,10 @@ export const womensSizeCharts: {[key: string]: {[key: number]: any[]}} = {
       '22"',
       '23"',
     ],
-  },
-  'size-chart-womens-lat-3516': {
-    1: [{en: 'Inches', es: 'Pulgadas'}, 'S', 'M', 'L', 'XL', '2XL'],
-    2: [
+  ],
+  'size-chart-womens-lat-3516': [
+    [{en: 'Inches', es: 'Pulgadas'}, 'S', 'M', 'L', 'XL', '2XL'],
+    [
       {en: 'Body Length', es: 'Largo del cuerpo'},
       '25"',
       '26"',
@@ -388,8 +388,8 @@ export const womensSizeCharts: {[key: string]: {[key: number]: any[]}} = {
       '28"',
       '29 1/2"',
     ],
-    3: [{en: 'Bust', es: 'Busto'}, '36"', '38"', '42"', '46"', '50"'],
-    4: [
+    [{en: 'Bust', es: 'Busto'}, '36"', '38"', '42"', '46"', '50"'],
+    [
       {en: 'Sleeve Length', es: 'Largo de la manga'},
       '5 3/4"',
       '6"',
@@ -397,10 +397,10 @@ export const womensSizeCharts: {[key: string]: {[key: number]: any[]}} = {
       '6 1/2"',
       '6 3/4"',
     ],
-  },
-  'size-chart-womens-next-level-1533': {
-    1: [{en: 'Inches', es: 'Pulgadas'}, 'XS', 'S', 'M', 'L', 'XL', '2XL'],
-    2: [
+  ],
+  'size-chart-womens-next-level-1533': [
+    [{en: 'Inches', es: 'Pulgadas'}, 'XS', 'S', 'M', 'L', 'XL', '2XL'],
+    [
       {en: 'Chest', es: 'Pecho'},
       '27"',
       '27 1/2"',
@@ -409,7 +409,7 @@ export const womensSizeCharts: {[key: string]: {[key: number]: any[]}} = {
       '29"',
       '29 1/2"',
     ],
-    3: [
+    [
       {en: 'Body Length (From HPS)', es: 'Largo del cuerpo'},
       '14"',
       '15"',
@@ -418,34 +418,34 @@ export const womensSizeCharts: {[key: string]: {[key: number]: any[]}} = {
       '18"',
       '19"',
     ],
-  },
-  'size-chart-womens-next-level-3301': {
-    1: [{en: 'Inches', es: 'Pulgadas'}, 'XS', 'S', 'M', 'L', 'XL'],
-    2: [
+  ],
+  'size-chart-womens-next-level-3301': [
+    [{en: 'Inches', es: 'Pulgadas'}, 'XS', 'S', 'M', 'L', 'XL'],
+    [
       {en: 'Body Length', es: 'Largo del cuerpo'},
       '25.375"',
       '26"',
       '26.625"',
       '27.25"',
     ],
-    3: [
+    [
       {en: 'Body Width', es: 'Ancho del cuerpo'},
       '15.5"',
       '16.5"',
       '17.5"',
       '19"',
     ],
-    4: [
+    [
       {en: 'Sleeve Length', es: 'Largo de la manga'},
       '24.25"',
       '24.75"',
       '25.25"',
       '25.75"',
     ],
-  },
-  'size-chart-womens-next-level-3400': {
-    1: [{en: 'Inches', es: 'Pulgadas'}, 'XS', 'S', 'M', 'L', 'XL', '2Xl'],
-    2: [
+  ],
+  'size-chart-womens-next-level-3400': [
+    [{en: 'Inches', es: 'Pulgadas'}, 'XS', 'S', 'M', 'L', 'XL', '2Xl'],
+    [
       {en: 'Body Length', es: 'Largo del cuerpo'},
       '25.375"',
       '26"',
@@ -453,9 +453,9 @@ export const womensSizeCharts: {[key: string]: {[key: number]: any[]}} = {
       '27.25"',
       '27.875"',
     ],
-    3: [{en: 'Bust', es: 'Busto'}, '29.5"', '31.5"', '33.5"', '36.5"', '39.5"'],
-    4: [{en: 'Neck', es: 'Cuello'}, '7.25"', '7.5"', '7.75"', '8"', '8.25"'],
-    5: [
+    [{en: 'Bust', es: 'Busto'}, '29.5"', '31.5"', '33.5"', '36.5"', '39.5"'],
+    [{en: 'Neck', es: 'Cuello'}, '7.25"', '7.5"', '7.75"', '8"', '8.25"'],
+    [
       {en: 'Sleeve Length', es: 'Largo de la manga'},
       '5.25"',
       '5.5"',
@@ -463,10 +463,10 @@ export const womensSizeCharts: {[key: string]: {[key: number]: any[]}} = {
       '6"',
       '6.25"',
     ],
-  },
-  'size-chart-womens-next-level-3533': {
-    1: [{en: 'Inches', es: 'Pulgadas'}, 'XS', 'S', 'M', 'L', 'XL', '2XL'],
-    2: [
+  ],
+  'size-chart-womens-next-level-3533': [
+    [{en: 'Inches', es: 'Pulgadas'}, 'XS', 'S', 'M', 'L', 'XL', '2XL'],
+    [
       'HPS Length',
       '25 3/4"',
       '26 3/8"',
@@ -475,7 +475,7 @@ export const womensSizeCharts: {[key: string]: {[key: number]: any[]}} = {
       '28 1/4"',
       '28 7/8"',
     ],
-    3: [
+    [
       {en: 'Bust (1" Below Armhole)', es: 'Busto (1" debajo de la sisa)'},
       '13"',
       '14"',
@@ -484,21 +484,21 @@ export const womensSizeCharts: {[key: string]: {[key: number]: any[]}} = {
       '17 1/2"',
       '19"',
     ],
-  },
-  'size-chart-womens-next-level-3900': {
-    1: [{en: 'Inches', es: 'Pulgadas'}, 'XS', 'S', 'M', 'L'],
-    2: [
+  ],
+  'size-chart-womens-next-level-3900': [
+    [{en: 'Inches', es: 'Pulgadas'}, 'XS', 'S', 'M', 'L'],
+    [
       {en: 'Body Length', es: 'Largo del cuerpo'},
       '26.12"',
       '26.75"',
       '28"',
       '29.25"',
     ],
-    3: [{en: 'Bust', es: 'Busto'}, '16.38"', '17.75"', '20.25"', '22.25"'],
-  },
-  'size-chart-womens-next-level-6610': {
-    1: [{en: 'Inches', es: 'Pulgadas'}, 'XS', 'S', 'M', 'L', 'XL', '2XL'],
-    2: [
+    [{en: 'Bust', es: 'Busto'}, '16.38"', '17.75"', '20.25"', '22.25"'],
+  ],
+  'size-chart-womens-next-level-6610': [
+    [{en: 'Inches', es: 'Pulgadas'}, 'XS', 'S', 'M', 'L', 'XL', '2XL'],
+    [
       {en: 'Body Length', es: 'Largo del cuerpo'},
       '25 3/4"',
       '26 3/8"',
@@ -507,7 +507,7 @@ export const womensSizeCharts: {[key: string]: {[key: number]: any[]}} = {
       '28 1/4"',
       '28 7/8"',
     ],
-    3: [
+    [
       {en: 'Body Length Tolerance', es: 'Tolerancia del largo del cuerpo'},
       '1/2"',
       '1/2"',
@@ -516,7 +516,7 @@ export const womensSizeCharts: {[key: string]: {[key: number]: any[]}} = {
       '1/2"',
       '1/2"',
     ],
-    4: [
+    [
       {en: 'Body Width', es: 'Ancho del cuerpo'},
       '15 1/2"',
       '16 1/4"',
@@ -525,7 +525,7 @@ export const womensSizeCharts: {[key: string]: {[key: number]: any[]}} = {
       '19 3/4"',
       '21 1/4"',
     ],
-    5: [
+    [
       {en: 'Body Width Tolerance', es: 'Tolerancia del ancho del cuerpo'},
       '1/2"',
       '1/2"',
@@ -534,53 +534,32 @@ export const womensSizeCharts: {[key: string]: {[key: number]: any[]}} = {
       '1/2"',
       '1/2"',
     ],
-  },
-  'size-chart-womens-plus-size-tees': {
-    1: [{en: 'Inches', es: 'Pulgadas'}, '1', '2', '3', '4'],
-    2: [
+  ],
+  'size-chart-womens-plus-size-tees': [
+    [{en: 'Inches', es: 'Pulgadas'}, '1', '2', '3', '4'],
+    [
       {en: 'Numeric', es: 'Numérico'},
       '14 - 16"',
       '18 -20"',
       '22 - 24"',
       '26 - 28"',
     ],
-    3: [
-      {en: 'Bust', es: 'Busto'},
-      '44 - 46"',
-      '46 - 48"',
-      '48 - 50"',
-      '50 - 54"',
-    ],
-    4: [
+    [{en: 'Bust', es: 'Busto'}, '44 - 46"', '46 - 48"', '48 - 50"', '50 - 54"'],
+    [
       {en: 'Waist', es: 'Cintura'},
       '42 - 44"',
       '44 - 46"',
       '46 - 48"',
       '48 - 52"',
     ],
-    5: [
-      {en: 'Hip', es: 'Cadera'},
-      '48 - 50"',
-      '50 - 52"',
-      '52 - 54"',
-      '54 - 58"',
-    ],
-  },
-  'size-chart-womens-raglan-sleeve-tee': {
-    1: [
-      {en: 'Inches', es: 'Pulgadas'},
-      'XS',
-      'S',
-      'M',
-      'L',
-      'XL',
-      '2XL',
-      '3XL',
-    ],
-    2: [{en: 'Chest', es: 'Pecho'}, '37"', '39"', '42"', '44"', '46"', '48"'],
-    3: [{en: 'Waist', es: 'Cintura'}, '34"', '35"', '38"', '39"', '43"', '43"'],
-    4: [{en: 'Bottom', es: 'Abajo'}, '40"', '42"', '46"', '48"', '48"', '50"'],
-    5: [
+    [{en: 'Hip', es: 'Cadera'}, '48 - 50"', '50 - 52"', '52 - 54"', '54 - 58"'],
+  ],
+  'size-chart-womens-raglan-sleeve-tee': [
+    [{en: 'Inches', es: 'Pulgadas'}, 'XS', 'S', 'M', 'L', 'XL', '2XL', '3XL'],
+    [{en: 'Chest', es: 'Pecho'}, '37"', '39"', '42"', '44"', '46"', '48"'],
+    [{en: 'Waist', es: 'Cintura'}, '34"', '35"', '38"', '39"', '43"', '43"'],
+    [{en: 'Bottom', es: 'Abajo'}, '40"', '42"', '46"', '48"', '48"', '50"'],
+    [
       {en: 'Body Length', es: 'Largo del cuerpo'},
       '62"',
       '64"',
@@ -589,7 +568,7 @@ export const womensSizeCharts: {[key: string]: {[key: number]: any[]}} = {
       '71"',
       '73"',
     ],
-    6: [
+    [
       {en: 'Front Neck Drop', es: 'Caída frontal del cuello'},
       '9"',
       '9"',
@@ -598,7 +577,7 @@ export const womensSizeCharts: {[key: string]: {[key: number]: any[]}} = {
       '11"',
       '12"',
     ],
-    7: [
+    [
       {en: 'Neck Width', es: 'Ancho del cuello'},
       '17"',
       '17"',
@@ -607,7 +586,7 @@ export const womensSizeCharts: {[key: string]: {[key: number]: any[]}} = {
       '20"',
       '20"',
     ],
-    8: [
+    [
       {en: 'Sleeve Length', es: 'Largo de la manga'},
       '48"',
       '48"',
@@ -616,8 +595,8 @@ export const womensSizeCharts: {[key: string]: {[key: number]: any[]}} = {
       '53"',
       '53"',
     ],
-    9: [{en: 'Rib', es: 'Costilla'}, '1"', '1"', '1"', '1"', '1"', '1"'],
-    10: [
+    [{en: 'Rib', es: 'Costilla'}, '1"', '1"', '1"', '1"', '1"', '1"'],
+    [
       {en: 'Sleeve and Bottom', es: 'Manga y parte inferior'},
       '2"',
       '2"',
@@ -626,7 +605,7 @@ export const womensSizeCharts: {[key: string]: {[key: number]: any[]}} = {
       '2"',
       '2"',
     ],
-    11: [
+    [
       {en: 'Sleeve Opening', es: 'Abertura de la manga'},
       '10"',
       '10"',
@@ -635,10 +614,10 @@ export const womensSizeCharts: {[key: string]: {[key: number]: any[]}} = {
       '12"',
       '12"',
     ],
-  },
-  'size-chart-womens-shorts': {
-    1: [{en: '(CM)', es: '(CM)'}, '', 'S', 'M', 'L', 'XL', '2XL'],
-    2: [
+  ],
+  'size-chart-womens-shorts': [
+    [{en: '(CM)', es: '(CM)'}, '', 'S', 'M', 'L', 'XL', '2XL'],
+    [
       {en: 'Waistband', es: 'Pretina'},
       {en: 'Circumference', es: 'Circunferencia'},
       '60',
@@ -647,7 +626,7 @@ export const womensSizeCharts: {[key: string]: {[key: number]: any[]}} = {
       '72',
       '76',
     ],
-    3: [
+    [
       {en: 'Hip', es: 'Cadera'},
       '9 cm above rise',
       '94',
@@ -656,7 +635,7 @@ export const womensSizeCharts: {[key: string]: {[key: number]: any[]}} = {
       '106',
       '110',
     ],
-    4: [
+    [
       {en: 'Legs Opening', es: 'Apertura de piernas'},
       {en: 'Circumference', es: 'Circunferencia'},
       '54',
@@ -665,7 +644,7 @@ export const womensSizeCharts: {[key: string]: {[key: number]: any[]}} = {
       '60',
       '62',
     ],
-    5: [
+    [
       {en: 'Length', es: 'Largo'},
       {
         en: 'From waist to leg opening',
@@ -677,10 +656,10 @@ export const womensSizeCharts: {[key: string]: {[key: number]: any[]}} = {
       '23.5',
       '24.5',
     ],
-  },
-  'size-chart-womens-tultex-213': {
-    1: [{en: 'Inches', es: 'Pulgadas'}, 'XS', 'S', 'M', 'L', 'XL', '2XL'],
-    2: [
+  ],
+  'size-chart-womens-tultex-213': [
+    [{en: 'Inches', es: 'Pulgadas'}, 'XS', 'S', 'M', 'L', 'XL', '2XL'],
+    [
       {en: 'Width', es: 'Ancho'},
       '16"',
       '16 1/2"',
@@ -689,29 +668,14 @@ export const womensSizeCharts: {[key: string]: {[key: number]: any[]}} = {
       '19 1/2"',
       '20 1/2"',
     ],
-    3: [
-      {en: 'Length', es: 'Largo'},
-      '24 1/2"',
-      '25"',
-      '26"',
-      '27"',
-      '28"',
-      '29"',
-    ],
-  },
-  'size-chart-womens-windbreakers': {
-    1: [{en: '(CM)', es: '(CM)'}, 'S', 'M', 'L', 'XL', '2XL'],
-    2: [{en: 'Chest', es: 'Pecho'}, '51.5', '54.5', '57', '59.5', '63'],
-    3: [{en: 'Waist', es: 'Cintura'}, '48', '51', '55', '58', '60'],
-    4: [
-      {en: 'Bottom Width', es: 'Ancho de fondo'},
-      '53',
-      '56',
-      '58',
-      '62',
-      '64',
-    ],
-    5: [
+    [{en: 'Length', es: 'Largo'}, '24 1/2"', '25"', '26"', '27"', '28"', '29"'],
+  ],
+  'size-chart-womens-windbreakers': [
+    [{en: '(CM)', es: '(CM)'}, 'S', 'M', 'L', 'XL', '2XL'],
+    [{en: 'Chest', es: 'Pecho'}, '51.5', '54.5', '57', '59.5', '63'],
+    [{en: 'Waist', es: 'Cintura'}, '48', '51', '55', '58', '60'],
+    [{en: 'Bottom Width', es: 'Ancho de fondo'}, '53', '56', '58', '62', '64'],
+    [
       {en: 'Sleeve Length', es: 'Largo de la manga'},
       '60.5',
       '62',
@@ -719,7 +683,7 @@ export const womensSizeCharts: {[key: string]: {[key: number]: any[]}} = {
       '65',
       '66.5',
     ],
-    6: [
+    [
       {en: 'Body Length', es: 'Largo del cuerpo'},
       '63',
       '67.5',
@@ -727,5 +691,5 @@ export const womensSizeCharts: {[key: string]: {[key: number]: any[]}} = {
       '70',
       '71',
     ],
-  },
+  ],
 };
