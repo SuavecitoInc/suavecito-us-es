@@ -1,7 +1,7 @@
 import {useState, useRef, useEffect, useCallback} from 'react';
 import {Link, flattenConnection} from '@shopify/hydrogen';
 
-import {Button, Grid, ProductCard} from '~/components';
+import {Button, Grid} from '~/components';
 import {getImageLoadingPriority} from '~/lib/const';
 import type {Collection, Product} from '@shopify/hydrogen/storefront-api-types';
 
@@ -14,6 +14,8 @@ export function ProductGrid({
   url: string;
   collection: Collection;
 }) {
+  const LANG: 'en' | 'es' = import.meta.env.PUBLIC_LANGUAGE_CODE;
+
   const nextButtonRef = useRef(null);
   const initialProducts = collection?.products?.nodes || [];
   const {hasNextPage, endCursor} = collection?.products?.pageInfo ?? {};
@@ -72,6 +74,17 @@ export function ProductGrid({
     };
   }, [nextButtonRef, cursor, handleIntersect]);
 
+  const productGridData = {
+    loading: {
+      en: 'Loading...',
+      es: 'Cargando...',
+    },
+    load_more_products: {
+      en: 'Load more products',
+      es: 'Cargar más productos',
+    },
+  };
+
   if (!haveProducts) {
     return (
       <>
@@ -87,11 +100,6 @@ export function ProductGrid({
     <>
       <Grid layout="products">
         {products.map((product, i) => (
-          // <ProductCard
-          //   key={product.id}
-          //   product={product}
-          //   loading={getImageLoadingPriority(i)}
-          // />
           <ProductGridItem
             key={product.id}
             product={product}
@@ -111,7 +119,9 @@ export function ProductGrid({
             onClick={fetchProducts}
             width="full"
           >
-            {pending ? 'Loading...' : 'Load more products'}
+            {pending
+              ? productGridData.loading[LANG]
+              : productGridData.load_more_products[LANG]}
           </Button>
         </div>
       )}
