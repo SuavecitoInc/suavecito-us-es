@@ -34,6 +34,7 @@ import type {
 } from '@shopify/hydrogen/storefront-api-types';
 
 export default function Account({response}: HydrogenRouteProps) {
+  const LANG = import.meta.env.PUBLIC_LANGUAGE_CODE;
   response.cache(CacheNone());
 
   const {
@@ -78,6 +79,7 @@ export default function Account({response}: HydrogenRouteProps) {
   return (
     <>
       <AuthenticatedAccount
+        lang={LANG}
         customer={customer}
         addresses={addresses}
         defaultAddress={defaultAddress}
@@ -98,20 +100,41 @@ function AuthenticatedAccount({
   defaultAddress,
   featuredCollections,
   featuredProducts,
+  lang = 'en',
 }: {
   customer: Customer;
   addresses: any[];
   defaultAddress?: string;
   featuredCollections: Collection[];
   featuredProducts: Product[];
+  lang?: 'en' | 'es';
 }) {
   const orders = flattenConnection(customer?.orders) || [];
 
+  const authAccountData = {
+    welcome: {
+      en: 'Welcome',
+      es: 'Bienvenido',
+    },
+    welcomeToYourAccount: {
+      en: 'Welcome to ypur account',
+      es: 'Bienvenido a su cuenta',
+    },
+    accountDetails: {
+      en: 'Account Details',
+      es: 'Detalles de la cuenta',
+    },
+    signOut: {
+      en: 'Sign out',
+      es: 'Firmar la salida',
+    },
+  };
+
   const heading = customer
     ? customer.firstName
-      ? `Welcome, ${customer.firstName}.`
-      : `Welcome to your account.`
-    : 'Account Details';
+      ? `${authAccountData.welcome[lang]}, ${customer.firstName}.`
+      : `${authAccountData.welcomeToYourAccount[lang]} .`
+    : authAccountData.accountDetails[lang];
 
   return (
     <Layout>
@@ -119,18 +142,20 @@ function AuthenticatedAccount({
         <Seo type="noindex" data={{title: 'Account details'}} />
       </Suspense>
       <PageHeader heading={heading}>
-        <LogoutButton>Sign out</LogoutButton>
+        <LogoutButton lang={lang}>{authAccountData.signOut[lang]}</LogoutButton>
       </PageHeader>
-      {orders && <AccountOrderHistory orders={orders as Order[]} />}
+      {orders && <AccountOrderHistory lang={lang} orders={orders as Order[]} />}
       <AccountDetails
         firstName={customer.firstName as string}
         lastName={customer.lastName as string}
         phone={customer.phone as string}
         email={customer.email as string}
+        lang={lang}
       />
       <AccountAddressBook
         defaultAddress={defaultAddress}
         addresses={addresses}
+        lang={lang}
       />
       {!orders && (
         <>

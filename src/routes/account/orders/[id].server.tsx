@@ -25,7 +25,15 @@ import {Text, PageHeader, Heading} from '~/components';
 import {Layout} from '~/components/index.server';
 import {statusMessage} from '~/lib/utils';
 
-export default function OrderDetails({response}: HydrogenRouteProps) {
+const LANG = import.meta.env.PUBLIC_LANGUAGE_CODE;
+
+export default function OrderDetails({
+  response,
+  lang = LANG,
+}: {
+  response: HydrogenRouteProps;
+  lang: 'en' | 'es';
+}) {
   const {id} = useRouteParams();
 
   response.cache(CacheNone());
@@ -70,23 +78,84 @@ export default function OrderDetails({response}: HydrogenRouteProps) {
     firstDiscount?.__typename === 'PricingPercentageValue' &&
     firstDiscount?.percentage;
 
+  const orderData = {
+    orderDetail: {en: 'Order detail', es: 'Detalle del pedido'},
+    returnTo: {
+      en: 'Return to Account Overview',
+      es: 'Volver a la descripción de la cuenta',
+    },
+    orderNo: {
+      en: 'Order No.',
+      es: 'Pedido Nu.',
+    },
+    placedOn: {
+      en: 'Placed on',
+      es: 'Colocado en',
+    },
+    product: {
+      en: 'Product',
+      es: 'Producto',
+    },
+    price: {
+      en: 'Price',
+      es: 'Precio',
+    },
+    quantity: {
+      en: 'Quantity',
+      es: 'Cantidad',
+    },
+    discounts: {
+      en: 'Quantity',
+      es: 'Cantidad',
+    },
+    qty: {
+      en: 'Qty:',
+      es: 'Qtd:',
+    },
+    subtotal: {
+      en: 'Subtotal',
+      es: 'Subtotal',
+    },
+    tax: {
+      en: 'Tax',
+      es: 'Impuesto',
+    },
+    shippingAddress: {
+      en: 'Shipping Address',
+      es: 'Dirección de envío',
+    },
+    status: {
+      en: 'Status',
+      es: 'Estatus',
+    },
+    noShippingAddress: {
+      en: 'No shipping address defined',
+      es: 'No se ha definido la direccion de envio',
+    },
+    off: {
+      en: 'OFF',
+      es: 'DE DESCUENTO',
+    },
+  };
+
   return (
     <Layout>
       <Suspense>
         <Seo type="noindex" data={{title: `Order ${order.name}`}} />
       </Suspense>
-      <PageHeader heading={`Order detail`}>
+      <PageHeader heading={`${orderData.orderDetail[lang]}`}>
         <Link to="/account">
-          <Text color="subtle">Return to Account Overview</Text>
+          <Text color="subtle">{orderData.returnTo[lang]}</Text>
         </Link>
       </PageHeader>
       <div className="w-full p-6 sm:grid-cols-1 md:p-8 lg:p-12 lg:py-6">
         <div>
           <Text as="h3" size="lead">
-            Order No. {order.name}
+            {orderData.orderNo[lang]} {order.name}
           </Text>
           <Text className="mt-2" as="p">
-            Placed on {new Date(order.processedAt!).toDateString()}
+            {orderData.placedOn[lang]}{' '}
+            {new Date(order.processedAt!).toDateString()}
           </Text>
           <div className="grid items-start gap-12 sm:grid-cols-1 md:grid-cols-4 md:gap-16 sm:divide-y sm:divide-gray-200">
             <table className="min-w-full my-8 divide-y divide-gray-300 md:col-span-3">
@@ -96,19 +165,19 @@ export default function OrderDetails({response}: HydrogenRouteProps) {
                     scope="col"
                     className="pb-4 pl-0 pr-3 font-semibold text-left"
                   >
-                    Product
+                    {orderData.product[lang]}
                   </th>
                   <th
                     scope="col"
                     className="hidden px-4 pb-4 font-semibold text-right sm:table-cell md:table-cell"
                   >
-                    Price
+                    {orderData.price[lang]}
                   </th>
                   <th
                     scope="col"
                     className="hidden px-4 pb-4 font-semibold text-right sm:table-cell md:table-cell"
                   >
-                    Quantity
+                    {orderData.quantity[lang]}
                   </th>
                   <th
                     scope="col"
@@ -148,7 +217,7 @@ export default function OrderDetails({response}: HydrogenRouteProps) {
                           </Text>
                         </div>
                         <dl className="grid">
-                          <dt className="sr-only">Product</dt>
+                          <dt className="sr-only">{orderData.product[lang]}</dt>
                           <dd className="truncate lg:hidden">
                             <Heading size="copy" format as="h3">
                               {lineItem.title}
@@ -166,7 +235,7 @@ export default function OrderDetails({response}: HydrogenRouteProps) {
                           <dt className="sr-only">Quantity</dt>
                           <dd className="truncate sm:hidden">
                             <Text className="mt-1" size="fine">
-                              Qty: {lineItem.quantity}
+                              {orderData.qty[lang]} {lineItem.quantity}
                             </Text>
                           </dd>
                         </dl>
@@ -195,18 +264,18 @@ export default function OrderDetails({response}: HydrogenRouteProps) {
                       colSpan={3}
                       className="hidden pt-6 pl-6 pr-3 font-normal text-right sm:table-cell md:pl-0"
                     >
-                      <Text>Discounts</Text>
+                      <Text>{orderData.discounts[lang]}</Text>
                     </th>
                     <th
                       scope="row"
                       className="pt-6 pr-3 font-normal text-left sm:hidden"
                     >
-                      <Text>Discounts</Text>
+                      <Text>{orderData.discounts[lang]}</Text>
                     </th>
                     <td className="pt-6 pl-3 pr-4 font-medium text-right text-green-700 md:pr-3">
                       {discountPercentage ? (
                         <span className="text-sm">
-                          -{discountPercentage}% OFF
+                          -{discountPercentage}% {orderData.off[lang]}
                         </span>
                       ) : (
                         discountValue && <Money data={discountValue!} />
@@ -220,13 +289,13 @@ export default function OrderDetails({response}: HydrogenRouteProps) {
                     colSpan={3}
                     className="hidden pt-6 pl-6 pr-3 font-normal text-right sm:table-cell md:pl-0"
                   >
-                    <Text>Subtotal</Text>
+                    <Text>{orderData.subtotal[lang]}</Text>
                   </th>
                   <th
                     scope="row"
                     className="pt-6 pr-3 font-normal text-left sm:hidden"
                   >
-                    <Text>Subtotal</Text>
+                    <Text>{orderData.subtotal[lang]}</Text>
                   </th>
                   <td className="pt-6 pl-3 pr-4 text-right md:pr-3">
                     <Money data={order.subtotalPriceV2!} />
@@ -238,13 +307,13 @@ export default function OrderDetails({response}: HydrogenRouteProps) {
                     colSpan={3}
                     className="hidden pt-4 pl-6 pr-3 font-normal text-right sm:table-cell md:pl-0"
                   >
-                    Tax
+                    {orderData.tax[lang]}
                   </th>
                   <th
                     scope="row"
                     className="pt-4 pr-3 font-normal text-left sm:hidden"
                   >
-                    <Text>Tax</Text>
+                    <Text>{orderData.tax[lang]}</Text>
                   </th>
                   <td className="pt-4 pl-3 pr-4 text-right md:pr-3">
                     <Money data={order.totalTaxV2!} />
@@ -272,7 +341,7 @@ export default function OrderDetails({response}: HydrogenRouteProps) {
             </table>
             <div className="sticky border-none top-nav md:my-8">
               <Heading size="copy" className="font-semibold" as="h3">
-                Shipping Address
+                {orderData.shippingAddress[lang]}
               </Heading>
               {order?.shippingAddress ? (
                 <ul className="mt-6">
@@ -294,10 +363,10 @@ export default function OrderDetails({response}: HydrogenRouteProps) {
                   )}
                 </ul>
               ) : (
-                <p className="mt-3">No shipping address defined</p>
+                <p className="mt-3">{orderData.noShippingAddress[lang]}</p>
               )}
               <Heading size="copy" className="mt-8 font-semibold" as="h3">
-                Status
+                {orderData.status[lang]}
               </Heading>
               <div
                 className={`mt-3 px-3 py-1 text-xs font-medium rounded-full inline-block w-auto ${

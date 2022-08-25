@@ -7,10 +7,43 @@ import type {
 import {Heading, Text} from '~/components';
 import {statusMessage} from '~/lib/utils';
 
-export function OrderCard({order}: {order: Order}) {
+export function OrderCard({
+  order,
+  lang = 'en',
+}: {
+  order: Order;
+  lang?: 'en' | 'es';
+}) {
   if (!order?.id) return null;
   const legacyOrderId = order!.id!.split('/').pop()!.split('?')[0];
   const lineItems = flattenConnection<OrderLineItem>(order?.lineItems);
+
+  const orderData = {
+    orderId: {
+      en: 'Order ID',
+      es: 'ID de Pedido',
+    },
+    orderNo: {
+      en: 'Order No.',
+      es: 'Pedido Nu.',
+    },
+    fulfillmentStatus: {
+      en: 'Fulfillment Status',
+      es: 'Estado de cumplimiento',
+    },
+    viewDetails: {
+      en: 'View Details',
+      es: 'Ver detalles',
+    },
+    more: {
+      en: 'more',
+      es: 'más',
+    },
+    orderDate: {
+      en: 'Order Date',
+      es: 'Fecha del pedido',
+    },
+  };
 
   return (
     <li className="grid text-center border rounded">
@@ -39,23 +72,25 @@ export function OrderCard({order}: {order: Order}) {
         >
           <Heading as="h3" format size="copy">
             {lineItems.length > 1
-              ? `${lineItems[0].title} +${lineItems.length - 1} more`
+              ? `${lineItems[0].title} +${lineItems.length - 1} ${
+                  orderData.more[lang]
+                }`
               : lineItems[0].title}
           </Heading>
           <dl className="grid grid-gap-1">
-            <dt className="sr-only">Order ID</dt>
+            <dt className="sr-only">{orderData.orderId[lang]}</dt>
             <dd>
               <Text size="fine" color="subtle">
-                Order No. {order.orderNumber}
+                {orderData.orderNo[lang]} {order.orderNumber}
               </Text>
             </dd>
-            <dt className="sr-only">Order Date</dt>
+            <dt className="sr-only">{orderData.orderDate[lang]}</dt>
             <dd>
               <Text size="fine" color="subtle">
-                {new Date(order.processedAt).toDateString()}
+                {new Date(order.processedAt).toLocaleDateString(lang)}
               </Text>
             </dd>
-            <dt className="sr-only">Fulfillment Status</dt>
+            <dt className="sr-only">{orderData.fulfillmentStatus[lang]}</dt>
             <dd className="mt-2">
               <span
                 className={`px-3 py-1 text-xs font-medium rounded-full ${
@@ -78,7 +113,7 @@ export function OrderCard({order}: {order: Order}) {
           to={`/account/orders/${legacyOrderId}`}
         >
           <Text color="subtle" className="ml-3">
-            View Details
+            {orderData.viewDetails[lang]}
           </Text>
         </Link>
       </div>

@@ -16,6 +16,8 @@ import typographicBase from 'typographic-base';
  *
  * @returns function when called will cause the current page to re-render on the server
  */
+
+const LANG = import.meta.env.PUBLIC_LANGUAGE_CODE;
 export function useRenderServerComponents() {
   const {serverProps, setServerProps} = useServerProps();
 
@@ -223,30 +225,35 @@ export function getApiErrorMessage(
 
 export function statusMessage(status: string) {
   const translations: Record<string, string> = {
-    ATTEMPTED_DELIVERY: 'Attempted delivery',
-    CANCELED: 'Canceled',
-    CONFIRMED: 'Confirmed',
-    DELIVERED: 'Delivered',
-    FAILURE: 'Failure',
-    FULFILLED: 'Fulfilled',
-    IN_PROGRESS: 'In Progress',
-    IN_TRANSIT: 'In transit',
-    LABEL_PRINTED: 'Label printed',
-    LABEL_PURCHASED: 'Label purchased',
-    LABEL_VOIDED: 'Label voided',
-    MARKED_AS_FULFILLED: 'Marked as fulfilled',
-    NOT_DELIVERED: 'Not delivered',
-    ON_HOLD: 'On Hold',
-    OPEN: 'Open',
-    OUT_FOR_DELIVERY: 'Out for delivery',
-    PARTIALLY_FULFILLED: 'Partially Fulfilled',
-    PENDING_FULFILLMENT: 'Pending',
-    PICKED_UP: 'Displayed as Picked up',
-    READY_FOR_PICKUP: 'Ready for pickup',
-    RESTOCKED: 'Restocked',
-    SCHEDULED: 'Scheduled',
-    SUBMITTED: 'Submitted',
-    UNFULFILLED: 'Unfulfilled',
+    ATTEMPTED_DELIVERY:
+      LANG === 'en' ? 'Attempted delivery' : 'Intento de entrega',
+    CANCELED: LANG === 'en' ? 'Canceled' : 'Cancelado',
+    CONFIRMED: LANG === 'en' ? 'Confirmed' : 'Confirmado',
+    DELIVERED: LANG === 'en' ? 'Delivered' : 'Entregado',
+    FAILURE: LANG === 'en' ? 'Failure' : 'Fallo',
+    FULFILLED: LANG === 'en' ? 'Fulfilled' : 'Cumplido',
+    IN_PROGRESS: LANG === 'en' ? 'In progress' : 'En curso',
+    IN_TRANSIT: LANG === 'en' ? 'In transit' : 'En tránsito',
+    LABEL_PRINTED: LANG === 'en' ? 'Label printed' : 'Etiqueta impresa',
+    LABEL_PURCHASED: LANG === 'en' ? 'Label purchased' : 'Etiqueta comprada',
+    LABEL_VOIDED: LANG === 'en' ? 'Label voided' : 'Etiqueta anulada',
+    MARKED_AS_FULFILLED:
+      LANG === 'en' ? 'Marked as fulfilled' : 'Marcado como cumplido',
+    NOT_DELIVERED: LANG === 'en' ? 'Not delivered' : 'No entregado',
+    ON_HOLD: LANG === 'en' ? 'On hold' : 'En espera',
+    OPEN: LANG === 'en' ? 'Open' : 'Abierto',
+    OUT_FOR_DELIVERY:
+      LANG === 'en' ? 'Out for delivery' : 'En espera de la entrega',
+    PARTIALLY_FULFILLED:
+      LANG === 'en' ? 'Partially fulfilled' : 'Cumplido parcialmente',
+    PENDING_FULFILLMENT: LANG === 'en' ? 'Pending' : 'Pendiente',
+    PICKED_UP: LANG === 'en' ? 'Displayed as pickup' : 'Recogido',
+    READY_FOR_PICKUP:
+      LANG === 'en' ? 'Ready for pickup' : 'Listo para ser recogido',
+    RESTOCKED: LANG === 'en' ? 'Restocked' : 'Reabastecido',
+    SCHEDULED: LANG === 'en' ? 'Scheduled' : 'Programado',
+    SUBMITTED: LANG === 'en' ? 'Submitted' : 'Enviado',
+    UNFULFILLED: LANG === 'en' ? 'Unfulfilled' : 'En tránsito',
   };
   try {
     return translations?.[status];
