@@ -1,4 +1,11 @@
-import {CacheLong, gql, Seo, useShopQuery} from '@shopify/hydrogen';
+import {
+  CacheLong,
+  gql,
+  Head,
+  Seo,
+  useShopQuery,
+  useUrl,
+} from '@shopify/hydrogen';
 
 /**
  * A server component that fetches a `shop.name` and sets default values and templates for every page on a website
@@ -14,16 +21,25 @@ export function DefaultSeo() {
     preload: '*',
   });
 
+  const {pathname} = useUrl();
+  const canonicalBasePath = 'https://suavecito.com';
+  const canonicalURL = `${canonicalBasePath}${pathname}`;
+
   return (
-    // @ts-ignore TODO: Fix types
-    <Seo
-      type="defaultSeo"
-      data={{
-        title: name,
-        description,
-        titleTemplate: `%s · ${name}`,
-      }}
-    />
+    <>
+      {/* @ts-ignore TODO: Fix types */}
+      <Seo
+        type="defaultSeo"
+        data={{
+          title: name,
+          description,
+          titleTemplate: `%s · ${name}`,
+        }}
+      />
+      <Head>
+        <link rel="canonical" href={canonicalURL} />
+      </Head>
+    </>
   );
 }
 
