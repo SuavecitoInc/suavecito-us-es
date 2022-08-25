@@ -187,7 +187,7 @@ export default function Product() {
                       }`}
                     >
                       <div
-                        className="description"
+                        className="rte description"
                         dangerouslySetInnerHTML={{__html: description}}
                       />
                     </div>

@@ -179,7 +179,11 @@ export function ProductKitItemTemplate({handle}: {handle: string}) {
           </div>
         )}
 
-        <ProductSectionYouMayAlsoLike theme={theme} productId={product.id} />
+        <ProductSectionYouMayAlsoLike
+          lang={LANG}
+          theme={theme}
+          productId={product.id}
+        />
       </div>
     </Layout>
   );
