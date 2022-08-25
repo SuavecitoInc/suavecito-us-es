@@ -149,15 +149,30 @@ h6,
   border-radius: 0 !important;
 }
 
+/* general */
+
 .btn-disabled {
   pointer-events: none;
   opacity: 0.5;
 }
 
+/* dangerously set html */
+
 .metafield-features ul {
   list-style-type: disc;
   list-style-position: inside;
 }
+
+.rte.description p {
+  margin-bottom: 15px;
+}
+
+.rte.description ul {
+  list-style-type: disc;
+  list-style-position: inside;
+}
+
+/* hero */
 
 .hero-with-text {
   position: relative;
@@ -171,6 +186,8 @@ h6,
   left: 0px;
   background-color: rgba(0, 0, 0, 0.5);
 }
+
+/* swiper */
 
 .swiper-pagination {
   bottom: calc(40px + 10px) !important;
