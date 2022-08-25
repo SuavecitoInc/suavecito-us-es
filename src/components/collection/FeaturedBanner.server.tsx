@@ -2,7 +2,13 @@ import {CollectionFeaturedBanners} from '~/data/collection-featured-banners';
 
 import type {Collection} from '@shopify/hydrogen/storefront-api-types';
 
-export function FeaturedBanner({collection}: {collection: Collection}) {
+export function FeaturedBanner({
+  collection,
+  lang = 'en',
+}: {
+  collection: Collection;
+  lang?: 'en' | 'es';
+}) {
   const chartEl = CollectionFeaturedBanners.find(
     (el) => el.handle === collection.handle,
   );
@@ -59,6 +65,11 @@ export function FeaturedBanner({collection}: {collection: Collection}) {
       });
     });
   });
+
+  const bestFor = {
+    en: 'Best for',
+    es: 'Lo mejor para',
+  };
   return chartEl ? (
     <section>
       <div
@@ -84,7 +95,7 @@ export function FeaturedBanner({collection}: {collection: Collection}) {
                     <div className={gridStyles} key={item.id}>
                       <span>
                         <strong>{`${
-                          !item.border ? 'Lo mejor para: ' : ''
+                          !item.border ? `${bestFor[lang]}: ` : ''
                         }`}</strong>
                         {item.text}
                       </span>
