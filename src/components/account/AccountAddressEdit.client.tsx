@@ -7,10 +7,12 @@ export function AccountAddressEdit({
   address,
   defaultAddress,
   close,
+  lang = 'en',
 }: {
   address: any;
   defaultAddress: boolean;
   close: () => void;
+  lang?: 'en' | 'es';
 }) {
   const isNewAddress = useMemo(() => !Object.keys(address).length, [address]);
 
@@ -63,6 +65,10 @@ export function AccountAddressEdit({
   }
 
   const editTranslations = {
+    addAddress: {
+      en: 'Add address',
+      es: 'Añadir address',
+    },
     editAddress: {
       en: 'Edit Address',
       es: 'Editar dirección',
@@ -108,8 +114,8 @@ export function AccountAddressEdit({
       es: 'Teléfono móvil',
     },
     setAsDefaultAddress: {
-      en: '',
-      es: '',
+      en: 'Set as default address',
+      es: 'Establecer como dirección por defecto',
     },
     save: {
       en: 'Save',
@@ -124,7 +130,9 @@ export function AccountAddressEdit({
   return (
     <>
       <Text className="mt-4 mb-6" as="h3" size="lead">
-        {isNewAddress ? 'Add address' : 'Edit address'}
+        {isNewAddress
+          ? editTranslations.addAddress[lang]
+          : editTranslations.editAddress[lang]}
       </Text>
       <div className="max-w-lg">
         <form noValidate onSubmit={onSubmit}>
@@ -141,8 +149,8 @@ export function AccountAddressEdit({
               required
               type="text"
               autoComplete="given-name"
-              placeholder="First name"
-              aria-label="First name"
+              placeholder={editTranslations.firstName[lang]}
+              aria-label={editTranslations.firstName[lang]}
               value={firstName}
               onChange={(event) => {
                 setFirstName(event.target.value);
@@ -157,8 +165,8 @@ export function AccountAddressEdit({
               required
               type="text"
               autoComplete="family-name"
-              placeholder="Last name"
-              aria-label="Last name"
+              placeholder={editTranslations.lastName[lang]}
+              aria-label={editTranslations.lastName[lang]}
               value={lastName}
               onChange={(event) => {
                 setLastName(event.target.value);
@@ -172,8 +180,8 @@ export function AccountAddressEdit({
               name="company"
               type="text"
               autoComplete="organization"
-              placeholder="Company"
-              aria-label="Company"
+              placeholder={editTranslations.company[lang]}
+              aria-label={editTranslations.company[lang]}
               value={company}
               onChange={(event) => {
                 setCompany(event.target.value);
@@ -187,9 +195,9 @@ export function AccountAddressEdit({
               name="street1"
               type="text"
               autoComplete="address-line1"
-              placeholder="Address line 1*"
+              placeholder={editTranslations.addressLine1[lang]}
               required
-              aria-label="Address line 1"
+              aria-label={editTranslations.addressLine1[lang]}
               value={address1}
               onChange={(event) => {
                 setAddress1(event.target.value);
@@ -203,8 +211,8 @@ export function AccountAddressEdit({
               name="address2"
               type="text"
               autoComplete="address-line2"
-              placeholder="Addresss line 2"
-              aria-label="Address line 2"
+              placeholder={editTranslations.addressLine2[lang]}
+              aria-label={editTranslations.addressLine2[lang]}
               value={address2}
               onChange={(event) => {
                 setAddress2(event.target.value);
@@ -219,8 +227,8 @@ export function AccountAddressEdit({
               type="text"
               required
               autoComplete="address-level2"
-              placeholder="City"
-              aria-label="City"
+              placeholder={editTranslations.city[lang]}
+              aria-label={editTranslations.city[lang]}
               value={city}
               onChange={(event) => {
                 setCity(event.target.value);
@@ -234,9 +242,9 @@ export function AccountAddressEdit({
               name="state"
               type="text"
               autoComplete="address-level1"
-              placeholder="State / Province"
+              placeholder={editTranslations.state[lang]}
               required
-              aria-label="State"
+              aria-label={editTranslations.state[lang]}
               value={province}
               onChange={(event) => {
                 setProvince(event.target.value);
@@ -250,9 +258,9 @@ export function AccountAddressEdit({
               name="zip"
               type="text"
               autoComplete="postal-code"
-              placeholder="Zip / Postal Code"
+              placeholder={editTranslations.zip[lang]}
               required
-              aria-label="Zip"
+              aria-label={editTranslations.zip[lang]}
               value={zip}
               onChange={(event) => {
                 setZip(event.target.value);
@@ -266,9 +274,9 @@ export function AccountAddressEdit({
               name="country"
               type="text"
               autoComplete="country-name"
-              placeholder="Country"
+              placeholder={editTranslations.country[lang]}
               required
-              aria-label="Country"
+              aria-label={editTranslations.country[lang]}
               value={country}
               onChange={(event) => {
                 setCountry(event.target.value);
@@ -282,8 +290,8 @@ export function AccountAddressEdit({
               name="phone"
               type="tel"
               autoComplete="tel"
-              placeholder="Phone"
-              aria-label="Phone"
+              placeholder={editTranslations.phone[lang]}
+              aria-label={editTranslations.phone[lang]}
               value={phone}
               onChange={(event) => {
                 setPhone(event.target.value);
@@ -304,7 +312,7 @@ export function AccountAddressEdit({
               className="inline-block ml-2 text-sm cursor-pointer"
               htmlFor="defaultAddress"
             >
-              Set as default address
+              {editTranslations.setAsDefaultAddress[lang]}
             </label>
           </div>
           <div className="mt-8">
@@ -314,7 +322,7 @@ export function AccountAddressEdit({
               variant="primary"
               disabled={saving}
             >
-              Save
+              {editTranslations.save[lang]}
             </Button>
           </div>
           <div>
@@ -323,7 +331,7 @@ export function AccountAddressEdit({
               variant="secondary"
               onClick={close}
             >
-              Cancel
+              {editTranslations.cancel[lang]}
             </Button>
           </div>
         </form>

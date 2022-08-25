@@ -57,7 +57,11 @@ export function AccountAddressBook({
     <>
       {deletingAddress ? (
         <Modal close={close}>
-          <AccountDeleteAddress addressId={deletingAddress} close={close} />
+          <AccountDeleteAddress
+            lang={lang}
+            addressId={deletingAddress}
+            close={close}
+          />
         </Modal>
       ) : null}
       {editingAddress ? (
@@ -66,6 +70,7 @@ export function AccountAddressBook({
             address={editingAddress}
             defaultAddress={fullDefaultAddress === editingAddress}
             close={close}
+            lang={lang}
           />
         </Modal>
       ) : null}
