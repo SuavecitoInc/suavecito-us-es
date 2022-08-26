@@ -168,6 +168,29 @@ export const PRODUCT_SECTION_FRAGMENT = gql`
   }
 `;
 
+export const VARIANT_FRAGRANCE_FRAGMENT =
+  LANG === 'es'
+    ? gql`
+        fragment VariantFragrance on ProductVariant {
+          variantFragranceProfile: metafield(
+            namespace: "debut"
+            key: "variant_fragrance_profile_es"
+          ) {
+            value
+          }
+        }
+      `
+    : gql`
+        fragment VariantFragrance on ProductVariant {
+          variantFragranceProfile: metafield(
+            namespace: "debut"
+            key: "variant_fragrance_profile"
+          ) {
+            value
+          }
+        }
+      `;
+
 export const VARIANT_METAFIELD_IMAGES_FRAGMENT = gql`
   fragment VariantMetafieldImages on ProductVariant {
     variantImage1: metafield(namespace: "debut", key: "variant_image_1") {
@@ -190,9 +213,9 @@ export const VARIANT_METAFIELD_IMAGES_FRAGMENT = gql`
         ...Media
       }
     }
-    variantFragranceProfile: metafield(
+    variantExcluded: metafield(
       namespace: "debut"
-      key: "variant_fragrance_profile"
+      key: "exclude_variant_online"
     ) {
       value
     }

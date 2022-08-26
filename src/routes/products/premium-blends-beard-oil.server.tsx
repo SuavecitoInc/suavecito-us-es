@@ -7,12 +7,14 @@ import {
   useLocalization,
   useServerAnalytics,
   useShopQuery,
+  useUrl,
 } from '@shopify/hydrogen';
 
 import {MEDIA_FRAGMENT} from '~/lib/fragments';
 import {
   PRODUCT_SECTION_FRAGMENT,
   VARIANT_METAFIELD_IMAGES_FRAGMENT,
+  VARIANT_FRAGRANCE_FRAGMENT,
   PRODUCT_SECTION_HOW_TO_FRAGMENT,
 } from '~/lib/suavecito-fragments';
 import {
@@ -30,10 +32,16 @@ import {
   Section,
   Text,
 } from '~/components';
+import {useGetInitialVariant} from '~/hooks';
 
 export default function Product() {
   const LANG = import.meta.env.PUBLIC_LANGUAGE_CODE;
   const handle = 'premium-blends-beard-oil';
+
+  const {search} = useUrl();
+  const params = new URLSearchParams(search);
+  const initialVariant = params.get('variant');
+
   const {
     language: {isoCode: languageCode},
     country: {isoCode: countryCode},
@@ -87,6 +95,8 @@ export default function Product() {
     howToUse3,
   } = product;
 
+  const {id} = useGetInitialVariant(initialVariant, variants.nodes);
+
   const defaultOptionNames = options.map(
     (option: {name: string}) => option.name,
   );
@@ -119,7 +129,7 @@ export default function Product() {
         <Seo type="product" data={product} />
       </Suspense>
       <div className="page-width">
-        <ProductOptionsProvider data={product}>
+        <ProductOptionsProvider data={product} initialVariantId={id}>
           <Section padding="x" className="px-0">
             <div className="flex flex-col md:flex-row gap-10">
               {/* if metafield images exist  */}
@@ -192,8 +202,9 @@ export default function Product() {
 const PRODUCT_QUERY = gql`
   ${MEDIA_FRAGMENT}
   ${PRODUCT_SECTION_FRAGMENT}
-  ${VARIANT_METAFIELD_IMAGES_FRAGMENT}
   ${PRODUCT_SECTION_HOW_TO_FRAGMENT}
+  ${VARIANT_METAFIELD_IMAGES_FRAGMENT}
+  ${VARIANT_FRAGRANCE_FRAGMENT}
   query Product(
     $country: CountryCode
     $language: LanguageCode
@@ -255,6 +266,7 @@ const PRODUCT_QUERY = gql`
             currencyCode
           }
           ...VariantMetafieldImages
+          ...VariantFragrance
         }
       }
       seo {
