@@ -33,6 +33,7 @@ import {
   Section,
   Text,
 } from '~/components';
+import {useGetInitialVariant} from '~/hooks';
 
 export function ProductMetafieldTemplate({handle}: {handle: string}) {
   const {search} = useUrl();
@@ -100,6 +101,8 @@ export function ProductMetafieldTemplate({handle}: {handle: string}) {
     howItLooksImage8,
   } = product;
 
+  const {id} = useGetInitialVariant(initialVariant, variants.nodes);
+
   const defaultOptionNames = options.map(
     (option: {name: string}) => option.name,
   );
@@ -141,14 +144,7 @@ export function ProductMetafieldTemplate({handle}: {handle: string}) {
         <Seo type="product" data={product} />
       </Suspense>
       <div className="page-width">
-        <ProductOptionsProvider
-          data={product}
-          initialVariantId={
-            initialVariant
-              ? `gid://shopify/ProductVariant/${initialVariant}`
-              : undefined
-          }
-        >
+        <ProductOptionsProvider data={product} initialVariantId={id}>
           <Section padding="x" className="px-0">
             <div className="flex flex-col md:flex-row gap-10">
               {/* if metafield images exist  */}

@@ -142,6 +142,7 @@ export function ProductOptionsVariantForm({
     if (currentVariant) {
       const variantGID = `gid://shopify/ProductVariant/${currentVariant}`;
       let matchedVariant: any = false;
+      // if excluded id do not find variant, set to first variant
       if (!excludedVariantIds.includes(variantGID))
         matchedVariant = variants?.find(
           (variant) => variant?.id === variantGID,

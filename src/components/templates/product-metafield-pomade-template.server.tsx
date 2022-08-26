@@ -33,7 +33,6 @@ import {
   Section,
   Text,
 } from '~/components';
-import {ProductVariant} from '@shopify/hydrogen/storefront-api-types';
 import {useGetInitialVariant} from '~/hooks';
 
 export function ProductMetafieldPomadeTemplate({handle}: {handle: string}) {
@@ -101,6 +100,8 @@ export function ProductMetafieldPomadeTemplate({handle}: {handle: string}) {
     variants,
   } = product;
 
+  const {id} = useGetInitialVariant(initialVariant, variants.nodes);
+
   const defaultOptionNames = options.map(
     (option: {name: string}) => option.name,
   );
@@ -135,8 +136,6 @@ export function ProductMetafieldPomadeTemplate({handle}: {handle: string}) {
     howItLooksImage7,
     howItLooksImage8,
   };
-
-  const {id} = useGetInitialVariant(initialVariant, variants.nodes);
 
   return (
     <Layout>
