@@ -90,6 +90,7 @@ export function ProductOptionsVariantForm({
     variants,
   } = useProductOptions();
 
+  // delete
   const {excludedVariantIds} = useFilterExcludedVariants(
     variants as ProductVariant[],
     options as {name: string; values: string[]}[],
@@ -140,9 +141,11 @@ export function ProductOptionsVariantForm({
     const currentVariant = params.get('variant') || null;
     if (currentVariant) {
       const variantGID = `gid://shopify/ProductVariant/${currentVariant}`;
-      let matchedVariant: any = variants?.find(
-        (variant) => variant?.id === variantGID,
-      );
+      let matchedVariant: any = false;
+      if (!excludedVariantIds.includes(variantGID))
+        matchedVariant = variants?.find(
+          (variant) => variant?.id === variantGID,
+        );
       // set variant url param to first variant if variant id not found
       if (!matchedVariant) {
         // @ts-ignore
