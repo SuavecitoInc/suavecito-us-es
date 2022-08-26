@@ -14,6 +14,7 @@ import {MEDIA_FRAGMENT} from '~/lib/fragments';
 import {
   PRODUCT_SECTION_FRAGMENT,
   VARIANT_METAFIELD_IMAGES_FRAGMENT,
+  VARIANT_FRAGRANCE_FRAGMENT,
   PRODUCT_SECTION_HOW_IT_LOOKS_FRAGMENT,
 } from '~/lib/suavecito-fragments';
 import {
@@ -32,6 +33,8 @@ import {
   Section,
   Text,
 } from '~/components';
+import {ProductVariant} from '@shopify/hydrogen/storefront-api-types';
+import {useGetInitialVariant} from '~/hooks';
 
 export function ProductMetafieldPomadeTemplate({handle}: {handle: string}) {
   const {search} = useUrl();
@@ -95,7 +98,10 @@ export function ProductMetafieldPomadeTemplate({handle}: {handle: string}) {
     howItLooksImage6,
     howItLooksImage7,
     howItLooksImage8,
+    variants,
   } = product;
+
+  const {id} = useGetInitialVariant(initialVariant, variants.nodes);
 
   const defaultOptionNames = options.map(
     (option: {name: string}) => option.name,
@@ -140,11 +146,12 @@ export function ProductMetafieldPomadeTemplate({handle}: {handle: string}) {
       <div className="page-width">
         <ProductOptionsProvider
           data={product}
-          initialVariantId={
-            initialVariant
-              ? `gid://shopify/ProductVariant/${initialVariant}`
-              : undefined
-          }
+          initialVariantId={id}
+          // initialVariantId={
+          //   initialVariant
+          //     ? `gid://shopify/ProductVariant/${initialVariant}`
+          //     : undefined
+          // }
         >
           <Section padding="x" className="px-0">
             <div className="flex flex-col md:flex-row gap-10">
@@ -202,6 +209,7 @@ const PRODUCT_QUERY = gql`
   ${MEDIA_FRAGMENT}
   ${PRODUCT_SECTION_FRAGMENT}
   ${VARIANT_METAFIELD_IMAGES_FRAGMENT}
+  ${VARIANT_FRAGRANCE_FRAGMENT}
   ${PRODUCT_SECTION_HOW_IT_LOOKS_FRAGMENT}
   query Product(
     $country: CountryCode
@@ -264,6 +272,7 @@ const PRODUCT_QUERY = gql`
             currencyCode
           }
           ...VariantMetafieldImages
+          ...VariantFragrance
         }
       }
       seo {

@@ -16,6 +16,7 @@ import {
   VARIANT_METAFIELD_IMAGES_FRAGMENT,
   VARIANT_METAFIELD_COLOR_IMAGES_FRAGMENT,
   VARIANT_METAFIELD_LIFESTYLE_IMAGES_FRAGMENT,
+  VARIANT_FRAGRANCE_FRAGMENT,
   PRODUCT_SECTION_GET_INSPIRED_FRAGMENT,
 } from '~/lib/suavecito-fragments';
 import {
@@ -220,6 +221,7 @@ const PRODUCT_QUERY = gql`
   ${VARIANT_METAFIELD_IMAGES_FRAGMENT}
   ${VARIANT_METAFIELD_COLOR_IMAGES_FRAGMENT}
   ${VARIANT_METAFIELD_LIFESTYLE_IMAGES_FRAGMENT}
+  ${VARIANT_FRAGRANCE_FRAGMENT}
   ${PRODUCT_SECTION_GET_INSPIRED_FRAGMENT}
   query Product(
     $country: CountryCode
@@ -284,6 +286,7 @@ const PRODUCT_QUERY = gql`
           ...VariantMetafieldImages
           ...VariantMetafieldColorImages
           ...VariantMetafieldLifestyleImages
+          ...VariantFragrance
         }
       }
       seo {

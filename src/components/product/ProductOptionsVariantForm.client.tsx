@@ -9,7 +9,11 @@ import {
   OptionWithValues,
   ShopPayButton,
 } from '@shopify/hydrogen';
-import {useVariantsWithOptions, useAvailableOptions} from '~/hooks';
+import {
+  useVariantsWithOptions,
+  useAvailableOptions,
+  useFilterExcludedVariants,
+} from '~/hooks';
 import {
   Heading,
   Text,
@@ -85,6 +89,11 @@ export function ProductOptionsVariantForm({
     selectedVariant,
     variants,
   } = useProductOptions();
+
+  const {excludedVariantIds} = useFilterExcludedVariants(
+    variants as ProductVariant[],
+    options as {name: string; values: string[]}[],
+  );
 
   const {findVariantWithOptions} = useVariantsWithOptions(
     variants as ProductVariant[],

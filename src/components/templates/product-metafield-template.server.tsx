@@ -14,6 +14,7 @@ import {MEDIA_FRAGMENT} from '~/lib/fragments';
 import {
   PRODUCT_SECTION_FRAGMENT,
   VARIANT_METAFIELD_IMAGES_FRAGMENT,
+  VARIANT_FRAGRANCE_FRAGMENT,
   PRODUCT_SECTION_HOW_IT_LOOKS_FRAGMENT,
 } from '~/lib/suavecito-fragments';
 import {
@@ -208,6 +209,7 @@ const PRODUCT_QUERY = gql`
   ${MEDIA_FRAGMENT}
   ${PRODUCT_SECTION_FRAGMENT}
   ${VARIANT_METAFIELD_IMAGES_FRAGMENT}
+  ${VARIANT_FRAGRANCE_FRAGMENT}
   ${PRODUCT_SECTION_HOW_IT_LOOKS_FRAGMENT}
   query Product(
     $country: CountryCode
@@ -270,6 +272,7 @@ const PRODUCT_QUERY = gql`
             currencyCode
           }
           ...VariantMetafieldImages
+          ...VariantFragrance
         }
       }
       seo {
