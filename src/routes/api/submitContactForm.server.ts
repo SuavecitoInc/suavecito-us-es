@@ -42,6 +42,7 @@ export const api: HydrogenApiRoute = async (request, options) => {
     body: JSON.stringify({ticket}),
   };
   const response = await fetch(zendeskEndpoint, fetchOptions);
+  console.log('response', response);
   if (response.ok) {
     return new Response('Success', {
       status: 200,
