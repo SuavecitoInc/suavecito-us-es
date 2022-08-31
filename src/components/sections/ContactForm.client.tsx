@@ -65,6 +65,7 @@ export function ContactForm({
         }),
       };
       const response = await fetch('/api/submitContactForm', params);
+      console.log('response', response);
       return response;
     } catch (error) {
       throw new Error('Something went wrong when submitting the contact form');
@@ -83,14 +84,14 @@ export function ContactForm({
         'border-green-500',
       );
       if (responseRef && responseRef.current) {
-        responseRef.current.classList.add('text-green');
+        responseRef.current.classList.add('!text-green-600');
         responseRef.current.textContent = contactFormData.successMessage[lang];
       }
     } else {
       formRef.current.classList.add('border-solid', 'border', 'border-red-500');
       if (responseRef && responseRef.current) {
-        responseRef.current.classList.add('text-red');
-        responseRef.current.textContent = contactFormData.errorMessage[lang];
+        responseRef.current.classList.add('!text-red-500');
+        responseRef.current.textContent = contactFormData.failureMessage[lang];
       }
     }
   };
