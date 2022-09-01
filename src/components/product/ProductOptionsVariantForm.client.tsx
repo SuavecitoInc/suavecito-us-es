@@ -20,6 +20,7 @@ import {
   Button,
   ProductOptions,
   ProductColorOptions,
+  Badge,
 } from '~/components';
 import type {ProductVariant} from '@shopify/hydrogen/storefront-api-types';
 import type {BrandTheme} from '~/types/suavecito';
@@ -379,11 +380,7 @@ export function ProductOptionsVariantForm({
                 )}
               </>
             )}
-            {(isOnSale || tags.includes('On Sale')) && (
-              <span className="bg-suave-yellow text-black font-semibold mr-2 px-2.5 py-0.5 ml-4">
-                Sale
-              </span>
-            )}
+            {(isOnSale || tags.includes('On Sale')) && <Badge tags={tags} />}
           </div>
         )}
       </div>
