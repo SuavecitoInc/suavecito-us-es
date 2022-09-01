@@ -77,6 +77,10 @@ export function ContactForm({
     evt.preventDefault();
     const res = await fetchReq();
     if (res.ok) {
+      setEmailInput('');
+      setMessageInput('');
+      setNameInput('');
+      setPhoneInput('');
       formRef.current.classList.add(
         'border-solid',
         'border',
@@ -107,6 +111,7 @@ export function ContactForm({
         <input
           className={styles.input}
           type="text"
+          value={nameInput}
           placeholder={contactFormData.name[lang]}
           onChange={(evt) => setNameInput(evt.target.value)}
           required
@@ -116,6 +121,7 @@ export function ContactForm({
         <input
           className={styles.input}
           type="email"
+          value={emailInput}
           placeholder={contactFormData.email[lang]}
           onChange={(evt) => setEmailInput(evt.target.value)}
           required
@@ -125,6 +131,7 @@ export function ContactForm({
         <input
           className={styles.input}
           type="tel"
+          value={phoneInput}
           placeholder={contactFormData.phone[lang]}
           onChange={(evt) => setPhoneInput(evt.target.value)}
           required
@@ -133,6 +140,7 @@ export function ContactForm({
       <div>
         <textarea
           className={`${styles.input} min-h-[120px]`}
+          value={messageInput}
           placeholder={contactFormData.message[lang]}
           onChange={(evt) => setMessageInput(evt.target.value)}
           required
