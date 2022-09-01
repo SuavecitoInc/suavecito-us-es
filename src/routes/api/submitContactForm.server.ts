@@ -1,4 +1,5 @@
 import {HydrogenApiRoute} from '@shopify/hydrogen';
+import {Buffer} from 'buffer';
 
 declare global {
   const Oxygen: {env: any; [key: string]: any};
@@ -19,7 +20,7 @@ export const api: HydrogenApiRoute = async (request, options) => {
     comment: {
       body: `From: ${name}\n
       Email: ${email}\n
-      Number: ${phone}\n
+      Number: ${phone}\n 
       Message: ${message}`,
     },
     subject: `Message from ${fromSender} contact form`,
@@ -42,7 +43,6 @@ export const api: HydrogenApiRoute = async (request, options) => {
     body: JSON.stringify({ticket}),
   };
   const response = await fetch(zendeskEndpoint, fetchOptions);
-  console.log('response', response);
   if (response.ok) {
     return new Response('Success', {
       status: 200,

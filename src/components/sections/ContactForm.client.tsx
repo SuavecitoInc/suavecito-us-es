@@ -65,7 +65,6 @@ export function ContactForm({
         }),
       };
       const response = await fetch('/api/submitContactForm', params);
-      console.log('response', response);
       return response;
     } catch (error) {
       throw new Error('Something went wrong when submitting the contact form');
