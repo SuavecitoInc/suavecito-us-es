@@ -8,3 +8,4 @@ export {Section} from './Section';
 export {Skeleton} from './Skeleton';
 export {Text} from './Text';
 export {Divider} from './Divider';
+export {Badge} from './Badge';
