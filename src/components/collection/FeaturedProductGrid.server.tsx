@@ -10,8 +10,36 @@ import {
 } from '~/components';
 import {AdBanners} from '~/data/ad-banners';
 
-import type {Collection, Product} from '@shopify/hydrogen/storefront-api-types';
+import type {
+  Collection,
+  Product,
+  ProductVariant,
+} from '@shopify/hydrogen/storefront-api-types';
 import type {BrandTheme} from '~/types/suavecito';
+
+interface Metafield {
+  value: string;
+  reference?: {
+    mediaContentType: string;
+    alt: string;
+    previewImage: {
+      url: string;
+    };
+    image: {
+      url: string;
+      width: number;
+      height: number;
+    };
+  };
+}
+
+interface ProductVariantWithMetafield extends ProductVariant {
+  variantColorImage?: Metafield | null;
+}
+
+interface CollectionWithMetafield extends Collection {
+  headingName?: Metafield;
+}
 
 export function FeaturedProductGrid({
   url,
@@ -85,6 +113,8 @@ function CollectionGridItem({
   index: number;
   theme: BrandTheme;
 }) {
+  const firstVariant: ProductVariantWithMetafield = product.variants.nodes[0];
+
   return (
     <>
       <ProductGridItem
@@ -92,7 +122,9 @@ function CollectionGridItem({
         loading={getImageLoadingPriority(index)}
         theme={theme}
       />
-      <ProductColorSwatches product={product} theme={theme} />
+      {firstVariant.variantColorImage && (
+        <ProductColorSwatches product={product} theme={theme} />
+      )}
     </>
   );
 }
@@ -106,7 +138,7 @@ function CollectionRowWithCarousel({
   url,
   lang = 'en',
 }: {
-  collection: Collection;
+  collection: CollectionWithMetafield;
   products: Product[];
   position: string;
   theme: BrandTheme;
@@ -114,7 +146,7 @@ function CollectionRowWithCarousel({
   url: string;
   lang?: 'en' | 'es';
 }) {
-  const viewMore = {
+  const viewMore: {[key: string]: any} = {
     en: 'View more',
     es: 'Ver más',
   };
@@ -181,7 +213,7 @@ function CollectionRowWithoutCarousel({
   url,
   lang = 'en',
 }: {
-  collection: Collection;
+  collection: CollectionWithMetafield;
   products: Product[];
   position: string;
   theme: BrandTheme;

@@ -71,13 +71,6 @@ export function ProductGridItem({
     <Link onClick={onClick} to={`/products/${product.handle}`}>
       <div className={styles}>
         <div className="product-image hover:opacity-80">
-          {/* <Text
-            as="label"
-            size="fine"
-            className="absolute top-0 right-0 m-4 text-right text-notice"
-          >
-            {cardLabel}
-          </Text> */}
           {image && (
             <Image
               className="w-full object-contain fadeIn"
@@ -110,6 +103,11 @@ export function ProductGridItem({
                   className={'opacity-50'}
                   data={compareAtPrice as MoneyV2}
                 />
+              )}
+              {(cardLabel === 'Sale' || product.tags.includes('On Sale')) && (
+                <span className="bg-suave-yellow text-black font-semibold mr-2 px-2.5 py-0.5 ml-4">
+                  Sale
+                </span>
               )}
             </Text>
           </div>
