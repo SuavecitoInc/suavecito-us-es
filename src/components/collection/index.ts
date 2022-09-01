@@ -1,4 +1,2 @@
-export {FeaturedProductGrid} from './FeaturedProductGrid.client';
-export {ProductImageCarousel} from './ProductImageCarousel';
+export {ProductImageCarousel} from './ProductImageCarousel.client';
 export {ProductColorSwatches} from './ProductColorSwatches';
-export {VariantProductRow} from './VariantProductRow.client';

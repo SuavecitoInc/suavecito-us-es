@@ -4,9 +4,11 @@ import {useRenderServerComponents} from '~/lib/utils';
 export function AccountDeleteAddress({
   addressId,
   close,
+  lang = 'en',
 }: {
   addressId: string;
   close: () => void;
+  lang?: 'en' | 'es';
 }) {
   // Necessary for edits to show up on the main page
   const renderServerComponents = useRenderServerComponents();
@@ -20,13 +22,30 @@ export function AccountDeleteAddress({
     renderServerComponents();
     close();
   }
-
+  const editTranslations = {
+    confirmRemoval: {
+      en: 'Confirm removal',
+      es: 'Confirmar la eliminación',
+    },
+    areYouSure: {
+      en: 'Are you sure you wish to remove this address?',
+      es: '¿Está seguro de que desea eliminar esta dirección?',
+    },
+    confirm: {
+      en: 'Confirm',
+      es: 'Confirmar',
+    },
+    cancel: {
+      en: 'Cancel',
+      es: 'Cancelar',
+    },
+  };
   return (
     <>
       <Text className="mb-4" as="h3" size="lead">
-        Confirm removal
+        {editTranslations.confirmRemoval[lang]}
       </Text>
-      <Text as="p">Are you sure you wish to remove this address?</Text>
+      <Text as="p">{editTranslations.areYouSure[lang]}</Text>
       <div className="mt-6">
         <Button
           className="text-sm"
@@ -36,7 +55,7 @@ export function AccountDeleteAddress({
           variant="primary"
           width="full"
         >
-          Confirm
+          {editTranslations.confirm[lang]}
         </Button>
         <Button
           className="text-sm mt-2"
@@ -44,7 +63,7 @@ export function AccountDeleteAddress({
           variant="secondary"
           width="full"
         >
-          Cancel
+          {editTranslations.cancel[lang]}
         </Button>
       </div>
     </>

@@ -1,16 +1,16 @@
-import {CollectionCollaborations} from '~/components/index.server';
-
-export default function Collection() {
-  const handle = 'collaborations';
-  return <CollectionCollaborations handle={handle} query={COLLECTION_QUERY} />;
-}
-
 import {
   COLLECTION_PRODUCT_VARIANT_IMAGE_FRAGMENT,
   FILTERED_COLLECTION_WITH_VARIANT_FRAGMENT,
 } from '~/lib/suavecito-fragments';
 import {MEDIA_FRAGMENT} from '~/lib/fragments';
 import {gql} from '@shopify/hydrogen';
+
+import {CollectionCollaborations} from '~/components/index.server';
+
+export default function Collection() {
+  const handle = 'collaborations';
+  return <CollectionCollaborations handle={handle} query={COLLECTION_QUERY} />;
+}
 
 const COLLECTION_QUERY = gql`
   ${FILTERED_COLLECTION_WITH_VARIANT_FRAGMENT}
@@ -39,7 +39,17 @@ const COLLECTION_QUERY = gql`
         height
         altText
       }
-      products(first: $pageBy, after: $cursor) {
+      products(
+        first: $pageBy
+        after: $cursor
+        filters: {
+          productMetafield: {
+            namespace: "suave"
+            key: "hydrogen_es_enabled"
+            value: "true"
+          }
+        }
+      ) {
         nodes {
           ...CollectionProductWithVariantImage
         }

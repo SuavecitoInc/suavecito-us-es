@@ -1,10 +1,12 @@
-import {SetStateAction, Dispatch} from 'react';
+import {useContext} from 'react';
+import type {SetStateAction, Dispatch} from 'react';
 import {Image} from '@shopify/hydrogen';
 import {ImLock, ImUnlocked} from 'react-icons/im';
 import type {Product} from '@shopify/hydrogen/storefront-api-types';
 import type {Image as ImageType} from '@shopify/hydrogen/storefront-api-types';
 
 import {Button, Heading, Section} from '~/components';
+import {useFreeGiftWithPurchase} from '../FreeGiftProvider/';
 
 const fgwp_locale: {[key: string]: any} = {
   title: {
@@ -49,48 +51,30 @@ const fgwp_locale: {[key: string]: any} = {
   },
 };
 
-export function CartFreeGiftWithPurchase({
-  tier1Diff,
-  tier2Diff,
-  tier3Diff,
-  tier1Products,
-  tier2Products,
-  tier3Products,
-  tier1Value,
-  setTier1Value,
-  tier2Value,
-  setTier2Value,
-  tier3Value1,
-  setTier3Value1,
-  tier3Value2,
-  setTier3Value2,
-  currentTier,
-  // setCurrentTier,
-  freeGiftsInCart,
-  addFreeGiftToCart,
-  freeGiftsEligible,
-}: {
-  tier1Diff: number;
-  tier2Diff: number;
-  tier3Diff: number;
-  tier1Products: Product[];
-  tier2Products: Product[];
-  tier3Products: Product[];
-  tier1Value: string;
-  setTier1Value: Dispatch<SetStateAction<string>>;
-  tier2Value: string;
-  setTier2Value: Dispatch<SetStateAction<string>>;
-  tier3Value1: string;
-  setTier3Value1: Dispatch<SetStateAction<string>>;
-  tier3Value2: string;
-  setTier3Value2: Dispatch<SetStateAction<string>>;
-  currentTier: number;
-  setCurrentTier: Dispatch<SetStateAction<number>>;
-  freeGiftsInCart: number;
-  addFreeGiftToCart: (tierSelected: number) => void;
-  freeGiftsEligible: {[key: number]: number};
-}) {
+export function CartFreeGiftWithPurchase() {
   const LANG = import.meta.env.PUBLIC_LANGUAGE_CODE;
+
+  const {
+    tier1Diff,
+    tier2Diff,
+    tier3Diff,
+    tier1Products,
+    tier2Products,
+    tier3Products,
+    tier1Value,
+    setTier1Value,
+    tier2Value,
+    setTier2Value,
+    tier3Value1,
+    setTier3Value1,
+    tier3Value2,
+    setTier3Value2,
+    currentTier,
+    // setCurrentTier,
+    freeGiftsInCart,
+    addFreeGiftToCart,
+    freeGiftsEligible,
+  } = useFreeGiftWithPurchase();
 
   const tierDiff: {[key: number]: number} = {
     0: tier1Diff,

@@ -9,10 +9,15 @@ import {
 } from '@shopify/hydrogen';
 
 import {PRODUCT_CARD_FRAGMENT} from '~/lib/fragments';
-import {PAGINATION_SIZE} from '~/lib/const';
+import {PAGINATION_SIZE, PRODUCT_FILTER_TAG} from '~/lib/const';
 import {ProductGrid, PageHeader, Section} from '~/components';
 import {Layout} from '~/components/index.server';
 import type {Collection} from '@shopify/hydrogen/storefront-api-types';
+
+// if product filter tag set this will filter the collection by tag
+const PRODUCT_FILTER_QUERY: false | string = PRODUCT_FILTER_TAG
+  ? `tag:${PRODUCT_FILTER_TAG}`
+  : '';
 
 export default function AllProducts() {
   return (
@@ -40,6 +45,7 @@ function AllProductsGrid() {
       country: countryCode,
       language: languageCode,
       pageBy: PAGINATION_SIZE,
+      tagFilter: PRODUCT_FILTER_QUERY,
     },
     preload: true,
   });
@@ -80,6 +86,7 @@ export async function api(
       cursor,
       pageBy: PAGINATION_SIZE,
       country,
+      tagFilter: PRODUCT_FILTER_QUERY,
     },
   });
 }
@@ -91,8 +98,9 @@ const ALL_PRODUCTS_QUERY = gql`
     $language: LanguageCode
     $pageBy: Int!
     $cursor: String
+    $tagFilter: String
   ) @inContext(country: $country, language: $language) {
-    products(first: $pageBy, after: $cursor) {
+    products(first: $pageBy, after: $cursor, query: $tagFilter) {
       nodes {
         ...ProductCard
       }
@@ -112,8 +120,9 @@ const PAGINATE_ALL_PRODUCTS_QUERY = gql`
     $cursor: String
     $country: CountryCode
     $language: LanguageCode
+    $tagFilter: String
   ) @inContext(country: $country, language: $language) {
-    products(first: $pageBy, after: $cursor) {
+    products(first: $pageBy, after: $cursor, query: $tagFilter) {
       nodes {
         ...ProductCard
       }

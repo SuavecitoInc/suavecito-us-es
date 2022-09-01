@@ -9,13 +9,18 @@ import {
   OptionWithValues,
   ShopPayButton,
 } from '@shopify/hydrogen';
-import {useVariantsWithOptions, useAvailableOptions} from '~/hooks';
+import {
+  useVariantsWithOptions,
+  useAvailableOptions,
+  useFilterExcludedVariants,
+} from '~/hooks';
 import {
   Heading,
   Text,
   Button,
   ProductOptions,
   ProductColorOptions,
+  Badge,
 } from '~/components';
 import type {ProductVariant} from '@shopify/hydrogen/storefront-api-types';
 import type {BrandTheme} from '~/types/suavecito';
@@ -86,6 +91,12 @@ export function ProductOptionsVariantForm({
     variants,
   } = useProductOptions();
 
+  // delete
+  const {excludedVariantIds} = useFilterExcludedVariants(
+    variants as ProductVariant[],
+    options as {name: string; values: string[]}[],
+  );
+
   const {findVariantWithOptions} = useVariantsWithOptions(
     variants as ProductVariant[],
   );
@@ -131,9 +142,12 @@ export function ProductOptionsVariantForm({
     const currentVariant = params.get('variant') || null;
     if (currentVariant) {
       const variantGID = `gid://shopify/ProductVariant/${currentVariant}`;
-      let matchedVariant: any = variants?.find(
-        (variant) => variant?.id === variantGID,
-      );
+      let matchedVariant: any = false;
+      // if excluded id do not find variant, set to first variant
+      if (!excludedVariantIds.includes(variantGID))
+        matchedVariant = variants?.find(
+          (variant) => variant?.id === variantGID,
+        );
       // set variant url param to first variant if variant id not found
       if (!matchedVariant) {
         // @ts-ignore
@@ -366,11 +380,7 @@ export function ProductOptionsVariantForm({
                 )}
               </>
             )}
-            {(isOnSale || tags.includes('On Sale')) && (
-              <span className="bg-suave-yellow text-black font-semibold mr-2 px-2.5 py-0.5 ml-4">
-                Sale
-              </span>
-            )}
+            {(isOnSale || tags.includes('On Sale')) && <Badge tags={tags} />}
           </div>
         )}
       </div>

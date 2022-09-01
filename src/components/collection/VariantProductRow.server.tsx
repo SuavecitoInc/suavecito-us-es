@@ -1,5 +1,5 @@
 import {useState, useRef, useEffect, useCallback} from 'react';
-import {Link, flattenConnection} from '@shopify/hydrogen';
+import {Link} from '@shopify/hydrogen';
 import {getImageLoadingPriority} from '~/lib/const';
 
 import {Button, Grid} from '~/components';
@@ -11,78 +11,26 @@ import type {
 } from '@shopify/hydrogen/storefront-api-types';
 import type {BrandTheme} from '~/types/suavecito';
 
-import {
-  ProductGridItem,
-  ProductImageCarousel,
-  VariantGridItem,
-} from '~/components';
+import {ProductGridItem, VariantGridItem} from '~/components';
 
 export function VariantProductRow({
   url,
   collection,
   theme = 'suavecito',
+  lang = 'en',
 }: {
   url: string;
   collection: Collection;
   theme?: BrandTheme;
+  lang?: 'en' | 'es';
 }) {
-  const nextButtonRef = useRef(null);
-  const initialProducts = collection?.products?.nodes || [];
-  const {hasNextPage, endCursor} = collection?.products?.pageInfo ?? {};
-  const [products, setProducts] = useState<Product[]>(initialProducts);
-  const [cursor, setCursor] = useState(endCursor ?? '');
-  const [nextPage, setNextPage] = useState(hasNextPage);
-  const [pending, setPending] = useState(false);
-  const haveProducts = initialProducts.length > 0;
+  const viewMore = {
+    en: 'View more',
+    es: 'Ver mas',
+  };
 
-  const fetchProducts = useCallback(async () => {
-    setPending(true);
-    const postUrl = new URL(window.location.origin + url);
-    postUrl.searchParams.set('cursor', cursor);
-
-    const response = await fetch(postUrl, {
-      method: 'POST',
-    });
-    const {data} = await response.json();
-
-    // ProductGrid can paginate collection, products and search routes
-    // @ts-ignore TODO: Fix types
-    const newProducts: Product[] = flattenConnection<Product>(
-      data?.collection?.products || data?.products || [],
-    );
-    const {endCursor, hasNextPage} = data?.collection?.products?.pageInfo ||
-      data?.products?.pageInfo || {endCursor: '', hasNextPage: false};
-
-    setProducts([...products, ...newProducts]);
-    setCursor(endCursor);
-    setNextPage(hasNextPage);
-    setPending(false);
-  }, [cursor, url, products]);
-
-  const handleIntersect = useCallback(
-    (entries: IntersectionObserverEntry[]) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          fetchProducts();
-        }
-      });
-    },
-    [fetchProducts],
-  );
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(handleIntersect, {
-      rootMargin: '100%',
-    });
-
-    const nextButton = nextButtonRef.current;
-
-    if (nextButton) observer.observe(nextButton);
-
-    return () => {
-      if (nextButton) observer.unobserve(nextButton);
-    };
-  }, [nextButtonRef, cursor, handleIntersect]);
+  const products = collection?.products?.nodes || [];
+  const haveProducts = products.length > 0;
 
   if (!haveProducts) {
     return (
@@ -120,7 +68,7 @@ export function VariantProductRow({
           {products.length > 3 && (
             <div className={styles.btnWrapper}>
               <Link to={url} className={styles.btn}>
-                <Button variant={theme}>View More</Button>
+                <Button variant={theme}>{viewMore[lang]}</Button>
               </Link>
             </div>
           )}

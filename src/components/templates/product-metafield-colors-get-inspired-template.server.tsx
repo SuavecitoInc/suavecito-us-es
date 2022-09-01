@@ -16,6 +16,7 @@ import {
   VARIANT_METAFIELD_IMAGES_FRAGMENT,
   VARIANT_METAFIELD_COLOR_IMAGES_FRAGMENT,
   VARIANT_METAFIELD_LIFESTYLE_IMAGES_FRAGMENT,
+  VARIANT_FRAGRANCE_FRAGMENT,
   PRODUCT_SECTION_GET_INSPIRED_FRAGMENT,
 } from '~/lib/suavecito-fragments';
 import {
@@ -35,6 +36,7 @@ import {
   Text,
 } from '~/components';
 import {getColorOptions} from '~/lib/helpers';
+import {useGetInitialVariant} from '~/hooks';
 
 export function ProductMetafieldColorsGetInspiredTemplate({
   handle,
@@ -103,6 +105,8 @@ export function ProductMetafieldColorsGetInspiredTemplate({
     getInspiredImage4,
   } = product;
 
+  const {id} = useGetInitialVariant(initialVariant, variants.nodes);
+
   const defaultOptionNames = options.map(
     (option: {name: string}) => option.name,
   );
@@ -155,14 +159,7 @@ export function ProductMetafieldColorsGetInspiredTemplate({
       <Suspense>
         <Seo type="product" data={product} />
       </Suspense>
-      <ProductOptionsProvider
-        data={product}
-        initialVariantId={
-          initialVariant
-            ? `gid://shopify/ProductVariant/${initialVariant}`
-            : undefined
-        }
-      >
+      <ProductOptionsProvider data={product} initialVariantId={id}>
         <div className="page-width">
           <Section padding="x" className="px-0">
             <div className="flex flex-col md:flex-row gap-10">
@@ -231,6 +228,7 @@ const PRODUCT_QUERY = gql`
   ${VARIANT_METAFIELD_IMAGES_FRAGMENT}
   ${VARIANT_METAFIELD_COLOR_IMAGES_FRAGMENT}
   ${VARIANT_METAFIELD_LIFESTYLE_IMAGES_FRAGMENT}
+  ${VARIANT_FRAGRANCE_FRAGMENT}
   ${PRODUCT_SECTION_GET_INSPIRED_FRAGMENT}
   query Product(
     $country: CountryCode
@@ -295,6 +293,7 @@ const PRODUCT_QUERY = gql`
           ...VariantMetafieldImages
           ...VariantMetafieldColorImages
           ...VariantMetafieldLifestyleImages
+          ...VariantFragrance
         }
       }
       seo {

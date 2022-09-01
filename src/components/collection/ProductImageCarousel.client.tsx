@@ -9,7 +9,7 @@ import {AdBanners} from '~/data/ad-banners';
 import {BrandTheme} from '~/types/suavecito';
 import {IconArrow} from '~/components';
 
-import type {Collection, Product} from '@shopify/hydrogen/storefront-api-types';
+import type {Collection} from '@shopify/hydrogen/storefront-api-types';
 interface Metafield {
   value: string;
   reference?: {
@@ -29,10 +29,13 @@ interface Metafield {
 export function ProductImageCarousel({
   collection,
   theme = 'suavecito',
+  lang = 'en',
 }: {
   collection: Collection;
   theme?: BrandTheme;
+  lang?: 'en' | 'es';
 }) {
+  const shopNowLabel = lang === 'es' ? 'COMPRA AHORA' : 'SHOP NOW';
   return (
     <>
       <div>
@@ -49,15 +52,16 @@ export function ProductImageCarousel({
           touchReleaseOnEdges={true}
           touchStartForcePreventDefault={true}
           threshold={15}
-          // onSwiper={(swiper) => console.log(swiper)}
-          // onSlideChange={() => console.log('slide change')}
         >
           {AdBanners[collection.handle] &&
             AdBanners[collection.handle].images.map((el, index: number) => (
               <SwiperSlide
                 key={`${collection.handle}-ad-banner-${String(index)}`}
               >
-                <CarouselBanner carouselBanner={el} />
+                <CarouselBanner
+                  carouselBanner={el}
+                  shopNowLabel={shopNowLabel}
+                />
               </SwiperSlide>
             ))}
         </Swiper>
@@ -68,8 +72,10 @@ export function ProductImageCarousel({
 
 export function CarouselBanner({
   carouselBanner,
+  shopNowLabel,
 }: {
   carouselBanner: {banner: Metafield; url?: Metafield; label?: Metafield};
+  shopNowLabel: string;
 }) {
   return (
     <div>
@@ -82,10 +88,16 @@ export function CarouselBanner({
       />
       {carouselBanner.url ? (
         <Link to={carouselBanner.url.value}>
-          <CarouselImageText carouselBanner={carouselBanner} />
+          <CarouselImageText
+            carouselBanner={carouselBanner}
+            shopNowLabel={shopNowLabel}
+          />
         </Link>
       ) : (
-        <CarouselImageText carouselBanner={carouselBanner} />
+        <CarouselImageText
+          carouselBanner={carouselBanner}
+          shopNowLabel={shopNowLabel}
+        />
       )}
     </div>
   );
@@ -93,15 +105,17 @@ export function CarouselBanner({
 
 export function CarouselImageText({
   carouselBanner,
+  shopNowLabel,
 }: {
   carouselBanner: {banner: Metafield; url?: Metafield; label?: Metafield};
+  shopNowLabel: string;
 }) {
   return (
     <div
       className={`bg-suave-red text-white px-[1em] flex w-full min-h-[40px] items-center justify-between`}
     >
       <span>
-        {carouselBanner.label ? carouselBanner.label.value : 'SHOP NOW'}
+        {carouselBanner.label ? carouselBanner.label.value : shopNowLabel}
       </span>
       {carouselBanner.url && <IconArrow defaultFill={true} direction="right" />}
     </div>

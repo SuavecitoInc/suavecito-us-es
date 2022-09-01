@@ -168,6 +168,29 @@ export const PRODUCT_SECTION_FRAGMENT = gql`
   }
 `;
 
+export const VARIANT_FRAGRANCE_FRAGMENT =
+  LANG === 'es'
+    ? gql`
+        fragment VariantFragrance on ProductVariant {
+          variantFragranceProfile: metafield(
+            namespace: "debut"
+            key: "variant_fragrance_profile_es"
+          ) {
+            value
+          }
+        }
+      `
+    : gql`
+        fragment VariantFragrance on ProductVariant {
+          variantFragranceProfile: metafield(
+            namespace: "debut"
+            key: "variant_fragrance_profile"
+          ) {
+            value
+          }
+        }
+      `;
+
 export const VARIANT_METAFIELD_IMAGES_FRAGMENT = gql`
   fragment VariantMetafieldImages on ProductVariant {
     variantImage1: metafield(namespace: "debut", key: "variant_image_1") {
@@ -190,9 +213,9 @@ export const VARIANT_METAFIELD_IMAGES_FRAGMENT = gql`
         ...Media
       }
     }
-    variantFragranceProfile: metafield(
+    variantExcluded: metafield(
       namespace: "debut"
-      key: "variant_fragrance_profile"
+      key: "exclude_variant_online"
     ) {
       value
     }
@@ -552,42 +575,80 @@ export const COLLECTION_PRODUCT_FRAGMENT = gql`
   }
 `;
 
-export const FILTERED_COLLECTION_FRAGMENT = gql`
-  fragment FilteredCollectionWithMetafield on Collection {
-    id
-    handle
-    title
-    description
-    seo {
-      description
-      title
-    }
-    headingName: metafield(
-      namespace: "hydrogen"
-      key: "subcollection_heading"
-    ) {
-      value
-    }
-    products(
-      first: 100
-      filters: {
-        productMetafield: {
-          namespace: "suave"
-          key: "hydrogen_es_enabled"
-          value: "true"
+export const FILTERED_COLLECTION_FRAGMENT =
+  LANG === 'es'
+    ? gql`
+        fragment FilteredCollectionWithMetafield on Collection {
+          id
+          handle
+          title
+          description
+          seo {
+            description
+            title
+          }
+          headingName: metafield(
+            namespace: "suave"
+            key: "sub_collection_header_es"
+          ) {
+            value
+          }
+          products(
+            first: 100
+            filters: {
+              productMetafield: {
+                namespace: "suave"
+                key: "hydrogen_es_enabled"
+                value: "true"
+              }
+            }
+          ) {
+            nodes {
+              ...CollectionProduct
+            }
+            pageInfo {
+              hasNextPage
+              endCursor
+            }
+          }
         }
-      }
-    ) {
-      nodes {
-        ...CollectionProduct
-      }
-      pageInfo {
-        hasNextPage
-        endCursor
-      }
-    }
-  }
-`;
+      `
+    : gql`
+        fragment FilteredCollectionWithMetafield on Collection {
+          id
+          handle
+          title
+          description
+          seo {
+            description
+            title
+          }
+          headingName: metafield(
+            namespace: "suave"
+            key: "sub_collection_header_en"
+          ) {
+            value
+          }
+          products(
+            first: 100
+            filters: {
+              productMetafield: {
+                namespace: "suave"
+                key: "hydrogen_es_enabled"
+                value: "true"
+              }
+            }
+          ) {
+            nodes {
+              ...CollectionProduct
+            }
+            pageInfo {
+              hasNextPage
+              endCursor
+            }
+          }
+        }
+      `;
 
 export const COLLECTION_PRODUCT_VARIANT_IMAGE_FRAGMENT = gql`
   fragment CollectionProductWithVariantImage on Product {
@@ -626,34 +687,77 @@ export const COLLECTION_PRODUCT_VARIANT_IMAGE_FRAGMENT = gql`
   }
 `;
 
-export const FILTERED_COLLECTION_WITH_VARIANT_FRAGMENT = gql`
-  fragment FilteredCollectionWithVariantImage on Collection {
-    id
-    handle
-    title
-    description
-    seo {
-      description
-      title
-    }
-    products(
-      first: 100
-      filters: {
-        productMetafield: {
-          namespace: "suave"
-          key: "hydrogen_es_enabled"
-          value: "true"
+export const FILTERED_COLLECTION_WITH_VARIANT_FRAGMENT =
+  LANG === 'es'
+    ? gql`
+        fragment FilteredCollectionWithVariantImage on Collection {
+          id
+          handle
+          title
+          description
+          seo {
+            description
+            title
+          }
+          headingName: metafield(
+            namespace: "suave"
+            key: "sub_collection_header_es"
+          ) {
+            value
+          }
+          products(
+            first: 100
+            filters: {
+              productMetafield: {
+                namespace: "suave"
+                key: "hydrogen_es_enabled"
+                value: "true"
+              }
+            }
+          ) {
+            nodes {
+              ...CollectionProductWithVariantImage
+            }
+            pageInfo {
+              hasNextPage
+              endCursor
+            }
+          }
         }
-      }
-    ) {
-      nodes {
-        ...CollectionProductWithVariantImage
-      }
-      pageInfo {
-        hasNextPage
-        endCursor
->>>>>>> a926dfc21d2c1c7804d79bcb3268569bb6241ee8
-      }
-    }
-  }
-`;
+      `
+    : gql`
+        fragment FilteredCollectionWithVariantImage on Collection {
+          id
+          handle
+          title
+          description
+          seo {
+            description
+            title
+          }
+          headingName: metafield(
+            namespace: "suave"
+            key: "sub_collection_header_en"
+          ) {
+            value
+          }
+          products(
+            first: 100
+            filters: {
+              productMetafield: {
+                namespace: "suave"
+                key: "hydrogen_es_enabled"
+                value: "true"
+              }
+            }
+          ) {
+            nodes {
+              ...CollectionProductWithVariantImage
+            }
+            pageInfo {
+              hasNextPage
+              endCursor
+            }
+          }
+        }
+      `;

@@ -7,7 +7,7 @@ import {
   useMoney,
 } from '@shopify/hydrogen';
 
-import {Text} from '~/components';
+import {Badge, Text} from '~/components';
 import {isDiscounted, isNewArrival} from '~/lib/utils';
 import {getProductPlaceholder} from '~/lib/placeholders';
 import type {
@@ -30,13 +30,13 @@ export function ProductGridItem({
 }: {
   theme?: BrandTheme;
   product: Product;
-  label?: string;
+  label?: 'Sale' | 'New';
   className?: string;
   loading?: HTMLImageElement['loading'];
   onClick?: () => void;
   titleColor?: string;
 }) {
-  let cardLabel;
+  let cardLabel: 'Sale' | 'New' | undefined;
 
   const cardData = product?.variants ? product : getProductPlaceholder();
 
@@ -71,13 +71,6 @@ export function ProductGridItem({
     <Link onClick={onClick} to={`/products/${product.handle}`}>
       <div className={styles}>
         <div className="product-image hover:opacity-80">
-          {/* <Text
-            as="label"
-            size="fine"
-            className="absolute top-0 right-0 m-4 text-right text-notice"
-          >
-            {cardLabel}
-          </Text> */}
           {image && (
             <Image
               className="w-full object-contain fadeIn"
@@ -110,6 +103,9 @@ export function ProductGridItem({
                   className={'opacity-50'}
                   data={compareAtPrice as MoneyV2}
                 />
+              )}
+              {(cardLabel === 'Sale' || product.tags.includes('On Sale')) && (
+                <Badge label={cardLabel} tags={product.tags} />
               )}
             </Text>
           </div>

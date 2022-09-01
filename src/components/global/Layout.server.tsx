@@ -28,16 +28,19 @@ export function Layout({
   children,
   theme = 'suavecito',
   showTopPadding = true,
+  backgroundColorClass = 'bg-transparent',
 }: {
   children: React.ReactNode;
   theme?: BrandTheme;
   showTopPadding?: boolean;
+  backgroundColorClass?: string;
 }) {
   const {pathname} = useUrl();
   const isHome = pathname === '/';
+
   return (
     <div className={`${theme === 'premium blends' ? 'bg-black' : 'bg-white'}`}>
-      <div className="flex flex-col min-h-screen">
+      <div className={`flex flex-col min-h-screen ${backgroundColorClass}`}>
         <div className="">
           <a href="#mainContent" className="sr-only">
             Skip to content

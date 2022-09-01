@@ -37,7 +37,7 @@ export function ProductColorSwatches({
     wrapper: `grid gap-[.5em] grid-cols-3 lg:grid-cols-6 grid-rows-1 mt-[6px] w-full max-w-[120px] lg:max-w-full`,
     imageWrapper: ``,
     swatch: ``,
-    image: `rounded-[50%] border border-solid border-black`,
+    image: `rounded-[50%] border border-solid border-black hover:opacity-75`,
   };
   const themeCorrected = theme === 'suavecita' ? 'suavecita' : 'suavecito';
   const textColor = {

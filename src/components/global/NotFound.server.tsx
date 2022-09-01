@@ -1,18 +1,23 @@
-import {
-  gql,
-  HydrogenResponse,
-  useLocalization,
-  useShopQuery,
-} from '@shopify/hydrogen';
+import {HydrogenResponse, Image} from '@shopify/hydrogen';
 
 import {Suspense} from 'react';
-import {PRODUCT_CARD_FRAGMENT} from '~/lib/fragments';
-import {Button, FeaturedCollections, PageHeader, Text} from '~/components';
-import {ProductSwimlane, Layout} from '~/components/index.server';
-import type {
-  CollectionConnection,
-  ProductConnection,
-} from '@shopify/hydrogen/storefront-api-types';
+import {Button, Heading} from '~/components';
+import {Layout} from '~/components/index.server';
+
+const not_found: {[key: string]: any} = {
+  heading: {
+    en: `We’ve lost this page`,
+    es: `Hemos perdido esta pagina`,
+  },
+  description: {
+    en: 'We couldn’t find the page you’re looking for. Try checking the URL or heading back to the home page.',
+    es: 'No pudimos encontrar la página que estás buscando. Intente verificar el URL o regresar a la página de inicio.',
+  },
+  take_me_home: {
+    en: 'Take me to the home page',
+    es: 'Llévame a la página de inicio',
+  },
+};
 
 export function NotFound({
   response,
@@ -21,85 +26,46 @@ export function NotFound({
   response?: HydrogenResponse;
   type?: string;
 }) {
+  const LANG = import.meta.env.PUBLIC_LANGUAGE_CODE;
+
   if (response) {
     response.status = 404;
     response.statusText = 'Not found';
   }
 
-  const heading = `We’ve lost this ${type}`;
-  const description = `We couldn’t find the ${type} you’re looking for. Try checking the URL or heading back to the home page.`;
+  const brown = 'bg-[#371e12]';
+
+  // const heading = `We’ve lost this ${type}`;
+  // const description = `We couldn’t find the ${type} you’re looking for. Try checking the URL or heading back to the home page.`;
 
   return (
-    <Layout>
-      <PageHeader heading={heading}>
-        <Text width="narrow" as="p">
-          {description}
-        </Text>
-        <Button width="auto" variant="secondary" to={'/'}>
-          Take me to the home page
-        </Button>
-      </PageHeader>
-      <Suspense>
-        <FeaturedSection />
-      </Suspense>
+    <Layout showTopPadding={false} backgroundColorClass={brown}>
+      <div className="relative">
+        <Suspense>
+          <Image
+            className="w-full h-auto"
+            src="/images/suavecito-santa-ana-404.svg"
+            alt="Not Found"
+            width={1080}
+            height="auto"
+          />
+        </Suspense>
+        <div className="pb-10 md:pb-0 md:absolute md:bottom-[10%] lg:bottom-[20%] left-0 right-0 w-full bg-[#371e12] md:bg-transparent text-white text-center">
+          <Heading
+            format
+            as="h3"
+            size="heading"
+            className="text-center w-full max-w-full"
+          >
+            {not_found.heading[LANG]}
+          </Heading>
+          <p className="p-4">{not_found.description[LANG]}</p>
+
+          <Button width="auto" variant="secondary" to={'/'}>
+            {not_found.take_me_home[LANG]}
+          </Button>
+        </div>
+      </div>
     </Layout>
   );
 }
-
-function FeaturedSection() {
-  const {
-    language: {isoCode: languageCode},
-    country: {isoCode: countryCode},
-  } = useLocalization();
-
-  const {data} = useShopQuery<{
-    featuredCollections: CollectionConnection;
-    featuredProducts: ProductConnection;
-  }>({
-    query: NOT_FOUND_QUERY,
-    variables: {
-      language: languageCode,
-      country: countryCode,
-    },
-    preload: true,
-  });
-
-  const {featuredCollections, featuredProducts} = data;
-
-  return (
-    <>
-      {featuredCollections.nodes.length < 2 && (
-        <FeaturedCollections
-          title="Popular Collections"
-          data={featuredCollections.nodes}
-        />
-      )}
-      <ProductSwimlane data={featuredProducts.nodes} />
-    </>
-  );
-}
-
-const NOT_FOUND_QUERY = gql`
-  ${PRODUCT_CARD_FRAGMENT}
-  query homepage($country: CountryCode, $language: LanguageCode)
-  @inContext(country: $country, language: $language) {
-    featuredCollections: collections(first: 3, sortKey: UPDATED_AT) {
-      nodes {
-        id
-        title
-        handle
-        image {
-          altText
-          width
-          height
-          url
-        }
-      }
-    }
-    featuredProducts: products(first: 12) {
-      nodes {
-        ...ProductCard
-      }
-    }
-  }
-`;
