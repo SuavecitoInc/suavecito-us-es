@@ -63,15 +63,8 @@ function OptionsGrid({
               onChange={() => handleChange(name, value)}
               disabled={disabledOption}
             />
-            {/* <div
-              className={`leading-none py-1 cursor-pointer transition-all duration-200 text-sm md:text-base ${
-                disabledOption ? 'text-suave-white-focus' : ' text-black'
-              }`}
-            >
-              {value}
-            </div> */}
             <Image
-              className={`rounded-full hover:opacity-50 ${
+              className={`rounded-full hover:border-2 hover:border-black hover:p-1 ${
                 checked ? 'border-2 border-black p-1' : ''
               }`}
               // @ts-ignore
