@@ -139,7 +139,7 @@ export function ProductMetafieldTemplate({handle}: {handle: string}) {
   };
 
   return (
-    <Layout>
+    <Layout isProduct={true}>
       <Suspense>
         <Seo type="product" data={product} />
       </Suspense>

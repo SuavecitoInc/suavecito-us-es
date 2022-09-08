@@ -124,7 +124,7 @@ export default function Product() {
   };
 
   return (
-    <Layout theme={product.vendor.toLowerCase()}>
+    <Layout theme={product.vendor.toLowerCase()} isProduct={true}>
       <Suspense>
         <Seo type="product" data={product} />
       </Suspense>

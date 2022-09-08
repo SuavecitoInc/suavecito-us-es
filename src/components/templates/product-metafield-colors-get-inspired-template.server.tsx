@@ -155,7 +155,7 @@ export function ProductMetafieldColorsGetInspiredTemplate({
   };
 
   return (
-    <Layout theme={vendor.toLowerCase()}>
+    <Layout theme={vendor.toLowerCase()} isProduct={true}>
       <Suspense>
         <Seo type="product" data={product} />
       </Suspense>
