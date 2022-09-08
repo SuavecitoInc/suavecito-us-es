@@ -137,7 +137,7 @@ export default function Product() {
   const theme = vendor.toLowerCase();
 
   return (
-    <Layout theme={theme}>
+    <Layout theme={theme} isProduct={true}>
       <Suspense>
         <Seo type="product" data={product} />
       </Suspense>

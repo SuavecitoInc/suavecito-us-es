@@ -140,7 +140,7 @@ export function ProductMetafieldSPBTemplate({handle}: {handle: string}) {
   };
 
   return (
-    <Layout theme={product.vendor.toLowerCase()}>
+    <Layout theme={product.vendor.toLowerCase()} isProduct={true}>
       <Suspense>
         <Seo type="product" data={product} />
       </Suspense>

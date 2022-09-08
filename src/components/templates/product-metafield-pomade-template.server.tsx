@@ -138,7 +138,7 @@ export function ProductMetafieldPomadeTemplate({handle}: {handle: string}) {
   };
 
   return (
-    <Layout>
+    <Layout isProduct={true}>
       <Suspense>
         <Seo type="product" data={product} />
       </Suspense>
