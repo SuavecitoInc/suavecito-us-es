@@ -80,7 +80,7 @@ export default function Page({
   });
 
   const styles = {
-    flex: 'flex gap-10 flex-col md:flex-row',
+    flex: 'flex gap-10 flex-col lg:flex-row',
     flexChild: 'flex-1',
     card: 'shadow-lg rounded p-[24px]',
     leftSide: 'flex flex-col gap-10',
