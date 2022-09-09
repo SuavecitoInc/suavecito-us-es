@@ -2,7 +2,7 @@ import {useEffect, useCallback, useMemo, ReactNode, useState} from 'react';
 import {useCart} from '@shopify/hydrogen';
 import type {Product, CartLine} from '@shopify/hydrogen/storefront-api-types';
 
-import {FreeGiftContext} from './context';
+import {FreeGiftContext} from './context.client';
 import {DefaultFreeGiftContext} from './types';
 
 export function FreeGiftProvider({

@@ -10,7 +10,7 @@ export function CartDrawer({
   isOpen: boolean;
   onClose: () => void;
 }) {
-  const {enabled, freeGiftsInCart, freeGiftsEligible, currentTier} =
+  const {enabled, freeGiftsInCart, freeGiftsEligible, currentTier, tier1Diff} =
     useFreeGiftWithPurchase();
 
   const freeGiftAvailable = freeGiftsInCart < freeGiftsEligible[currentTier];
@@ -21,7 +21,9 @@ export function CartDrawer({
         <CartDetails
           layout="drawer"
           onClose={onClose}
+          freeGiftEnabled={enabled}
           disableCheckout={freeGiftAvailable}
+          amountToFreeGift={tier1Diff}
         />
       </div>
     </Drawer>

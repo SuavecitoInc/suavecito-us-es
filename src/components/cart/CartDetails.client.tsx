@@ -26,16 +26,30 @@ const cart_details: {[key: string]: any} = {
     en: 'Order Summary',
     es: 'Resumen del pedido',
   },
+  free_gift: {
+    first: {
+      en: 'You are',
+      es: '¡Estás a',
+    },
+    second: {
+      en: 'away from unlocking a FREE Gift!',
+      es: 'de obtener un regalo GRATIS!',
+    },
+  },
 };
 
 export function CartDetails({
   layout,
   onClose,
+  freeGiftEnabled,
   disableCheckout,
+  amountToFreeGift,
 }: {
   layout: 'drawer' | 'page';
   onClose?: () => void;
+  freeGiftEnabled: boolean;
   disableCheckout: boolean;
+  amountToFreeGift: number;
 }) {
   const LANG = import.meta.env.PUBLIC_LANGUAGE_CODE;
 
@@ -86,7 +100,8 @@ export function CartDetails({
         <OrderSummary />
         <CartCheckoutActions
           lang={LANG}
-          disableCheckout={disableCheckout}
+          disableCheckout={freeGiftEnabled ? disableCheckout : false}
+          amountToFreeGift={freeGiftEnabled ? amountToFreeGift : 0}
           onClose={onClose}
         />
       </section>
@@ -97,16 +112,25 @@ export function CartDetails({
 function CartCheckoutActions({
   lang,
   disableCheckout,
+  amountToFreeGift,
   onClose,
 }: {
   lang: 'en' | 'es';
   disableCheckout: boolean;
+  amountToFreeGift: number;
   onClose?: () => void;
 }) {
   const {checkoutUrl} = useCart();
   return (
     <>
       <div className="grid gap-4">
+        {amountToFreeGift > 0 ? (
+          <p className="text-center">
+            {cart_details.free_gift.first[lang]}{' '}
+            <span className="text-suave-red">${amountToFreeGift}</span>{' '}
+            {cart_details.free_gift.second[lang]}
+          </p>
+        ) : null}
         {disableCheckout ? (
           <Button to="/cart" onClick={onClose && onClose}>
             {cart_details.continue_to_cart[lang]}
