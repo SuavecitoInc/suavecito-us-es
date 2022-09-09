@@ -61,13 +61,9 @@ export function ProductImages({
         {featuredImage && (
           <SpreadMedia
             scale={2}
-            sizes={
-              featuredImage
-                ? '(min-width: 80em) 700px, (min-width: 48em) 450px, 500px'
-                : '(min-width: 80em) 1400px, (min-width: 48em) 900px, 500px'
-            }
-            widths={featuredImage ? [500, 450, 700] : [500, 900, 1400]}
-            width={featuredImage ? 375 : 750}
+            sizes="(min-width: 80em) 700px, (min-width: 48em) 450px, 500px"
+            widths={[500, 450, 700]}
+            width={375}
             data={featuredImage}
             loading="eager"
           />
@@ -78,7 +74,7 @@ export function ProductImages({
           return (
             <div
               key={image.id}
-              className={`thumbnail-image cursor-pointer p-1 ${
+              className={`thumbnail-image cursor-pointer p-1 aspect-square ${
                 activeThumbnailId === image.id ? 'border-2 border-black' : ''
               }`}
               onClick={() => handleImageChange(image.id as string)}
@@ -87,14 +83,10 @@ export function ProductImages({
             >
               <SpreadMedia
                 scale={2}
-                sizes={
-                  image.id
-                    ? '(min-width: 80em) 700px, (min-width: 48em) 450px, 500px'
-                    : '(min-width: 80em) 1400px, (min-width: 48em) 900px, 500px'
-                }
-                widths={image ? [500, 450, 700] : [500, 900, 1400]}
-                width={image ? 375 : 750}
-                data={image as any}
+                sizes="(min-width: 80em) 300px, (min-width: 48em) 100px, 200px"
+                widths={[300, 100, 200]}
+                width={300}
+                data={image}
                 loading="eager"
               />
             </div>
