@@ -15,7 +15,7 @@ export function DefaultSeo() {
     data: {
       shop: {name, description},
     },
-  } = useShopQuery({
+  }: any = useShopQuery({
     query: SHOP_QUERY,
     cache: CacheLong(),
     preload: '*',

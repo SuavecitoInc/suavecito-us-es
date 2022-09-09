@@ -7,3 +7,5 @@ export {DefaultSeo} from './DefaultSeo.server';
 export * from './product/index.server';
 export * from './templates/index.server';
 export * from './collection/index.server';
+
+export {AppWrapper} from './AppWrapper.server';

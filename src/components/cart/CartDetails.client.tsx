@@ -9,13 +9,36 @@ import {
 
 import {Button, Text, CartLineItem, CartEmpty} from '~/components';
 
+const cart_details: {[key: string]: any} = {
+  subtotal: {
+    en: 'Subtotal',
+    es: 'Total Parcial',
+  },
+  continue_to_checkout: {
+    en: 'Continue to Checkout',
+    es: 'Continuar a la comprobación',
+  },
+  continue_to_cart: {
+    en: 'Continue to Cart',
+    es: 'Continuar con el carrito',
+  },
+  order_summary: {
+    en: 'Order Summary',
+    es: 'Resumen del pedido',
+  },
+};
+
 export function CartDetails({
   layout,
   onClose,
+  disableCheckout,
 }: {
   layout: 'drawer' | 'page';
   onClose?: () => void;
+  disableCheckout: boolean;
 }) {
+  const LANG = import.meta.env.PUBLIC_LANGUAGE_CODE;
+
   const {lines} = useCart();
   const scrollRef = useRef(null);
   const {y} = useScroll(scrollRef);
@@ -58,22 +81,44 @@ export function CartDetails({
       </section>
       <section aria-labelledby="summary-heading" className={summary[layout]}>
         <h2 id="summary-heading" className="sr-only">
-          Order summary
+          {cart_details.order_summary[LANG]}
         </h2>
         <OrderSummary />
-        <CartCheckoutActions />
+        <CartCheckoutActions
+          lang={LANG}
+          disableCheckout={disableCheckout}
+          onClose={onClose}
+        />
       </section>
     </form>
   );
 }
 
-function CartCheckoutActions() {
+function CartCheckoutActions({
+  lang,
+  disableCheckout,
+  onClose,
+}: {
+  lang: 'en' | 'es';
+  disableCheckout: boolean;
+  onClose?: () => void;
+}) {
   const {checkoutUrl} = useCart();
   return (
     <>
       <div className="grid gap-4">
-        <Button to={checkoutUrl}>Continue to Checkout</Button>
-        <CartShopPayButton />
+        {disableCheckout ? (
+          <Button to="/cart" onClick={onClose && onClose}>
+            {cart_details.continue_to_cart[lang]}
+          </Button>
+        ) : (
+          <>
+            <Button to={checkoutUrl}>
+              {cart_details.continue_to_checkout[lang]}
+            </Button>
+            <CartShopPayButton />
+          </>
+        )}
       </div>
     </>
   );
