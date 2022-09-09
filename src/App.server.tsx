@@ -30,22 +30,14 @@ function App({request}: HydrogenRouteProps) {
           <Suspense>
             <DefaultSeo />
           </Suspense>
-          <Suspense>
-            <AppWrapper>
-              <Router>
-                <FileRoutes
-                  basePath={countryCode ? `/${countryCode}/` : undefined}
-                />
-                <Route path="*" page={<NotFound />} />
-              </Router>
-            </AppWrapper>
-          </Suspense>
-          {/* <Router>
-            <FileRoutes
-              basePath={countryCode ? `/${countryCode}/` : undefined}
-            />
-            <Route path="*" page={<NotFound />} />
-          </Router> */}
+          <AppWrapper>
+            <Router>
+              <FileRoutes
+                basePath={countryCode ? `/${countryCode}/` : undefined}
+              />
+              <Route path="*" page={<NotFound />} />
+            </Router>
+          </AppWrapper>
         </CartProvider>
         <PerformanceMetrics />
         {import.meta.env.DEV && <PerformanceMetricsDebug />}
