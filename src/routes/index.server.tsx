@@ -74,7 +74,7 @@ function SeoForHomepage() {
     data: {
       shop: {title, description},
     },
-  } = useShopQuery({
+  }: any = useShopQuery({
     query: HOMEPAGE_SEO_QUERY,
     cache: CacheLong(),
     preload: true,

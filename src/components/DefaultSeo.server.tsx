@@ -38,7 +38,7 @@ export function DefaultSeo() {
       />
       <Head>
         <link rel="canonical" href={canonicalURL} />
-        <meta name="robots" content="noindex"></meta>
+        <meta name="robots" content="noindex, nofollow"></meta>
       </Head>
     </>
   );
