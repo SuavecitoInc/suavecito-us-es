@@ -31,6 +31,7 @@ export function ProductMetafieldImages({className}: {className?: string}) {
   // change featured image on variant change
   useEffect(() => {
     setFeaturedImage(selectedVariant.variantImage1?.reference);
+    setActiveThumbnail(1);
   }, [selectedVariant]);
 
   const handleImageChange = (index: number) => {
@@ -48,16 +49,26 @@ export function ProductMetafieldImages({className}: {className?: string}) {
       className={`product-images md:grid-flow-row hiddenScroll md:p-0 md:overflow-x-auto md:grid-cols-2 ${className}`}
     >
       <div className="featured-image w-full">
-        {featuredImage && (
+        {/* {featuredImage && (
           <SpreadMedia
             scale={2}
             sizes={
               featuredImage
                 ? '(min-width: 80em) 700px, (min-width: 48em) 450px, 500px'
-                : '(min-width: 80em) 1400px, (min-width: 48em) 900px, 500px'
+                : '(min-width: 80em) 1400px, (min-width: 48em) 500px, 900px'
             }
             widths={featuredImage ? [500, 450, 700] : [500, 900, 1400]}
             width={featuredImage ? 375 : 750}
+            data={featuredImage as Media}
+            loading="eager"
+          />
+        )} */}
+        {featuredImage && (
+          <SpreadMedia
+            scale={2}
+            sizes="(min-width: 80em) 700px, (min-width: 48em) 450px, 500px"
+            widths={[500, 450, 700]}
+            width={375}
             data={featuredImage as Media}
             loading="eager"
           />
@@ -72,7 +83,7 @@ export function ProductMetafieldImages({className}: {className?: string}) {
           return (
             <div
               key={i}
-              className={`thumbnail-image flex-1 cursor-pointer p-1 ${
+              className={`thumbnail-image flex-1 cursor-pointer p-1 aspect-square ${
                 activeThumbnail === i ? 'border-2 border-black' : ''
               }`}
               onClick={() => handleImageChange(i)}
@@ -82,22 +93,23 @@ export function ProductMetafieldImages({className}: {className?: string}) {
               {imageMetafield?.reference && (
                 <SpreadMedia
                   scale={2}
-                  sizes={
-                    imageMetafield?.reference
-                      ? '(min-width: 80em) 700px, (min-width: 48em) 450px, 500px'
-                      : '(min-width: 80em) 1400px, (min-width: 48em) 900px, 500px'
-                  }
-                  widths={
-                    imageMetafield?.reference
-                      ? [500, 450, 700]
-                      : [500, 900, 1400]
-                  }
-                  width={imageMetafield?.reference ? 375 : 750}
+                  sizes="(min-width: 80em) 300px, (min-width: 48em) 100px, 200px"
+                  widths={[300, 100, 200]}
+                  width={300}
                   data={imageMetafield.reference as Media}
-                  // loading={loading}
                   loading="eager"
                 />
               )}
+              {/* {imageMetafield?.reference && (
+                <SpreadMedia
+                  scale={2}
+                  sizes="(min-width: 80em) 700px, (min-width: 48em) 450px, 500px"
+                  widths={[500, 450, 700]}
+                  width={375}
+                  data={imageMetafield.reference as Media}
+                  loading="eager"
+                />
+              )} */}
             </div>
           );
         })}

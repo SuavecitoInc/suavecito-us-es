@@ -123,7 +123,7 @@ export function ProductKitItemTemplate({handle}: {handle: string}) {
     .map((el) => el.value);
 
   return (
-    <Layout theme={theme}>
+    <Layout theme={theme} isProduct={true}>
       <Suspense>
         <Seo type="product" data={product} />
       </Suspense>
