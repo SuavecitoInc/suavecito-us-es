@@ -1,4 +1,4 @@
-import {useRef} from 'react';
+import {useRef, useContext} from 'react';
 import {useScroll} from 'react-use';
 import {
   useCart,

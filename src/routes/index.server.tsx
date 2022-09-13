@@ -58,7 +58,7 @@ function HomepageContent() {
       <FeaturedRowImageWithText {...featuredRowImageOneSettings} />
       <Divider width="half" />
       <BestSellers lang={LANG} />
-      <Banner {...bannerOneSettings} />
+      {/* <Banner {...bannerOneSettings} /> */}
       <FeaturedRowColumns {...featuredRowColumnsOneSettings} />
       <FeaturedRowImageWithText {...featuredRowImageTwoSettings} />
       <Banner {...bannerTwoSettings} />
