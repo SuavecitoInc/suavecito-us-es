@@ -34,10 +34,10 @@ export const responsiveBannerSettings: ResponsiveBannerSectionData = {
       mediaContentType: 'IMAGE',
       alt: 'This is my alt',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/responsive-banner-ex-large.jpg?v=1657834726',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/cito_september_landing_banner_large_sp.jpg?v=1663203360',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/responsive-banner-ex-large.jpg?v=1657834726',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/cito_september_landing_banner_large_sp.jpg?v=1663203360',
         width: 2048,
         height: 930,
       },
@@ -49,10 +49,10 @@ export const responsiveBannerSettings: ResponsiveBannerSectionData = {
       mediaContentType: 'IMAGE',
       alt: 'This is my alt',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/responsive-banner-ex-medium.jpg?v=1657834726',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/cito_september_landing_banner_medium_sp.jpg?v=1663203358',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/responsive-banner-ex-medium.jpg?v=1657834726',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/cito_september_landing_banner_medium_sp.jpg?v=1663203358',
         width: 2048,
         height: 1764,
       },
@@ -64,10 +64,10 @@ export const responsiveBannerSettings: ResponsiveBannerSectionData = {
       mediaContentType: 'IMAGE',
       alt: 'This is my alt',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/responsive-banner-ex-medium.jpg?v=1657834726',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/cito_september_landing_banner_small_sp.jpg?v=1663203359',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/responsive-banner-ex-medium.jpg?v=1657834726',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/cito_september_landing_banner_small_sp.jpg?v=1663203359',
         width: 2048,
         height: 2048,
       },
