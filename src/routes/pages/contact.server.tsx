@@ -63,7 +63,7 @@ export default function Page({
   const {handle} = params;
   const {
     data: {page},
-  } = useShopQuery({
+  }: any = useShopQuery({
     query: PAGE_QUERY,
     variables: {languageCode, handle},
   });
