@@ -6,3 +6,4 @@ export {ProductMetafieldSPBTemplate} from './product-metafield-spb-template.serv
 export {ProductKitItemTemplate} from './product-kit-item-template.server';
 export {CollectionFeaturedImages} from './collection-featured-images.server';
 export {CollectionCollaborations} from './collection-collaborations.server';
+export {CollectionFeaturedVariants} from './collection-featured-variants.server';

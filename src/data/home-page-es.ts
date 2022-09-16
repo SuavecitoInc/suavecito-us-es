@@ -12,17 +12,17 @@ export const responsiveBannerSettings: ResponsiveBannerSectionData = {
     value: 'The All New Hydrogen Snowboard Exclusively From Shopify',
   },
   cta: {value: 'Shop Now →'},
-  handle: 'freestyle',
+  handle: 'suavecito-x-monsters',
   spread: {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
       alt: 'This is my alt',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/responsive-banner-ex-large.jpg?v=1657834726',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/cito_september_landing_banner_large_sp_6f140f81-2f1c-4d1a-8b09-e6426be753d7.jpg?v=1663350498',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/responsive-banner-ex-large.jpg?v=1657834726',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/cito_september_landing_banner_large_sp_6f140f81-2f1c-4d1a-8b09-e6426be753d7.jpg?v=1663350498',
         width: 2048,
         height: 930,
       },
@@ -34,10 +34,10 @@ export const responsiveBannerSettings: ResponsiveBannerSectionData = {
       mediaContentType: 'IMAGE',
       alt: 'This is my alt',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/cito_september_landing_banner_large_sp.jpg?v=1663203360',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/cito_september_landing_banner_large_sp_6f140f81-2f1c-4d1a-8b09-e6426be753d7.jpg?v=1663350498',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/cito_september_landing_banner_large_sp.jpg?v=1663203360',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/cito_september_landing_banner_large_sp_6f140f81-2f1c-4d1a-8b09-e6426be753d7.jpg?v=1663350498',
         width: 2048,
         height: 930,
       },
@@ -49,10 +49,10 @@ export const responsiveBannerSettings: ResponsiveBannerSectionData = {
       mediaContentType: 'IMAGE',
       alt: 'This is my alt',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/cito_september_landing_banner_medium_sp.jpg?v=1663203358',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/cito_september_landing_banner_medium_sp_d99051f9-59ab-489e-985d-60e032fb1b38.jpg?v=1663350498',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/cito_september_landing_banner_medium_sp.jpg?v=1663203358',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/cito_september_landing_banner_medium_sp_d99051f9-59ab-489e-985d-60e032fb1b38.jpg?v=1663350498',
         width: 2048,
         height: 1764,
       },
@@ -64,10 +64,10 @@ export const responsiveBannerSettings: ResponsiveBannerSectionData = {
       mediaContentType: 'IMAGE',
       alt: 'This is my alt',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/cito_september_landing_banner_small_sp.jpg?v=1663203359',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/cito_september_landing_banner_small_sp_6d1c9bc1-fce5-4b02-8f9c-720cfe9c3a61.jpg?v=1663350498',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/cito_september_landing_banner_small_sp.jpg?v=1663203359',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/cito_september_landing_banner_small_sp_6d1c9bc1-fce5-4b02-8f9c-720cfe9c3a61.jpg?v=1663350498',
         width: 2048,
         height: 2048,
       },

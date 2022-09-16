@@ -9,7 +9,7 @@ export function ProductBanner({
   lang?: 'en' | 'es';
   theme?: BrandTheme;
 }) {
-  const showBanner = true;
+  const showBanner = false;
   const correctedTheme = theme === 'suavecita' ? 'suavecita' : 'suavecito';
   const wrapperBackground = {
     suavecito: 'bg-suave-red',
