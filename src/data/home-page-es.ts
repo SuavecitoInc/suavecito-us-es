@@ -137,8 +137,7 @@ export const featuredRowImageThreeSettings: FeaturedRowImageSectionData = {
       '¿Cuál es el correcto para mí? Descubra qué productos funcionarán para su cabello y el estilo que desea lograr.',
   },
   cta: {value: 'Aprende más'},
-  ctaLink:
-    '/blogs/grooming-tips/pomade-hair-wax-clay-gel-paste-which-is-right-for-me',
+  ctaLink: '/pages/pomade-hair-wax-clay-gel-paste-which-is-right-for-me',
   featuredImage: {
     value: '',
     reference: {

@@ -14,7 +14,7 @@ import {CustomFont, PageHeader, Section} from '~/components';
 import {Layout} from '~/components/index.server';
 import {ATTR_LOADING_EAGER} from '~/lib/const';
 
-const BLOG_HANDLE = 'journal';
+const BLOG_HANDLE = 'grooming-tips';
 
 export default function Post({params, response}: HydrogenRouteProps) {
   response.cache(CacheLong());
@@ -52,7 +52,7 @@ export default function Post({params, response}: HydrogenRouteProps) {
   return (
     <Layout>
       {/* Loads Fraunces custom font only on articles */}
-      <CustomFont />
+      {/* <CustomFont /> */}
       <Suspense>
         {/* @ts-expect-error Blog article types are not supported in TS */}
         <Seo type="page" data={data.blog.articleByHandle} />
