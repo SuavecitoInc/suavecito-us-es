@@ -12,7 +12,7 @@ export const responsiveBannerSettings: ResponsiveBannerSectionData = {
     value: 'The All New Hydrogen Snowboard Exclusively From Shopify',
   },
   cta: {value: 'Shop Now →'},
-  handle: 'freestyle',
+  handle: 'womens-hair',
   spread: {
     value: '',
     reference: {
