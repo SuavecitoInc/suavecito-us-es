@@ -91,12 +91,12 @@ export const featuredRowImageOneSettings: FeaturedRowImageSectionData = {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: 'Pomadas',
+      alt: 'Productos de cabello',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/suavecito-page-featured-image-1_cb767b4d-4dc0-4aa0-aa6f-815c2dfd23e1.jpg',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/suavecita-featured-image-1.jpg?v=1632786109',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/suavecito-page-featured-image-1_cb767b4d-4dc0-4aa0-aa6f-815c2dfd23e1.jpg',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/suavecita-featured-image-1.jpg?v=1632786109',
         width: 782,
         height: 782,
       },

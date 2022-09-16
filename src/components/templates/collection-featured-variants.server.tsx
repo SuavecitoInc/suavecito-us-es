@@ -13,8 +13,13 @@ import {
 
 import {MEDIA_FRAGMENT} from '~/lib/fragments';
 import {COLLECTION_PRODUCT_VARIANT_IMAGE_FRAGMENT} from '~/lib/suavecito-fragments';
-import {PageHeader, ProductGrid, Section, Text} from '~/components';
-import {VariantProductGrid} from '~/components/index.server';
+import {
+  PageHeader,
+  ProductGrid,
+  Section,
+  Text,
+  VariantProductGrid,
+} from '~/components';
 import {NotFound, Layout} from '~/components/index.server';
 
 const pageBy = 48;

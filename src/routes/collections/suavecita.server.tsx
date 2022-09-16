@@ -8,12 +8,10 @@ import {
   useShopQuery,
 } from '@shopify/hydrogen';
 import {
-  Banner,
   ResponsiveBanner,
   FeaturedRowImageWithText,
   Divider,
   FeaturedRowColumns,
-  FeaturedVideo,
 } from '~/components';
 import {Layout, BestSellers} from '~/components/index.server';
 
