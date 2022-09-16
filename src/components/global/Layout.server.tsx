@@ -57,7 +57,7 @@ export function Layout({
           {isHome ? (
             <AnnouncementBanner lang={LANG} />
           ) : isProduct ? (
-            <ProductBanner />
+            <ProductBanner lang={LANG} />
           ) : (
             <></>
           )}
