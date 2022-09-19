@@ -59,25 +59,31 @@ const COLLECTION_QUERY = gql`
         }
       }
     }
-    collectionSection1: collection(handle: "suavecito-x-felix-the-cat-vol-2") {
+    collectionSection1: collection(handle: "suavecito-x-monsters") {
       ...FilteredCollectionWithVariantImage
     }
-    collectionSection2: collection(handle: "suavecito-x-mister-cartoon") {
+    collectionSection2: collection(handle: "suavecito-x-loser-machine") {
       ...FilteredCollectionWithVariantImage
     }
-    collectionSection3: collection(handle: "suavecito-x-cristocat") {
+    collectionSection3: collection(handle: "suavecito-x-felix-the-cat-vol-2") {
       ...FilteredCollectionWithVariantImage
     }
-    collectionSection4: collection(handle: "suavecito-x-violent-gentlemen") {
+    collectionSection4: collection(handle: "suavecito-x-mister-cartoon") {
       ...FilteredCollectionWithVariantImage
     }
-    collectionSection5: collection(handle: "suavecito-x-fast-and-furious") {
+    collectionSection5: collection(handle: "suavecito-x-cristocat") {
       ...FilteredCollectionWithVariantImage
     }
-    collectionSection6: collection(handle: "suavecito-x-frida-kahlo") {
+    collectionSection6: collection(handle: "suavecito-x-violent-gentlemen") {
       ...FilteredCollectionWithVariantImage
     }
-    collectionSection7: collection(handle: "suavecito-x-loteria") {
+    collectionSection7: collection(handle: "suavecito-x-fast-and-furious") {
+      ...FilteredCollectionWithVariantImage
+    }
+    collectionSection8: collection(handle: "suavecito-x-frida-kahlo") {
+      ...FilteredCollectionWithVariantImage
+    }
+    collectionSection9: collection(handle: "suavecito-x-loteria") {
       ...FilteredCollectionWithVariantImage
     }
   }
