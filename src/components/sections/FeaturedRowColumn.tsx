@@ -26,7 +26,6 @@ export function FeaturedRowColumn({
   loading?: 'eager' | 'lazy';
   theme?: BrandTheme;
 }) {
-  console.log('current theme', theme);
   return (
     <article className="featured-row-image-with-text my-[25px] md:my-0">
       <div className="relative flex flex-col gap-1">
