@@ -24,17 +24,19 @@ export function FeaturedBanner({
   const styles = {
     wrapper: `bg-center bg-cover w-full min-h-[365px] h-full sm-max:min-h-[247px] hero-with-text`,
     inner: `py-[55px] relative min-h-[365px] h-full sm-max:min-h-[247px]`,
-    table: `flex items-center justify-center flex-col text-[2.1rem] text-white text-center page-width min-h-[365px] h-full sm-max:min-h-[247px]`,
-    description: `text-[1.1rem] font-bold`,
-    gridWrapper: `overflow-x-auto w-full`,
+    table: `flex items-center justify-center flex-col text-[2.1rem] text-white text-center min-h-[365px] h-full sm-max:min-h-[247px]`,
+    description: `page-width text-[.87rem] lg:text-[1.1rem] font-bold`,
+    gridWrapper: `overflow-x-auto w-full page-width collection-compare-table`,
     grid: `grid text-white mt-[3em] auto-rows-min text-copy`,
     colEven: 'bg-[#666666] opacity-90',
     colOdd: 'bg-black',
     colTitle: `font-bold uppercase border-solid border-white border-b py-[0.7em] px-[2em]`,
     row: 'flex-1 border-solid border-white border-b py-[0.7em] px-[2em]',
     bestFor: `py-[0.7em] px-[2em]`,
-    gridItem: 'grid place-items-center py-[0.7em] px-[2em]',
-    h3: 'mb-[15px]',
+    gridItem:
+      'grid place-items-center py-[0.7em] px-[2em] text-[0.92rem] md:text-[1rem]',
+    h3: 'mb-[15px] text-[1.65rem] lg:text[2rem]',
+    headerWrapper: 'page-width',
   };
   // handles CSS logic
   // eslint-disable-next-line prefer-const
@@ -78,11 +80,16 @@ export function FeaturedBanner({
       >
         <div className={styles.inner}>
           <div className={styles.table}>
-            <h3 className={styles.h3}>{chartEl?.title}</h3>
+            <div className={styles.headerWrapper}>
+              <h3 className={styles.h3}>{chartEl?.title}</h3>
+            </div>
+
             <p className={styles.description}>{chartEl?.description}</p>
             <div className={styles.gridWrapper}>
               <div
-                style={{gridTemplateColumns: `repeat(${gridLength}, 1fr)`}}
+                style={{
+                  gridTemplateColumns: `repeat(${gridLength}, minmax(280px, 1fr))`,
+                }}
                 className={styles.grid}
               >
                 {gridItems?.map((item, index) => {

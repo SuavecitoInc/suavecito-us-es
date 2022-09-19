@@ -1,6 +1,7 @@
 import {Fragment} from 'react';
 // @ts-expect-error @headlessui/react incompatibility with node16 resolution
 import {Tab} from '@headlessui/react';
+import {MetafieldColors} from '~/data/apparel-metafield-translations';
 
 export function ProductSectionInfoTabs({
   lang = 'en',
@@ -93,7 +94,7 @@ function TabContent({
 }
 
 function FeaturesTab({
-  lang,
+  lang = 'en',
   content,
 }: {
   lang: 'en' | 'es';
@@ -116,11 +117,17 @@ function FeaturesTab({
       return lang === 'es' ? 'Logotipo trasero' : 'Back Logo';
     }
   };
+  const colors = (color: string) => {
+    const translated = MetafieldColors[color];
+    return translated[lang];
+  };
+  const fit = (key: string) => {};
+  const material = (key: string) => {};
   return (
     <ul className="list-disc list-inside">
       <li>{content.fit}</li>
       <li>{content.material}</li>
-      <li>{content.color}</li>
+      {content.color !== '' && <li>{colors(content.color.toLowerCase())}</li>}
       <li>{logo(lang)}</li>
     </ul>
   );
