@@ -13,8 +13,6 @@ import {
 import {AccountLoginForm} from '~/components';
 import {Layout} from '~/components/index.server';
 
-import {identifyCustomerGTMEvent} from '~/lib/gtm';
-
 export default function Login({response}: HydrogenRouteProps) {
   const LANG = import.meta.env.PUBLIC_LANGUAGE_CODE;
   response.cache(CacheNone());
@@ -82,9 +80,6 @@ export async function api(
   });
 
   if (data?.customerAccessTokenCreate?.customerAccessToken?.accessToken) {
-    // identify customer
-    identifyCustomerGTMEvent(jsonBody.email);
-
     await session.set(
       'customerAccessToken',
       data.customerAccessTokenCreate.customerAccessToken.accessToken,
