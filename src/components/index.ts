@@ -9,3 +9,5 @@ export * from './collection/index';
 export {CountrySelector} from './CountrySelector.client';
 export {CustomFont} from './CustomFont.client';
 export {HeaderFallback} from './HeaderFallback';
+
+export * from './analytics';

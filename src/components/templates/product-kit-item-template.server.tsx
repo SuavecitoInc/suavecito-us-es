@@ -1,5 +1,6 @@
 import {Suspense} from 'react';
 import {
+  ClientAnalytics,
   gql,
   ProductOptionsProvider,
   Seo,
@@ -39,9 +40,13 @@ export function ProductKitItemTemplate({handle}: {handle: string}) {
 
   const LANG = import.meta.env.PUBLIC_LANGUAGE_CODE;
 
+  const serverDataLayer = useServerAnalytics({
+    publishEventsOnNavigate: [ClientAnalytics.eventNames.VIEWED_PRODUCT],
+  });
+
   const {
     data: {product, shop},
-  } = useShopQuery({
+  }: any = useShopQuery({
     query: PRODUCT_QUERY,
     variables: {
       country: countryCode,
@@ -130,7 +135,7 @@ export function ProductKitItemTemplate({handle}: {handle: string}) {
       <div className="page-width">
         <ProductOptionsProvider data={product} initialVariantId={id}>
           <Section padding="x" className="px-0">
-            <div className="flex flex-col md:flex-row gap-10">
+            <div className="flex flex-col gap-10 md:flex-row">
               {/* if metafield images exist  */}
               <Suspense>
                 <ProductImages images={images.nodes} className="flex-1" />

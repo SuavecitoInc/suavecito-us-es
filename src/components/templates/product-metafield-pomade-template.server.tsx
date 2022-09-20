@@ -1,5 +1,6 @@
 import {Suspense} from 'react';
 import {
+  ClientAnalytics,
   gql,
   ProductOptionsProvider,
   Seo,
@@ -32,6 +33,7 @@ import {
   ProductMetafieldImages,
   Section,
   Text,
+  ProductViewEvent,
 } from '~/components';
 import {useGetInitialVariant} from '~/hooks';
 
@@ -47,9 +49,13 @@ export function ProductMetafieldPomadeTemplate({handle}: {handle: string}) {
 
   const LANG = import.meta.env.PUBLIC_LANGUAGE_CODE;
 
+  const serverDataLayer = useServerAnalytics({
+    publishEventsOnNavigate: [ClientAnalytics.eventNames.VIEWED_PRODUCT],
+  });
+
   const {
     data: {product, shop},
-  } = useShopQuery({
+  }: any = useShopQuery({
     query: PRODUCT_QUERY,
     variables: {
       country: countryCode,
@@ -137,6 +143,18 @@ export function ProductMetafieldPomadeTemplate({handle}: {handle: string}) {
     howItLooksImage8,
   };
 
+  console.log('COLLECTIONS', product.collections);
+
+  const viewedProduct = {
+    vendor: product.vendor,
+    title: product.title,
+    handle: product.handle,
+    type: product.productType,
+    collections: product.collections.nodes.map(
+      (el: {title: string}) => el.title,
+    ),
+  };
+
   return (
     <Layout isProduct={true}>
       <Suspense>
@@ -152,8 +170,11 @@ export function ProductMetafieldPomadeTemplate({handle}: {handle: string}) {
           //     : undefined
           // }
         >
+          <Suspense>
+            <ProductViewEvent viewedProduct={viewedProduct} />
+          </Suspense>
           <Section padding="x" className="px-0">
-            <div className="flex flex-col md:flex-row gap-10">
+            <div className="flex flex-col gap-10 md:flex-row">
               <Suspense>
                 <ProductMetafieldImages className="flex-1" />
               </Suspense>
@@ -235,6 +256,13 @@ const PRODUCT_QUERY = gql`
           altText
           width
           height
+        }
+      }
+      handle
+      productType
+      collections(first: 10) {
+        nodes {
+          title
         }
       }
       tags

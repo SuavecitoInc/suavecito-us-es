@@ -1,5 +1,6 @@
 import {Suspense} from 'react';
 import {
+  ClientAnalytics,
   gql,
   ProductOptionsProvider,
   Seo,
@@ -54,9 +55,13 @@ export function ProductMetafieldColorsGetInspiredTemplate({
 
   const LANG = import.meta.env.PUBLIC_LANGUAGE_CODE;
 
+  const serverDataLayer = useServerAnalytics({
+    publishEventsOnNavigate: [ClientAnalytics.eventNames.VIEWED_PRODUCT],
+  });
+
   const {
     data: {product, shop},
-  } = useShopQuery({
+  }: any = useShopQuery({
     query: PRODUCT_QUERY,
     variables: {
       country: countryCode,
@@ -162,7 +167,7 @@ export function ProductMetafieldColorsGetInspiredTemplate({
       <ProductOptionsProvider data={product} initialVariantId={id}>
         <div className="page-width">
           <Section padding="x" className="px-0">
-            <div className="flex flex-col md:flex-row gap-10">
+            <div className="flex flex-col gap-10 md:flex-row">
               {/* if metafield images exist  */}
               <Suspense>
                 {variants.nodes[0]?.variantImage1 ? (
