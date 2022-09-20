@@ -273,4 +273,26 @@ export const CollectionFeaturedBanners = [
       'Suavecito siempre ha tenido una estrecha relación con el culto a los coches, desde los clásicos, pasando por las carreras, hasta los modernos tuners. En esta colaboración de edición limitada con Fast & Furious hemos incluido nuestras pomadas clásicas, productos de afeitado de primera calidad, accesorios y ropa.',
     columns: [],
   },
+  {
+    handle: 'suavecito-x-loser-machine',
+    title: 'Suavecito X Loser Machine',
+    backgroundImage: {
+      src: 'https://cdn.shopify.com/s/files/1/0274/1389/files/Loser_Machine_Pomades-1.jpg?v=1661541449',
+      alt: 'Suavecito X Loser Machine',
+    },
+    description:
+      'Suavecito se ha asociado con Loser Machine Company para ofrecerte una línea épica de pomadas con un aroma único y ropa de edición limitada que seguramente te impresionará más que aterrizar ese lazer flip la única vez que juraste hacerlo.',
+    columns: [],
+  },
+  {
+    handle: 'suavecito-x-monsters',
+    title: 'Suavecito X Universal Monsters Vol. 2',
+    backgroundImage: {
+      src: 'https://cdn.shopify.com/s/files/1/0274/1389/files/monsters_collab_banner1.jpg?v=1662135487',
+      alt: 'Suavecito X Universal Monsters Vol. 2',
+    },
+    description:
+      'Suavecito vuelve a colaborar con los monstruos más emblemáticos de la historia del cine. Experimenta el deleite y el miedo de esta colección Suavecito X Universal Monsters con una línea de pomadas coleccionables y ropa exclusiva que te hará lucir tan bien, que da miedo.',
+    columns: [],
+  },
 ];

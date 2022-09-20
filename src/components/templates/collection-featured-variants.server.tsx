@@ -31,6 +31,7 @@ export function CollectionFeaturedVariants({handle}: {handle: string}) {
   } = useLocalization();
 
   const {
+    // @ts-ignore
     data: {collection},
   } = useShopQuery({
     query: COLLECTION_QUERY,
@@ -59,7 +60,10 @@ export function CollectionFeaturedVariants({handle}: {handle: string}) {
       <Suspense>
         <Seo type="collection" data={collection} />
       </Suspense>
-      <PageHeader heading={collection.title} className="justify-center">
+      <PageHeader
+        heading={collection.title}
+        className="justify-center border borde-solid border-[#ebebeb] border-x-0"
+      >
         {collection?.description && (
           <div className="flex items-baseline justify-between w-full">
             <div>
@@ -70,7 +74,7 @@ export function CollectionFeaturedVariants({handle}: {handle: string}) {
           </div>
         )}
       </PageHeader>
-      <Section>
+      <Section className="page-width">
         <VariantProductGrid
           key={collection.id}
           collection={collection}
