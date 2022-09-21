@@ -1,6 +1,5 @@
 import {Suspense} from 'react';
 import {
-  ClientAnalytics,
   gql,
   ProductOptionsProvider,
   Seo,
@@ -48,10 +47,6 @@ export function ProductMetafieldPomadeTemplate({handle}: {handle: string}) {
   } = useLocalization();
 
   const LANG = import.meta.env.PUBLIC_LANGUAGE_CODE;
-
-  const serverDataLayer = useServerAnalytics({
-    publishEventsOnNavigate: [ClientAnalytics.eventNames.VIEWED_PRODUCT],
-  });
 
   const {
     data: {product, shop},
@@ -143,8 +138,6 @@ export function ProductMetafieldPomadeTemplate({handle}: {handle: string}) {
     howItLooksImage8,
   };
 
-  console.log('COLLECTIONS', product.collections);
-
   const viewedProduct = {
     vendor: product.vendor,
     title: product.title,
@@ -161,15 +154,7 @@ export function ProductMetafieldPomadeTemplate({handle}: {handle: string}) {
         <Seo type="product" data={product} />
       </Suspense>
       <div className="page-width">
-        <ProductOptionsProvider
-          data={product}
-          initialVariantId={id}
-          // initialVariantId={
-          //   initialVariant
-          //     ? `gid://shopify/ProductVariant/${initialVariant}`
-          //     : undefined
-          // }
-        >
+        <ProductOptionsProvider data={product} initialVariantId={id}>
           <Suspense>
             <ProductViewEvent viewedProduct={viewedProduct} />
           </Suspense>

@@ -1,22 +1,22 @@
 import {
-  ViewedProductPayload,
-  LineItem,
-  CartLineItem,
-  HydrogenAddToCartPayload,
+  ViewedProductGTMPayload,
+  RecentlyViewedProductGTMPayload,
+  AddToCartGTMPayload,
 } from '~/types/gtm';
 
 export const pageViewGTMEvent = () => {
-  console.log('PAGE_VIEW');
+  console.log('PAGE_VIEW EVENT');
   window.dataLayer.push({event: 'pageview'});
 };
 
 export const identifyCustomerGTMEvent = (email: string) => {
-  console.log('IDENTIFY CUSTOMER EMAIL', email);
+  console.log('IDENTIFY_CUSTOMER EVENT');
+
   const gtmPayload: any = {
     $email: email,
   };
 
-  console.log('IDENTIFY CUSTOMER PAYLOAD', gtmPayload);
+  console.log('IDENTIFY_CUSTOMER_PAYLOAD', gtmPayload);
 
   window.dataLayer.push({
     event: 'identify_customer',
@@ -24,7 +24,9 @@ export const identifyCustomerGTMEvent = (email: string) => {
   });
 };
 
-export const viewedProductGTMEvent = (payload: ViewedProductPayload) => {
+export const viewedProductGTMEvent = (payload: ViewedProductGTMPayload) => {
+  console.log('CUSTOM_VIEWED_PRODUCT_EVENT');
+
   const gtmPayload = {
     Brand: payload.Brand,
     CompareAtPrice: payload.CompareAtPrice,
@@ -35,7 +37,7 @@ export const viewedProductGTMEvent = (payload: ViewedProductPayload) => {
     SKU: payload.SKU,
     ProductType: payload.ProductType,
   };
-  console.log('VIEWED_PRODUCT_PAYLOAD', gtmPayload);
+  console.log('CUSTOM_VIEWED_PRODUCT_PAYLOAD', gtmPayload);
 
   window.dataLayer.push({
     event: 'viewed_product',
@@ -43,7 +45,11 @@ export const viewedProductGTMEvent = (payload: ViewedProductPayload) => {
   });
 };
 
-export const recentlyViewedProductGTMEvent = (payload: any) => {
+export const recentlyViewedProductGTMEvent = (
+  payload: RecentlyViewedProductGTMPayload,
+) => {
+  console.log('CUSTOM_RECENTLY_VIEWED_PRODUCT EVENT');
+
   const gtmPayload = {
     Categories: payload.Categories,
     ImageUrl: payload.ImageUrl,
@@ -53,9 +59,11 @@ export const recentlyViewedProductGTMEvent = (payload: any) => {
       Price: payload.Metadata.Price,
       CompareAtPrice: payload.Metadata.CompareAtPrice,
     },
-    Title: payload.title,
+    Title: payload.Title,
     Url: payload.Url,
   };
+
+  console.log('GTM_RECENTLY_VIEWED_PRODUCT_PAYLOAD', gtmPayload);
 
   window.dataLayer.push({
     event: 'recently_viewed_product',
@@ -63,9 +71,8 @@ export const recentlyViewedProductGTMEvent = (payload: any) => {
   });
 };
 
-export const addToCartGTMEvent = (payload: any) => {
-  console.log('ADD_TO_CART');
-  // console.log(payload);
+export const addToCartGTMEvent = (payload: AddToCartGTMPayload) => {
+  console.log('ADD_TO_CART EVENT');
 
   const gtmPayload: any = {
     total_price: payload.cart.cost.totalAmount.amount,
@@ -78,6 +85,6 @@ export const addToCartGTMEvent = (payload: any) => {
 
   window.dataLayer.push({
     event: 'add_to_cart',
-    added_to_cart_payload: payload,
+    added_to_cart_payload: gtmPayload,
   });
 };

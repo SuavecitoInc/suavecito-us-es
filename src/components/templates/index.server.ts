@@ -3,6 +3,7 @@ export {ProductMetafieldColorsGetInspiredTemplate} from './product-metafield-col
 export {ProductMetafieldGetInspiredTemplate} from './product-metafield-get-inspired-template.server';
 export {ProductMetafieldTemplate} from './product-metafield-template.server';
 export {ProductMetafieldSPBTemplate} from './product-metafield-spb-template.server';
+export {ProductMetafieldSPBBeardOilTemplate} from './product-metafield-spb-beard-oils-template.server';
 export {ProductKitItemTemplate} from './product-kit-item-template.server';
 export {CollectionFeaturedImages} from './collection-featured-images.server';
 export {CollectionCollaborations} from './collection-collaborations.server';

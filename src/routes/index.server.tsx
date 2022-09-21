@@ -61,7 +61,7 @@ function HomepageContent() {
       {/* <Banner {...bannerOneSettings} /> */}
       <FeaturedRowColumns {...featuredRowColumnsOneSettings} />
       <FeaturedRowImageWithText {...featuredRowImageTwoSettings} />
-      <Banner {...bannerTwoSettings} />
+      {/* <Banner {...bannerTwoSettings} /> */}
       <FeaturedRowColumns {...featuredRowColumnsTwoSettings} />
       <FeaturedVideo {...featuredVideoSettings} />
       <FeaturedRowImageWithText {...featuredRowImageThreeSettings} />

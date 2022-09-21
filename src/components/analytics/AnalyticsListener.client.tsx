@@ -24,42 +24,10 @@ export function AnalyticsListener() {
       // PAGE_VIEW
       ClientAnalytics.subscribe(
         ClientAnalytics.eventNames.PAGE_VIEW,
-        (payload) => {
+        (_payload) => {
           pageViewGTMEvent();
         },
       );
-      // // ADD_TO_CART
-      // ClientAnalytics.subscribe(
-      //   ClientAnalytics.eventNames.ADD_TO_CART,
-      //   (payload) => {
-      //     addToCartGTMEvent(payload);
-      //   },
-      // );
-      // UPDATE_CART
-      ClientAnalytics.subscribe(
-        ClientAnalytics.eventNames.UPDATE_CART,
-        (payload) => {
-          console.log('UPDATE_CART');
-          console.log(payload);
-        },
-      );
-      // REMOVE_FROM_CART
-      ClientAnalytics.subscribe(
-        ClientAnalytics.eventNames.REMOVE_FROM_CART,
-        (payload) => {
-          console.log('REMOVE_FROM_CART');
-          console.log(payload);
-        },
-      );
-      // VIEWED_PRODUCT;
-      ClientAnalytics.subscribe(
-        ClientAnalytics.eventNames.VIEWED_PRODUCT,
-        (payload) => {
-          console.log('VIEWED_PRODUCT');
-          console.log(payload);
-        },
-      );
-
       // ADD_TO_CART
       ClientAnalytics.subscribe(
         ClientAnalytics.eventNames.ADD_TO_CART,
@@ -72,14 +40,10 @@ export function AnalyticsListener() {
       );
       // CUSTOM_VIEWED_PRODUCT
       ClientAnalytics.subscribe('CUSTOM_VIEWED_PRODUCT', (payload) => {
-        // console.log('CUSTOM_VIEWED_PRODUCT');
-        // console.log(payload);
         viewedProductGTMEvent(payload);
       });
       // CUSTOM_RECENTLY_VIEWED_PRODUCT
       ClientAnalytics.subscribe('CUSTOM_RECENTLY_VIEWED_PRODUCT', (payload) => {
-        // console.log('CUSTOM_VIEWED_PRODUCT');
-        // console.log(payload);
         recentlyViewedProductGTMEvent(payload);
       });
     }
