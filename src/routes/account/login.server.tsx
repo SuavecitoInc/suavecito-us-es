@@ -21,7 +21,7 @@ export default function Login({response}: HydrogenRouteProps) {
     data: {
       shop: {name},
     },
-  } = useShopQuery({
+  }: any = useShopQuery({
     query: SHOP_QUERY,
     cache: CacheLong(),
     preload: '*',

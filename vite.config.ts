@@ -16,4 +16,9 @@ export default defineConfig({
     hookTimeout: 1000,
   },
   envPrefix: 'VITE_',
+  // server: {
+  //   hmr: {
+  //     clientPort: 443,
+  //   },
+  // },
 });

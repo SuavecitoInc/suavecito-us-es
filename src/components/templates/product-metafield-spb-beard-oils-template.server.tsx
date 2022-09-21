@@ -14,35 +14,34 @@ import {MEDIA_FRAGMENT} from '~/lib/fragments';
 import {
   PRODUCT_SECTION_FRAGMENT,
   VARIANT_METAFIELD_IMAGES_FRAGMENT,
-  VARIANT_METAFIELD_COLOR_IMAGES_FRAGMENT,
-  VARIANT_METAFIELD_LIFESTYLE_IMAGES_FRAGMENT,
   VARIANT_FRAGRANCE_FRAGMENT,
-  PRODUCT_SECTION_GET_INSPIRED_FRAGMENT,
+  PRODUCT_SECTION_HOW_TO_FRAGMENT,
 } from '~/lib/suavecito-fragments';
 import {
   NotFound,
   Layout,
   ProductSectionContentGrid,
-  ProductSectionHowTo,
+  ProductSectionHowToMultipleImages,
   ProductSectionYouMayAlsoLike,
 } from '~/components/index.server';
 import {
   Heading,
   ProductOptionsVariantForm,
-  ProductImages,
   ProductMetafieldImages,
-  ProductSectionGetInspired,
+  ProductImages,
   Section,
   Text,
   ProductViewEvent,
 } from '~/components';
 import {useGetInitialVariant} from '~/hooks';
 
-export function ProductMetafieldGetInspiredTemplate({
+export function ProductMetafieldSPBBeardOilTemplate({
   handle,
 }: {
   handle: string;
 }) {
+  const LANG = import.meta.env.PUBLIC_LANGUAGE_CODE;
+
   const {search} = useUrl();
   const params = new URLSearchParams(search);
   const initialVariant = params.get('variant');
@@ -51,8 +50,6 @@ export function ProductMetafieldGetInspiredTemplate({
     language: {isoCode: languageCode},
     country: {isoCode: countryCode},
   } = useLocalization();
-
-  const LANG = import.meta.env.PUBLIC_LANGUAGE_CODE;
 
   const {
     data: {product, shop},
@@ -78,13 +75,12 @@ export function ProductMetafieldGetInspiredTemplate({
   });
 
   const {
-    images,
     title,
     vendor,
-    descriptionHtml,
     options,
-    variants,
     tags,
+    variants,
+    images,
     productSectionFeaturedImage1,
     productSectionFeaturedImage2,
     productSectionDescription,
@@ -96,13 +92,11 @@ export function ProductMetafieldGetInspiredTemplate({
     productSectionListItemImage3,
     productSectionListItemText4,
     productSectionListItemImage4,
-    productSectionHowToImage,
     productSectionHowToText,
     productSectionHowToEmbeddedVideo,
-    getInspiredImage1,
-    getInspiredImage2,
-    getInspiredImage3,
-    getInspiredImage4,
+    howToUse1,
+    howToUse2,
+    howToUse3,
   } = product;
 
   const {id} = useGetInitialVariant(initialVariant, variants.nodes);
@@ -126,16 +120,11 @@ export function ProductMetafieldGetInspiredTemplate({
   };
 
   const productContentHowTo = {
-    productSectionHowToImage,
+    howToUse1,
+    howToUse2,
+    howToUse3,
     productSectionHowToText,
     productSectionHowToEmbeddedVideo,
-  };
-
-  const productContentGetInspired = {
-    getInspiredImage1,
-    getInspiredImage2,
-    getInspiredImage3,
-    getInspiredImage4,
   };
 
   const viewedProduct = {
@@ -149,15 +138,15 @@ export function ProductMetafieldGetInspiredTemplate({
   };
 
   return (
-    <Layout theme={vendor.toLowerCase()} isProduct={true}>
+    <Layout theme={product.vendor.toLowerCase()} isProduct={true}>
       <Suspense>
         <Seo type="product" data={product} />
       </Suspense>
-      <ProductOptionsProvider data={product} initialVariantId={id}>
-        <Suspense>
-          <ProductViewEvent viewedProduct={viewedProduct} />
-        </Suspense>
-        <div className="page-width">
+      <div className="page-width">
+        <ProductOptionsProvider data={product} initialVariantId={id}>
+          <Suspense>
+            <ProductViewEvent viewedProduct={viewedProduct} />
+          </Suspense>
           <Section padding="x" className="px-0">
             <div className="flex flex-col gap-10 md:flex-row">
               {/* if metafield images exist  */}
@@ -170,19 +159,25 @@ export function ProductMetafieldGetInspiredTemplate({
               </Suspense>
 
               <div className="flex-1">
-                <section className="">
+                <section>
                   <div className="grid gap-2">
-                    <Heading as="h1" format className="whitespace-normal">
+                    <Heading
+                      as="h1"
+                      format
+                      className="text-white whitespace-normal"
+                    >
                       {title}
                     </Heading>
                     {vendor && (
-                      <Text className={'opacity-50 font-medium'}>{vendor}</Text>
+                      <Text className={'text-white opacity-50 font-medium'}>
+                        {vendor}
+                      </Text>
                     )}
                   </div>
                   <Suspense>
                     <ProductOptionsVariantForm
                       lang={LANG}
-                      theme={vendor.toLowerCase()}
+                      theme="premium blends"
                       optionNames={defaultOptionNames}
                       tags={tags}
                     />
@@ -191,35 +186,31 @@ export function ProductMetafieldGetInspiredTemplate({
               </div>
             </div>
           </Section>
+        </ProductOptionsProvider>
 
-          {/* Product Section Get Inspired */}
-          {variants.nodes[0].variantLifestyleImage1 ||
-            (getInspiredImage1 && (
-              <ProductSectionGetInspired
-                lang={LANG}
-                theme="suavecita"
-                {...productContentGetInspired}
-              />
-            ))}
-        </div>
-      </ProductOptionsProvider>
-
-      <div className="page-width">
-        {/* Product Section Grid */}
+        {/* check if productSectionFeaturedImage1 && productSectionDescription are set */}
         {productSectionFeaturedImage1 && productSectionDescription && (
-          <ProductSectionContentGrid lang={LANG} {...productContentGridData} />
-        )}
-
-        {/* Product Section How To */}
-        {productSectionHowToText && productSectionHowToEmbeddedVideo && (
-          <ProductSectionHowTo
+          <ProductSectionContentGrid
             lang={LANG}
-            theme="suavecita"
-            {...productContentHowTo}
+            theme="premium blends"
+            {...productContentGridData}
           />
         )}
 
-        <ProductSectionYouMayAlsoLike lang={LANG} productId={product.id} />
+        {/* Product Section How To */}
+        {productSectionHowToText && howToUse1 && (
+          <ProductSectionHowToMultipleImages
+            lang={LANG}
+            theme="premium blends"
+            {...productContentHowTo}
+          />
+        )}
+      </div>
+
+      <div className="w-full bg-white">
+        <div className="page-width">
+          <ProductSectionYouMayAlsoLike lang={LANG} productId={product.id} />
+        </div>
       </div>
     </Layout>
   );
@@ -228,11 +219,9 @@ export function ProductMetafieldGetInspiredTemplate({
 const PRODUCT_QUERY = gql`
   ${MEDIA_FRAGMENT}
   ${PRODUCT_SECTION_FRAGMENT}
+  ${PRODUCT_SECTION_HOW_TO_FRAGMENT}
   ${VARIANT_METAFIELD_IMAGES_FRAGMENT}
-  ${VARIANT_METAFIELD_COLOR_IMAGES_FRAGMENT}
-  ${VARIANT_METAFIELD_LIFESTYLE_IMAGES_FRAGMENT}
   ${VARIANT_FRAGRANCE_FRAGMENT}
-  ${PRODUCT_SECTION_GET_INSPIRED_FRAGMENT}
   query Product(
     $country: CountryCode
     $language: LanguageCode
@@ -269,7 +258,7 @@ const PRODUCT_QUERY = gql`
       }
       tags
       ...ProductSection
-      ...ProductSectionGetInspired
+      ...ProductSectionHowTo
       variants(first: 100) {
         nodes {
           id
@@ -301,8 +290,6 @@ const PRODUCT_QUERY = gql`
             currencyCode
           }
           ...VariantMetafieldImages
-          ...VariantMetafieldColorImages
-          ...VariantMetafieldLifestyleImages
           ...VariantFragrance
         }
       }
