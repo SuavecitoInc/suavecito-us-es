@@ -22,6 +22,7 @@ import {
   FeaturedCollections,
   LogoutButton,
   PageHeader,
+  IdentifyCustomerEvent,
 } from '~/components';
 import {Layout, ProductSwimlane} from '~/components/index.server';
 import type {
@@ -64,13 +65,6 @@ export default function Account({response}: HydrogenRouteProps) {
 
   if (!customer) return response.redirect('/account/login');
 
-  if (customer.email)
-    ClientAnalytics.publish('CUSTOM_IDENTIFY_CUSTOMER', true, {
-      email: customer.email,
-      firstName: customer.firstName,
-      lastName: customer.lastName,
-    });
-
   const addresses = flattenConnection<MailingAddress>(customer.addresses).map(
     (address) => ({
       ...address,
@@ -83,6 +77,12 @@ export default function Account({response}: HydrogenRouteProps) {
     0,
     customer.defaultAddress.id.lastIndexOf('?'),
   );
+
+  const customerIdentification = {
+    email: customer.email,
+    firstName: customer.firstName,
+    lastName: customer.lastName,
+  };
 
   return (
     <>
@@ -98,6 +98,7 @@ export default function Account({response}: HydrogenRouteProps) {
           flattenConnection<Product>(featuredProducts) as Product[]
         }
       />
+      <IdentifyCustomerEvent customerIdentification={customerIdentification} />
     </>
   );
 }
