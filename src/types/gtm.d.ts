@@ -1,3 +1,9 @@
+export interface IdentifyCustomerGTMPayload {
+  email: string;
+  firstName?: string;
+  lastName?: string;
+}
+
 export interface ViewedProductGTMPayload {
   Brand: string;
   CompareAtPrice: string | number;

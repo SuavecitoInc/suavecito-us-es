@@ -1,4 +1,5 @@
 import {
+  IdentifyCustomerGTMPayload,
   ViewedProductGTMPayload,
   RecentlyViewedProductGTMPayload,
   AddToCartGTMPayload,
@@ -9,12 +10,17 @@ export const pageViewGTMEvent = () => {
   window.dataLayer.push({event: 'pageview'});
 };
 
-export const identifyCustomerGTMEvent = (email: string) => {
+export const identifyCustomerGTMEvent = (
+  payload: IdentifyCustomerGTMPayload,
+) => {
   console.log('IDENTIFY_CUSTOMER EVENT');
 
   const gtmPayload: any = {
-    $email: email,
+    $email: payload.email,
   };
+
+  if (payload.firstName) gtmPayload['$first_name'] = payload.firstName;
+  if (payload.lastName) gtmPayload['$last_name'] = payload.lastName;
 
   console.log('IDENTIFY_CUSTOMER_PAYLOAD', gtmPayload);
 

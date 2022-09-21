@@ -1,6 +1,5 @@
 import {useState} from 'react';
-import {useNavigate, Link} from '@shopify/hydrogen/client';
-import {identifyCustomerGTMEvent} from '~/lib/gtm';
+import {useNavigate, Link, ClientAnalytics} from '@shopify/hydrogen/client';
 
 const login_form: {[key: string]: any} = {
   email_address: {
@@ -187,7 +186,9 @@ export async function callLoginApi({
     });
     if (res.ok) {
       // identify customer
-      identifyCustomerGTMEvent(email);
+      ClientAnalytics.publish('CUSTOM_IDENTIFY_CUSTOMER', true, {
+        email,
+      });
       return {};
     } else {
       return res.json();

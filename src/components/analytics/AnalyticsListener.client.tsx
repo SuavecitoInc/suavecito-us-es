@@ -28,6 +28,10 @@ export function AnalyticsListener() {
           pageViewGTMEvent();
         },
       );
+      // CUSTOM_IDENTIFY_CUSTOMER
+      ClientAnalytics.subscribe('CUSTOM_IDENTIFY_CUSTOMER', (payload) => {
+        identifyCustomerGTMEvent(payload);
+      });
       // ADD_TO_CART
       ClientAnalytics.subscribe(
         ClientAnalytics.eventNames.ADD_TO_CART,
