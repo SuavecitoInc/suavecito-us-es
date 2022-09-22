@@ -1,15 +1,21 @@
 import {Fragment} from 'react';
 // @ts-expect-error @headlessui/react incompatibility with node16 resolution
 import {Tab} from '@headlessui/react';
+import {
+  MetafieldColors,
+  MetafieldFitMaterialType,
+} from '~/data/apparel-metafield-translations';
 
 export function ProductSectionInfoTabs({
   lang = 'en',
   theme = 'suavecito',
   tabs,
+  sizeChartType,
 }: {
   lang?: 'en' | 'es';
   theme?: 'suavecito' | 'suavecita';
   tabs: {title: string; content: any}[];
+  sizeChartType: string;
 }) {
   const themeTabStyles = {
     suavecito: 'text-suave-red hover:text-suave-red-focus',
@@ -42,7 +48,6 @@ export function ProductSectionInfoTabs({
       es: 'Carta del Tamaño',
     },
   };
-
   return (
     <section className="border-t border-[#cccccc] py-6 w-full">
       <Tab.Group>
@@ -65,7 +70,7 @@ export function ProductSectionInfoTabs({
         <Tab.Panels className="w-full">
           {tabs.map((tab) => (
             <Tab.Panel key={`panel-${tab.title}`}>
-              <TabContent lang={lang} tab={tab} />
+              <TabContent lang={lang} tab={tab} sizeChartType={sizeChartType} />
             </Tab.Panel>
           ))}
         </Tab.Panels>
@@ -77,12 +82,20 @@ export function ProductSectionInfoTabs({
 function TabContent({
   lang,
   tab,
+  sizeChartType,
 }: {
   lang: 'en' | 'es';
   tab: {title: string; content: any};
+  sizeChartType: string;
 }) {
   if (tab.title === 'Features') {
-    return <FeaturesTab lang={lang} content={tab.content} />;
+    return (
+      <FeaturesTab
+        lang={lang}
+        content={tab.content}
+        sizeChartType={sizeChartType}
+      />
+    );
   } else if (tab.title === 'Description') {
     return <div dangerouslySetInnerHTML={{__html: tab.content}} />;
   } else if (tab.title === 'Size Chart') {
@@ -93,8 +106,9 @@ function TabContent({
 }
 
 function FeaturesTab({
-  lang,
+  lang = 'en',
   content,
+  sizeChartType,
 }: {
   lang: 'en' | 'es';
   content: {
@@ -104,6 +118,7 @@ function FeaturesTab({
     logoFront: string;
     logoBack: string;
   };
+  sizeChartType: string;
 }) {
   const logo = (lang: string) => {
     if (content.logoFront === 'true' && content.logoBack === 'true') {
@@ -116,11 +131,23 @@ function FeaturesTab({
       return lang === 'es' ? 'Logotipo trasero' : 'Back Logo';
     }
   };
+  const colors = (color: string) => {
+    const translated = MetafieldColors[color];
+    return translated[lang];
+  };
+  const fit = (key: string) => {
+    const translated = MetafieldFitMaterialType[key].fitType;
+    return translated[lang];
+  };
+  const material = (key: string) => {
+    const translated = MetafieldFitMaterialType[key].materialType;
+    return translated[lang];
+  };
   return (
     <ul className="list-disc list-inside">
-      <li>{content.fit}</li>
-      <li>{content.material}</li>
-      <li>{content.color}</li>
+      {content.fit !== '' && <li>{fit(sizeChartType)}</li>}
+      {content.material !== '' && <li>{material(sizeChartType)}</li>}
+      {content.color !== '' && <li>{colors(content.color.toLowerCase())}</li>}
       <li>{logo(lang)}</li>
     </ul>
   );

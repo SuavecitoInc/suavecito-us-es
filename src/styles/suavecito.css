@@ -359,6 +359,10 @@ h6,
 }
 
 @media screen and (max-width: 480px) {
+  .collection-compare-table.page-width {
+    padding-left: 0;
+    padding-right: 0;
+  }
   .hide-small {
     display: none;
   }

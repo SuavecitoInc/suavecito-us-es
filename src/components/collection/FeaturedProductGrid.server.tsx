@@ -70,7 +70,7 @@ export function FeaturedProductGrid({
 
   const styles = {
     flexParent: `flex flex-col md:flex-row`,
-    flexChild: `flex-1 p-5 overflow-hidden w-full md:w-[50%]`,
+    flexChild: `flex-1 py-5 md:px-5 overflow-hidden w-full md:w-[50%]`,
     btnWrapper: `flex justify-center items-center`,
     btn: `btn`,
   };

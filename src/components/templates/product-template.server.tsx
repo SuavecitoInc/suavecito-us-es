@@ -87,6 +87,7 @@ export function ProductTemplate({handle}: {handle: string}) {
       ? spanishDescription.value
       : descriptionHtml;
 
+  let productSizeChart = '';
   const getTabsContent = () => {
     const tabs: {title: string; content: any}[] = [];
     // features
@@ -115,8 +116,10 @@ export function ProductTemplate({handle}: {handle: string}) {
     let productSizeChartType: string | null = null;
     if (sizeChart) {
       productSizeChartType = sizeChart.value;
+      productSizeChart = sizeChart.value;
     } else if (oldSizeChart) {
       productSizeChartType = oldSizeChart.value;
+      productSizeChart = oldSizeChart.value;
     }
 
     if (productSizeChartType) {
@@ -216,6 +219,7 @@ export function ProductTemplate({handle}: {handle: string}) {
               lang={LANG}
               theme={theme}
               tabs={tabsContent}
+              sizeChartType={productSizeChart}
             />
           </div>
         )}
