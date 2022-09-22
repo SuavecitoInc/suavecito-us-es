@@ -142,6 +142,92 @@ export const CollectionFeaturedBanners = [
     ],
   },
   {
+    handle: 'hair-care',
+    title: 'Champú y acondicionador',
+    backgroundImage: {
+      src: 'https://cdn.shopify.com/s/files/1/0274/1389/files/suavecito-shampoo-and-conditioner.jpg?v=1632786259',
+      alt: 'Champú y acondicionador',
+    },
+    description:
+      'Sean cuales sean las preocupaciones de tu cabello, ¡tenemos un champú y acondicionador para ti! Cuida tu cabello con estos productos de alta calidad.',
+    columns: [
+      {
+        name: 'Champú Diario',
+        rows: [
+          'Ingredientes destacados: Aceite de salvia y manzanilla para ayudar a prevenir el cuero cabelludo seco y con picazón.',
+          'Ingredientes destacados: Aceite de menta y aceite de romero, que se ha demostrado que ayudan a prevenir la caída del cabello.',
+          'Ingredientes destacados: Niacinamida, conocida por restaurar el cabello dañado. Aceite de jojoba y aloe para promover la salud del cabello y el cuero cabelludo.',
+          'Ingredientes destacados: Niacinamida, conocida por restaurar el cabello dañado. Biotina, aceite de romero y cafeína, conocidos por promover el crecimiento del cabello.',
+        ],
+      },
+      {
+        name: 'Acondicionador Nutritivo',
+        rows: [
+          'Sin sulfato, sin aroma añadido.',
+          'Sin sulfato, sin aroma añadido.',
+          'Sin sulfato, sin aroma añadido.',
+          'Sin sulfato, sin aroma añadido.',
+        ],
+      },
+      {
+        name: 'Champú espesante',
+        rows: [],
+      },
+      {
+        name: 'Acondicionador espesante',
+        rows: [
+          'Todo tipo de cabello. Aquellos que sufren de cuero cabelludo seco o irritado.',
+          'Todo tipo de cabello. Aquellos a los que les gusta una sensación de hormigueo y limpieza al lavar.',
+          'Cabello fino o fino. Aquellos cuya principal preocupación es la prevención de la caída del cabello.',
+          'Cabello fino o fino. Aquellos cuya principal preocupación es la prevención de la caída del cabello.',
+        ],
+      },
+    ],
+  },
+  {
+    handle: 'grow-it',
+    title: 'Línea de tratamiento anticaída del cabello',
+    backgroundImage: {
+      src: 'https://cdn.shopify.com/s/files/1/0274/1389/files/suavecito-hair-loss-treatment-line-banner.jpg?v=1632786259',
+      alt: 'Línea de tratamiento anticaída del cabello',
+    },
+    description:
+      'Línea de productos especialmente elaborados para el tratamiento y prevención de la caída del cabello en el hombre.',
+    columns: [
+      {
+        name: 'Solución Minoxidil 5%',
+        rows: [
+          'Ingrediente activo: Minoxidil, que estimula el cabello existente para crecer más grueso y fuerte.',
+          'Ingrediente activo: Niacinamida, conocida por restaurar el cabello dañado, aceite de jojoba y aloe para promover la salud del cabello y el cuero cabelludo.',
+          'Ingrediente activo: Niacinamida, conocida por restaurar el cabello dañado. Biotina, aceite de romero y cafeína, conocidos por promover el crecimiento del cabello.',
+          'Ingrediente activo: Bloqueador de DHT de origen natural que ayuda a prevenir la hormona que reduce los folículos pilosos.',
+        ],
+      },
+      {
+        name: 'Champú espesante',
+        rows: [
+          'Resultados en 3-4 meses de uso constante.',
+          'Resultados en 4-6 meses de uso constante.',
+          'Resultados en 4-6 meses de uso constante.',
+          'Resultados en 4-6 meses de uso constante.',
+        ],
+      },
+      {
+        name: 'Acondicionador espesante',
+        rows: [],
+      },
+      {
+        name: 'Crema capilar mate con/ bloqueador de dht',
+        rows: [
+          'Aquellos con adelgazamiento y pérdida de cabello en la coronilla y el vértice de la cabeza.',
+          'Aquellos con adelgazamiento del cabello. Funciona en combinación con bloqueadores de DHT para ayudar con la pérdida alrededor de la línea del cabello.',
+          'Aquellos con adelgazamiento del cabello. Funciona en combinación con bloqueadores de DHT para ayudar con la pérdida alrededor de la línea del cabello.',
+          'Cabello fino o debilitado. Úselo para estilos sueltos o desordenados como una manera fácil de incorporar al uso diario.',
+        ],
+      },
+    ],
+  },
+  {
     handle: 'body-care',
     title: 'Cuidado e higiene del cuerpo',
     backgroundImage: {

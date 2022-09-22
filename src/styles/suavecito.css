@@ -359,10 +359,6 @@ h6,
 }
 
 @media screen and (max-width: 480px) {
-  .collection-compare-table.page-width {
-    padding-left: 0;
-    padding-right: 0;
-  }
   .hide-small {
     display: none;
   }
@@ -378,6 +374,12 @@ h6,
     font-size: 3.94vw;
     white-space: nowrap;
     text-align: center;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .collection-compare-table {
+    max-width: 90% !important;
   }
 }
 
