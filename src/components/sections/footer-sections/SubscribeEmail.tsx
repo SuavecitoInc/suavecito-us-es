@@ -1,3 +1,4 @@
+import {ClientAnalytics} from '@shopify/hydrogen';
 import React, {useRef, useState} from 'react';
 import RPI from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
@@ -107,6 +108,10 @@ export function SubscribeEmail({
           el.classList.add('border-solid');
           el.classList.add('border-green-600');
           el.classList.add('border-2');
+        });
+        // emit identify
+        ClientAnalytics.publish('CUSTOM_IDENTIFY_CUSTOMER', true, {
+          email: emailInput,
         });
       }
     } else {

@@ -1,8 +1,8 @@
 import {HydrogenApiRoute} from '@shopify/hydrogen';
 
-declare global {
-  const Oxygen: {env: any; [key: string]: any};
-}
+// declare global {
+//   const Oxygen: {env: any; [key: string]: any};
+// }
 
 export const api: HydrogenApiRoute = async (request, options) => {
   const json = await request.json();
