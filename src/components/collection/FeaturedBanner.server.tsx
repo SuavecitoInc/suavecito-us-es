@@ -26,7 +26,7 @@ export function FeaturedBanner({
     inner: `py-[55px] relative min-h-[365px] h-full sm-max:min-h-[247px]`,
     table: `flex items-center justify-center flex-col text-[2.1rem] text-white text-center min-h-[365px] h-full sm-max:min-h-[247px]`,
     description: `page-width text-[.87rem] lg:text-[1.1rem] font-bold`,
-    gridWrapper: `overflow-x-auto w-full page-width collection-compare-table`,
+    gridWrapper: `overflow-x-auto w-full collection-compare-table`,
     grid: `grid text-white mt-[3em] auto-rows-min text-copy`,
     colEven: 'bg-[#666666] opacity-90',
     colOdd: 'bg-black',

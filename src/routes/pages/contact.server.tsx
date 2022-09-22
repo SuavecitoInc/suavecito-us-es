@@ -130,7 +130,7 @@ export default function Page({
                   714.831.1419
                 </Text>
                 <Text className={styles.textMarginBottom} as={'p'}>
-                  2830 W 1st St, Santa Ana, CA 92703
+                  2831 W 1st St, Santa Ana, CA 92703
                 </Text>
                 <Text
                   as={'p'}
