@@ -29,6 +29,7 @@ export function ProductViewEvent({
         sku: selectedVariant.sku,
         url: `/products/${viewedProduct.handle}`,
         productType: viewedProduct.type,
+        vendor: viewedProduct.vendor,
       });
       // klaviyo recently viewed item
       ClientAnalytics.publish('CUSTOM_RECENTLY_VIEWED_PRODUCT', true, {

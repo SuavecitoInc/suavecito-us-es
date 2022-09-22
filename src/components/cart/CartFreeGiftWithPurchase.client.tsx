@@ -1,4 +1,3 @@
-import {useContext} from 'react';
 import type {SetStateAction, Dispatch} from 'react';
 import {Image} from '@shopify/hydrogen';
 import {ImLock, ImUnlocked} from 'react-icons/im';
@@ -244,7 +243,7 @@ function AddGiftButton({
         disabled={tierDisabled}
         variant={tierDisabled ? 'secondary' : 'suavecito'}
         onClick={() => addFreeGiftToCart(tier)}
-        className="w-1/2 text-center lg:w-full"
+        className="w-full text-center md:w-1/2 lg:w-full"
       >
         {!tierDisabled ? (
           fgwp_locale.buttons.add[lang]

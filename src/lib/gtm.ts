@@ -41,6 +41,29 @@ export const viewedProductGTMEvent = (payload: ViewedProductGTMPayload) => {
     event: 'viewed_product',
     viewed_product_payload: gtmPayload,
   });
+
+  const gtmGA4Payload = {
+    currency: 'USD',
+    items: [
+      {
+        item_id: payload.productId,
+        item_name: payload.name,
+        currency: 'USD',
+        item_brand: payload.vendor,
+        price: payload.price,
+        quantity: 1,
+      },
+    ],
+  };
+  // clear previous ecommerce object
+  window.dataLayer.push({
+    ecommerce: null,
+  });
+
+  window.dataLayer.push({
+    event: 'viewed_product_ga4',
+    ecommerce: gtmGA4Payload,
+  });
 };
 
 export const recentlyViewedProductGTMEvent = (
@@ -51,9 +74,9 @@ export const recentlyViewedProductGTMEvent = (
     ImageUrl: payload.imageUrl,
     ItemId: payload.itemId,
     Meatadata: {
-      Brand: payload.metadata.brand,
-      Price: payload.metadata.price,
-      CompareAtPrice: payload.metadata.compareAtPrice,
+      Brand: payload.metadata.Brand,
+      Price: payload.metadata.Price,
+      CompareAtPrice: payload.metadata.CompareAtPrice,
     },
     Title: payload.title,
     Url: payload.url,
@@ -65,8 +88,15 @@ export const recentlyViewedProductGTMEvent = (
   });
 };
 
-export const addToCartGTMEvent = (payload: AddToCartGTMPayload) => {
-  const gtmPayload: any = {
+// AddToCartGTMPayload
+export const addToCartGTMEvent = (payload: any) => {
+  // get added to cart
+  const id = payload.addedCartLines[0].merchandiseId;
+  const found = payload.cart.lines.edges.find(
+    (item: any) => item.node.merchandise.id === id,
+  );
+
+  const gtmPayload = {
     total_price: payload.cart.cost.totalAmount.amount,
     $value: payload.cart.cost.totalAmount.amount,
     original_total_price: payload.cart.cost.subtotalAmount.amount,
@@ -77,5 +107,31 @@ export const addToCartGTMEvent = (payload: AddToCartGTMPayload) => {
   window.dataLayer.push({
     event: 'add_to_cart',
     added_to_cart_payload: gtmPayload,
+  });
+
+  const gtmGA4Payload = {
+    currency: 'USD',
+    value: found.node.merchandise.priceV2.amount,
+    items: [
+      {
+        item_id: found.node.merchandise.id,
+        item_name: payload.title,
+        item_brand: '',
+        price: found.node.merchandise.priceV2.amount,
+        // item_category: '',
+        quantity: found.node.quantity,
+        google_business_vertical: 'retail',
+        id: found.node.merchandise.id,
+      },
+    ],
+  };
+  // clear the previous ecommerce object
+  window.dataLayer.push({
+    ecommerce: null,
+  });
+
+  window.dataLayer.push({
+    event: 'add_to_cart_ga4',
+    ecommerce: gtmGA4Payload,
   });
 };
