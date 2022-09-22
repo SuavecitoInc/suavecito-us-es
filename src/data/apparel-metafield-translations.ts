@@ -53,11 +53,17 @@ export const MetafieldColors: {
   },
 };
 
-export const MetafieldFitMaterialType = {
+export const MetafieldFitMaterialType: {
+  [key: string]: {
+    [key: string]: {
+      [key: string]: string;
+    };
+  };
+} = {
   'mens-aaa-1301': {
     fitType: {
       en: 'Heavyweight Tee',
-      es: 'Camiseta pesada',
+      es: 'Playera pesada',
     },
     materialType: {
       en: '100% Preshrunk Cotton',
@@ -77,7 +83,7 @@ export const MetafieldFitMaterialType = {
   'mens-aaa-1305': {
     fitType: {
       en: 'Heavyweight Tee',
-      es: 'Camiseta pesada',
+      es: 'Playera pesada',
     },
     materialType: {
       en: '100% Preshrunk Cotton',
@@ -157,7 +163,7 @@ export const MetafieldFitMaterialType = {
   'mens-aaa-1901': {
     fitType: {
       en: 'Heavyweight Tee',
-      es: 'Camiseta pesada',
+      es: 'Playera pesada',
     },
     materialType: {
       en: '100% Preshrunk Cotton',
@@ -267,7 +273,7 @@ export const MetafieldFitMaterialType = {
   'mens-gildan-2000': {
     fitType: {
       en: 'Heavyweight Tee',
-      es: 'Camiseta pesada',
+      es: 'Playera pesada',
     },
     materialType: {
       en: '100% preshrunk cotton',
@@ -287,7 +293,7 @@ export const MetafieldFitMaterialType = {
   'mens-gildan-5000': {
     fitType: {
       en: 'Heavyweight Tee',
-      es: 'Camiseta pesada',
+      es: 'Playera pesada',
     },
     materialType: {
       en: '100% preshrunk cotton',
@@ -317,117 +323,117 @@ export const MetafieldFitMaterialType = {
   'mens-independent-4000z': {
     fitType: {
       en: 'Heavyweight Zip-Up Hoodie',
-      es: '',
+      es: 'Sudadera pesada con cremallera',
     },
     materialType: {
       en: '70/30 cotton/polyester blend fleece',
-      es: '',
+      es: '70/30 algodón/vellón de mezcla de poliéster',
     },
   },
   'mens-independent-ss1000c': {
     fitType: {
       en: 'Lightweight Terry Crewneck Sweatshirt',
-      es: '',
+      es: 'Sudadera ligera de felpa con cuello redondo',
     },
     materialType: {
       en: '55/45 cotton/polyester fabric',
-      es: '',
+      es: '55/45 algodón/tejido de poliéster',
     },
   },
   'mens-kokomo-shirt': {
     fitType: {
       en: 'Short sleeve, button-up shirt',
-      es: '',
+      es: 'Camisa de manga corta con botones',
     },
     materialType: {
-      en: '100% Cottton',
-      es: '',
+      en: '100% Cotton',
+      es: '100% Algodón',
     },
   },
   'mens-next-level-3600': {
     fitType: {
       en: 'Soft, premium tee',
-      es: '',
+      es: 'Playera premium suave',
     },
     materialType: {
       en: '100% combed ringspun cotton',
-      es: '',
+      es: '100% Algodón peinado hilado en anillos preencogido',
     },
   },
   'mens-next-level-3633': {
     fitType: {
       en: 'Premium Tank',
-      es: '',
+      es: 'Tanque premium',
     },
     materialType: {
       en: '100% combed ringspun cotton',
-      es: '',
+      es: '100% Algodón peinado hilado en anillos preencogido',
     },
   },
   'mens-og-knit-sweater': {
     fitType: {
-      en: 'knit pullover sweater, raglan sleeves',
-      es: '',
+      en: 'Knit pullover sweater, raglan sleeves',
+      es: 'Jersey de punto, mangas raglán',
     },
     materialType: {
-      en: '100% Cottton',
-      es: '',
+      en: '100% Cotton',
+      es: '100% Algodón',
     },
   },
   'mens-polos': {
     fitType: {
       en: 'Classic fit',
-      es: '',
+      es: 'Ajuste clásico',
     },
     materialType: {
       en: '100% cotton, exclusive of decoration',
-      es: '',
+      es: '100% Algodón exclusivo de decoración',
     },
   },
   'mens-spirit-jersey': {
     fitType: {
-      en: 'oversized fit',
-      es: '',
+      en: 'Oversized fit',
+      es: 'Ajuste de gran tamaño',
     },
     materialType: {
       en: '100% Cotton Jersey knit fabric',
-      es: '',
+      es: 'Tela de punto de jersey de algodón 100%',
     },
   },
   'mens-windbreakers': {
     fitType: {
-      en: 'lined nylon windbreaker, snap closure',
-      es: '',
+      en: 'Lined nylon windbreaker, snap closure',
+      es: 'Cortavientos de nailon forrado, cierre a presión',
     },
     materialType: {
       en: 'Outer: 100% Nylon, Inner: 100% polyester',
-      es: '',
+      es: 'Exterior: 100% nailon, Interior: 100% poliéster',
     },
   },
   'womens-alternative-apparel-5058': {
     fitType: {
       en: 'Relaxed Fit Tee',
-      es: '',
+      es: 'Pamiseta de corte holgado',
     },
     materialType: {
       en: '50/50 combed ringspun cotton/polyester',
-      es: '',
+      es: '50/50 algodón hilado en anillos peinado/poliéster',
     },
   },
   'womens-american-apparel-2410': {
     fitType: {
       en: 'Unisex Fit Ringer Tee',
-      es: '',
+      es: 'Playera con cuello redondo unisex',
     },
     materialType: {
       en: '100% combed ringspun cotton',
-      es: '',
+      es: '100% Algodón peinado hilado en anillos preencogido',
     },
   },
   'womens-as-coulour-4053': {
     fitType: {
       en: 'Mid-weight Ringer Tee',
-      es: '',
+      es: 'Playera ringer de peso medio',
     },
     materialType: {
       en: '100% combed cotton',
@@ -440,48 +446,48 @@ export const MetafieldFitMaterialType = {
       es: 'Mangas 3/4, camiseta de béisbol ajustada.',
     },
     materialType: {
-      en: '100% cotton',
-      es: '',
+      en: '100% Cotton',
+      es: '100% Algodón',
     },
   },
   'womens-bella-6004': {
     fitType: {
       en: 'Slim Fit Tee',
-      es: '',
+      es: 'Playera ajustada',
     },
     materialType: {
       en: '100% airlume combed and ringspun cotton',
-      es: '',
+      es: '100% algodón peinado e hilado en anillos airlume',
     },
   },
   'womens-bella-6050': {
     fitType: {
-      en: 'slim fit ringer tee',
-      es: '',
+      en: 'Slim fit ringer tee',
+      es: 'Playera de corte slim con ribete',
     },
     materialType: {
       en: '52% Airlume combed and ring-spun cotton, 48% poly',
-      es: '',
+      es: '52% algodón peinado e hilado en anillos airlume, 48% poliéster',
     },
   },
   'womens-bella-6400': {
     fitType: {
       en: 'Relaxed Fit tee',
-      es: '',
+      es: 'Playera de corte holgado',
     },
     materialType: {
       en: '100% Airlume combed and ringspun cotton',
-      es: '',
+      es: '100% algodón peinado e hilado en anillos airlume',
     },
   },
   'womens-bella-6405': {
     fitType: {
       en: 'Relaxed Fit v-neck tee',
-      es: '',
+      es: 'Playera con cuello en V de corte holgado',
     },
     materialType: {
       en: '100% Airlume combed and ringspun cotton',
-      es: '',
+      es: '100% algodón peinado e hilado en anillos airlume',
     },
   },
   'womens-bella-6500': {
@@ -491,27 +497,27 @@ export const MetafieldFitMaterialType = {
     },
     materialType: {
       en: '100% airlume combed and ringspun cotton',
-      es: '',
+      es: '100% algodón peinado e hilado en anillos airlume',
     },
   },
   'womens-bella-8413': {
     fitType: {
       en: 'Semi-relaxed fit tee',
-      es: '',
+      es: 'Camiseta de corte semi-relajado',
     },
     materialType: {
       en: '50/25/25 polyester/airlume combed and ringspun cotton/rayon',
-      es: '',
+      es: '50/25/25 poliéster/100% algodón peinado e hilado en anillos airlume/seda artificial',
     },
   },
   'womens-bella-8803': {
     fitType: {
       en: 'soft, flowy tank',
-      es: '',
+      es: 'tanque suave y fluido',
     },
     materialType: {
       en: '65/35 polyester/viscose',
-      es: '',
+      es: '65/35 poliéster/viscosa',
     },
   },
   'womens-cotton-heritage-w7280-jogger': {
@@ -521,7 +527,7 @@ export const MetafieldFitMaterialType = {
     },
     materialType: {
       en: '65%/35% cotton/polyester',
-      es: '',
+      es: '65%/35% algodón/poliéster',
     },
   },
   'womens-gildan-2400': {
@@ -531,33 +537,33 @@ export const MetafieldFitMaterialType = {
     },
     materialType: {
       en: '100% preshrunk cotton',
-      es: '',
+      es: '100% algodón preencogido',
     },
   },
   'womens-independent-ss240': {
     fitType: {
       en: 'Slim fit fleece crewneck',
-      es: '',
+      es: 'Cuello redondo de forro polar ajustado',
     },
     materialType: {
       en: '60/40 cotton/polyester blend fleece',
-      es: '',
+      es: '60/40 algodon/vellón de mezcla de poliéster',
     },
   },
   'womens-independent-ss650': {
     fitType: {
       en: 'Slim fit lightweight fleece hoddie',
-      es: '',
+      es: 'Sudadera con capucha de forro polar ligero de ajuste delgado',
     },
     materialType: {
       en: '60/40 cotton/polyester blend fleece',
-      es: '',
+      es: '60/40 algodon/vellón de mezcla de poliéster',
     },
   },
   'womens-lat-3516': {
     fitType: {
       en: 'semi-fitted tee',
-      es: '',
+      es: 'Playera semientallada',
     },
     materialType: {
       en: '100% combed ringspun cotton fine jersey',
@@ -567,61 +573,61 @@ export const MetafieldFitMaterialType = {
   'womens-next-level-1533': {
     fitType: {
       en: 'Slim fit racerback tank',
-      es: '',
+      es: 'Camiseta sin mangas de corte ajustado con espalda cruzada',
     },
     materialType: {
       en: '60/40 combed ringspun cotton/polyester',
-      es: '',
+      es: '60/40 algodón peinado hilado en anillos/poliéster',
     },
   },
   'womens-next-level-3301': {
     fitType: {
       en: 'Slim fit long sleeve tee',
-      es: '',
+      es: 'Camiseta de manga larga de corte ajustado',
     },
     materialType: {
       en: '100% Combed Cotton Jersey',
-      es: '',
+      es: '1000% jersey de algodón peinado',
     },
   },
   'womens-next-level-3400': {
     fitType: {
       en: 'slim fit v-neck tee',
-      es: '',
+      es: 'Playera slim fit con cuello en v',
     },
     materialType: {
       en: '60% Combed Ring-Spun Cotton, 40% Polyester',
-      es: '',
+      es: '60% Algodón hilado en anillos peinado, 40% Poliéster',
     },
   },
   'womens-next-level-3533': {
     fitType: {
       en: 'Slim fit spandex tank',
-      es: '',
+      es: 'Tanque ajustado de spandex',
     },
     materialType: {
       en: '57/38/5 combed ringspun cotton/polyester/spandex',
-      es: '',
+      es: '57/38/5 algodón peinado hilado en anillos/poliéster/spandex',
     },
   },
   'womens-next-level-3900': {
     fitType: {
       en: 'semi-relaxed fit tee',
-      es: '',
+      es: 'Playera de corte semi-relajado',
     },
     materialType: {
       en: '100% combed ringspun cotton',
-      es: '',
+      es: '100% Algodón peinado hilado en anillos preencogido',
     },
   },
   'womens-next-level-6610': {
     fitType: {
       en: 'semi-fitted tee',
-      es: '',
+      es: 'Playera semiajustado',
     },
     materialType: {
       en: '60/40 combed ringspun cotton/polyester',
-      es: '',
+      es: '60/40 algodón peinado hilado en anillos/poliéster',
     },
   },
   'womens-plus-size-tees': {
@@ -661,7 +667,7 @@ export const MetafieldFitMaterialType = {
     },
     materialType: {
       en: 'Outer: 100% Nylon, Inner: 100% polyester',
-      es: 'Exterior: 100% nailon, Interior: 100 % poliéster',
+      es: 'Exterior: 100% nailon, Interior: 100% poliéster',
     },
   },
   'youth-aaa-3381': {
@@ -677,7 +683,7 @@ export const MetafieldFitMaterialType = {
   'youth-gildan-5000b': {
     fitType: {
       en: 'Heavyweight, classic fit youth Tee',
-      es: '',
+      es: 'Camiseta juvenil de peso pesado y ajuste clásico',
     },
     materialType: {
       en: '100% preshrunk cotton',
