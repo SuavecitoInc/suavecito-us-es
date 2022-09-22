@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import {useNavigate, Link} from '@shopify/hydrogen/client';
+import {useNavigate, Link, ClientAnalytics} from '@shopify/hydrogen/client';
 
 const login_form: {[key: string]: any} = {
   email_address: {
@@ -131,9 +131,9 @@ export function AccountLoginForm({
   const title = lang === 'ES' ? 'Iniciar' : 'Login';
 
   return (
-    <div className="flex justify-center my-24 px-4">
-      <div className="max-w-md w-full">
-        <h1 className="text-4xl uppercase text-center">{title}</h1>
+    <div className="flex justify-center px-4 my-24">
+      <div className="w-full max-w-md">
+        <h1 className="text-4xl text-center uppercase">{title}</h1>
         <form noValidate className="pt-6 pb-8 mt-4 mb-4" onSubmit={onSubmit}>
           {hasSubmitError && (
             <div className="flex items-center justify-center mb-6 bg-zinc-500">
@@ -185,6 +185,10 @@ export async function callLoginApi({
       body: JSON.stringify({email, password}),
     });
     if (res.ok) {
+      // identify customer
+      ClientAnalytics.publish('CUSTOM_IDENTIFY_CUSTOMER', true, {
+        email,
+      });
       return {};
     } else {
       return res.json();
@@ -238,14 +242,14 @@ function EmailField({
       </div>
       <div className="flex items-center justify-between">
         <button
-          className="bg-suave-red hover:bg-suave-red-focus rounded-sm text-contrast py-2 px-4 focus:shadow-outline block w-full"
+          className="block w-full px-4 py-2 rounded-sm bg-suave-red hover:bg-suave-red-focus text-contrast focus:shadow-outline"
           type="submit"
         >
           {login_form.button.next[lang]}
         </button>
       </div>
-      <div className="flex items-center mt-8 border-t  border-gray-300">
-        <p className="align-baseline text-sm mt-6">
+      <div className="flex items-center mt-8 border-t border-gray-300">
+        <p className="mt-6 text-sm align-baseline">
           {login_form.new_to[lang]} {shopName}? &nbsp;
           <Link className="inline underline" to="/account/register">
             {login_form.create_an_account[lang]}
@@ -266,7 +270,7 @@ function ValidEmail({
   resetForm: () => void;
 }) {
   return (
-    <div className="mb-3 flex items-center justify-between">
+    <div className="flex items-center justify-between mb-3">
       <div>
         <p>{email}</p>
         <input
@@ -279,7 +283,7 @@ function ValidEmail({
       </div>
       <div>
         <button
-          className="inline-block align-baseline text-sm underline"
+          className="inline-block text-sm underline align-baseline"
           type="button"
           onClick={resetForm}
         >
@@ -331,7 +335,7 @@ function PasswordField({
       </div>
       <div className="flex items-center justify-between">
         <button
-          className="bg-suave-red hover:bg-suave-red-focus text-contrast rounded-sm py-2 px-4 focus:shadow-outline block w-full"
+          className="block w-full px-4 py-2 rounded-sm bg-suave-red hover:bg-suave-red-focus text-contrast focus:shadow-outline"
           type="submit"
         >
           {login_form.button.login[lang]}
@@ -340,7 +344,7 @@ function PasswordField({
       <div className="flex items-center justify-between mt-4">
         <div className="flex-1"></div>
         <Link
-          className="inline-block align-baseline text-sm text-primary/50"
+          className="inline-block text-sm align-baseline text-primary/50"
           to="/account/recover"
         >
           {login_form.forgot_password[lang]}

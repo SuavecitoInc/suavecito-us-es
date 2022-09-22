@@ -7,46 +7,35 @@ import {
   useLocalization,
   useServerAnalytics,
   useShopQuery,
-  useUrl,
 } from '@shopify/hydrogen';
 
 import {MEDIA_FRAGMENT} from '~/lib/fragments';
-import {
-  PRODUCT_SECTION_FRAGMENT,
-  VARIANT_METAFIELD_IMAGES_FRAGMENT,
-  VARIANT_FRAGRANCE_FRAGMENT,
-  PRODUCT_SECTION_HOW_IT_LOOKS_FRAGMENT,
-} from '~/lib/suavecito-fragments';
+import {PRODUCT_APPAREL_FRAGMENT} from '~/lib/suavecito-fragments';
 import {
   NotFound,
   Layout,
-  ProductSectionContentGrid,
-  ProductSectionHowTo,
-  ProductSectionHowItLooks,
   ProductSectionYouMayAlsoLike,
 } from '~/components/index.server';
 import {
   Heading,
   ProductOptionsVariantForm,
-  ProductMetafieldImages,
   ProductImages,
+  ProductMetafieldImages,
   Section,
   Text,
+  ProductSectionInfoTabs,
   ProductViewEvent,
 } from '~/components';
-import {useGetInitialVariant} from '~/hooks';
 
-export function ProductMetafieldTemplate({handle}: {handle: string}) {
-  const {search} = useUrl();
-  const params = new URLSearchParams(search);
-  const initialVariant = params.get('variant');
+import {sizeCharts} from '~/data/size-charts/';
 
+const LANG = import.meta.env.PUBLIC_LANGUAGE_CODE;
+
+export function ProductTemplate({handle}: {handle: string}) {
   const {
     language: {isoCode: languageCode},
     country: {isoCode: countryCode},
   } = useLocalization();
-
-  const LANG = import.meta.env.PUBLIC_LANGUAGE_CODE;
 
   const {
     data: {product, shop},
@@ -72,72 +61,79 @@ export function ProductMetafieldTemplate({handle}: {handle: string}) {
   });
 
   const {
+    images,
     title,
     vendor,
+    descriptionHtml,
     options,
-    tags,
     variants,
-    images,
-    productSectionFeaturedImage1,
-    productSectionFeaturedImage2,
-    productSectionDescription,
-    productSectionListItemText1,
-    productSectionListItemImage1,
-    productSectionListItemText2,
-    productSectionListItemImage2,
-    productSectionListItemText3,
-    productSectionListItemImage3,
-    productSectionListItemText4,
-    productSectionListItemImage4,
-    productSectionHowToImage,
-    productSectionHowToText,
-    productSectionHowToEmbeddedVideo,
-    howItLooksImage1,
-    howItLooksImage2,
-    howItLooksImage3,
-    howItLooksImage4,
-    howItLooksImage5,
-    howItLooksImage6,
-    howItLooksImage7,
-    howItLooksImage8,
+    tags,
+    apparelFit,
+    apparelMaterial,
+    apparelColor,
+    apparelLogoFront,
+    apparelLogoBack,
+    sizeChart,
+    oldSizeChart,
+    spanishDescription,
   } = product;
-
-  const {id} = useGetInitialVariant(initialVariant, variants.nodes);
 
   const defaultOptionNames = options.map(
     (option: {name: string}) => option.name,
   );
 
-  const productContentGridData = {
-    productSectionFeaturedImage1,
-    productSectionFeaturedImage2,
-    productSectionDescription,
-    productSectionListItemText1,
-    productSectionListItemText2,
-    productSectionListItemText3,
-    productSectionListItemText4,
-    productSectionListItemImage1,
-    productSectionListItemImage2,
-    productSectionListItemImage3,
-    productSectionListItemImage4,
+  const description =
+    spanishDescription !== null && LANG === 'es'
+      ? spanishDescription.value
+      : descriptionHtml;
+
+  const getTabsContent = () => {
+    const tabs: {title: string; content: any}[] = [];
+    // features
+    if (
+      (apparelFit || apparelMaterial || apparelColor) &&
+      apparelLogoFront &&
+      apparelLogoBack
+    ) {
+      const features: {title: string; content: {[key: string]: string}} = {
+        title: 'Features',
+        content: {},
+      };
+      if (apparelFit) features.content.fit = apparelFit.value;
+      if (apparelMaterial) features.content.material = apparelMaterial.value;
+      if (apparelColor) features.content.color = apparelColor.value;
+      if (apparelLogoFront) features.content.logoFront = apparelLogoFront.value;
+      if (apparelLogoBack) features.content.logoBack = apparelLogoBack.value;
+      tabs.push(features);
+    }
+    // description
+    tabs.push({
+      title: 'Description',
+      content: description,
+    });
+    // product size chart
+    let productSizeChartType: string | null = null;
+    if (sizeChart) {
+      productSizeChartType = sizeChart.value;
+    } else if (oldSizeChart) {
+      productSizeChartType = oldSizeChart.value;
+    }
+
+    if (productSizeChartType) {
+      const sizeChartData = sizeCharts[`size-chart-${productSizeChartType}`];
+      if (sizeChartData)
+        tabs.push({
+          title: 'Size Chart',
+          content: sizeChartData,
+        });
+    }
+
+    return tabs;
   };
 
-  const productContentHowTo = {
-    productSectionHowToImage,
-    productSectionHowToText,
-    productSectionHowToEmbeddedVideo,
-  };
+  const tabsContent = getTabsContent();
 
-  const productContentHowItLooks = {
-    howItLooksImage1,
-    howItLooksImage2,
-    howItLooksImage3,
-    howItLooksImage4,
-    howItLooksImage5,
-    howItLooksImage6,
-    howItLooksImage7,
-    howItLooksImage8,
-  };
+  const theme = vendor.toLowerCase();
 
   const viewedProduct = {
     vendor: product.vendor,
@@ -150,12 +146,12 @@ export function ProductMetafieldTemplate({handle}: {handle: string}) {
   };
 
   return (
-    <Layout isProduct={true}>
+    <Layout theme={theme} isProduct={true}>
       <Suspense>
         <Seo type="product" data={product} />
       </Suspense>
       <div className="page-width">
-        <ProductOptionsProvider data={product} initialVariantId={id}>
+        <ProductOptionsProvider data={product}>
           <Suspense>
             <ProductViewEvent viewedProduct={viewedProduct} />
           </Suspense>
@@ -169,47 +165,66 @@ export function ProductMetafieldTemplate({handle}: {handle: string}) {
                   <ProductImages images={images.nodes} className="flex-1" />
                 )}
               </Suspense>
-
               <div className="flex-1">
                 <section>
                   <div className="grid gap-2">
-                    <Heading as="h1" format className="whitespace-normal">
+                    <Heading
+                      as="h1"
+                      format
+                      className={`whitespace-normal ${
+                        theme === 'premium blends' && 'text-white'
+                      }`}
+                    >
                       {title}
                     </Heading>
                     {vendor && (
                       <Text className={'opacity-50 font-medium'}>{vendor}</Text>
                     )}
                   </div>
-                  <Suspense>
-                    <ProductOptionsVariantForm
-                      lang={LANG}
-                      optionNames={defaultOptionNames}
-                      tags={tags}
-                    />
-                  </Suspense>
+                  {product.productType !== 'FGWP' && (
+                    <Suspense>
+                      <ProductOptionsVariantForm
+                        lang={LANG}
+                        theme={theme}
+                        optionNames={defaultOptionNames}
+                        tags={tags}
+                      />
+                    </Suspense>
+                  )}
+                  {/* display description here if no features, otherwise render tabs */}
+                  {description && tabsContent.length === 1 && (
+                    <div
+                      className={`py-10 ${
+                        theme === 'premium blends' && 'text-white'
+                      }`}
+                    >
+                      <div
+                        className="rte description"
+                        dangerouslySetInnerHTML={{__html: description}}
+                      />
+                    </div>
+                  )}
                 </section>
               </div>
             </div>
           </Section>
         </ProductOptionsProvider>
 
-        {/* check if productSectionFeaturedImage1 && productSectionDescription are set */}
-        {productSectionFeaturedImage1 && productSectionDescription && (
-          <ProductSectionContentGrid lang={LANG} {...productContentGridData} />
-        )}
-
-        {/* Product Section How To */}
-        {productSectionHowToText && productSectionHowToImage && (
-          <ProductSectionHowTo lang={LANG} {...productContentHowTo} />
+        {description && tabsContent.length > 1 && (
+          <div className="grid gap-4 py-4">
+            <ProductSectionInfoTabs
+              lang={LANG}
+              theme={theme}
+              tabs={tabsContent}
+            />
+          </div>
         )}
       </div>
-      {/* Product Section How it Looks */}
-      {howItLooksImage1 && howItLooksImage2 && (
-        <ProductSectionHowItLooks lang={LANG} {...productContentHowItLooks} />
-      )}
 
-      <div className="page-width">
-        <ProductSectionYouMayAlsoLike lang={LANG} productId={product.id} />
+      <div className={`w-full ${theme === 'premium blends' && 'bg-white'}`}>
+        <div className="page-width">
+          <ProductSectionYouMayAlsoLike lang={LANG} productId={product.id} />
+        </div>
       </div>
     </Layout>
   );
@@ -217,10 +232,7 @@ export function ProductMetafieldTemplate({handle}: {handle: string}) {
 
 const PRODUCT_QUERY = gql`
   ${MEDIA_FRAGMENT}
-  ${PRODUCT_SECTION_FRAGMENT}
-  ${VARIANT_METAFIELD_IMAGES_FRAGMENT}
-  ${VARIANT_FRAGRANCE_FRAGMENT}
-  ${PRODUCT_SECTION_HOW_IT_LOOKS_FRAGMENT}
+  ${PRODUCT_APPAREL_FRAGMENT}
   query Product(
     $country: CountryCode
     $language: LanguageCode
@@ -229,6 +241,7 @@ const PRODUCT_QUERY = gql`
     product(handle: $handle) {
       id
       title
+      productType
       vendor
       descriptionHtml
       media(first: 7) {
@@ -256,8 +269,7 @@ const PRODUCT_QUERY = gql`
         }
       }
       tags
-      ...ProductSection
-      ...ProductSectionHowItLooks
+      ...ProductApparel
       variants(first: 100) {
         nodes {
           id
@@ -288,13 +300,17 @@ const PRODUCT_QUERY = gql`
             amount
             currencyCode
           }
-          ...VariantMetafieldImages
-          ...VariantFragrance
         }
       }
       seo {
         description
         title
+      }
+      spanishDescription: metafield(
+        namespace: "debut"
+        key: "section_product_description_es"
+      ) {
+        value
       }
     }
     shop {

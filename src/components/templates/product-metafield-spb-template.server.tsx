@@ -33,6 +33,7 @@ import {
   Section,
   Text,
   Divider,
+  ProductViewEvent,
 } from '~/components';
 import {useGetInitialVariant} from '~/hooks';
 
@@ -50,7 +51,7 @@ export function ProductMetafieldSPBTemplate({handle}: {handle: string}) {
 
   const {
     data: {product, shop},
-  } = useShopQuery({
+  }: any = useShopQuery({
     query: PRODUCT_QUERY,
     variables: {
       country: countryCode,
@@ -139,6 +140,16 @@ export function ProductMetafieldSPBTemplate({handle}: {handle: string}) {
     productSectionHowToEmbeddedVideo,
   };
 
+  const viewedProduct = {
+    vendor: product.vendor,
+    title: product.title,
+    handle: product.handle,
+    type: product.productType,
+    collections: product.collections.nodes.map(
+      (el: {title: string}) => el.title,
+    ),
+  };
+
   return (
     <Layout theme={product.vendor.toLowerCase()} isProduct={true}>
       <Suspense>
@@ -146,8 +157,11 @@ export function ProductMetafieldSPBTemplate({handle}: {handle: string}) {
       </Suspense>
       <div className="page-width">
         <ProductOptionsProvider data={product} initialVariantId={id}>
+          <Suspense>
+            <ProductViewEvent viewedProduct={viewedProduct} />
+          </Suspense>
           <Section padding="x" className="px-0">
-            <div className="flex flex-col md:flex-row gap-10">
+            <div className="flex flex-col gap-10 md:flex-row">
               {/* if metafield images exist  */}
               <Suspense>
                 {variants.nodes[0]?.variantImage1 ? (
@@ -163,7 +177,7 @@ export function ProductMetafieldSPBTemplate({handle}: {handle: string}) {
                     <Heading
                       as="h1"
                       format
-                      className="whitespace-normal text-white"
+                      className="text-white whitespace-normal"
                     >
                       {title}
                     </Heading>
@@ -257,6 +271,13 @@ const PRODUCT_QUERY = gql`
           altText
           width
           height
+        }
+      }
+      handle
+      productType
+      collections(first: 10) {
+        nodes {
+          title
         }
       }
       tags

@@ -2,17 +2,13 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   onClick?: () => void;
 }
 
-export function LogoutButton({
-  props,
-  lang = 'en',
-}: {
-  props?: ButtonProps;
-  lang?: 'en' | 'es';
-}) {
-  const logoutTrans = {
+export function LogoutButton({props}: {props?: ButtonProps}) {
+  const logoutTrans: {[key: string]: string} = {
     en: 'Logout',
     es: 'Cierre de sesión',
   };
+  const LANG = import.meta.env.PUBLIC_LANGUAGE_CODE;
+
   const logout = () => {
     fetch('/account/logout', {method: 'POST'}).then(() => {
       if (typeof props?.onClick === 'function') {
@@ -24,7 +20,7 @@ export function LogoutButton({
 
   return (
     <button className="text-primary/50" {...props} onClick={logout}>
-      {logoutTrans[lang]}
+      {logoutTrans[LANG]}
     </button>
   );
 }

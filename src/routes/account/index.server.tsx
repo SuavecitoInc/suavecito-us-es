@@ -1,6 +1,7 @@
 import {Suspense} from 'react';
 import {
   CacheNone,
+  ClientAnalytics,
   flattenConnection,
   gql,
   Seo,
@@ -21,6 +22,7 @@ import {
   FeaturedCollections,
   LogoutButton,
   PageHeader,
+  IdentifyCustomerEvent,
 } from '~/components';
 import {Layout, ProductSwimlane} from '~/components/index.server';
 import type {
@@ -76,6 +78,12 @@ export default function Account({response}: HydrogenRouteProps) {
     customer.defaultAddress.id.lastIndexOf('?'),
   );
 
+  const customerIdentification = {
+    email: customer.email,
+    firstName: customer.firstName,
+    lastName: customer.lastName,
+  };
+
   return (
     <>
       <AuthenticatedAccount
@@ -90,6 +98,7 @@ export default function Account({response}: HydrogenRouteProps) {
           flattenConnection<Product>(featuredProducts) as Product[]
         }
       />
+      <IdentifyCustomerEvent customerIdentification={customerIdentification} />
     </>
   );
 }
@@ -142,7 +151,7 @@ function AuthenticatedAccount({
         <Seo type="noindex" data={{title: 'Account details'}} />
       </Suspense>
       <PageHeader heading={heading}>
-        <LogoutButton lang={lang}>{authAccountData.signOut[lang]}</LogoutButton>
+        <LogoutButton />
       </PageHeader>
       {orders && <AccountOrderHistory lang={lang} orders={orders as Order[]} />}
       <AccountDetails
