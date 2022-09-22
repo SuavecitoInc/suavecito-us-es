@@ -36,7 +36,7 @@ export function AnalyticsListener() {
       ClientAnalytics.subscribe(
         ClientAnalytics.eventNames.ADD_TO_CART,
         (payload) => {
-          if (payload.cart.buyerIdentity.email) {
+          if (payload.cart?.buyerIdentity?.email) {
             identifyCustomerGTMEvent(payload.cart.buyerIdentity.email);
           }
           addToCartGTMEvent(payload);

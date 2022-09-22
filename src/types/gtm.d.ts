@@ -5,27 +5,27 @@ export interface IdentifyCustomerGTMPayload {
 }
 
 export interface ViewedProductGTMPayload {
-  Brand: string;
-  CompareAtPrice: string | number;
-  ImageUrl: string;
-  Name: string;
-  Price: string | number;
-  ProductID: string;
-  SKU: string;
-  ProductType: string;
+  brand: string;
+  compareAtPrice: string | number;
+  imageUrl: string;
+  name: string;
+  price: string | number;
+  productId: string;
+  sku: string;
+  productType: string;
 }
 
 export interface RecentlyViewedProductGTMPayload {
-  Categories: string;
-  ImageUrl: string;
-  ItemId: string;
-  Metadata: {
-    Brand: string;
-    Price: string | number;
-    CompareAtPrice: string | number;
+  categories: string;
+  imageUrl: string;
+  itemId: string;
+  metadata: {
+    brand: string;
+    price: string | number;
+    compareAtPrice: string | number;
   };
-  Title: string;
-  Url: string;
+  title: string;
+  url: string;
 }
 
 export interface AddToCartGTMPayload {
@@ -40,4 +40,5 @@ export interface AddToCartGTMPayload {
     };
     lines: any[];
   };
+  title: string;
 }

@@ -34,14 +34,14 @@ export const viewedProductGTMEvent = (payload: ViewedProductGTMPayload) => {
   console.log('CUSTOM_VIEWED_PRODUCT_EVENT');
 
   const gtmPayload = {
-    Brand: payload.Brand,
-    CompareAtPrice: payload.CompareAtPrice,
-    ImageUrl: payload.ImageUrl,
-    Name: payload.ImageUrl,
-    Price: payload.Price,
-    ProductID: payload.ProductID,
-    SKU: payload.SKU,
-    ProductType: payload.ProductType,
+    Brand: payload.brand,
+    CompareAtPrice: payload.compareAtPrice,
+    ImageUrl: payload.imageUrl,
+    Name: payload.name,
+    Price: payload.price,
+    ProductID: payload.productId,
+    SKU: payload.sku,
+    ProductType: payload.productType,
   };
   console.log('CUSTOM_VIEWED_PRODUCT_PAYLOAD', gtmPayload);
 
@@ -57,16 +57,16 @@ export const recentlyViewedProductGTMEvent = (
   console.log('CUSTOM_RECENTLY_VIEWED_PRODUCT EVENT');
 
   const gtmPayload = {
-    Categories: payload.Categories,
-    ImageUrl: payload.ImageUrl,
-    ItemId: payload.ItemId,
+    Categories: payload.categories,
+    ImageUrl: payload.imageUrl,
+    ItemId: payload.itemId,
     Meatadata: {
-      Brand: payload.Metadata.Brand,
-      Price: payload.Metadata.Price,
-      CompareAtPrice: payload.Metadata.CompareAtPrice,
+      Brand: payload.metadata.brand,
+      Price: payload.metadata.price,
+      CompareAtPrice: payload.metadata.compareAtPrice,
     },
-    Title: payload.Title,
-    Url: payload.Url,
+    Title: payload.title,
+    Url: payload.url,
   };
 
   console.log('GTM_RECENTLY_VIEWED_PRODUCT_PAYLOAD', gtmPayload);
@@ -78,13 +78,14 @@ export const recentlyViewedProductGTMEvent = (
 };
 
 export const addToCartGTMEvent = (payload: AddToCartGTMPayload) => {
-  console.log('ADD_TO_CART EVENT');
+  console.log('ADD_TO_CART EVENT', payload);
 
   const gtmPayload: any = {
     total_price: payload.cart.cost.totalAmount.amount,
     $value: payload.cart.cost.totalAmount.amount,
     original_total_price: payload.cart.cost.subtotalAmount.amount,
     items: payload.cart.lines,
+    title: payload.title,
   };
 
   console.log('GTM_ADD_TO_CART_PAYLOAD', gtmPayload);
