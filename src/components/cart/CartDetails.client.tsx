@@ -132,7 +132,7 @@ function CartCheckoutActions({
           </p>
         ) : null}
         {disableCheckout ? (
-          <Button to="/cart" onClick={onClose && onClose}>
+          <Button to="/cart#fgwp" onClick={onClose && onClose}>
             {cart_details.continue_to_cart[lang]}
           </Button>
         ) : (

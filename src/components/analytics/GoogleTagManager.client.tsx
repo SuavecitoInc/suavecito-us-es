@@ -6,7 +6,6 @@ let init = false;
 export function GTM() {
   useEffect(() => {
     if (!init) {
-      console.log('GOOGLE TAG MANAGER INIT');
       // One-time initialization
       init = true;
       Analytics({

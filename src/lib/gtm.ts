@@ -6,23 +6,18 @@ import {
 } from '~/types/gtm';
 
 export const pageViewGTMEvent = () => {
-  console.log('PAGE_VIEW EVENT');
   window.dataLayer.push({event: 'pageview'});
 };
 
 export const identifyCustomerGTMEvent = (
   payload: IdentifyCustomerGTMPayload,
 ) => {
-  console.log('IDENTIFY_CUSTOMER EVENT');
-
   const gtmPayload: any = {
     $email: payload.email,
   };
 
   if (payload.firstName) gtmPayload['$first_name'] = payload.firstName;
   if (payload.lastName) gtmPayload['$last_name'] = payload.lastName;
-
-  console.log('IDENTIFY_CUSTOMER_PAYLOAD', gtmPayload);
 
   window.dataLayer.push({
     event: 'identify_customer',
@@ -31,8 +26,6 @@ export const identifyCustomerGTMEvent = (
 };
 
 export const viewedProductGTMEvent = (payload: ViewedProductGTMPayload) => {
-  console.log('CUSTOM_VIEWED_PRODUCT_EVENT');
-
   const gtmPayload = {
     Brand: payload.brand,
     CompareAtPrice: payload.compareAtPrice,
@@ -43,7 +36,6 @@ export const viewedProductGTMEvent = (payload: ViewedProductGTMPayload) => {
     SKU: payload.sku,
     ProductType: payload.productType,
   };
-  console.log('CUSTOM_VIEWED_PRODUCT_PAYLOAD', gtmPayload);
 
   window.dataLayer.push({
     event: 'viewed_product',
@@ -54,8 +46,6 @@ export const viewedProductGTMEvent = (payload: ViewedProductGTMPayload) => {
 export const recentlyViewedProductGTMEvent = (
   payload: RecentlyViewedProductGTMPayload,
 ) => {
-  console.log('CUSTOM_RECENTLY_VIEWED_PRODUCT EVENT');
-
   const gtmPayload = {
     Categories: payload.categories,
     ImageUrl: payload.imageUrl,
@@ -69,8 +59,6 @@ export const recentlyViewedProductGTMEvent = (
     Url: payload.url,
   };
 
-  console.log('GTM_RECENTLY_VIEWED_PRODUCT_PAYLOAD', gtmPayload);
-
   window.dataLayer.push({
     event: 'recently_viewed_product',
     recently_viewed_product_payload: gtmPayload,
@@ -78,8 +66,6 @@ export const recentlyViewedProductGTMEvent = (
 };
 
 export const addToCartGTMEvent = (payload: AddToCartGTMPayload) => {
-  console.log('ADD_TO_CART EVENT', payload);
-
   const gtmPayload: any = {
     total_price: payload.cart.cost.totalAmount.amount,
     $value: payload.cart.cost.totalAmount.amount,
@@ -87,8 +73,6 @@ export const addToCartGTMEvent = (payload: AddToCartGTMPayload) => {
     items: payload.cart.lines,
     title: payload.title,
   };
-
-  console.log('GTM_ADD_TO_CART_PAYLOAD', gtmPayload);
 
   window.dataLayer.push({
     event: 'add_to_cart',

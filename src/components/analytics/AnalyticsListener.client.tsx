@@ -18,7 +18,6 @@ export function AnalyticsListener() {
     });
 
     if (!init) {
-      console.log('ANALYTICS LISTENER INIT');
       // One-time initialization
       init = true;
       // PAGE_VIEW
