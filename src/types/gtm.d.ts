@@ -13,6 +13,8 @@ export interface ViewedProductGTMPayload {
   productId: string;
   sku: string;
   productType: string;
+  title: string;
+  vendor: string;
 }
 
 export interface RecentlyViewedProductGTMPayload {
@@ -20,9 +22,9 @@ export interface RecentlyViewedProductGTMPayload {
   imageUrl: string;
   itemId: string;
   metadata: {
-    brand: string;
-    price: string | number;
-    compareAtPrice: string | number;
+    Brand: string;
+    Price: string | number;
+    CompareAtPrice: null | string | number;
   };
   title: string;
   url: string;
