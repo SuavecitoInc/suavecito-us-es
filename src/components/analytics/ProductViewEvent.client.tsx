@@ -25,7 +25,9 @@ export function ProductViewEvent({
         imageUrl: selectedVariant.image?.url,
         name: viewedProduct.title,
         price: Number(selectedVariant.priceV2?.amount),
-        productId: selectedVariant.id,
+        productId: selectedVariant.id?.substring(
+          selectedVariant.id?.lastIndexOf('/') + 1,
+        ),
         sku: selectedVariant.sku,
         url: `/products/${viewedProduct.handle}`,
         productType: viewedProduct.type,
@@ -35,7 +37,10 @@ export function ProductViewEvent({
       ClientAnalytics.publish('CUSTOM_RECENTLY_VIEWED_PRODUCT', true, {
         categories: viewedProduct.collections,
         imageUrl: selectedVariant.image?.url,
-        itemId: selectedVariant.id,
+        // itemId: selectedVariant.id,
+        itemId: selectedVariant.id?.substring(
+          selectedVariant.id?.lastIndexOf('/') + 1,
+        ),
         metadata: {
           Brand: viewedProduct.vendor,
           Price: Number(selectedVariant.priceV2?.amount),
