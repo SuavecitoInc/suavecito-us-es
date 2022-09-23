@@ -8,6 +8,7 @@ import {
   viewedProductGTMEvent,
   recentlyViewedProductGTMEvent,
   beginCheckoutGTMEvent,
+  removeFromCartGTMEvent,
 } from '~/lib';
 
 let init = false;
@@ -54,6 +55,13 @@ export function AnalyticsListener() {
       ClientAnalytics.subscribe('CUSTOM_BEGIN_CHECKOUT', (payload) => {
         beginCheckoutGTMEvent(payload);
       });
+      // REMOVE_FROM_CART
+      ClientAnalytics.subscribe(
+        ClientAnalytics.eventNames.REMOVE_FROM_CART,
+        (payload) => {
+          removeFromCartGTMEvent(payload);
+        },
+      );
     }
   });
 

@@ -4,6 +4,7 @@ import {
   ViewedProductEventPayload,
   RecentlyViewedProductEventPayload,
   AddToCartEventPayload,
+  RemovedFromCartEventPayload,
 } from '~/types/gtm';
 
 export const pageViewGTMEvent = () => {
@@ -120,15 +121,15 @@ export const addToCartGTMEvent = (payload: AddToCartEventPayload) => {
           found.node.merchandise.id.lastIndexOf('/') + 1,
         ),
         item_name: payload.title,
-        item_brand: '',
+        // item_brand: '',
         price: found.node.merchandise.priceV2.amount,
         // item_category: '',
         quantity: found.node.quantity,
-        google_business_vertical: 'retail',
         id: found.node.merchandise.id,
       },
     ],
   };
+
   // clear the previous ecommerce object
   window.dataLayer.push({
     ecommerce: null,
@@ -136,6 +137,50 @@ export const addToCartGTMEvent = (payload: AddToCartEventPayload) => {
 
   window.dataLayer.push({
     event: 'add_to_cart_ga4',
+    ecommerce: gtmGA4Payload,
+  });
+};
+
+export const removeFromCartGTMEvent = (
+  payload: RemovedFromCartEventPayload,
+) => {
+  // get removed from cart
+  // compare previous cart to current cart
+  const prevLines = new Set([...payload.prevCart.lines]);
+  const currentLines = new Set([...payload.cart.lines.edges]);
+  const diff = difference(prevLines, currentLines);
+
+  const removedItems: any[] = [];
+  let removedValue = 0;
+  diff.forEach((item) => {
+    removedItems.push({
+      item_id: item.merchandise.id.substring(
+        item.merchandise.id.lastIndexOf('/') + 1,
+      ),
+      item_name: payload.title,
+      // item_brand: '',
+      price: item.merchandise.priceV2.amount,
+      // item_category: '',
+      quantity: item.quantity,
+      id: item.merchandise.id,
+    });
+    removedValue =
+      Number(removedValue) + Number(item.merchandise.priceV2.amount);
+  });
+
+  const gtmGA4Payload = {
+    currency: 'USD',
+    value: removedValue,
+    items: removedItems,
+  };
+
+  // clear the previous ecommerce object
+  window.dataLayer.push({
+    ecommerce: null,
+  });
+
+  window.dataLayer.push({
+    event: 'remove_from_cart_ga4',
     ecommerce: gtmGA4Payload,
   });
 };
@@ -180,3 +225,11 @@ export const beginCheckoutGTMEvent = (payload: any) => {
     ecommerce: gtmGA4Payload,
   });
 };
+
+function difference(setA: Set<any>, setB: Set<any>) {
+  const _difference = new Set(setA);
+  for (const elem of setB) {
+    _difference.delete(elem);
+  }
+  return _difference;
+}
