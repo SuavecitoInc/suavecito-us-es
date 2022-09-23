@@ -396,6 +396,6 @@ export const featuredVideoSettings: FeaturedVideoSectionData = {
     },
   },
   youtubeVideoId: {
-    value: 'hFLTrGcAx9c',
+    value: 'ct39qnKZJRw',
   },
 };
