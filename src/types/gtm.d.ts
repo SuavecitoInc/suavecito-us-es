@@ -1,10 +1,10 @@
-export interface IdentifyCustomerGTMPayload {
+export interface IdentifyCustomerEventPayload {
   email: string;
   firstName?: string;
   lastName?: string;
 }
 
-export interface ViewedProductGTMPayload {
+export interface ViewedProductEventPayload {
   brand: string;
   compareAtPrice: string | number;
   imageUrl: string;
@@ -17,7 +17,7 @@ export interface ViewedProductGTMPayload {
   vendor: string;
 }
 
-export interface RecentlyViewedProductGTMPayload {
+export interface RecentlyViewedProductEventPayload {
   categories: string;
   imageUrl: string;
   itemId: string;
@@ -30,7 +30,10 @@ export interface RecentlyViewedProductGTMPayload {
   url: string;
 }
 
-export interface AddToCartGTMPayload {
+export interface AddToCartEventPayload {
+  addedCartLines: {
+    merchandiseId: string;
+  }[];
   cart: {
     cost: {
       subtotalAmount: {
@@ -40,7 +43,15 @@ export interface AddToCartGTMPayload {
         amount: string;
       };
     };
-    lines: any[];
+    lines: {
+      edges: any[];
+    };
   };
   title: string;
+}
+
+export interface IdentifyCustomerGTMPayload {
+  $email: string;
+  $first_name?: string;
+  $last_name?: string;
 }

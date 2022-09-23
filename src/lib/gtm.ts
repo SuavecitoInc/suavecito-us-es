@@ -1,8 +1,9 @@
 import {
+  IdentifyCustomerEventPayload,
   IdentifyCustomerGTMPayload,
-  ViewedProductGTMPayload,
-  RecentlyViewedProductGTMPayload,
-  AddToCartGTMPayload,
+  ViewedProductEventPayload,
+  RecentlyViewedProductEventPayload,
+  AddToCartEventPayload,
 } from '~/types/gtm';
 
 export const pageViewGTMEvent = () => {
@@ -10,9 +11,9 @@ export const pageViewGTMEvent = () => {
 };
 
 export const identifyCustomerGTMEvent = (
-  payload: IdentifyCustomerGTMPayload,
+  payload: IdentifyCustomerEventPayload,
 ) => {
-  const gtmPayload: any = {
+  const gtmPayload: IdentifyCustomerGTMPayload = {
     $email: payload.email,
   };
 
@@ -25,7 +26,7 @@ export const identifyCustomerGTMEvent = (
   });
 };
 
-export const viewedProductGTMEvent = (payload: ViewedProductGTMPayload) => {
+export const viewedProductGTMEvent = (payload: ViewedProductEventPayload) => {
   const gtmPayload = {
     Brand: payload.brand,
     CompareAtPrice: payload.compareAtPrice,
@@ -46,7 +47,9 @@ export const viewedProductGTMEvent = (payload: ViewedProductGTMPayload) => {
     currency: 'USD',
     items: [
       {
-        item_id: payload.productId,
+        item_id: payload.productId.substring(
+          payload.productId.lastIndexOf('/') + 1,
+        ),
         item_name: payload.name,
         currency: 'USD',
         item_brand: payload.vendor,
@@ -67,7 +70,7 @@ export const viewedProductGTMEvent = (payload: ViewedProductGTMPayload) => {
 };
 
 export const recentlyViewedProductGTMEvent = (
-  payload: RecentlyViewedProductGTMPayload,
+  payload: RecentlyViewedProductEventPayload,
 ) => {
   const gtmPayload = {
     Categories: payload.categories,
@@ -88,8 +91,7 @@ export const recentlyViewedProductGTMEvent = (
   });
 };
 
-// AddToCartGTMPayload
-export const addToCartGTMEvent = (payload: any) => {
+export const addToCartGTMEvent = (payload: AddToCartEventPayload) => {
   // get added to cart
   const id = payload.addedCartLines[0].merchandiseId;
   const found = payload.cart.lines.edges.find(
@@ -114,7 +116,9 @@ export const addToCartGTMEvent = (payload: any) => {
     value: found.node.merchandise.priceV2.amount,
     items: [
       {
-        item_id: found.node.merchandise.id,
+        item_id: found.node.merchandise.id.substring(
+          found.node.merchandise.id.lastIndexOf('/') + 1,
+        ),
         item_name: payload.title,
         item_brand: '',
         price: found.node.merchandise.priceV2.amount,
@@ -132,6 +136,47 @@ export const addToCartGTMEvent = (payload: any) => {
 
   window.dataLayer.push({
     event: 'add_to_cart_ga4',
+    ecommerce: gtmGA4Payload,
+  });
+};
+
+export const beginCheckoutGTMEvent = (payload: any) => {
+  const gtmPayload = {
+    total_price: payload.cart.cost.totalAmount.amount,
+    $value: payload.cart.cost.totalAmount.amount,
+    original_total_price: payload.cart.cost.subtotalAmount.amount,
+    items: payload.cart.lines,
+  };
+
+  window.dataLayer.push({
+    event: 'begin_checkout',
+    begin_checkout_payload: gtmPayload,
+  });
+
+  const gtmGA4Payload = {
+    currency: 'USD',
+    value: payload.cart.cost.totalAmount.amount,
+    items: payload.cart.lines.map((lineItem: any, index: number) => {
+      return {
+        item_id: lineItem.merchandise.id.substring(
+          lineItem.merchandise.id.lastIndexOf('/') + 1,
+        ),
+        item_name: lineItem.merchandise.product.title,
+        currency: 'USD',
+        index,
+        price: lineItem.merchandise.priceV2.amount,
+        quantity: lineItem.quantity,
+      };
+    }),
+  };
+
+  // clear the previous ecommerce object
+  window.dataLayer.push({
+    ecommerce: null,
+  });
+
+  window.dataLayer.push({
+    event: 'begin_checkout_ga4',
     ecommerce: gtmGA4Payload,
   });
 };
