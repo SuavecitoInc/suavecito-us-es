@@ -61,7 +61,7 @@ export const CollectionHeroData = [
   },
   {
     handle: 'combs-brushes-shaving-accessories',
-    title: 'Peines y Cepilos',
+    title: 'Peines y Cepillos',
     heroImage: {
       value: '',
       reference: {
