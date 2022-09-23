@@ -1,6 +1,7 @@
 import {useRef, useContext} from 'react';
 import {useScroll} from 'react-use';
 import {
+  ClientAnalytics,
   useCart,
   CartLineProvider,
   CartShopPayButton,
@@ -120,7 +121,18 @@ function CartCheckoutActions({
   amountToFreeGift: number;
   onClose?: () => void;
 }) {
-  const {checkoutUrl} = useCart();
+  const {checkoutUrl, cost, lines} = useCart();
+
+  const handleCheckout = () => {
+    // emit custom begin checkout event
+    ClientAnalytics.publish('CUSTOM_BEGIN_CHECKOUT', true, {
+      cart: {
+        cost,
+        lines,
+      },
+    });
+  };
+
   return (
     <>
       <div className="grid gap-4">
@@ -137,7 +149,7 @@ function CartCheckoutActions({
           </Button>
         ) : (
           <>
-            <Button to={checkoutUrl}>
+            <Button to={checkoutUrl} onClick={handleCheckout}>
               {cart_details.continue_to_checkout[lang]}
             </Button>
             <CartShopPayButton />

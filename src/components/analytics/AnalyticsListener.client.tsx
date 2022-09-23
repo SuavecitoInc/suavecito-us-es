@@ -7,6 +7,7 @@ import {
   pageViewGTMEvent,
   viewedProductGTMEvent,
   recentlyViewedProductGTMEvent,
+  beginCheckoutGTMEvent,
 } from '~/lib';
 
 let init = false;
@@ -48,6 +49,10 @@ export function AnalyticsListener() {
       // CUSTOM_RECENTLY_VIEWED_PRODUCT
       ClientAnalytics.subscribe('CUSTOM_RECENTLY_VIEWED_PRODUCT', (payload) => {
         recentlyViewedProductGTMEvent(payload);
+      });
+      // CUSTOM_BEGIN_CHECKOUT
+      ClientAnalytics.subscribe('CUSTOM_BEGIN_CHECKOUT', (payload) => {
+        beginCheckoutGTMEvent(payload);
       });
     }
   });

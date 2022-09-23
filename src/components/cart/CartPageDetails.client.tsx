@@ -1,6 +1,7 @@
 import {useRef} from 'react';
 import {useScroll} from 'react-use';
 import {
+  ClientAnalytics,
   useCart,
   CartLineProvider,
   CartShopPayButton,
@@ -47,7 +48,7 @@ export function CartPageDetails({
 
   if (lines.length === 0) {
     return (
-      <Section className="max-w-7xl mx-auto">
+      <Section className="mx-auto max-w-7xl">
         <CartEmpty onClose={onClose} layout={layout} />
       </Section>
     );
@@ -71,7 +72,7 @@ export function CartPageDetails({
   const freeGiftAvailable = freeGiftsInCart < freeGiftsEligible[currentTier];
 
   return (
-    <Section className="max-w-7xl mx-auto">
+    <Section className="mx-auto max-w-7xl">
       <form className={container[layout]}>
         <section
           ref={scrollRef}
@@ -110,15 +111,25 @@ function CartCheckoutActions({
   lang: 'EN' | 'ES';
   disableCheckout: boolean;
 }) {
-  const {checkoutUrl} = useCart();
+  const {checkoutUrl, cost, lines} = useCart();
   const localeCheckoutUrl = `${checkoutUrl}?locale=es`;
+
+  const handleCheckout = () => {
+    // emit custom begin checkout event
+    ClientAnalytics.publish('CUSTOM_BEGIN_CHECKOUT', true, {
+      cart: {
+        cost,
+        lines,
+      },
+    });
+  };
 
   return (
     <>
       <div className="grid gap-4">
         {!disableCheckout ? (
           <>
-            <Button to={localeCheckoutUrl}>
+            <Button to={localeCheckoutUrl} onClick={handleCheckout}>
               {cart_page.continue_to_checkout[lang]}
             </Button>
             <CartShopPayButton />
