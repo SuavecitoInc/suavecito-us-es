@@ -1,12 +1,7 @@
 import {useRef, useEffect, useState} from 'react';
 import {useWindowScroll} from 'react-use';
-import {
-  AddToCartButton,
-  Image,
-  Money,
-  useProductOptions,
-} from '@shopify/hydrogen';
-import {Button, Text} from '../index';
+import {Image, Money, useProductOptions} from '@shopify/hydrogen';
+import {AddToCartButton, Text} from '../index';
 
 export function ProductMobileSelection({
   productTitle,
@@ -55,7 +50,7 @@ export function ProductMobileSelection({
         />
       </div>
       <div className="w-[70%] p-2">
-        <div className="uppercase font-bold">{productTitle}</div>
+        <div className="font-bold uppercase">{productTitle}</div>
         <div>{selectedVariant?.title}</div>
         <div className="mb-4">
           {selectedVariant && (
@@ -85,23 +80,18 @@ export function ProductMobileSelection({
           quantity={1}
           accessibleAddingToCartLabel="Adding item to your cart"
           disabled={isOutOfStock}
+          className=""
+          width="full"
+          variant={isOutOfStock ? 'secondary' : theme}
+          as="span"
         >
-          <Button
-            width="full"
-            variant={isOutOfStock ? 'secondary' : theme}
-            as="span"
-          >
-            {isOutOfStock ? (
-              <Text>Sold out</Text>
-            ) : (
-              <Text
-                as="span"
-                className="flex items-center justify-center gap-2"
-              >
-                <span>ADD TO CART</span>
-              </Text>
-            )}
-          </Button>
+          {isOutOfStock ? (
+            <Text>Sold out</Text>
+          ) : (
+            <Text as="span" className="flex items-center justify-center gap-2">
+              <span>ADD TO CART</span>
+            </Text>
+          )}
         </AddToCartButton>
       </div>
     </div>

@@ -1,6 +1,7 @@
-import {useRef} from 'react';
+import {useRef, useContext} from 'react';
 import {useScroll} from 'react-use';
 import {
+  ClientAnalytics,
   useCart,
   CartLineProvider,
   CartShopPayButton,
@@ -9,13 +10,50 @@ import {
 
 import {Button, Text, CartLineItem, CartEmpty} from '~/components';
 
+const cart_details: {[key: string]: any} = {
+  subtotal: {
+    en: 'Subtotal',
+    es: 'Total Parcial',
+  },
+  continue_to_checkout: {
+    en: 'Continue to Checkout',
+    es: 'Continuar a la comprobación',
+  },
+  continue_to_cart: {
+    en: 'Continue to Cart',
+    es: 'Continuar con el carrito',
+  },
+  order_summary: {
+    en: 'Order Summary',
+    es: 'Resumen del pedido',
+  },
+  free_gift: {
+    first: {
+      en: 'You are',
+      es: '¡Estás a',
+    },
+    second: {
+      en: 'away from unlocking a FREE Gift!',
+      es: 'de obtener un regalo GRATIS!',
+    },
+  },
+};
+
 export function CartDetails({
   layout,
   onClose,
+  freeGiftEnabled,
+  disableCheckout,
+  amountToFreeGift,
 }: {
   layout: 'drawer' | 'page';
   onClose?: () => void;
+  freeGiftEnabled: boolean;
+  disableCheckout: boolean;
+  amountToFreeGift: number;
 }) {
+  const LANG = import.meta.env.PUBLIC_LANGUAGE_CODE;
+
   const {lines} = useCart();
   const scrollRef = useRef(null);
   const {y} = useScroll(scrollRef);
@@ -58,22 +96,65 @@ export function CartDetails({
       </section>
       <section aria-labelledby="summary-heading" className={summary[layout]}>
         <h2 id="summary-heading" className="sr-only">
-          Order summary
+          {cart_details.order_summary[LANG]}
         </h2>
         <OrderSummary />
-        <CartCheckoutActions />
+        <CartCheckoutActions
+          lang={LANG}
+          disableCheckout={freeGiftEnabled ? disableCheckout : false}
+          amountToFreeGift={freeGiftEnabled ? amountToFreeGift : 0}
+          onClose={onClose}
+        />
       </section>
     </form>
   );
 }
 
-function CartCheckoutActions() {
-  const {checkoutUrl} = useCart();
+function CartCheckoutActions({
+  lang,
+  disableCheckout,
+  amountToFreeGift,
+  onClose,
+}: {
+  lang: 'en' | 'es';
+  disableCheckout: boolean;
+  amountToFreeGift: number;
+  onClose?: () => void;
+}) {
+  const {checkoutUrl, cost, lines} = useCart();
+
+  const handleCheckout = () => {
+    // emit custom begin checkout event
+    ClientAnalytics.publish('CUSTOM_BEGIN_CHECKOUT', true, {
+      cart: {
+        cost,
+        lines,
+      },
+    });
+  };
+
   return (
     <>
       <div className="grid gap-4">
-        <Button to={checkoutUrl}>Continue to Checkout</Button>
-        <CartShopPayButton />
+        {amountToFreeGift > 0 ? (
+          <p className="text-center">
+            {cart_details.free_gift.first[lang]}{' '}
+            <span className="text-suave-red">${amountToFreeGift}</span>{' '}
+            {cart_details.free_gift.second[lang]}
+          </p>
+        ) : null}
+        {disableCheckout ? (
+          <Button to="/cart#fgwp" onClick={onClose && onClose}>
+            {cart_details.continue_to_cart[lang]}
+          </Button>
+        ) : (
+          <>
+            <Button to={checkoutUrl} onClick={handleCheckout}>
+              {cart_details.continue_to_checkout[lang]}
+            </Button>
+            <CartShopPayButton />
+          </>
+        )}
       </div>
     </>
   );

@@ -21,7 +21,7 @@ const PRODUCT_FILTER_QUERY: false | string = PRODUCT_FILTER_TAG
 
 export default function AllProducts() {
   return (
-    <Layout>
+    <Layout isProduct={true}>
       <Seo type="page" data={{title: 'All Products'}} />
       <PageHeader heading="All Products" variant="allCollections" />
       <Section>

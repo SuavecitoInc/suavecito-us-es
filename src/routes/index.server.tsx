@@ -58,7 +58,7 @@ function HomepageContent() {
       <FeaturedRowImageWithText {...featuredRowImageOneSettings} />
       <Divider width="half" />
       <BestSellers lang={LANG} />
-      <Banner {...bannerOneSettings} />
+      {/* <Banner {...bannerOneSettings} /> */}
       <FeaturedRowColumns {...featuredRowColumnsOneSettings} />
       <FeaturedRowImageWithText {...featuredRowImageTwoSettings} />
       <Banner {...bannerTwoSettings} />
@@ -74,7 +74,7 @@ function SeoForHomepage() {
     data: {
       shop: {title, description},
     },
-  } = useShopQuery({
+  }: any = useShopQuery({
     query: HOMEPAGE_SEO_QUERY,
     cache: CacheLong(),
     preload: true,

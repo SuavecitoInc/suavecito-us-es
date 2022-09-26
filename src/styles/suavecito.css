@@ -158,7 +158,8 @@ h6,
 
 /* dangerously set html */
 
-.metafield-features ul {
+.metafield-features ul,
+.metafield-html ul {
   list-style-type: disc;
   list-style-position: inside;
 }
@@ -355,4 +356,36 @@ h6,
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
+}
+
+@media screen and (max-width: 480px) {
+  .hide-small {
+    display: none;
+  }
+
+  .canada {
+    display: none;
+  }
+
+  .mexico {
+    display: none;
+  }
+  .announcement-bar__message {
+    font-size: 3.94vw;
+    white-space: nowrap;
+    text-align: center;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .collection-compare-table {
+    max-width: 90% !important;
+  }
+}
+
+@media screen and (min-width: 481px) and (max-width: 963px) {
+  .announcement-bar__message {
+    font-size: 1.64vw;
+    white-space: nowrap;
+  }
 }

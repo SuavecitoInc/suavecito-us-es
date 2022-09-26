@@ -1,4 +1,3 @@
-import {useContext} from 'react';
 import type {SetStateAction, Dispatch} from 'react';
 import {Image} from '@shopify/hydrogen';
 import {ImLock, ImUnlocked} from 'react-icons/im';
@@ -85,12 +84,12 @@ export function CartFreeGiftWithPurchase() {
   const freeGiftAvailable = freeGiftsInCart < freeGiftsEligible[currentTier];
 
   return (
-    <Section className="fgwp bg-[#ccc] py-[35px]">
+    <Section id="fgwp" className="fgwp bg-[#ccc] py-[35px]">
       <Heading
         format
         as="h3"
         size="heading"
-        className="text-center w-full max-w-full"
+        className="w-full max-w-full text-center"
       >
         {fgwp_locale.title[LANG]}
       </Heading>
@@ -104,7 +103,7 @@ export function CartFreeGiftWithPurchase() {
         </p>
         <p className="text-center">{fgwp_locale.select_your_gift[LANG]}:</p>
       </div>
-      <section className="cards max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-4">
+      <section className="grid grid-cols-1 gap-4 mx-auto cards max-w-7xl lg:grid-cols-3">
         <TierCard
           lang={LANG}
           products={tier1Products}
@@ -191,7 +190,7 @@ function ProductCard({
           className="object-cover object-center w-24 h-24 rounded md:w-28 md:h-28"
         />
         {displayTitle && (
-          <p className="uppercase font-bold text-suave-red">{product.title}</p>
+          <p className="font-bold uppercase text-suave-red">{product.title}</p>
         )}
 
         <input
@@ -244,12 +243,12 @@ function AddGiftButton({
         disabled={tierDisabled}
         variant={tierDisabled ? 'secondary' : 'suavecito'}
         onClick={() => addFreeGiftToCart(tier)}
-        className="w-1/2 lg:w-full text-center"
+        className="w-full text-center md:w-1/2 lg:w-full"
       >
         {!tierDisabled ? (
           fgwp_locale.buttons.add[lang]
         ) : (
-          <ImLock className="h-5 w-5 mx-auto text-center" />
+          <ImLock className="w-5 h-5 mx-auto text-center" />
         )}
       </Button>
     </>
@@ -281,17 +280,17 @@ function TierCard({
 }) {
   return (
     <div className={`relative ${tierDisabled ? 'opacity-30' : 'opacity-100'}`}>
-      <div className="absolute top-2 left-2 z-10">
+      <div className="absolute z-10 top-2 left-2">
         {tierDisabled ? (
-          <ImLock className="h-5 w-5" />
+          <ImLock className="w-5 h-5" />
         ) : (
-          <ImUnlocked className="h-5 w-5 opacity-25" />
+          <ImUnlocked className="w-5 h-5 opacity-25" />
         )}
       </div>
-      <div className="flex flex-col gap-4 h-full">
-        <div className="flex justify-center items-center border border-black rounded-lg p-4 grow shrink basis-auto bg-white">
+      <div className="flex flex-col h-full gap-4">
+        <div className="flex items-center justify-center p-4 bg-white border border-black rounded-lg grow shrink basis-auto">
           <div className="grid grid-cols-3 gap-4">
-            <div className="flex justify-center items-center">
+            <div className="flex items-center justify-center">
               <ProductCard
                 product={products[0]}
                 inputName={`tier-${tier}`}
@@ -300,10 +299,10 @@ function TierCard({
                 tierDisabled={tierDisabled}
               />
             </div>
-            <div className="flex justify-center items-center">
-              <p className="uppercase font-bold">- {fgwp_locale.or[lang]} -</p>
+            <div className="flex items-center justify-center">
+              <p className="font-bold uppercase">- {fgwp_locale.or[lang]} -</p>
             </div>
-            <div className="flex justify-center items-center">
+            <div className="flex items-center justify-center">
               <ProductCard
                 product={products[1]}
                 inputName={`tier-${tier}`}
@@ -360,17 +359,17 @@ function Tier3Card({
 }) {
   return (
     <div className={`relative ${tierDisabled ? 'opacity-30' : 'opacity-100'}`}>
-      <div className="absolute top-2 left-2 z-10">
+      <div className="absolute z-10 top-2 left-2">
         {tierDisabled ? (
-          <ImLock className="h-5 w-5" />
+          <ImLock className="w-5 h-5" />
         ) : (
-          <ImUnlocked className="h-5 w-5 opacity-25" />
+          <ImUnlocked className="w-5 h-5 opacity-25" />
         )}
       </div>
-      <div className="flex flex-col gap-4 h-full">
-        <div className="flex justify-center items-center border border-black rounded-lg p-4 grow shrink basis-auto bg-white">
+      <div className="flex flex-col h-full gap-4">
+        <div className="flex items-center justify-center p-4 bg-white border border-black rounded-lg grow shrink basis-auto">
           <div className="grid grid-cols-3 gap-4">
-            <div className="flex justify-center items-center">
+            <div className="flex items-center justify-center">
               <ProductCard
                 product={products[0]}
                 inputName={`tier-${tier}-1`}
@@ -380,10 +379,10 @@ function Tier3Card({
                 displayTitle={false}
               />
             </div>
-            <div className="flex justify-center items-center">
-              <p className="uppercase font-bold">- {fgwp_locale.or[lang]} -</p>
+            <div className="flex items-center justify-center">
+              <p className="font-bold uppercase">- {fgwp_locale.or[lang]} -</p>
             </div>
-            <div className="flex justify-center items-center">
+            <div className="flex items-center justify-center">
               <ProductCard
                 product={products[1]}
                 inputName={`tier-${tier}-1`}
@@ -394,7 +393,7 @@ function Tier3Card({
               />
             </div>
 
-            <div className="flex justify-center items-center">
+            <div className="flex items-center justify-center">
               <ProductCard
                 product={products[2]}
                 inputName={`tier-${tier}-2`}
@@ -404,10 +403,10 @@ function Tier3Card({
                 displayTitle={false}
               />
             </div>
-            <div className="flex justify-center items-center">
-              <p className="uppercase font-bold">- {fgwp_locale.or[lang]} -</p>
+            <div className="flex items-center justify-center">
+              <p className="font-bold uppercase">- {fgwp_locale.or[lang]} -</p>
             </div>
-            <div className="flex justify-center items-center">
+            <div className="flex items-center justify-center">
               <ProductCard
                 product={products[3]}
                 inputName={`tier-${tier}-2`}

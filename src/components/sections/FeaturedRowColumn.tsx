@@ -2,6 +2,7 @@ import {Image} from '@shopify/hydrogen';
 import type {Media} from '@shopify/hydrogen/storefront-api-types';
 
 import {Heading, Text, Button} from '~/components';
+import {BrandTheme} from '~/types/suavecito';
 
 interface Metafield {
   value: string;
@@ -15,6 +16,7 @@ export function FeaturedRowColumn({
   ctaLink,
   featuredImage,
   loading,
+  theme = 'suavecito',
 }: {
   heading: Metafield;
   subText: Metafield;
@@ -22,6 +24,7 @@ export function FeaturedRowColumn({
   ctaLink: string;
   featuredImage: Metafield;
   loading?: 'eager' | 'lazy';
+  theme?: BrandTheme;
 }) {
   return (
     <article className="featured-row-image-with-text my-[25px] md:my-0">
@@ -61,7 +64,12 @@ export function FeaturedRowColumn({
             </Text>
           )}
           {cta?.value && (
-            <Button size="lead" to={ctaLink} className="uppercase">
+            <Button
+              size="lead"
+              to={ctaLink}
+              className="uppercase"
+              variant={theme}
+            >
               {cta.value}
             </Button>
           )}

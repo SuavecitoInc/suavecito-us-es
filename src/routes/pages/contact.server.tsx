@@ -63,7 +63,7 @@ export default function Page({
   const {handle} = params;
   const {
     data: {page},
-  } = useShopQuery({
+  }: any = useShopQuery({
     query: PAGE_QUERY,
     variables: {languageCode, handle},
   });
@@ -80,7 +80,7 @@ export default function Page({
   });
 
   const styles = {
-    flex: 'flex gap-10 flex-col md:flex-row',
+    flex: 'flex gap-10 flex-col lg:flex-row',
     flexChild: 'flex-1',
     card: 'shadow-lg rounded p-[24px]',
     leftSide: 'flex flex-col gap-10',
@@ -130,7 +130,7 @@ export default function Page({
                   714.831.1419
                 </Text>
                 <Text className={styles.textMarginBottom} as={'p'}>
-                  2830 W 1st St, Santa Ana, CA 92703
+                  2831 W 1st St, Santa Ana, CA 92703
                 </Text>
                 <Text
                   as={'p'}

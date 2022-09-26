@@ -1,8 +1,10 @@
 import {Suspense, useMemo} from 'react';
 import {gql, useShopQuery, CacheLong} from '@shopify/hydrogen';
-import {PRODUCT_CARD_FRAGMENT} from '~/lib/fragments';
-import {ProductGridItem, Section} from '~/components';
+import {PRODUCT_CARD_FRAGMENT, MEDIA_FRAGMENT} from '~/lib/fragments';
+import {COLLECTION_PRODUCT_FRAGMENT} from '~/lib/suavecito-fragments';
+import {ProductGridItem, Section, ProductColorSwatches} from '~/components';
 import type {Product} from '@shopify/hydrogen/storefront-api-types';
+import {BrandTheme} from '~/types/suavecito';
 
 const best_sellers: {[key: string]: any} = {
   title: {
@@ -15,17 +17,15 @@ export function BestSellers({
   lang = 'en',
   title = 'Best Sellers',
   count = 4,
+  theme = 'suavecito',
   ...props
+}: {
+  theme?: BrandTheme;
+  lang?: 'en' | 'es';
+  title?: string;
+  count?: number;
 }) {
   title = best_sellers.title[lang];
-
-  const bestSellersMarkup = useMemo(() => {
-    return (
-      <Suspense>
-        <BestSellerProducts count={count} />
-      </Suspense>
-    );
-  }, [count]);
 
   return (
     <Section padding="y" {...props}>
@@ -33,47 +33,80 @@ export function BestSellers({
         {title}
       </h3>
       <div className="page-width grid grid-cols-2 gap-4 md:grid-cols-4">
-        {bestSellersMarkup}
+        <BestSellerProducts count={count} theme={theme} />
       </div>
     </Section>
   );
 }
 
-function ProductGrid({products}: {products: Product[]}) {
+function ProductGrid({
+  products,
+  theme = 'suavecito',
+}: {
+  products: Product[];
+  theme?: BrandTheme;
+}) {
   return (
     <>
       {products.map((product) => (
-        <ProductGridItem product={product} key={product.id} className="" />
+        <div key={product.id}>
+          <ProductGridItem product={product} theme={theme} />
+          {/* @ts-ignore */}
+          {product.variants.nodes[0].variantColorImage && (
+            <ProductColorSwatches product={product} />
+          )}
+        </div>
       ))}
     </>
   );
 }
 
-function BestSellerProducts({count}: {count: number}) {
-  const {
-    data: {products},
-  } = useShopQuery({
+function BestSellerProducts({
+  count,
+  theme = 'suavecito',
+}: {
+  count: number;
+  theme?: BrandTheme;
+}) {
+  const handle = theme === 'suavecita' ? 'best-sellers-cita' : 'best-sellers';
+  const {data}: any = useShopQuery({
     query: BEST_SELLERS_QUERY,
     variables: {
       count,
+      handle,
     },
     cache: CacheLong(),
     preload: true,
   });
 
-  return <ProductGrid products={products.nodes} />;
+  return (
+    <ProductGrid products={data.collection.products.nodes} theme={theme} />
+  );
 }
 
 const BEST_SELLERS_QUERY = gql`
-  ${PRODUCT_CARD_FRAGMENT}
+  ${COLLECTION_PRODUCT_FRAGMENT}
+  ${MEDIA_FRAGMENT}
   query bestSellers(
     $count: Int
     $countryCode: CountryCode
     $languageCode: LanguageCode
+    $handle: String
   ) @inContext(country: $countryCode, language: $languageCode) {
-    products(first: $count, sortKey: BEST_SELLING) {
-      nodes {
-        ...ProductCard
+    collection(handle: $handle) {
+      products(
+        first: $count
+        filters: {
+          productMetafield: {
+            namespace: "suave"
+            key: "hydrogen_es_enabled"
+            value: "true"
+          }
+        }
+      ) {
+        nodes {
+          ...CollectionProduct
+        }
       }
     }
   }

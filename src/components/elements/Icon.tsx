@@ -32,7 +32,6 @@ function Icon({
 export function AccountIcon(props: IconProps) {
   return (
     <Icon {...props}>
-      <title>Accounts</title>
       <circle cx="20" cy="10.5" r="4.5" strokeWidth="2" />
       <path
         d="M20 19C13.4375 19 9.5 20.2857 9.5 28H30.5C30.5 20.2857 26.5625 19 20 19Z"
@@ -48,7 +47,6 @@ export function IconMenu({theme = 'suavecito', ...props}: IconProps) {
   };
   return (
     <Icon {...props} className={`${styles.fill}`} viewBox="0 0 37 40">
-      <title>Menu</title>
       <path d="M33.5 25h-30c-1.1 0-2-.9-2-2s.9-2 2-2h30c1.1 0 2 .9 2 2s-.9 2-2 2zm0-11.5h-30c-1.1 0-2-.9-2-2s.9-2 2-2h30c1.1 0 2 .9 2 2s-.9 2-2 2zm0 23h-30c-1.1 0-2-.9-2-2s.9-2 2-2h30c1.1 0 2 .9 2 2s-.9 2-2 2z" />
     </Icon>
   );
@@ -57,7 +55,6 @@ export function IconMenu({theme = 'suavecito', ...props}: IconProps) {
 export function IconClose(props: IconProps) {
   return (
     <Icon {...props} stroke={props.stroke || 'currentColor'}>
-      <title>Close</title>
       <line
         x1="4.44194"
         y1="4.30806"
@@ -109,7 +106,6 @@ export function IconArrow({
   };
   return (
     <Icon {...props} className={`${rotate} ${styles.fill}`} viewBox="0 0 9 9">
-      <title>Arrow</title>
       <path d="M8.542 2.558a.625.625 0 0 1 0 .884l-3.6 3.6a.626.626 0 0 1-.884 0l-3.6-3.6a.625.625 0 1 1 .884-.884L4.5 5.716l3.158-3.158a.625.625 0 0 1 .884 0z" />
     </Icon>
   );
@@ -171,7 +167,6 @@ export function IconBag({
   };
   return (
     <Icon {...props} viewBox="0 0 37 40" className={styles.fill}>
-      <title>Bag</title>
       <path d="M36.5 34.8L33.3 8h-5.9C26.7 3.9 23 .8 18.5.8S10.3 3.9 9.6 8H3.7L.5 34.8c-.2 1.5.4 2.4.9 3 .5.5 1.4 1.2 3.1 1.2h28c1.3 0 2.4-.4 3.1-1.3.7-.7 1-1.8.9-2.9zm-18-30c2.2 0 4.1 1.4 4.7 3.2h-9.5c.7-1.9 2.6-3.2 4.8-3.2zM4.5 35l2.8-23h2.2v3c0 1.1.9 2 2 2s2-.9 2-2v-3h10v3c0 1.1.9 2 2 2s2-.9 2-2v-3h2.2l2.8 23h-28z" />
     </Icon>
   );
@@ -186,7 +181,6 @@ export function IconAccount({
   };
   return (
     <Icon {...props} viewBox="0 0 28.33 37.68" className={styles.fill}>
-      <title>Account</title>
       <path d="M14.17 14.9a7.45 7.45 0 1 0-7.5-7.45 7.46 7.46 0 0 0 7.5 7.45zm0-10.91a3.45 3.45 0 1 1-3.5 3.46A3.46 3.46 0 0 1 14.17 4zM14.17 16.47A14.18 14.18 0 0 0 0 30.68c0 1.41.66 4 5.11 5.66a27.17 27.17 0 0 0 9.06 1.34c6.54 0 14.17-1.84 14.17-7a14.18 14.18 0 0 0-14.17-14.21zm0 17.21c-6.3 0-10.17-1.77-10.17-3a10.17 10.17 0 1 1 20.33 0c.01 1.23-3.86 3-10.16 3z" />
     </Icon>
   );
@@ -195,7 +189,6 @@ export function IconAccount({
 export function IconHelp(props: IconProps) {
   return (
     <Icon {...props}>
-      <title>Help</title>
       <path d="M3.375 10a6.625 6.625 0 1 1 13.25 0 6.625 6.625 0 0 1-13.25 0ZM10 2.125a7.875 7.875 0 1 0 0 15.75 7.875 7.875 0 0 0 0-15.75Zm.699 10.507H9.236V14h1.463v-1.368ZM7.675 7.576A3.256 3.256 0 0 0 7.5 8.67h1.245c0-.496.105-.89.316-1.182.218-.299.553-.448 1.005-.448a1 1 0 0 1 .327.065c.124.044.24.113.35.208.108.095.2.223.272.383.08.154.12.34.12.558a1.3 1.3 0 0 1-.076.471c-.044.131-.11.252-.197.361-.08.102-.174.197-.283.285-.102.087-.212.182-.328.284a3.157 3.157 0 0 0-.382.383c-.102.124-.19.27-.262.438a2.476 2.476 0 0 0-.164.591 6.333 6.333 0 0 0-.043.81h1.179c0-.263.021-.485.065-.668a1.65 1.65 0 0 1 .207-.47c.088-.139.19-.263.306-.372.117-.11.244-.223.382-.34l.35-.306c.116-.11.218-.23.305-.361.095-.139.168-.3.219-.482.058-.19.087-.412.087-.667 0-.35-.062-.664-.186-.942a1.881 1.881 0 0 0-.513-.689 2.07 2.07 0 0 0-.753-.427A2.721 2.721 0 0 0 10.12 6c-.4 0-.764.066-1.092.197a2.36 2.36 0 0 0-.83.536c-.225.234-.4.515-.523.843Z" />
     </Icon>
   );
@@ -210,7 +203,6 @@ export function IconSearch({
   };
   return (
     <Icon {...props} viewBox="0 0 37 40" className={styles.fill}>
-      <title>Search</title>
       <path d="M35.6 36l-9.8-9.8c4.1-5.4 3.6-13.2-1.3-18.1-5.4-5.4-14.2-5.4-19.7 0-5.4 5.4-5.4 14.2 0 19.7 2.6 2.6 6.1 4.1 9.8 4.1 3 0 5.9-1 8.3-2.8l9.8 9.8c.4.4.9.6 1.4.6s1-.2 1.4-.6c.9-.9.9-2.1.1-2.9zm-20.9-8.2c-2.6 0-5.1-1-7-2.9-3.9-3.9-3.9-10.1 0-14C9.6 9 12.2 8 14.7 8s5.1 1 7 2.9c3.9 3.9 3.9 10.1 0 14-1.9 1.9-4.4 2.9-7 2.9z" />
     </Icon>
   );
@@ -222,7 +214,6 @@ export function IconCheck({
 }: React.ComponentProps<typeof Icon>) {
   return (
     <Icon {...props} fill="transparent" stroke={stroke}>
-      <title>Check</title>
       <circle cx="10" cy="10" r="7.25" strokeWidth="1.25" />
       <path
         strokeLinecap="round"
@@ -237,7 +228,6 @@ export function IconCheck({
 export function IconRemove(props: IconProps) {
   return (
     <Icon {...props} fill="transparent" stroke={props.stroke || 'currentColor'}>
-      <title>Remove</title>
       <path
         d="M4 6H16"
         strokeWidth="1.25"
@@ -266,7 +256,6 @@ export function IconAccessibility({theme = 'suavecito', ...props}: IconProps) {
   };
   return (
     <Icon viewBox="0 0 576 576" {...props} className={styles.fill}>
-      <title>Accessibility</title>
       <g>
         <g>
           <path
@@ -304,7 +293,6 @@ export function IconFacebook({theme = 'suavecito', ...props}: IconProps) {
   };
   return (
     <Icon viewBox="0 0 54 54" {...props}>
-      <title>Facebook</title>
       <g id="Layer_2" data-name="Layer 2">
         <g id="Facebook">
           <circle cx="27" cy="27" r="27" className={styles.fillOutline} />
@@ -325,7 +313,6 @@ export function IconTwitter({theme = 'suavecito', ...props}: IconProps) {
   };
   return (
     <Icon viewBox="0 0 54 54" {...props}>
-      <title>Twitter</title>
       <g id="Layer_2" data-name="Layer 2">
         <g id="Twitter">
           <circle cx="27" cy="27" r="27" className={styles.fillOutline} />
@@ -346,7 +333,6 @@ export function IconInstagram({theme = 'suavecito', ...props}: IconProps) {
   };
   return (
     <Icon viewBox="0 0 54 54" {...props}>
-      <title>Instagram</title>
       <g id="Layer_2" data-name="Layer 2">
         <g id="Instagram">
           <circle cx="27" cy="27" r="27" className={styles.fillOutline} />
@@ -367,7 +353,6 @@ export function IconTiktok({theme = 'suavecito', ...props}: IconProps) {
   };
   return (
     <Icon viewBox="0 0 54 54" {...props}>
-      <title>Tiktok</title>
       <g id="Layer_2" data-name="Layer 2">
         <g id="TikTok">
           <circle cx="27" cy="27" r="27" className={styles.fillOutline} />
@@ -388,7 +373,6 @@ export function IconYoutube({theme = 'suavecito', ...props}: IconProps) {
   };
   return (
     <Icon viewBox="0 0 54 54" {...props}>
-      <title>YouTube</title>
       <g id="Layer_2" data-name="Layer 2">
         <g id="YouTube">
           <circle cx="27" cy="27" r="27" className={styles.fillOutline} />
@@ -432,7 +416,6 @@ export function IconFooterAccessibility({
   };
   return (
     <Icon viewBox="0 0 77.58 77.58" {...props}>
-      <title>Accessibility</title>
       <g id="Layer_2" data-name="Layer 2">
         <g id="accessability">
           <path
@@ -454,7 +437,6 @@ export function IconFooterAccessibility({
 export function IconLock({...props}: IconProps) {
   return (
     <Icon viewBox="0 0 77.58 77.58" {...props}>
-      <title>Lock</title>
       <g id="Layer_2" data-name="Layer 2">
         <path
           fill="#000"

@@ -30,6 +30,7 @@ Disallow: /checkouts/
 Disallow: /checkout
 Disallow: /carts
 Disallow: /account
+Disallow: *
 ${sitemapUrl ? `Sitemap: ${sitemapUrl}` : ''}
 
 # Google adsbot ignores robots.txt unless specifically named!
@@ -38,8 +39,10 @@ Disallow: /checkouts/
 Disallow: /checkout
 Disallow: /carts
 Disallow: /orders
+Disallow: *
 
 User-agent: Pinterest
+Disallow: *
 Crawl-delay: 1
 `.trim();
 }

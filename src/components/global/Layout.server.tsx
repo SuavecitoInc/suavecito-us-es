@@ -9,7 +9,11 @@ import {
 import type {Menu, Shop} from '@shopify/hydrogen/storefront-api-types';
 
 import {Header} from '~/components';
-import {Footer} from '~/components/index.server';
+import {
+  Footer,
+  AnnouncementBanner,
+  ProductBanner,
+} from '~/components/index.server';
 import {parseMenu} from '~/lib/utils';
 
 const HEADER_MENU_HANDLE = 'hydrogen-es-header';
@@ -29,14 +33,17 @@ export function Layout({
   theme = 'suavecito',
   showTopPadding = true,
   backgroundColorClass = 'bg-transparent',
+  isProduct = false,
 }: {
   children: React.ReactNode;
   theme?: BrandTheme;
   showTopPadding?: boolean;
   backgroundColorClass?: string;
+  isProduct?: boolean;
 }) {
   const {pathname} = useUrl();
   const isHome = pathname === '/';
+  const LANG = import.meta.env.PUBLIC_LANGUAGE_CODE;
 
   return (
     <div className={`${theme === 'premium blends' ? 'bg-black' : 'bg-white'}`}>
@@ -47,6 +54,13 @@ export function Layout({
           </a>
         </div>
         <Suspense fallback={<Header title={SHOP_NAME_FALLBACK} />}>
+          {isHome ? (
+            <AnnouncementBanner lang={LANG} />
+          ) : isProduct ? (
+            <ProductBanner lang={LANG} />
+          ) : (
+            <></>
+          )}
           <HeaderWithMenu theme={theme} />
         </Suspense>
         <main

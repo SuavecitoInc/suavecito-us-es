@@ -2,6 +2,13 @@ interface Metafield {
   value: string;
   reference?: object;
 }
+type BrandTheme =
+  | 'suavecito'
+  | 'suavecita'
+  | 'premium blends'
+  | 'firme club'
+  | 'cerveza cito'
+  | 'tres noir';
 
 export interface ResponsiveBannerSectionData {
   heading: Metafield;
@@ -76,6 +83,7 @@ export interface ResponsiveBannerSectionData {
 }
 
 export interface FeaturedRowImageSectionData {
+  theme?: BrandTheme;
   heading: Metafield;
   subText: Metafield;
   cta: Metafield;

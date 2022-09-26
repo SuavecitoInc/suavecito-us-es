@@ -74,5 +74,8 @@ const COLLECTION_QUERY = gql`
     collectionSection5: collection(handle: "hair-care") {
       ...FilteredCollectionWithMetafield
     }
+    collectionSection6: collection(handle: "grow-it") {
+      ...FilteredCollectionWithMetafield
+    }
   }
 `;

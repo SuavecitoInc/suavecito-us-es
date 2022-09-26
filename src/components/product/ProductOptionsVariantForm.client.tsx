@@ -4,7 +4,6 @@ import {
   useProductOptions,
   isBrowser,
   useUrl,
-  AddToCartButton,
   Money,
   OptionWithValues,
   ShopPayButton,
@@ -17,10 +16,10 @@ import {
 import {
   Heading,
   Text,
-  Button,
   ProductOptions,
   ProductColorOptions,
   Badge,
+  AddToCartButton,
 } from '~/components';
 import type {ProductVariant} from '@shopify/hydrogen/storefront-api-types';
 import type {BrandTheme} from '~/types/suavecito';
@@ -302,7 +301,7 @@ export function ProductOptionsVariantForm({
                       >
                         {localeName}
                       </Heading>
-                      <div className="grid grid-cols-4 md:grid-cols-3 lg:grid-cols-4 auto-rows-max items-center justify-center gap-4">
+                      <div className="grid items-center justify-center grid-cols-4 gap-4 md:grid-cols-3 lg:grid-cols-4 auto-rows-max">
                         <ProductOptions
                           theme={theme}
                           name={name}
@@ -339,7 +338,7 @@ export function ProductOptionsVariantForm({
                     >
                       {localeName}
                     </Heading>
-                    <div className="grid grid-cols-4 md:grid-cols-3 lg:grid-cols-4 auto-rows-max items-center justify-center gap-4">
+                    <div className="grid items-center justify-center grid-cols-4 gap-4 md:grid-cols-3 lg:grid-cols-4 auto-rows-max">
                       <ProductOptions
                         theme={theme}
                         name={name}
@@ -413,26 +412,19 @@ export function ProductOptionsVariantForm({
           accessibleAddingToCartLabel="Adding item to your cart"
           disabled={isOutOfStock}
           className={`${showQuantitySelector ? 'col-span-2' : ''}`}
+          width="full"
+          variant={isOutOfStock ? secondary : theme}
+          as="span"
         >
-          <Button
-            width="full"
-            variant={isOutOfStock ? secondary : theme}
-            as="span"
-          >
-            {isOutOfStock ? (
-              <Text>{product_form.soldOut[lang]}</Text>
-            ) : (
-              <Text
-                as="span"
-                className="flex items-center justify-center gap-2"
-              >
-                <span className="uppercase">
-                  {product_form.addToCart[lang]}
-                </span>
-              </Text>
-            )}
-          </Button>
+          {isOutOfStock ? (
+            <Text>{product_form.soldOut[lang]}</Text>
+          ) : (
+            <Text as="span" className="flex items-center justify-center gap-2">
+              <span className="uppercase">{product_form.addToCart[lang]}</span>
+            </Text>
+          )}
         </AddToCartButton>
+
         {/* {!isOutOfStock && <ShopPayButton variantIds={[selectedVariant.id!]} />} */}
       </div>
     </form>
@@ -467,7 +459,7 @@ function ColorOptions({
         {/* @ts-ignore */}
         {localeName}: {selectedOptions[name]}
       </Heading>
-      <div className="grid grid-cols-4 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 auto-rows-max items-center justify-center gap-4">
+      <div className="grid items-center justify-center grid-cols-4 gap-4 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 auto-rows-max">
         <ProductColorOptions
           name={name}
           handleChange={handleChange}

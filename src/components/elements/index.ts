@@ -9,3 +9,6 @@ export {Skeleton} from './Skeleton';
 export {Text} from './Text';
 export {Divider} from './Divider';
 export {Badge} from './Badge';
+export {ImageMedia} from './ImageMedia';
+export {AddToCartButton} from './AddToCartButton';
+export {Spinner} from './Spinner';

@@ -137,10 +137,11 @@ function MobileHeader({
         </Link>
 
         <div className="flex items-center justify-end w-full gap-2 pr-[13px]">
-          <Link to={'/account'} className={styles.button}>
+          {/* Hide until accessibility settings are built */}
+          {/* <Link to={'/account'} className={styles.button}>
             <IconAccessibility theme={themeName} />
-          </Link>
-          <Link to={'/account'} className={styles.button}>
+          </Link> */}
+          <Link to={'/search'} className={styles.button}>
             <IconSearch theme={themeName} />
           </Link>
           <Link to={'/account'} className={styles.button}>
@@ -298,9 +299,10 @@ function DesktopHeader({
         })}
       </nav>
       <div className="flex items-center gap-2">
-        <Link to={'/account'} className={styles.button}>
+        {/* Hide until accessibility settings are built */}
+        {/* <Link to={'/account'} className={styles.button}>
           <IconAccessibility theme={themeName} />
-        </Link>
+        </Link> */}
         <Link to={'/search'} className={styles.button}>
           <IconSearch theme={themeName} />
         </Link>

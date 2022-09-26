@@ -15,7 +15,7 @@ export function DefaultSeo() {
     data: {
       shop: {name, description},
     },
-  } = useShopQuery({
+  }: any = useShopQuery({
     query: SHOP_QUERY,
     cache: CacheLong(),
     preload: '*',
@@ -38,6 +38,7 @@ export function DefaultSeo() {
       />
       <Head>
         <link rel="canonical" href={canonicalURL} />
+        <meta name="robots" content="noindex, nofollow"></meta>
       </Head>
     </>
   );

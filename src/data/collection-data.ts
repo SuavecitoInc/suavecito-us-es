@@ -9,7 +9,7 @@ export const CollectionHeroData = [
       value: '',
       reference: {
         mediaContentType: 'IMAGE',
-        alt: 'Mens',
+        alt: 'Cabello de Hombre',
         previewImage: {
           url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/suavecito-mens-hair-banner.jpg?v=1632786259',
         },
@@ -28,7 +28,7 @@ export const CollectionHeroData = [
       value: '',
       reference: {
         mediaContentType: 'IMAGE',
-        alt: 'Mens',
+        alt: 'Barba y Afeitado',
         previewImage: {
           url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/suavecito-beard-collection-banner.jpg?v=1632786238',
         },
@@ -47,7 +47,7 @@ export const CollectionHeroData = [
       value: '',
       reference: {
         mediaContentType: 'IMAGE',
-        alt: 'Mens',
+        alt: 'Cuerpo',
         previewImage: {
           url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/suavecito-body-banner.jpg?v=1632786178',
         },
@@ -61,12 +61,12 @@ export const CollectionHeroData = [
   },
   {
     handle: 'combs-brushes-shaving-accessories',
-    title: 'Peines y Cepilos',
+    title: 'Peines y Cepillos',
     heroImage: {
       value: '',
       reference: {
         mediaContentType: 'IMAGE',
-        alt: 'Mens',
+        alt: 'Peines y Cepillos',
         previewImage: {
           url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/suavecito-combs-brushes-banner.jpg?v=1633035976',
         },
@@ -199,12 +199,31 @@ export const CollectionHeroData = [
       value: '',
       reference: {
         mediaContentType: 'IMAGE',
-        alt: 'Mens',
+        alt: 'Colaboraciones',
         previewImage: {
           url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/suavecito-collaborations-banner.jpg?v=1634045112',
         },
         image: {
           url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/suavecito-collaborations-banner.jpg?v=1634045112',
+          width: heroWidth,
+          height: heroHeight,
+        },
+      },
+    },
+  },
+  {
+    handle: 'premium-blends',
+    title: 'Premium Blends',
+    heroImage: {
+      value: '',
+      reference: {
+        mediaContentType: 'IMAGE',
+        alt: 'Premium Blends',
+        previewImage: {
+          url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/premium-blends-hair-pomade.jpg?v=1616169016',
+        },
+        image: {
+          url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/premium-blends-hair-pomade.jpg?v=1616169016',
           width: heroWidth,
           height: heroHeight,
         },

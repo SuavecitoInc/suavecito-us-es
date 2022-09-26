@@ -32,6 +32,7 @@ import {
   ProductMetafieldImages,
   Section,
   Text,
+  ProductViewEvent,
 } from '~/components';
 import {useGetInitialVariant} from '~/hooks';
 
@@ -49,7 +50,7 @@ export function ProductMetafieldPomadeTemplate({handle}: {handle: string}) {
 
   const {
     data: {product, shop},
-  } = useShopQuery({
+  }: any = useShopQuery({
     query: PRODUCT_QUERY,
     variables: {
       country: countryCode,
@@ -137,23 +138,28 @@ export function ProductMetafieldPomadeTemplate({handle}: {handle: string}) {
     howItLooksImage8,
   };
 
+  const viewedProduct = {
+    vendor: product.vendor,
+    title: product.title,
+    handle: product.handle,
+    type: product.productType,
+    collections: product.collections.nodes.map(
+      (el: {title: string}) => el.title,
+    ),
+  };
+
   return (
-    <Layout>
+    <Layout isProduct={true}>
       <Suspense>
         <Seo type="product" data={product} />
       </Suspense>
       <div className="page-width">
-        <ProductOptionsProvider
-          data={product}
-          initialVariantId={id}
-          // initialVariantId={
-          //   initialVariant
-          //     ? `gid://shopify/ProductVariant/${initialVariant}`
-          //     : undefined
-          // }
-        >
+        <ProductOptionsProvider data={product} initialVariantId={id}>
+          <Suspense>
+            <ProductViewEvent viewedProduct={viewedProduct} />
+          </Suspense>
           <Section padding="x" className="px-0">
-            <div className="flex flex-col md:flex-row gap-10">
+            <div className="flex flex-col gap-10 md:flex-row">
               <Suspense>
                 <ProductMetafieldImages className="flex-1" />
               </Suspense>
@@ -235,6 +241,13 @@ const PRODUCT_QUERY = gql`
           altText
           width
           height
+        }
+      }
+      handle
+      productType
+      collections(first: 10) {
+        nodes {
+          title
         }
       }
       tags

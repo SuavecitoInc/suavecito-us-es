@@ -34,6 +34,7 @@ import {
   ProductSectionGetInspired,
   Section,
   Text,
+  ProductViewEvent,
 } from '~/components';
 import {getColorOptions} from '~/lib/helpers';
 import {useGetInitialVariant} from '~/hooks';
@@ -56,7 +57,7 @@ export function ProductMetafieldColorsGetInspiredTemplate({
 
   const {
     data: {product, shop},
-  } = useShopQuery({
+  }: any = useShopQuery({
     query: PRODUCT_QUERY,
     variables: {
       country: countryCode,
@@ -154,15 +155,28 @@ export function ProductMetafieldColorsGetInspiredTemplate({
     }
   };
 
+  const viewedProduct = {
+    vendor: product.vendor,
+    title: product.title,
+    handle: product.handle,
+    type: product.productType,
+    collections: product.collections.nodes.map(
+      (el: {title: string}) => el.title,
+    ),
+  };
+
   return (
-    <Layout theme={vendor.toLowerCase()}>
+    <Layout theme={vendor.toLowerCase()} isProduct={true}>
       <Suspense>
         <Seo type="product" data={product} />
       </Suspense>
       <ProductOptionsProvider data={product} initialVariantId={id}>
+        <Suspense>
+          <ProductViewEvent viewedProduct={viewedProduct} />
+        </Suspense>
         <div className="page-width">
           <Section padding="x" className="px-0">
-            <div className="flex flex-col md:flex-row gap-10">
+            <div className="flex flex-col gap-10 md:flex-row">
               {/* if metafield images exist  */}
               <Suspense>
                 {variants.nodes[0]?.variantImage1 ? (
@@ -255,6 +269,13 @@ const PRODUCT_QUERY = gql`
           altText
           width
           height
+        }
+      }
+      handle
+      productType
+      collections(first: 10) {
+        nodes {
+          title
         }
       }
       tags

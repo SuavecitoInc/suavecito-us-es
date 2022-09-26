@@ -85,6 +85,7 @@ export function CarouselBanner({
         width={carouselBanner.banner?.reference?.image.width}
         height={carouselBanner.banner?.reference?.image.height}
         alt={carouselBanner.banner?.reference?.alt}
+        loading="eager"
       />
       {carouselBanner.url ? (
         <Link to={carouselBanner.url.value}>

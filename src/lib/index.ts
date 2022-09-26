@@ -4,3 +4,4 @@ export * from './utils';
 
 export * from './suavecito-fragments';
 export * from './helpers';
+export * from './gtm';
