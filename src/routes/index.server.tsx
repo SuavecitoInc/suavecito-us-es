@@ -80,13 +80,20 @@ function SeoForHomepage() {
     preload: true,
   });
 
+  const LANG = import.meta.env.PUBLIC_LANGUAGE_CODE;
+
+  const t: {[key: string]: string} = {
+    en: 'Barber Approved &amp; Barbershop Preferred Products',
+    es: 'Aprobado por peluqueros &amp; Productos preferidos de barbería',
+  };
+
   return (
     <Seo
       type="homepage"
       data={{
         title,
         description,
-        titleTemplate: '%s · Powered by Hydrogen',
+        titleTemplate: `%s: ${t[LANG]}`,
       }}
     />
   );
