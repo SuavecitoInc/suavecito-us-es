@@ -33,7 +33,7 @@ export function DefaultSeo() {
         data={{
           title: name,
           description,
-          titleTemplate: `%s · ${name}`,
+          titleTemplate: `%s: ${name}`,
         }}
       />
       <Head>
