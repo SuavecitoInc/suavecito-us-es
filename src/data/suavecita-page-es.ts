@@ -17,7 +17,7 @@ export const responsiveBannerSettings: ResponsiveBannerSectionData = {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: 'This is my alt',
+      alt: 'Regalo Gratis Con Compra',
       previewImage: {
         url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/cita_september_landing_banner_large_sp_50e89761-9ff0-45bb-a311-48c122c80cd1.jpg?v=1663350498',
       },
@@ -32,7 +32,7 @@ export const responsiveBannerSettings: ResponsiveBannerSectionData = {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: 'This is my alt',
+      alt: 'Regalo Gratis Con Compra',
       previewImage: {
         url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/cita_september_landing_banner_large_sp_50e89761-9ff0-45bb-a311-48c122c80cd1.jpg?v=1663350498',
       },
@@ -47,7 +47,7 @@ export const responsiveBannerSettings: ResponsiveBannerSectionData = {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: 'This is my alt',
+      alt: 'Regalo Gratis Con Compra',
       previewImage: {
         url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/cita_september_landing_banner_medium_sp_5adfd0c1-9a9c-41d6-a121-24f76fc6c22c.jpg?v=1663350498',
       },
@@ -62,7 +62,7 @@ export const responsiveBannerSettings: ResponsiveBannerSectionData = {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: 'This is my alt',
+      alt: 'Regalo Gratis Con Compra',
       previewImage: {
         url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/cita_september_landing_banner_small_sp_5ea501a8-2a6f-4d8a-a92b-8706df9d702b.jpg?v=1663350498',
       },
@@ -259,10 +259,10 @@ export const featuredRowColumnsOneSettings: FeaturedRowColumnsSectionData = {
         mediaContentType: 'IMAGE',
         alt: 'Coleccionables',
         previewImage: {
-          url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/suavecito-page-featured-image-4_720x.jpg?v=1632939320',
+          url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/suavecita-featured-image-4.jpg?v=1632786109',
         },
         image: {
-          url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/suavecito-page-featured-image-4_720x.jpg?v=1632939320',
+          url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/suavecita-featured-image-4.jpg?v=1632786109',
           width: 720,
           height: 720,
         },

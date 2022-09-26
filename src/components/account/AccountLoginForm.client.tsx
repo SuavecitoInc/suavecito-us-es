@@ -58,10 +58,10 @@ interface FormElements {
 }
 
 export function AccountLoginForm({
-  lang = 'EN',
+  lang = 'en',
   shopName,
 }: {
-  lang?: 'EN' | 'ES';
+  lang?: 'en' | 'es';
   shopName: string;
 }) {
   const navigate = useNavigate();
@@ -128,7 +128,7 @@ export function AccountLoginForm({
     setPasswordError(null);
   }
 
-  const title = lang === 'ES' ? 'Iniciar' : 'Login';
+  const title = lang === 'es' ? 'Ingresar' : 'Login';
 
   return (
     <div className="flex justify-center px-4 my-24">
@@ -207,7 +207,7 @@ function EmailField({
   emailError,
   shopName,
 }: {
-  lang: 'EN' | 'ES';
+  lang: 'en' | 'es';
   email: string;
   setEmail: (email: string) => void;
   emailError: null | string;
@@ -265,7 +265,7 @@ function ValidEmail({
   email,
   resetForm,
 }: {
-  lang: 'EN' | 'ES';
+  lang: 'en' | 'es';
   email: string;
   resetForm: () => void;
 }) {
@@ -300,7 +300,7 @@ function PasswordField({
   setPassword,
   passwordError,
 }: {
-  lang: 'EN' | 'ES';
+  lang: 'en' | 'es';
   password: string;
   setPassword: (password: string) => void;
   passwordError: null | string;

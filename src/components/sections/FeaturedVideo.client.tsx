@@ -27,6 +27,7 @@ export function FeaturedVideo({
     playerVars: {
       // https://developers.google.com/youtube/player_parameters
       autoplay: 1,
+      rel: 0,
     },
   };
 
@@ -69,7 +70,7 @@ export function FeaturedVideo({
       );
     } else {
       return (
-        <div className="youtube-video relative">
+        <div className="relative youtube-video">
           <YouTube
             videoId={
               youtubeVideoId.value ? youtubeVideoId.value : 'hFLTrGcAx9c'
@@ -83,7 +84,7 @@ export function FeaturedVideo({
   };
 
   return (
-    <section className="featured-video page-width relative flex flex-col w-full">
+    <section className="relative flex flex-col w-full featured-video page-width">
       {coverImage?.reference && (
         <div className="relative">{renderContent()}</div>
       )}
