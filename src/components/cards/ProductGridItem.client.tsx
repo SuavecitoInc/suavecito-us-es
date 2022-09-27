@@ -73,7 +73,7 @@ export function ProductGridItem({
         <div className="product-image hover:opacity-80">
           {image && (
             <Image
-              className="w-full object-contain fadeIn"
+              className="object-contain w-full fadeIn"
               widths={[320]}
               sizes="320px"
               loaderOptions={{
@@ -104,7 +104,7 @@ export function ProductGridItem({
                   data={compareAtPrice as MoneyV2}
                 />
               )}
-              {(cardLabel === 'Sale' || product.tags.includes('On Sale')) && (
+              {cardLabel === 'Sale' && product.tags.includes('On Sale') && (
                 <Badge label={cardLabel} tags={product.tags} />
               )}
             </Text>

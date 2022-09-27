@@ -1,14 +1,23 @@
+import {Seo} from '@shopify/hydrogen';
 // eslint-disable-next-line eslint-comments/disable-enable-pair
 /* eslint-disable react/no-array-index-key */
 import {Layout} from '~/components/index.server';
 import {Media} from '@shopify/hydrogen/storefront-api-types';
 import {ImageMedia} from '~/components/index';
 
-import {pomadeBlogSettings as sections} from '~/data/pomade-blog';
+import {pomadeBlogSettings as sections} from '~/data/pomade-blog-es';
 
 export default function Page() {
+  const data = {
+    description:
+      'Honestamente, no hay una respuesta perfecta a esta pregunta. Pero podemos acercarnos bastante. Todo el mundo es diferente y eso está bien. Una pomada que podría funcionar para el cabello rizado de una persona podría no funcionar para el cabello rizado de otra. Sucede. Entonces, hablemos en general sobre tipos de cabello, estilos y qué productos combinan con ellos. Entonces podemos dar algunos consejos para afinar eso en un grado más estricto.',
+    title: '¿Pomada, Cera Para el Cabello, Arcilla, Gel, Pasta?',
+    titleTemplate: `%s: ¿Pomada, Cera Para el Cabello, Arcilla, Gel, Pasta?`,
+  };
+
   return (
     <Layout>
+      <Seo type="page" data={data} />
       {sections.map((section: any, i: number) => {
         if (section.settings.type === 'BANNER') {
           return <Banner key={`section-${i}`} section={section} />;

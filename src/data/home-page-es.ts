@@ -17,7 +17,7 @@ export const responsiveBannerSettings: ResponsiveBannerSectionData = {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: 'This is my alt',
+      alt: 'Suavecito X Monsters, Compra Ahora. Regalo gratis con compra.',
       previewImage: {
         url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/cito_september_landing_banner_large_sp_6f140f81-2f1c-4d1a-8b09-e6426be753d7.jpg?v=1663350498',
       },
@@ -32,7 +32,7 @@ export const responsiveBannerSettings: ResponsiveBannerSectionData = {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: 'This is my alt',
+      alt: 'Suavecito X Monsters, Compra Ahora. Regalo gratis con compra.',
       previewImage: {
         url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/cito_september_landing_banner_large_sp_6f140f81-2f1c-4d1a-8b09-e6426be753d7.jpg?v=1663350498',
       },
@@ -47,7 +47,7 @@ export const responsiveBannerSettings: ResponsiveBannerSectionData = {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: 'This is my alt',
+      alt: 'Suavecito X Monsters, Compra Ahora. Regalo gratis con compra.',
       previewImage: {
         url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/cito_september_landing_banner_medium_sp_d99051f9-59ab-489e-985d-60e032fb1b38.jpg?v=1663350498',
       },
@@ -62,7 +62,7 @@ export const responsiveBannerSettings: ResponsiveBannerSectionData = {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: 'This is my alt',
+      alt: 'Suavecito X Monsters, Compra Ahora. Regalo gratis con compra.',
       previewImage: {
         url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/cito_september_landing_banner_small_sp_6d1c9bc1-fce5-4b02-8f9c-720cfe9c3a61.jpg?v=1663350498',
       },
@@ -201,7 +201,7 @@ export const bannerTwoSettings: BannerSectionData = {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: 'This is my alt',
+      alt: 'Tratamiento de Cabello-Anticaida',
       previewImage: {
         url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/medicated_banner2_2100x.jpg',
       },
@@ -384,7 +384,7 @@ export const featuredVideoSettings: FeaturedVideoSectionData = {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: '',
+      alt: 'Más Que Pomada y Productos de Peluquería de Alta Gama',
       previeImage: {
         url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/21_Suavecito_Anchor_16x9_v1_R6_ENG.00_00_14_11.Still003.jpg?v=1634907949',
       },

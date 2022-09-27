@@ -379,7 +379,7 @@ export function ProductOptionsVariantForm({
                 )}
               </>
             )}
-            {(isOnSale || tags.includes('On Sale')) && <Badge tags={tags} />}
+            {isOnSale && tags.includes('On Sale') && <Badge tags={tags} />}
           </div>
         )}
       </div>
