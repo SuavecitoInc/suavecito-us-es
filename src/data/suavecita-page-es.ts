@@ -19,10 +19,10 @@ export const responsiveBannerSettings: ResponsiveBannerSectionData = {
       mediaContentType: 'IMAGE',
       alt: 'Regalo Gratis Con Compra',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/cita_september_landing_banner_large_sp_50e89761-9ff0-45bb-a311-48c122c80cd1.jpg?v=1663350498',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/cita_october_landing_banner_large_SP.jpg?v=1664310043',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/cita_september_landing_banner_large_sp_50e89761-9ff0-45bb-a311-48c122c80cd1.jpg?v=1663350498',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/cita_october_landing_banner_large_SP.jpg?v=1664310043',
         width: 2048,
         height: 930,
       },
@@ -34,10 +34,10 @@ export const responsiveBannerSettings: ResponsiveBannerSectionData = {
       mediaContentType: 'IMAGE',
       alt: 'Regalo Gratis Con Compra',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/cita_september_landing_banner_large_sp_50e89761-9ff0-45bb-a311-48c122c80cd1.jpg?v=1663350498',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/cita_october_landing_banner_large_SP.jpg?v=1664310043',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/cita_september_landing_banner_large_sp_50e89761-9ff0-45bb-a311-48c122c80cd1.jpg?v=1663350498',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/cita_october_landing_banner_large_SP.jpg?v=1664310043',
         width: 2048,
         height: 930,
       },
@@ -49,10 +49,10 @@ export const responsiveBannerSettings: ResponsiveBannerSectionData = {
       mediaContentType: 'IMAGE',
       alt: 'Regalo Gratis Con Compra',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/cita_september_landing_banner_medium_sp_5adfd0c1-9a9c-41d6-a121-24f76fc6c22c.jpg?v=1663350498',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/cita_october_landing_banner_medium_SP.jpg?v=1664310044',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/cita_september_landing_banner_medium_sp_5adfd0c1-9a9c-41d6-a121-24f76fc6c22c.jpg?v=1663350498',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/cita_october_landing_banner_medium_SP.jpg?v=1664310044',
         width: 2048,
         height: 1764,
       },
@@ -64,10 +64,10 @@ export const responsiveBannerSettings: ResponsiveBannerSectionData = {
       mediaContentType: 'IMAGE',
       alt: 'Regalo Gratis Con Compra',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/cita_september_landing_banner_small_sp_5ea501a8-2a6f-4d8a-a92b-8706df9d702b.jpg?v=1663350498',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/cita_october_landing_banner_small_SP.jpg?v=1664310044',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/cita_september_landing_banner_small_sp_5ea501a8-2a6f-4d8a-a92b-8706df9d702b.jpg?v=1663350498',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/cita_october_landing_banner_small_SP.jpg?v=1664310044',
         width: 2048,
         height: 2048,
       },

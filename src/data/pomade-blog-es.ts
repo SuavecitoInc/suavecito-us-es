@@ -67,7 +67,7 @@ export const pomadeBlogSettings: (
       overlay: {display: true, opacity: 0.4},
     },
     data: {
-      title: '¿Pomada, Cera<br/> Para el Cabello,<br/> Arcilla, Gel, Pasta?',
+      title: '¿Pomada, Cera,<br/> Clay, Gel, Pasta?',
       image: {
         value: '',
         reference: {
@@ -107,8 +107,8 @@ export const pomadeBlogSettings: (
       },
     },
     data: {
-      title: '¿Qué producto para el cabello es adecuado para mí?',
-      content: `<p class="my-6">Entonces, está sentado allí y se pregunta: "¿Qué quiero de un producto para el cabello y cuál es para mí?" O tal vez estás aquí sin ningún motivo y nos encontraste por accidente. Bien, ¡bienvenido!</p><p class="my-6">Sin embargo, encontraste esto, sigue leyendo y piensa qué tipo de cabello tienes y qué estilo quieres lograr. En esta guía, veremos los diferentes tipos de productos para el cabello que existen y cuáles funcionarán mejor para ti y tu cabello.</p><p class="my-6">Primero que nada, obtengamos los una cosa fuera del camino:</p>`,
+      title: '¿Cuál producto para el cabello es ideal para mi?',
+      content: `<p class="my-6">Así que estás sentado ahí y te estás preguntando, “qué es lo que quiero en un producto de cabello y cual es para mí?” O alomejor no estas aqui for ninguna de esas razones y llegaste aqui por accidente. Pues, bienvenido!</p><p class="my-6">Como sea que no hayas encontrado, sigue leyendo y considera el tipo de cabello que tienes y el estilo que quieres lograr. En esta guía vamos a recorrer los diferentes tipos de productos para el cabello que existen y cuales funcionaran para ti y tu cabello.</p><p class="my-6">En primer lugar, dejemos una cosa fuera del camino:</p>`,
       image: {
         value: '',
         reference: {
@@ -134,8 +134,8 @@ export const pomadeBlogSettings: (
     },
     data: {
       title:
-        'Las ventajas de usar pomada, o cualquier otra cosa, versus gel para el cabello a base de alcohol',
-      content: `<p class="my-6">Los geles comprados en la tienda, por ejemplo, en un supermercado, tienda de la esquina o salón de belleza, son increíblemente dañinos para tu cabello. Los ingredientes principales funcionan para evaporar la humedad del producto de tu cabello, lo que deja tu cabello crujiente y duro. Por supuesto, este es el punto de usar estos productos para el cabello. El producto se 'fijará' dándote el estilo que deseabas.</p><p class="my-6"><span class="text-suave-red font-bold">Las pomadas</span> hacen lo mismo cosa. No lo tuerzas, al final el proceso es el mismo que el de un gel, la humedad del producto se evaporará y dejará lo bueno que mantiene tu cabello en su lugar. Sin embargo, la forma en que una buena pomada logrará esto es sin alcohol. El alcohol es malo para el cabello y la piel. No quieres eso en ti. Te seca el pelo. Eso es malo. Se seca y daña la piel de la cabeza dejando escamas no deseadas. Eso es malo y asqueroso. Puede causar picazón, dolor y dolor. Es realmente malo. No quieres nada de eso.</p><p class="my-6">Usa una pomada de una compañía confiable de cuidado del cabello que sepa lo que está haciendo. Ejem. Estos productos mucho mejores no solo producirán mejores resultados, sino que lo mantendrán saludable. Te lo mereces. Todo el mundo se lo merece.</p><p class="my-6">No uses gel para el cabello barato. Si lo tuyo es el gel, echa un vistazo al <a class="text-suave-red font-bold" href="/products/firme-hold-styling-gel">Firme Hold Styling Gel, nuestra versión sin alcohol del gel para el cabello .</a></p>`,
+        'Las ventajas de usar pomada, o cualquier otro producto, versus gel para el cabello basado en alcohol',
+      content: `<p class="my-6">Los geles comprados en las tiendas, como el supermercado, la tienda de la esquina, o el salón son increíblemente dañinos para tu cabello. Los ingredientes principales trabajan para evaporar la humedad de los productos fuera de de tu cabello que deja tu cabello duro y crujiente. Por supuesto, este es el punto de usar estos productos. El producto se fijará dándote el estilo que quieres.</p><p class="my-6"><span class="text-suave-red font-bold">Las Pomadas</span></a> hacen lo mismo. No lo confundas, al final, el proceso es lo mismo que el gel, la humedad del producto también se evaporará y dejará lo bueno deteniendo tu cabello en su lugar. Sin embargo,  la manera que una pomada buena lograra esto es sin alcohol. El alcohol es dañino para tu cabello y tu piel. No quieres eso en tu cuerpo. Seca tu cabello. Eso es malo. Seca y daña la piel de tu cabeza dejando atrás resequedad y escamas. Eso es malo y asqueroso. Puede causar comezón, y dolor. Eso es muy malo. Tu no quieres nada de eso.</p><p class="my-6">Usa una pomada de una compañía de cabello acreditada que sabe lo que está haciendo. Estos productos mucho mejores no solo producirán mejores resultados pero también te mantendrán saludable. Te lo mereces. Todos se lo merecen.</p><p class="my-6">No uses gel para el cabello barato. Si a ti te gusta el gel, echa un vistazo a nuestro <a href="/products/firme-hold-styling-gel"><span class="text-suave-red font-bold">Gel Para Cabello Firme, nuestra versión de gel sin alcohol.</span></a></p>`,
     },
   },
   {
@@ -158,8 +158,8 @@ export const pomadeBlogSettings: (
       },
     },
     data: {
-      title: 'Firme Hold<br/>Styling Gel',
-      content: `<ul><li>Fórmula sin alcohol que no reseca el cabello</li><li>Fijación durante todo el día sin descamación</li><li>Ideal para cabello de medio a grueso</li><li>Lavados fácilmente</li><li>Fragancia Suavecito original</li></ul>`,
+      title: 'Gel Para<br />Cabello Firme',
+      content: `<ul><li>Fórmula sin alcohol no secara el cabello</li><li>Ideal para tipos de cabellos medios a grueso</li><li>Se lava fácilmente</li><li>Lavados fácilmente</li><li>Fragancia original de Suavecito</li></ul>`,
       image: {
         value: '',
         reference: {
@@ -185,7 +185,7 @@ export const pomadeBlogSettings: (
     },
     data: {
       title: '¿Por qué usar una pomada?',
-      content: `<p class="my-6">La pomada es maravillosa. Te lo pones en el pelo y tu pelo obedece. Es simple, efectivo y no tiene trucos. Pomade existe desde hace mucho tiempo y por una buena razón. En general, los resultados en todos ellos son los mismos, tienen poder de fijación, huelen fantástico y duran todo el día.</p>`,
+      content: `<p class="my-6">La pomada es maravillosa. La pones en tu cabello y tu cabello obedece. Es simple, efectiva y no tiene trucos. La pomada ha existido por mucho tiempo y por buena razón. En general, los resultados de las pomadas son las mismas, tienen poder de retención, huelen fantástico y duran todo el día.</p>`,
     },
   },
   {
@@ -208,7 +208,7 @@ export const pomadeBlogSettings: (
       },
     },
     data: {
-      content: `<p class="my-6">Las pomadas modernas, junto con todas sus ramificaciones, son cada vez mejores. Las fórmulas se están refinando de maneras sorprendentes y los productos no solo se están volviendo increíblemente buenos para brindar los resultados que desea, sino que ahora también incluyen más y más aspectos de salud. Vienen repletos de vitaminas, aceites esenciales y una gran cantidad de otras cosas buenas para tu cabello. Y en términos de salud, la conclusión principal en estos días modernos es que estamos eliminando los desagradables ingredientes de la vieja escuela que las marcas de antaño no se dieron cuenta del todo de que tenían efectos dañinos. La pomada moderna es genial y económica.</p><p class="my-6">Si estás pagando más por tus productos para el cabello que por tu corte de cabello, estás haciendo algo mal. Las mejores empresas de la industria saben cómo hacer que estas pomadas sean asequibles. Ejem. No es ciencia espacial.</p>`,
+      content: `<p class="my-6">Pomadas modernas, junto con todas las ramificaciones, siguen mejorando. Fórmulas están siendo refinadas en maneras increíbles y los productos no solo están mejorando super bien entregando los resultados que buscas, sino que también están incluyendo más aspectos saludables. Están viniendo llenos de vitaminas, aceites esenciales, y muchas otras cosas buenas para tu cabello. Y en cuanto a la salud, la conclusión principal en estos tiempos modernos es que estamos quitando los ingredientes malos, antiguos que las marcas de los tiempos anteriores no se dieron cuenta que tenían efectos dañinos. Las pomadas modernas son buenas y no son costosas.</p><p class="my-6">Si estas pagando mas para los productos de tu cabello que lo que pagas por tu corte del cabello, algo estas haciendo mal. Las mejores compañías en la industria saben cómo hacer estas pomadas asequibles. No es una ciencia exacta.</p>`,
       image: {
         value: '',
         reference: {
@@ -233,8 +233,8 @@ export const pomadeBlogSettings: (
       type: 'ONE_COLUMN',
     },
     data: {
-      title: '¿A base de agua, a base de aceite o híbrido?',
-      content: `<p class="my-6">¿Qué va a funcionar para ti? Todos estos productos para el cabello mantendrán tu cabello hasta cierto punto y usar suficiente de cualquier tipo te acercará a la apariencia que deseas. Pero usar demasiado del producto equivocado no es la forma correcta de hacerlo. También le costará más dinero a largo plazo. Entonces, primero comprendamos qué son estos diferentes tipos de pomadas y qué hacen.</p>`,
+      title: 'Pomada basada en agua, en aceite, o híbrida?',
+      content: `<p class="my-6">¿Cuál funcionará para ti? Todos estos productos de cabello van a detener tu cabello a cierto grado y usando suficiente de cualquier tipo te ayudará acercarte al peinado que quieras. Pero usando mucho del producto incorrecto no es la manera ideal de hacerlo. También te costará más dinero a la larga. Así que primero debemos entender las diferencias entre estas pomadas y lo que hacen.</p>`,
     },
   },
   {
@@ -258,7 +258,7 @@ export const pomadeBlogSettings: (
     },
     data: {
       title: 'Pomada a base de agua',
-      content: `<p class="my-6">Una pomada a base de agua, o soluble en agua, es un producto para el cabello que utiliza una fórmula que contiene agua. ¿verdad? Sin embargo, la singularidad de esto es que crea un producto que se descompone fácilmente, lo que lo hace fácil de aplicar y quitar. No se necesitan jabones ni champús especiales para eliminarlo del cabello. La consistencia es cremosa y suave, lo que significa que se puede trabajar en tu cabello con facilidad. Los abuelos de todas partes habrían estado muy entusiasmados con estas cosas en el pasado.</p>`,
+      content: `<p class="my-6">Una pomada que es basada en agua, o soluble en agua, es un producto de cabello que utiliza una fórmula que contiene agua. Obvio, verdad? Lo único de la pomada es que es un producto que se deshace fácilmente, haciéndolo fácil para aplicar y remover. No se ocupa ningun jabon o shampoo especial para quitar la pomada del cabello. La consistencia es cremosa y suave que hace que la pomada se pueda aplicar con facilidad. Abuelos de todo lugar estarian muy emocionados de esto en sus tiempos.</p>`,
       image: {
         value: '',
         reference: {
@@ -283,7 +283,7 @@ export const pomadeBlogSettings: (
       type: 'ONE_COLUMN',
     },
     data: {
-      content: `<p class="my-6">La forma en que se fija el producto es algo hermoso. Es muy científico y no lo aburriremos en este momento, pero sepa que el agua en la fórmula se evapora y le deja solo lo bueno. Esas cosas buenas sobrantes mantienen tu cabello en su lugar y te hacen lucir genial. Una buena pomada a base de agua también proporciona una fijación muy firme y fuerte. Funcionan bien con todo tipo de cabello y especialmente bien con cabello grueso o rizado que a veces puede ser difícil de peinar con otros tipos de productos.</p><p class="my-6">Tenemos dos ejemplos asombrosos de un gran producto a base de agua. Primero comenzamos con nuestra <a class="text-suave-red font-bold" href="/products/original-hold-pomade">pomada de fijación original de fuerza media</a> para la mayoría de tipos y estilos de cabello. Funciona muy bien con cabello lacio y casi cualquier cosa que necesites que haga. Para el cabello más rebelde, rizado o grueso, usa la <a class="text-suave-red font-bold" href="/products/firme-strong-hold-poamde">Pomada Firme Hold, poderosamente fuerte.</a> Este material puede hacer frente a cualquier cosa que quieras arrojarle.</p><p class="my-6">Usa a base de agua para: fijación fuerte y duradera, sin efectos secundarios extraños como picazón o escamas y se lava con solo agua. Peinados de cabello medio a difícil de manejar, peinados ajustados como copetes, espaldas lisas o rayitas a los lados.</p>`,
+      content: `<p class="my-6">La manera que este producto queda es una manera hermosa. Es muy científica así que no te aburriremos ahorita, nomas sabe que el agua en la fórmula se evapora solo dejándote con lo bueno. Lo bueno es que deja tu cabello en su lugar dejando té viendo estupendo. Una buena pomada a base de agua también provee una retención apretada y fuerte. Trabaja bien con todos los tipos de cabello y especialmente bien en el cabello grueso y rizado que a veces puede ser difícil para peinar usando otros tipos de productos.</p><p class="my-6">Tenemos dos ejemplos asombrosos de productos basados en aqua. Empezamos primero con nuestra <a href="/products/original-hold-pomade"><span class="text-suave-red font-bold">Pomada Original de retención media</span></a> para la mayoría de tipos o estilos de cabello. Trabaja especialmente bien con el cabello lacio y hace prácticamente todo lo que quieras que haga. Para cabello más rizado o grueso, usa nuestra pomada <a href="/products/firme-strong-hold-pomade"><span class="text-suave-red font-bold">increíblemente fuerte, la Pomada Firme.</span></a> Esta pomada puede abordar cualquier cosa que le des.</p><p class="my-6">Usa pomada a base de agua para: una retención fuerte y duradera, ningún efecto secundario como comezón o descascarilla y se lava con solo agua. Estila cabello medio a difícil de manejar, estilos apretados como pompadours, slick backs o side parts.</p>`,
     },
   },
   {
@@ -306,13 +306,13 @@ export const pomadeBlogSettings: (
       },
     },
     data: {
-      title: 'Firme (Strong) Hold Pomade',
-      content: `<ul><li>Fijación fuerte, brillo medio</li><li>Sin productos químicos agresivos: no reseca el cabello</li><li>Pomada a base de agua</li><li>Ideal para todo tipo de cabello, incluido grueso o rizado</li><li>Se lava fácilmente con agua</li></ul>`,
+      title: 'Pomada Firme',
+      content: `<ul><li>Retención fuerte, brillo mediano</li><li>Sin químicos fuertes - no secara el cabello</li><li>Pomada a base de agua</li><li>Ideal para todos los tipos de cabello, incluyendo cabello grueso o rizado</li><li>Se lava fácilmente con agua</li></ul>`,
       image: {
         value: '',
         reference: {
           mediaContentType: 'IMAGE',
-          alt: 'Firme (Strong) Hold Pomade',
+          alt: 'Pomada Firme',
           previewimage: {
             overlay: {display: true, opacity: 0.4},
             url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/pom-img5_720x.jpg?v=1634574781',
@@ -348,7 +348,7 @@ export const pomadeBlogSettings: (
     },
     data: {
       title: '¿Pomada a base de aceite?',
-      content: `<p class="my-6">Este es el tipo de pomada de cera para el cabello de la vieja escuela que usaba tu abuelo y posiblemente por eso estás aquí vivo y respirando. Ha existido durante mucho tiempo y sigue siendo muy popular por una buena razón. Tiene una fijación y un método verdaderamente únicos en su fórmula que le darán un aspecto clásico que mucha gente realmente quiere. La consistencia de la cera es resbaladiza, posiblemente un poco grasosa y muy suave cuando se aplica en el cabello. No se secará como una base de agua cuando está en tu cabello, sino que crea una apariencia más húmeda que se puede volver a trabajar a lo largo del día. Por algo los engrasadores de los años 50 siempre llevaban un peine en el bolsillo trasero. Lo usaban para arreglarse el cabello. Y fue genial. Todavía lo es.</p><p class="my-6">Si está buscando un producto de cera para el cabello que le dé un aspecto más tradicional o retroactivo, entonces querrá usar un producto a base de aceite. Con las nuevas innovaciones actuales en fórmulas y tipos, la base de aceite de hoy no es tan imperfecta como el producto de ayer.</p>`,
+      content: `<p class="my-6">Esta pomada es el tipo de pomadas de los tiempos antiguos que usaba tu abuelo y posiblemente sea la razón por que tu estas vivo y respirando. Ha existido por mucho tiempo y sigue siendo súper popular por buena razón. Tiene una fijación verdaderamente única y un método a su fórmula que te dará un look clásico que le gusta a mucha gente. La consistencia de la cera es resbalosa, posiblemente un poco grasosa y muy suave cuando se está aplicando al cabello. No se secará con una pomada a base de agua cuando está en tu cabello, en cambio crea una apariencia mojada que puede ser moldeable durante el día. Había una razón porque los greasers de los 50's siempre tenían un peine en su bolsillo. Lo usaban para arreglar su cabello. Fue genial. Sigue siendo.</p><p class="my-6">Si estás buscando un producto de cera para tu cabello que te dará una apariencia más tradicional y retrospectiva, entonces querrás usar un producto basado en aceite. Con las innovaciones de estos tiempos en fórmulas y tipos, la pomada basada en aceite de hoy no es tan imperfecta como el producto de ayer.</p>`,
       image: {
         value: '',
         reference: {
@@ -388,7 +388,7 @@ export const pomadeBlogSettings: (
       },
     },
     data: {
-      content: `<p class="my-6">Nuestra <a class="text-suave-red font-bold" href="/products/oil-based-pomade">Pomada/Cera a base de aceite</a> es la mejor de ambos mundos. Combina ese sabor de la vieja escuela que estás buscando, pero con una fórmula que no va a destrozar tu cabello ni tu cuero cabelludo. La pomada a base de aceite Suavecito incluso se lavará en uno o dos lavados con un champú suave. No obtendrá ese tipo de conveniencia con otras pomadas a base de aceite, nuevas o viejas.</p><p class="my-6">Use a base de aceite para: Esa apariencia retro única de copetes, negros ajustados y sólidos. tupés Definitivamente hay un cierto encanto en arreglar tu cabello al mediodía con tu peine favorito. Es tan suave al tacto como a la apariencia. Si lo sabes, lo sabes.</p>`,
+      content: `<p class="my-6">Nuestra <a class="text-suave-red font-bold" href="/products/oil-based-pomade">Pomada/Cera a base de aceite</a> es la mejor de ambos mundos. Combina el sabor antiguo que buscas pero con una fórmula que no destruirá tu cabello o piel. La Pomada a base de Aceite de Suavecito hasta se lava en una o dos lavadas con champú delicado. No recibirás esa conveniencia con otras pomadas a base de agua, nuevas o viejas.</p><p class="my-6">Usa la pomada basada en aceite para: la apariencia antigua del pompadour, slick-backs apretados y tupes sólidos. Definitivamente hay un cierto encanto esa hora al mediodía donde llega la hoar de arreglar tu cabello con tu peine preferido. Es tan suave al tocar como al ver. Si lo sabes, lo sabes.</p>`,
       image: {
         value: '',
         reference: {
@@ -428,8 +428,8 @@ export const pomadeBlogSettings: (
       },
     },
     data: {
-      title: 'La pomada híbrida',
-      content: `<p class="my-6">Una de las cosas que nos encanta hacer aquí en Suavecito es cambiar las cosas y probar nuevos conceptos interesantes. Nos mantiene entretenidos y cuando encontramos algo que realmente funciona, lo lanzamos y dejamos que el mundo lo disfrute con nosotros.</p><p class="my-6">Entonces, qué diablos es un <a class= "text-suave-red font-bold" href="/products/premium-blends-hair-pomade">pomada híbrida?</a> Bueno, tomamos lo mejor del mundo a base de agua y del mundo a base de aceite y ponerlos juntos en un solo producto, poco ortodoxo, ¡lo sabemos! Lo lanzamos con nuestra línea Premium Blends y creamos algo que funciona muy bien. No queremos simplificarlo demasiado, pero es literalmente una pomada a base de agua y aceite en uno.</p>`,
+      title: 'La Pomada Híbrida',
+      content: `<p class="my-6">Una de las cosas que nos gusta hacer en Suavecito es cambiar las cosas y tratar conceptos nuevos e interesantes. Nos mantiene entretenidos y cuando encontramos algo que en verdad trabaja, lo lanzamos y dejamos que el mundo lo disfrute con nosotros.</p><p class="my-6">Así que en realidad es una <a href="/products/premium-blends-hair-pomade"><span class="text-suave-red font-bold">pomada híbrida</span></a>? Pues, tomamos lo mejor del mundo de la pomada a base de agua y el mundo de la pomada a base de aceite y los combinamos para crear un producto, heterodoxo - lo sabemos! Lo lanzamos con nuestra línea Premium Blends y creamos algo que funciona super bien. No queremos simplificarlo demasiado pero es literalmente las dos pomadas a base de agua y aceite combinadas en una.</p>`,
       image: {
         value: '',
         reference: {
@@ -469,7 +469,7 @@ export const pomadeBlogSettings: (
       },
     },
     data: {
-      content: `<p class="my-6">¿Por qué? Bueno, digamos que te gustan los beneficios del agua pero quieres volver a peinarte todo el día, o al menos ser un poco más casual con tu look. Nuestro híbrido se lava con facilidad y brinda una fijación lo suficientemente potente como para hacer lo que necesitas. Al mismo tiempo, puedes pasar tus dedos por él y estar bien.</p><p class="my-6">Usa la pomada híbrida para: looks casuales (cuando no quieras lucir como una esclava sobre tu cabello esa mañana), bonitas rayitas a los lados y para cuando quieras sentir que no hay nada en tu cabello. Se siente ligero, pero eso no significa que no haya nada allí.</p>`,
+      content: `<p class="my-6">¿Por qué? Pues, vamos a decir que te gusta los beneficios del agua pero quieres poder peinarte durante el día, o aunque sea verte más casual con tu look. Nuestra pomada híbrida se lava fácil y da una retención que es suficiente poderosa para hacer lo que necesitas. A la misma vez puedes recorrer tus dedos y estará bien.</p><p class="my-6">Usa la pomada híbrida para: apariencias casuales (cuando no quieres verte como que te esclavizaste sobre tu cabello esa mañana), bonitas partes laterales y para cuando quieres sentirte como que tu cabello no tiene nada. Se siente ligero pero no quiere decir que no haya nada ahí.</p>`,
       image: {
         value: '',
         reference: {
@@ -494,8 +494,8 @@ export const pomadeBlogSettings: (
       type: 'ONE_COLUMN',
     },
     data: {
-      title: '¿Arcilla para el cabello o pasta para el cabello?',
-      content: `<p class="my-6">Estos son un invento muy moderno cuando se observa la línea de tiempo de los productos para el cuidado del cabello. Ambos se inclinan hacia los peinados de aspecto más natural que existen. Muchas veces, al usar estos productos, no podría decir exactamente que alguien lo tiene en el cabello. Y a veces ese es el punto. Estos productos no son tan versátiles como las pomadas enumeradas anteriormente, pero aún tienen un peso considerable por derecho propio. Estas arcillas y pastas para el cabello son algo especial: de alguna manera definen o al menos impulsan las pomadas de nuestra era moderna.</p>`,
+      title: 'Clay o pasta para el cabello?',
+      content: `<p class="my-6">Estas son invenciones modernas cuando miramos la línea de tiempo de productos para el cabello. Los dos se inclinan hacia una apariencia de cabello más natural. Muchas de las veces cuando se usan estos productos es probable que no puedas ver exactamente que alguien lo tendrá en el cabello. Y a veces ese es el punto. Estos productos no son tan versátiles como las pomadas mencionadas previamente, pero todavía tienen retención considerable en su propio derecho. Estas clays y pastas de cabello son algo especial - de algo definitorio o al menos un impulso sobre pomadas de nuestra era moderna.</p>`,
     },
   },
   {
@@ -518,8 +518,8 @@ export const pomadeBlogSettings: (
       },
     },
     data: {
-      title: 'Pomada de arcilla',
-      content: `<p class="my-6">Este es un tipo de pomada muy específico para cierto tipo de cabello y estilo. Una fórmula de arcilla para el cabello generalmente tiene una consistencia rígida y espesa que se descompondrá en algo manejable con la fricción entre las yemas de los dedos y las manos.</p><p class="my-6">Una pomada de arcilla proporcionará volumen debido a la arcilla en la fórmula. Cuando la arcilla se introduce en el agua, se expande, de ahí se obtiene el volumen. Agregará peso y estructura a tu cabello de una manera diferente a una pomada a base de aceite o agua.</p>`,
+      title: 'Pomada Clay',
+      content: `<p class="my-6">Esta es una pomada muy específica para un peinado y tipo de cabello específico. La fórmula de la pomada clay generalmente tiene una consistencia gruesa y tiesa y se puede moldear a algo manejable con fricción entre los dedos o las manos.</p><p class="my-6">La pomada clay provee un volumen debido a la arcilla en la fórmula. Cuando la pomada es introducida al agua se expande, que es la manera como nos da el volumen. Añadirá peso y estructura a tu cabello de una manera diferente que las pomadas a base de aceite o agua. </p>`,
       image: {
         value: '',
         reference: {
@@ -559,7 +559,7 @@ export const pomadeBlogSettings: (
       },
     },
     data: {
-      content: `<p class="my-6">La <a class="text-suave-red font-bold" href="/products/firme-clay-pomade">Suavecito Firme Clay Pomade</a> es un gran ejemplo de un producto de arcilla para tu cabello que es súper fácil de usar y también muy fácil de lavar. Realmente no quieres tener que lidiar con productos que se quedan en tu cabello después de la ducha, ¿verdad? Esta arcilla mate agrega volumen a tu cabello, lo que te permite peinar tupés de aspecto natural, rayitas laterales y peinados más ajustados según tu tipo de cabello.</p><p class="my-6">Usa una arcilla para: Miradas naturales. Un acabado mate. Funciona mejor para un cabello más fácil de manejar, a menos que busque un aspecto más desordenado (estamos pensando en el cabello rizado aquí, que se ve increíble cuando se peina un poco desordenado con este producto).</p>`,
+      content: `<p class="my-6">La <a class="text-suave-red font-bold" href="/products/firme-clay-pomade">Firme Clay de Suavecito</a> es un buen ejemplo de un producto de arcilla para tu cabello que es super fácil de usar y para lavar el cabello. No quieres tener que sufrir con productos que siguen en tu cabello después de bañar verdad? Esta Pomada Mate Clay añade volumen a tu cabello dándote la habilidad de peinar tupes, partes laterales, peinados más apretados dependiendo del tipo de tu cabello.</p><p class="my-6">Usa la pomada clay para: apariencias naturales. Un acabado mate. Trabaja mejor con tipos de cabellos fáciles para peinar al menos que estés tratando de lograr una apariencia desordenada (por ejemplo cabello rizado se vería estupendo peinado un poco desordenado con este producto).</p>`,
       image: {
         value: '',
         reference: {
@@ -599,8 +599,8 @@ export const pomadeBlogSettings: (
       },
     },
     data: {
-      title: 'Pomada mate (pasta)',
-      content: `<p class="my-6">Este viene en todo tipo de mezclas, pero su enfoque principal es peinar sin darle brillo a tu cabello. Para algunos eso es súper importante y para otros no tanto. Una buena manera de hacer esa distinción por ti misma sería mirar tu cabello seco y preguntarte si te queda bien.</p><p class="my-6">Las pomadas mate vienen en una forma más parecida a una pasta forma. La fórmula es un poco más seca de lo que puede estar acostumbrado si está acostumbrado a una pomada más tradicional. Estas pomadas de pasta para el cabello mate generalmente tienen un cuerpo medio y son perfectas para un look más suelto o informal. Parece que la mayoría de las personas que buscan un <a class="text-suave-red font-bold" href="/products/matte-pomade">producto para peinar en pasta para el cabello, como nuestra Matte Pomade</a>, intentan lograr un look más sutil, como si no pasaran tiempo arreglándose el cabello por la mañana.</p>`,
+      title: 'Pomada (Pasta) Mate',
+      content: `<p class="my-6">Esta viene en varios tipos de mezclas pero nuestro enfoque es que puedas peinarte sin que tu cabello tenga brillo. A algunos eso es muy importante y a otros no. Una manera para hacer la distinción para ti mismo sería mirar tu cabello seco y preguntarte si te queda bien.</p><p class="my-6">Pomadas mate vienen en una forma más parecida a una pasta. La fórmula es un poco más seca de lo que estás acostumbrado si estás usando una pomada más tradicional. Estas pomadas mates generalmente tienen una fijación de cuerpo medio y son perfectas para un look más suelto y casual. Es común que a la mayoría de la gente que les gusta nuestros productos de <a href="/products/matte-pomade"><span class="text-suave-red font-bold">textura pastosa, como nuestra Pomada Mate,</span></a> están tratando de lograr una apariencia más sutil, como si no tomaron tiempo peinándose en la mañana.</p>`,
       image: {
         value: '',
         reference: {
@@ -625,7 +625,7 @@ export const pomadeBlogSettings: (
       type: 'ONE_COLUMN',
     },
     data: {
-      content: `<p class="my-6">Un producto de pasta para el cabello se mantendrá flexible durante todo el día, lo que te permitirá volver a trabajarlo a tu gusto cuando sea necesario. Esta característica le da ese aspecto “despreocupado” más natural. Y, como con cualquier producto para tu cabello, si usas un poco más, el aspecto se volverá más apretado y pulido. Solo tendrás que experimentar con él.</p><p class="my-6">Usa una pasta para: Estilo reelaborable durante todo el día. Nada a muy poco brillo. Cabello saludable de aspecto natural con una fijación de peso generalmente media.</p>`,
+      content: `<p class="my-6">Un producto de pasta para el cabello se mantendrá flexible durante el día, dándote la habilidad para volver a trabajarlo a tu gusto cuando sea necesario. Esta característica te da una apariencia más natural. Y como con cualquier producto para tu cabello, si usas un poco más tu look será más ajustado y pulido. Solo tendrás que experimentar con él.</p><p class="my-6>Usa una pasta para: Volver a trabajar el cabello durante el día. Nada o poco de brillo. Tener una apariencia de cabello natural y saludable con una fijación media.</p>`,
     },
   },
   {
@@ -648,8 +648,8 @@ export const pomadeBlogSettings: (
       },
     },
     data: {
-      title: 'Matte Pomade',
-      content: `<ul><li>Fijación media, sin brillo</li><li>Sin productos químicos agresivos: no reseca el cabello</li><li>Úselo para estilos sueltos y desordenados o para hacer que los estilos más ajustados se vean más informales< /li><li>Funciona para todo tipo de cabello</li><li>Se lava fácilmente con agua</li></ul>`,
+      title: 'Pomada Mate',
+      content: `<ul><li>Fijación media, sin brillo</li><li>Sí químicos agresivos - no te secara el cabello</li><li>Para looks sueltos, desordenados, o para hacer ver peinados más ajustados más casuales</li><li>Funciona para todos los tipos de cabello</li><li>Se lava fácil con agua</li></ul>`,
       image: {
         value: '',
         reference: {
@@ -689,8 +689,8 @@ export const pomadeBlogSettings: (
       },
     },
     data: {
-      title: 'Mate versus brillo',
-      content: `<p class="my-6">Preferencia personal. 100%. Pero hay algunas cosas que debe saber sobre los productos que le brindan uno u otro.</p><p class="my-6">Los productos enfocados en mate generalmente se inclinan hacia esa fijación voluminizadora media-ligera que mucha gente después de los looks casuales prefiero. Esto no es cierto para todos los productos mate, pero la mayoría de ellos se encuentran en este rango. Encontrarás acabados mate, secos o neutros de arcillas o productos híbridos.</p><p class="my-6">Los productos que le darán más brillo a tu cabello y una apariencia más húmeda generalmente provienen de productos a base de aceite. y, en menor grado, productos solubles en agua. En promedio, encontrará más poder de fijación con un producto que induzca más brillo, pero, por supuesto, esto no siempre es así.</p>`,
+      title: 'Mate Versus Brillo',
+      content: `<p class="my-6">Preferencia personal. 100%. Pero hay unas cosas que debes saber sobre los productos que te dan uno u otro.</p><p class="my-6">Productos mate generalmente se inclinan hacia la fijación voluminizadora media-ligera que muchas personas que buscan un aspecto casual prefieren. Esto no es verdad de todos los productos mate pero la mayoría si están en este rango. Encontrarás acabados mates, secos o neutros a partir de arcillas u productos híbridos.</p><p class="my-6">Productos que producen brillo y una apariencia húmeda normalmente vienen de productos a base de aceite y, en menor grado, productos solubles en agua. En promedio, encontrarás más fijación con un producto que induzca más brillo pero, por supuesto, este no es siempre el caso.</p>`,
       image: {
         value: '',
         reference: {
@@ -715,8 +715,8 @@ export const pomadeBlogSettings: (
       type: 'ONE_COLUMN',
     },
     data: {
-      title: '¿Qué tipo de pomada es adecuada para ti?',
-      content: `<p class="my-6">Honestamente, no hay una respuesta perfecta para esta pregunta. Pero podemos acercarnos bastante. Todo el mundo es diferente y eso está bien. Lo que podría funcionar para el cabello rizado de una persona podría no funcionar para el cabello rizado de otra. Sucede. Entonces, hablemos en general sobre tipos de cabello, estilos y qué productos combinan con ellos. Entonces podemos dar algunos consejos para afinar eso a un grado más estricto.</p>`,
+      title: '¿Cual Pomada es Adecuada Para Ti?',
+      content: `<p class="my-6">Honestamente, no hay una respuesta ideal para esta pregunta. Pero si podemos acercarnos bastante. Todos son diferentes y eso está bien. Lo que le funciona al cabello rizado de una persona no necesariamente funcionará al cabello rizado de otra persona. Eso sucede. Así que vamos hablar generalmente sobre tipos de cabellos, estilos, y cuales productos trabajas mejor con ellos. Entonces podemos dar algunos consejos para afinar eso a un grado más específico.</p>`,
     },
   },
   {
@@ -739,8 +739,8 @@ export const pomadeBlogSettings: (
       },
     },
     data: {
-      title: 'Pelo lacio',
-      content: `<p class="my-6">No necesitarás un producto de fijación fuerte para obtener la mayoría de los looks que buscas. De hecho, dependiendo del grosor de tu cabello, puede hacer más daño que bien usar algo pesado. Digamos que tienes el pelo corto y lacio y solo quieres una raya lateral simple de una manera casi informal. Una dosis muy ligera de cualquiera de las pomadas que mencionamos anteriormente hará el trabajo. No querrás usar demasiado. Usar demasiado cuando no es necesario simplemente apelmazará el cabello y se verá un poco apagado.</p><p class="my-6">Siempre es mejor poner muy poco y trabajar más que usar demasiado. desde el principio. ¡Recuérdalo!</p><p class="my-6">Otros estilos, como un copete alto, espalda resbaladiza, casual de negocios cepillado, se pueden lograr con la mayoría de estos productos. Cuanto mayor sea la pompa, más pomada necesitarás. Si buscas hacer algo un poco más exigente, necesitarás algo más fuerte. Una fuerte base de agua como el Firme Hold aguantará muchísimo. Que es lo que querrás.</p><p class="my-6">Por lo general, los productos que funcionan mejor son: pomadas a base de agua con fijaciones ligeras a medias, pomadas de cera a base de aceite de todo tipo, arcillas y pastas. .</p>`,
+      title: 'Cabello Lacio',
+      content: `<p class="my-6">No ocuparas un producto con una fijación fuerte para lograr la mayoría de los estilos que deseas. De hecho, dependiendo del grosor de tu cabello, puede causarle más daño que bien el usar algo pesado.  Vamos a decir que tienes cabello lacio y corto y solo quieres una parte lateral sencilla casi casual. Una dosis ligera de cualquiera de las pomadas que mencionamos anteriormente hará el trabajo. No quieres usar mucho. Usando mucho cuando no es necesario solo te pesara el cabello y se mirara poco raro.</p><p class="my-6">Siempre es mejor usar muy poco y usar más gradualmente que usar demasiado desde que empiezo. Acuerda eso!</p><p class="my-6">Otros estilos con un pompadour alto, slick back, peinado casual pueden ser logrados con la mayoría de estos productos. Cuanto mayor sea el pomp, más pomada se necesitará. Si estás buscando hacer algo más demandante necesitarás algo más fuerte. Una pomada fuerte a base de agua como nuestra pomada Firme Hold definitivamente detendrá tu cabello en su lugar. Qué es lo que tu quieres.</p><p class="my-6">Generalmente los productos que trabajan mejor son: pomadas a base de agua con fijaciones ligeras a medias, pomadas a base de aceite, de todos tipos, arcillas y pastas.</p>`,
       image: {
         value: '',
         reference: {
@@ -780,8 +780,8 @@ export const pomadeBlogSettings: (
       },
     },
     data: {
-      title: 'Pelo rizado',
-      content: `<p class="my-6">A veces, una persona con cabello rizado puede pensar que es increíblemente difícil peinarlo. Y después de todo, el cabello tiene mente propia. Pero ahí reside la magia de una cabellera rizada. Podemos atacar este tipo de cabello de dos maneras. La primera forma, y el método más probado, es volar la cabeza con una buena dosis de una pomada o cera fuerte a prueba de balas. Y sí, con suficiente tiempo y paciencia funciona. Eso está bien.</p><p class="my-6">Use una pomada de fijación fuerte para domar esos rizos, como nuestra pomada de fijación firme, y estará en el negocio. Que el pelo rizado no es imposible de domar con constancia, el producto adecuado y el tiempo. Solo tendrás que tener paciencia.</p><p class="my-6">Pero, como se mencionó, hay otra dirección que podemos tomar con el cabello rizado. No necesariamente tiene que ser domesticado por completo. Hay una gran cantidad de estilos que incorporan el rizo natural del cabello y lo abrazan al 100% sin tratar de ocultarlo. Cuando trabaje con este tipo de estilos, no necesitará una pomada de gran impacto.</p>`,
+      title: 'Cabello Rizado',
+      content: `<p class="my-6">A veces una persona con cabello rizado puede pensar que su cabello es increíblemente difícil de peinar. Y al final de todo el cabello si tiene una mente propia. Pero ahí es donde se encuentra la magia del cabello rizado. Podemos atacar este cabello de dos maneras. La primera manera, y la manera más tratada, es de cubrir la cabeza con una buena dosis de una pomada o cera fuerte. Y si, con suficiente tiempo y paciencia funciona. Esta bien.</p><p class="my-6">Usa una pomada con fijación fuerte para calmar esos rizos como nuestra Pomade Firme Hold y estarás en el negocio. El cabello rizado no es imposible de calmar con perseverancia, el producto adecuado y tiempo. Solo tendrás que ser paciente.</p><p class="my-6">Pero como mencionamos, hay otra dirección que podemos tomar con el cabello rizado. No necesariamente tiene que ser domado completamente. Hay varios estilos que incorporan el los rizos naturales del cabello y aceptar lo al 100% sin tratar de esconderlo. Cuando estés trabajando con estos tipos de cabellos no necesitarás una pomada fuerte.</p>`,
       image: {
         value: '',
         reference: {
@@ -806,7 +806,7 @@ export const pomadeBlogSettings: (
       type: 'ONE_COLUMN',
     },
     data: {
-      content: `<p class="my-6">El cabello rizado luce muy desordenado si se hace con un poco de esfuerzo. Hay una diferencia entre la verdadera cabeza de cama literal y 5 minutos frente al espejo "cabecera". El que requiere un poco más de esfuerzo va a rendir mucho mejores resultados durante el día. Agregue un poco de nuestra pomada Premium Blends de tipo híbrido y séquela. Si no puede molestarse en secarse con secador o no tiene un secador de pelo que esté bien, solo asegúrese de que su cabello esté seco al menos en un 75 % cuando agregue cualquier producto al cabello rizado.</p><p class=" my-6">El cabello rizado es un gran tipo de cabello para experimentar mientras utiliza su aspecto natural. Definitivamente tendrá una mente propia y, a veces, tendrás que dejarte llevar por la corriente.</p><p class="my-6">Doméntalo con un producto contundente si tienes un aspecto súper específico. necesita o toma la ruta más suave y agrega algo más ligero y suavemente persuadiendo al cabello en una dirección más "generalizada". De cualquier forma que elijas, hay una opción para ti.</p>`,
+      content: `<p class="my-6">Cabello rizado se ve super bien desordenado si es hecho con poco esfuerzo. Hay poca diferencia entre el cabello literalmente cabeza de cama y el que es cabeza de cama después de 5 minutos enfrente del espejo. El que toma un poco más de esfuerzo tendrá mejores resultados durante el día. Añade un poco de nuestra pomada híbrida Premium Blends y seca con una secadora de cabello. Si no puedes ser molestado con secarte el cabello con la secadora, o no tienes una secadora está bien, solo asegurate que tu cabello esté aunque sea 75% seco cuando le estés agregando cualquier producto a tu cabello rizado.</p><p class="my-6">Cabello rizado es un cabello perfecto con que experimentar en tu cabello natural. Definitivamente tendrá una mente propia y a veces tendrás que seguirle la corriente.</p><p class="my-6">Doma lo con productos fuertes si tienes un look específico en mente o trata de añadir algo más ligero y suave para mover el cabello en una dirección más general. De cualquier manera tú escoges lo que trabaja bien para ti</p>`,
     },
   },
   {
@@ -814,8 +814,8 @@ export const pomadeBlogSettings: (
       type: 'ONE_COLUMN',
     },
     data: {
-      title: 'Consejos y trucos generales',
-      content: `<p class="my-6"><span class="font-bold">Hable con su peluquero</span>. Llegan a conocer tu cabello de una manera diferente a cualquier cosa que puedas lograr. Ellos podrán ayudarte a encontrar no solo los estilos que se adapten a tu cabello, sino también los tipos de productos perfectos que te ayudarán a lograr ese estilo. Pregúntales qué piensan y pruébalo.</p><p class="my-6"><span class="font-bold">Tu cabello desarrollará una memoria con el tiempo.</span> Puedes entrena tu cabello para que se comporte de cierta manera. Si siempre peinas tu cabello de una manera, todos los días con o sin producto, el cabello comenzará a querer colocarse en esa dirección. Cuanto más tiempo dediques a peinarte el cabello según tus preferencias, más fácil será peinarlo. Esta es una buena práctica a tener en cuenta para las personas con algunos tipos de cabello más difíciles de domar. No es perfecto, pero es un gran comienzo.</p><p class="my-6"><span class="font-bold">No tengas miedo de probar algo nuevo.</span> Un nuevo peinado, una nueva cera para el cabello, arcilla o pomada para el cabello o una forma diferente de lograr tu look. No existe una pomada 'mejor' para ti.</p><p class="my-6"><span class="font-bold">Los secadores de cabello no son solo para mujeres.</span> tampoco son obligatorios.</p><p class="my-6"><span class="font-bold">Tómese un tiempo para buscar en línea</span> fotos de peinados de hombres que utilicen su tipo de cabello y ramificarse desde allí. Lo mejor de todo este mundo es que tienes la capacidad de cambiar tu apariencia cuando lo desees y tienes acceso a marcas que tienen una gran variedad de productos con los que puedes experimentar.</p><p class="my- 6">Esto no pretendía tener todas las respuestas para ti, sino darte un buen comienzo. Esperamos que esto le haya proporcionado algo de combustible para comenzar un nuevo camino en su viaje de verse y sentirse bien. Recuerda, este tipo de cosas deben ser divertidas y no debes estresarte demasiado mientras experimentas con tu apariencia. Todo el mundo tiene malos días de cabello de vez en cuando. Sucede y está bien. Sigue haciéndolo y no habrá nada que pueda detenerte.</p><p class="my-6">Esperamos que esta pequeña guía haya sido una buena lectura y que hayas aprendido algo nuevo. Si tiene alguna pregunta sobre los productos, no dude en comunicarse con nosotros, ya que estaremos encantados de ayudarle. Y no olvides pedirle consejo a tu barbero favorito sobre tu cabello y estilo únicos. ¡Son profesionales por algo!</p><p class="my-6">Cuídate y mantente Firme<br />Suavecito Pomade</p>`,
+      title: 'Sugerencias y Truco Generales',
+      content: `<p class="my-6"><span class="font-bold">Habla con tu peluquero:</span> Ellos conocen tu cabello en una manera que es diferente a lo que tú podrás lograr. Ellos podrán ayudarte a encontrar no solo estilos que te queden bien, sino los productos perfectos para que puedas lograr el estilo. Preguntales a ellos que piensan e intentalo.</p><p class="my-6"><span class="font-bold">Tu cabello desarrolla una memoria propia con el tiempo.</span> Puedes entrenar a tu cabello que se comporte de cierta manera. Si siempre estás peinando tu cabello de una manera, cada día con o sin productos, el cabello querrá acostarse en esa dirección. Cuanto más tiempo dediques a peinarte el cabello según tus preferencias, más fácil será peinarlo. Esta es una buena práctica a tener en cuenta para las personas con algunos tipos de cabellos más difíciles de domar. No es perfecto, pero es un gran comienzo.</p><p class="my-6"><span class="font-bold">No tengas miedo de tratar algo nuevo.</span> Un nuevo estilo, nueva cera para el cabello, arcilla para el cabello, pomada o una nueva manera para lograr tu look. No solo hay una pomada “mejor” para ti.</p><p class="my-6"><span class="font-bold">Las secadoras de cabello no solo son para mujeres.</span> Pero tampoco son obligatorias.</p><p class="ny-6"><span class="font-bold">Toma el tiempo para buscar en el internet </span>fotos de estilos de cabello de hombres que tengan el cabello similar al tuyo y expande de ahí. Lo bueno de este mundo es que tienes la habilidad de cambiar tu look cuando quieras y tienes acceso a marcas que tienen una variedad de productos con que puedes experimentar.</p><p class="my-6">Esto no pretende tener todas las respuestas para ti, sino darte un buen comienzo. Esperamos que esto te haya proveído alguna alimentación para comenzar un nuevo camino en tu viaje de verte y sentirte bien. Recuerda, este tipo de cosas debería ser divertido y no te debería estresar mucho cuando experimentes con tu look. Todos tienen malos días de cabello de vez en cuando. Sucede, y está bien. Sigue haciéndolo y no habrá nada que te pueda detener.</p><p class="my-6">Esperamos que esta pequeña guía haya sido una buena lectura y hayas aprendido algo nuevo. Si tienes alguna pregunta sobre nuestros productos no dudes en contactarnos, que estaremos encantados de ayudarte. Y no olvides de preguntarle a tu peluquero por su recomendación sobre tu cabello y estilo único. ¡Son profesionales por una razón!</p><p class="my-6">Cuídate y mantente Firme,<br />Suavecito Pomade</p>`,
     },
   },
 ];
