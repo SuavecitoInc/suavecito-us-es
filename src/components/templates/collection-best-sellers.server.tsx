@@ -21,12 +21,14 @@ import {
 import {BrandTheme} from '~/types/suavecito';
 
 import {
-  bestSellersData,
+  bestSellersBannerData,
   bestSellerCollectionsSlideData,
   bestSellerCollectionsData,
 } from '~/data/collection-best-sellers';
 import {MEDIA_FRAGMENT} from '~/lib/fragments';
 import {COLLECTION_PRODUCT_FRAGMENT} from '~/lib/suavecito-fragments';
+
+import {FGWP_ENABLED} from '~/data/free-gift-with-purchase';
 
 const LANG = import.meta.env.PUBLIC_LANGUAGE_CODE;
 
@@ -37,7 +39,7 @@ export function CollectionBestSellers({
 }) {
   const title = LANG === 'es' ? 'Más Vendidos' : 'Bestsellers';
 
-  const {image1, image2, image3, link1, link2, link3} = bestSellersData;
+  const {image1, image2, image3, link1, link2, link3} = bestSellersBannerData;
 
   const threeImages = {
     image1,
@@ -53,8 +55,8 @@ export function CollectionBestSellers({
       <Suspense>
         <Seo type="collection" data={{title}} />
       </Suspense>
-      <ThreeImageBanner {...threeImages} />
-      <FreeGiftWithPurchaseProgressBar />
+      {FGWP_ENABLED && <ThreeImageBanner {...threeImages} />}
+      {FGWP_ENABLED && <FreeGiftWithPurchaseProgressBar />}
       <CollectionImageCarousel slideData={bestSellerCollectionsSlideData} />
       <div className="page-width">
         {bestSellerCollectionsData.map((collection, index) => (

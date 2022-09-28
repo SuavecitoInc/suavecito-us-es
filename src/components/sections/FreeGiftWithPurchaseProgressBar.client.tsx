@@ -5,7 +5,7 @@ import {useFreeGiftWithPurchase} from '../FreeGiftProvider/hooks.client';
 export function FreeGiftWithPurchaseProgressBar() {
   const LANG = import.meta.env.PUBLIC_LANGUAGE_CODE;
 
-  const {tier1Min, tier2Min, tier3Min} = useFreeGiftWithPurchase();
+  const {enabled, tier1Min, tier2Min, tier3Min} = useFreeGiftWithPurchase();
 
   const labels: {[key: string]: any} = {
     free_gift: {
@@ -96,6 +96,8 @@ export function FreeGiftWithPurchaseProgressBar() {
       setTier1Highlight(percentage);
     }
   }, [cost, settings]);
+
+  if (!enabled) return null;
 
   return (
     <section className="my-10">

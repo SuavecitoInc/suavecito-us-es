@@ -1,14 +1,14 @@
-export const bestSellersData = {
+export const bestSellersBannerData = {
   image1: {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: 'Best Sellers 1',
+      alt: 'Gratis, peine plegable penny cuando gastas $55, crema de afeitar - sandalo cuanda gastas $65.',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/best-sellers-banner-1.jpg?v=1663095685',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/banner1_october_es.jpg?v=1664404893',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/best-sellers-banner-1.jpg?v=1663095685',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/banner1_october_es.jpg?v=1664404893',
         width: 1080,
         height: 1080,
       },
@@ -19,12 +19,12 @@ export const bestSellersData = {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: 'Best Sellers 2',
+      alt: 'Dos regalos gratis cuando gastas $75.',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/best-sellers-banner-2.jpg?v=1663095699',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/banner3_october_es.jpg?v=1664404893',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/best-sellers-banner-2.jpg?v=1663095699',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/banner3_october_es.jpg?v=1664404893',
         width: 1080,
         height: 1080,
       },
@@ -35,12 +35,12 @@ export const bestSellersData = {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: 'Best Sellers 3',
+      alt: 'Gratis, hojas facialesabsorbentes de aceite, cuando gastas $55, labial matte liquido - bruja cuando gastas $65.',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/best-sellers-banner-3.jpg?v=1663095712',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/banner2_october_es.jpg?v=1664404893',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/best-sellers-banner-3.jpg?v=1663095712',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/banner2_october_es.jpg?v=1664404893',
         width: 1080,
         height: 1080,
       },
