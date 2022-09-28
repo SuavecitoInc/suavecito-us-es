@@ -41,7 +41,7 @@ export function FreeGiftWithPurchaseProgressBar() {
       fgwp_tier_2_min: tier2Min,
       fgwp_tier_3_min: tier3Min,
     };
-  }, []);
+  }, [LANG, labels.free_gift, labels.free_gifts, tier1Min, tier2Min, tier3Min]);
 
   const {cost} = useCart();
 
