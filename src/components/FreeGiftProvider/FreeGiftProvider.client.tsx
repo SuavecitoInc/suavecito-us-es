@@ -4,6 +4,7 @@ import type {Product, CartLine} from '@shopify/hydrogen/storefront-api-types';
 
 import {FreeGiftContext} from './context.client';
 import {DefaultFreeGiftContext} from './types';
+import {TIER_1_MIN, TIER_2_MIN, TIER_3_MIN} from './constants';
 
 export function FreeGiftProvider({
   enabled = true,
@@ -15,10 +16,6 @@ export function FreeGiftProvider({
   children: ReactNode;
 }) {
   const {cost, linesAdd, linesRemove, lines, status} = useCart();
-
-  const TIER_1_MIN = 55;
-  const TIER_2_MIN = 65;
-  const TIER_3_MIN = 75;
 
   const [freeGiftsInCart, setFreeGiftsInCart] = useState<number>(0);
 
@@ -208,6 +205,9 @@ export function FreeGiftProvider({
       freeGiftsInCart,
       addFreeGiftToCart,
       freeGiftsEligible,
+      tier1Min: TIER_1_MIN,
+      tier2Min: TIER_2_MIN,
+      tier3Min: TIER_3_MIN,
     };
   }, [
     enabled,

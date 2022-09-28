@@ -1,5 +1,6 @@
 import {createContext, SetStateAction} from 'react';
 import type {DefaultFreeGiftContext} from './types';
+import {TIER_1_MIN, TIER_2_MIN, TIER_3_MIN} from './constants';
 
 const defaultContext: DefaultFreeGiftContext = {
   enabled: true,
@@ -22,6 +23,9 @@ const defaultContext: DefaultFreeGiftContext = {
   freeGiftsInCart: 0,
   addFreeGiftToCart: (tierSelected: SetStateAction<number>) => {},
   freeGiftsEligible: {0: 0, 1: 1, 2: 1, 3: 2},
+  tier1Min: TIER_1_MIN,
+  tier2Min: TIER_2_MIN,
+  tier3Min: TIER_3_MIN,
 };
 
 export const FreeGiftContext =
