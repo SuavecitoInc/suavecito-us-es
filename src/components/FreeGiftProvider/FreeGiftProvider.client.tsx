@@ -4,14 +4,17 @@ import type {Product, CartLine} from '@shopify/hydrogen/storefront-api-types';
 
 import {FreeGiftContext} from './context.client';
 import {DefaultFreeGiftContext} from './types';
-import {TIER_1_MIN, TIER_2_MIN, TIER_3_MIN} from './constants';
+import {
+  FGWP_TIER_1_MIN,
+  FGWP_TIER_2_MIN,
+  FGWP_TIER_3_MIN,
+  FGWP_ENABLED,
+} from '~/data/free-gift-with-purchase';
 
 export function FreeGiftProvider({
-  enabled = true,
   freeGifts,
   children,
 }: {
-  enabled?: boolean;
   freeGifts: Product[];
   children: ReactNode;
 }) {
@@ -92,24 +95,24 @@ export function FreeGiftProvider({
     if (!cost) return;
     const totalAmount = Number(cost?.totalAmount.amount);
     let tier: 0 | 1 | 2 | 3 = 0;
-    if (totalAmount >= TIER_3_MIN) {
+    if (totalAmount >= FGWP_TIER_3_MIN) {
       tier = 3;
-    } else if (totalAmount >= TIER_2_MIN) {
+    } else if (totalAmount >= FGWP_TIER_2_MIN) {
       tier = 2;
-    } else if (totalAmount >= TIER_1_MIN) {
+    } else if (totalAmount >= FGWP_TIER_1_MIN) {
       tier = 1;
     } else {
       tier = 0;
     }
     setCurrentTier(tier);
     const diff1 =
-      Math.round((TIER_1_MIN - totalAmount + Number.EPSILON) * 100) / 100;
+      Math.round((FGWP_TIER_1_MIN - totalAmount + Number.EPSILON) * 100) / 100;
     setTier1Diff(() => (diff1 > 0 ? diff1 : 0));
     const diff2 =
-      Math.round((TIER_2_MIN - totalAmount + Number.EPSILON) * 100) / 100;
+      Math.round((FGWP_TIER_2_MIN - totalAmount + Number.EPSILON) * 100) / 100;
     setTier2Diff(() => (diff2 > 0 ? diff2 : 0));
     const diff3 =
-      Math.round((TIER_3_MIN - totalAmount + Number.EPSILON) * 100) / 100;
+      Math.round((FGWP_TIER_3_MIN - totalAmount + Number.EPSILON) * 100) / 100;
     setTier3Diff(() => (diff3 > 0 ? diff3 : 0));
   }, [cost]);
 
@@ -185,7 +188,7 @@ export function FreeGiftProvider({
 
   const freeGiftContextValue = useMemo<DefaultFreeGiftContext>(() => {
     return {
-      enabled,
+      enabled: FGWP_ENABLED,
       tier1Diff,
       tier2Diff,
       tier3Diff,
@@ -205,12 +208,11 @@ export function FreeGiftProvider({
       freeGiftsInCart,
       addFreeGiftToCart,
       freeGiftsEligible,
-      tier1Min: TIER_1_MIN,
-      tier2Min: TIER_2_MIN,
-      tier3Min: TIER_3_MIN,
+      tier1Min: FGWP_TIER_1_MIN,
+      tier2Min: FGWP_TIER_2_MIN,
+      tier3Min: FGWP_TIER_3_MIN,
     };
   }, [
-    enabled,
     addFreeGiftToCart,
     currentTier,
     freeGiftsEligible,

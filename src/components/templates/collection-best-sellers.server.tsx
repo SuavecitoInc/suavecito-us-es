@@ -3,13 +3,13 @@ import {
   Seo,
   ShopifyAnalyticsConstants,
   useServerAnalytics,
-  useLocalization,
   useShopQuery,
   gql,
   CacheLong,
 } from '@shopify/hydrogen';
+import {Product} from '@shopify/hydrogen/storefront-api-types';
 
-import {NotFound, Layout, ThreeImageBanner} from '~/components/index.server';
+import {Layout, ThreeImageBanner} from '~/components/index.server';
 
 import {
   FreeGiftWithPurchaseProgressBar,
@@ -26,11 +26,7 @@ import {
   bestSellerCollectionsData,
 } from '~/data/collection-best-sellers';
 import {MEDIA_FRAGMENT} from '~/lib/fragments';
-import {
-  FILTERED_COLLECTION_FRAGMENT,
-  COLLECTION_PRODUCT_FRAGMENT,
-} from '~/lib/suavecito-fragments';
-import {Product} from '@shopify/hydrogen/storefront-api-types';
+import {COLLECTION_PRODUCT_FRAGMENT} from '~/lib/suavecito-fragments';
 
 const LANG = import.meta.env.PUBLIC_LANGUAGE_CODE;
 
