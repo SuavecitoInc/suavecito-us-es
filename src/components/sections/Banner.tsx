@@ -82,7 +82,7 @@ export function Banner({
   };
 
   return (
-    <section className="relative justify-end flex flex-col w-full">
+    <section className="relative flex flex-col justify-end w-full">
       <div className="inset-0 grid flex-grow grid-flow-col auto-cols-fr -z-1">
         {spread?.reference && (
           <div className={height[sectionHeight]}>
@@ -101,10 +101,13 @@ export function Banner({
           </div>
         )}
         {displayContent && (
+          <div className="absolute top-0 bottom-0 left-0 right-0 w-full h-full overlay bg-black/30"></div>
+        )}
+        {displayContent && (
           <div
             className={`absolute sm:px-8 md:px-12 bg-gradient-to-t from-primary/${overlayOpacityStart} to-primary/${overlayOpacityEnd} text-contrast w-full h-full z-10`}
           >
-            <div className="page-width inner-content-wrapper relative h-full">
+            <div className="relative h-full page-width inner-content-wrapper">
               <div
                 className={`inner-content flex flex-col items-baseline justify-between gap-4 px-6 py-8 absolute ${alignment[contentAlignment]}`}
               >
