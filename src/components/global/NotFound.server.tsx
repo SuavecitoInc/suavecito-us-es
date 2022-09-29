@@ -3,6 +3,7 @@ import {HydrogenResponse, Image} from '@shopify/hydrogen';
 import {Suspense} from 'react';
 import {Button, Heading} from '~/components';
 import {Layout} from '~/components/index.server';
+import svgImage from '../../../public/images/suavecito-santa-ana-404.svg';
 
 const not_found: {[key: string]: any} = {
   heading: {
@@ -44,7 +45,7 @@ export function NotFound({
         <Suspense>
           <Image
             className="w-full h-auto"
-            src="./images/suavecito-santa-ana-404.svg"
+            src={svgImage}
             alt="Not Found"
             width={1080}
             height="auto"
