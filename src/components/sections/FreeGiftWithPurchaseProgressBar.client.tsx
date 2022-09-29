@@ -76,6 +76,7 @@ export function FreeGiftWithPurchaseProgressBar() {
         setDifference(Number(diff.toFixed(2)));
         const percentage =
           ((total / settings.fgwp_tier_2_min) * 100 - 3).toFixed(0) + '%';
+        setTier3Highlight('0%');
         setTier2Highlight(percentage);
         setTier1Highlight('100%');
       } else {
@@ -85,6 +86,8 @@ export function FreeGiftWithPurchaseProgressBar() {
         const percentage =
           ((total / settings.fgwp_tier_1_min) * 100 - 3).toFixed(0) + '%';
         setTier1Highlight(percentage);
+        setTier2Highlight('0%');
+        setTier3Highlight('0%');
       }
     } else {
       const total = 0;

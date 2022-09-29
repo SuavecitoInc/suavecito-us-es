@@ -69,7 +69,7 @@ export const bestSellerCollectionsSlideData = [
     title: `Cabello de hombre más vendido`,
     subtitle: `Estos favoritos valen la pena`,
     cta: 'Compra ahora',
-    ctaLink: 'mens-hair',
+    ctaLink: '/collections/mens-hair',
     color: 'black',
   },
   {
@@ -113,7 +113,7 @@ export const bestSellerCollectionsSlideData = [
     title: `El afeitado más vendido`,
     subtitle: `Estos productos garantizan un afeitado cómodo y suave.`,
     cta: 'Compra ahora',
-    ctaLink: 'shave',
+    ctaLink: '/collections/shave',
     color: 'yellow',
   },
   {
@@ -135,7 +135,7 @@ export const bestSellerCollectionsSlideData = [
     title: `Cabello de mujer más vendido`,
     subtitle: `Para peinados duraderos y cabello sano`,
     cta: 'Compra ahora',
-    ctaLink: 'womens-hair',
+    ctaLink: '/collections/womens-hair',
     color: 'black',
   },
   {
@@ -157,7 +157,7 @@ export const bestSellerCollectionsSlideData = [
     title: `Cosméticos más vendidos`,
     subtitle: `Cosméticos veganos y libres de crueldad animal: desde pintalabios hasta pestañas`,
     cta: 'Compra ahora',
-    ctaLink: 'beauty',
+    ctaLink: '/collections/beauty',
     color: 'pink',
   },
 ];
