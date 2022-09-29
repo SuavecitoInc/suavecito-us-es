@@ -22,4 +22,7 @@ export interface DefaultFreeGiftContext {
   freeGiftsInCart: number;
   addFreeGiftToCart: (tierSelected: number) => void;
   freeGiftsEligible: {[key: number]: number};
+  tier1Min: number;
+  tier2Min: number;
+  tier3Min: number;
 }

@@ -1,8 +1,14 @@
 import {createContext, SetStateAction} from 'react';
 import type {DefaultFreeGiftContext} from './types';
+import {
+  FGWP_TIER_1_MIN,
+  FGWP_TIER_2_MIN,
+  FGWP_TIER_3_MIN,
+  FGWP_ENABLED,
+} from '~/data/free-gift-with-purchase';
 
 const defaultContext: DefaultFreeGiftContext = {
-  enabled: true,
+  enabled: FGWP_ENABLED,
   tier1Diff: 0,
   tier2Diff: 0,
   tier3Diff: 0,
@@ -22,6 +28,9 @@ const defaultContext: DefaultFreeGiftContext = {
   freeGiftsInCart: 0,
   addFreeGiftToCart: (tierSelected: SetStateAction<number>) => {},
   freeGiftsEligible: {0: 0, 1: 1, 2: 1, 3: 2},
+  tier1Min: FGWP_TIER_1_MIN,
+  tier2Min: FGWP_TIER_2_MIN,
+  tier3Min: FGWP_TIER_3_MIN,
 };
 
 export const FreeGiftContext =

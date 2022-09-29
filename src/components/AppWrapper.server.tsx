@@ -2,13 +2,7 @@ import {ReactNode} from 'react';
 import {gql, useShopQuery, CacheLong} from '@shopify/hydrogen';
 import {FREE_GIFT_PRODUCT_CARD_FRAGMENT} from '~/lib/suavecito-fragments';
 import {FreeGiftProvider} from '~/components/FreeGiftProvider/FreeGiftProvider.client';
-import {
-  FGWP_ENABLED,
-  FGWP_1,
-  FGWP_2,
-  FGWP_3,
-  FGWP_4,
-} from '~/data/free-gift-with-purchase';
+import {FGWP_1, FGWP_2, FGWP_3, FGWP_4} from '~/data/free-gift-with-purchase';
 
 export function AppWrapper({children}: {children: ReactNode}) {
   const {
@@ -27,11 +21,7 @@ export function AppWrapper({children}: {children: ReactNode}) {
 
   const freeGifts = [fgwp1, fgwp2, fgwp3, fgwp4];
 
-  return (
-    <FreeGiftProvider freeGifts={freeGifts} enabled={FGWP_ENABLED}>
-      {children}
-    </FreeGiftProvider>
-  );
+  return <FreeGiftProvider freeGifts={freeGifts}>{children}</FreeGiftProvider>;
 }
 
 const FGWP_QUERY = gql`
