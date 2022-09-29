@@ -16,7 +16,7 @@ export default function Cart() {
   return (
     <Layout>
       <Seo type="page" data={{title: 'Cart'}} />
-      <PageHeader heading={title} className="max-w-7xl mx-auto" />
+      <PageHeader heading={title} className="mx-auto max-w-7xl" />
       <CartPageDetails layout="page" />
       {FGWP_ENABLED && <CartFreeGiftWithPurchase />}
     </Layout>
