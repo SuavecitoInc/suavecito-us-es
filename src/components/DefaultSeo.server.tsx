@@ -11,6 +11,8 @@ import {
  * A server component that fetches a `shop.name` and sets default values and templates for every page on a website
  */
 export function DefaultSeo() {
+  const LANG = import.meta.env.PUBLIC_LANGUAGE_CODE;
+
   const {
     data: {
       shop: {name, description},
@@ -25,6 +27,11 @@ export function DefaultSeo() {
   const canonicalBasePath = 'https://suavecito.com';
   const canonicalURL = `${canonicalBasePath}${pathname}`;
 
+  const defaultDescription =
+    LANG === 'es'
+      ? 'Los productos de Suavecito Pomade incluyen pomada soluble en agua, pomada para mujer, pomada fuerte, spray para el cabello, crema para el cabello, afeitado de estilo tradicional, ropa...'
+      : description;
+
   return (
     <>
       {/* @ts-ignore TODO: Fix types */}
@@ -32,7 +39,7 @@ export function DefaultSeo() {
         type="defaultSeo"
         data={{
           title: name,
-          description,
+          description: defaultDescription,
           titleTemplate: `%s: ${name}`,
         }}
       />

@@ -1,7 +1,7 @@
 import {HydrogenResponse, Image} from '@shopify/hydrogen';
 
 import {Suspense} from 'react';
-import {Button, Heading} from '~/components';
+import {Button, Heading, NotFoundImage} from '~/components';
 import {Layout} from '~/components/index.server';
 
 const not_found: {[key: string]: any} = {
@@ -42,20 +42,14 @@ export function NotFound({
     <Layout showTopPadding={false} backgroundColorClass={brown}>
       <div className="relative">
         <Suspense>
-          <Image
-            className="w-full h-auto"
-            src="/images/suavecito-santa-ana-404.svg"
-            alt="Not Found"
-            width={1080}
-            height="auto"
-          />
+          <NotFoundImage />
         </Suspense>
         <div className="pb-10 md:pb-0 md:absolute md:bottom-[10%] lg:bottom-[20%] left-0 right-0 w-full bg-[#371e12] md:bg-transparent text-white text-center">
           <Heading
             format
             as="h3"
             size="heading"
-            className="text-center w-full max-w-full"
+            className="w-full max-w-full text-center"
           >
             {not_found.heading[LANG]}
           </Heading>
