@@ -91,7 +91,7 @@ export const bestSellerCollectionsSlideData = [
     title: `El cuidado de la barba más vendido`,
     subtitle: `Mantén esos bigotes domesticados y suaves.`,
     cta: 'Compra ahora',
-    ctaLink: 'beard-mustache-care',
+    ctaLink: '/collections/beard-mustache-care',
     color: 'red',
   },
   {

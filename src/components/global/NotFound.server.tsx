@@ -44,7 +44,7 @@ export function NotFound({
         <Suspense>
           <Image
             className="w-full h-auto"
-            src="/images/suavecito-santa-ana-404.svg"
+            src="./images/suavecito-santa-ana-404.svg"
             alt="Not Found"
             width={1080}
             height="auto"
@@ -55,7 +55,7 @@ export function NotFound({
             format
             as="h3"
             size="heading"
-            className="text-center w-full max-w-full"
+            className="w-full max-w-full text-center"
           >
             {not_found.heading[LANG]}
           </Heading>
