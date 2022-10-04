@@ -45,7 +45,9 @@ export function DefaultSeo() {
       />
       <Head>
         <link rel="canonical" href={canonicalURL} />
-        <meta name="robots" content="noindex, nofollow"></meta>
+        {Oxygen.env.ENVIRONMENT !== 'production' && (
+          <meta name="robots" content="noindex, nofollow"></meta>
+        )}
       </Head>
     </>
   );
