@@ -19,7 +19,7 @@ export function AnnouncementBanner({
     },
     rightMsg: {
       en: 'FREE CANADA AND MEXICO SHIPPING WHEN YOU SPEND $75',
-      es: 'ENVÍO GRATIS A CANADÁ Y MÉXICO EN COMPRAS $75',
+      es: 'ENVÍO GRATIS A CANADÁ Y MÉXICO EN COMPRAS DE $75',
     },
   };
   const styles = {
