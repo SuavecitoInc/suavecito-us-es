@@ -190,7 +190,7 @@ export const bannerOneSettings: BannerSectionData = {
 };
 
 export const bannerTwoSettings: BannerSectionData = {
-  heading: {value: 'Tratamiento de Cabello-Anticaida'},
+  heading: {value: 'Tratamiento Capilar - Anticaida'},
   byline: {
     value:
       'Suavecito ha creado una línea de productos diseñados especialmente para el tratamiento y la prevención de la caída de cabello en hombres.',

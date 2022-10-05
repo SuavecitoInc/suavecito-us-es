@@ -36,7 +36,7 @@ const product_form: {[key: string]: any} = {
   },
   soldOut: {
     en: 'Sold Out',
-    es: 'Vendido',
+    es: 'Agotado',
   },
   options: {
     color: {

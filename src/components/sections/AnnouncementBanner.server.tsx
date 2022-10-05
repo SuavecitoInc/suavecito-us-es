@@ -15,11 +15,11 @@ export function AnnouncementBanner({
   const bannerTranslations = {
     leftMsg: {
       en: 'FREE US SHIPPING WHEN YOU SPEND $35',
-      es: 'ENVÍO GRATIS A EE.UU. CUANDO GASTAS $35',
+      es: 'ENVÍO GRATIS A EE.UU. EN COMPRAS DE $35',
     },
     rightMsg: {
       en: 'FREE CANADA AND MEXICO SHIPPING WHEN YOU SPEND $75',
-      es: 'ENVÍO GRATIS A CANADÁ Y MÉXICO POR UN GASTO DE $75',
+      es: 'ENVÍO GRATIS A CANADÁ Y MÉXICO EN COMPRAS $75',
     },
   };
   const styles = {
