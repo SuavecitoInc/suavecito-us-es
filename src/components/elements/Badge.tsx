@@ -17,7 +17,7 @@ export function Badge({
   const labels: {[key: string]: any} = {
     sale: {
       en: 'Sale',
-      es: 'Sale',
+      es: 'Oferta',
     },
     new: {
       en: 'New',
