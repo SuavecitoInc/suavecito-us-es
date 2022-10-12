@@ -1,6 +1,6 @@
 import {Image} from '@shopify/hydrogen';
 
-import svgImage from '../../../public/images/suavecito-santa-ana-404.svg';
+import svgImage from '/images/suavecito-santa-ana-404.svg';
 
 export function NotFoundImage() {
   return (
