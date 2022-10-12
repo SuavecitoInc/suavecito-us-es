@@ -2,7 +2,7 @@ import * as Sentry from '@sentry/react';
 import {BrowserTracing} from '@sentry/tracing';
 import renderHydrogen from '@shopify/hydrogen/entry-client';
 
-const ClientWrapper = ({children}) => children;
+const ClientWrapper = ({children}: {children: any}) => children;
 
 Sentry.init({
   dsn: 'https://a69eb81eb70042308b425947369066d5@o1181994.ingest.sentry.io/4503967682789376',
