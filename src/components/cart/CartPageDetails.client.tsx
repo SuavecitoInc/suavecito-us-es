@@ -18,7 +18,7 @@ const cart_page: {[key: string]: any} = {
   },
   continue_to_checkout: {
     en: 'Continue to Checkout',
-    es: 'Continuar a la comprobación',
+    es: 'Siguir al Pago',
   },
   please_add_free_gift: {
     en: 'Please Add Free Gift Below To Continue',

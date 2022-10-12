@@ -17,7 +17,7 @@ const cart_details: {[key: string]: any} = {
   },
   continue_to_checkout: {
     en: 'Continue to Checkout',
-    es: 'Continuar a la comprobación',
+    es: 'Seguir al Pago',
   },
   continue_to_cart: {
     en: 'Continue to Cart',
