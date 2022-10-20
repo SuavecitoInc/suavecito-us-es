@@ -64,10 +64,29 @@ export function ProductMetafieldPomadeTemplate({handle}: {handle: string}) {
     return <NotFound type="product" />;
   }
 
+  const {
+    priceV2,
+    id: variantId,
+    sku,
+    title: variantTitle,
+  } = product.variants.nodes[0];
+
   useServerAnalytics({
     shopify: {
       pageType: ShopifyAnalyticsConstants.pageType.product,
       resourceId: product.id,
+      products: [
+        {
+          product_gid: product.id,
+          variant_gid: variantId,
+          variant: variantTitle,
+          name: product.title,
+          brand: product.vendor,
+          category: product.productType,
+          price: priceV2.amount,
+          sku,
+        },
+      ],
     },
   });
 
@@ -167,7 +186,7 @@ export function ProductMetafieldPomadeTemplate({handle}: {handle: string}) {
               <div className="flex-1">
                 <section>
                   <div className="grid gap-2">
-                    <Heading as="h1" format className="whitespace-normal">
+                    <Heading as="h1" className="whitespace-normal">
                       {title}
                     </Heading>
                     {vendor && (
