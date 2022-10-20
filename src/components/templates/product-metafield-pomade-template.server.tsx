@@ -64,10 +64,29 @@ export function ProductMetafieldPomadeTemplate({handle}: {handle: string}) {
     return <NotFound type="product" />;
   }
 
+  const {
+    priceV2,
+    id: variantId,
+    sku,
+    title: variantTitle,
+  } = product.variants.nodes[0];
+
   useServerAnalytics({
     shopify: {
       pageType: ShopifyAnalyticsConstants.pageType.product,
       resourceId: product.id,
+      products: [
+        {
+          product_gid: product.id,
+          variant_gid: variantId,
+          variant: variantTitle,
+          name: product.title,
+          brand: product.vendor,
+          category: product.productType,
+          price: priceV2.amount,
+          sku,
+        },
+      ],
     },
   });
 
