@@ -208,7 +208,7 @@ export function ProductMetafieldColorsGetInspiredTemplate({
               <div className="flex-1">
                 <section className="">
                   <div className="grid gap-2">
-                    <Heading as="h1" format className="whitespace-normal">
+                    <Heading as="h1" className="whitespace-normal">
                       {title}
                     </Heading>
                     {vendor && (

@@ -193,11 +193,7 @@ export function ProductMetafieldSPBTemplate({handle}: {handle: string}) {
               <div className="flex-1">
                 <section>
                   <div className="grid gap-2">
-                    <Heading
-                      as="h1"
-                      format
-                      className="text-white whitespace-normal"
-                    >
+                    <Heading as="h1" className="text-white whitespace-normal">
                       {title}
                     </Heading>
                     {vendor && (

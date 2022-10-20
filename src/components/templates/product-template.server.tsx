@@ -192,7 +192,6 @@ export function ProductTemplate({handle}: {handle: string}) {
                   <div className="grid gap-2">
                     <Heading
                       as="h1"
-                      format
                       className={`whitespace-normal ${
                         theme === 'premium blends' && 'text-white'
                       }`}
