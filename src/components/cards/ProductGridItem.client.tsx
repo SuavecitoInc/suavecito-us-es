@@ -96,14 +96,19 @@ export function ProductGridItem({
             {product.title}
           </Text>
           <div className="flex gap-4">
-            <Text className="flex gap-4 font-bold">
-              <Money withoutTrailingZeros data={price!} />
-              {isDiscounted(price as MoneyV2, compareAtPrice as MoneyV2) && (
-                <CompareAtPrice
-                  className={'opacity-50'}
-                  data={compareAtPrice as MoneyV2}
-                />
-              )}
+            <Text
+              as="div"
+              className="flex flex-col gap-4 font-bold md:flex-row"
+            >
+              <div className="price">
+                <Money withoutTrailingZeros data={price!} />
+                {isDiscounted(price as MoneyV2, compareAtPrice as MoneyV2) && (
+                  <CompareAtPrice
+                    className={'opacity-50'}
+                    data={compareAtPrice as MoneyV2}
+                  />
+                )}
+              </div>
               {cardLabel === 'Sale' && product.tags.includes('On Sale') && (
                 <Badge label={cardLabel} tags={product.tags} />
               )}
