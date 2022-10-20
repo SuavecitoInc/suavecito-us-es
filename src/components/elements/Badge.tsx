@@ -51,10 +51,10 @@ export function Badge({
   const variant = getVariant();
 
   return (
-    <span
-      className={`${variants[variant]} font-semibold mr-2 px-2.5 py-0.5 ml-4`}
+    <div
+      className={`${variants[variant]} font-semibold mr-2 px-2.5 py-0.5 ml-4 self-start`}
     >
       {labels[variant][LANG]}
-    </span>
+    </div>
   );
 }
