@@ -16,6 +16,9 @@ export function CartLineItem() {
   const {id: lineId, quantity, merchandise, attributes} = useCartLine();
 
   const isFgwpItem = attributes.find((el) => el.key === '_fgwp') ? true : false;
+  const isFgcwpItem = attributes.find((el) => el.key === '_fgcwp')
+    ? true
+    : false;
 
   return (
     <li key={lineId} className="flex gap-4">
@@ -60,7 +63,7 @@ export function CartLineItem() {
 
           <div className="flex items-center gap-2">
             <div className="flex justify-start text-copy">
-              {!isFgwpItem ? (
+              {!isFgwpItem && !isFgcwpItem ? (
                 <CartLineQuantityAdjust lineId={lineId} quantity={quantity} />
               ) : (
                 <p>{quantity}</p>
