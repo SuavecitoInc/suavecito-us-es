@@ -17,12 +17,12 @@ export const responsiveBannerSettings: ResponsiveBannerSectionData = {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: 'Suavecito X Monsters, Compra Ahora. Regalo gratis con compra.',
+      alt: 'Tarjeta de regalo GRATIS! Recibe una tarjeta de $10 cuando gastas $50. Recibe una tarjeta de $25 cuando gastas $100.',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/cito_october_landing_banner_large_SP.jpg?v=1664310044',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/november_FGCWP_landing_banner_small_SP.jpg?v=1667341851',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/cito_october_landing_banner_large_SP.jpg?v=1664310044',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/november_FGCWP_landing_banner_small_SP.jpg?v=16673418514',
         width: 2048,
         height: 930,
       },
@@ -32,12 +32,12 @@ export const responsiveBannerSettings: ResponsiveBannerSectionData = {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: 'Suavecito X Monsters, Compra Ahora. Regalo gratis con compra.',
+      alt: 'Tarjeta de regalo GRATIS! Recibe una tarjeta de $10 cuando gastas $50. Recibe una tarjeta de $25 cuando gastas $100.',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/cito_october_landing_banner_large_SP.jpg?v=1664310044',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/november_FGCWP_landing_banner_small_SP.jpg?v=1667341851',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/cito_october_landing_banner_large_SP.jpg?v=1664310044',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/november_FGCWP_landing_banner_small_SP.jpg?v=1667341851',
         width: 2048,
         height: 930,
       },
@@ -47,12 +47,12 @@ export const responsiveBannerSettings: ResponsiveBannerSectionData = {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: 'Suavecito X Monsters, Compra Ahora. Regalo gratis con compra.',
+      alt: 'Tarjeta de regalo GRATIS! Recibe una tarjeta de $10 cuando gastas $50. Recibe una tarjeta de $25 cuando gastas $100.',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/cito_october_landing_banner_medium_SP.jpg?v=1664310044',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/november_FGCWP_landing_banner_medium_SP.jpg?v=1667341851',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/cito_october_landing_banner_medium_SP.jpg?v=1664310044',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/november_FGCWP_landing_banner_medium_SP.jpg?v=1667341851',
         width: 2048,
         height: 1764,
       },
@@ -62,12 +62,12 @@ export const responsiveBannerSettings: ResponsiveBannerSectionData = {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: 'Suavecito X Monsters, Compra Ahora. Regalo gratis con compra.',
+      alt: 'Tarjeta de regalo GRATIS! Recibe una tarjeta de $10 cuando gastas $50. Recibe una tarjeta de $25 cuando gastas $100.',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/cito_october_landing_banner_small_SP.jpg?v=1664310044',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/november_FGCWP_landing_banner_small_SP.jpg?v=1667341851',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/cito_october_landing_banner_small_SP.jpg?v=1664310044',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/november_FGCWP_landing_banner_small_SP.jpg?v=1667341851',
         width: 2048,
         height: 2048,
       },
