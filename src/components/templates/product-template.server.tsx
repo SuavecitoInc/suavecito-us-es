@@ -10,7 +10,10 @@ import {
 } from '@shopify/hydrogen';
 
 import {MEDIA_FRAGMENT} from '~/lib/fragments';
-import {PRODUCT_APPAREL_FRAGMENT} from '~/lib/suavecito-fragments';
+import {
+  PRODUCT_APPAREL_FRAGMENT,
+  VARIANT_SALE_FRAGMENT,
+} from '~/lib/suavecito-fragments';
 import {
   NotFound,
   Layout,
@@ -255,6 +258,7 @@ export function ProductTemplate({handle}: {handle: string}) {
 const PRODUCT_QUERY = gql`
   ${MEDIA_FRAGMENT}
   ${PRODUCT_APPAREL_FRAGMENT}
+  ${VARIANT_SALE_FRAGMENT}
   query Product(
     $country: CountryCode
     $language: LanguageCode
@@ -322,6 +326,7 @@ const PRODUCT_QUERY = gql`
             amount
             currencyCode
           }
+          ...VariantSale
         }
       }
       seo {
