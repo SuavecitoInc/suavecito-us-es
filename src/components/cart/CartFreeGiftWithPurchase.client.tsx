@@ -253,12 +253,12 @@ function ProductCard({
           name="variant"
           onChange={handleVariantChange}
           className="block mx-auto mt-2"
+          value={selected}
         >
           {product.variants.nodes.map((variant) => (
             <option
               key={variant.id}
               value={variant.id}
-              selected={variant.id === selected}
               disabled={!variant.availableForSale}
             >
               {variant.title}
@@ -314,9 +314,7 @@ function AddGiftButton({
           {`${fgwp_locale.buttons.spend[lang]} $${tierDiff} ${fgwp_locale.buttons.left_to_unlock[lang]}`}
         </p>
       ) : (
-        <p>
-          <ImUnlocked className="w-5 h-5 mx-auto mb-[2px] text-center" />
-        </p>
+        <div className="h-5 mb-[2px]" />
       )}
 
       <Button

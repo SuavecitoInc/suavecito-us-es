@@ -26,4 +26,5 @@ export interface DefaultFreeGiftContext {
   tier1Min: number;
   tier2Min: number;
   tier3Min: number;
+  checkoutDisabled: boolean;
 }

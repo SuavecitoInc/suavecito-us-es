@@ -39,8 +39,7 @@ export function CartPageDetails({
 }) {
   const LANG = import.meta.env.PUBLIC_LANGUAGE_CODE;
 
-  const {enabled, freeGiftsInCart, freeGiftsEligible, currentTier} =
-    useFreeGiftWithPurchase();
+  const {enabled, checkoutDisabled} = useFreeGiftWithPurchase();
 
   const {lines} = useCart();
   const scrollRef = useRef(null);
@@ -69,8 +68,6 @@ export function CartPageDetails({
     page: 'sticky top-nav grid gap-6 p-4 md:px-6 md:translate-y-4 bg-primary/5 rounded w-full',
   };
 
-  const freeGiftAvailable = freeGiftsInCart < freeGiftsEligible[currentTier];
-
   return (
     <Section className="mx-auto max-w-7xl">
       <form className={container[layout]}>
@@ -96,7 +93,7 @@ export function CartPageDetails({
           <OrderSummary lang={LANG} />
           <CartCheckoutActions
             lang={LANG}
-            disableCheckout={enabled ? freeGiftAvailable : false}
+            disableCheckout={enabled ? checkoutDisabled : false}
           />
         </section>
       </form>

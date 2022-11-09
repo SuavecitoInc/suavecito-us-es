@@ -27,7 +27,7 @@ export function FreeGiftProvider({
 
   const [freeGiftsInCart, setFreeGiftsInCart] = useState<number>(0);
 
-  const [tier1Diff, setTier1Diff] = useState<number>(0);
+  const [tier1Diff, setTier1Diff] = useState<number>(FGWP_TIER_1_MIN);
   const [tier2Diff, setTier2Diff] = useState<number>(0);
   const [tier3Diff, setTier3Diff] = useState<number>(0);
 
@@ -244,6 +244,43 @@ export function FreeGiftProvider({
     ],
   );
 
+  const checkoutDisabled = useMemo(() => {
+    let currentTierGiftsEligible = freeGiftsEligible[currentTier];
+
+    const tier1Available = tier1Products.find((product) =>
+      product.variants.nodes.find((variant) => variant.availableForSale),
+    );
+    const tier1Disabled = tier1Available ? false : true;
+
+    const tier2Available = tier2Products.find((product) =>
+      product.variants.nodes.find((variant) => variant.availableForSale),
+    );
+    const tier2Disabled =
+      !FGWP_SINGLE_TIER_ENABLED && tier2Available ? false : true;
+    const tier3Available = tier1Available && tier2Available ? true : false;
+    const tier3Disabled =
+      !FGWP_SINGLE_TIER_ENABLED && tier3Available ? false : true;
+    if (
+      (currentTier === 3 && tier1Disabled) ||
+      (currentTier === 3 && tier2Disabled)
+    ) {
+      currentTierGiftsEligible -= 1;
+    }
+
+    const freeGiftAvailable = freeGiftsInCart < currentTierGiftsEligible;
+
+    const allTiersDisabled =
+      tier1Disabled && tier2Disabled && tier3Disabled ? true : false;
+
+    return allTiersDisabled ? false : freeGiftAvailable;
+  }, [
+    currentTier,
+    freeGiftsEligible,
+    freeGiftsInCart,
+    tier1Products,
+    tier2Products,
+  ]);
+
   const freeGiftContextValue = useMemo<DefaultFreeGiftContext>(() => {
     return {
       enabled: FGWP_ENABLED,
@@ -270,6 +307,7 @@ export function FreeGiftProvider({
       tier1Min: FGWP_TIER_1_MIN,
       tier2Min: FGWP_TIER_2_MIN,
       tier3Min: FGWP_TIER_3_MIN,
+      checkoutDisabled,
     };
   }, [
     addFreeGiftToCart,
@@ -286,6 +324,7 @@ export function FreeGiftProvider({
     tier3Products,
     tier3Value1,
     tier3Value2,
+    checkoutDisabled,
   ]);
 
   return (
