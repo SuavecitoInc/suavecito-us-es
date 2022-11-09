@@ -1,6 +1,6 @@
 // Free Gift With Purchase
 export const FGWP_ENABLED = true;
-export const FGWP_SINGLE_TIER_ENABLED = true;
+export const FGWP_SINGLE_TIER_ENABLED = false;
 // export const FGWP_1 = 'wood-pulp-oil-blotting-sheets-fgwp';
 export const FGWP_1 = 'calaca-og-womens-tee';
 // export const FGWP_2 = 'penny-folding-comb-quartz-fgwp';

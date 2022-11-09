@@ -100,13 +100,15 @@ export function CartFreeGiftWithPurchase() {
         {fgwp_locale.title[LANG]}
       </Heading>
       <div className="my-4">
-        <p className="text-center">
-          {fgwp_locale.sub_title.first[LANG]}{' '}
-          <span className="text-suave-red">
-            ${`${currentTier === 3 ? '0' : tierDiff[currentTier]}`}{' '}
-          </span>{' '}
-          {fgwp_locale.sub_title.second[LANG]}
-        </p>
+        {(isSingleTier && currentTier === 1) || currentTier === 3 ? null : (
+          <p className="text-center">
+            {fgwp_locale.sub_title.first[LANG]}{' '}
+            <span className="text-suave-red">
+              ${`${currentTier === 3 ? '0' : tierDiff[currentTier]}`}{' '}
+            </span>{' '}
+            {fgwp_locale.sub_title.second[LANG]}
+          </p>
+        )}
         <p className="text-center">{fgwp_locale.select_your_gift[LANG]}:</p>
       </div>
       <section className={tierGridStyles}>
@@ -268,9 +270,16 @@ function AddGiftButton({
 
   return (
     <>
-      <p>
-        {`${fgwp_locale.buttons.spend[lang]} $${tierDiff} ${fgwp_locale.buttons.left_to_unlock[lang]}`}
-      </p>
+      {tierDiff > 0 ? (
+        <p>
+          {`${fgwp_locale.buttons.spend[lang]} $${tierDiff} ${fgwp_locale.buttons.left_to_unlock[lang]}`}
+        </p>
+      ) : (
+        <p>
+          <ImUnlocked className="w-5 h-5 mx-auto mb-[2px] text-center" />
+        </p>
+      )}
+
       <Button
         type="button"
         disabled={tierDisabled}
