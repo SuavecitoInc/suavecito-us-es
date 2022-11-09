@@ -1,6 +1,10 @@
 import {useEffect, useCallback, useMemo, ReactNode, useState} from 'react';
 import {useCart} from '@shopify/hydrogen';
-import type {Product, CartLine} from '@shopify/hydrogen/storefront-api-types';
+import type {
+  Product,
+  CartLine,
+  ProductVariant,
+} from '@shopify/hydrogen/storefront-api-types';
 
 import {FreeGiftContext} from './context.client';
 import {DefaultFreeGiftContext} from './types';
@@ -39,16 +43,19 @@ export function FreeGiftProvider({
 
   // get first available, if not found return first, product component will handle oos
   const getFirstAvailable = (arr: Product[]) => {
-    const found = arr.find((product: Product) => {
-      if (
-        product.variants.nodes[0] &&
-        product.variants.nodes[0].quantityAvailable
-      )
-        return product.variants.nodes[0].quantityAvailable > 0;
-    });
-    let firstAvailable = arr[0].variants.nodes[0].id;
-    if (found) firstAvailable = found.variants.nodes[0].id;
-    return firstAvailable;
+    const found = arr.find((product: Product) =>
+      product.variants.nodes.find((variant) => {
+        if (variant && variant?.availableForSale) {
+          return variant.availableForSale;
+        }
+      }),
+    );
+
+    const firstAvailable = found
+      ? found?.variants.nodes.find((variant) => variant.availableForSale)
+      : arr[0].variants.nodes[0];
+
+    return firstAvailable!.id;
   };
 
   const tier1FirstAvailable = getFirstAvailable([freeGifts[0], freeGifts[1]]);
@@ -176,6 +183,13 @@ export function FreeGiftProvider({
         2: [tier2Value],
         3: [tier3Value1, tier3Value2],
       };
+
+      const products: {[key: number]: Product[]} = {
+        1: tier1Products,
+        2: tier2Products,
+        3: tier3Products,
+      };
+
       const newLines: {
         merchandiseId: string;
         quantity: number;
@@ -188,23 +202,46 @@ export function FreeGiftProvider({
         if (freeGiftLine && id === freeGiftLine.merchandise.id) {
           skipRemove = true;
         } else {
-          newLines.push({
-            merchandiseId: id,
-            quantity: 1,
-            attributes: [
-              {
-                key: '_fgwp',
-                value: 'true',
-              },
-            ],
+          // check if product in stock before pushing
+          let found: ProductVariant | false = false;
+          products[tierSelected].forEach((product) => {
+            const variant = product.variants.nodes.find(
+              (variant) => variant.id === id,
+            );
+            if (variant) found = variant;
           });
+
+          if (found) {
+            if ((found as ProductVariant).availableForSale) {
+              newLines.push({
+                merchandiseId: id,
+                quantity: 1,
+                attributes: [
+                  {
+                    key: '_fgwp',
+                    value: 'true',
+                  },
+                ],
+              });
+            }
+          }
         }
       });
       linesAdd(newLines);
 
       if (freeGiftLine && !skipRemove) setRemoveLineId(freeGiftLine.id);
     },
-    [lines, linesAdd, tier1Value, tier2Value, tier3Value1, tier3Value2],
+    [
+      lines,
+      linesAdd,
+      tier1Products,
+      tier1Value,
+      tier2Products,
+      tier2Value,
+      tier3Products,
+      tier3Value1,
+      tier3Value2,
+    ],
   );
 
   const freeGiftContextValue = useMemo<DefaultFreeGiftContext>(() => {

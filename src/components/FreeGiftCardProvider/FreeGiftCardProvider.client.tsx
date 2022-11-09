@@ -124,8 +124,8 @@ export function FreeGiftCardProvider({
     let removeLines = false;
     let totalAmount = 0;
     lines.forEach((line) => {
-      const findFGWP = line.attributes.find((el) => el.key === '_fgcwp');
-      if (findFGWP && Number(line.cost.totalAmount.amount) !== 0) {
+      const findFGCWP = line.attributes.find((el) => el.key === '_fgcwp');
+      if (findFGCWP && Number(line.cost.totalAmount.amount) !== 0) {
         setRemoveLineId(line.id);
         removeLines = true;
       } else {

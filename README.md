@@ -58,5 +58,6 @@ npm run preview
 
 ## FGWP
 
-> disable
+Config
+
 > /src/data/free-gift-with-purchase

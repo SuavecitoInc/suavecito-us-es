@@ -89,6 +89,21 @@ export function CartFreeGiftWithPurchase() {
 
   const tierGridStyles = isSingleTier ? singleTierStyles : multiTierStyles;
 
+  const tier1Available = tier1Products.find((product) =>
+    product.variants.nodes.find((variant) => variant.availableForSale),
+  );
+  const tier1Disabled = tier1Available ? false : true;
+
+  const tier2Available = tier2Products.find((product) =>
+    product.variants.nodes.find((variant) => variant.availableForSale),
+  );
+  const tier2Disabled = tier2Available ? false : true;
+
+  const tier3Available = tier3Products.find((product) =>
+    product.variants.nodes.find((variant) => variant.availableForSale),
+  );
+  const tier3Disabled = tier3Available ? false : true;
+
   return (
     <Section id="fgwp" className="fgwp bg-[#ccc] py-[35px]">
       <Heading
@@ -121,7 +136,10 @@ export function CartFreeGiftWithPurchase() {
           productValue={tier1Value}
           tierDiff={tier1Diff}
           tierDisabled={
-            freeGiftAvailable && currentTier >= 1 && freeGiftsInCart !== 1
+            !tier1Disabled &&
+            freeGiftAvailable &&
+            currentTier >= 1 &&
+            freeGiftsInCart !== 1
               ? false
               : true
           }
@@ -138,7 +156,10 @@ export function CartFreeGiftWithPurchase() {
             productValue={tier2Value}
             tierDiff={tier2Diff}
             tierDisabled={
-              freeGiftAvailable && currentTier >= 2 && freeGiftsInCart !== 1
+              !tier2Disabled &&
+              freeGiftAvailable &&
+              currentTier >= 2 &&
+              freeGiftsInCart !== 1
                 ? false
                 : true
             }
@@ -157,7 +178,11 @@ export function CartFreeGiftWithPurchase() {
             productValue1={tier3Value1}
             productValue2={tier3Value2}
             tierDiff={tier3Diff}
-            tierDisabled={freeGiftAvailable && currentTier >= 3 ? false : true}
+            tierDisabled={
+              !tier3Disabled && freeGiftAvailable && currentTier >= 3
+                ? false
+                : true
+            }
             addFreeGiftToCart={addFreeGiftToCart}
             freeGiftAvailable={freeGiftAvailable}
           />
@@ -183,9 +208,18 @@ function ProductCard({
   displayTitle?: boolean;
 }) {
   const variant = product.variants.nodes[0];
-  const cardDisabled = tierDisabled || !variant.availableForSale ? true : false;
+  const firstAvailable = product.variants.nodes.find(
+    (variant) => variant.availableForSale,
+  );
 
-  const [selected, setSelected] = useState<string>(variant.id);
+  const firstAvailableVariant = firstAvailable
+    ? firstAvailable
+    : product.variants.nodes[0];
+
+  const cardDisabled =
+    tierDisabled || !firstAvailableVariant.availableForSale ? true : false;
+
+  const [selected, setSelected] = useState<string>(firstAvailableVariant.id);
 
   const handleVariantChange = (evt: any) => {
     const value = evt.target.value;
@@ -221,7 +255,12 @@ function ProductCard({
           className="block mx-auto mt-2"
         >
           {product.variants.nodes.map((variant) => (
-            <option key={variant.id} value={variant.id}>
+            <option
+              key={variant.id}
+              value={variant.id}
+              selected={variant.id === selected}
+              disabled={!variant.availableForSale}
+            >
               {variant.title}
             </option>
           ))}
