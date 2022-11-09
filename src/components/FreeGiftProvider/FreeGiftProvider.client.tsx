@@ -9,6 +9,7 @@ import {
   FGWP_TIER_2_MIN,
   FGWP_TIER_3_MIN,
   FGWP_ENABLED,
+  FGWP_SINGLE_TIER_ENABLED,
 } from '~/data/free-gift-with-purchase';
 
 export function FreeGiftProvider({
@@ -93,17 +94,37 @@ export function FreeGiftProvider({
   // calculate diff
   useEffect(() => {
     if (!cost) return;
-    const totalAmount = Number(cost?.totalAmount.amount);
+    // const totalAmount = Number(cost?.totalAmount.amount);
+
+    let totalAmount = 0;
+    lines.forEach((line) => {
+      const findFGWP = line.attributes.find((el) => el.key === '_fgwp');
+      if (!findFGWP) {
+        totalAmount += Number(line.cost.totalAmount.amount);
+      }
+    });
+
     let tier: 0 | 1 | 2 | 3 = 0;
-    if (totalAmount >= FGWP_TIER_3_MIN) {
-      tier = 3;
-    } else if (totalAmount >= FGWP_TIER_2_MIN) {
-      tier = 2;
-    } else if (totalAmount >= FGWP_TIER_1_MIN) {
-      tier = 1;
+    // single tier overwrite
+    if (FGWP_SINGLE_TIER_ENABLED) {
+      if (totalAmount >= FGWP_TIER_1_MIN) {
+        tier = 1;
+      } else {
+        tier = 0;
+      }
     } else {
-      tier = 0;
+      // all tiers enabled
+      if (totalAmount >= FGWP_TIER_3_MIN) {
+        tier = 3;
+      } else if (totalAmount >= FGWP_TIER_2_MIN) {
+        tier = 2;
+      } else if (totalAmount >= FGWP_TIER_1_MIN) {
+        tier = 1;
+      } else {
+        tier = 0;
+      }
     }
+
     setCurrentTier(tier);
     const diff1 =
       Math.round((FGWP_TIER_1_MIN - totalAmount + Number.EPSILON) * 100) / 100;
@@ -114,7 +135,7 @@ export function FreeGiftProvider({
     const diff3 =
       Math.round((FGWP_TIER_3_MIN - totalAmount + Number.EPSILON) * 100) / 100;
     setTier3Diff(() => (diff3 > 0 ? diff3 : 0));
-  }, [cost]);
+  }, [cost, lines]);
 
   // removes ineligible quantities
   useEffect(() => {
@@ -189,6 +210,7 @@ export function FreeGiftProvider({
   const freeGiftContextValue = useMemo<DefaultFreeGiftContext>(() => {
     return {
       enabled: FGWP_ENABLED,
+      isSingleTier: FGWP_SINGLE_TIER_ENABLED,
       tier1Diff,
       tier2Diff,
       tier3Diff,

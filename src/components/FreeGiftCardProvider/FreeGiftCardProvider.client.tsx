@@ -42,7 +42,6 @@ export function FreeGiftCardProvider({
   }, []);
 
   const [removeLineId, setRemoveLineId] = useState<string | null>(null);
-  const [updateLine, setUpdateLine] = useState<any>(null);
   const [addGCLine, setAddGCLine] = useState<any>(null);
 
   const addFreeGiftCardToCart = useCallback(
@@ -88,12 +87,10 @@ export function FreeGiftCardProvider({
       });
 
       if (newLines.length > 0) {
-        console.log('NEW LINES', newLines);
         setAddGCLine(newLines);
       }
 
       if (freeGiftCardLine && !skipRemove) {
-        console.log('REMOVE LINES', freeGiftCardLine.id);
         setRemoveLineId(freeGiftCardLine.id);
       }
     },
@@ -122,7 +119,6 @@ export function FreeGiftCardProvider({
   // calculate diff
   useEffect(() => {
     if (!cost) return;
-    // const totalAmount = Number(cost?.totalAmount.amount);
     let tier: 0 | 1 | 2 = 0;
 
     let removeLines = false;

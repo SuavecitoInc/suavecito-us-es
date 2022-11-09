@@ -1,4 +1,4 @@
-import type {SetStateAction, Dispatch} from 'react';
+import {SetStateAction, Dispatch, useState} from 'react';
 import {Image} from '@shopify/hydrogen';
 import {ImLock, ImUnlocked} from 'react-icons/im';
 import type {Product} from '@shopify/hydrogen/storefront-api-types';
@@ -54,6 +54,7 @@ export function CartFreeGiftWithPurchase() {
   const LANG = import.meta.env.PUBLIC_LANGUAGE_CODE;
 
   const {
+    isSingleTier,
     tier1Diff,
     tier2Diff,
     tier3Diff,
@@ -83,6 +84,11 @@ export function CartFreeGiftWithPurchase() {
 
   const freeGiftAvailable = freeGiftsInCart < freeGiftsEligible[currentTier];
 
+  const singleTierStyles = `grid grid-cols-1 gap-4 mx-auto cards max-w-7xl`;
+  const multiTierStyles = `grid grid-cols-1 gap-4 mx-auto cards max-w-7xl lg:grid-cols-3`;
+
+  const tierGridStyles = isSingleTier ? singleTierStyles : multiTierStyles;
+
   return (
     <Section id="fgwp" className="fgwp bg-[#ccc] py-[35px]">
       <Heading
@@ -103,7 +109,7 @@ export function CartFreeGiftWithPurchase() {
         </p>
         <p className="text-center">{fgwp_locale.select_your_gift[LANG]}:</p>
       </div>
-      <section className="grid grid-cols-1 gap-4 mx-auto cards max-w-7xl lg:grid-cols-3">
+      <section className={tierGridStyles}>
         <TierCard
           lang={LANG}
           products={tier1Products}
@@ -120,36 +126,40 @@ export function CartFreeGiftWithPurchase() {
           addFreeGiftToCart={addFreeGiftToCart}
           freeGiftAvailable={freeGiftAvailable}
         />
-        <TierCard
-          lang={LANG}
-          products={tier2Products}
-          tier={2}
-          currentTier={currentTier}
-          productHandler={setTier2Value}
-          productValue={tier2Value}
-          tierDiff={tier2Diff}
-          tierDisabled={
-            freeGiftAvailable && currentTier >= 2 && freeGiftsInCart !== 1
-              ? false
-              : true
-          }
-          addFreeGiftToCart={addFreeGiftToCart}
-          freeGiftAvailable={freeGiftAvailable}
-        />
-        <Tier3Card
-          lang={LANG}
-          products={tier3Products}
-          tier={3}
-          currentTier={currentTier}
-          productHandler1={setTier3Value1}
-          productHandler2={setTier3Value2}
-          productValue1={tier3Value1}
-          productValue2={tier3Value2}
-          tierDiff={tier3Diff}
-          tierDisabled={freeGiftAvailable && currentTier >= 3 ? false : true}
-          addFreeGiftToCart={addFreeGiftToCart}
-          freeGiftAvailable={freeGiftAvailable}
-        />
+        {!isSingleTier && (
+          <TierCard
+            lang={LANG}
+            products={tier2Products}
+            tier={2}
+            currentTier={currentTier}
+            productHandler={setTier2Value}
+            productValue={tier2Value}
+            tierDiff={tier2Diff}
+            tierDisabled={
+              freeGiftAvailable && currentTier >= 2 && freeGiftsInCart !== 1
+                ? false
+                : true
+            }
+            addFreeGiftToCart={addFreeGiftToCart}
+            freeGiftAvailable={freeGiftAvailable}
+          />
+        )}
+        {!isSingleTier && (
+          <Tier3Card
+            lang={LANG}
+            products={tier3Products}
+            tier={3}
+            currentTier={currentTier}
+            productHandler1={setTier3Value1}
+            productHandler2={setTier3Value2}
+            productValue1={tier3Value1}
+            productValue2={tier3Value2}
+            tierDiff={tier3Diff}
+            tierDisabled={freeGiftAvailable && currentTier >= 3 ? false : true}
+            addFreeGiftToCart={addFreeGiftToCart}
+            freeGiftAvailable={freeGiftAvailable}
+          />
+        )}
       </section>
     </Section>
   );
@@ -173,33 +183,56 @@ function ProductCard({
   const variant = product.variants.nodes[0];
   const cardDisabled = tierDisabled || !variant.availableForSale ? true : false;
 
+  const [selected, setSelected] = useState<string>(variant.id);
+
+  const handleVariantChange = (evt: any) => {
+    const value = evt.target.value;
+    setSelected(value);
+    productHandler(value);
+  };
+
   return (
     <div
       className={`product-card ${cardDisabled ? 'opacity-30' : 'opacity-100'}`}
     >
-      <label className="radio-container">
-        <Image
-          width={112}
-          height={112}
-          widths={[112]}
-          data={variant.image as ImageType}
-          loaderOptions={{
-            scale: 2,
-            crop: 'center',
-          }}
-          className="object-cover object-center w-24 h-24 rounded md:w-28 md:h-28"
-        />
-        {displayTitle && (
-          <p className="font-bold uppercase text-suave-red">{product.title}</p>
-        )}
+      <Image
+        width={112}
+        height={112}
+        widths={[112]}
+        data={variant.image as ImageType}
+        loaderOptions={{
+          scale: 2,
+          crop: 'center',
+        }}
+        className="object-cover object-center w-24 h-24 mx-auto rounded md:w-28 md:h-28"
+      />
+      {displayTitle && (
+        <p className="font-bold text-center uppercase text-suave-red">
+          {product.title}
+        </p>
+      )}
 
+      {product.variants.nodes.length > 1 && (
+        <select
+          name="variant"
+          onChange={handleVariantChange}
+          className="block mx-auto mt-2"
+        >
+          {product.variants.nodes.map((variant) => (
+            <option key={variant.id} value={variant.id}>
+              {variant.title}
+            </option>
+          ))}
+        </select>
+      )}
+      <label className="radio-container">
         <input
           type="radio"
           name={inputName}
-          value={variant.id}
-          checked={variant.id === productValue ? true : false}
-          onChange={(e) => productHandler(e.target.value)}
+          value={selected}
+          checked={selected === productValue ? true : false}
           disabled={cardDisabled}
+          onChange={(e) => productHandler(e.target.value)}
         />
         <span className="checkmark"></span>
       </label>
@@ -216,7 +249,7 @@ function AddGiftButton({
   tierDiff,
   tierDisabled,
 }: {
-  lang: 'EN' | 'ES';
+  lang: 'en' | 'es';
   freeGiftAvailable: boolean;
   addFreeGiftToCart: (tierSelected: number) => void;
   currentTier: number;
@@ -267,7 +300,7 @@ function TierCard({
   addFreeGiftToCart,
   freeGiftAvailable,
 }: {
-  lang: 'EN' | 'ES';
+  lang: 'en' | 'es';
   tier: number;
   currentTier: number;
   products: Product[];
@@ -289,7 +322,7 @@ function TierCard({
       </div>
       <div className="flex flex-col h-full gap-4">
         <div className="flex items-center justify-center p-4 bg-white border border-black rounded-lg grow shrink basis-auto">
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
             <div className="flex items-center justify-center">
               <ProductCard
                 product={products[0]}
@@ -344,7 +377,7 @@ function Tier3Card({
   addFreeGiftToCart,
   freeGiftAvailable,
 }: {
-  lang: 'EN' | 'ES';
+  lang: 'en' | 'es';
   tier: number;
   currentTier: number;
   products: Product[];

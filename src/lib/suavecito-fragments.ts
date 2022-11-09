@@ -525,7 +525,7 @@ export const FREE_GIFT_PRODUCT_CARD_FRAGMENT = gql`
     publishedAt
     handle
     availableForSale
-    variants(first: 1) {
+    variants(first: 10) {
       nodes {
         id
         availableForSale
@@ -544,6 +544,7 @@ export const FREE_GIFT_PRODUCT_CARD_FRAGMENT = gql`
           amount
           currencyCode
         }
+        title
       }
     }
   }
