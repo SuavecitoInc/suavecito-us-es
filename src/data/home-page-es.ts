@@ -19,10 +19,10 @@ export const responsiveBannerSettings: ResponsiveBannerSectionData = {
       mediaContentType: 'IMAGE',
       alt: '!Nuevo, Suavecito Vida Eterna, Compra Ahora! Recibe una tarjeta de $10 gratis cuando gastas $50. Recibe una tarjeta de $25 gratis cuando gastas $100.',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0522/7459/3945/files/vida_eterna_banner_large_sp.jpg?v=1668184001',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/vida_eterna_banner_large_sp.jpg?v=1668184259',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0522/7459/3945/files/vida_eterna_banner_large_sp.jpg?v=1668184001',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/vida_eterna_banner_large_sp.jpg?v=1668184259',
         width: 2048,
         height: 930,
       },
@@ -34,10 +34,10 @@ export const responsiveBannerSettings: ResponsiveBannerSectionData = {
       mediaContentType: 'IMAGE',
       alt: '!Nuevo, Suavecito Vida Eterna, Compra Ahora! Recibe una tarjeta de $10 gratis cuando gastas $50. Recibe una tarjeta de $25 gratis cuando gastas $100.',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0522/7459/3945/files/vida_eterna_banner_large_sp.jpg?v=1668184001',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/vida_eterna_banner_large_sp.jpg?v=1668184259',
       },
       image: {
-        url: 'hhttps://cdn.shopify.com/s/files/1/0522/7459/3945/files/vida_eterna_banner_large_sp.jpg?v=1668184001',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/vida_eterna_banner_large_sp.jpg?v=1668184259',
         width: 2048,
         height: 930,
       },
@@ -49,10 +49,10 @@ export const responsiveBannerSettings: ResponsiveBannerSectionData = {
       mediaContentType: 'IMAGE',
       alt: '!Nuevo, Suavecito Vida Eterna, Compra Ahora! Recibe una tarjeta de $10 gratis cuando gastas $50. Recibe una tarjeta de $25 gratis cuando gastas $100.',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0522/7459/3945/files/vida_eterna_banner_med_sp.jpg?v=1668184001',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/vida_eterna_banner_med_sp.jpg?v=1668184259',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0522/7459/3945/files/vida_eterna_banner_med_sp.jpg?v=1668184001',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/vida_eterna_banner_med_sp.jpg?v=1668184259',
         width: 2048,
         height: 1764,
       },
@@ -64,10 +64,10 @@ export const responsiveBannerSettings: ResponsiveBannerSectionData = {
       mediaContentType: 'IMAGE',
       alt: '!Nuevo, Suavecito Vida Eterna, Compra Ahora! Recibe una tarjeta de $10 gratis cuando gastas $50. Recibe una tarjeta de $25 gratis cuando gastas $100.',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0522/7459/3945/files/vida_eterna_banner_small_sp.jpg?v=1668184001',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/vida_eterna_banner_small_sp.jpg?v=1668184259',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0522/7459/3945/files/vida_eterna_banner_small_sp.jpg?v=1668184001',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/vida_eterna_banner_small_sp.jpg?v=1668184259',
         width: 2048,
         height: 2048,
       },
