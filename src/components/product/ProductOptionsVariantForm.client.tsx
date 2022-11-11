@@ -1,4 +1,4 @@
-import React, {useEffect, useCallback, useState} from 'react';
+import React, {useEffect, useCallback, useState, useMemo} from 'react';
 import {useEffectOnce} from 'react-use';
 import {
   useProductOptions,
@@ -90,7 +90,6 @@ export function ProductOptionsVariantForm({
     variants,
   } = useProductOptions();
 
-  // delete
   const {excludedVariantIds} = useFilterExcludedVariants(
     variants as ProductVariant[],
     options as {name: string; values: string[]}[],
@@ -113,12 +112,42 @@ export function ProductOptionsVariantForm({
 
   const isOutOfStock = !selectedVariant?.availableForSale || false;
 
-  const isOnSale =
+  const hasSaleTags =
+    tags.includes('On Sale') || tags.includes('BOGO') || tags.includes('B2G1F')
+      ? true
+      : false;
+
+  const hasComparePrice =
     selectedVariant?.priceV2?.amount &&
     selectedVariant?.compareAtPriceV2?.amount
       ? selectedVariant?.priceV2?.amount <
           selectedVariant?.compareAtPriceV2?.amount || false
       : false;
+
+  const isOnSale = useMemo(() => {
+    let onSale = false;
+    if (hasComparePrice && hasSaleTags) {
+      onSale = true;
+    }
+    // @ts-ignore
+    if (selectedVariant?.isBOGO || selectedVariant?.isB2G1F) {
+      onSale = true;
+    }
+    return onSale;
+  }, [hasComparePrice, selectedVariant, hasSaleTags]);
+
+  const saleBadgeLabel = useMemo(() => {
+    let label = 'Sale';
+    // @ts-ignore
+    if (selectedVariant?.isBOGO) {
+      label = 'BOGO';
+    }
+    // @ts-ignore
+    if (selectedVariant?.isB2G1F) {
+      label = 'B2G1F';
+    }
+    return label;
+  }, [selectedVariant]);
 
   useEffect(() => {
     if (params || !search) return;
@@ -367,7 +396,7 @@ export function ProductOptionsVariantForm({
               data={selectedVariant.priceV2!}
               as="span"
             />
-            {(isOnSale || tags.includes('On Sale')) && (
+            {(hasComparePrice || isOnSale) && (
               <>
                 {selectedVariant.compareAtPriceV2 && (
                   <Money
@@ -379,7 +408,12 @@ export function ProductOptionsVariantForm({
                 )}
               </>
             )}
-            {isOnSale && tags.includes('On Sale') && <Badge tags={tags} />}
+            {isOnSale && (
+              <Badge
+                tags={tags}
+                label={saleBadgeLabel as 'Sale' | 'New' | 'BOGO' | 'B2G1F'}
+              />
+            )}
           </div>
         )}
       </div>

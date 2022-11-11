@@ -2,7 +2,7 @@ export function Badge({
   label = 'Sale',
   tags,
 }: {
-  label?: 'Sale' | 'New';
+  label?: 'Sale' | 'New' | 'BOGO' | 'B2G1F';
   tags: string[];
 }) {
   const LANG: 'en' | 'es' = import.meta.env.PUBLIC_LANGUAGE_CODE || 'en';
@@ -25,7 +25,7 @@ export function Badge({
     },
     bogo: {
       en: 'BOGO',
-      ES: 'BOGO',
+      es: 'BOGO',
     },
     b2g1f: {
       en: 'B2G1F',
@@ -33,28 +33,13 @@ export function Badge({
     },
   };
 
-  const getVariant = () => {
-    let variant: string;
-    const isBogo: boolean = tags.includes('BOGO');
-    const isB2G1F: boolean = tags.includes('B2G1F');
-    if (isBogo) {
-      variant = 'bogo';
-    } else if (isB2G1F) {
-      variant = 'B2G1F';
-    } else {
-      variant = label.toLowerCase();
-    }
-
-    return variant;
-  };
-
-  const variant = getVariant();
+  const variant = label.toLowerCase();
 
   return (
-    <div
+    <span
       className={`${variants[variant]} font-semibold mr-2 px-2.5 py-0.5 ml-4 self-start`}
     >
       {labels[variant][LANG]}
-    </div>
+    </span>
   );
 }

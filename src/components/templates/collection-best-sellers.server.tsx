@@ -28,7 +28,10 @@ import {
 import {MEDIA_FRAGMENT} from '~/lib/fragments';
 import {COLLECTION_PRODUCT_FRAGMENT} from '~/lib/suavecito-fragments';
 
-import {FGWP_ENABLED} from '~/data/free-gift-with-purchase';
+import {
+  FGWP_ENABLED,
+  FGWP_SINGLE_TIER_ENABLED,
+} from '~/data/free-gift-with-purchase';
 
 const LANG = import.meta.env.PUBLIC_LANGUAGE_CODE;
 
@@ -55,8 +58,12 @@ export function CollectionBestSellers({
       <Suspense>
         <Seo type="collection" data={{title}} />
       </Suspense>
-      {FGWP_ENABLED && <ThreeImageBanner {...threeImages} />}
-      {FGWP_ENABLED && <FreeGiftWithPurchaseProgressBar />}
+      {FGWP_ENABLED && !FGWP_SINGLE_TIER_ENABLED && (
+        <ThreeImageBanner {...threeImages} />
+      )}
+      {FGWP_ENABLED && !FGWP_SINGLE_TIER_ENABLED && (
+        <FreeGiftWithPurchaseProgressBar />
+      )}
       <CollectionImageCarousel slideData={bestSellerCollectionsSlideData} />
       <div className="page-width">
         {bestSellerCollectionsData.map((collection, index) => (

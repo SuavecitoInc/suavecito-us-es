@@ -191,6 +191,17 @@ export const VARIANT_FRAGRANCE_FRAGMENT =
         }
       `;
 
+export const VARIANT_SALE_FRAGMENT = gql`
+  fragment VariantSale on ProductVariant {
+    isB2G1F: metafield(namespace: "debut", key: "is_b2g1f") {
+      value
+    }
+    isBOGO: metafield(namespace: "debut", key: "is_bogo") {
+      value
+    }
+  }
+`;
+
 export const VARIANT_METAFIELD_IMAGES_FRAGMENT = gql`
   fragment VariantMetafieldImages on ProductVariant {
     variantImage1: metafield(namespace: "debut", key: "variant_image_1") {
@@ -514,7 +525,7 @@ export const FREE_GIFT_PRODUCT_CARD_FRAGMENT = gql`
     publishedAt
     handle
     availableForSale
-    variants(first: 1) {
+    variants(first: 10) {
       nodes {
         id
         availableForSale
@@ -533,6 +544,7 @@ export const FREE_GIFT_PRODUCT_CARD_FRAGMENT = gql`
           amount
           currencyCode
         }
+        title
       }
     }
   }

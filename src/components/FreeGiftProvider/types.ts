@@ -3,6 +3,7 @@ import type {Product} from '@shopify/hydrogen/storefront-api-types';
 
 export interface DefaultFreeGiftContext {
   enabled: boolean;
+  isSingleTier: boolean;
   tier1Diff: number;
   tier2Diff: number;
   tier3Diff: number;
@@ -25,4 +26,5 @@ export interface DefaultFreeGiftContext {
   tier1Min: number;
   tier2Min: number;
   tier3Min: number;
+  checkoutDisabled: boolean;
 }
