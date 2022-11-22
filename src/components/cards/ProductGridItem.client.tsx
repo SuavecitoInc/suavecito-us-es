@@ -36,7 +36,7 @@ export function ProductGridItem({
   onClick?: () => void;
   titleColor?: string;
 }) {
-  let cardLabel: 'Sale' | 'New' | undefined;
+  let cardLabel: 'Sale' | 'New' | 'BOGO' | 'B2G1F' | undefined;
 
   const cardData = product?.variants ? product : getProductPlaceholder();
 
@@ -48,12 +48,18 @@ export function ProductGridItem({
     cardData?.variants as ProductVariantConnection,
   )[0] || {};
 
+  // removed cardlabel being set by if compareAtPrice exists
+  // isDiscounted(price as MoneyV2, compareAtPrice as MoneyV2)
   if (label) {
     cardLabel = label;
-  } else if (isDiscounted(price as MoneyV2, compareAtPrice as MoneyV2)) {
+  } else if (product.tags.includes('On Sale')) {
     cardLabel = 'Sale';
   } else if (isNewArrival(product.publishedAt)) {
     cardLabel = 'New';
+  } else if (product.tags.includes('BOGO')) {
+    cardLabel = 'BOGO';
+  } else if (product.tags.includes('B2G1F')) {
+    cardLabel = 'B2G1F';
   }
 
   const styles = clsx('grid gap-6 bg-white', className);
@@ -109,9 +115,7 @@ export function ProductGridItem({
                   />
                 )}
               </div>
-              {cardLabel === 'Sale' && product.tags.includes('On Sale') && (
-                <Badge label={cardLabel} tags={product.tags} />
-              )}
+              {cardLabel && <Badge label={cardLabel} tags={product.tags} />}
             </Text>
           </div>
         </div>
