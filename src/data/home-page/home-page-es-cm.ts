@@ -4,7 +4,7 @@ import {
   BannerSectionData,
   FeaturedRowColumnsSectionData,
   FeaturedVideoSectionData,
-} from '../types/home-page';
+} from '../../types/home-page';
 
 export const responsiveBannerSettings: ResponsiveBannerSectionData = {
   heading: {value: 'Powered by Hydrogen'},
@@ -12,17 +12,17 @@ export const responsiveBannerSettings: ResponsiveBannerSectionData = {
     value: 'The All New Hydrogen Snowboard Exclusively From Shopify',
   },
   cta: {value: 'Shop Now →'},
-  handle: 'freestyle',
+  handle: 'suavecito-x-monsters',
   spread: {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: 'This is my alt',
+      alt: 'Compra 1 Recibe 1 Gratis en Pomadas. Mezcla y Combina.',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/responsive-banner-ex-large.jpg?v=1657834726',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/CM_banner_large_SP.jpg?v=1669169889',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/responsive-banner-ex-large.jpg?v=1657834726',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/CM_banner_large_SP.jpg?v=1669169889',
         width: 2048,
         height: 930,
       },
@@ -32,12 +32,12 @@ export const responsiveBannerSettings: ResponsiveBannerSectionData = {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: 'This is my alt',
+      alt: 'Compra 1 Recibe 1 Gratis en Pomadas. Mezcla y Combina.',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/responsive-banner-ex-large.jpg?v=1657834726',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/CM_banner_large_SP.jpg?v=1669169889',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/responsive-banner-ex-large.jpg?v=1657834726',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/CM_banner_large_SP.jpg?v=1669169889',
         width: 2048,
         height: 930,
       },
@@ -47,12 +47,12 @@ export const responsiveBannerSettings: ResponsiveBannerSectionData = {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: 'This is my alt',
+      alt: 'Compra 1 Recibe 1 Gratis en Pomadas. Mezcla y Combina.',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/responsive-banner-ex-medium.jpg?v=1657834726',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/CM_banner_med_SP.jpg?v=1669169889',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/responsive-banner-ex-medium.jpg?v=1657834726',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/CM_banner_med_SP.jpg?v=1669169889',
         width: 2048,
         height: 1764,
       },
@@ -62,12 +62,12 @@ export const responsiveBannerSettings: ResponsiveBannerSectionData = {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: 'This is my alt',
+      alt: 'Compra 1 Recibe 1 Gratis en Pomadas. Mezcla y Combina.',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/responsive-banner-ex-medium.jpg?v=1657834726',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/CM_banner_small_SP.jpg?v=1669169889',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/responsive-banner-ex-medium.jpg?v=1657834726',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/CM_banner_small_SP.jpg?v=1669169889',
         width: 2048,
         height: 2048,
       },
@@ -79,18 +79,18 @@ export const responsiveBannerSettings: ResponsiveBannerSectionData = {
 };
 
 export const featuredRowImageOneSettings: FeaturedRowImageSectionData = {
-  heading: {value: 'Hair Products'},
+  heading: {value: 'Productos para Cabello'},
   subText: {
     value:
-      "Suavecito hair products are unlike any other. While our incomparable water based pomades are what we're known for, we've expanded into a line of hair care and styling products that can help you achieve the hairstyle you've always wanted.",
+      'Los productos de Suavecito Pomade no se comparan con ningún otro. Si bien, se nos conoce por nuestras inigualables pomadas solubles en agua, hemos ampliado nuestra línea de productos para el cuidado y peinado de cabello, con productos que ayudan a lograr un peinado que siempre ha deseado.',
   },
-  cta: {value: 'Shop Hair'},
+  cta: {value: 'Compra Cabello'},
   ctaLink: '/collections/mens-hair',
   featuredImage: {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: 'This is my alt',
+      alt: 'Pomadas',
       previewImage: {
         url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/suavecito-page-featured-image-1_cb767b4d-4dc0-4aa0-aa6f-815c2dfd23e1.jpg',
       },
@@ -105,12 +105,12 @@ export const featuredRowImageOneSettings: FeaturedRowImageSectionData = {
 };
 
 export const featuredRowImageTwoSettings: FeaturedRowImageSectionData = {
-  heading: {value: 'Combs, Brushes & Shaving Accessories'},
+  heading: {value: 'Peines, Cepillos y Accesorios de Afeitado'},
   subText: {
     value:
-      "With a variety of comb shapes and sizes, and brushes for your hair or beard, you'll find exactly what you need in our comb & brush offerings.",
+      'Con una variedad de formas y tamaños de peines, y cepillos para el cabello o la barba, encontrará exactamente lo que necesita en nuestra oferta de peines y cepillos.',
   },
-  cta: {value: 'Shop Combs & More'},
+  cta: {value: 'Compra Peines'},
   ctaLink: '/collections/combs-brushes-shaving-accessories',
   featuredImage: {
     value: '',
@@ -131,14 +131,13 @@ export const featuredRowImageTwoSettings: FeaturedRowImageSectionData = {
 };
 
 export const featuredRowImageThreeSettings: FeaturedRowImageSectionData = {
-  heading: {value: 'Pomade, Hair Wax, Clay, Gel, Paste?'},
+  heading: {value: '¿Pomada, cera para el cabello, arcilla, gel, pasta?'},
   subText: {
     value:
-      'Which is right for me? Find out which products will work for your hair and the style you want to achieve.',
+      '¿Cuál es el correcto para mí? Descubra qué productos funcionarán para su cabello y el estilo que desea lograr.',
   },
-  cta: {value: 'Learn More'},
-  ctaLink:
-    '/blogs/grooming-tips/pomade-hair-wax-clay-gel-paste-which-is-right-for-me',
+  cta: {value: 'Aprende más'},
+  ctaLink: '/pages/pomade-hair-wax-clay-gel-paste-which-is-right-for-me',
   featuredImage: {
     value: '',
     reference: {
@@ -191,18 +190,18 @@ export const bannerOneSettings: BannerSectionData = {
 };
 
 export const bannerTwoSettings: BannerSectionData = {
-  heading: {value: 'Hair Loss Treatment'},
+  heading: {value: 'Tratamiento Capilar - Anticaida'},
   byline: {
     value:
-      'Suavecito has created this line of products specially made for the treatment and prevention of hair loss in men.',
+      'Suavecito ha creado una línea de productos diseñados especialmente para el tratamiento y la prevención de la caída de cabello en hombres.',
   },
-  cta: {value: 'Shop Now'},
+  cta: {value: 'Compra Ahora'},
   ctaLink: '/collections/grow-it',
   spread: {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: 'This is my alt',
+      alt: 'Tratamiento de Cabello-Anticaida',
       previewImage: {
         url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/medicated_banner2_2100x.jpg',
       },
@@ -226,18 +225,18 @@ export const bannerTwoSettings: BannerSectionData = {
 
 export const featuredRowColumnsOneSettings: FeaturedRowColumnsSectionData = {
   one: {
-    heading: {value: 'Shave'},
+    heading: {value: 'Afeitado'},
     subText: {
       value:
-        'Bring enjoyment back into your shaving routine with our line of high quality shave products and accessories.',
+        '¡Vuelve a disfrutar de la rutina de afeitado con nuestra línea de productos y accesorios para un afeitado de calidad!',
     },
-    cta: {value: 'Shop Shave'},
+    cta: {value: 'Compra Afeitado'},
     ctaLink: '/collections/combs-brushes-shaving-accessories',
     featuredImage: {
       value: '',
       reference: {
         mediaContentType: 'IMAGE',
-        alt: 'This is my alt',
+        alt: 'Afeitado',
         previewImage: {
           url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/suavecito-page-featured-image-2_720x.jpg?v=1632939292',
         },
@@ -251,18 +250,18 @@ export const featuredRowColumnsOneSettings: FeaturedRowColumnsSectionData = {
     loading: 'eager',
   },
   two: {
-    heading: {value: 'Beard & Mustache'},
+    heading: {value: 'Barba y Bigote'},
     subText: {
       value:
-        'Our amazing line of beard & mustache products are made with nourishing ingredients to keep your facial hair happy and healthy.',
+        'Nuestra increíble línea de productos para barba y bigote está hecha de ingredientes nutritivos para mantener un vello facial limpio y saludable. ',
     },
-    cta: {value: 'Shop Beard'},
+    cta: {value: 'Compra Barba y Bigote'},
     ctaLink: '/collections/combs-brushes-shaving-accessories',
     featuredImage: {
       value: '',
       reference: {
         mediaContentType: 'IMAGE',
-        alt: 'This is my alt',
+        alt: 'Barba Y Bigote',
         previewImage: {
           url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/suavecito-page-featured-image-3_720x.jpg?v=1632939309',
         },
@@ -276,12 +275,12 @@ export const featuredRowColumnsOneSettings: FeaturedRowColumnsSectionData = {
     loading: 'eager',
   },
   three: {
-    heading: {value: 'Body'},
+    heading: {value: 'Cuerpo'},
     subText: {
       value:
-        'Suavecito has you covered from head to toe - and we really mean that. Our line of body care products will keep you looking great and smelling fresh.',
+        'Suavecito te cubre de pies a cabeza y lo decimos enserio. Nuestra línea de productos para el cuidado del cuerpo. Te dejarán lucir genial y con un fresco aroma.',
     },
-    cta: {value: 'Shop Body'},
+    cta: {value: 'Compra Cuerpo'},
     ctaLink: '/collections/combs-brushes-shaving-accessories',
     featuredImage: {
       value: '',
@@ -304,18 +303,18 @@ export const featuredRowColumnsOneSettings: FeaturedRowColumnsSectionData = {
 
 export const featuredRowColumnsTwoSettings: FeaturedRowColumnsSectionData = {
   one: {
-    heading: {value: 'Collaborations'},
+    heading: {value: 'Colaboraciones'},
     subText: {
       value:
-        "For any true Suavecito collector, check out the limited edition collaborations we've done. Make sure you get them while you can!",
+        'Para cualquier verdadero coleccionista de Suavecito, echa un vistazo a las colaboraciones de edición limitada que hemos hecho. ¡Asegúrate de conseguirlas mientras puedas!',
     },
-    cta: {value: 'Shop Collabs'},
+    cta: {value: 'Compra Colaboraciones'},
     ctaLink: '/collections/collaborations',
     featuredImage: {
       value: '',
       reference: {
         mediaContentType: 'IMAGE',
-        alt: 'This is my alt',
+        alt: 'Colaboraciones',
         previewImage: {
           url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/suavecito-page-featured-image-5_720x.jpg?v=1632844585',
         },
@@ -329,18 +328,18 @@ export const featuredRowColumnsTwoSettings: FeaturedRowColumnsSectionData = {
     loading: 'eager',
   },
   two: {
-    heading: {value: 'Apparel'},
+    heading: {value: 'Ropa'},
     subText: {
       value:
-        'Show your love for Suavecito with our wide array of apparel, Tees, polos, sweatshirts and more!',
+        '¡Demuestra tu amor por Suavecito con nuestra amplia variedad de ropa, playeras, sudaderas y mucho más!',
     },
-    cta: {value: 'Shop Apparel'},
+    cta: {value: 'Compra Ropa'},
     ctaLink: '/collections/apparel',
     featuredImage: {
       value: '',
       reference: {
         mediaContentType: 'IMAGE',
-        alt: 'This is my alt',
+        alt: 'Ropa',
         previewImage: {
           url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/suavecito-page-featured-image-6_720x.jpg?v=1632844696',
         },
@@ -354,18 +353,18 @@ export const featuredRowColumnsTwoSettings: FeaturedRowColumnsSectionData = {
     loading: 'eager',
   },
   three: {
-    heading: {value: 'Collectibles'},
+    heading: {value: 'Coleccionables'},
     subText: {
       value:
-        'All of these collectible items are super fun to display or use. From mugs to pins to plush toys, there is something for everyone!',
+        'Todos estos coleccionables son super divertidos para usar o mostrar. Desde tazas, llaveros, muñecos de peluches, hay algo para todos.',
     },
-    cta: {value: 'Shop Collectibles'},
+    cta: {value: 'Compra Coleccionables'},
     ctaLink: '/collections/collectibles',
     featuredImage: {
       value: '',
       reference: {
         mediaContentType: 'IMAGE',
-        alt: 'This is my alt',
+        alt: 'Coleccionables',
         previewImage: {
           url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/suavecito-page-featured-image-7_720x.jpg?v=1632844657',
         },
@@ -385,7 +384,7 @@ export const featuredVideoSettings: FeaturedVideoSectionData = {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: '',
+      alt: 'Más Que Pomada y Productos de Peluquería de Alta Gama',
       previeImage: {
         url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/21_Suavecito_Anchor_16x9_v1_R6_ENG.00_00_14_11.Still003.jpg?v=1634907949',
       },
@@ -397,6 +396,6 @@ export const featuredVideoSettings: FeaturedVideoSectionData = {
     },
   },
   youtubeVideoId: {
-    value: 'hFLTrGcAx9c',
+    value: 'ct39qnKZJRw',
   },
 };

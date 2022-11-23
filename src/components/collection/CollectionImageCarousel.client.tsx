@@ -4,8 +4,6 @@ import {Swiper, SwiperSlide} from 'swiper/react';
 // @ts-ignore
 import {Navigation, Pagination} from 'swiper';
 
-import {AdBanners} from '~/data/ad-banners';
-
 import {BrandTheme} from '~/types/suavecito';
 import {IconArrow} from '~/components';
 

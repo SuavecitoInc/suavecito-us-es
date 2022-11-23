@@ -20,7 +20,8 @@ import {
   responsiveBannerSettings,
   featuredRowImageOneSettings,
   featuredRowColumnsOneSettings,
-} from '../../data/suavecita-page-es';
+} from '../../data/suavecita-page';
+
 import {BrandTheme} from '~/types/suavecito';
 
 export default function Suavecita({theme = 'suavecita'}: {theme: BrandTheme}) {

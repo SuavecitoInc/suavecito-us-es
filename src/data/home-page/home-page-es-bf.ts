@@ -4,12 +4,12 @@ import {
   BannerSectionData,
   FeaturedRowColumnsSectionData,
   FeaturedVideoSectionData,
-} from '../types/home-page';
+} from '../../types/home-page';
 
 export const responsiveBannerSettings: ResponsiveBannerSectionData = {
-  heading: {value: 'Powered by Hydrogen'},
+  heading: {value: 'Suavecito'},
   byline: {
-    value: 'The All New Hydrogen Snowboard Exclusively From Shopify',
+    value: 'Get it Hombre',
   },
   cta: {value: 'Shop Now →'},
   handle: 'suavecito-x-monsters',
@@ -17,12 +17,12 @@ export const responsiveBannerSettings: ResponsiveBannerSectionData = {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: '!Nuevo, Suavecito Vida Eterna, Compra Ahora! Recibe una tarjeta de $10 gratis cuando gastas $50. Recibe una tarjeta de $25 gratis cuando gastas $100.',
+      alt: 'Venta! Viernes Negro',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/vida_eterna_banner_large_sp.jpg?v=1668184259',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/black_friday_2022_banner_SP.jpg?v=1669164820',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/vida_eterna_banner_large_sp.jpg?v=1668184259',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/black_friday_2022_banner_SP.jpg?v=1669164820',
         width: 2048,
         height: 930,
       },
@@ -32,12 +32,12 @@ export const responsiveBannerSettings: ResponsiveBannerSectionData = {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: '!Nuevo, Suavecito Vida Eterna, Compra Ahora! Recibe una tarjeta de $10 gratis cuando gastas $50. Recibe una tarjeta de $25 gratis cuando gastas $100.',
+      alt: 'Venta! Viernes Negro',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/vida_eterna_banner_large_sp.jpg?v=1668184259',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/black_friday_2022_banner_SP.jpg?v=1669164820',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/vida_eterna_banner_large_sp.jpg?v=1668184259',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/black_friday_2022_banner_SP.jpg?v=1669164820',
         width: 2048,
         height: 930,
       },
@@ -47,12 +47,12 @@ export const responsiveBannerSettings: ResponsiveBannerSectionData = {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: '!Nuevo, Suavecito Vida Eterna, Compra Ahora! Recibe una tarjeta de $10 gratis cuando gastas $50. Recibe una tarjeta de $25 gratis cuando gastas $100.',
+      alt: 'Venta! Viernes Negro',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/vida_eterna_banner_med_sp.jpg?v=1668184259',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/black_friday_2022_banner_medium_SP.jpg?v=1669164821',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/vida_eterna_banner_med_sp.jpg?v=1668184259',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/black_friday_2022_banner_medium_SP.jpg?v=1669164821',
         width: 2048,
         height: 1764,
       },
@@ -62,12 +62,12 @@ export const responsiveBannerSettings: ResponsiveBannerSectionData = {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: '!Nuevo, Suavecito Vida Eterna, Compra Ahora! Recibe una tarjeta de $10 gratis cuando gastas $50. Recibe una tarjeta de $25 gratis cuando gastas $100.',
+      alt: 'Venta! Viernes Negro',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/vida_eterna_banner_small_sp.jpg?v=1668184259',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/black_friday_2022_banner_small_SP.jpg?v=1669164820',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/vida_eterna_banner_small_sp.jpg?v=1668184259',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/black_friday_2022_banner_small_SP.jpg?v=1669164820',
         width: 2048,
         height: 2048,
       },
@@ -90,12 +90,12 @@ export const featuredRowImageOneSettings: FeaturedRowImageSectionData = {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: 'Pomadas',
+      alt: 'Compra 2 recibe 1 gratis, cuando compras productos de cabello.',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/suavecito-page-featured-image-1_cb767b4d-4dc0-4aa0-aa6f-815c2dfd23e1.jpg',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/hair_products_square_SP.jpg?v=1669164820',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/suavecito-page-featured-image-1_cb767b4d-4dc0-4aa0-aa6f-815c2dfd23e1.jpg',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/hair_products_square_SP.jpg?v=1669164820',
         width: 782,
         height: 782,
       },
@@ -116,12 +116,12 @@ export const featuredRowImageTwoSettings: FeaturedRowImageSectionData = {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: 'This is my alt',
+      alt: '30% de descuento en los peines.',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/combs-brushes-shaving.jpg?v=1634138668',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/combs_SP.jpg?v=1669164819',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/combs-brushes-shaving.jpg?v=1634138668',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/combs_SP.jpg?v=1669164819',
         width: 782,
         height: 782,
       },
@@ -236,12 +236,12 @@ export const featuredRowColumnsOneSettings: FeaturedRowColumnsSectionData = {
       value: '',
       reference: {
         mediaContentType: 'IMAGE',
-        alt: 'Afeitado',
+        alt: 'Compra 2 Recibe 1 Gratis en productos de afeitar.',
         previewImage: {
-          url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/suavecito-page-featured-image-2_720x.jpg?v=1632939292',
+          url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/shaving_SP.jpg?v=16691648182',
         },
         image: {
-          url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/suavecito-page-featured-image-2_720x.jpg?v=1632939292',
+          url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/shaving_SP.jpg?v=1669164818',
           width: 720,
           height: 720,
         },
@@ -261,12 +261,12 @@ export const featuredRowColumnsOneSettings: FeaturedRowColumnsSectionData = {
       value: '',
       reference: {
         mediaContentType: 'IMAGE',
-        alt: 'Barba Y Bigote',
+        alt: 'Compra 2 Recibe 1 Gratis en productos de Barba Y Bigote',
         previewImage: {
-          url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/suavecito-page-featured-image-3_720x.jpg?v=1632939309',
+          url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/beard_SP.jpg?v=1669164820',
         },
         image: {
-          url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/suavecito-page-featured-image-3_720x.jpg?v=1632939309',
+          url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/beard_SP.jpg?v=1669164820',
           width: 720,
           height: 720,
         },
@@ -286,12 +286,12 @@ export const featuredRowColumnsOneSettings: FeaturedRowColumnsSectionData = {
       value: '',
       reference: {
         mediaContentType: 'IMAGE',
-        alt: 'This is my alt',
+        alt: 'Compra 2 Recibe 1 Gratis en productos para el cuerpo.',
         previewImage: {
-          url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/suavecito-page-featured-image-4_720x.jpg?v=1632939320',
+          url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/body_SP.jpg?v=16691648190',
         },
         image: {
-          url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/suavecito-page-featured-image-4_720x.jpg?v=1632939320',
+          url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/body_SP.jpg?v=1669164819',
           width: 720,
           height: 720,
         },
@@ -339,12 +339,12 @@ export const featuredRowColumnsTwoSettings: FeaturedRowColumnsSectionData = {
       value: '',
       reference: {
         mediaContentType: 'IMAGE',
-        alt: 'Ropa',
+        alt: '20% de descuento ropa de Suavecito.',
         previewImage: {
-          url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/suavecito-page-featured-image-6_720x.jpg?v=1632844696',
+          url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/apparel_SP_6ec3e30b-b984-4b86-992d-2cacaf0d0b5d.jpg?v=1669164818',
         },
         image: {
-          url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/suavecito-page-featured-image-6_720x.jpg?v=1632844696',
+          url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/apparel_SP_6ec3e30b-b984-4b86-992d-2cacaf0d0b5d.jpg?v=1669164818',
           width: 720,
           height: 720,
         },
@@ -364,12 +364,12 @@ export const featuredRowColumnsTwoSettings: FeaturedRowColumnsSectionData = {
       value: '',
       reference: {
         mediaContentType: 'IMAGE',
-        alt: 'Coleccionables',
+        alt: '30% de descuento en la mercancia y coleccionables',
         previewImage: {
-          url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/suavecito-page-featured-image-7_720x.jpg?v=1632844657',
+          url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/collectibles_SP.jpg?v=1669164819',
         },
         image: {
-          url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/suavecito-page-featured-image-7_720x.jpg?v=1632844657',
+          url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/collectibles_SP.jpg?v=1669164819',
           width: 720,
           height: 720,
         },
