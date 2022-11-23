@@ -31,6 +31,7 @@ import {COLLECTION_PRODUCT_FRAGMENT} from '~/lib/suavecito-fragments';
 import {
   FGWP_ENABLED,
   FGWP_SINGLE_TIER_ENABLED,
+  FGWP_BANNER_ENABLED,
 } from '~/data/free-gift-with-purchase';
 
 const LANG = import.meta.env.PUBLIC_LANGUAGE_CODE;
@@ -58,13 +59,16 @@ export function CollectionBestSellers({
       <Suspense>
         <Seo type="collection" data={{title}} />
       </Suspense>
-      {FGWP_ENABLED && !FGWP_SINGLE_TIER_ENABLED && (
+      {FGWP_ENABLED && FGWP_BANNER_ENABLED && (
         <ThreeImageBanner {...threeImages} />
       )}
       {FGWP_ENABLED && !FGWP_SINGLE_TIER_ENABLED && (
         <FreeGiftWithPurchaseProgressBar />
       )}
-      <CollectionImageCarousel slideData={bestSellerCollectionsSlideData} />
+      <CollectionImageCarousel
+        slideData={bestSellerCollectionsSlideData}
+        marginTop={FGWP_ENABLED && FGWP_SINGLE_TIER_ENABLED}
+      />
       <div className="page-width">
         {bestSellerCollectionsData.map((collection, index) => (
           <>

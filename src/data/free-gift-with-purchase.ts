@@ -1,6 +1,7 @@
 // Free Gift With Purchase
 export const FGWP_ENABLED = true;
 export const FGWP_SINGLE_TIER_ENABLED = true;
+export const FGWP_BANNER_ENABLED = true;
 export const FGWP_1 = 'mens-mystery-tee';
 export const FGWP_2 = 'womens-mystery-tee';
 // export const FGWP_1 = 'wood-pulp-oil-blotting-sheets-fgwp';

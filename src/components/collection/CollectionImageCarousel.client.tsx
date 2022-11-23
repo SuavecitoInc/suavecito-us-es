@@ -36,13 +36,15 @@ export function CollectionImageCarousel({
   theme = 'suavecito',
   lang = 'en',
   slideData,
+  marginTop = false,
 }: {
   theme?: BrandTheme;
   lang?: 'en' | 'es';
   slideData: SlideData[];
+  marginTop?: boolean;
 }) {
   return (
-    <section>
+    <section className={marginTop ? 'mt-[35px]' : ''}>
       <div className="page-width">
         <Swiper
           // install Swiper modules
