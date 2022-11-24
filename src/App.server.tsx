@@ -11,6 +11,7 @@ import {
   ShopifyProvider,
   CartProvider,
 } from '@shopify/hydrogen';
+import {defaultCartFragment} from '@shopify/hydrogen/components/CartProvider/cart-queries';
 
 import {HeaderFallback, GTM, AnalyticsListener} from '~/components';
 import type {CountryCode} from '@shopify/hydrogen/storefront-api-types';
@@ -26,7 +27,10 @@ function App({request}: HydrogenRouteProps) {
   return (
     <Suspense fallback={<HeaderFallback isHome={isHome} />}>
       <ShopifyProvider countryCode={countryCode}>
-        <CartProvider countryCode={countryCode}>
+        <CartProvider
+          countryCode={countryCode}
+          cartFragment={defaultCartFragment}
+        >
           <Suspense>
             <DefaultSeo />
           </Suspense>

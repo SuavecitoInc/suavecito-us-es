@@ -4,8 +4,6 @@ import {Swiper, SwiperSlide} from 'swiper/react';
 // @ts-ignore
 import {Navigation, Pagination} from 'swiper';
 
-import {AdBanners} from '~/data/ad-banners';
-
 import {BrandTheme} from '~/types/suavecito';
 import {IconArrow} from '~/components';
 
@@ -38,13 +36,15 @@ export function CollectionImageCarousel({
   theme = 'suavecito',
   lang = 'en',
   slideData,
+  marginTop = false,
 }: {
   theme?: BrandTheme;
   lang?: 'en' | 'es';
   slideData: SlideData[];
+  marginTop?: boolean;
 }) {
   return (
-    <section>
+    <section className={marginTop ? 'mt-[35px]' : ''}>
       <div className="page-width">
         <Swiper
           // install Swiper modules
