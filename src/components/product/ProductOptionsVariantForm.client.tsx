@@ -126,7 +126,7 @@ export function ProductOptionsVariantForm({
 
   const isOnSale = useMemo(() => {
     let onSale = false;
-    if (hasComparePrice && hasSaleTags) {
+    if (hasSaleTags) {
       onSale = true;
     }
     // @ts-ignore
@@ -134,7 +134,7 @@ export function ProductOptionsVariantForm({
       onSale = true;
     }
     return onSale;
-  }, [hasComparePrice, selectedVariant, hasSaleTags]);
+  }, [selectedVariant, hasSaleTags]);
 
   const saleBadgeLabel = useMemo(() => {
     let label = 'Sale';
