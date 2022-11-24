@@ -5,7 +5,7 @@ import {FREE_GIFT_PRODUCT_CARD_FRAGMENT} from '~/lib/suavecito-fragments';
 import {FreeGiftProvider} from '~/components/FreeGiftProvider/FreeGiftProvider.client';
 import {FGWP_1, FGWP_2, FGWP_3, FGWP_4} from '~/data/free-gift-with-purchase';
 // FGCWP
-import {FreeGiftCardProvider} from '~/components/FreeGiftCardProvider/FreeGiftCardProvider.client';
+// import {FreeGiftCardProvider} from '~/components/FreeGiftCardProvider/FreeGiftCardProvider.client';
 import {FGCWP_1, FGCWP_2} from '~/data/free-gift-card-with-purchase';
 
 export function AppWrapper({children}: {children: ReactNode}) {
@@ -31,9 +31,9 @@ export function AppWrapper({children}: {children: ReactNode}) {
 
   return (
     <FreeGiftProvider freeGifts={freeGifts}>
-      <FreeGiftCardProvider freeGiftCards={freeGiftCards}>
-        {children}
-      </FreeGiftCardProvider>
+      {/* <FreeGiftCardProvider freeGiftCards={freeGiftCards}> */}
+      {children}
+      {/* </FreeGiftCardProvider> */}
     </FreeGiftProvider>
   );
 }
