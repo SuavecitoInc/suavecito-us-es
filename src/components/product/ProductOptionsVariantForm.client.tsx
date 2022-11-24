@@ -134,7 +134,7 @@ export function ProductOptionsVariantForm({
       onSale = true;
     }
     return onSale;
-  }, [hasComparePrice, selectedVariant, hasSaleTags]);
+  }, [selectedVariant, hasSaleTags]);
 
   const saleBadgeLabel = useMemo(() => {
     let label = 'Sale';
