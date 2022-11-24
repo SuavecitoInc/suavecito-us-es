@@ -42,7 +42,7 @@ export function ProductSectionYouMayAlsoLike({
       >
         {title}
       </h3>
-      <div className="page-width grid grid-cols-2 gap-4 md:grid-cols-4">
+      <div className="grid grid-cols-2 gap-4 page-width md:grid-cols-4">
         {recommendedProductMarkup}
       </div>
     </Section>
@@ -81,7 +81,7 @@ function Products({
 }) {
   const {
     data: {productRecommendations},
-  } = useShopQuery({
+  }: any = useShopQuery({
     query: YOU_MAY_ALSO_LIKE_QUERY,
     variables: {
       productId,
@@ -125,7 +125,7 @@ function ProductsRandom({theme, count}: {theme: BrandTheme; count: number}) {
 
   const {
     data: {products},
-  } = useShopQuery({
+  }: any = useShopQuery({
     query: ALL_PRODUCTS_QUERY,
     variables: {
       tagFilter: PRODUCT_FILTER_QUERY,

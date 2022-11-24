@@ -139,15 +139,15 @@ export function ProductOptionsVariantForm({
   const saleBadgeLabel = useMemo(() => {
     let label = 'Sale';
     // @ts-ignore
-    if (selectedVariant?.isBOGO) {
+    if (selectedVariant?.isBOGO || tags.includes('BOGO')) {
       label = 'BOGO';
     }
     // @ts-ignore
-    if (selectedVariant?.isB2G1F) {
+    if (selectedVariant?.isB2G1F || tags.includes('B2G1F')) {
       label = 'B2G1F';
     }
     return label;
-  }, [selectedVariant]);
+  }, [selectedVariant, tags]);
 
   useEffect(() => {
     if (params || !search) return;

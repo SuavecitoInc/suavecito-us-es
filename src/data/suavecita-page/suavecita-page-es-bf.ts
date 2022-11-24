@@ -4,7 +4,7 @@ import {
   BannerSectionData,
   FeaturedRowColumnsSectionData,
   FeaturedVideoSectionData,
-} from '../types/home-page';
+} from '../../types/home-page';
 
 export const responsiveBannerSettings: ResponsiveBannerSectionData = {
   heading: {value: 'Powered by Hydrogen'},
@@ -17,12 +17,12 @@ export const responsiveBannerSettings: ResponsiveBannerSectionData = {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: 'Regalo Gratis Con Compra',
+      alt: 'Viernes Negro',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/cita_october_landing_banner_large_SP.jpg?v=1664310043',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/cita_BF_landing_banner_large_SP.jpg?v=1669164819',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/cita_october_landing_banner_large_SP.jpg?v=1664310043',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/cita_BF_landing_banner_large_SP.jpg?v=1669164819',
         width: 2048,
         height: 930,
       },
@@ -32,12 +32,12 @@ export const responsiveBannerSettings: ResponsiveBannerSectionData = {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: 'Regalo Gratis Con Compra',
+      alt: 'Viernes Negro',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/cita_october_landing_banner_large_SP.jpg?v=1664310043',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/cita_BF_landing_banner_large_SP.jpg?v=166916481',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/cita_october_landing_banner_large_SP.jpg?v=1664310043',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/cita_BF_landing_banner_large_SP.jpg?v=166916481',
         width: 2048,
         height: 930,
       },
@@ -47,12 +47,12 @@ export const responsiveBannerSettings: ResponsiveBannerSectionData = {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: 'Regalo Gratis Con Compra',
+      alt: 'Viernes Negro',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/cita_october_landing_banner_medium_SP.jpg?v=1664310044',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/cita_BF_landing_banner_medium_SP.jpg?v=1669164820',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/cita_october_landing_banner_medium_SP.jpg?v=1664310044',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/cita_BF_landing_banner_medium_SP.jpg?v=1669164820',
         width: 2048,
         height: 1764,
       },
@@ -62,12 +62,12 @@ export const responsiveBannerSettings: ResponsiveBannerSectionData = {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: 'Regalo Gratis Con Compra',
+      alt: 'Viernes Negro',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/cita_october_landing_banner_small_SP.jpg?v=1664310044',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/cita_BF_landing_banner_small_SP.jpg?v=1669164820',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/cita_october_landing_banner_small_SP.jpg?v=1664310044',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/cita_BF_landing_banner_small_SP.jpg?v=1669164820',
         width: 2048,
         height: 2048,
       },
@@ -91,12 +91,12 @@ export const featuredRowImageOneSettings: FeaturedRowImageSectionData = {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: 'Productos de cabello',
+      alt: 'Compra 2 recibe 1 Gratis, cuando compras productos de cabello',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/suavecita-featured-image-1.jpg?v=1632786109',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/hair_products_SP.jpg?v=1669164819',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/suavecita-featured-image-1.jpg?v=1632786109',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/hair_products_SP.jpg?v=1669164819',
         width: 782,
         height: 782,
       },
@@ -205,12 +205,12 @@ export const featuredRowColumnsOneSettings: FeaturedRowColumnsSectionData = {
       value: '',
       reference: {
         mediaContentType: 'IMAGE',
-        alt: 'Cosméticos',
+        alt: 'Compra 2 Reibe 1 Gratis en Cosméticos',
         previewImage: {
-          url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/suavecita-featured-image-2.jpg?v=16327861092',
+          url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/cosmetic_products_SP.jpg?v=1669164819',
         },
         image: {
-          url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/suavecita-featured-image-2.jpg?v=1632786109',
+          url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/cosmetic_products_SP.jpg?v=1669164819',
           width: 720,
           height: 720,
         },
@@ -231,12 +231,12 @@ export const featuredRowColumnsOneSettings: FeaturedRowColumnsSectionData = {
       value: '',
       reference: {
         mediaContentType: 'IMAGE',
-        alt: 'Ropa',
+        alt: '20% de descuento en Ropa',
         previewImage: {
-          url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/suavecita-featured-image-3.jpg?v=1632786109',
+          url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/apparel_cita_SP.jpg?v=1669164819',
         },
         image: {
-          url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/suavecita-featured-image-3.jpg?v=1632786109',
+          url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/apparel_cita_SP.jpg?v=1669164819',
           width: 720,
           height: 720,
         },
@@ -257,12 +257,12 @@ export const featuredRowColumnsOneSettings: FeaturedRowColumnsSectionData = {
       value: '',
       reference: {
         mediaContentType: 'IMAGE',
-        alt: 'Coleccionables',
+        alt: '30% de descuento en mercancia y coleccionables',
         previewImage: {
-          url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/suavecita-featured-image-4.jpg?v=1632786109',
+          url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/collectibles_cita_SP.jpg?v=1669164819',
         },
         image: {
-          url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/suavecita-featured-image-4.jpg?v=1632786109',
+          url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/collectibles_cita_SP.jpg?v=1669164819',
           width: 720,
           height: 720,
         },
