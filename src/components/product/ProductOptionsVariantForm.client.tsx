@@ -126,7 +126,7 @@ export function ProductOptionsVariantForm({
 
   const isOnSale = useMemo(() => {
     let onSale = false;
-    if (hasComparePrice && hasSaleTags) {
+    if (hasSaleTags) {
       onSale = true;
     }
     // @ts-ignore
