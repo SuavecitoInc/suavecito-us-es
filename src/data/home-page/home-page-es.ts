@@ -7,22 +7,22 @@ import {
 } from '../../types/home-page';
 
 export const responsiveBannerSettings: ResponsiveBannerSectionData = {
-  heading: {value: 'Powered by Hydrogen'},
+  heading: {value: 'Suavecito'},
   byline: {
-    value: 'The All New Hydrogen Snowboard Exclusively From Shopify',
+    value: 'Get it Hombre!',
   },
   cta: {value: 'Shop Now →'},
-  handle: 'suavecito-x-monsters',
+  handle: 'mens-hair',
   spread: {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: '!Nuevo, Suavecito Vida Eterna, Compra Ahora! Recibe una tarjeta de $10 gratis cuando gastas $50. Recibe una tarjeta de $25 gratis cuando gastas $100.',
+      alt: 'Gasta $55, recibe un aromatizante o un paquete de cacomanias gratis! Gasta $65, recibe un brillo labial color paloma o un desodorante black amber gratis! *No olvides ordena antes del 15 de Diciembre para recibir tu pedido antes de Navidad!',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/vida_eterna_banner_large_sp.jpg?v=1668184259',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/FGWP_dec_landing_banner_large_SP.jpg?v=1669839946',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/vida_eterna_banner_large_sp.jpg?v=1668184259',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/FGWP_dec_landing_banner_large_SP.jpg?v=1669839946',
         width: 2048,
         height: 930,
       },
@@ -32,12 +32,12 @@ export const responsiveBannerSettings: ResponsiveBannerSectionData = {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: '!Nuevo, Suavecito Vida Eterna, Compra Ahora! Recibe una tarjeta de $10 gratis cuando gastas $50. Recibe una tarjeta de $25 gratis cuando gastas $100.',
+      alt: 'Gasta $55, recibe un aromatizante o un paquete de cacomanias gratis! Gasta $65, recibe un brillo labial color paloma o un desodorante black amber gratis! *No olvides ordena antes del 15 de Diciembre para recibir tu pedido antes de Navidad!',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/vida_eterna_banner_large_sp.jpg?v=1668184259',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/FGWP_dec_landing_banner_large_SP.jpg?v=1669839946',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/vida_eterna_banner_large_sp.jpg?v=1668184259',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/FGWP_dec_landing_banner_large_SP.jpg?v=1669839946',
         width: 2048,
         height: 930,
       },
@@ -47,12 +47,12 @@ export const responsiveBannerSettings: ResponsiveBannerSectionData = {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: '!Nuevo, Suavecito Vida Eterna, Compra Ahora! Recibe una tarjeta de $10 gratis cuando gastas $50. Recibe una tarjeta de $25 gratis cuando gastas $100.',
+      alt: 'Gasta $55, recibe un aromatizante o un paquete de cacomanias gratis! Gasta $65, recibe un brillo labial color paloma o un desodorante black amber gratis! *No olvides ordena antes del 15 de Diciembre para recibir tu pedido antes de Navidad!',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/vida_eterna_banner_med_sp.jpg?v=1668184259',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/FGWP_dec_landing_banner_medium_SP.jpg?v=1669839947',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/vida_eterna_banner_med_sp.jpg?v=1668184259',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/FGWP_dec_landing_banner_medium_SP.jpg?v=1669839947',
         width: 2048,
         height: 1764,
       },
@@ -62,14 +62,14 @@ export const responsiveBannerSettings: ResponsiveBannerSectionData = {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: '!Nuevo, Suavecito Vida Eterna, Compra Ahora! Recibe una tarjeta de $10 gratis cuando gastas $50. Recibe una tarjeta de $25 gratis cuando gastas $100.',
+      alt: 'Gasta $55, recibe un aromatizante o un paquete de cacomanias gratis! Gasta $65, recibe un brillo labial color paloma o un desodorante black amber gratis! *No olvides ordena antes del 15 de Diciembre para recibir tu pedido antes de Navidad!',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/vida_eterna_banner_small_sp.jpg?v=1668184259',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/FGWP_dec_landing_banner_medium_SP.jpg?v=1669839947',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/vida_eterna_banner_small_sp.jpg?v=1668184259',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/FGWP_dec_landing_banner_medium_SP.jpg?v=1669839947',
         width: 2048,
-        height: 2048,
+        height: 1764,
       },
     },
   },
