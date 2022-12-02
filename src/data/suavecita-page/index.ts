@@ -1,3 +1,2 @@
-export * from './suavecita-page-es';
-// black friday
-// export * from './suavecita-page-es-bf';
+// export * from './suavecita-page-es';
+export * from './suavecita-page-es-december';

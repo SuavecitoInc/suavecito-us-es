@@ -3,12 +3,12 @@ export const bestSellersBannerData = {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: 'Compra 2 recibe 1 Gratis! Productos de aseo y belleza.',
+      alt: 'Gasta $55, recibe un paquete de calcomanias gratis!. Gasta $65, recibe un desodorante black amber gratis!',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/BF_banner2_best_seller_SP.jpg?v=1669236238',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_deals_banner1_best_seller.jpg?v=1670022167',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/BF_banner2_best_seller_SP.jpg?v=1669236238',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_deals_banner1_best_seller.jpg?v=1670022167',
         width: 1080,
         height: 1080,
       },
@@ -19,12 +19,12 @@ export const bestSellersBannerData = {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: 'Black Friday!',
+      alt: '25% de descuento en todo el sitio. Regalo gratis, con compra. Dos regalos gratis cuando gastas $75.',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/BF_banner1_best_seller_SP.jpg?v=1669236238',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_deals_banner2_best_seller_SP.jpg?v=1670022923',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/BF_banner1_best_seller_SP.jpg?v=1669236238',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_deals_banner2_best_seller_SP.jpg?v=1670022923',
         width: 1080,
         height: 1080,
       },
@@ -35,12 +35,12 @@ export const bestSellersBannerData = {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: '30% de descuento en mercancia y los peines. 20% de descuento en la ropa',
+      alt: 'Gasta $55, recibe un aromatizante gratis. Gasta $65, recibe un brillo labial color paloma gratis!',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/BF_banner3_best_seller_SP.jpg?v=1669236238',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_deals_banner3_best_seller_SP.jpg?v=1670022924',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/BF_banner3_best_seller_SP.jpg?v=1669236238',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_deals_banner3_best_seller_SP.jpg?v=1670022924',
         width: 1080,
         height: 1080,
       },

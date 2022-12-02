@@ -17,12 +17,12 @@ export const responsiveBannerSettings: ResponsiveBannerSectionData = {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: 'Viernes Negro',
+      alt: '25% de descuento en todo el sitio. 50% de descuento en to do productos de Frida Kahlo. Regalo gratis cuando gastas $55. !Ordena antes del 15 de Diciembre para recibir tu pedido antes de Navidad!',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/cita_BF_landing_banner_large_SP.jpg?v=1669164819',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_deals_landing_banner_large_SP.jpg?v=1670022924',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/cita_BF_landing_banner_large_SP.jpg?v=1669164819',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_deals_landing_banner_large_SP.jpg?v=1670022924',
         width: 2048,
         height: 930,
       },
@@ -32,12 +32,12 @@ export const responsiveBannerSettings: ResponsiveBannerSectionData = {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: 'Viernes Negro',
+      alt: '25% de descuento en todo el sitio. 50% de descuento en to do productos de Frida Kahlo. Regalo gratis cuando gastas $55. !Ordena antes del 15 de Diciembre para recibir tu pedido antes de Navidad!',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/cita_BF_landing_banner_large_SP.jpg?v=166916481',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_deals_landing_banner_large_SP.jpg?v=1670022924',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/cita_BF_landing_banner_large_SP.jpg?v=166916481',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_deals_landing_banner_large_SP.jpg?v=1670022924',
         width: 2048,
         height: 930,
       },
@@ -47,12 +47,12 @@ export const responsiveBannerSettings: ResponsiveBannerSectionData = {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: 'Viernes Negro',
+      alt: '25% de descuento en todo el sitio. 50% de descuento en to do productos de Frida Kahlo. Regalo gratis cuando gastas $55. !Ordena antes del 15 de Diciembre para recibir tu pedido antes de Navidad!',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/cita_BF_landing_banner_medium_SP.jpg?v=1669164820',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_deals_landing_banner_medium_SP.jpg?v=1670022925',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/cita_BF_landing_banner_medium_SP.jpg?v=1669164820',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_deals_landing_banner_medium_SP.jpg?v=1670022925',
         width: 2048,
         height: 1764,
       },
@@ -62,14 +62,14 @@ export const responsiveBannerSettings: ResponsiveBannerSectionData = {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: 'Viernes Negro',
+      alt: '25% de descuento en todo el sitio. 50% de descuento en to do productos de Frida Kahlo. Regalo gratis cuando gastas $55. !Ordena antes del 15 de Diciembre para recibir tu pedido antes de Navidad!',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/cita_BF_landing_banner_small_SP.jpg?v=1669164820',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_deals_landing_banner_medium_SP.jpg?v=1670022925',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/cita_BF_landing_banner_small_SP.jpg?v=1669164820',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_deals_landing_banner_medium_SP.jpg?v=1670022925',
         width: 2048,
-        height: 2048,
+        height: 1764,
       },
     },
   },
@@ -91,12 +91,12 @@ export const featuredRowImageOneSettings: FeaturedRowImageSectionData = {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: 'Compra 2 recibe 1 Gratis, cuando compras productos de cabello',
+      alt: 'Productos de cabello',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/hair_products_SP.jpg?v=1669164819',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/suavecita-featured-image-1.jpg?v=1632786109',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/hair_products_SP.jpg?v=1669164819',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/suavecita-featured-image-1.jpg?v=1632786109',
         width: 782,
         height: 782,
       },
@@ -205,12 +205,12 @@ export const featuredRowColumnsOneSettings: FeaturedRowColumnsSectionData = {
       value: '',
       reference: {
         mediaContentType: 'IMAGE',
-        alt: 'Compra 2 Reibe 1 Gratis en Cosméticos',
+        alt: 'Cosméticos',
         previewImage: {
-          url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/cosmetic_products_SP.jpg?v=1669164819',
+          url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/suavecita-featured-image-2.jpg?v=16327861092',
         },
         image: {
-          url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/cosmetic_products_SP.jpg?v=1669164819',
+          url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/suavecita-featured-image-2.jpg?v=1632786109',
           width: 720,
           height: 720,
         },
@@ -231,12 +231,12 @@ export const featuredRowColumnsOneSettings: FeaturedRowColumnsSectionData = {
       value: '',
       reference: {
         mediaContentType: 'IMAGE',
-        alt: '20% de descuento en Ropa',
+        alt: 'Ropa',
         previewImage: {
-          url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/apparel_cita_SP.jpg?v=1669164819',
+          url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/suavecita-featured-image-3.jpg?v=1632786109',
         },
         image: {
-          url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/apparel_cita_SP.jpg?v=1669164819',
+          url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/suavecita-featured-image-3.jpg?v=1632786109',
           width: 720,
           height: 720,
         },
@@ -257,12 +257,12 @@ export const featuredRowColumnsOneSettings: FeaturedRowColumnsSectionData = {
       value: '',
       reference: {
         mediaContentType: 'IMAGE',
-        alt: '30% de descuento en mercancia y coleccionables',
+        alt: 'Coleccionables',
         previewImage: {
-          url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/collectibles_cita_SP.jpg?v=1669164819',
+          url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/suavecita-featured-image-4.jpg?v=1632786109',
         },
         image: {
-          url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/collectibles_cita_SP.jpg?v=1669164819',
+          url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/suavecita-featured-image-4.jpg?v=1632786109',
           width: 720,
           height: 720,
         },
