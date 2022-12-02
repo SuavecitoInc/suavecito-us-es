@@ -3,12 +3,12 @@ export const bestSellersBannerData = {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: 'Gratis, peine plegable penny cuando gastas $55, crema de afeitar - sandalo cuanda gastas $65.',
+      alt: 'Gasta $55, recibe un paquete de calcomanias gratis!. Gasta $65, recibe un desodorante black amber gratis!',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/banner1_october_es.jpg?v=1664404893',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_banner1_best_seller_SP.jpg?v=1669839946',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/banner1_october_es.jpg?v=1664404893',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_banner1_best_seller_SP.jpg?v=1669839946',
         width: 1080,
         height: 1080,
       },
@@ -19,12 +19,12 @@ export const bestSellersBannerData = {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: 'Dos regalos gratis cuando gastas $75.',
+      alt: 'Regalo gratis, con compra. Dos regalos gratis cuando gastas $75.',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/banner3_october_es.jpg?v=1664404893',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_banner2_best_seller_SP.jpg?v=1669839946',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/banner3_october_es.jpg?v=1664404893',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_banner2_best_seller_SP.jpg?v=1669839946',
         width: 1080,
         height: 1080,
       },
@@ -35,12 +35,12 @@ export const bestSellersBannerData = {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: 'Gratis, hojas facialesabsorbentes de aceite, cuando gastas $55, labial matte liquido - bruja cuando gastas $65.',
+      alt: 'Gasta $55, recibe un aromatizante gratis. Gasta $65, recibe un brillo labial color paloma gratis!',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/banner2_october_es.jpg?v=1664404893',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_banner3_best_seller_SP.jpg?v=1669839946',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/banner2_october_es.jpg?v=1664404893',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_banner3_best_seller_SP.jpg?v=1669839946',
         width: 1080,
         height: 1080,
       },
