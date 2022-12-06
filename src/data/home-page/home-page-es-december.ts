@@ -7,22 +7,22 @@ import {
 } from '../../types/home-page';
 
 export const responsiveBannerSettings: ResponsiveBannerSectionData = {
-  heading: {value: 'Powered by Hydrogen'},
+  heading: {value: 'Suavecito'},
   byline: {
-    value: 'The All New Hydrogen Snowboard Exclusively From Shopify',
+    value: 'Get it Hombre!',
   },
   cta: {value: 'Shop Now →'},
-  handle: 'suavecito-x-monsters',
+  handle: 'mens-hair',
   spread: {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: 'Compra 1 Recibe 1 Gratis en Pomadas. Mezcla y Combina.',
+      alt: '25% de descuento en todo el sitio. 50% de descuento en to do productos de Frida Kahlo. Regalo gratis cuando gastas $55. !Ordena antes del 15 de Diciembre para recibir tu pedido antes de Navidad!',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/CM_banner_large_SP.jpg?v=1669169889',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_deals_landing_banner_large_SP.jpg?v=1670022924',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/CM_banner_large_SP.jpg?v=1669169889',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_deals_landing_banner_large_SP.jpg?v=1670022924',
         width: 2048,
         height: 930,
       },
@@ -32,12 +32,12 @@ export const responsiveBannerSettings: ResponsiveBannerSectionData = {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: 'Compra 1 Recibe 1 Gratis en Pomadas. Mezcla y Combina.',
+      alt: '25% de descuento en todo el sitio. 50% de descuento en to do productos de Frida Kahlo. Regalo gratis cuando gastas $55. !Ordena antes del 15 de Diciembre para recibir tu pedido antes de Navidad!',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/CM_banner_large_SP.jpg?v=1669169889',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_deals_landing_banner_large_SP.jpg?v=1670022924',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/CM_banner_large_SP.jpg?v=1669169889',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_deals_landing_banner_large_SP.jpg?v=1670022924',
         width: 2048,
         height: 930,
       },
@@ -47,12 +47,12 @@ export const responsiveBannerSettings: ResponsiveBannerSectionData = {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: 'Compra 1 Recibe 1 Gratis en Pomadas. Mezcla y Combina.',
+      alt: '25% de descuento en todo el sitio. 50% de descuento en to do productos de Frida Kahlo. Regalo gratis cuando gastas $55. !Ordena antes del 15 de Diciembre para recibir tu pedido antes de Navidad!',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/CM_banner_med_SP.jpg?v=1669169889',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_deals_landing_banner_medium_SP.jpg?v=1670022925',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/CM_banner_med_SP.jpg?v=1669169889',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_deals_landing_banner_medium_SP.jpg?v=1670022925',
         width: 2048,
         height: 1764,
       },
@@ -62,14 +62,14 @@ export const responsiveBannerSettings: ResponsiveBannerSectionData = {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: 'Compra 1 Recibe 1 Gratis en Pomadas. Mezcla y Combina.',
+      alt: '25% de descuento en todo el sitio. 50% de descuento en to do productos de Frida Kahlo. Regalo gratis cuando gastas $55. !Ordena antes del 15 de Diciembre para recibir tu pedido antes de Navidad!',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/CM_banner_small_SP.jpg?v=1669169889',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_deals_landing_banner_medium_SP.jpg?v=1670022925',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/CM_banner_small_SP.jpg?v=1669169889',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_deals_landing_banner_medium_SP.jpg?v=1670022925',
         width: 2048,
-        height: 2048,
+        height: 1764,
       },
     },
   },
