@@ -3,12 +3,12 @@ export const bestSellersBannerData = {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: 'Gasta $55, recibe un paquete de calcomanias gratis!. Gasta $65, recibe un desodorante black amber gratis!',
+      alt: 'Gasta $55, recibe un paquete de calcomanias gratis!. Gasta $65, recibe un desodorante black amber gratis! Gasta $75, recibe dos regalos gratis!',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_deals_banner1_best_seller.jpg?v=1670022167',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_deals_banner1_best_seller2_SP.jpg?v=1671040772',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_deals_banner1_best_seller.jpg?v=1670022167',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_deals_banner1_best_seller2_SP.jpg?v=1671040772',
         width: 1080,
         height: 1080,
       },
@@ -19,12 +19,12 @@ export const bestSellersBannerData = {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: '25% de descuento en todo el sitio. Regalo gratis, con compra. Dos regalos gratis cuando gastas $75.',
+      alt: 'Compora 1 recibe 1 gratis!',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_deals_banner2_best_seller_SP.jpg?v=1670022923',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_deals_banner2_best_seller2_SP.jpg?v=1671040772',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_deals_banner2_best_seller_SP.jpg?v=1670022923',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_deals_banner2_best_seller2_SP.jpg?v=1671040772',
         width: 1080,
         height: 1080,
       },
@@ -35,12 +35,12 @@ export const bestSellersBannerData = {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: 'Gasta $55, recibe un aromatizante gratis. Gasta $65, recibe un brillo labial color paloma gratis!',
+      alt: 'Gasta $55, recibe un aromatizante gratis. Gasta $65, recibe un brillo labial color paloma gratis! Gasta $75 recibe dos regalos gratis!',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_deals_banner3_best_seller_SP.jpg?v=1670022924',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_deals_banner3_best_seller2_SP.jpg?v=1671040773',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_deals_banner3_best_seller_SP.jpg?v=1670022924',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_deals_banner3_best_seller2_SP.jpg?v=1671040773',
         width: 1080,
         height: 1080,
       },
