@@ -17,12 +17,12 @@ export const responsiveBannerSettings: ResponsiveBannerSectionData = {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: '25% de descuento en todo el sitio. 50% de descuento en to do productos de Frida Kahlo. Regalo gratis cuando gastas $55. !Ordena antes del 15 de Diciembre para recibir tu pedido antes de Navidad!',
+      alt: '50% de descuento en todos los productos de Frida Kahlo. Compra 1, Recibe 1 Gratis, en todos productos de Premium Blends. Regalo Gratis cuando gastas $55.',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_deals_landing_banner_large_SP.jpg?v=1670022924',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_BOGO_landing_banner_large_SP.jpg?v=1671040772',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_deals_landing_banner_large_SP.jpg?v=1670022924',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_BOGO_landing_banner_large_SP.jpg?v=1671040772',
         width: 2048,
         height: 930,
       },
@@ -32,12 +32,12 @@ export const responsiveBannerSettings: ResponsiveBannerSectionData = {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: '25% de descuento en todo el sitio. 50% de descuento en to do productos de Frida Kahlo. Regalo gratis cuando gastas $55. !Ordena antes del 15 de Diciembre para recibir tu pedido antes de Navidad!',
+      alt: '50% de descuento en todos los productos de Frida Kahlo. Compra 1, Recibe 1 Gratis, en todos productos de Premium Blends. Regalo Gratis cuando gastas $55.',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_deals_landing_banner_large_SP.jpg?v=1670022924',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_BOGO_landing_banner_large_SP.jpg?v=1671040772',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_deals_landing_banner_large_SP.jpg?v=1670022924',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_BOGO_landing_banner_large_SP.jpg?v=1671040772',
         width: 2048,
         height: 930,
       },
@@ -47,12 +47,12 @@ export const responsiveBannerSettings: ResponsiveBannerSectionData = {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: '25% de descuento en todo el sitio. 50% de descuento en to do productos de Frida Kahlo. Regalo gratis cuando gastas $55. !Ordena antes del 15 de Diciembre para recibir tu pedido antes de Navidad!',
+      alt: '50% de descuento en todos los productos de Frida Kahlo. Compra 1, Recibe 1 Gratis, en todos productos de Premium Blends. Regalo Gratis cuando gastas $55.',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_deals_landing_banner_medium_SP.jpg?v=1670022925',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_BOGO_landing_banner_medium_SP.jpg?v=1671040772',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_deals_landing_banner_medium_SP.jpg?v=1670022925',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_BOGO_landing_banner_medium_SP.jpg?v=1671040772',
         width: 2048,
         height: 1764,
       },
@@ -62,12 +62,12 @@ export const responsiveBannerSettings: ResponsiveBannerSectionData = {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: '25% de descuento en todo el sitio. 50% de descuento en to do productos de Frida Kahlo. Regalo gratis cuando gastas $55. !Ordena antes del 15 de Diciembre para recibir tu pedido antes de Navidad!',
+      alt: '50% de descuento en todos los productos de Frida Kahlo. Compra 1, Recibe 1 Gratis, en todos productos de Premium Blends. Regalo Gratis cuando gastas $55.',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_deals_landing_banner_medium_SP.jpg?v=1670022925',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_BOGO_landing_banner_medium_SP.jpg?v=1671040772',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_deals_landing_banner_medium_SP.jpg?v=1670022925',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_BOGO_landing_banner_medium_SP.jpg?v=1671040772',
         width: 2048,
         height: 1764,
       },
