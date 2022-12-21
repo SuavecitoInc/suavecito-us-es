@@ -55,6 +55,7 @@ export function CartFreeGiftWithPurchase() {
 
   const {
     isSingleTier,
+    singleTierAllOptionsEnabled,
     tier1Diff,
     tier2Diff,
     tier3Diff,
@@ -127,25 +128,48 @@ export function CartFreeGiftWithPurchase() {
         <p className="text-center">{fgwp_locale.select_your_gift[LANG]}:</p>
       </div>
       <section className={tierGridStyles}>
-        <TierCard
-          lang={LANG}
-          products={tier1Products}
-          tier={1}
-          currentTier={currentTier}
-          productHandler={setTier1Value}
-          productValue={tier1Value}
-          tierDiff={tier1Diff}
-          tierDisabled={
-            !tier1Disabled &&
-            freeGiftAvailable &&
-            currentTier >= 1 &&
-            freeGiftsInCart !== 1
-              ? false
-              : true
-          }
-          addFreeGiftToCart={addFreeGiftToCart}
-          freeGiftAvailable={freeGiftAvailable}
-        />
+        {singleTierAllOptionsEnabled ? (
+          <SingleTierAllOptionsCard
+            lang={LANG}
+            products={tier3Products}
+            tier={1}
+            currentTier={currentTier}
+            productHandler={setTier1Value}
+            productValue={tier1Value}
+            tierDiff={tier1Diff}
+            tierDisabled={
+              !tier1Disabled &&
+              freeGiftAvailable &&
+              currentTier >= 1 &&
+              freeGiftsInCart !== 1
+                ? false
+                : true
+            }
+            addFreeGiftToCart={addFreeGiftToCart}
+            freeGiftAvailable={freeGiftAvailable}
+          />
+        ) : (
+          <TierCard
+            lang={LANG}
+            products={tier1Products}
+            tier={1}
+            currentTier={currentTier}
+            productHandler={setTier1Value}
+            productValue={tier1Value}
+            tierDiff={tier1Diff}
+            tierDisabled={
+              !tier1Disabled &&
+              freeGiftAvailable &&
+              currentTier >= 1 &&
+              freeGiftsInCart !== 1
+                ? false
+                : true
+            }
+            addFreeGiftToCart={addFreeGiftToCart}
+            freeGiftAvailable={freeGiftAvailable}
+          />
+        )}
+
         {!isSingleTier && (
           <TierCard
             lang={LANG}
@@ -243,7 +267,7 @@ function ProductCard({
         className="object-cover object-center w-24 h-24 mx-auto rounded md:w-28 md:h-28"
       />
       {displayTitle && (
-        <p className="font-bold text-center uppercase text-suave-red">
+        <p className="text-sm font-bold text-center uppercase text-suave-red">
           {product.title}
         </p>
       )}
@@ -368,7 +392,7 @@ function TierCard({
       </div>
       <div className="flex flex-col h-full gap-4">
         <div className="flex items-center justify-center p-4 bg-white border border-black rounded-lg grow shrink basis-auto">
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+          <div className="grid grid-cols-3 gap-4">
             <div className="flex items-center justify-center">
               <ProductCard
                 product={products[0]}
@@ -508,6 +532,105 @@ function Tier3Card({
             tierDiff={tierDiff}
             tierDisabled={tierDisabled}
           />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function SingleTierAllOptionsCard({
+  lang,
+  tier = 1,
+  currentTier,
+  products,
+  productValue,
+  productHandler,
+  tierDiff,
+  tierDisabled,
+  addFreeGiftToCart,
+  freeGiftAvailable,
+}: {
+  lang: 'en' | 'es';
+  tier: number;
+  currentTier: number;
+  products: Product[];
+  productValue: string;
+  productHandler: Dispatch<SetStateAction<string>>;
+  tierDiff: number;
+  tierDisabled: boolean;
+  addFreeGiftToCart: (tierSelected: number) => void;
+  freeGiftAvailable: boolean;
+}) {
+  return (
+    <div className={`relative ${tierDisabled ? 'opacity-30' : 'opacity-100'}`}>
+      <div className="absolute z-10 top-2 left-2">
+        {tierDisabled ? (
+          <ImLock className="w-5 h-5" />
+        ) : (
+          <ImUnlocked className="w-5 h-5 opacity-25" />
+        )}
+      </div>
+      <div className="h-full gap-4">
+        <div className="flex items-center justify-center p-4 bg-white border border-black rounded-lg grow shrink basis-auto">
+          <div className="grid grid-cols-4 gap-4">
+            <div className="flex items-center justify-center">
+              <ProductCard
+                product={products[0]}
+                inputName={`tier-${tier}-1`}
+                productHandler={productHandler}
+                productValue={productValue}
+                tierDisabled={tierDisabled}
+                displayTitle={true}
+              />
+            </div>
+
+            <div className="flex items-center justify-center">
+              <ProductCard
+                product={products[1]}
+                inputName={`tier-${tier}-1`}
+                productHandler={productHandler}
+                productValue={productValue}
+                tierDisabled={tierDisabled}
+                displayTitle={true}
+              />
+            </div>
+
+            <div className="flex items-center justify-center">
+              <ProductCard
+                product={products[2]}
+                inputName={`tier-${tier}-1`}
+                productHandler={productHandler}
+                productValue={productValue}
+                tierDisabled={tierDisabled}
+                displayTitle={true}
+              />
+            </div>
+
+            <div className="flex items-center justify-center">
+              <ProductCard
+                product={products[3]}
+                inputName={`tier-${tier}-1`}
+                productHandler={productHandler}
+                productValue={productValue}
+                tierDisabled={tierDisabled}
+                displayTitle={true}
+              />
+            </div>
+          </div>
+        </div>
+
+        <div className="flex flex-row text-center">
+          <div className="mx-auto w-50">
+            <AddGiftButton
+              lang={lang}
+              freeGiftAvailable={freeGiftAvailable}
+              addFreeGiftToCart={addFreeGiftToCart}
+              currentTier={currentTier}
+              tier={tier}
+              tierDiff={tierDiff}
+              tierDisabled={tierDisabled}
+            />
+          </div>
         </div>
       </div>
     </div>
