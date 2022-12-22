@@ -256,15 +256,15 @@ function ProductCard({
       className={`product-card ${cardDisabled ? 'opacity-30' : 'opacity-100'}`}
     >
       <Image
-        width={112}
-        height={112}
-        widths={[112]}
+        width={120}
+        height={96}
+        widths={[120]}
         data={variant.image as ImageType}
         loaderOptions={{
           scale: 2,
           crop: 'center',
         }}
-        className="object-cover object-center w-24 h-24 mx-auto rounded md:w-28 md:h-28"
+        className="object-contain object-center w-24 h-24 mx-auto rounded md:w-28 md:h-28"
       />
       {displayTitle && (
         <p className="text-sm font-bold text-center uppercase text-suave-red">
