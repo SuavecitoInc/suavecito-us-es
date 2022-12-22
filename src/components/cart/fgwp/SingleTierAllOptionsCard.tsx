@@ -87,7 +87,7 @@ function SingleTierAllOptionsCard({
         </div>
 
         <div className="flex flex-row text-center">
-          <div className="mx-auto w-50">
+          <div className={`mx-auto w-50 ${tierDisabled ? 'mt-[1.25rem]' : ''}`}>
             <AddGiftButton
               lang={lang}
               freeGiftAvailable={freeGiftAvailable}
