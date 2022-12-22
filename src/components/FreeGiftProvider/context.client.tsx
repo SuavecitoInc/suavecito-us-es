@@ -5,10 +5,17 @@ import {
   FGWP_TIER_2_MIN,
   FGWP_TIER_3_MIN,
   FGWP_ENABLED,
+  FGWP_SINGLE_TIER_ENABLED,
+  FGWP_SINGLE_TIER_ALL_OPTIONS_ENABLED,
 } from '~/data/free-gift-with-purchase';
 
 const defaultContext: DefaultFreeGiftContext = {
   enabled: FGWP_ENABLED,
+  isSingleTier: FGWP_SINGLE_TIER_ENABLED,
+  singleTierAllOptionsEnabled:
+    FGWP_SINGLE_TIER_ENABLED && FGWP_SINGLE_TIER_ALL_OPTIONS_ENABLED
+      ? true
+      : false,
   tier1Diff: 0,
   tier2Diff: 0,
   tier3Diff: 0,
@@ -31,6 +38,7 @@ const defaultContext: DefaultFreeGiftContext = {
   tier1Min: FGWP_TIER_1_MIN,
   tier2Min: FGWP_TIER_2_MIN,
   tier3Min: FGWP_TIER_3_MIN,
+  checkoutDisabled: false,
 };
 
 export const FreeGiftContext =

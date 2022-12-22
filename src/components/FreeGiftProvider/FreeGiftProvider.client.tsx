@@ -14,6 +14,7 @@ import {
   FGWP_TIER_3_MIN,
   FGWP_ENABLED,
   FGWP_SINGLE_TIER_ENABLED,
+  FGWP_SINGLE_TIER_ALL_OPTIONS_ENABLED,
 } from '~/data/free-gift-with-purchase';
 
 export function FreeGiftProvider({
@@ -185,7 +186,7 @@ export function FreeGiftProvider({
       };
 
       const products: {[key: number]: Product[]} = {
-        1: tier1Products,
+        1: FGWP_SINGLE_TIER_ALL_OPTIONS_ENABLED ? tier3Products : tier1Products,
         2: tier2Products,
         3: tier3Products,
       };
@@ -285,6 +286,10 @@ export function FreeGiftProvider({
     return {
       enabled: FGWP_ENABLED,
       isSingleTier: FGWP_SINGLE_TIER_ENABLED,
+      singleTierAllOptionsEnabled:
+        FGWP_SINGLE_TIER_ENABLED && FGWP_SINGLE_TIER_ALL_OPTIONS_ENABLED
+          ? true
+          : false,
       tier1Diff,
       tier2Diff,
       tier3Diff,
