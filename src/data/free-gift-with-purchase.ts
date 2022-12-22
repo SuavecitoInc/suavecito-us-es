@@ -2,7 +2,7 @@
 export const FGWP_ENABLED = true;
 export const FGWP_SINGLE_TIER_ENABLED = true;
 export const FGWP_SINGLE_TIER_ALL_OPTIONS_ENABLED = true;
-export const FGWP_BANNER_ENABLED = true;
+export const FGWP_BANNER_ENABLED = false;
 export const FGWP_1 = 'original-hold-pomade-fgwp';
 export const FGWP_2 = 'firme-strong-hold-pomade-fgwp';
 export const FGWP_3 = 'matte-pomade-fgwp';
