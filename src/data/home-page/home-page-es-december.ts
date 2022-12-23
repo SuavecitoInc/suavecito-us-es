@@ -19,10 +19,10 @@ export const responsiveBannerSettings: ResponsiveBannerSectionData = {
       mediaContentType: 'IMAGE',
       alt: '50% de descuento en todos los productos de Frida Kahlo. Compra 1, Recibe 1 Gratis, en todos productos de Premium Blends. Regalo Gratis cuando gastas $55.',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_BOGO_landing_banner_large_SP.jpg?v=1671040772',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_BOGO_landing_banner_large_SP_1.jpg?v=1671757175',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_BOGO_landing_banner_large_SP.jpg?v=1671040772',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_BOGO_landing_banner_large_SP_1.jpg?v=1671757175',
         width: 2048,
         height: 930,
       },
@@ -34,10 +34,10 @@ export const responsiveBannerSettings: ResponsiveBannerSectionData = {
       mediaContentType: 'IMAGE',
       alt: '50% de descuento en todos los productos de Frida Kahlo. Compra 1, Recibe 1 Gratis, en todos productos de Premium Blends. Regalo Gratis cuando gastas $55.',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_BOGO_landing_banner_large_SP.jpg?v=1671040772',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_BOGO_landing_banner_large_SP_1.jpg?v=1671757175',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_BOGO_landing_banner_large_SP.jpg?v=1671040772',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_BOGO_landing_banner_large_SP_1.jpg?v=1671757175',
         width: 2048,
         height: 930,
       },
@@ -49,10 +49,10 @@ export const responsiveBannerSettings: ResponsiveBannerSectionData = {
       mediaContentType: 'IMAGE',
       alt: '50% de descuento en todos los productos de Frida Kahlo. Compra 1, Recibe 1 Gratis, en todos productos de Premium Blends. Regalo Gratis cuando gastas $55.',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_BOGO_landing_banner_medium_SP.jpg?v=1671040772',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_BOGO_landing_banner_medium_SP_1.jpg?v=1671757176',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_BOGO_landing_banner_medium_SP.jpg?v=1671040772',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_BOGO_landing_banner_medium_SP_1.jpg?v=1671757176',
         width: 2048,
         height: 1764,
       },
@@ -64,10 +64,10 @@ export const responsiveBannerSettings: ResponsiveBannerSectionData = {
       mediaContentType: 'IMAGE',
       alt: '50% de descuento en todos los productos de Frida Kahlo. Compra 1, Recibe 1 Gratis, en todos productos de Premium Blends. Regalo Gratis cuando gastas $55.',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_BOGO_landing_banner_medium_SP.jpg?v=1671040772',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_BOGO_landing_banner_medium_SP_1.jpg?v=1671757176',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_BOGO_landing_banner_medium_SP.jpg?v=1671040772',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_BOGO_landing_banner_medium_SP_1.jpg?v=1671757176',
         width: 2048,
         height: 1764,
       },
