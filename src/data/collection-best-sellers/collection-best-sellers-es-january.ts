@@ -3,12 +3,12 @@ export const bestSellersBannerData = {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: 'Gasta $55, recibe un paquete de calcomanias gratis!. Gasta $65, recibe un desodorante black amber gratis! Gasta $75, recibe dos regalos gratis!',
+      alt: 'Gasta $55, recibe una playera gratis!',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_deals_banner1_best_seller2_SP.jpg?v=1671040772',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/jan_2023_banner2_best_seller_SP.jpg?v=1672432714',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_deals_banner1_best_seller2_SP.jpg?v=1671040772',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/jan_2023_banner2_best_seller_SP.jpg?v=1672432714',
         width: 1080,
         height: 1080,
       },
@@ -19,12 +19,12 @@ export const bestSellersBannerData = {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: 'Compora 1 recibe 1 gratis!',
+      alt: 'Gasta $55, recibe una playera gratis!',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_deals_banner2_best_seller2_SP.jpg?v=1671040772',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/jan_2023_banner1_best_seller_SP.jpg?v=1672432715',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_deals_banner2_best_seller2_SP.jpg?v=1671040772',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/jan_2023_banner1_best_seller_SP.jpg?v=1672432715',
         width: 1080,
         height: 1080,
       },
@@ -35,12 +35,12 @@ export const bestSellersBannerData = {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: 'Gasta $55, recibe un aromatizante gratis. Gasta $65, recibe un brillo labial color paloma gratis! Gasta $75 recibe dos regalos gratis!',
+      alt: 'Gasta $55, recibe una playera gratis!',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_deals_banner3_best_seller2_SP.jpg?v=1671040773',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/jan_2023_banner3_best_seller_SP.jpg?v=1672432715',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_deals_banner3_best_seller2_SP.jpg?v=1671040773',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/jan_2023_banner3_best_seller_SP.jpg?v=1672432715',
         width: 1080,
         height: 1080,
       },
