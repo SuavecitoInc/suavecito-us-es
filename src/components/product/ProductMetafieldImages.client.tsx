@@ -48,7 +48,7 @@ export function ProductMetafieldImages({className}: {className?: string}) {
     <div
       className={`product-images md:grid-flow-row hiddenScroll md:p-0 md:overflow-x-auto md:grid-cols-2 ${className}`}
     >
-      <div className="featured-image w-full">
+      <div className="w-full featured-image">
         {/* {featuredImage && (
           <SpreadMedia
             scale={2}
@@ -74,7 +74,7 @@ export function ProductMetafieldImages({className}: {className?: string}) {
           />
         )}
       </div>
-      <div className="product-thumbnails pt-5 flex gap-3">
+      <div className="flex gap-3 pt-5 product-thumbnails">
         {Array.from([1, 2, 3, 4]).map((i) => {
           const variantImage = `variantImage${i}`;
           const imageMetafield = selectedVariant[
