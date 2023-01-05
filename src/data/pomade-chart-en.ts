@@ -1,31 +1,31 @@
 export const chartData = [
-  {
-    product: {
-      featuredImage: {
-        value: '',
-        reference: {
-          mediaContentType: 'IMAGE',
-          alt: 'Light Hold Pomade',
-          previewImage: {
-            url: 'https://cdn.shopify.com/s/files/1/0274/1389/t/217/assets/suavecito-light-hold-pomade_medium.jpg?v=150308541166018296801657817012',
-          },
-          image: {
-            url: 'https://cdn.shopify.com/s/files/1/0274/1389/t/217/assets/suavecito-light-hold-pomade_medium.jpg?v=150308541166018296801657817012',
-            width: 240,
-            height: 192,
-          },
-        },
-      },
-      title: 'Light Hold Pomade',
-      hold: 'Light Hold',
-      shine: 'Medium Shine',
-      washability: 'Easy',
-      bestFor: 'Fine or thinning hair. Loose or messy styles',
-      loading: 'eager',
-      link: '/light-hold-pomade',
-      color: 'Light Blue',
-    },
-  },
+  // {
+  //   product: {
+  //     featuredImage: {
+  //       value: '',
+  //       reference: {
+  //         mediaContentType: 'IMAGE',
+  //         alt: 'Light Hold Pomade',
+  //         previewImage: {
+  //           url: 'https://cdn.shopify.com/s/files/1/0274/1389/t/217/assets/suavecito-light-hold-pomade_medium.jpg?v=150308541166018296801657817012',
+  //         },
+  //         image: {
+  //           url: 'https://cdn.shopify.com/s/files/1/0274/1389/t/217/assets/suavecito-light-hold-pomade_medium.jpg?v=150308541166018296801657817012',
+  //           width: 240,
+  //           height: 192,
+  //         },
+  //       },
+  //     },
+  //     title: 'Light Hold Pomade',
+  //     hold: 'Light Hold',
+  //     shine: 'Medium Shine',
+  //     washability: 'Easy',
+  //     bestFor: 'Fine or thinning hair. Loose or messy styles',
+  //     loading: 'eager',
+  //     link: '/light-hold-pomade',
+  //     color: 'Light Blue',
+  //   },
+  // },
   {
     product: {
       featuredImage: {

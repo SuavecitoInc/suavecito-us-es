@@ -51,7 +51,7 @@ export function PomadeCompareChart({lang = 'en'}: {lang: 'en' | 'es'}) {
         {title}
       </Heading>
       <div className="w-full overflow-scroll">
-        <div className="w-[500vw] md:w-full grid grid-rows grid-cols-6 gap-1 text-center">
+        <div className="w-[500vw] md:w-full grid grid-rows grid-cols-5 gap-1 text-center">
           {chartData.map(({product}) => (
             <div
               key={`${product.data[languageCode].title}-image`}
@@ -79,7 +79,7 @@ export function PomadeCompareChart({lang = 'en'}: {lang: 'en' | 'es'}) {
           ))}
         </div>
 
-        <div className="w-[500vw] md:w-full grid grid-rows grid-cols-6 gap-1 text-center text-sm">
+        <div className="w-[500vw] md:w-full grid grid-rows grid-cols-5 gap-1 text-center text-sm">
           {chartData.map(({product}) => (
             <div
               key={product.data[languageCode].title}
@@ -92,7 +92,7 @@ export function PomadeCompareChart({lang = 'en'}: {lang: 'en' | 'es'}) {
           ))}
         </div>
 
-        <div className="w-[500vw] md:w-full grid grid-rows grid-cols-6 gap-1 text-center text-sm">
+        <div className="w-[500vw] md:w-full grid grid-rows grid-cols-5 gap-1 text-center text-sm">
           {chartData.map(({product}) => (
             <div
               key={`${product.data[languageCode].title}-triangle`}
@@ -107,7 +107,7 @@ export function PomadeCompareChart({lang = 'en'}: {lang: 'en' | 'es'}) {
           ))}
         </div>
 
-        <div className="w-[500vw] md:w-full grid grid-rows grid-cols-6 gap-1 text-center text-sm">
+        <div className="w-[500vw] md:w-full grid grid-rows grid-cols-5 gap-1 text-center text-sm">
           {chartData.map(({product}) => (
             <div
               key={`${product.data[languageCode].title}-${product.data[languageCode].hold}`}
@@ -119,7 +119,7 @@ export function PomadeCompareChart({lang = 'en'}: {lang: 'en' | 'es'}) {
             </div>
           ))}
         </div>
-        <div className="w-[500vw] md:w-full grid grid-rows grid-cols-6 gap-1 text-center text-sm">
+        <div className="w-[500vw] md:w-full grid grid-rows grid-cols-5 gap-1 text-center text-sm">
           {chartData.map(({product}) => (
             <div
               key={`${product.data[languageCode].title}-${product.data[languageCode].shine}`}
@@ -131,7 +131,7 @@ export function PomadeCompareChart({lang = 'en'}: {lang: 'en' | 'es'}) {
             </div>
           ))}
         </div>
-        <div className="w-[500vw] md:w-full grid grid-rows grid-cols-6 gap-1 text-center text-sm">
+        <div className="w-[500vw] md:w-full grid grid-rows grid-cols-5 gap-1 text-center text-sm">
           {chartData.map(({product}) => (
             <div
               key={`${product.data[languageCode].title}-${product.data[languageCode].washability}`}
@@ -143,7 +143,7 @@ export function PomadeCompareChart({lang = 'en'}: {lang: 'en' | 'es'}) {
             </div>
           ))}
         </div>
-        <div className="w-[500vw] md:w-full grid grid-rows grid-cols-6 gap-1 text-sm">
+        <div className="w-[500vw] md:w-full grid grid-rows grid-cols-5 gap-1 text-sm">
           {chartData.map(({product}) => (
             <div
               key={`${product.data[languageCode].title}-${product.data[languageCode].bestFor}`}
