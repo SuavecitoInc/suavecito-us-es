@@ -1,42 +1,42 @@
 export const chartData: {[key: string]: any}[] = [
-  {
-    product: {
-      featuredImage: {
-        value: '',
-        reference: {
-          mediaContentType: 'IMAGE',
-          alt: 'Light Hold Pomade',
-          previewImage: {
-            url: 'https://cdn.shopify.com/s/files/1/0274/1389/t/217/assets/suavecito-light-hold-pomade_medium.jpg?v=150308541166018296801657817012',
-          },
-          image: {
-            url: 'https://cdn.shopify.com/s/files/1/0274/1389/t/217/assets/suavecito-light-hold-pomade_medium.jpg?v=150308541166018296801657817012',
-            width: 240,
-            height: 192,
-          },
-        },
-      },
-      data: {
-        loading: 'eager',
-        link: '/light-hold-pomade',
-        color: 'Light Blue',
-        en: {
-          title: 'Light Hold Pomade',
-          hold: 'Light Hold',
-          shine: 'Medium Shine',
-          washability: 'Easy',
-          bestFor: 'Fine or thinning hair. Loose or messy styles',
-        },
-        es: {
-          title: 'Light Hold Pomade',
-          hold: 'Fijación Ligera',
-          shine: 'Brillo Moderado',
-          washability: 'Fácil',
-          bestFor: 'Cabello fino o debilitado. Estilos sueltos o desordenados',
-        },
-      },
-    },
-  },
+  // {
+  //   product: {
+  //     featuredImage: {
+  //       value: '',
+  //       reference: {
+  //         mediaContentType: 'IMAGE',
+  //         alt: 'Light Hold Pomade',
+  //         previewImage: {
+  //           url: 'https://cdn.shopify.com/s/files/1/0274/1389/t/217/assets/suavecito-light-hold-pomade_medium.jpg?v=150308541166018296801657817012',
+  //         },
+  //         image: {
+  //           url: 'https://cdn.shopify.com/s/files/1/0274/1389/t/217/assets/suavecito-light-hold-pomade_medium.jpg?v=150308541166018296801657817012',
+  //           width: 240,
+  //           height: 192,
+  //         },
+  //       },
+  //     },
+  //     data: {
+  //       loading: 'eager',
+  //       link: '/light-hold-pomade',
+  //       color: 'Light Blue',
+  //       en: {
+  //         title: 'Light Hold Pomade',
+  //         hold: 'Light Hold',
+  //         shine: 'Medium Shine',
+  //         washability: 'Easy',
+  //         bestFor: 'Fine or thinning hair. Loose or messy styles',
+  //       },
+  //       es: {
+  //         title: 'Light Hold Pomade',
+  //         hold: 'Fijación Ligera',
+  //         shine: 'Brillo Moderado',
+  //         washability: 'Fácil',
+  //         bestFor: 'Cabello fino o debilitado. Estilos sueltos o desordenados',
+  //       },
+  //     },
+  //   },
+  // },
   {
     product: {
       featuredImage: {
