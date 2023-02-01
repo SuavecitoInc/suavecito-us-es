@@ -3,12 +3,12 @@ export const bestSellersBannerData = {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: 'Gasta $55, recibe una playera gratis!',
+      alt: 'Gasta $55, recibe un pin Suavecita Esse Gratis! Gasta $65, recibe un labial Suavecita Paraiso Gratis! Gasta $75, recibe los dos regalos Gratis!',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/jan_2023_banner2_best_seller_SP.jpg?v=1672432714',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/feb_2023_banner1_best_seller_SP.jpg?v=1675278633',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/jan_2023_banner2_best_seller_SP.jpg?v=1672432714',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/feb_2023_banner1_best_seller_SP.jpg?v=1675278633',
         width: 1080,
         height: 1080,
       },
@@ -19,12 +19,12 @@ export const bestSellersBannerData = {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: 'Gasta $55, recibe una playera gratis!',
+      alt: 'Regal Gratis con compra de $55. Dos Regalos Gratis con compra de $75.',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/jan_2023_banner1_best_seller_SP.jpg?v=1672432715',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/feb_2023_banner3_best_seller_SP.jpg?v=1675278632',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/jan_2023_banner1_best_seller_SP.jpg?v=1672432715',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/feb_2023_banner3_best_seller_SP.jpg?v=1675278632',
         width: 1080,
         height: 1080,
       },
@@ -35,12 +35,12 @@ export const bestSellersBannerData = {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: 'Gasta $55, recibe una playera gratis!',
+      alt: 'Gasta $55, recibe un pin Suavecito Esse Gratis! Gasta $65, recibe un polvo texturizador Gratis! Gasta $75, recibe los dos regalos Gratis!',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/jan_2023_banner3_best_seller_SP.jpg?v=1672432715',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/feb_2023_banner2_best_seller_SP.jpg?v=1675278632',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/jan_2023_banner3_best_seller_SP.jpg?v=1672432715',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/feb_2023_banner2_best_seller_SP.jpg?v=1675278632',
         width: 1080,
         height: 1080,
       },
