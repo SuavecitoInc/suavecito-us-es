@@ -17,12 +17,12 @@ export const responsiveBannerSettings: ResponsiveBannerSectionData = {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: 'Venta! 40% de descuento. En todo el sitio. Un dia solamente! Pomada Gratis, con compra de $50!',
+      alt: 'Regalo Gratis con compra de $55. Dos Regalos Gratis con compra de $75. *Mientras duren las provisiones.',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_40_off_banner_large_SP.jpg?v=1671738289',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/FGWP_feb_2023_landing_banner_large_SP.jpg?v=1675278632',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_40_off_banner_large_SP.jpg?v=1671738289',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/FGWP_feb_2023_landing_banner_large_SP.jpg?v=1675278632',
         width: 2048,
         height: 930,
       },
@@ -32,12 +32,12 @@ export const responsiveBannerSettings: ResponsiveBannerSectionData = {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: 'Venta! 40% de descuento. En todo el sitio. Un dia solamente! Pomada Gratis, con compra de $50!',
+      alt: 'Regalo Gratis con compra de $55. Dos Regalos Gratis con compra de $75. *Mientras duren las provisiones.',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_40_off_banner_large_SP.jpg?v=1671738289',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/FGWP_feb_2023_landing_banner_large_SP.jpg?v=1675278632',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_40_off_banner_large_SP.jpg?v=1671738289',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/FGWP_feb_2023_landing_banner_large_SP.jpg?v=1675278632',
         width: 2048,
         height: 930,
       },
@@ -47,12 +47,12 @@ export const responsiveBannerSettings: ResponsiveBannerSectionData = {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: 'Venta! 40% de descuento. En todo el sitio. Un dia solamente! Pomada Gratis, con compra de $50!',
+      alt: 'Regalo Gratis con compra de $55. Dos Regalos Gratis con compra de $75. *Mientras duren las provisiones.',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_40_off_banner_medium_SP.jpg?v=1671738289',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/FGWP_feb_2023_landing_banner_medium_SP.jpg?v=1675278632',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_40_off_banner_medium_SP.jpg?v=1671738289',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/FGWP_feb_2023_landing_banner_medium_SP.jpg?v=1675278632',
         width: 2048,
         height: 1764,
       },
@@ -62,12 +62,12 @@ export const responsiveBannerSettings: ResponsiveBannerSectionData = {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: 'Venta! 40% de descuento. En todo el sitio. Un dia solamente! Pomada Gratis, con compra de $50!',
+      alt: 'Regalo Gratis con compra de $55. Dos Regalos Gratis con compra de $75. *Mientras duren las provisiones.',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_40_off_banner_medium_SP.jpg?v=1671738289',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/FGWP_feb_2023_landing_banner_medium_SP.jpg?v=1675278632',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_40_off_banner_medium_SP.jpg?v=1671738289',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/FGWP_feb_2023_landing_banner_medium_SP.jpg?v=1675278632',
         width: 2048,
         height: 1764,
       },
