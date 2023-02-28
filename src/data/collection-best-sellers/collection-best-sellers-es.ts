@@ -3,12 +3,12 @@ export const bestSellersBannerData = {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: 'Gasta $55, recibe un paquete de calcomanias gratis!. Gasta $65, recibe un desodorante black amber gratis!',
+      alt: 'Regalo Gratis con compra de $55 o mas! Dos Regalos Gratis con compra de 75!',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_banner1_best_seller_SP.jpg?v=1669839946',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/FGWP_march_banner_SP-1.jpg?v=1677618797',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_banner1_best_seller_SP.jpg?v=1669839946',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/FGWP_march_banner_SP-1.jpg?v=1677618797',
         width: 1080,
         height: 1080,
       },
@@ -19,12 +19,12 @@ export const bestSellersBannerData = {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: 'Regalo gratis, con compra. Dos regalos gratis cuando gastas $75.',
+      alt: 'Regalo Gratis con compra de $55 o mas! Dos Regalos Gratis con compra de 75!',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_banner2_best_seller_SP.jpg?v=1669839946',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/FGWP_march_banner_SP-2.jpg?v=1677618797',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_banner2_best_seller_SP.jpg?v=1669839946',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/FGWP_march_banner_SP-2.jpg?v=1677618797',
         width: 1080,
         height: 1080,
       },
@@ -35,12 +35,12 @@ export const bestSellersBannerData = {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: 'Gasta $55, recibe un aromatizante gratis. Gasta $65, recibe un brillo labial color paloma gratis!',
+      alt: 'Regalo Gratis con compra de $55 o mas! Dos Regalos Gratis con compra de 75!',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_banner3_best_seller_SP.jpg?v=1669839946',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/FGWP_march_banner_SP-3.jpg?v=1677618797',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_banner3_best_seller_SP.jpg?v=1669839946',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/FGWP_march_banner_SP-3.jpg?v=1677618797',
         width: 1080,
         height: 1080,
       },

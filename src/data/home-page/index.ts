@@ -1,2 +1,2 @@
 // export * from './home-page-es';
-export * from './home-page-es-february';
+export * from './home-page-es';

@@ -6,6 +6,170 @@ import {
   FeaturedVideoSectionData,
 } from '../../types/home-page';
 
+export const threeImageBannerSettings = {
+  image1: {
+    value: '',
+    reference: {
+      mediaContentType: 'IMAGE',
+      alt: 'Regalo Gratis con compra de $55 o mas! Dos Regalos Gratis con compra de 75!',
+      previewImage: {
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/FGWP_march_banner_cita_SP-1.jpg?v=1677618796',
+      },
+      image: {
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/FGWP_march_banner_cita_SP-1.jpg?v=1677618796',
+        width: 1080,
+        height: 1080,
+      },
+    },
+  },
+  link1: '',
+  image2: {
+    value: '',
+    reference: {
+      mediaContentType: 'IMAGE',
+      alt: 'Regalo Gratis con compra de $55 o mas! Dos Regalos Gratis con compra de 75!',
+      previewImage: {
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/FGWP_march_banner_cita_SP-2.jpg?v=1677618797',
+      },
+      image: {
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/FGWP_march_banner_cita_SP-2.jpg?v=1677618797',
+        width: 1080,
+        height: 1080,
+      },
+    },
+  },
+  link2: '',
+  image3: {
+    value: '',
+    reference: {
+      mediaContentType: 'IMAGE',
+      alt: 'Regalo Gratis con compra de $55 o mas! Dos Regalos Gratis con compra de 75!',
+      previewImage: {
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/FGWP_march_banner_cita_SP-3.jpg?v=1677618797',
+      },
+      image: {
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/FGWP_march_banner_cita_SP-3.jpg?v=1677618797',
+        width: 1080,
+        height: 1080,
+      },
+    },
+  },
+  link3: '',
+};
+
+export const collectionsSlideData = [
+  {
+    image: {
+      value: '',
+      reference: {
+        mediaContentType: 'IMAGE',
+        alt: 'Cabello de mujer más vendido',
+        previewImage: {
+          url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/Landing_Page_2022_womens_hair-1_500x.jpg?v=1675703831',
+        },
+        image: {
+          url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/Landing_Page_2022_womens_hair-1_500x.jpg?v=1675703831',
+          width: 500,
+          height: 500,
+        },
+      },
+    },
+    title: `Cabello de mujer más vendido`,
+    subtitle: `Para peinados duraderos y cabello sano`,
+    cta: 'Compra ahora',
+    ctaLink: '/collections/womens-hair',
+    color: 'black',
+  },
+  {
+    image: {
+      value: '',
+      reference: {
+        mediaContentType: 'IMAGE',
+        alt: 'Cosméticos más vendidos',
+        previewImage: {
+          url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/Landing_Page_2022_cosmetics-1_500x.jpg?v=1675703831',
+        },
+        image: {
+          url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/Landing_Page_2022_cosmetics-1_500x.jpg?v=1675703831',
+          width: 500,
+          height: 500,
+        },
+      },
+    },
+    title: `Cosméticos más vendidos`,
+    subtitle: `Cosméticos veganos y libres de crueldad animal: desde pintalabios hasta pestañas`,
+    cta: 'Compra ahora',
+    ctaLink: '/collections/beauty',
+    color: 'black',
+  },
+  {
+    image: {
+      value: '',
+      reference: {
+        mediaContentType: 'IMAGE',
+        alt: 'Cabello de hombre más vendido',
+        previewImage: {
+          url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/Landing_Page_2022_mens_hair-1_500x.jpg?v=1675703831',
+        },
+        image: {
+          url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/Landing_Page_2022_mens_hair-1_500x.jpg?v=1675703831',
+          width: 500,
+          height: 500,
+        },
+      },
+    },
+    title: `Cabello de hombre más vendido`,
+    subtitle: `Estos favoritos valen la pena`,
+    cta: 'Compra ahora',
+    ctaLink: '/collections/mens-hair',
+    color: 'black',
+  },
+  {
+    image: {
+      value: '',
+      reference: {
+        mediaContentType: 'IMAGE',
+        alt: 'El cuidado de la barba más vendido',
+        previewImage: {
+          url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/Landing_Page_2022_beard-1_1ee0fd66-d230-407a-8a68-7224b4edbcf9_500x.jpg?v=1675703873',
+        },
+        image: {
+          url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/Landing_Page_2022_beard-1_1ee0fd66-d230-407a-8a68-7224b4edbcf9_500x.jpg?v=1675703873',
+          width: 500,
+          height: 500,
+        },
+      },
+    },
+    title: `El cuidado de la barba más vendido`,
+    subtitle: `Mantén esos bigotes domesticados y suaves.`,
+    cta: 'Compra ahora',
+    ctaLink: '/collections/beard-mustache-care',
+    color: 'black',
+  },
+  {
+    image: {
+      value: '',
+      reference: {
+        mediaContentType: 'IMAGE',
+        alt: 'El afeitado más vendido',
+        previewImage: {
+          url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/Landing_Page_2022_shave-1_500x.jpg?v=1675703831',
+        },
+        image: {
+          url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/Landing_Page_2022_shave-1_500x.jpg?v=1675703831',
+          width: 500,
+          height: 500,
+        },
+      },
+    },
+    title: `El afeitado más vendido`,
+    subtitle: `Estos productos garantizan un afeitado cómodo y suave.`,
+    cta: 'Compra ahora',
+    ctaLink: '/collections/shave',
+    color: 'black',
+  },
+];
+
 export const responsiveBannerSettings: ResponsiveBannerSectionData = {
   heading: {value: 'Powered by Hydrogen'},
   byline: {
