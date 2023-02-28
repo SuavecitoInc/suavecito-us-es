@@ -1,2 +1,1 @@
-// export * from './collection-best-sellers-es';
-export * from './collection-best-sellers-es-february';
+export * from './collection-best-sellers-es';

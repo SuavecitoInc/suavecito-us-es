@@ -37,14 +37,20 @@ export function CollectionImageCarousel({
   lang = 'en',
   slideData,
   marginTop = false,
+  marginBottom = false,
 }: {
   theme?: BrandTheme;
   lang?: 'en' | 'es';
   slideData: SlideData[];
   marginTop?: boolean;
+  marginBottom?: boolean;
 }) {
   return (
-    <section className={marginTop ? 'mt-[35px]' : ''}>
+    <section
+      className={`${marginTop ? 'mt-[35px]' : ''} ${
+        marginBottom ? 'mb-[35px]' : ''
+      }`}
+    >
       <div className="page-width">
         <Swiper
           // install Swiper modules

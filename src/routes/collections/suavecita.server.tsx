@@ -8,16 +8,16 @@ import {
   useShopQuery,
 } from '@shopify/hydrogen';
 import {
-  ResponsiveBanner,
   FeaturedRowImageWithText,
-  Divider,
   FeaturedRowColumns,
+  CollectionImageCarousel,
 } from '~/components';
-import {Layout, BestSellers} from '~/components/index.server';
+import {Layout, BestSellers, ThreeImageBanner} from '~/components/index.server';
 
 // hard coded data
 import {
-  responsiveBannerSettings,
+  collectionsSlideData,
+  threeImageBannerSettings,
   featuredRowImageOneSettings,
   featuredRowColumnsOneSettings,
 } from '../../data/suavecita-page';
@@ -48,11 +48,16 @@ function HomepageContent({theme}: {theme: BrandTheme}) {
 
   return (
     <>
-      <ResponsiveBanner {...responsiveBannerSettings} />
+      <CollectionImageCarousel
+        slideData={collectionsSlideData}
+        marginTop={true}
+        marginBottom={true}
+      />
+
+      <ThreeImageBanner {...threeImageBannerSettings} />
+      <BestSellers lang={LANG} theme={theme} />
       <FeaturedRowImageWithText {...featuredRowImageOneSettings} />
       <FeaturedRowColumns {...featuredRowColumnsOneSettings} />
-      <Divider width="half" />
-      <BestSellers lang={LANG} theme={theme} />
     </>
   );
 }
