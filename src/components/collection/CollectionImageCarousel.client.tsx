@@ -51,7 +51,7 @@ export function CollectionImageCarousel({
         marginBottom ? 'mb-[35px]' : ''
       }`}
     >
-      <div className="page-width">
+      <div className="page-width collection-image">
         <Swiper
           // install Swiper modules
           // @ts-ignore
