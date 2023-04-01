@@ -225,6 +225,23 @@ h6,
   background: white !important;
 }
 
+.collection-image .swiper-slide {
+  width: 33.33%;
+  margin-right: 10px;
+}
+
+@media only screen and (max-width: 768px) {
+  .collection-image .swiper-slide {
+    width: 50%;
+  }
+}
+
+@media only screen and (max-width: 468px) {
+  .collection-image .swiper-slide {
+    width: 100%;
+  }
+}
+
 /* radio buttons */
 .radio-container {
   display: block;
