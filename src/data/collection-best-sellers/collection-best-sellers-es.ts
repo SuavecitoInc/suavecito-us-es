@@ -5,10 +5,10 @@ export const bestSellersBannerData = {
       mediaContentType: 'IMAGE',
       alt: 'Regalo Gratis con compra de $55 o mas! Dos Regalos Gratis con compra de 75!',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/FGWP_april_banner_SP-1.jpg?v=1680289478',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/mothers_day_banner_SP-1.jpg?v=1682617158',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/FGWP_april_banner_SP-1.jpg?v=1680289478',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/mothers_day_banner_SP-1.jpg?v=1682617158',
         width: 1080,
         height: 1080,
       },
@@ -21,10 +21,10 @@ export const bestSellersBannerData = {
       mediaContentType: 'IMAGE',
       alt: 'Regalo Gratis con compra de $55 o mas! Dos Regalos Gratis con compra de 75!',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/FGWP_april_banner_SP-2.jpg?v=1680289478',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/mothers_day_banner_SP-2.jpg?v=1682617158',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/FGWP_april_banner_SP-2.jpg?v=1680289478',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/mothers_day_banner_SP-2.jpg?v=1682617158',
         width: 1080,
         height: 1080,
       },
@@ -37,10 +37,10 @@ export const bestSellersBannerData = {
       mediaContentType: 'IMAGE',
       alt: 'Regalo Gratis con compra de $55 o mas! Dos Regalos Gratis con compra de 75!',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/FGWP_april_banner_SP-3.jpg?v=1680289478',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/mothers_day_banner_SP-3.jpg?v=1682617158',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/FGWP_april_banner_SP-3.jpg?v=1680289478',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/mothers_day_banner_SP-3.jpg?v=1682617158',
         width: 1080,
         height: 1080,
       },
