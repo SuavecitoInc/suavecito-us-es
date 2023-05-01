@@ -37,10 +37,10 @@ export const bestSellersBannerData = {
       mediaContentType: 'IMAGE',
       alt: 'Regalo Gratis con compra de $55 o mas! Dos Regalos Gratis con compra de 75!',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/mothers_day_banner_SP-3.jpg?v=1682617158',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/mothers_day_banner_may_SP-3_1.jpg?v=1682955652',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/mothers_day_banner_SP-3.jpg?v=1682617158',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/mothers_day_banner_may_SP-3_1.jpg?v=1682955652',
         width: 1080,
         height: 1080,
       },
