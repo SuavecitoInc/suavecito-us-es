@@ -11,44 +11,44 @@ export const threeImageBannerSettings = {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: 'Regalo Gratis con compra de $55 o mas! Dos Regalos Gratis con compra de 75!',
+      alt: '¡Nuevo! Edición Limitada. Pomada firme, pomada original, pomada mate',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/mothers_day_banner_SP-1.jpg?v=1682617158',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/summer_pomade_banner_SP-1.jpg?v=1684768286',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/mothers_day_banner_SP-1.jpg?v=1682617158',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/summer_pomade_banner_SP-1.jpg?v=1684768286',
         width: 1080,
         height: 1080,
       },
     },
   },
-  link1: '',
+  link1: 'https://es.suavecito.com/collections/orange-rum-tiki',
   image2: {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: 'Regalo Gratis con compra de $55 o mas! Dos Regalos Gratis con compra de 75!',
+      alt: 'Suaveccito Pomade. Fragrancia, Orange Rum Tiki',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/mothers_day_banner_SP-2.jpg?v=1682617158',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/summer_pomade_banner_SP-2.jpg?v=1684768287',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/mothers_day_banner_SP-2.jpg?v=1682617158',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/summer_pomade_banner_SP-2.jpg?v=1684768287',
         width: 1080,
         height: 1080,
       },
     },
   },
-  link2: '',
+  link2: 'https://es.suavecito.com/collections/orange-rum-tiki',
   image3: {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: 'Regalo Gratis con compra de $55 o mas! Dos Regalos Gratis con compra de 75!',
+      alt: '¡Regalo gratis con compra! Tier 1 con compra de $55. Tier 2 con compra de $65. Dos regalos gratis con compra de $75. Hasta agotar existencias',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/mothers_day_banner_may_SP-3_1.jpg?v=1682955652',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/summer_pomade_banner_SP-3.jpg?v=1684768286',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/mothers_day_banner_may_SP-3_1.jpg?v=1682955652',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/summer_pomade_banner_SP-3.jpg?v=1684768286',
         width: 1080,
         height: 1080,
       },
