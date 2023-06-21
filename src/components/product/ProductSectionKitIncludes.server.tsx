@@ -135,16 +135,23 @@ export function ProductSectionKitIncludes({
                 key={`features-${el.id}`}
                 className={`border-x-2 border-white even:bg-[#C8C8C8] py-2 px-4 grow-1 shrink-0 basis-[60%] md:basis-[40%] ${width[itemsLength]} text-left`}
               >
-                {el.featuresSpanish && el.features ? (
+                {(el.featuresSpanish || el.featuresSpanishVariant) &&
+                el.features ? (
                   <p>Características:</p>
                 ) : (
                   <p>Features:</p>
                 )}
-
-                {el.featuresSpanish && el.features ? (
+                {el.featuresSpanish ? (
                   <div
                     className="metafield-features"
                     dangerouslySetInnerHTML={{__html: el.featuresSpanish.value}}
+                  />
+                ) : el.featuresSpanishVariant ? (
+                  <div
+                    className="metafield-features"
+                    dangerouslySetInnerHTML={{
+                      __html: el.featuresSpanishVariant.value,
+                    }}
                   />
                 ) : (
                   <div
@@ -277,6 +284,9 @@ const KIT_PRODUCT_VARIANT_QUERY = gql`
           title
         }
         features: metafield(namespace: "debut", key: "variant_features") {
+          value
+        }
+        featuresSpanishVariant: metafield(namespace: "debut", key: "features_spanish") {
           value
         }
       }
