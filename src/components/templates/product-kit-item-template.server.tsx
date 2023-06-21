@@ -109,6 +109,7 @@ export function ProductKitItemTemplate({handle}: {handle: string}) {
     kitProductVariant8,
     kitProductVariant9,
     kitProductVariant10,
+    spanishDescription,
   } = product;
 
   const {id} = useGetInitialVariant(initialVariant, variants.nodes);
@@ -116,6 +117,11 @@ export function ProductKitItemTemplate({handle}: {handle: string}) {
   const defaultOptionNames = options.map(
     (option: {name: string}) => option.name,
   );
+
+  const description =
+    spanishDescription !== null && LANG === 'es'
+      ? spanishDescription.value
+      : descriptionHtml;
 
   const theme = vendor.toLowerCase();
 
@@ -191,7 +197,7 @@ export function ProductKitItemTemplate({handle}: {handle: string}) {
                   <div className="py-10">
                     <div
                       className="description"
-                      dangerouslySetInnerHTML={{__html: descriptionHtml}}
+                      dangerouslySetInnerHTML={{__html: description}}
                     />
                   </div>
                 </section>
@@ -297,6 +303,12 @@ const PRODUCT_QUERY = gql`
       seo {
         description
         title
+      }
+      spanishDescription: metafield(
+        namespace: "debut"
+        key: "section_product_description_es"
+      ) {
+        value
       }
     }
     shop {
