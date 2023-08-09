@@ -11,12 +11,12 @@ export const threeImageBannerSettings = {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: '¡Nuevo! Edición Limitada. Pomada firme, pomada original, pomada mate',
+      alt: 'Original Pomade. Su consistencia cremosa es facil de aplicar.',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/summer_pomade_banner_SP-1.jpg?v=1684768286',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/Spanish_site_banner-1.jpg?v=1691605112',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/summer_pomade_banner_SP-1.jpg?v=1684768286',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/Spanish_site_banner-1.jpg?v=1691605112',
         width: 1080,
         height: 1080,
       },
@@ -27,12 +27,12 @@ export const threeImageBannerSettings = {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: 'Suaveccito Pomade. Fragrancia, Orange Rum Tiki',
+      alt: 'Firme Pomade. Extra Fijacion para cualquier peinado.',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/summer_pomade_banner_SP-2.jpg?v=1684768287',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/Spanish_site_banner-2.jpg?v=1691605112',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/summer_pomade_banner_SP-2.jpg?v=1684768287',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/Spanish_site_banner-2.jpg?v=1691605112',
         width: 1080,
         height: 1080,
       },
@@ -43,12 +43,12 @@ export const threeImageBannerSettings = {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: '¡Regalo gratis con compra! Tier 1 con compra de $55. Tier 2 con compra de $65. Dos regalos gratis con compra de $75. Hasta agotar existencias',
+      alt: 'Mate Pomade. Fijacion unica con un acabado mate.',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/summer_pomade_banner_SP-3.jpg?v=1684768286',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/Spanish_site_banner-3.jpg?v=1691605111',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/summer_pomade_banner_SP-3.jpg?v=1684768286',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/Spanish_site_banner-3.jpg?v=1691605111',
         width: 1080,
         height: 1080,
       },
