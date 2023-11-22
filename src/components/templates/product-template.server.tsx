@@ -326,6 +326,12 @@ const PRODUCT_QUERY = gql`
             amount
             currencyCode
           }
+          variantExcluded: metafield(
+            namespace: "debut"
+            key: "exclude_variant_online"
+          ) {
+            value
+          }
           ...VariantSale
         }
       }
