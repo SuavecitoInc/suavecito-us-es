@@ -236,4 +236,44 @@ export const chartData: {[key: string]: any}[] = [
       },
     },
   },
+  {
+    product: {
+      featuredImage: {
+        value: '',
+        reference: {
+          mediaContentType: 'IMAGE',
+          alt: 'Hybrid Pomade',
+          previewImage: {
+            url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/Hybrid_CanLid.jpg?v=1691441466',
+          },
+          image: {
+            url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/Hybrid_CanLid.jpg?v=1691441466',
+            width: 240,
+            height: 192,
+          },
+        },
+      },
+      data: {
+        loading: 'eager',
+        link: '/hybrid-pomade',
+        color: 'Hybrid',
+        en: {
+          title: 'Hybrid Pomade',
+          hold: 'Medium Hold',
+          shine: 'High Shine',
+          washability: 'Easy',
+          bestFor:
+            'For all hair types and textures. Pompadours, side parts and slick backs.',
+        },
+        es: {
+          title: 'Hybrid Pomade',
+          hold: 'Fijación Medio',
+          shine: 'Brillo Alto',
+          washability: 'Fácil',
+          bestFor:
+            'Todo tipo de cabello y texturas. Estilos tradicionales o más texturizados, naturales.',
+        },
+      },
+    },
+  },
 ];

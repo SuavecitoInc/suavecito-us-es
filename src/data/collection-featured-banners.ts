@@ -77,7 +77,7 @@ export const CollectionFeaturedBanners = [
         ],
       },
       {
-        name: 'Premium Blends Pomada',
+        name: 'Pomada Hybrid',
         rows: [
           'Todo tipo de cabellos y texturas. Pompadours, jellyrolls, y slick backs.',
           'Todo tipo de cabellos y texturas. Pompadours, partes laterales y slick backs.',
