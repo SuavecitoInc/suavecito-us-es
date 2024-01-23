@@ -1,5 +1,5 @@
 // Free Gift With Purchase
-export const FGWP_ENABLED = true;
+export const FGWP_ENABLED = false;
 export const FGWP_SINGLE_TIER_ENABLED = true;
 export const FGWP_SINGLE_TIER_ALL_OPTIONS_ENABLED = false;
 export const FGWP_BANNER_ENABLED = true;
