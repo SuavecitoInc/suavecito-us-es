@@ -10,6 +10,7 @@ import {
 
 import {Button, Text, CartLineItem, CartEmpty, Section} from '~/components';
 import {useFreeGiftWithPurchase} from '../FreeGiftProvider/';
+import {AUTO_ADD_DISCOUNT, DISCOUNT_CODE} from '~/data/discounts';
 
 const cart_page: {[key: string]: any} = {
   subtotal: {
@@ -109,7 +110,9 @@ function CartCheckoutActions({
   disableCheckout: boolean;
 }) {
   const {checkoutUrl, cost, lines} = useCart();
-  const localeCheckoutUrl = `${checkoutUrl}?locale=es`;
+  const webCheckoutUrl = `${checkoutUrl}?locale=es${
+    AUTO_ADD_DISCOUNT && DISCOUNT_CODE ? `&discount=${DISCOUNT_CODE}` : ''
+  }`;
 
   const handleCheckout = () => {
     // emit custom begin checkout event
@@ -126,7 +129,7 @@ function CartCheckoutActions({
       <div className="grid gap-4">
         {!disableCheckout ? (
           <>
-            <Button to={localeCheckoutUrl} onClick={handleCheckout}>
+            <Button to={webCheckoutUrl} onClick={handleCheckout}>
               {cart_page.continue_to_checkout[lang]}
             </Button>
             <CartShopPayButton />

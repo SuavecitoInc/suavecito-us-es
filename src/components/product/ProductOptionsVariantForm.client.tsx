@@ -305,7 +305,7 @@ export function ProductOptionsVariantForm({
 
           {colorOptions.length === 0 &&
             (options as OptionWithValues[]).map(({name, values}, index) => {
-              if (values.length === 1) {
+              if (values.length === 1 && values[0] === 'Default Title') {
                 return null;
               }
 

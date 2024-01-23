@@ -32,6 +32,7 @@ export function AppWrapper({children}: {children: ReactNode}) {
   });
 
   const freeGifts = [fgwp1, fgwp2, fgwp3, fgwp4];
+  console.log('FREE GIFTS: ', freeGifts);
 
   const freeGiftCards = [fgcwp1, fgcwp2];
 

@@ -3,44 +3,44 @@ export const bestSellersBannerData = {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: 'Gasta $55, recibe un paquete de calcomanias gratis!. Gasta $65, recibe un desodorante black amber gratis!',
+      alt: 'Original Pomade. Su consistencia cremosa es facil de aplicar.',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_banner1_best_seller_SP.jpg?v=1669839946',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/Spanish_site_banner-1.jpg?v=1691605112',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_banner1_best_seller_SP.jpg?v=1669839946',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/Spanish_site_banner-1.jpg?v=1691605112',
         width: 1080,
         height: 1080,
       },
     },
   },
-  link1: '',
+  link1: 'https://es.suavecito.com/collections/orange-rum-tiki',
   image2: {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: 'Regalo gratis, con compra. Dos regalos gratis cuando gastas $75.',
+      alt: 'Firme Pomade. Extra Fijacion para cualquier peinado.',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_banner2_best_seller_SP.jpg?v=1669839946',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/Spanish_site_banner-2.jpg?v=1691605112',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_banner2_best_seller_SP.jpg?v=1669839946',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/Spanish_site_banner-2.jpg?v=1691605112',
         width: 1080,
         height: 1080,
       },
     },
   },
-  link2: '',
+  link2: 'https://es.suavecito.com/collections/orange-rum-tiki',
   image3: {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: 'Gasta $55, recibe un aromatizante gratis. Gasta $65, recibe un brillo labial color paloma gratis!',
+      alt: 'Mate Pomade. Fijacion unica con un acabado mate.',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_banner3_best_seller_SP.jpg?v=1669839946',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/Spanish_site_banner-3.jpg?v=1691605111',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/dec_banner3_best_seller_SP.jpg?v=1669839946',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/Spanish_site_banner-3.jpg?v=1691605111',
         width: 1080,
         height: 1080,
       },

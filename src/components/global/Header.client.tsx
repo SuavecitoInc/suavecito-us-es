@@ -211,7 +211,7 @@ function DesktopHeader({
   const styles = {
     button:
       'relative flex items-center justify-center w-8 h-8 focus:ring-primary/5',
-    container: `bg-white ${
+    container: `bg-white border-b-2 border-suaveGray ${
       y > 50 && !isHome ? 'shadow-lightHeader ' : ''
     }hidden md:flex items-center transition duration-300 backdrop-blur-lg z-40 top-0 justify-between w-full leading-none gap-8 site-header h-nav ${
       themeText[themeName]

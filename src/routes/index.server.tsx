@@ -14,16 +14,17 @@ import {
   Divider,
   FeaturedRowColumns,
   FeaturedVideo,
+  CollectionImageCarousel,
 } from '~/components';
-import {Layout, BestSellers} from '~/components/index.server';
+import {Layout, BestSellers, ThreeImageBanner} from '~/components/index.server';
 
 // hard coded data
 import {
-  responsiveBannerSettings,
+  threeImageBannerSettings,
+  collectionsSlideData,
   featuredRowImageOneSettings,
   featuredRowImageTwoSettings,
   featuredRowImageThreeSettings,
-  bannerOneSettings,
   bannerTwoSettings,
   featuredRowColumnsOneSettings,
   featuredRowColumnsTwoSettings,
@@ -54,11 +55,15 @@ function HomepageContent() {
 
   return (
     <>
-      <ResponsiveBanner {...responsiveBannerSettings} />
+      <CollectionImageCarousel
+        slideData={collectionsSlideData}
+        marginTop={true}
+        marginBottom={true}
+      />
+      <ThreeImageBanner {...threeImageBannerSettings} />
+      <BestSellers lang={LANG} />
       <FeaturedRowImageWithText {...featuredRowImageOneSettings} />
       <Divider width="half" />
-      <BestSellers lang={LANG} />
-      {/* <Banner {...bannerOneSettings} /> */}
       <FeaturedRowColumns {...featuredRowColumnsOneSettings} />
       <FeaturedRowImageWithText {...featuredRowImageTwoSettings} />
       <Banner {...bannerTwoSettings} />

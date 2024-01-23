@@ -6,6 +6,170 @@ import {
   FeaturedVideoSectionData,
 } from '../../types/home-page';
 
+export const threeImageBannerSettings = {
+  image1: {
+    value: '',
+    reference: {
+      mediaContentType: 'IMAGE',
+      alt: 'Original Pomade. Su consistencia cremosa es facil de aplicar.',
+      previewImage: {
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/Spanish_site_banner-1.jpg?v=1691605112',
+      },
+      image: {
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/Spanish_site_banner-1.jpg?v=1691605112',
+        width: 1080,
+        height: 1080,
+      },
+    },
+  },
+  link1: 'https://es.suavecito.com/collections/orange-rum-tiki',
+  image2: {
+    value: '',
+    reference: {
+      mediaContentType: 'IMAGE',
+      alt: 'Firme Pomade. Extra Fijacion para cualquier peinado.',
+      previewImage: {
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/Spanish_site_banner-2.jpg?v=1691605112',
+      },
+      image: {
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/Spanish_site_banner-2.jpg?v=1691605112',
+        width: 1080,
+        height: 1080,
+      },
+    },
+  },
+  link2: 'https://es.suavecito.com/collections/orange-rum-tiki',
+  image3: {
+    value: '',
+    reference: {
+      mediaContentType: 'IMAGE',
+      alt: 'Mate Pomade. Fijacion unica con un acabado mate.',
+      previewImage: {
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/Spanish_site_banner-3.jpg?v=1691605111',
+      },
+      image: {
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/Spanish_site_banner-3.jpg?v=1691605111',
+        width: 1080,
+        height: 1080,
+      },
+    },
+  },
+  link3: '',
+};
+
+export const collectionsSlideData = [
+  {
+    image: {
+      value: '',
+      reference: {
+        mediaContentType: 'IMAGE',
+        alt: 'Cabello de hombre más vendido',
+        previewImage: {
+          url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/Landing_Page_2022_mens_hair-1_500x.jpg?v=1675703831',
+        },
+        image: {
+          url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/Landing_Page_2022_mens_hair-1_500x.jpg?v=1675703831',
+          width: 500,
+          height: 500,
+        },
+      },
+    },
+    title: `Cabello de hombre más vendido`,
+    subtitle: `Estos favoritos valen la pena`,
+    cta: 'Compra ahora',
+    ctaLink: '/collections/mens-hair',
+    color: 'black',
+  },
+  {
+    image: {
+      value: '',
+      reference: {
+        mediaContentType: 'IMAGE',
+        alt: 'El cuidado de la barba más vendido',
+        previewImage: {
+          url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/Landing_Page_2022_beard-1_1ee0fd66-d230-407a-8a68-7224b4edbcf9_500x.jpg?v=1675703873',
+        },
+        image: {
+          url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/Landing_Page_2022_beard-1_1ee0fd66-d230-407a-8a68-7224b4edbcf9_500x.jpg?v=1675703873',
+          width: 500,
+          height: 500,
+        },
+      },
+    },
+    title: `El cuidado de la barba más vendido`,
+    subtitle: `Mantén esos bigotes domesticados y suaves.`,
+    cta: 'Compra ahora',
+    ctaLink: '/collections/beard-mustache-care',
+    color: 'black',
+  },
+  {
+    image: {
+      value: '',
+      reference: {
+        mediaContentType: 'IMAGE',
+        alt: 'El afeitado más vendido',
+        previewImage: {
+          url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/Landing_Page_2022_shave-1_500x.jpg?v=1675703831',
+        },
+        image: {
+          url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/Landing_Page_2022_shave-1_500x.jpg?v=1675703831',
+          width: 500,
+          height: 500,
+        },
+      },
+    },
+    title: `El afeitado más vendido`,
+    subtitle: `Estos productos garantizan un afeitado cómodo y suave.`,
+    cta: 'Compra ahora',
+    ctaLink: '/collections/shave',
+    color: 'black',
+  },
+  {
+    image: {
+      value: '',
+      reference: {
+        mediaContentType: 'IMAGE',
+        alt: 'Cabello de mujer más vendido',
+        previewImage: {
+          url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/Landing_Page_2022_womens_hair-1_500x.jpg?v=1675703831',
+        },
+        image: {
+          url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/Landing_Page_2022_womens_hair-1_500x.jpg?v=1675703831',
+          width: 500,
+          height: 500,
+        },
+      },
+    },
+    title: `Cabello de mujer más vendido`,
+    subtitle: `Para peinados duraderos y cabello sano`,
+    cta: 'Compra ahora',
+    ctaLink: '/collections/womens-hair',
+    color: 'black',
+  },
+  {
+    image: {
+      value: '',
+      reference: {
+        mediaContentType: 'IMAGE',
+        alt: 'Cosméticos más vendidos',
+        previewImage: {
+          url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/Landing_Page_2022_cosmetics-1_500x.jpg?v=1675703831',
+        },
+        image: {
+          url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/Landing_Page_2022_cosmetics-1_500x.jpg?v=1675703831',
+          width: 500,
+          height: 500,
+        },
+      },
+    },
+    title: `Cosméticos más vendidos`,
+    subtitle: `Cosméticos veganos y libres de crueldad animal: desde pintalabios hasta pestañas`,
+    cta: 'Compra ahora',
+    ctaLink: '/collections/beauty',
+    color: 'black',
+  },
+];
+
 export const responsiveBannerSettings: ResponsiveBannerSectionData = {
   heading: {value: 'Suavecito'},
   byline: {

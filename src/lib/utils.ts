@@ -158,6 +158,7 @@ function parseItem(customPrefixes = {}) {
       Note: update logic when API is updated to include the active qualified domain
     */
     const isInternalLink = /\.myshopify\.com/g.test(item.url);
+    // const isInternalLink = /suavecito.com/g.test(item.url);
 
     const parsedItem = isInternalLink
       ? // internal links

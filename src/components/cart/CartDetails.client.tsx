@@ -9,6 +9,7 @@ import {
 } from '@shopify/hydrogen';
 
 import {Button, Text, CartLineItem, CartEmpty} from '~/components';
+import {AUTO_ADD_DISCOUNT, DISCOUNT_CODE} from '~/data/discounts';
 
 const cart_details: {[key: string]: any} = {
   subtotal: {
@@ -123,6 +124,10 @@ function CartCheckoutActions({
 }) {
   const {checkoutUrl, cost, lines} = useCart();
 
+  const webCheckoutUrl = `${checkoutUrl}?locale=es${
+    AUTO_ADD_DISCOUNT && DISCOUNT_CODE ? `&discount=${DISCOUNT_CODE}` : ''
+  }`;
+
   const handleCheckout = () => {
     // emit custom begin checkout event
     ClientAnalytics.publish('CUSTOM_BEGIN_CHECKOUT', true, {
@@ -149,7 +154,7 @@ function CartCheckoutActions({
           </Button>
         ) : (
           <>
-            <Button to={checkoutUrl} onClick={handleCheckout}>
+            <Button to={webCheckoutUrl} onClick={handleCheckout}>
               {cart_details.continue_to_checkout[lang]}
             </Button>
             <CartShopPayButton />
