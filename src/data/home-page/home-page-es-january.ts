@@ -17,12 +17,12 @@ export const responsiveBannerSettings: ResponsiveBannerSectionData = {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: 'Playera Gratis, con la compra de $55. Mientras duren las provisiones. Playera sera escogida aleatoriamente. No habran intercambios o devoluciones.',
+      alt: 'Suavecito',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/FGWP_jan_2023_landing_banner_large_SP.jpg?v=1672432715',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/sp-banner-large.jpg?v=1706051864',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/FGWP_jan_2023_landing_banner_large_SP.jpg?v=1672432715',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/sp-banner-large.jpg?v=1706051864',
         width: 2048,
         height: 930,
       },
@@ -32,12 +32,12 @@ export const responsiveBannerSettings: ResponsiveBannerSectionData = {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: 'Playera Gratis, con la compra de $55. Mientras duren las provisiones. Playera sera escogida aleatoriamente. No habran intercambios o devoluciones.',
+      alt: 'Suavecito',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/FGWP_jan_2023_landing_banner_large_SP.jpg?v=1672432715',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/sp-banner-large.jpg?v=17060518645',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/FGWP_jan_2023_landing_banner_large_SP.jpg?v=1672432715',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/sp-banner-large.jpg?v=1706051864',
         width: 2048,
         height: 930,
       },
@@ -47,12 +47,12 @@ export const responsiveBannerSettings: ResponsiveBannerSectionData = {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: 'Playera Gratis, con la compra de $55. Mientras duren las provisiones. Playera sera escogida aleatoriamente. No habran intercambios o devoluciones.',
+      alt: 'Suavecito',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/FGWP_jan_2023_landing_banner_medium_SP.jpg?v=1672432715',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/sp-banner-large.jpg?v=1706051864',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/FGWP_jan_2023_landing_banner_medium_SP.jpg?v=1672432715',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/sp-banner-large.jpg?v=1706051864',
         width: 2048,
         height: 1764,
       },
@@ -62,12 +62,12 @@ export const responsiveBannerSettings: ResponsiveBannerSectionData = {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: '50% de descuento en todos los productos de Frida Kahlo. Compra 1, Recibe 1 Gratis, en todos productos de Premium Blends. Regalo Gratis cuando gastas $55.',
+      alt: 'Suavecito',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/FGWP_jan_2023_landing_banner_medium_SP.jpg?v=1672432715',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/sp-banner-large.jpg?v=1706051864',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/FGWP_jan_2023_landing_banner_medium_SP.jpg?v=1672432715',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/sp-banner-large.jpg?v=1706051864',
         width: 2048,
         height: 1764,
       },

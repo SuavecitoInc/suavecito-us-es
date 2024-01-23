@@ -17,12 +17,12 @@ export const responsiveBannerSettings: ResponsiveBannerSectionData = {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: 'Gasta $55, recibe un aromatizante o un paquete de cacomanias gratis! Gasta $65, recibe un brillo labial color paloma o un desodorante black amber gratis! *No olvides ordena antes del 15 de Diciembre para recibir tu pedido antes de Navidad!',
+      alt: 'Suavecito',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/FGWP_dec_landing_banner_large_SP.jpg?v=1669839946',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/sp-banner-large.jpg?v=1706051864',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/FGWP_dec_landing_banner_large_SP.jpg?v=1669839946',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/sp-banner-large.jpg?v=1706051864',
         width: 2048,
         height: 930,
       },
@@ -32,12 +32,12 @@ export const responsiveBannerSettings: ResponsiveBannerSectionData = {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: 'Gasta $55, recibe un aromatizante o un paquete de cacomanias gratis! Gasta $65, recibe un brillo labial color paloma o un desodorante black amber gratis! *No olvides ordena antes del 15 de Diciembre para recibir tu pedido antes de Navidad!',
+      alt: 'Suavecito',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/FGWP_dec_landing_banner_large_SP.jpg?v=1669839946',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/sp-banner-large.jpg?v=17060518645',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/FGWP_dec_landing_banner_large_SP.jpg?v=1669839946',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/sp-banner-large.jpg?v=1706051864',
         width: 2048,
         height: 930,
       },
@@ -47,12 +47,12 @@ export const responsiveBannerSettings: ResponsiveBannerSectionData = {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: 'Gasta $55, recibe un aromatizante o un paquete de cacomanias gratis! Gasta $65, recibe un brillo labial color paloma o un desodorante black amber gratis! *No olvides ordena antes del 15 de Diciembre para recibir tu pedido antes de Navidad!',
+      alt: 'Suavecito',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/FGWP_dec_landing_banner_medium_SP.jpg?v=1669839947',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/sp-banner-large.jpg?v=1706051864',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/FGWP_dec_landing_banner_medium_SP.jpg?v=1669839947',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/sp-banner-large.jpg?v=1706051864',
         width: 2048,
         height: 1764,
       },
@@ -62,12 +62,12 @@ export const responsiveBannerSettings: ResponsiveBannerSectionData = {
     value: '',
     reference: {
       mediaContentType: 'IMAGE',
-      alt: 'Gasta $55, recibe un aromatizante o un paquete de cacomanias gratis! Gasta $65, recibe un brillo labial color paloma o un desodorante black amber gratis! *No olvides ordena antes del 15 de Diciembre para recibir tu pedido antes de Navidad!',
+      alt: 'Suavecito',
       previewImage: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/FGWP_dec_landing_banner_medium_SP.jpg?v=1669839947',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/sp-banner-large.jpg?v=1706051864',
       },
       image: {
-        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/FGWP_dec_landing_banner_medium_SP.jpg?v=1669839947',
+        url: 'https://cdn.shopify.com/s/files/1/0274/1389/files/sp-banner-large.jpg?v=1706051864',
         width: 2048,
         height: 1764,
       },
